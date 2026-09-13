@@ -13,6 +13,24 @@
   "sourceContentBoundary": "Curated public-safe content only; no private reports or evidence",
   "verification": {
     "resourceProvisioned": true,
-    "contentPublished": false
+    "contentPublished": true,
+    "verifiedAtUtc": "2026-09-13T02:48:31Z",
+    "sourceCommit": "1d385f42166c21cd3149e91186e3bc7dc774a1ca",
+    "deploymentWorkflow": "https://github.com/ParthVyas2912/ptu-accelerator-bundle/actions/runs/34733769799",
+    "validationWorkflow": "https://github.com/ParthVyas2912/ptu-accelerator-bundle/actions/runs/34733769801",
+    "artifactChecksPassed": 11,
+    "liveBrowserChecksPassed": 14,
+    "liveArtifactBytes": 98313,
+    "liveArtifactSha256": "da9e03fec91cb0abe227cedb4530120f3be15e64a1c974dbe8f267e96b3c1032",
+    "liveMatchesBuiltArtifact": true,
+    "privatePathIsolationPassed": true,
+    "unexpectedBrowserRequests": 0,
+    "repositoryPrivateVerified": true
+  },
+  "repositoryConfiguration": {
+    "defaultWorkflowPermissions": "read",
+    "starterIssues": 6,
+    "privateBranchProtectionEnforced": false,
+    "branchProtectionLimitation": "Unavailable on the current GitHub plan; repository kept private and no plan upgrade purchased."
   }
 }

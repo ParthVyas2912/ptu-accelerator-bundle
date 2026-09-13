@@ -1,0 +1,268 @@
+{
+  "mode": "deployed",
+  "target": "https://blue-beach-0fb8cd70f.5.azurestaticapps.net",
+  "status": "passed",
+  "startedAt": "2026-09-13T02:45:59.106Z",
+  "checks": [
+    {
+      "name": "served CSP allows the self-contained page, renders 20 cards and honors explicit light over dark OS",
+      "status": "passed"
+    },
+    {
+      "name": "private/source paths and unknown routes do not serve files or an index fallback (HEAD only)",
+      "status": "passed"
+    },
+    {
+      "name": "light theme passes automated WCAG 2.1 AA checks",
+      "status": "passed"
+    },
+    {
+      "name": "search works by aliases and detail text, stays literal and handles zero results",
+      "status": "passed"
+    },
+    {
+      "name": "every bundle and readiness combination returns exactly the matching cards",
+      "status": "passed"
+    },
+    {
+      "name": "all 20 dialogs display the correct content and restore focus after Escape",
+      "status": "passed"
+    },
+    {
+      "name": "keyboard opens dialogs; modal focus stays contained; close button restores the opener",
+      "status": "passed"
+    },
+    {
+      "name": "capacity choices work by keyboard and expose the correct decision boundary",
+      "status": "passed"
+    },
+    {
+      "name": "native FAQ, readiness legend and skip link are keyboard accessible",
+      "status": "passed"
+    },
+    {
+      "name": "dark mode, theme toggle, invalid overrides and system preferences behave correctly",
+      "status": "passed"
+    },
+    {
+      "name": "320–1440px layouts have no overflow; mobile light and dark pass accessibility checks",
+      "status": "passed"
+    },
+    {
+      "name": "print includes all candidates and both capacity paths without losing screen state",
+      "status": "passed"
+    },
+    {
+      "name": "with JavaScript disabled all 20 cards, both capacity paths and native details remain readable",
+      "status": "passed"
+    },
+    {
+      "name": "no JavaScript errors, CSP violations or external/unexpected resource requests occurred in any page",
+      "status": "passed"
+    }
+  ],
+  "themes": {
+    "light": {
+      "theme": "light",
+      "backgroundToken": "#f7f4ef",
+      "accentToken": "#b11f4b",
+      "background": "rgb(247, 244, 239)",
+      "font": "\"Segoe UI\", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif",
+      "cardRadius": "16px",
+      "catalogDisplay": "grid"
+    },
+    "dark": {
+      "theme": "dark",
+      "backgroundToken": "#3d3b3a",
+      "accentToken": "#fd8ea1",
+      "background": "rgb(61, 59, 58)",
+      "font": "\"Segoe UI\", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif",
+      "cardRadius": "16px",
+      "catalogDisplay": "grid"
+    }
+  },
+  "viewports": [
+    {
+      "theme": "light",
+      "content": 1440,
+      "viewport": 1440
+    },
+    {
+      "theme": "dark",
+      "content": 1440,
+      "viewport": 1440
+    },
+    {
+      "theme": "light",
+      "content": 320,
+      "viewport": 320
+    },
+    {
+      "theme": "light",
+      "content": 375,
+      "viewport": 375
+    },
+    {
+      "theme": "light",
+      "content": 768,
+      "viewport": 768
+    },
+    {
+      "theme": "light",
+      "content": 1024,
+      "viewport": 1024
+    },
+    {
+      "theme": "light",
+      "content": 1440,
+      "viewport": 1440
+    },
+    {
+      "theme": "light",
+      "content": 375,
+      "viewport": 375
+    },
+    {
+      "theme": "dark",
+      "content": 320,
+      "viewport": 320
+    },
+    {
+      "theme": "dark",
+      "content": 375,
+      "viewport": 375
+    },
+    {
+      "theme": "dark",
+      "content": 768,
+      "viewport": 768
+    },
+    {
+      "theme": "dark",
+      "content": 1024,
+      "viewport": 1024
+    },
+    {
+      "theme": "dark",
+      "content": 1440,
+      "viewport": 1440
+    },
+    {
+      "theme": "dark",
+      "content": 375,
+      "viewport": 375
+    }
+  ],
+  "screenshots": [
+    "desktop-light.png",
+    "desktop-light-full.png",
+    "catalog-light.png",
+    "voice-detail-light.png",
+    "desktop-dark.png",
+    "voice-detail-dark.png",
+    "mobile-light.png",
+    "mobile-detail-light.png",
+    "mobile-dark.png",
+    "mobile-detail-dark.png",
+    "print-summary.png"
+  ],
+  "exposureChecks": [
+    {
+      "path": "/package.json",
+      "method": "HEAD",
+      "status": 404
+    },
+    {
+      "path": "/package-lock.json",
+      "method": "HEAD",
+      "status": 404
+    },
+    {
+      "path": "/README.md",
+      "method": "HEAD",
+      "status": 404
+    },
+    {
+      "path": "/src/content.mjs",
+      "method": "HEAD",
+      "status": 404
+    },
+    {
+      "path": "/scripts/build.mjs",
+      "method": "HEAD",
+      "status": 404
+    },
+    {
+      "path": "/tests/browser.mjs",
+      "method": "HEAD",
+      "status": 404
+    },
+    {
+      "path": "/node_modules/playwright/package.json",
+      "method": "HEAD",
+      "status": 404
+    },
+    {
+      "path": "/.env",
+      "method": "HEAD",
+      "status": 404
+    },
+    {
+      "path": "/.git/config",
+      "method": "HEAD",
+      "status": 404
+    },
+    {
+      "path": "/reports/",
+      "method": "HEAD",
+      "status": 404
+    },
+    {
+      "path": "/evidence/",
+      "method": "HEAD",
+      "status": 404
+    },
+    {
+      "path": "/logs/",
+      "method": "HEAD",
+      "status": 404
+    },
+    {
+      "path": "/infra/",
+      "method": "HEAD",
+      "status": 404
+    },
+    {
+      "path": "/deployment-contract.json",
+      "method": "HEAD",
+      "status": 404
+    },
+    {
+      "path": "/azure-resources-before.json",
+      "method": "HEAD",
+      "status": 404
+    },
+    {
+      "path": "/__smoke_missing_route__",
+      "method": "HEAD",
+      "status": 404
+    }
+  ],
+  "requests": [
+    "https://blue-beach-0fb8cd70f.5.azurestaticapps.net/?scoutTheme=light",
+    "https://blue-beach-0fb8cd70f.5.azurestaticapps.net/?scoutTheme=light",
+    "https://blue-beach-0fb8cd70f.5.azurestaticapps.net/?scoutTheme=dark",
+    "https://blue-beach-0fb8cd70f.5.azurestaticapps.net/?scoutTheme=invalid",
+    "https://blue-beach-0fb8cd70f.5.azurestaticapps.net/?scoutTheme=dark",
+    "https://blue-beach-0fb8cd70f.5.azurestaticapps.net/?scoutTheme=light",
+    "https://blue-beach-0fb8cd70f.5.azurestaticapps.net/?scoutTheme=dark",
+    "https://blue-beach-0fb8cd70f.5.azurestaticapps.net/"
+  ],
+  "externalRequests": [],
+  "unexpectedRequests": [],
+  "errors": [],
+  "cspViolations": [],
+  "browser": "149.0.7827.55",
+  "browserStopped": true,
+  "finishedAt": "2026-09-13T02:47:41.211Z"
+}

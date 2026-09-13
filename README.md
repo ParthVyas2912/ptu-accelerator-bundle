@@ -2,13 +2,17 @@
 
 An evolving, evidence-led solution portfolio: help strategic customers adopt useful AI applications, then size the compatible Azure OpenAI provisioned capacity behind their actual demand.
 
+## [Open the stakeholder website](https://blue-beach-0fb8cd70f.5.azurestaticapps.net/)
+
+Share that link with nontechnical colleagues. It explains the three proposed bundles, twenty candidates, readiness and next steps without exposing this repository's private reports or environment details.
+
 **Private engineering workspace.** The stakeholder website is a separate, deliberately sanitized publication. This is not an official Microsoft commercial SKU, a production certification, or a commitment to support the included accelerators.
 
 ## Start here
 
 | Audience | Read |
 |---|---|
-| Stakeholders | The deployed website listed in [deployment metadata](docs/website-deployment.json), or build the self-contained website under [site](site/). |
+| Stakeholders | [Open the website](https://blue-beach-0fb8cd70f.5.azurestaticapps.net/), or build the self-contained website under [site](site/). |
 | Account and solution teams | [Commercial recommendation](PTU-Bundle-Commercial-Recommendation.md): all twenty candidates, three proposed bundles and five priority additions. |
 | Engineers | [First-pass evaluation](reports/ptu-bundle-evaluation.md), [continuation evaluation](PTU-Bundle-Continuation-Report.md), and [upstream adaptations](adaptations/README.md). |
 | Contributors | [Contribution guide](CONTRIBUTING.md), [publication boundaries](docs/PUBLICATION.md), and [website operations](docs/WEBSITE-OPERATIONS.md). |
@@ -51,6 +55,8 @@ Readiness is intentionally explicit. Some selected workflows passed bounded test
 Follow [site/README.md](site/README.md) for build and test commands. The production artifact is self-contained and contains only curated public-safe content.
 
 GitHub Actions validates changes and deploys the site on `main` changes to the site or deployment workflow. Historical scripts are **not** automatically executed in CI. Infrastructure provisioning is a separate manual operation; site publishing cannot create or start model-consuming applications.
+
+Six [starter issues](https://github.com/ParthVyas2912/ptu-accelerator-bundle/issues) define the next implementation priorities. Dependency-update pull requests remain subject to review; they are not automatically merged.
 
 ## Attribution and licensing
 
