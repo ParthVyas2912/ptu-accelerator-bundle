@@ -182,3 +182,16 @@ test('escaping protects curated values and all internal anchor targets exist', (
   assert.match(html, /<html lang="en">/);
   assert.equal((html.match(/<h1\b/g) || []).length, 1);
 });
+
+test('four progressive views retain native anchors and do not hide content before JavaScript runs', () => {
+  assert.deepEqual([...html.matchAll(/data-view-link="([^"]+)"/g)].map((match) => match[1]),
+    ['overview', 'catalog', 'guide', 'roadmap']);
+  const sections = [...html.matchAll(/<(?:section|div)\b[^>]*\bdata-page="([^"]+)"[^>]*>/g)];
+  assert.equal(sections.length, 9);
+  assert.deepEqual([...new Set(sections.map((match) => match[1]))].sort(), ['catalog', 'guide', 'overview', 'roadmap']);
+  for (const [tag] of sections) assert.doesNotMatch(tag, /\bhidden\b/);
+  assert.match(html, /id="bundle-chips"[^>]*role="group"[^>]*hidden/);
+  assert.match(html, /id="view-switch"[^>]*role="group"[^>]*hidden/);
+  assert.match(html, /data-layout="grid" aria-pressed="true"/);
+  assert.match(html, /data-layout="list" aria-pressed="false"/);
+});
