@@ -1,0 +1,23 @@
+[
+  {
+    "app": "ca-ptu-modernize-api",
+    "revision": "ca-ptu-modernize-api--47zg86m",
+    "active": false,
+    "runningState": "Stopped",
+    "replicaCount": 0
+  },
+  {
+    "app": "ca-ptu-modernize-api",
+    "revision": "ca-ptu-modernize-api--0000001",
+    "active": false,
+    "runningState": "Stopped",
+    "replicaCount": 0
+  },
+  {
+    "app": "ca-ptu-modernize-ui",
+    "revision": "ca-ptu-modernize-ui--wjo1usj",
+    "active": true,
+    "runningState": "ScaledToZero",
+    "replicaCount": 0
+  }
+]

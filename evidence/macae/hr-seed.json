@@ -1,0 +1,6 @@
+{
+  "http_status": 500,
+  "response": {
+    "detail": "Failed to save configuration: Failed to save team configuration: (Forbidden) Request originated from IP 52.148.138.235 through public internet. This is blocked by your Cosmos DB account firewall settings. More info: https://aka.ms/cosmosdb-tsg-forbidden\r\nActivityId: 3b038958-9e4a-4a23-9d12-394a4545f0ef, Microsoft.Azure.Documents.Common/2.14.0\nCode: Forbidden\nMessage: Request originated from IP 52.148.138.235 through public internet. This is blocked by your Cosmos DB account firewall settings. More info: https://aka.ms/cosmosdb-tsg-forbidden\r\nActivityId: 3b038958-9e4a-4a23-9d12-394a4545f0ef, Microsoft.Azure.Documents.Common/2.14.0"
+  }
+}

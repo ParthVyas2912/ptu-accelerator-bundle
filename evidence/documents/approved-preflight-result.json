@@ -1,0 +1,58 @@
+{
+  "app": "Document Knowledge Mining",
+  "checked_at_local": "2026-09-11T20:09:17-04:00",
+  "subscription": "1feb53b2-854a-4ea7-b5a6-709b7d804f70",
+  "tenant": "a600acd0-3028-4689-8402-3b471d7d924d",
+  "approved_worker_sku": "Standard_D4ds_v5",
+  "created_resource_group": "accel-dkm-20260911",
+  "resource_group_location": "centralus",
+  "group_provisioning_state": "Succeeded",
+  "official_template_validation": {
+    "command": "az deployment group validate",
+    "template": "infra/main.json",
+    "parameters": "evidence/documents/approved-parameters.json",
+    "provisioning_state": "Succeeded",
+    "error": null,
+    "note": "Validation is not a deployment and does not guarantee subscription SKU availability."
+  },
+  "sku_checks": [
+    {"region": "centralus", "location_restriction": "NotAvailableForSubscription", "zone_restriction": "NotAvailableForSubscription", "zones": ["1", "2", "3"]},
+    {"region": "eastus", "location_restriction": "NotAvailableForSubscription", "zone_restriction": "NotAvailableForSubscription", "zones": ["1", "2", "3"]},
+    {"region": "eastus2", "location_restriction": "NotAvailableForSubscription", "zone_restriction": "NotAvailableForSubscription", "zones": ["1", "2", "3"]},
+    {"region": "uksouth", "location_restriction": "NotAvailableForSubscription", "zone_restriction": "NotAvailableForSubscription", "zones": ["1", "2", "3"]}
+  ],
+  "sku_check_command": "Invoke-LabAz.ps1 -AzArguments @('vm','list-skus','--location',<region>,'--size','Standard_D4ds_v5','--all','--subscription',<approved-subscription>,'--query',\"[?name=='Standard_D4ds_v5'].{name:name,locations:locations,restrictions:restrictions}\",'-o','json')",
+  "quota_checks": [
+    {"region": "centralus", "regional_vcpu_used": 0, "regional_vcpu_limit": 100, "ddsv5_used": 0, "ddsv5_limit": 100},
+    {"region": "eastus", "regional_vcpu_used": 0, "regional_vcpu_limit": 100, "ddsv5_used": 0, "ddsv5_limit": 100},
+    {"region": "uksouth", "regional_vcpu_used": 0, "regional_vcpu_limit": 100, "ddsv5_used": 0, "ddsv5_limit": 100}
+  ],
+  "model_quota": {
+    "region": "eastus",
+    "gpt_5_mini_globalstandard": {"current": 0, "limit": 1000, "proposed": 10},
+    "text_embedding_3_large_globalstandard": {"current": 0, "limit": 1000, "proposed": 50}
+  },
+  "exact_aks_version_1_34_2_listed_in_centralus": true,
+  "cost": {
+    "expected_fixed_hourly_usd": 0.968775,
+    "conservative_fixed_hourly_usd": 1.088775,
+    "decision_threshold_usd": 1.5,
+    "estimate_within_envelope": true,
+    "actual_new_fixed_cost": 0,
+    "note": "Cost did not block this attempt; approved worker SKU availability did."
+  },
+  "final_resource_list_in_new_rg": [],
+  "cluster_created": false,
+  "billable_template_deployment_started": false,
+  "alternate_vm_size_used": false,
+  "quota_or_policy_changed": false,
+  "protected_resources_called_or_modified": false,
+  "live_model_requests": 0,
+  "actual_e2e_run": false,
+  "cluster_stop_required": false,
+  "pause_status": "NOT_APPLICABLE_NO_CLUSTER",
+  "verified_restart_command": null,
+  "resources_deleted": false,
+  "final_status": "BLOCKED_APPROVED_SKU_UNAVAILABLE_FOR_SUBSCRIPTION",
+  "next_action": "Coordinator must resolve availability of the approved worker SKU in a compatible region before a billable stack deployment. Do not infer that successful ARM validation clears SKU restrictions."
+}

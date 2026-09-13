@@ -1,0 +1,18 @@
+{
+  "condition": null,
+  "conditionVersion": null,
+  "createdBy": null,
+  "createdOn": "2026-09-11T23:53:57.904289+00:00",
+  "delegatedManagedIdentityResourceId": null,
+  "description": null,
+  "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-edc-foundry-hack/providers/Microsoft.CognitiveServices/accounts/edcfoundryhack01/providers/Microsoft.Authorization/roleAssignments/4df8a697-fc79-448a-8f0f-54f90020f5d3",
+  "name": "4df8a697-fc79-448a-8f0f-54f90020f5d3",
+  "principalId": "87ccaa4c-8da9-4d6a-a626-d0da9b2e25ed",
+  "principalType": "User",
+  "resourceGroup": "rg-edc-foundry-hack",
+  "roleDefinitionId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/providers/Microsoft.Authorization/roleDefinitions/5e0bd9bd-7b93-4f28-af87-19fc36ad61bd",
+  "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-edc-foundry-hack/providers/Microsoft.CognitiveServices/accounts/edcfoundryhack01",
+  "type": "Microsoft.Authorization/roleAssignments",
+  "updatedBy": "87ccaa4c-8da9-4d6a-a626-d0da9b2e25ed",
+  "updatedOn": "2026-09-11T23:53:58.202293+00:00"
+}

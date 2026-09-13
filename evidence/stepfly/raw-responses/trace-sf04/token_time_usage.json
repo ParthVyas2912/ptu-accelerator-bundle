@@ -1,0 +1,85 @@
+{
+  "session_totals": {
+    "session_total_input_tokens": 197808,
+    "session_total_output_tokens": 2727,
+    "session_total_tokens": 200535,
+    "session_total_llm_calls": 14,
+    "last_updated": "2026-09-12T14:18:51.013261",
+    "total_executor_input_tokens": 185817,
+    "total_executor_output_tokens": 2559,
+    "total_executor_total_tokens": 188376,
+    "total_executor_llm_calls": 12,
+    "total_executor_duration_seconds": 82.587568,
+    "total_executor_duration_formatted": "1m 22s"
+  },
+  "Executor_34d2f3e5-3f54-4d4d-8d24-be9e180a1004": {
+    "total_input_tokens": 34571,
+    "total_output_tokens": 468,
+    "total_tokens": 35039,
+    "llm_calls_count": 2,
+    "start_time": "2026-09-12T14:18:43.958049",
+    "end_time": "2026-09-12T14:18:51.013261",
+    "duration_seconds": 7.055212,
+    "last_updated": "2026-09-12T14:18:50.992592"
+  },
+  "Executor_3b0069f7-7c98-4543-9770-ec3939175e20": {
+    "total_input_tokens": 28523,
+    "total_output_tokens": 377,
+    "total_tokens": 28900,
+    "llm_calls_count": 2,
+    "start_time": "2026-09-12T14:17:38.820045",
+    "end_time": "2026-09-12T14:17:45.829714",
+    "duration_seconds": 7.009669,
+    "last_updated": "2026-09-12T14:17:45.816120"
+  },
+  "Executor_3d3721ee-9da5-4b09-8e10-4d66c76aa6ac": {
+    "total_input_tokens": 32804,
+    "total_output_tokens": 433,
+    "total_tokens": 33237,
+    "llm_calls_count": 2,
+    "start_time": "2026-09-12T14:18:19.188126",
+    "end_time": "2026-09-12T14:18:27.875032",
+    "duration_seconds": 8.686906,
+    "last_updated": "2026-09-12T14:18:27.852044"
+  },
+  "Executor_7e5d6aec-a8e1-42d9-91c5-1364bde3b5d5": {
+    "total_input_tokens": 13677,
+    "total_output_tokens": 304,
+    "total_tokens": 13981,
+    "llm_calls_count": 1,
+    "start_time": "2026-09-12T14:17:28.425693",
+    "end_time": "2026-09-12T14:17:32.975848",
+    "duration_seconds": 4.550155,
+    "last_updated": "2026-09-12T14:17:32.969949"
+  },
+  "Executor_82b04b48-dd6d-4091-9959-42698acd0bbc": {
+    "total_input_tokens": 46484,
+    "total_output_tokens": 624,
+    "total_tokens": 47108,
+    "llm_calls_count": 3,
+    "start_time": "2026-09-12T14:18:04.172829",
+    "end_time": "2026-09-12T14:18:12.725991",
+    "duration_seconds": 8.553162,
+    "last_updated": "2026-09-12T14:18:12.712616"
+  },
+  "Executor_f9d7f5f4-1535-4d44-9834-70b8a96e394f": {
+    "total_input_tokens": 29758,
+    "total_output_tokens": 353,
+    "total_tokens": 30111,
+    "llm_calls_count": 2,
+    "start_time": "2026-09-12T14:17:52.132178",
+    "end_time": "2026-09-12T14:17:58.300414",
+    "duration_seconds": 6.168236,
+    "last_updated": "2026-09-12T14:17:58.285514"
+  },
+  "Scheduler_ffc91bb8-a681-4c58-88e4-d06e07fcd5cd": {
+    "total_input_tokens": 11991,
+    "total_output_tokens": 168,
+    "total_tokens": 12159,
+    "llm_calls_count": 2,
+    "start_time": "2026-09-12T14:17:17.686293",
+    "end_time": "2026-09-12T14:17:23.104716",
+    "duration_seconds": 5.418423,
+    "last_updated": "2026-09-12T14:17:23.075793"
+  }
+}

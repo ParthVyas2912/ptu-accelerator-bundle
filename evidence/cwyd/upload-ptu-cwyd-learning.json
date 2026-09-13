@@ -1,0 +1,13 @@
+{
+  "test": "upload-ptu-cwyd-learning",
+  "method": "POST",
+  "path": "/api/admin/documents",
+  "status": 200,
+  "actual": {
+    "filename": "ptu-cwyd-learning.txt",
+    "blob_path": "ptu-cwyd-documents/ptu-cwyd-learning.txt",
+    "ingestion_job_id": "7eef8f00-2505-42ab-a9a7-7022e3a36aa0",
+    "queued": true
+  },
+  "latency_ms": 583.75
+}

@@ -1,0 +1,51 @@
+[
+  {
+    "name": "edcfoundryhack01",
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-edc-foundry-hack/providers/Microsoft.CognitiveServices/accounts/edcfoundryhack01",
+    "kind": "AIServices",
+    "location": "canadaeast",
+    "resourceGroup": "rg-edc-foundry-hack"
+  },
+  {
+    "name": "aoai-specsuite-can-1840",
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-specsuite-ai-can/providers/Microsoft.CognitiveServices/accounts/aoai-specsuite-can-1840",
+    "kind": "OpenAI",
+    "location": "canadaeast",
+    "resourceGroup": "rg-specsuite-ai-can"
+  },
+  {
+    "name": "cog-foundry-cbzmyrtv7w6ja",
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-pexalex/providers/Microsoft.CognitiveServices/accounts/cog-foundry-cbzmyrtv7w6ja",
+    "kind": "AIServices",
+    "location": "westus3",
+    "resourceGroup": "rg-pexalex"
+  },
+  {
+    "name": "hinal-openai-12757",
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/hinal-resume-rg/providers/Microsoft.CognitiveServices/accounts/hinal-openai-12757",
+    "kind": "OpenAI",
+    "location": "eastus2",
+    "resourceGroup": "hinal-resume-rg"
+  },
+  {
+    "name": "edcfoundryhackeus2",
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-edc-foundry-hack/providers/Microsoft.CognitiveServices/accounts/edcfoundryhackeus2",
+    "kind": "AIServices",
+    "location": "eastus2",
+    "resourceGroup": "rg-edc-foundry-hack"
+  },
+  {
+    "name": "partvyas-3207-resource",
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-partvyas-3207/providers/Microsoft.CognitiveServices/accounts/partvyas-3207-resource",
+    "kind": "AIServices",
+    "location": "eastus2",
+    "resourceGroup": "rg-partvyas-3207"
+  },
+  {
+    "name": "cog-foundry-mgxvsbslmnvjs",
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-planetaryexplorer/providers/Microsoft.CognitiveServices/accounts/cog-foundry-mgxvsbslmnvjs",
+    "kind": "AIServices",
+    "location": "eastus2",
+    "resourceGroup": "rg-planetaryexplorer"
+  }
+]

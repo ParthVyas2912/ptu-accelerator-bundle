@@ -1,0 +1,16 @@
+{
+  "case": "capture-probe",
+  "proof": {
+    "url": "https://stdkmeval0911a.blob.core.windows.net/smemory/_dkm-evaluation/comparison14-capture-probe.json",
+    "sha256": "79e8fdb4b072f397fd8417e90b1ca594a55ec24e607053218d15bcd6a2ffe789",
+    "bytes": 162,
+    "persisted": true
+  },
+  "value": {
+    "case": "comparison14-capture-probe",
+    "synthetic_transport_only": true,
+    "inference_calls": 0,
+    "text": "minus − euro € snowman ☃",
+    "utc": "2026-09-12T02:59:36.054Z"
+  }
+}

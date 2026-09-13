@@ -1,0 +1,64 @@
+{
+  "scope": "real browser and original native app with actual Azure Cosmos/Blob",
+  "started": "2026-09-12T00:35:56.348912+00:00",
+  "events": [],
+  "page_errors": [],
+  "processing_clicked": false,
+  "tests": [
+    {
+      "id": "real-persistence-preflight",
+      "expected": "HTTP 200 from native Cosmos-backed history",
+      "actual": {
+        "http_status": 500,
+        "body": {
+          "detail": "Error retrieving batch history"
+        }
+      },
+      "passed": false
+    }
+  ],
+  "uploads": [],
+  "websockets": [],
+  "preflight": {
+    "http_status": 200,
+    "body": {
+      "agents_initialized": true,
+      "agents": [
+        {
+          "name": "migrator",
+          "id": "asst_lE2jgy5lQ5mA32OnzDzDWytv"
+        },
+        {
+          "name": "picker",
+          "id": "asst_cVzracBg0beK8UabQfpL8P0Q"
+        },
+        {
+          "name": "syntax_checker",
+          "id": "asst_ELlp0pOo19EVmgayUsLx9XRs"
+        },
+        {
+          "name": "fixer",
+          "id": "asst_9cvftkZGdMRvEiHL7dymJnfu"
+        },
+        {
+          "name": "semantic_verifier",
+          "id": "asst_JhlEpuStkSJAK9gZQ6c6S8lZ"
+        }
+      ],
+      "model_http_attempts_total": 4,
+      "model_http_attempts_remaining": 8,
+      "backend_pid": 28980,
+      "persistence": "real approved Azure Cosmos and Blob"
+    }
+  },
+  "persistence_preflight": {
+    "http_status": 500,
+    "body": {
+      "detail": "Error retrieving batch history"
+    }
+  },
+  "error": {
+    "type": "PersistencePreflightBlocked",
+    "message": "Original Cosmos-backed history route is not ready; no upload/processing/model call attempted."
+  }
+}

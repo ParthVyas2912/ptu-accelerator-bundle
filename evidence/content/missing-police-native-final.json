@@ -1,0 +1,376 @@
+{
+  "recordedUtc": "2026-09-12T06:12:10.700130+00:00",
+  "status": "passed_missing_police_native_case_with_provider_filter_warning",
+  "claimId": "887455af-d0bd-4a44-a9fc-8a30ab940620",
+  "case": "Three submitted documents; police report intentionally omitted",
+  "fourDocumentHappyPathPassed": false,
+  "nativeApiAndFullStagesUsed": true,
+  "allThreeDocumentsCompleted": true,
+  "targetedSourceFieldAssertionsPassed": true,
+  "mappedEvaluatedSavedValuesIdentical": true,
+  "rawSourceFile": "evidence/content/isolated-run-result.json",
+  "rawSourceSha256": "4f7ac1a0238a74fa523b75fb60e7d9ca8ef9c6bdd59b9f2fbecce44a0f1d9ff4",
+  "original33RequestRowsUnchanged": true,
+  "originalElevenModelReservationsSha256": "4d37d6806585a217d851e77dbd4a7c816ceea605df79c5212abee9c7db1bd543",
+  "originalTenResponseRecordsSha256": "e8028913511c9377a114de8eb3100a5ebfe94d36d3dba4bffc73ef8840a8b272",
+  "newModelCalls": 6,
+  "newHttp200Responses": 6,
+  "reservedTotal": 17,
+  "returnedModelResponsesTotal": 16,
+  "approvedTotal": 17,
+  "remaining": 0,
+  "unknownReservation": {
+    "kind": "model",
+    "service": "processor",
+    "pid": 15,
+    "started": "2026-09-12T04:33:43.712378+00:00",
+    "method": "POST",
+    "host": "aif-ptuv-content-260911.openai.azure.com",
+    "path": "/openai/deployments/gpt-5.1/chat/completions",
+    "model": "gpt-5.1",
+    "id": 33,
+    "containerReplica": "ca-ptu-content-processor--0000007-6d6bc88d7d-fkkz2",
+    "containerRevision": "ca-ptu-content-processor--0000007"
+  },
+  "unknownReservationConservativelySpent": true,
+  "newReturnedUsage": {
+    "promptTokens": 72636,
+    "completionTokens": 19884,
+    "totalTokens": 92520,
+    "reasoningTokensIncludedInCompletion": 13716,
+    "cachedPromptTokensIncludedInPrompt": 0
+  },
+  "cumulativeKnownReturnedUsage": {
+    "promptTokens": 112396,
+    "completionTokens": 43185,
+    "totalTokens": 155581,
+    "reasoningTokensIncludedInCompletion": 30046,
+    "cachedPromptTokensIncludedInPrompt": 4352
+  },
+  "usageCaveat": "Returned usage excludes unobserved usage for reservation33. Do not claim this is the complete provider-billed total.",
+  "perStage": {
+    "map": {
+      "modelCalls": 3,
+      "promptTokens": 22481,
+      "completionTokens": 15232,
+      "totalTokens": 37713,
+      "reasoningTokensIncludedInCompletion": 13716,
+      "cachedPromptTokensIncludedInPrompt": 0,
+      "latencyMs": [
+        37134.467,
+        52477.58,
+        49445.578
+      ]
+    },
+    "rai": {
+      "modelCalls": 1,
+      "promptTokens": 1530,
+      "completionTokens": 22,
+      "totalTokens": 1552,
+      "reasoningTokensIncludedInCompletion": 0,
+      "cachedPromptTokensIncludedInPrompt": 0,
+      "latencyMs": [
+        2395.977
+      ]
+    },
+    "summary": {
+      "modelCalls": 1,
+      "promptTokens": 1697,
+      "completionTokens": 844,
+      "totalTokens": 2541,
+      "reasoningTokensIncludedInCompletion": 0,
+      "cachedPromptTokensIncludedInPrompt": 0,
+      "latencyMs": [
+        11823.504
+      ]
+    },
+    "gaps": {
+      "modelCalls": 1,
+      "promptTokens": 46928,
+      "completionTokens": 3786,
+      "totalTokens": 50714,
+      "reasoningTokensIncludedInCompletion": 0,
+      "cachedPromptTokensIncludedInPrompt": 0,
+      "latencyMs": [
+        53180.734
+      ]
+    }
+  },
+  "newCuSubmissions": 2,
+  "newCuReturnedPagesStandard": 2,
+  "cumulativeCuSubmissions": 11,
+  "cumulativeCuReturnedPagesStandard": 8,
+  "cumulativeCuRejected400": 3,
+  "cuBillingSeparateFromOpenAi": true,
+  "documents": [
+    {
+      "fileName": "claim-form.pdf",
+      "processId": "8360aa72-25ee-4dbd-956d-e1d82f027eeb",
+      "status": "Completed",
+      "schemaScore": 0.289,
+      "entityScore": 0.973,
+      "nativeProcessedTime": "00:00:50.119",
+      "inputSha256": "4c3a887124b3dc146ead5e43495a7d7b2640480a4944176fe2b8f2bf4c2ae08a"
+    },
+    {
+      "fileName": "repair-estimate.pdf",
+      "processId": "708e64a2-e8a0-49df-8216-e7ba2fc835fa",
+      "status": "Completed",
+      "schemaScore": 0.362,
+      "entityScore": 0.951,
+      "nativeProcessedTime": "00:00:56.881",
+      "inputSha256": "602bedd0a4e10000d32e9a813b1e10f1b4788241c9c12dda1ae28f481cc075e2"
+    },
+    {
+      "fileName": "damage-diagram.png",
+      "processId": "5e0820f5-397d-4b14-8935-1a1aa04da84e",
+      "status": "Completed",
+      "schemaScore": 0.829,
+      "entityScore": 0.829,
+      "nativeProcessedTime": "00:00:50.225",
+      "inputSha256": "293229e558aea1343eaabfef6e471d42c8368e86fc30484b62db3f13a235496b"
+    }
+  ],
+  "nativeRaiResult": {
+    "IsNotSafe": false
+  },
+  "nativeMissingEvidenceGap": {
+    "rule_id": "REQ-PR-THIRD-PARTY-006",
+    "severity": "high",
+    "missing_types": [
+      "police_report"
+    ],
+    "rationale": "Police report required when third party involvement is indicated.",
+    "evidence_filenames": [
+      "claim-form.pdf"
+    ]
+  },
+  "nativeDiscrepancies": [],
+  "summaryAndGapPersistedUnmodified": true,
+  "providerWarning": {
+    "requestId": 45,
+    "httpStatus": 200,
+    "message": "content_filter_error: The contents are not filtered",
+    "interpretation": "Usable native gap output and usage returned, but provider-side content filtering is not verified. Native RAI is a separate check."
+  },
+  "syntheticImageCaveat": "Input is a fictional diagram, recognized as such in mapped notes. Native gap inventory counts it as one damage_photo; this does not validate real-photo authenticity.",
+  "confidenceCaveat": "Native schema/entity scores are recorded, not treated as measured extraction accuracy.",
+  "isolation": {
+    "revisionMode": "Multiple",
+    "idleHardDisarmedWorkerImages": true,
+    "scopedNativeMessageAdmissions": 13,
+    "unrelatedMessagesDeferredWithoutDeletion": [
+      {
+        "kind": "deferred-unrelated",
+        "utc": 1789192769.14696,
+        "service": "processor",
+        "queue": "content-pipeline-map-queue",
+        "messageId": "ad3a7c0c-c6e3-42ed-9ece-528e27af87e6",
+        "payloadSha256": "82eb82ce820342105be8535a9db5dc821f672322d9220e64618efb70af0328e5",
+        "seconds": 3600
+      },
+      {
+        "kind": "deferred-unrelated",
+        "utc": 1789192769.185002,
+        "service": "processor",
+        "queue": "content-pipeline-extract-queue",
+        "messageId": "975a9956-d182-49ec-b4b6-8aa5a6e8cd20",
+        "payloadSha256": "9190bba10b0c233fcf8c1ecfd56ccabec3a8b456b0ffc41bdca458702e48bc2e",
+        "seconds": 3600
+      },
+      {
+        "kind": "deferred-unrelated",
+        "utc": 1789192769.4996195,
+        "service": "processor",
+        "queue": "content-pipeline-map-queue",
+        "messageId": "d99eca33-195d-43ef-9d9a-2f5e70b89afb",
+        "payloadSha256": "d1c2ef9a588b67c55be8a9a4f7d579141aec9eb2a34db82d3f716c20a47b9a6f",
+        "seconds": 3600
+      },
+      {
+        "kind": "deferred-unrelated",
+        "utc": 1789192769.7870014,
+        "service": "processor",
+        "queue": "content-pipeline-map-queue",
+        "messageId": "e13169c0-1f38-4e7d-a291-501c2e1d7f52",
+        "payloadSha256": "ac9e77943b756a14dadc855d4deb4b283edc6298e9babf8b18e98320036da14b",
+        "seconds": 3600
+      },
+      {
+        "kind": "deferred-unrelated",
+        "utc": 1789192770.1282084,
+        "service": "processor",
+        "queue": "content-pipeline-map-queue",
+        "messageId": "9c04bf44-7021-450b-a6c9-4f0d96582c57",
+        "payloadSha256": "b109c6d7d0238d0d960b15adeb50146e9d5e154a05cd9ca54b7878f9d04ca2bc",
+        "seconds": 3600
+      }
+    ],
+    "allFourOriginalMapMessagesDeferred": true,
+    "allNewInferenceRecordsBelongToApprovedClaim": true,
+    "oneModelAttemptPerLogicalStage": true,
+    "nativeOutputsReplayedOrManuallyMarkedSuccessful": false,
+    "priorFailureNotErased": "Earlier zero-inference rollout failed: old revision7 produced CU400 and unfinished reservation33. This successful isolated run does not retroactively remove that failure."
+  },
+  "nativeWorkflowElapsed": "00:04:09.546",
+  "armedUtc": "2026-09-12T05:59:21.592232+00:00",
+  "disarmedUtc": "2026-09-12T06:03:49.178271+00:00",
+  "controlArmedSeconds": 267.58603858947754,
+  "cloudStop": {
+    "checkedUtc": "2026-09-12T06:05:38.5107880Z",
+    "source": "All retained revisions, not only latest",
+    "services": [
+      {
+        "service": "api",
+        "replicas": 0,
+        "revisions": [
+          {
+            "name": "ca-ptu-content-api--0000006",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          },
+          {
+            "name": "ca-ptu-content-api--0000007",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          },
+          {
+            "name": "ca-ptu-content-api--0000008",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          },
+          {
+            "name": "ca-ptu-content-api--0000009",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          },
+          {
+            "name": "ca-ptu-content-api--0000010",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          }
+        ]
+      },
+      {
+        "service": "processor",
+        "replicas": 0,
+        "revisions": [
+          {
+            "name": "ca-ptu-content-processor--0000006",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          },
+          {
+            "name": "ca-ptu-content-processor--0000007",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          },
+          {
+            "name": "ca-ptu-content-processor--0000008",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          },
+          {
+            "name": "ca-ptu-content-processor--0000009",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          },
+          {
+            "name": "ca-ptu-content-processor--0000010",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          },
+          {
+            "name": "ca-ptu-content-processor--0000011",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          }
+        ]
+      },
+      {
+        "service": "workflow",
+        "replicas": 0,
+        "revisions": [
+          {
+            "name": "ca-ptu-content-workflow--0000002",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          },
+          {
+            "name": "ca-ptu-content-workflow--0000003",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          },
+          {
+            "name": "ca-ptu-content-workflow--0000004",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          },
+          {
+            "name": "ca-ptu-content-workflow--0000005",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          }
+        ]
+      },
+      {
+        "service": "web",
+        "replicas": 0,
+        "revisions": [
+          {
+            "name": "ca-ptu-content-web--0000002",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          },
+          {
+            "name": "ca-ptu-content-web--0000003",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          },
+          {
+            "name": "ca-ptu-content-web--0000004",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          }
+        ]
+      }
+    ]
+  },
+  "sourceRepositoryModified": false,
+  "deploymentMode": "Adapted private Container Apps native pipeline with safety wrappers, not unchanged stock Azure deployment",
+  "images": {
+    "api": {
+      "tag": "659eaa1-scope-r1",
+      "digest": "sha256:7d5c97ad6a055fb806e6113fde10aa91af9ee73778d008f46126bf7ef90974e9",
+      "build": "ch13"
+    },
+    "processor": {
+      "tag": "659eaa1-scope-r2",
+      "digest": "sha256:93a1cc122f4c32dc4286012c2ed20b3810f425991c17565cb9d0ef324db88799",
+      "build": "ch14"
+    },
+    "workflow": {
+      "tag": "659eaa1-scope-r1",
+      "digest": "sha256:5f071948ec4baf8c5ae18a0c816fa7f7b09cae3f58959934b39a5d48ebd25194",
+      "build": "ch12"
+    }
+  }
+}

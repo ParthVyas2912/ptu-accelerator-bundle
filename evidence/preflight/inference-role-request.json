@@ -1,0 +1,5 @@
+{
+  "principalId": "87ccaa4c-8da9-4d6a-a626-d0da9b2e25ed",
+  "roleDefinitionId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/providers/Microsoft.Authorization/roleDefinitions/5e0bd9bd-7b93-4f28-af87-19fc36ad61bd",
+  "roleName": "Cognitive Services OpenAI User"
+}

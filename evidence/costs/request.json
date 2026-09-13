@@ -1,0 +1,27 @@
+{
+  "timeframe": "Custom",
+  "dataset": {
+    "aggregation": {
+      "totalCost": {
+        "function": "Sum",
+        "name": "PreTaxCost"
+      }
+    },
+    "granularity": "Daily",
+    "grouping": [
+      {
+        "name": "ResourceGroupName",
+        "type": "Dimension"
+      },
+      {
+        "name": "ServiceName",
+        "type": "Dimension"
+      }
+    ]
+  },
+  "type": "ActualCost",
+  "timePeriod": {
+    "to": "2026-09-13T00:00:00Z",
+    "from": "2026-09-11T00:00:00Z"
+  }
+}

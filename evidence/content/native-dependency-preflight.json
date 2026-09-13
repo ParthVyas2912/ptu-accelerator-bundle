@@ -1,0 +1,24 @@
+{
+  "appconfig": {
+    "status": "passed",
+    "names": []
+  },
+  "blobContainers": {
+    "status": "failed",
+    "error": "HttpResponseError: This request is not authorized to perform this operation.\nRequestId:b679ff71-001e-001f-3e4f-42d6b3000000\nTime:2026-09-12T00:39:18.5336399Z\nErrorCode:AuthorizationFailure\nContent: <?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>AuthorizationFailure</Code><Message>This request is not authorized to perform this operation.\nRequestId:b679ff71-001e-001f-3e4f-42d6b3000000\nTime:2026-09-12T00:39:18.5336399Z</Message></Error>"
+  },
+  "queues": {
+    "status": "failed",
+    "error": "HttpResponseError: This request is not authorized to perform this operation.\nRequestId:698c97fa-0003-0042-7b4f-42dc37000000\nTime:2026-09-12T00:39:29.0992799Z\nErrorCode:AuthorizationFailure\nContent: <?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>AuthorizationFailure</Code><Message>This request is not authorized to perform this operation.\nRequestId:698c97fa-0003-0042-7b4f-42dc37000000\nTime:2026-09-12T00:39:29.0992799Z</Message></Error>"
+  },
+  "cuMetadata": {
+    "status": 403,
+    "body": {
+      "error": {
+        "code": "403",
+        "message": "Access denied due to Virtual Network/Firewall rules."
+      }
+    },
+    "billableAnalysis": false
+  }
+}

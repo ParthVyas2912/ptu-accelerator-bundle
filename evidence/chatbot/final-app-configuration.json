@@ -1,0 +1,115 @@
+{
+  "captured_at": "2026-09-12T03:06:48.2186510+00:00",
+  "applications": [
+    {
+      "cpu": 0.5,
+      "external": false,
+      "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-chatbot-eval-0911/providers/Microsoft.App/containerapps/chatbot-chat-api",
+      "image": "acrptubundle7d804f70.azurecr.io/chatbot/chat-api@sha256:760887e37ae17badc729213d32ebc41ae6b3f1091ff736cf67282003b7ac0ca7",
+      "max": 1,
+      "memory": "1Gi",
+      "min": 0,
+      "name": "chatbot-chat-api",
+      "profile": "Consumption",
+      "readyRevision": "chatbot-chat-api--0000005",
+      "restrictions": [],
+      "revision": "chatbot-chat-api--0000005",
+      "rules": [
+        {
+          "http": {
+            "metadata": {
+              "concurrentRequests": "5"
+            }
+          },
+          "name": "bounded-http"
+        }
+      ]
+    },
+    {
+      "cpu": 0.5,
+      "external": false,
+      "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-chatbot-eval-0911/providers/Microsoft.App/containerapps/chatbot-scenario-api",
+      "image": "acrptubundle7d804f70.azurecr.io/chatbot/scenario-api@sha256:3b64f6233329dc1f392eb19d1698881494abd1ada76ff1e071494bbf7240d42a",
+      "max": 1,
+      "memory": "1Gi",
+      "min": 0,
+      "name": "chatbot-scenario-api",
+      "profile": "Consumption",
+      "readyRevision": "chatbot-scenario-api--0000001",
+      "restrictions": [],
+      "revision": "chatbot-scenario-api--0000001",
+      "rules": [
+        {
+          "http": {
+            "metadata": {
+              "concurrentRequests": "5"
+            }
+          },
+          "name": "bounded-http"
+        }
+      ]
+    },
+    {
+      "cpu": 0.25,
+      "external": true,
+      "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-chatbot-eval-0911/providers/Microsoft.App/containerapps/chatbot-chat-ui",
+      "image": "acrptubundle7d804f70.azurecr.io/chatbot/chat-ui@sha256:e0877fe65b6f6c1b460939504436264fb6c164538d8490f6eaf5502a3b9b6517",
+      "max": 1,
+      "memory": "0.5Gi",
+      "min": 0,
+      "name": "chatbot-chat-ui",
+      "profile": "Consumption",
+      "readyRevision": "chatbot-chat-ui--0000001",
+      "restrictions": [
+        {
+          "action": "Allow",
+          "description": "Parent-approved single client; deny all other external sources.",
+          "ipAddressRange": "174.112.74.34/32",
+          "name": "approved-client"
+        }
+      ],
+      "revision": "chatbot-chat-ui--0000001",
+      "rules": [
+        {
+          "http": {
+            "metadata": {
+              "concurrentRequests": "5"
+            }
+          },
+          "name": "bounded-http"
+        }
+      ]
+    },
+    {
+      "cpu": 0.25,
+      "external": true,
+      "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-chatbot-eval-0911/providers/Microsoft.App/containerapps/chatbot-scenario-ui",
+      "image": "acrptubundle7d804f70.azurecr.io/chatbot/scenario-ui@sha256:30f6bcdaddc01553a7db6047fb1f917b3a96e0b6fc56c15a77a8219c72c14b39",
+      "max": 1,
+      "memory": "0.5Gi",
+      "min": 0,
+      "name": "chatbot-scenario-ui",
+      "profile": "Consumption",
+      "readyRevision": "chatbot-scenario-ui--0000003",
+      "restrictions": [
+        {
+          "action": "Allow",
+          "description": "Parent-approved single client; deny all other external sources.",
+          "ipAddressRange": "174.112.74.34/32",
+          "name": "approved-client"
+        }
+      ],
+      "revision": "chatbot-scenario-ui--0000003",
+      "rules": [
+        {
+          "http": {
+            "metadata": {
+              "concurrentRequests": "5"
+            }
+          },
+          "name": "bounded-http"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+[
+  {
+    "app": "specsuite-demo",
+    "resourceGroup": "rg-demo",
+    "visibleModelEndpointHosts": [],
+    "limitation": "Inventory only. No secret values retrieved, no model calls, no configuration changes. Indirect or secret-held configuration is not resolved."
+  },
+  {
+    "app": "ca-web-mgxvsbslmnvjs",
+    "resourceGroup": "rg-planetaryexplorer",
+    "visibleModelEndpointHosts": [
+      {
+        "settingName": "AZURE_OPENAI_ENDPOINT",
+        "host": "cog-foundry-mgxvsbslmnvjs.cognitiveservices.azure.com",
+        "secretReferenceOnly": false
+      },
+      {
+        "settingName": "AZURE_AI_PROJECT_ENDPOINT",
+        "host": "cog-foundry-mgxvsbslmnvjs.services.ai.azure.com",
+        "secretReferenceOnly": false
+      }
+    ],
+    "limitation": "Inventory only. No secret values retrieved, no model calls, no configuration changes. Indirect or secret-held configuration is not resolved."
+  },
+  {
+    "app": "ca-web-cbzmyrtv7w6ja",
+    "resourceGroup": "rg-pexalex",
+    "visibleModelEndpointHosts": [
+      {
+        "settingName": "AZURE_OPENAI_ENDPOINT",
+        "host": "cog-foundry-cbzmyrtv7w6ja.cognitiveservices.azure.com",
+        "secretReferenceOnly": false
+      },
+      {
+        "settingName": "AZURE_AI_PROJECT_ENDPOINT",
+        "host": "cog-foundry-cbzmyrtv7w6ja.services.ai.azure.com",
+        "secretReferenceOnly": false
+      }
+    ],
+    "limitation": "Inventory only. No secret values retrieved, no model calls, no configuration changes. Indirect or secret-held configuration is not resolved."
+  }
+]

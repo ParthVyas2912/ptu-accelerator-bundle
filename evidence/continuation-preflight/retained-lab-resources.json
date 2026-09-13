@@ -1,0 +1,898 @@
+[
+  {
+    "rg": "rg-ptu-macae-demo",
+    "name": "ptu-macae-7d804f70-cosmos",
+    "type": "Microsoft.DocumentDB/databaseAccounts",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-macae-demo",
+    "name": "ptumacae7d804f70",
+    "type": "Microsoft.CognitiveServices/accounts",
+    "loc": "eastus2",
+    "sku": "S0"
+  },
+  {
+    "rg": "rg-ptu-macae-demo",
+    "name": "ptumacae7d804f70/ptu-macae-project",
+    "type": "Microsoft.CognitiveServices/accounts/projects",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-macae-demo",
+    "name": "ptumacae7d804f70st",
+    "type": "Microsoft.Storage/storageAccounts",
+    "loc": "eastus2",
+    "sku": "Standard_LRS"
+  },
+  {
+    "rg": "rg-ptu-macae-demo",
+    "name": "ptu-macae-7d804f70-srch",
+    "type": "Microsoft.Search/searchServices",
+    "loc": "canadacentral",
+    "sku": "basic"
+  },
+  {
+    "rg": "rg-ptu-macae-demo",
+    "name": "id-ptu-macae",
+    "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-macae-demo",
+    "name": "ptu-macae",
+    "type": "Microsoft.App/containerApps",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-macae-demo",
+    "name": "ptumacae7d804f70st-98651d46-798c-4e44-b0b4-3796ab8afe00",
+    "type": "Microsoft.EventGrid/systemTopics",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-content-demo",
+    "name": "stptuvcontent260911",
+    "type": "Microsoft.Storage/storageAccounts",
+    "loc": "eastus2",
+    "sku": "Standard_LRS"
+  },
+  {
+    "rg": "rg-ptu-content-demo",
+    "name": "cosmos-ptuv-content-260911",
+    "type": "Microsoft.DocumentDB/databaseAccounts",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-content-demo",
+    "name": "appcs-ptuv-content-260911",
+    "type": "Microsoft.AppConfiguration/configurationStores",
+    "loc": "eastus2",
+    "sku": "standard"
+  },
+  {
+    "rg": "rg-ptu-content-demo",
+    "name": "aif-ptuv-content-260911",
+    "type": "Microsoft.CognitiveServices/accounts",
+    "loc": "eastus2",
+    "sku": "S0"
+  },
+  {
+    "rg": "rg-ptu-content-demo",
+    "name": "aif-ptuv-content-260911/ptu-content-project",
+    "type": "Microsoft.CognitiveServices/accounts/projects",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-content-demo",
+    "name": "id-ptu-content-processor",
+    "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-content-demo",
+    "name": "id-ptu-content-web",
+    "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-content-demo",
+    "name": "id-ptu-content-workflow",
+    "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-content-demo",
+    "name": "id-ptu-content-api",
+    "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-content-demo",
+    "name": "ca-ptu-content-api",
+    "type": "Microsoft.App/containerApps",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-content-demo",
+    "name": "ca-ptu-content-web",
+    "type": "Microsoft.App/containerApps",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-content-demo",
+    "name": "ca-ptu-content-processor",
+    "type": "Microsoft.App/containerApps",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-content-demo",
+    "name": "ca-ptu-content-workflow",
+    "type": "Microsoft.App/containerApps",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-content-demo",
+    "name": "stptuvcontent260911-ac306e16-ac9b-407c-852a-7fed97a33fb7",
+    "type": "Microsoft.EventGrid/systemTopics",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "privatelink.queue.core.windows.net",
+    "type": "Microsoft.Network/privateDnsZones",
+    "loc": "global",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "privatelink.mongo.cosmos.azure.com",
+    "type": "Microsoft.Network/privateDnsZones",
+    "loc": "global",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "privatelink.search.windows.net",
+    "type": "Microsoft.Network/privateDnsZones",
+    "loc": "global",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "privatelink.blob.core.windows.net",
+    "type": "Microsoft.Network/privateDnsZones",
+    "loc": "global",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "privatelink.azconfig.io",
+    "type": "Microsoft.Network/privateDnsZones",
+    "loc": "global",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "privatelink.documents.azure.com",
+    "type": "Microsoft.Network/privateDnsZones",
+    "loc": "global",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "vnet-ptu-bundle",
+    "type": "Microsoft.Network/virtualNetworks",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "acrptubundle7d804f70",
+    "type": "Microsoft.ContainerRegistry/registries",
+    "loc": "eastus2",
+    "sku": "Basic"
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "pe-macae-cosmos",
+    "type": "Microsoft.Network/privateEndpoints",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "pe-macae-blob",
+    "type": "Microsoft.Network/privateEndpoints",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "cae-ptu-bundle",
+    "type": "Microsoft.App/managedEnvironments",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "pe-macae-blob.nic.bc66df9e-9719-46f6-b50c-72103fd948a0",
+    "type": "Microsoft.Network/networkInterfaces",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "pe-macae-cosmos.nic.7ff3653e-73aa-4bca-a62b-c1d6434d1a02",
+    "type": "Microsoft.Network/networkInterfaces",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "privatelink.blob.core.windows.net/ptu-bundle-vnet",
+    "type": "Microsoft.Network/privateDnsZones/virtualNetworkLinks",
+    "loc": "global",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "privatelink.queue.core.windows.net/ptu-bundle-vnet",
+    "type": "Microsoft.Network/privateDnsZones/virtualNetworkLinks",
+    "loc": "global",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "privatelink.mongo.cosmos.azure.com/ptu-bundle-vnet",
+    "type": "Microsoft.Network/privateDnsZones/virtualNetworkLinks",
+    "loc": "global",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "privatelink.search.windows.net/ptu-bundle-vnet",
+    "type": "Microsoft.Network/privateDnsZones/virtualNetworkLinks",
+    "loc": "global",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "privatelink.azconfig.io/ptu-bundle-vnet",
+    "type": "Microsoft.Network/privateDnsZones/virtualNetworkLinks",
+    "loc": "global",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "privatelink.documents.azure.com/ptu-bundle-vnet",
+    "type": "Microsoft.Network/privateDnsZones/virtualNetworkLinks",
+    "loc": "global",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "privatelink.database.windows.net",
+    "type": "Microsoft.Network/privateDnsZones",
+    "loc": "global",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "privatelink.database.windows.net/ptu-bundle-vnet",
+    "type": "Microsoft.Network/privateDnsZones/virtualNetworkLinks",
+    "loc": "global",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "ca-ptu-networkcheck",
+    "type": "Microsoft.App/containerApps",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "pe-modernize-blob",
+    "type": "Microsoft.Network/privateEndpoints",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "pe-modernize-cosmos",
+    "type": "Microsoft.Network/privateEndpoints",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "pe-modernize-blob.nic.a90ed398-1dfa-4e5c-bb16-bc4af15357c3",
+    "type": "Microsoft.Network/networkInterfaces",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "pe-modernize-cosmos.nic.c6e93396-d948-4d5d-b455-ba322bb5a1c3",
+    "type": "Microsoft.Network/networkInterfaces",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "pe-documents-blob",
+    "type": "Microsoft.Network/privateEndpoints",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "pe-documents-mongo",
+    "type": "Microsoft.Network/privateEndpoints",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "pe-documents-queue",
+    "type": "Microsoft.Network/privateEndpoints",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "pe-content-mongo",
+    "type": "Microsoft.Network/privateEndpoints",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "pe-content-queue",
+    "type": "Microsoft.Network/privateEndpoints",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "pe-content-blob",
+    "type": "Microsoft.Network/privateEndpoints",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "pe-documents-queue.nic.9fac4dfe-b863-4b18-80f1-ec2db1c24d6a",
+    "type": "Microsoft.Network/networkInterfaces",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "pe-documents-mongo.nic.c26afd16-8814-4af8-a74f-9997384626a3",
+    "type": "Microsoft.Network/networkInterfaces",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "pe-documents-blob.nic.4e358d52-dbf1-447a-aacf-9c0d3763e3b3",
+    "type": "Microsoft.Network/networkInterfaces",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "pe-content-mongo.nic.b10370f3-3601-44e1-bc51-851d1bbc1705",
+    "type": "Microsoft.Network/networkInterfaces",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "pe-content-blob.nic.a7013c8c-0bfe-417f-ba59-f1fe58be6d7b",
+    "type": "Microsoft.Network/networkInterfaces",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "pe-content-queue.nic.bd951410-12ab-4efb-8e8c-6e64dffbf8b4",
+    "type": "Microsoft.Network/networkInterfaces",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "pe-chatbot-cosmos",
+    "type": "Microsoft.Network/privateEndpoints",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "pe-chatbot-cosmos.nic.b540c086-b727-4d59-8ec5-85bb85a8d289",
+    "type": "Microsoft.Network/networkInterfaces",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "pe-macae-search",
+    "type": "Microsoft.Network/privateEndpoints",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "pe-macae-search.nic.4a5b4f12-edc2-459d-b051-528c5a108035",
+    "type": "Microsoft.Network/networkInterfaces",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "privatelink.openai.azure.com",
+    "type": "Microsoft.Network/privateDnsZones",
+    "loc": "global",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "privatelink.cognitiveservices.azure.com",
+    "type": "Microsoft.Network/privateDnsZones",
+    "loc": "global",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "privatelink.services.ai.azure.com",
+    "type": "Microsoft.Network/privateDnsZones",
+    "loc": "global",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "privatelink.cognitiveservices.azure.com/ptu-bundle-vnet",
+    "type": "Microsoft.Network/privateDnsZones/virtualNetworkLinks",
+    "loc": "global",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "privatelink.openai.azure.com/ptu-bundle-vnet",
+    "type": "Microsoft.Network/privateDnsZones/virtualNetworkLinks",
+    "loc": "global",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "privatelink.services.ai.azure.com/ptu-bundle-vnet",
+    "type": "Microsoft.Network/privateDnsZones/virtualNetworkLinks",
+    "loc": "global",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "pe-content-ai",
+    "type": "Microsoft.Network/privateEndpoints",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "pe-content-ai.nic.296581f4-6e12-419c-b445-067f47d59602",
+    "type": "Microsoft.Network/networkInterfaces",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "vnet-ptu-bundle-snet-aca-nsg-eastus2",
+    "type": "Microsoft.Network/networkSecurityGroups",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "vnet-ptu-bundle-snet-private-endpoints-nsg-eastus2",
+    "type": "Microsoft.Network/networkSecurityGroups",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "pe-chatbot-search",
+    "type": "Microsoft.Network/privateEndpoints",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "pe-chatbot-search.nic.d7553765-0959-47f1-928d-11289ef58989",
+    "type": "Microsoft.Network/networkInterfaces",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "pe-conversation-ai",
+    "type": "Microsoft.Network/privateEndpoints",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "pe-conversation-ai.nic.e80644cd-9604-414e-bd31-6f593e9c7c1a",
+    "type": "Microsoft.Network/networkInterfaces",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "pe-conversation-sql",
+    "type": "Microsoft.Network/privateEndpoints",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "pe-conversation-blob",
+    "type": "Microsoft.Network/privateEndpoints",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "pe-conversation-sql.nic.309f79c8-83d6-4871-a3b2-4cf193493710",
+    "type": "Microsoft.Network/networkInterfaces",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "pe-conversation-blob.nic.3cc18dc1-2f54-4746-a4c1-3bc8175d0c0f",
+    "type": "Microsoft.Network/networkInterfaces",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "pe-conversation-search",
+    "type": "Microsoft.Network/privateEndpoints",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-bundle-platform",
+    "name": "pe-conversation-search.nic.b62d79fe-4f19-4fe2-9df4-cbd90105456e",
+    "type": "Microsoft.Network/networkInterfaces",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-modernize-demo",
+    "name": "stptumodernize0911pv",
+    "type": "Microsoft.Storage/storageAccounts",
+    "loc": "canadacentral",
+    "sku": "Standard_LRS"
+  },
+  {
+    "rg": "rg-ptu-modernize-demo",
+    "name": "cosmos-ptu-modernize-0911",
+    "type": "Microsoft.DocumentDB/databaseAccounts",
+    "loc": "canadacentral",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-modernize-demo",
+    "name": "cosmos-ptu-modernize-eus20911",
+    "type": "Microsoft.DocumentDB/databaseAccounts",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-modernize-demo",
+    "name": "id-ptu-modernize",
+    "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-modernize-demo",
+    "name": "id-ptu-modernize-ui",
+    "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-modernize-demo",
+    "name": "ca-ptu-modernize-api",
+    "type": "Microsoft.App/containerApps",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-modernize-demo",
+    "name": "ca-ptu-modernize-ui",
+    "type": "Microsoft.App/containerApps",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-modernize-demo",
+    "name": "stptumodernize0911pv-e67ae6f8-dd8d-42f0-b7c3-d2e303945289",
+    "type": "Microsoft.EventGrid/systemTopics",
+    "loc": "canadacentral",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-conversation-demo",
+    "name": "id-ptu-conversation",
+    "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-conversation-demo",
+    "name": "ca-ptu-conversation-api",
+    "type": "Microsoft.App/containerApps",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-conversation-demo",
+    "name": "ca-ptu-conversation-ui",
+    "type": "Microsoft.App/containerApps",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-conversation-demo",
+    "name": "aif-ptu-conversation-7d804f70",
+    "type": "Microsoft.CognitiveServices/accounts",
+    "loc": "swedencentral",
+    "sku": "S0"
+  },
+  {
+    "rg": "rg-ptu-conversation-demo",
+    "name": "aif-ptu-conversation-7d804f70/proj-ptu-conversation",
+    "type": "Microsoft.CognitiveServices/accounts/projects",
+    "loc": "swedencentral",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-conversation-demo",
+    "name": "stptuconv7d804f70",
+    "type": "Microsoft.Storage/storageAccounts",
+    "loc": "canadacentral",
+    "sku": "Standard_LRS"
+  },
+  {
+    "rg": "rg-ptu-conversation-demo",
+    "name": "srch-ptu-conversation-7d804f70",
+    "type": "Microsoft.Search/searchServices",
+    "loc": "canadacentral",
+    "sku": "basic"
+  },
+  {
+    "rg": "rg-ptu-conversation-demo",
+    "name": "sql-ptu-conversation-7d804f70",
+    "type": "Microsoft.Sql/servers",
+    "loc": "canadacentral",
+    "sku": null
+  },
+  {
+    "rg": "rg-ptu-conversation-demo",
+    "name": "sql-ptu-conversation-7d804f70/master",
+    "type": "Microsoft.Sql/servers/databases",
+    "loc": "canadacentral",
+    "sku": "GP_SYSTEM"
+  },
+  {
+    "rg": "rg-ptu-conversation-demo",
+    "name": "sql-ptu-conversation-7d804f70/ptu-conversation",
+    "type": "Microsoft.Sql/servers/databases",
+    "loc": "canadacentral",
+    "sku": "GP_S_Gen5"
+  },
+  {
+    "rg": "rg-ptu-conversation-demo",
+    "name": "stptuconv7d804f70-96eed692-bbb3-4498-b85a-2c395b52f5a0",
+    "type": "Microsoft.EventGrid/systemTopics",
+    "loc": "canadacentral",
+    "sku": null
+  },
+  {
+    "rg": "accel-chatbot-eval-0911",
+    "name": "aif-ccptu1feb0911",
+    "type": "Microsoft.CognitiveServices/accounts",
+    "loc": "eastus2",
+    "sku": "S0"
+  },
+  {
+    "rg": "accel-chatbot-eval-0911",
+    "name": "cosmos-ccptu1feb0911",
+    "type": "Microsoft.DocumentDB/databaseAccounts",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "accel-chatbot-eval-0911",
+    "name": "aif-ccptu1feb0911/proj-ccptu1feb0911",
+    "type": "Microsoft.CognitiveServices/accounts/projects",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "accel-chatbot-eval-0911",
+    "name": "mi-chatbot-chat-api",
+    "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "accel-chatbot-eval-0911",
+    "name": "mi-chatbot-scenario-api",
+    "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "accel-chatbot-eval-0911",
+    "name": "mi-chatbot-chat-ui",
+    "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "accel-chatbot-eval-0911",
+    "name": "mi-chatbot-scenario-ui",
+    "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "accel-chatbot-eval-0911",
+    "name": "chatbot-chat-api",
+    "type": "Microsoft.App/containerApps",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "accel-chatbot-eval-0911",
+    "name": "chatbot-scenario-api",
+    "type": "Microsoft.App/containerApps",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "accel-chatbot-eval-0911",
+    "name": "chatbot-chat-ui",
+    "type": "Microsoft.App/containerApps",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "accel-chatbot-eval-0911",
+    "name": "chatbot-scenario-ui",
+    "type": "Microsoft.App/containerApps",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "accel-chatbot-eval-0911",
+    "name": "srch-ccptu1feb0911",
+    "type": "Microsoft.Search/searchServices",
+    "loc": "canadacentral",
+    "sku": "basic"
+  },
+  {
+    "rg": "accel-dkm-20260911",
+    "name": "srch-dkmeval0911a",
+    "type": "Microsoft.Search/searchServices",
+    "loc": "centralus",
+    "sku": "basic"
+  },
+  {
+    "rg": "accel-dkm-20260911",
+    "name": "cosmos-dkmeval0911a",
+    "type": "Microsoft.DocumentDB/databaseAccounts",
+    "loc": "centralus",
+    "sku": null
+  },
+  {
+    "rg": "accel-dkm-20260911",
+    "name": "id-dkmeval0911a",
+    "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+    "loc": "centralus",
+    "sku": null
+  },
+  {
+    "rg": "accel-dkm-20260911",
+    "name": "stdkmeval0911a",
+    "type": "Microsoft.Storage/storageAccounts",
+    "loc": "centralus",
+    "sku": "Standard_LRS"
+  },
+  {
+    "rg": "accel-dkm-20260911",
+    "name": "di-dkmeval0911a",
+    "type": "Microsoft.CognitiveServices/accounts",
+    "loc": "centralus",
+    "sku": "S0"
+  },
+  {
+    "rg": "accel-dkm-20260911",
+    "name": "oai-dkmeval0911a",
+    "type": "Microsoft.CognitiveServices/accounts",
+    "loc": "eastus",
+    "sku": "S0"
+  },
+  {
+    "rg": "accel-dkm-20260911",
+    "name": "appcs-dkmeval0911a",
+    "type": "Microsoft.AppConfiguration/configurationStores",
+    "loc": "centralus",
+    "sku": "standard"
+  },
+  {
+    "rg": "accel-dkm-20260911",
+    "name": "ca-dkm-api",
+    "type": "Microsoft.App/containerApps",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "accel-dkm-20260911",
+    "name": "ca-dkm-web",
+    "type": "Microsoft.App/containerApps",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "accel-dkm-20260911",
+    "name": "ca-dkm-kernel",
+    "type": "Microsoft.App/containerApps",
+    "loc": "eastus2",
+    "sku": null
+  },
+  {
+    "rg": "accel-dkm-20260911",
+    "name": "stdkmeval0911a-b94e774b-4e09-4de0-b7e1-33b93d0ffaf1",
+    "type": "Microsoft.EventGrid/systemTopics",
+    "loc": "centralus",
+    "sku": null
+  },
+  {
+    "rg": "ME_cae-ptu-bundle_rg-ptu-bundle-platform_eastus2",
+    "name": "capp-svc-lb-ip",
+    "type": "Microsoft.Network/publicIPAddresses",
+    "loc": "eastus2",
+    "sku": "Standard"
+  },
+  {
+    "rg": "ME_cae-ptu-bundle_rg-ptu-bundle-platform_eastus2",
+    "name": "capp-svc-lb",
+    "type": "Microsoft.Network/loadBalancers",
+    "loc": "eastus2",
+    "sku": "Standard"
+  }
+]

@@ -1,0 +1,1113 @@
+{
+  "schema_version": 1,
+  "captured_at_utc": "2026-09-13T01:40:04.114355+00:00",
+  "scope": "Only the 16 named accelerator clones and the standalone ccv-lab probe; no other repositories read.",
+  "public_upstream_verification": {
+    "method": "Read-only GitHub repository metadata API; private=false and MIT for all 15 unique upstreams.",
+    "verified_on_utc": "2026-09-13",
+    "content_uploaded": false
+  },
+  "authorship_note": "Allowlist selected by explicit user scope, prior session file metadata where available, and direct diff/source review. Git dirtiness alone does not establish authorship.",
+  "global_omissions": [
+    "All unrelated repositories, including protected SpecSuite and Planetary repositories; directory names only were observed.",
+    "All unchanged upstream source; retrieve using each exact origin and base SHA.",
+    "All environments, node_modules, dependency caches, binaries, build outputs, synthetic DB/media and run telemetry.",
+    "All .env variants, credential caches, user-secrets and local machine/application configuration; contents not read.",
+    "Ignored artifact inventory is not exhaustive. Parent owns bundle evidence/source; this archive contains only external adaptations."
+  ],
+  "safety": {
+    "provider_calls_executed": 0,
+    "azure_mutations_executed": 0,
+    "deployment_executed": false,
+    "external_clones_modified": false,
+    "commits_or_pushes_executed": false,
+    "archive_provider_defaults": "Disarmed; zero/missing attempt budget and explicit opt-in gates.",
+    "account_endpoints_ids": "Retained as permitted private-repository metadata; not credentials."
+  },
+  "counts": {
+    "git_clones": 16,
+    "standalone_sources": 1,
+    "patches": 5,
+    "tracked_files": 22,
+    "authored_source_files": 17,
+    "license_copies": 8,
+    "specific_omission_records": 19
+  },
+  "repositories": [
+    {
+      "id": "first-pass/cwyd",
+      "kind": "git-clone",
+      "source_relative_to_clone_parent": "chat-with-your-data-solution-accelerator",
+      "origin_exact": "https://github.com/Azure-Samples/chat-with-your-data-solution-accelerator",
+      "base_sha": "0fce71307dfa76a82ac82ec73bdde3daa47e503d",
+      "public_upstream_verified": true,
+      "github_full_name": "Azure-Samples/chat-with-your-data-solution-accelerator",
+      "upstream_license_spdx": "MIT",
+      "dirty_files": [],
+      "scope_basis": "No nonignored authored source changes observed; pinned metadata only.",
+      "tracked_changes": [],
+      "untracked_sources": [],
+      "license_copies": [],
+      "omissions": []
+    },
+    {
+      "id": "first-pass/content-processing",
+      "kind": "git-clone",
+      "source_relative_to_clone_parent": "content-processing-solution-accelerator",
+      "origin_exact": "https://github.com/microsoft/content-processing-solution-accelerator",
+      "base_sha": "659eaa1f503dd08b1e1aea1c72eab11c7c191d00",
+      "public_upstream_verified": true,
+      "github_full_name": "microsoft/content-processing-solution-accelerator",
+      "upstream_license_spdx": "MIT",
+      "dirty_files": [],
+      "scope_basis": "No nonignored authored source changes observed; pinned metadata only.",
+      "tracked_changes": [],
+      "untracked_sources": [],
+      "license_copies": [],
+      "omissions": []
+    },
+    {
+      "id": "first-pass/conversation",
+      "kind": "git-clone",
+      "source_relative_to_clone_parent": "Conversation-Knowledge-Mining-Solution-Accelerator",
+      "origin_exact": "https://github.com/microsoft/Conversation-Knowledge-Mining-Solution-Accelerator",
+      "base_sha": "8a00aa54bc25fd3624020648c63f2c069172d8ca",
+      "public_upstream_verified": true,
+      "github_full_name": "microsoft/Conversation-Knowledge-Mining-Solution-Accelerator",
+      "upstream_license_spdx": "MIT",
+      "dirty_files": [],
+      "scope_basis": "No nonignored authored source changes observed; pinned metadata only.",
+      "tracked_changes": [],
+      "untracked_sources": [],
+      "license_copies": [],
+      "omissions": []
+    },
+    {
+      "id": "first-pass/chatbot",
+      "kind": "git-clone",
+      "source_relative_to_clone_parent": "customer-chatbot-solution-accelerator",
+      "origin_exact": "https://github.com/microsoft/customer-chatbot-solution-accelerator",
+      "base_sha": "cb86d1153df30a1bc6e744d74d3ff583764cd154",
+      "public_upstream_verified": true,
+      "github_full_name": "microsoft/customer-chatbot-solution-accelerator",
+      "upstream_license_spdx": "MIT",
+      "dirty_files": [
+        {
+          "status": " M",
+          "path": "chat-app/backend/app/utils/azure_credential_utils.py",
+          "disposition": "tracked-patch"
+        },
+        {
+          "status": " M",
+          "path": "chat-app/backend/app/utils/product_text_parser.py",
+          "disposition": "tracked-patch"
+        },
+        {
+          "status": " M",
+          "path": "chat-app/frontend/startup.sh",
+          "disposition": "tracked-patch"
+        },
+        {
+          "status": " M",
+          "path": "infra/scripts/post-provision/agent_scripts/01_create_agents.py",
+          "disposition": "tracked-patch"
+        },
+        {
+          "status": " M",
+          "path": "infra/scripts/post-provision/data_scripts/01_create_products_search_index.py",
+          "disposition": "tracked-patch"
+        },
+        {
+          "status": " M",
+          "path": "infra/scripts/post-provision/data_scripts/02_create_policies_search_index.py",
+          "disposition": "tracked-patch"
+        },
+        {
+          "status": " M",
+          "path": "infra/scripts/post-provision/data_scripts/azure_credential_utils.py",
+          "disposition": "tracked-patch"
+        },
+        {
+          "status": " M",
+          "path": "scenario-app/backend/app/utils/azure_credential_utils.py",
+          "disposition": "tracked-patch"
+        },
+        {
+          "status": " M",
+          "path": "scenario-app/frontend/startup.sh",
+          "disposition": "tracked-patch"
+        },
+        {
+          "status": " M",
+          "path": "scenarios/ecommerce/manifest.json",
+          "disposition": "tracked-patch"
+        },
+        {
+          "status": "??",
+          "path": "infra/chatbot-cloud-identities.bicep",
+          "disposition": "allowlisted-source-only"
+        },
+        {
+          "status": "??",
+          "path": "infra/chatbot-cloud.bicep",
+          "disposition": "allowlisted-source-only"
+        },
+        {
+          "status": "??",
+          "path": "infra/chatbot-container-app.bicep",
+          "disposition": "allowlisted-source-only"
+        },
+        {
+          "status": "??",
+          "path": "infra/chatbot-local-access.bicep",
+          "disposition": "allowlisted-source-only"
+        },
+        {
+          "status": "??",
+          "path": "infra/chatbot-local-eval.bicep",
+          "disposition": "allowlisted-source-only"
+        },
+        {
+          "status": "??",
+          "path": "infra/chatbot-registry-access.bicep",
+          "disposition": "allowlisted-source-only"
+        },
+        {
+          "status": "??",
+          "path": "infra/chatbot-search-access.bicep",
+          "disposition": "allowlisted-source-only"
+        },
+        {
+          "status": "??",
+          "path": "infra/chatbot-search-approved.bicep",
+          "disposition": "allowlisted-source-only"
+        },
+        {
+          "status": "??",
+          "path": "infra/chatbot-search-retry.bicep",
+          "disposition": "allowlisted-source-only"
+        }
+      ],
+      "scope_basis": "Reviewed evaluation-specific catalog validation, bounded ingestion, managed identity, ACA DNS, scenario naming and lab-only Bicep composition.",
+      "tracked_changes": [
+        {
+          "path": "chat-app/backend/app/utils/azure_credential_utils.py",
+          "base_sha256": "f6242517f3fa84a16b662144ad0cef33edd357f9725b84fa316bb794a9f8edfb",
+          "working_tree_sha256": "6f17eb976eedacab0e9ed246e829835e932893c3d2f6e12417a2711ba17975b8",
+          "working_tree_bytes": 959
+        },
+        {
+          "path": "chat-app/backend/app/utils/product_text_parser.py",
+          "base_sha256": "c3126eae655d359ba1c6d07b75f4588cf341ff0d199282727c9b9f4bc6e0e843",
+          "working_tree_sha256": "bffd0dd050919076f16cf2a6b9389bae9082dda79970159ed7aeacc5369f334f",
+          "working_tree_bytes": 6165
+        },
+        {
+          "path": "chat-app/frontend/startup.sh",
+          "base_sha256": "01a67a0e00b2fde83a95c901ba100e4dfdc9225568997618409d779255e97fd6",
+          "working_tree_sha256": "91eb5ebe6d39daf3fc60ca938864fb2970ac495dcfb1cf606aa55531f76c7b1c",
+          "working_tree_bytes": 2715
+        },
+        {
+          "path": "infra/scripts/post-provision/agent_scripts/01_create_agents.py",
+          "base_sha256": "025e73ce8b614470955a1aa81c90395de589dc51ce44fe30a178ece9d55baf18",
+          "working_tree_sha256": "38039347145a3c511ad14e508c85063b97a10f2bcedb46c7c96daffe5b181c59",
+          "working_tree_bytes": 4702
+        },
+        {
+          "path": "infra/scripts/post-provision/data_scripts/01_create_products_search_index.py",
+          "base_sha256": "61704f59c3db19266064b0f76429197be424f2d922aeb8da094ed78735fd3951",
+          "working_tree_sha256": "9720e00c9fe3fd9003c9b73e50cc5e526d71b8e63e546d4df5f0e9d9e358831a",
+          "working_tree_bytes": 7553
+        },
+        {
+          "path": "infra/scripts/post-provision/data_scripts/02_create_policies_search_index.py",
+          "base_sha256": "34cccc119b7666ae47175681543e9b1e2d669c3749561a6c108b5eebfb78ae77",
+          "working_tree_sha256": "df741d795045b8dfc0e6af9db136a3d627dfef47a39f244c930a8fe16823f2bd",
+          "working_tree_bytes": 7933
+        },
+        {
+          "path": "infra/scripts/post-provision/data_scripts/azure_credential_utils.py",
+          "base_sha256": "47de8008561610f25f4f5431d5f072c68156a4f5aa03c02df3336a4e59d83d76",
+          "working_tree_sha256": "c177da92b15ea14ff28d8d065e44703a6d9289e918ff10f2b8d843fb993b67b7",
+          "working_tree_bytes": 964
+        },
+        {
+          "path": "scenario-app/backend/app/utils/azure_credential_utils.py",
+          "base_sha256": "f6242517f3fa84a16b662144ad0cef33edd357f9725b84fa316bb794a9f8edfb",
+          "working_tree_sha256": "6f17eb976eedacab0e9ed246e829835e932893c3d2f6e12417a2711ba17975b8",
+          "working_tree_bytes": 959
+        },
+        {
+          "path": "scenario-app/frontend/startup.sh",
+          "base_sha256": "d5d2c8f2a23c02cec7f0fa649d6b16e225843dfd4917caa8b31fde49bdd1a46a",
+          "working_tree_sha256": "06897d2d07cb170682562e19c48f4b91b8357bca043a8a18b89fc3e5b9d8b63f",
+          "working_tree_bytes": 5596
+        },
+        {
+          "path": "scenarios/ecommerce/manifest.json",
+          "base_sha256": "b168f4f7b4e6914565c6cb7b6cbb4496408ffdf372f2f5a39dcddfa5b185817c",
+          "working_tree_sha256": "e3947a960b71672126c268bfe487668f287a8fea73680ae273fd384d18f6584f",
+          "working_tree_bytes": 881
+        }
+      ],
+      "untracked_sources": [
+        "first-pass/chatbot/files/infra/chatbot-cloud-identities.bicep",
+        "first-pass/chatbot/files/infra/chatbot-cloud.bicep",
+        "first-pass/chatbot/files/infra/chatbot-container-app.bicep",
+        "first-pass/chatbot/files/infra/chatbot-local-access.bicep",
+        "first-pass/chatbot/files/infra/chatbot-local-eval.bicep",
+        "first-pass/chatbot/files/infra/chatbot-registry-access.bicep",
+        "first-pass/chatbot/files/infra/chatbot-search-access.bicep",
+        "first-pass/chatbot/files/infra/chatbot-search-approved.bicep",
+        "first-pass/chatbot/files/infra/chatbot-search-retry.bicep"
+      ],
+      "license_copies": [
+        "first-pass/chatbot/upstream/LICENSE"
+      ],
+      "omissions": [],
+      "patch": "first-pass/chatbot/tracked.patch"
+    },
+    {
+      "id": "first-pass/dkm",
+      "kind": "git-clone",
+      "source_relative_to_clone_parent": "Document-Knowledge-Mining-Solution-Accelerator",
+      "origin_exact": "https://github.com/microsoft/Document-Knowledge-Mining-Solution-Accelerator",
+      "base_sha": "7df8ed33a86dd4f0f9e7417e882039fd38556e59",
+      "public_upstream_verified": true,
+      "github_full_name": "microsoft/Document-Knowledge-Mining-Solution-Accelerator",
+      "upstream_license_spdx": "MIT",
+      "dirty_files": [
+        {
+          "status": " M",
+          "path": "App/backend-api/.dockerignore",
+          "disposition": "tracked-patch"
+        },
+        {
+          "status": " M",
+          "path": "App/backend-api/Microsoft.GS.DPS.Host/DependencyConfiguration/ServiceDependencies.cs",
+          "disposition": "tracked-patch"
+        },
+        {
+          "status": " M",
+          "path": "App/frontend-app/.dockerignore",
+          "disposition": "tracked-patch"
+        },
+        {
+          "status": " M",
+          "path": "App/kernel-memory/.dockerignore",
+          "disposition": "tracked-patch"
+        },
+        {
+          "status": " M",
+          "path": "App/kernel-memory/extensions/AzureOpenAI/AzureOpenAITextEmbeddingGenerator.cs",
+          "disposition": "tracked-patch"
+        },
+        {
+          "status": " M",
+          "path": "App/kernel-memory/service/Core/Handlers/KeywordExtractingHandler.cs",
+          "disposition": "tracked-patch"
+        },
+        {
+          "status": " M",
+          "path": "infra/main.bicep",
+          "disposition": "tracked-patch"
+        },
+        {
+          "status": "??",
+          "path": "App/backend-api/Microsoft.GS.DPS.Host/Helpers/EvaluationRetryConfiguration.cs",
+          "disposition": "allowlisted-source-only"
+        },
+        {
+          "status": "??",
+          "path": "App/kernel-memory/service/Abstractions/Configuration/EvaluationRetryConfiguration.cs",
+          "disposition": "allowlisted-source-only"
+        }
+      ],
+      "scope_basis": "Reviewed evaluation retry opt-in helpers, image-context exclusions and explicitly documented AKS SKU availability adaptation.",
+      "tracked_changes": [
+        {
+          "path": "App/backend-api/.dockerignore",
+          "base_sha256": "a2770b7bce5918a0b548f6973b366264b4c76eb73dceb64f1b69d095fe5c2b22",
+          "working_tree_sha256": "034c222fc37fc0b0a92a410b31805d6963387b3dc255cdcd52c6a6ebc09f56bc",
+          "working_tree_bytes": 444
+        },
+        {
+          "path": "App/backend-api/Microsoft.GS.DPS.Host/DependencyConfiguration/ServiceDependencies.cs",
+          "base_sha256": "0105e00f9060eec82b9a94b2502b376b7447b0a3769b514185b708bc495ba4e5",
+          "working_tree_sha256": "f81f1681d8c79f68f354fd95d5064f5a4cc852f613f6584b69488dd5e7818afb",
+          "working_tree_bytes": 5147
+        },
+        {
+          "path": "App/frontend-app/.dockerignore",
+          "base_sha256": "16d30e4462189fb14dd611bdb708c510630c576a1f35b9383e89a4352da36c97",
+          "working_tree_sha256": "26ca8a56a1654a141466a23a884e22f8e1e309ace9ef0ac4f784cb5d77a359d0",
+          "working_tree_bytes": 107
+        },
+        {
+          "path": "App/kernel-memory/.dockerignore",
+          "base_sha256": "19cd07f05cd4b444199adf348fa205f574b1f0cc1eacecfe73d92e9903fc7be4",
+          "working_tree_sha256": "8b83b9e2dc652316a5bd68912d27550ddc4d137680bfc28a77b755026b184c47",
+          "working_tree_bytes": 315
+        },
+        {
+          "path": "App/kernel-memory/extensions/AzureOpenAI/AzureOpenAITextEmbeddingGenerator.cs",
+          "base_sha256": "d133b336d034c185938196e8c0a73c95a392fc95813607984ea30a033887ffe2",
+          "working_tree_sha256": "96381be82207e8644b1b872736b4ad080c14cd87baec156691b6857fb02e2005",
+          "working_tree_bytes": 6333
+        },
+        {
+          "path": "App/kernel-memory/service/Core/Handlers/KeywordExtractingHandler.cs",
+          "base_sha256": "85610d1a77997fadfdb34b4a6104ff502e8296f50079a5f536be8236074aabdf",
+          "working_tree_sha256": "b8803f565afe162b97d22eaaa6c7a0c7a11509c92b083bbe7a017e6e767ff407",
+          "working_tree_bytes": 7483
+        },
+        {
+          "path": "infra/main.bicep",
+          "base_sha256": "a30a7d1574e77c9f504c0248425cf81ddd6b840cefcadda2290c6b8904f8c1c6",
+          "working_tree_sha256": "2888f629dee5273ee7b9da51a555fb6c194a867fc911349f7d2d6645dd68bcec",
+          "working_tree_bytes": 40374
+        }
+      ],
+      "untracked_sources": [
+        "first-pass/dkm/files/App/backend-api/Microsoft.GS.DPS.Host/Helpers/EvaluationRetryConfiguration.cs",
+        "first-pass/dkm/files/App/kernel-memory/service/Abstractions/Configuration/EvaluationRetryConfiguration.cs"
+      ],
+      "license_copies": [
+        "first-pass/dkm/upstream/LICENSE",
+        "first-pass/dkm/upstream/App/kernel-memory/LICENSE"
+      ],
+      "omissions": [
+        {
+          "path": "App/backend-api/Microsoft.GS.DPS.Host/appsettings.Development.json",
+          "reason": "Local machine/application configuration; contents not read."
+        },
+        {
+          "path": "App/frontend-app/.env",
+          "reason": "Environment/secrets file; contents not read."
+        }
+      ],
+      "patch": "first-pass/dkm/tracked.patch"
+    },
+    {
+      "id": "first-pass/modernize",
+      "kind": "git-clone",
+      "source_relative_to_clone_parent": "Modernize-your-code-solution-accelerator",
+      "origin_exact": "https://github.com/microsoft/Modernize-your-code-solution-accelerator",
+      "base_sha": "7592ea97550fb711d7d8b64186875967d574c5d5",
+      "public_upstream_verified": true,
+      "github_full_name": "microsoft/Modernize-your-code-solution-accelerator",
+      "upstream_license_spdx": "MIT",
+      "dirty_files": [
+        {
+          "status": " M",
+          "path": "src/backend/sql_agents/convert_script.py",
+          "disposition": "tracked-patch"
+        },
+        {
+          "status": " M",
+          "path": "src/tests/backend/sql_agents/convert_script_test.py",
+          "disposition": "tracked-patch"
+        }
+      ],
+      "scope_basis": "Reviewed migration failure/placeholder correctness fix and regression tests; recorded in prior evaluation session.",
+      "tracked_changes": [
+        {
+          "path": "src/backend/sql_agents/convert_script.py",
+          "base_sha256": "b9dc19ddc835319997506b27070c88484daba0e20f6ede3681658b390e62fb67",
+          "working_tree_sha256": "c6d5e7a9e82ed0d4953aa0cc4f498995742dfcafae9cdadc941b19842645f198",
+          "working_tree_bytes": 17562
+        },
+        {
+          "path": "src/tests/backend/sql_agents/convert_script_test.py",
+          "base_sha256": "3a583d7b54c7286ec6b893492eae72bf10946b646435ec31d7f24d369c3cd27f",
+          "working_tree_sha256": "0cf45ae6271b278a2291101b0f1c82f4abc6356596af608221006718f0246ed2",
+          "working_tree_bytes": 10717
+        }
+      ],
+      "untracked_sources": [],
+      "license_copies": [
+        "first-pass/modernize/upstream/LICENSE"
+      ],
+      "omissions": [],
+      "patch": "first-pass/modernize/tracked.patch"
+    },
+    {
+      "id": "first-pass/macae",
+      "kind": "git-clone",
+      "source_relative_to_clone_parent": "Multi-Agent-Custom-Automation-Engine-Solution-Accelerator",
+      "origin_exact": "https://github.com/microsoft/Multi-Agent-Custom-Automation-Engine-Solution-Accelerator",
+      "base_sha": "8ac703a71f10b622bd3c82a9cc2b5dfe921c3025",
+      "public_upstream_verified": true,
+      "github_full_name": "microsoft/Multi-Agent-Custom-Automation-Engine-Solution-Accelerator",
+      "upstream_license_spdx": "MIT",
+      "dirty_files": [
+        {
+          "status": " M",
+          "path": "src/backend/orchestration/connection_config.py",
+          "disposition": "tracked-patch"
+        },
+        {
+          "status": " M",
+          "path": "src/tests/backend/orchestration/test_connection_config.py",
+          "disposition": "tracked-patch"
+        }
+      ],
+      "scope_basis": "Reviewed structured WebSocket event serialization fix and matching synthetic regression tests.",
+      "tracked_changes": [
+        {
+          "path": "src/backend/orchestration/connection_config.py",
+          "base_sha256": "94bf0ddc04a0e6a28270c949fd0ba846be1777f6780520dfd0346144817aa4e3",
+          "working_tree_sha256": "ddc723d803886a9a7d9b28d99022f424ba3f7a64065a1bcaf4e9ef31b12b7721",
+          "working_tree_bytes": 13630
+        },
+        {
+          "path": "src/tests/backend/orchestration/test_connection_config.py",
+          "base_sha256": "b0f10f5a9c398768b77b681052d74ecd4344ead7c63aef3b4bb087765b58c377",
+          "working_tree_sha256": "5e053ab42eca7f878866077b036fc844457c626034cb4c91ede9d5f30a109e44",
+          "working_tree_bytes": 15810
+        }
+      ],
+      "untracked_sources": [],
+      "license_copies": [
+        "first-pass/macae/upstream/LICENSE"
+      ],
+      "omissions": [],
+      "patch": "first-pass/macae/tracked.patch"
+    },
+    {
+      "id": "continuation/call-center-voice",
+      "kind": "git-clone",
+      "source_relative_to_clone_parent": "continuation/call-center-voice",
+      "origin_exact": "https://github.com/Azure-Samples/call-center-voice-agent-accelerator",
+      "base_sha": "162cef590787b3bcc0a051608a7981f2a01daf41",
+      "public_upstream_verified": true,
+      "github_full_name": "Azure-Samples/call-center-voice-agent-accelerator",
+      "upstream_license_spdx": "MIT",
+      "dirty_files": [],
+      "scope_basis": "No nonignored authored source changes observed; pinned metadata only.",
+      "tracked_changes": [],
+      "untracked_sources": [],
+      "license_copies": [],
+      "omissions": []
+    },
+    {
+      "id": "continuation/document-generation",
+      "kind": "git-clone",
+      "source_relative_to_clone_parent": "continuation/document-generation",
+      "origin_exact": "https://github.com/microsoft/document-generation-solution-accelerator",
+      "base_sha": "fa956c9ec374f0f7e9b03ae2873d38e5269186fe",
+      "public_upstream_verified": true,
+      "github_full_name": "microsoft/content-generation-solution-accelerator",
+      "upstream_license_spdx": "MIT",
+      "dirty_files": [],
+      "scope_basis": "No nonignored authored source changes observed; pinned metadata only.",
+      "tracked_changes": [],
+      "untracked_sources": [],
+      "license_copies": [],
+      "omissions": []
+    },
+    {
+      "id": "continuation/ess-devkit",
+      "kind": "git-clone",
+      "source_relative_to_clone_parent": "continuation/ess-devkit",
+      "origin_exact": "https://github.com/microsoft/Employee-Self-Service-Agent-Developer-Kit",
+      "base_sha": "3236a513b7312b13602326fbdf7778797174d45f",
+      "public_upstream_verified": true,
+      "github_full_name": "microsoft/Employee-Self-Service-Agent-Developer-Kit",
+      "upstream_license_spdx": "MIT",
+      "dirty_files": [],
+      "scope_basis": "No nonignored authored source changes observed; pinned metadata only.",
+      "tracked_changes": [],
+      "untracked_sources": [],
+      "license_copies": [],
+      "omissions": []
+    },
+    {
+      "id": "continuation/macae",
+      "kind": "git-clone",
+      "source_relative_to_clone_parent": "continuation/macae",
+      "origin_exact": "https://github.com/microsoft/Multi-Agent-Custom-Automation-Engine-Solution-Accelerator",
+      "base_sha": "8ac703a71f10b622bd3c82a9cc2b5dfe921c3025",
+      "public_upstream_verified": true,
+      "github_full_name": "microsoft/Multi-Agent-Custom-Automation-Engine-Solution-Accelerator",
+      "upstream_license_spdx": "MIT",
+      "dirty_files": [],
+      "scope_basis": "No nonignored authored source changes observed; pinned metadata only.",
+      "tracked_changes": [],
+      "untracked_sources": [],
+      "license_copies": [],
+      "omissions": []
+    },
+    {
+      "id": "continuation/netaivideoanalyzer",
+      "kind": "git-clone",
+      "source_relative_to_clone_parent": "continuation/netaivideoanalyzer",
+      "origin_exact": "https://github.com/Azure-Samples/netaivideoanalyzer",
+      "base_sha": "1d8ed2ece3ee4c05441f98a0e06965c0207f21e7",
+      "public_upstream_verified": true,
+      "github_full_name": "Azure-Samples/netaivideoanalyzer",
+      "upstream_license_spdx": "MIT",
+      "dirty_files": [
+        {
+          "status": "??",
+          "path": "src/ConsoleAOAI-Lab-VideoAnalyzer/",
+          "disposition": "allowlisted-source-only"
+        }
+      ],
+      "scope_basis": "Explicitly requested Entra-auth video measurement harness and project; prior continuation session recorded authorship.",
+      "tracked_changes": [],
+      "untracked_sources": [
+        "continuation/netaivideoanalyzer/files/src/ConsoleAOAI-Lab-VideoAnalyzer/Program.cs",
+        "continuation/netaivideoanalyzer/files/src/ConsoleAOAI-Lab-VideoAnalyzer/ConsoleAOAI-Lab-VideoAnalyzer.csproj"
+      ],
+      "license_copies": [
+        "continuation/netaivideoanalyzer/upstream/LICENSE"
+      ],
+      "omissions": [
+        {
+          "path": "src/ConsoleAOAI-Lab-VideoAnalyzer/bin/",
+          "reason": "Build binaries/dependencies; directory names only."
+        },
+        {
+          "path": "src/ConsoleAOAI-Lab-VideoAnalyzer/obj/",
+          "reason": "Build intermediates; directory names only."
+        },
+        {
+          "path": "src/ConsoleAOAI-Lab-VideoAnalyzer/data-v1-native-describe/",
+          "reason": "Synthetic decoded frames/media; directory names only."
+        },
+        {
+          "path": "src/ConsoleAOAI-Lab-VideoAnalyzer/data-v2-absent-event/",
+          "reason": "Synthetic decoded frames/media; directory names only."
+        },
+        {
+          "path": "src/ConsoleAOAI-Lab-VideoAnalyzer/data-v3-ordering/",
+          "reason": "Synthetic decoded frames/media; directory names only."
+        },
+        {
+          "path": "src/ConsoleAOAI-Lab-VideoAnalyzer/data-v4-insurance/",
+          "reason": "Synthetic decoded frames/media; directory names only."
+        },
+        {
+          "path": "src/ConsoleAOAI-Lab-VideoAnalyzer/data-v5-compare/",
+          "reason": "Synthetic decoded frames/media; directory names only."
+        }
+      ]
+    },
+    {
+      "id": "continuation/private-tenant-chat",
+      "kind": "git-clone",
+      "source_relative_to_clone_parent": "continuation/private-tenant-chat",
+      "origin_exact": "https://github.com/microsoft/Deploy-Your-AI-Application-In-Production",
+      "base_sha": "1ed62d982f777b85f3fe281adfd7150921ccd9ce",
+      "public_upstream_verified": true,
+      "github_full_name": "microsoft/Deploy-Your-AI-Application-In-Production",
+      "upstream_license_spdx": "MIT",
+      "dirty_files": [],
+      "scope_basis": "No nonignored authored source changes observed; pinned metadata only.",
+      "tracked_changes": [],
+      "untracked_sources": [],
+      "license_copies": [],
+      "omissions": []
+    },
+    {
+      "id": "continuation/real-time-ops",
+      "kind": "git-clone",
+      "source_relative_to_clone_parent": "continuation/real-time-ops",
+      "origin_exact": "https://github.com/microsoft/real-time-intelligence-operations-solution-accelerator",
+      "base_sha": "cfbdb91ee83ed31b5ccc5de7feca7a0b5b2e5f68",
+      "public_upstream_verified": true,
+      "github_full_name": "microsoft/real-time-intelligence-operations-solution-accelerator",
+      "upstream_license_spdx": "MIT",
+      "dirty_files": [],
+      "scope_basis": "No nonignored authored source changes observed; pinned metadata only.",
+      "tracked_changes": [],
+      "untracked_sources": [],
+      "license_copies": [],
+      "omissions": []
+    },
+    {
+      "id": "continuation/stepfly",
+      "kind": "git-clone",
+      "source_relative_to_clone_parent": "continuation/stepfly",
+      "origin_exact": "https://github.com/microsoft/StepFly",
+      "base_sha": "a6229192a69dd2eebc58d9b8f754dbc396029c4e",
+      "public_upstream_verified": true,
+      "github_full_name": "microsoft/StepFly",
+      "upstream_license_spdx": "MIT",
+      "dirty_files": [
+        {
+          "status": " M",
+          "path": "config/config.json",
+          "disposition": "tracked-patch"
+        },
+        {
+          "status": "??",
+          "path": ".venv/",
+          "disposition": "omitted"
+        },
+        {
+          "status": "??",
+          "path": "lab-ledger-sf01.jsonl.aborted",
+          "disposition": "omitted"
+        },
+        {
+          "status": "??",
+          "path": "lab-ledger-sf02.counter",
+          "disposition": "omitted"
+        },
+        {
+          "status": "??",
+          "path": "lab-ledger-sf02.jsonl",
+          "disposition": "omitted"
+        },
+        {
+          "status": "??",
+          "path": "lab_instrument.py",
+          "disposition": "allowlisted-source-only"
+        },
+        {
+          "status": "??",
+          "path": "lab_run.py",
+          "disposition": "allowlisted-source-only"
+        },
+        {
+          "status": "??",
+          "path": "requirements.lab.txt",
+          "disposition": "allowlisted-source-only"
+        },
+        {
+          "status": "??",
+          "path": "stepfly-console-sf03.log",
+          "disposition": "omitted"
+        },
+        {
+          "status": "??",
+          "path": "stepfly-console-sf04.log",
+          "disposition": "omitted"
+        }
+      ],
+      "scope_basis": "Explicitly requested lab harness, dependency pins and reduced executor/model configuration; prior continuation session recorded harness authorship.",
+      "tracked_changes": [
+        {
+          "path": "config/config.json",
+          "base_sha256": "483edf574ea932864265c9ee45e05a153c4480c2c6176eedf46418983af81e67",
+          "working_tree_sha256": "cf42f16ada918b905c8509ebc5d450ebf42c9aa573e6da6cdf643805e990cbcd",
+          "working_tree_bytes": 1173
+        }
+      ],
+      "untracked_sources": [
+        "continuation/stepfly/files/lab_instrument.py",
+        "continuation/stepfly/files/lab_run.py",
+        "continuation/stepfly/files/requirements.lab.txt"
+      ],
+      "license_copies": [
+        "continuation/stepfly/upstream/LICENSE"
+      ],
+      "omissions": [
+        {
+          "path": ".venv/",
+          "reason": "Virtual environment; no contents captured."
+        },
+        {
+          "path": "lab-ledger-sf01.jsonl.aborted",
+          "reason": "Run telemetry/log/counter artifact; bundle evidence is handled separately."
+        },
+        {
+          "path": "lab-ledger-sf02.counter",
+          "reason": "Run telemetry/log/counter artifact; bundle evidence is handled separately."
+        },
+        {
+          "path": "lab-ledger-sf02.jsonl",
+          "reason": "Run telemetry/log/counter artifact; bundle evidence is handled separately."
+        },
+        {
+          "path": "stepfly-console-sf03.log",
+          "reason": "Run telemetry/log/counter artifact; bundle evidence is handled separately."
+        },
+        {
+          "path": "stepfly-console-sf04.log",
+          "reason": "Run telemetry/log/counter artifact; bundle evidence is handled separately."
+        }
+      ],
+      "patch": "continuation/stepfly/tracked.patch"
+    },
+    {
+      "id": "continuation/unified-data-foundation",
+      "kind": "git-clone",
+      "source_relative_to_clone_parent": "continuation/unified-data-foundation",
+      "origin_exact": "https://github.com/microsoft/agentic-applications-for-unified-data-foundation-solution-accelerator",
+      "base_sha": "28c25024e43884b0a23c996d5cc8d3419f4e448c",
+      "public_upstream_verified": true,
+      "github_full_name": "microsoft/agentic-applications-for-unified-data-foundation-solution-accelerator",
+      "upstream_license_spdx": "MIT",
+      "dirty_files": [],
+      "scope_basis": "No nonignored authored source changes observed; pinned metadata only.",
+      "tracked_changes": [],
+      "untracked_sources": [],
+      "license_copies": [],
+      "omissions": []
+    },
+    {
+      "id": "continuation/ccv-lab",
+      "kind": "standalone-authored-source",
+      "source_relative_to_clone_parent": "continuation/ccv-lab",
+      "origin_exact": null,
+      "base_sha": null,
+      "related_upstream_repo_id": "continuation/call-center-voice",
+      "related_upstream_base_sha": "162cef590787b3bcc0a051608a7981f2a01daf41",
+      "scope_basis": "Explicitly requested standalone Voice Live provider probe; prior continuation session recorded authorship.",
+      "dirty_files": [
+        {
+          "status": "not-a-git-repository",
+          "path": "voicelive_probe.py",
+          "disposition": "allowlisted-source-only"
+        }
+      ],
+      "tracked_changes": [],
+      "untracked_sources": [
+        "continuation/ccv-lab/files/voicelive_probe.py"
+      ],
+      "license_copies": [
+        "continuation/ccv-lab/upstream/call-center-voice/LICENSE.md"
+      ],
+      "omissions": [
+        {
+          "path": "Include/",
+          "reason": "Virtual environment or machine configuration; contents not read."
+        },
+        {
+          "path": "Lib/",
+          "reason": "Virtual environment or machine configuration; contents not read."
+        },
+        {
+          "path": "Scripts/",
+          "reason": "Virtual environment or machine configuration; contents not read."
+        },
+        {
+          "path": "pyvenv.cfg",
+          "reason": "Virtual environment or machine configuration; contents not read."
+        }
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "first-pass/chatbot/tracked.patch",
+      "kind": "tracked-patch",
+      "bytes": 14455,
+      "sha256": "659e60aa054d68b1695b9815e3d26c850b0a2bb6bf0efe1b7b36d716a9854b18",
+      "repo_id": "first-pass/chatbot",
+      "tracked_file_count": 10,
+      "transformations": []
+    },
+    {
+      "path": "first-pass/chatbot/files/infra/chatbot-cloud-identities.bicep",
+      "kind": "authored-source",
+      "bytes": 2099,
+      "sha256": "646a4190b9590f252974392232b88303842f2bc0e6ebbb6d0f5014c8e4105531",
+      "repo_id": "first-pass/chatbot",
+      "source_path": "infra/chatbot-cloud-identities.bicep",
+      "source_sha256": "646a4190b9590f252974392232b88303842f2bc0e6ebbb6d0f5014c8e4105531",
+      "transformations": []
+    },
+    {
+      "path": "first-pass/chatbot/files/infra/chatbot-cloud.bicep",
+      "kind": "authored-source",
+      "bytes": 1789,
+      "sha256": "f0cbccf8e8a3a591bfbf66f6ea119a5b1e0ff9b7911316eb19e15ed14ea32491",
+      "repo_id": "first-pass/chatbot",
+      "source_path": "infra/chatbot-cloud.bicep",
+      "source_sha256": "39ffee0b6e49cacd5061ddf5d9b4fb07ab88cb3c47598e6776edad1561c363d9",
+      "transformations": [
+        "Removed machine-specific client CIDR default; an explicitly approved clientCidr parameter is now required.",
+        "Normalized CRLF to LF in the safety-transformed archive copy."
+      ]
+    },
+    {
+      "path": "first-pass/chatbot/files/infra/chatbot-container-app.bicep",
+      "kind": "authored-source",
+      "bytes": 3416,
+      "sha256": "916ed0f9d27da7cb334487f7c6023fd181d9b6c2b714b7532fb0afc6358cd238",
+      "repo_id": "first-pass/chatbot",
+      "source_path": "infra/chatbot-container-app.bicep",
+      "source_sha256": "ec9cbc9ce0423f907aa17e3cb30d75e3bf547ba8a7cc200e06f83d634434cc05",
+      "transformations": [
+        "Removed machine-specific client CIDR default; an explicitly approved clientCidr parameter is now required.",
+        "Normalized CRLF to LF in the safety-transformed archive copy."
+      ]
+    },
+    {
+      "path": "first-pass/chatbot/files/infra/chatbot-local-access.bicep",
+      "kind": "authored-source",
+      "bytes": 724,
+      "sha256": "70884a0e07102c8904e9b56b21b609b514a63b0f9604fdcd69d619eba1483f18",
+      "repo_id": "first-pass/chatbot",
+      "source_path": "infra/chatbot-local-access.bicep",
+      "source_sha256": "70884a0e07102c8904e9b56b21b609b514a63b0f9604fdcd69d619eba1483f18",
+      "transformations": []
+    },
+    {
+      "path": "first-pass/chatbot/files/infra/chatbot-local-eval.bicep",
+      "kind": "authored-source",
+      "bytes": 4565,
+      "sha256": "4ac5f6af1c1f1462a6d1aa380eadcd7c921b87c3f2ffa4f50569ec8780b50a3e",
+      "repo_id": "first-pass/chatbot",
+      "source_path": "infra/chatbot-local-eval.bicep",
+      "source_sha256": "4ac5f6af1c1f1462a6d1aa380eadcd7c921b87c3f2ffa4f50569ec8780b50a3e",
+      "transformations": []
+    },
+    {
+      "path": "first-pass/chatbot/files/infra/chatbot-registry-access.bicep",
+      "kind": "authored-source",
+      "bytes": 604,
+      "sha256": "c8dc75502565ec4463e086289c6737da177b1795ae0181a791b3f5a0ae8877b1",
+      "repo_id": "first-pass/chatbot",
+      "source_path": "infra/chatbot-registry-access.bicep",
+      "source_sha256": "c8dc75502565ec4463e086289c6737da177b1795ae0181a791b3f5a0ae8877b1",
+      "transformations": []
+    },
+    {
+      "path": "first-pass/chatbot/files/infra/chatbot-search-access.bicep",
+      "kind": "authored-source",
+      "bytes": 3000,
+      "sha256": "61b26e404756e7496c177166fdcfea2c391682d3657b2c81da56651029e2e068",
+      "repo_id": "first-pass/chatbot",
+      "source_path": "infra/chatbot-search-access.bicep",
+      "source_sha256": "61b26e404756e7496c177166fdcfea2c391682d3657b2c81da56651029e2e068",
+      "transformations": []
+    },
+    {
+      "path": "first-pass/chatbot/files/infra/chatbot-search-approved.bicep",
+      "kind": "authored-source",
+      "bytes": 992,
+      "sha256": "26d1d51bd3dc8735b8b73dc2b159b5d7beb4aca999667e257ce252529fb11222",
+      "repo_id": "first-pass/chatbot",
+      "source_path": "infra/chatbot-search-approved.bicep",
+      "source_sha256": "26d1d51bd3dc8735b8b73dc2b159b5d7beb4aca999667e257ce252529fb11222",
+      "transformations": []
+    },
+    {
+      "path": "first-pass/chatbot/files/infra/chatbot-search-retry.bicep",
+      "kind": "authored-source",
+      "bytes": 740,
+      "sha256": "96c2d54ddbd3f6863e8da141591a578d02409f05fd96ed68dc53a7fea3c2265b",
+      "repo_id": "first-pass/chatbot",
+      "source_path": "infra/chatbot-search-retry.bicep",
+      "source_sha256": "96c2d54ddbd3f6863e8da141591a578d02409f05fd96ed68dc53a7fea3c2265b",
+      "transformations": []
+    },
+    {
+      "path": "first-pass/chatbot/upstream/LICENSE",
+      "kind": "upstream-license",
+      "bytes": 1141,
+      "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+      "repo_id": "first-pass/chatbot",
+      "source_path": "LICENSE",
+      "upstream_base_sha": "cb86d1153df30a1bc6e744d74d3ff583764cd154",
+      "source_url": "https://github.com/microsoft/customer-chatbot-solution-accelerator/blob/cb86d1153df30a1bc6e744d74d3ff583764cd154/LICENSE"
+    },
+    {
+      "path": "first-pass/dkm/tracked.patch",
+      "kind": "tracked-patch",
+      "bytes": 10061,
+      "sha256": "c433197138151b8f13c908eed8b7ff58e66fcec613ad37c046dbe3130e6bcc4e",
+      "repo_id": "first-pass/dkm",
+      "tracked_file_count": 7,
+      "transformations": []
+    },
+    {
+      "path": "first-pass/dkm/files/App/backend-api/Microsoft.GS.DPS.Host/Helpers/EvaluationRetryConfiguration.cs",
+      "kind": "authored-source",
+      "bytes": 955,
+      "sha256": "d2bc533034b6b08bbfce6a94036d4cdabeb58eb3e69f4650fc1a549bc95a1cf3",
+      "repo_id": "first-pass/dkm",
+      "source_path": "App/backend-api/Microsoft.GS.DPS.Host/Helpers/EvaluationRetryConfiguration.cs",
+      "source_sha256": "d2bc533034b6b08bbfce6a94036d4cdabeb58eb3e69f4650fc1a549bc95a1cf3",
+      "transformations": []
+    },
+    {
+      "path": "first-pass/dkm/files/App/kernel-memory/service/Abstractions/Configuration/EvaluationRetryConfiguration.cs",
+      "kind": "authored-source",
+      "bytes": 963,
+      "sha256": "496a8d47468ae53c5f478ebf37c09ccaf56e1f1f92da49c4051e587c8b5b9c52",
+      "repo_id": "first-pass/dkm",
+      "source_path": "App/kernel-memory/service/Abstractions/Configuration/EvaluationRetryConfiguration.cs",
+      "source_sha256": "496a8d47468ae53c5f478ebf37c09ccaf56e1f1f92da49c4051e587c8b5b9c52",
+      "transformations": []
+    },
+    {
+      "path": "first-pass/dkm/upstream/LICENSE",
+      "kind": "upstream-license",
+      "bytes": 1140,
+      "sha256": "d9a1b1e30d633d5732ea18e3cba9538d293ebc53e1a9e4e96ab739e0c5c4f1cb",
+      "repo_id": "first-pass/dkm",
+      "source_path": "LICENSE",
+      "upstream_base_sha": "7df8ed33a86dd4f0f9e7417e882039fd38556e59",
+      "source_url": "https://github.com/microsoft/Document-Knowledge-Mining-Solution-Accelerator/blob/7df8ed33a86dd4f0f9e7417e882039fd38556e59/LICENSE"
+    },
+    {
+      "path": "first-pass/dkm/upstream/App/kernel-memory/LICENSE",
+      "kind": "upstream-license",
+      "bytes": 1141,
+      "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+      "repo_id": "first-pass/dkm",
+      "source_path": "App/kernel-memory/LICENSE",
+      "upstream_base_sha": "7df8ed33a86dd4f0f9e7417e882039fd38556e59",
+      "source_url": "https://github.com/microsoft/Document-Knowledge-Mining-Solution-Accelerator/blob/7df8ed33a86dd4f0f9e7417e882039fd38556e59/App/kernel-memory/LICENSE"
+    },
+    {
+      "path": "first-pass/modernize/tracked.patch",
+      "kind": "tracked-patch",
+      "bytes": 4588,
+      "sha256": "35f30b7ba2c079670bd88edb561acefa41dc172f37c9108399d5515608eb1ea1",
+      "repo_id": "first-pass/modernize",
+      "tracked_file_count": 2,
+      "transformations": []
+    },
+    {
+      "path": "first-pass/modernize/upstream/LICENSE",
+      "kind": "upstream-license",
+      "bytes": 1140,
+      "sha256": "d9a1b1e30d633d5732ea18e3cba9538d293ebc53e1a9e4e96ab739e0c5c4f1cb",
+      "repo_id": "first-pass/modernize",
+      "source_path": "LICENSE",
+      "upstream_base_sha": "7592ea97550fb711d7d8b64186875967d574c5d5",
+      "source_url": "https://github.com/microsoft/Modernize-your-code-solution-accelerator/blob/7592ea97550fb711d7d8b64186875967d574c5d5/LICENSE"
+    },
+    {
+      "path": "first-pass/macae/tracked.patch",
+      "kind": "tracked-patch",
+      "bytes": 7040,
+      "sha256": "f8c17a24722e64fdfcbc205da13e1bf2edbab3793816b6f48ad52c7b6fe9b7b2",
+      "repo_id": "first-pass/macae",
+      "tracked_file_count": 2,
+      "transformations": []
+    },
+    {
+      "path": "first-pass/macae/upstream/LICENSE",
+      "kind": "upstream-license",
+      "bytes": 1142,
+      "sha256": "cf1fd5f1ee401dbd4d32f395f53dbdc42844c86e91052773c5de29d5c8181293",
+      "repo_id": "first-pass/macae",
+      "source_path": "LICENSE",
+      "upstream_base_sha": "8ac703a71f10b622bd3c82a9cc2b5dfe921c3025",
+      "source_url": "https://github.com/microsoft/Multi-Agent-Custom-Automation-Engine-Solution-Accelerator/blob/8ac703a71f10b622bd3c82a9cc2b5dfe921c3025/LICENSE"
+    },
+    {
+      "path": "continuation/netaivideoanalyzer/files/src/ConsoleAOAI-Lab-VideoAnalyzer/Program.cs",
+      "kind": "authored-source",
+      "bytes": 7576,
+      "sha256": "bc8477d6760291bd6285134d006fd00c737e19c10e5cb5a141654a4c0c4df3de",
+      "repo_id": "continuation/netaivideoanalyzer",
+      "source_path": "src/ConsoleAOAI-Lab-VideoAnalyzer/Program.cs",
+      "source_sha256": "cf8c81bc2f5e7ce040683d80a05745be32007d83108e7f803e1cc4ac9f39722b",
+      "transformations": [
+        "Added fail-closed opt-in and positive-budget gate before media decoding, credential creation or provider calls. This is not an aggregate/retry budget implementation.",
+        "Normalized CRLF to LF in the safety-transformed archive copy."
+      ]
+    },
+    {
+      "path": "continuation/netaivideoanalyzer/files/src/ConsoleAOAI-Lab-VideoAnalyzer/ConsoleAOAI-Lab-VideoAnalyzer.csproj",
+      "kind": "authored-source",
+      "bytes": 883,
+      "sha256": "e2999a7ae86b042295460bf910b87880f22f1f691f94b1d370d48cd54b2c11e3",
+      "repo_id": "continuation/netaivideoanalyzer",
+      "source_path": "src/ConsoleAOAI-Lab-VideoAnalyzer/ConsoleAOAI-Lab-VideoAnalyzer.csproj",
+      "source_sha256": "e2999a7ae86b042295460bf910b87880f22f1f691f94b1d370d48cd54b2c11e3",
+      "transformations": []
+    },
+    {
+      "path": "continuation/netaivideoanalyzer/upstream/LICENSE",
+      "kind": "upstream-license",
+      "bytes": 1065,
+      "sha256": "957cb08bbedcfb7baba22dc6254621fa85d0c93c9a5a2d576684e37644bf285d",
+      "repo_id": "continuation/netaivideoanalyzer",
+      "source_path": "LICENSE",
+      "upstream_base_sha": "1d8ed2ece3ee4c05441f98a0e06965c0207f21e7",
+      "source_url": "https://github.com/Azure-Samples/netaivideoanalyzer/blob/1d8ed2ece3ee4c05441f98a0e06965c0207f21e7/LICENSE"
+    },
+    {
+      "path": "continuation/stepfly/tracked.patch",
+      "kind": "tracked-patch",
+      "bytes": 672,
+      "sha256": "862c18479cbf90eea6c521e3ef4d9d5c4c856e78f59305caf5902a3546fb6ebe",
+      "repo_id": "continuation/stepfly",
+      "tracked_file_count": 1,
+      "transformations": []
+    },
+    {
+      "path": "continuation/stepfly/files/lab_instrument.py",
+      "kind": "authored-source",
+      "bytes": 7981,
+      "sha256": "e5478524339271a337eb9042976a12f3c467def06bdd7534b812c519d70d3459",
+      "repo_id": "continuation/stepfly",
+      "source_path": "lab_instrument.py",
+      "source_sha256": "afebb21894fc267ea06556b4aa7fe9fe3a692dceadb834d6f5c8944d78fe9230",
+      "transformations": [
+        "Changed default provider-attempt budget from 20 to 0; independent explicit opt-in is required.",
+        "Normalized CRLF to LF in the safety-transformed archive copy."
+      ]
+    },
+    {
+      "path": "continuation/stepfly/files/lab_run.py",
+      "kind": "authored-source",
+      "bytes": 2537,
+      "sha256": "7622cf738e4e6ab0d49f9806fc5fa6d7957c9e3482d506002ce055fe90f3eb56",
+      "repo_id": "continuation/stepfly",
+      "source_path": "lab_run.py",
+      "source_sha256": "0b4d33df25e506b405c8e2cd3b769e8e9bd588b3cb8c2befb84b216dc782046f",
+      "transformations": [
+        "Added fail-closed gate before importing the scheduler/instrumentation.",
+        "Normalized CRLF to LF in the safety-transformed archive copy."
+      ]
+    },
+    {
+      "path": "continuation/stepfly/files/requirements.lab.txt",
+      "kind": "authored-source",
+      "bytes": 887,
+      "sha256": "187e1c7a499c0ad6a8e272e2f4cf84a2fb156868d71c62f19ac67f42ce308992",
+      "repo_id": "continuation/stepfly",
+      "source_path": "requirements.lab.txt",
+      "source_sha256": "187e1c7a499c0ad6a8e272e2f4cf84a2fb156868d71c62f19ac67f42ce308992",
+      "transformations": []
+    },
+    {
+      "path": "continuation/stepfly/upstream/LICENSE",
+      "kind": "upstream-license",
+      "bytes": 1141,
+      "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+      "repo_id": "continuation/stepfly",
+      "source_path": "LICENSE",
+      "upstream_base_sha": "a6229192a69dd2eebc58d9b8f754dbc396029c4e",
+      "source_url": "https://github.com/microsoft/StepFly/blob/a6229192a69dd2eebc58d9b8f754dbc396029c4e/LICENSE"
+    },
+    {
+      "path": "continuation/ccv-lab/files/voicelive_probe.py",
+      "kind": "authored-source",
+      "bytes": 5703,
+      "sha256": "893b1d472c2765babba046f76b4c3553fef1caa359d12e4e1981b04a15b25145",
+      "repo_id": "continuation/ccv-lab",
+      "source_path": "voicelive_probe.py",
+      "source_sha256": "3af5e091683deb45fd2bc6ca5e3a5ae0ba76905ee69f099b145abe0690116a24",
+      "transformations": [
+        "Added explicit opt-in and positive-attempt gate before resolving endpoint or starting the provider probe.",
+        "Changed default Voice Live attempt budget from 4 to 0.",
+        "Normalized CRLF to LF in the safety-transformed archive copy."
+      ]
+    },
+    {
+      "path": "continuation/ccv-lab/upstream/call-center-voice/LICENSE.md",
+      "kind": "upstream-license",
+      "bytes": 1141,
+      "sha256": "1791bb6659f130919ae065ca2d436934724377479cd4e7f997661ba231d9ac17",
+      "repo_id": "continuation/ccv-lab",
+      "source_path": "LICENSE.md",
+      "upstream_base_sha": "162cef590787b3bcc0a051608a7981f2a01daf41",
+      "source_url": "https://github.com/Azure-Samples/call-center-voice-agent-accelerator/blob/162cef590787b3bcc0a051608a7981f2a01daf41/LICENSE.md",
+      "note": "Related accelerator attribution; standalone probe has no separate upstream Git history."
+    }
+  ],
+  "integrity": "All artifact bytes are SHA-256 hashed above; verification.json hashes every archive file except itself."
+}

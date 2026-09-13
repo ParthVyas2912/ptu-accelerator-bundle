@@ -1,0 +1,61 @@
+{
+  "isHistoricalSnapshot": true,
+  "supersededBy": "advisory-offline.json and current result.json",
+  "minimumCallErratum": "The earlier12-call three-specialist minimum covered the workflow, excluding new custom-team upload RAI. Fresh upload plus three specialists needs13; the final authorized two-specialist fallback needs11 including that check.",
+  "approval": "2026-09-11T22:14:42.859-04:00",
+  "approvedTotal": 22,
+  "usedBeforeContinuation": 12,
+  "newModelAttempts": 0,
+  "originalSessionResume": {
+    "supportedAfterReplicaReplacement": false,
+    "checkpointStorage": "InMemoryCheckpointStorage",
+    "source": "src/backend/orchestration/orchestration_manager.py:init_orchestration and run_orchestration",
+    "state": "Workflow objects, approval events and tasks are process-local; previous replica replaced",
+    "cosmosTranscriptIsNotFrameworkCheckpoint": true,
+    "fabricatedCheckpointOrEvents": false
+  },
+  "smallestSelectedFallback": {
+    "task": "Read-only synthetic onboarding-readiness review, complete input, no tools or clarification",
+    "specialists": ["HR", "IT", "Compliance"],
+    "minimumNewAttempts": 12,
+    "availableNewAttempts": 10,
+    "launched": false,
+    "breakdown": {"rai": 1, "teamScope": 1, "facts": 1, "plan": 1, "routing": 3, "specialistResponses": 3, "completionCheck": 1, "finalSynthesis": 1},
+    "source": "Installed agent_framework_orchestrations/_magentic.py: StandardMagenticManager.plan, create_progress_ledger, prepare_final_answer; MagenticOrchestrator._run_inner_loop_helper",
+    "roundLimitIsSuccessfulFinalSynthesis": false,
+    "retriesOrReplansIncluded": false
+  },
+  "nativeFix": {
+    "encoder": "fastapi.encoders.jsonable_encoder",
+    "blanketStrFallbackRemoved": true,
+    "targetedNativeTestsPassed": 39,
+    "observerBudgetTestsPassed": 9,
+    "liveMiniUsageRetest": "NOT RUN; offline mini JSON/SSE input/output/cache capture verified",
+    "sourceSha256": "ddc723d803886a9a7d9b28d99022f424ba3f7a64065a1bcaf4e9ef31b12b7721",
+    "patch": "native-serialization.patch"
+  },
+  "remoteBuild": {
+    "runId": "chn",
+    "status": "Succeeded",
+    "reportedSeconds": 39,
+    "archiveKiB": 8.503,
+    "cleanContextFiles": 6,
+    "digest": "sha256:dc067468acd805293835c42c27969d46c301d88799ee297239eebf4140222781",
+    "initialClientFailure": "Relative Dockerfile path not found, no cloud run queued",
+    "correctedRetries": 1,
+    "localBuildsStarted": 0
+  },
+  "requiredDecision": "Explicitly reclaim at least two attempts from another completed app, or approve a reduced two-specialist scope; do not raise22 without that authorization",
+  "rfpArchitecture": {
+    "status": "BLOCKED_PRIVATE_EGRESS_UNCONFIGURED_EXACT_PATH_UNVERIFIED",
+    "existingAccountNoNewInfraPathProven": false,
+    "byoVnetInjectionCreationTimeRequired": null,
+    "accountRecreationRequired": "NOT_ESTABLISHED",
+    "networkingErratum": "The original blanket creation-time claim applied a Hosted-agent limitation to MACAE's local MAF/project Responses path. Superseded by network-agent-type-correction.json; this historical snapshot's call accounting is unchanged.",
+    "correctionEvidence": "network-agent-type-correction.json",
+    "nextStep": "Read-only compatibility and cost preflight for documented existing-account capability-host/customerSubnet and existing-project standard setup mechanisms; not an authorized deployment or proven exact-path fix",
+    "inboundFoundryPeAloneSolvesHostedToolEgress": false,
+    "newNetworkOrAccountCreated": false,
+    "serviceSideCallAccountingStillRequired": true
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "disableLocalAuth": true,
+  "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-chatbot-eval-0911/providers/Microsoft.Search/searchServices/srch-ccptu1feb0911",
+  "identity": {
+    "principalId": "2c9cb627-d0f6-4b92-99d6-809d6d04cb5e",
+    "tenantId": "a600acd0-3028-4689-8402-3b471d7d924d",
+    "type": "SystemAssigned"
+  },
+  "location": "Canada Central",
+  "partitions": 1,
+  "privateEndpointConnections": [
+    {
+      "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-chatbot-eval-0911/providers/Microsoft.Search/searchServices/srch-ccptu1feb0911/privateEndpointConnections/pe-chatbot-search.59639d9a-b6f7-4d99-9a9f-9fe46c799695",
+      "name": "pe-chatbot-search.59639d9a-b6f7-4d99-9a9f-9fe46c799695",
+      "properties": {
+        "groupId": "searchService",
+        "privateEndpoint": {
+          "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateEndpoints/pe-chatbot-search",
+          "resourceGroup": "rg-ptu-bundle-platform"
+        },
+        "privateLinkServiceConnectionState": {
+          "actionsRequired": "None",
+          "description": "Auto-approved",
+          "status": "Approved"
+        },
+        "provisioningState": "Succeeded"
+      },
+      "resourceGroup": "accel-chatbot-eval-0911",
+      "type": "Microsoft.Search/searchServices/privateEndpointConnections"
+    }
+  ],
+  "publicNetworkAccess": "Disabled",
+  "replicas": 1,
+  "semantic": "free",
+  "sku": "basic",
+  "state": "succeeded",
+  "status": "running"
+}

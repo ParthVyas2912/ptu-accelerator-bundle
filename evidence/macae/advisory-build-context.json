@@ -1,0 +1,32 @@
+[
+  {
+    "name": "advisory-request.txt",
+    "bytes": 1438,
+    "sha256": "81f624013b7008aadfd9bad673d92f88a4ae31c6ef0089978b6ee8d2364e193f"
+  },
+  {
+    "name": "advisory-team.json",
+    "bytes": 3390,
+    "sha256": "bc96c167f8303be694471adee4c0b39083ddb2aa0d3b081d23dc032c7a8b6b55"
+  },
+  {
+    "name": "Dockerfile",
+    "bytes": 350,
+    "sha256": "2f8eee8a499e2ca6130a292a6b6563f1add1d8fa90c7dcae8312a02848613433"
+  },
+  {
+    "name": "macae_advisory.py",
+    "bytes": 9473,
+    "sha256": "10398215e9e3c183ddbf9c0b043e4cb98b04a6b848d8e53c60dae5d0037e2b85"
+  },
+  {
+    "name": "macae_cosmos_budget.py",
+    "bytes": 7749,
+    "sha256": "01981299e217aaf5048b61577b033e0f01ce113d40d17ab330ca796727b3fb2d"
+  },
+  {
+    "name": "macae_model_guard.py",
+    "bytes": 9360,
+    "sha256": "cc601af79cdd69484d296487d337d7fbf8f217fd1bc480817f541081a170f627"
+  }
+]

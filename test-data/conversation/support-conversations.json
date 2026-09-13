@@ -1,0 +1,20 @@
+[
+  {
+    "id": "ptu-conversation-call-001",
+    "type": "conversation",
+    "text": "SYNTHETIC IT HELPDESK CALL 001. Caller C001: My VPN stopped connecting immediately after the credential rotation. The error is authentication failed. Agent A001: The VPN client still has your old cached credential. Clear the cached credential and sign in again. Caller C001: I did that and the VPN now connects. Agent A001: Resolution confirmed. I will send the credential-refresh guide today. Follow-up: caller should reconnect tomorrow and report any recurrence. No outage or server fault was established.",
+    "metadata": {"source_file": "support-conversations.json", "source_type": "synthetic", "category": "VPN"}
+  },
+  {
+    "id": "ptu-conversation-call-002",
+    "type": "conversation",
+    "text": "SYNTHETIC IT HELPDESK CALL 002. Caller C002: Since yesterday's credential rotation my VPN rejects my password. Agent A002: Please remove the saved credential and authenticate with the new one. Caller C002: The VPN connects successfully now. Agent A002: The issue was a stale cached credential. Resolution is confirmed. Follow-up: I will add the credential-refresh step to the team's onboarding checklist by Friday. This is the second reported instance of this exact symptom, not proof of a company-wide outage.",
+    "metadata": {"source_file": "support-conversations.json", "source_type": "synthetic", "category": "VPN"}
+  },
+  {
+    "id": "ptu-conversation-call-003",
+    "type": "conversation",
+    "text": "SYNTHETIC LOW-QUALITY IT HELPDESK CALL 003. Caller C003: The printer [inaudible] after the update, or perhaps before it. Agent A003: Is the cable connected? Caller C003: [crosstalk] I tried restarting [inaudible]. Agent A003: I cannot confirm whether printing now works. The cause and final resolution remain unknown. Follow-up: schedule a callback tomorrow and obtain the exact error message. Do not infer that the driver, cable, or update caused the problem.",
+    "metadata": {"source_file": "support-conversations.json", "source_type": "synthetic", "category": "Printer"}
+  }
+]

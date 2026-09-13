@@ -1,0 +1,45 @@
+{
+  "accelerator": "content",
+  "sharedPlatformReady": true,
+  "registry": "acrptubundle7d804f70.azurecr.io",
+  "firstSuccessfulBuild": {
+    "service": "api",
+    "runId": "ch1",
+    "status": "Succeeded",
+    "image": "acrptubundle7d804f70.azurecr.io/content/official-api:659eaa1",
+    "digest": "sha256:0f638fcb7e12cde55c41ea231b8d73d51c98dd18cf5f5a5b7b2e9f38e3a6e920",
+    "startTimeUtc": "2026-09-12T00:59:03.558401+00:00",
+    "finishTimeUtc": "2026-09-12T01:00:04.851996+00:00",
+    "buildCpu": 2,
+    "uploadedContextMiB": 3.588,
+    "trackedSourceSha": "659eaa1f503dd08b1e1aea1c72eab11c7c191d00",
+    "imageType": "official source base, not yet runtime-guarded",
+    "deployed": false
+  },
+  "firstAttempt": {
+    "status": "failed locally before build",
+    "error": "Relative Dockerfile path resolved outside staged context",
+    "resolution": "Use absolute staged Dockerfile path; next build succeeded"
+  },
+  "privateEndpointDeployment": {
+    "name": "ptu-content-private-endpoints",
+    "helper": "scripts/Add-LabPrivateEndpoints.ps1",
+    "parameters": "evidence/content/private-endpoints.parameters.json",
+    "targets": ["pe-content-blob", "pe-content-queue", "pe-content-mongo"],
+    "validation": "Succeeded",
+    "lastObservedState": "Running",
+    "executionShellId": "535"
+  },
+  "requiredParentDecision": {
+    "reason": "Approved PE helper has no account group and shared platform lists no AI private DNS zones.",
+    "requestedEndpointName": "pe-content-ai",
+    "targetResourceId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-content-demo/providers/Microsoft.CognitiveServices/accounts/aif-ptuv-content-260911",
+    "groupId": "account",
+    "requiredZoneNames": ["privatelink.cognitiveservices.azure.com", "privatelink.openai.azure.com", "privatelink.services.ai.azure.com"],
+    "endpointCountIncludingExistingRequest": 4,
+    "helperBypassedOrChanged": false
+  },
+  "modelCalls": 0,
+  "cuAnalyses": 0,
+  "publicRoutesExposed": false
+}

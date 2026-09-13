@@ -1,0 +1,144 @@
+{
+  "checkedUtc": "2026-09-12T05:52:54.5380136Z",
+  "apps": [
+    {
+      "service": "api",
+      "revisions": [
+        {
+          "active": false,
+          "image": "acrptubundle7d804f70.azurecr.io/content/eval-api:659eaa1-r5",
+          "name": "ca-ptu-content-api--0000006",
+          "replicas": 0,
+          "runningState": "Stopped"
+        },
+        {
+          "active": false,
+          "image": "acrptubundle7d804f70.azurecr.io/content/eval-api:659eaa1-r5",
+          "name": "ca-ptu-content-api--0000007",
+          "replicas": 0,
+          "runningState": "Stopped"
+        },
+        {
+          "active": false,
+          "image": "acrptubundle7d804f70.azurecr.io/content/eval-api:659eaa1-r6",
+          "name": "ca-ptu-content-api--0000008",
+          "replicas": 0,
+          "runningState": "Stopped"
+        },
+        {
+          "active": false,
+          "image": "acrptubundle7d804f70.azurecr.io/content/eval-api:659eaa1-r6",
+          "name": "ca-ptu-content-api--0000009",
+          "replicas": 0,
+          "runningState": "Stopped"
+        },
+        {
+          "active": true,
+          "image": "acrptubundle7d804f70.azurecr.io/content/eval-api:659eaa1-scope-r1",
+          "name": "ca-ptu-content-api--0000010",
+          "replicas": 1,
+          "runningState": "RunningAtMaxScale"
+        }
+      ]
+    },
+    {
+      "service": "processor",
+      "revisions": [
+        {
+          "active": false,
+          "image": "acrptubundle7d804f70.azurecr.io/content/eval-processor:659eaa1-r4",
+          "name": "ca-ptu-content-processor--0000006",
+          "replicas": 0,
+          "runningState": "Stopped"
+        },
+        {
+          "active": false,
+          "image": "acrptubundle7d804f70.azurecr.io/content/eval-processor:659eaa1-r4",
+          "name": "ca-ptu-content-processor--0000007",
+          "replicas": 0,
+          "runningState": "Stopped"
+        },
+        {
+          "active": false,
+          "image": "acrptubundle7d804f70.azurecr.io/content/eval-processor:659eaa1-zero-r1",
+          "name": "ca-ptu-content-processor--0000008",
+          "replicas": 0,
+          "runningState": "Stopped"
+        },
+        {
+          "active": false,
+          "image": "acrptubundle7d804f70.azurecr.io/content/eval-processor:659eaa1-zero-r1",
+          "name": "ca-ptu-content-processor--0000009",
+          "replicas": 0,
+          "runningState": "Stopped"
+        },
+        {
+          "active": true,
+          "image": "acrptubundle7d804f70.azurecr.io/content/eval-processor:659eaa1-scope-r1",
+          "name": "ca-ptu-content-processor--0000010",
+          "replicas": 1,
+          "runningState": "RunningAtMaxScale"
+        }
+      ]
+    },
+    {
+      "service": "workflow",
+      "revisions": [
+        {
+          "active": false,
+          "image": "acrptubundle7d804f70.azurecr.io/content/eval-workflow:659eaa1-r2",
+          "name": "ca-ptu-content-workflow--0000002",
+          "replicas": 0,
+          "runningState": "Stopped"
+        },
+        {
+          "active": false,
+          "image": "acrptubundle7d804f70.azurecr.io/content/eval-workflow:659eaa1-r2",
+          "name": "ca-ptu-content-workflow--0000003",
+          "replicas": 0,
+          "runningState": "Stopped"
+        },
+        {
+          "active": false,
+          "image": "acrptubundle7d804f70.azurecr.io/content/eval-workflow:659eaa1-r2",
+          "name": "ca-ptu-content-workflow--0000004",
+          "replicas": 0,
+          "runningState": "Stopped"
+        },
+        {
+          "active": true,
+          "image": "acrptubundle7d804f70.azurecr.io/content/eval-workflow:659eaa1-scope-r1",
+          "name": "ca-ptu-content-workflow--0000005",
+          "replicas": 1,
+          "runningState": "RunningAtMaxScale"
+        }
+      ]
+    },
+    {
+      "service": "web",
+      "revisions": [
+        {
+          "active": false,
+          "image": "acrptubundle7d804f70.azurecr.io/content/official-web:659eaa1",
+          "name": "ca-ptu-content-web--0000002",
+          "replicas": 0,
+          "runningState": "Stopped"
+        },
+        {
+          "active": false,
+          "image": "acrptubundle7d804f70.azurecr.io/content/official-web:659eaa1",
+          "name": "ca-ptu-content-web--0000003",
+          "replicas": 0,
+          "runningState": "Stopped"
+        },
+        {
+          "active": false,
+          "image": "acrptubundle7d804f70.azurecr.io/content/official-web:659eaa1",
+          "name": "ca-ptu-content-web--0000004",
+          "replicas": 0,
+          "runningState": "Stopped"
+        }
+      ]
+    }
+  ]
+}

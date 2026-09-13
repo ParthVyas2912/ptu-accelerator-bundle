@@ -1,0 +1,225 @@
+{
+  "started_at": "2026-09-12T05:18:53.497052+00:00",
+  "tests": [
+    {
+      "id": "native-deep-health",
+      "expected": "HTTP200/sql ok/search configured",
+      "actual": {
+        "status": 200,
+        "body": {
+          "status": "healthy",
+          "checks": {
+            "sql": "ok",
+            "search": "configured",
+            "cosmos": "unavailable"
+          },
+          "version": "1.0.0"
+        }
+      },
+      "status": "passed"
+    },
+    {
+      "id": "native-automatic-processing-off",
+      "expected": "enabled=false/auto_select=false",
+      "actual": {
+        "enabled": false,
+        "default_pipeline": "full_knowledge_mining",
+        "auto_select": false
+      },
+      "status": "passed"
+    },
+    {
+      "id": "native-http-sql-reload",
+      "expected": "HTTP200/refreshed/one file",
+      "actual": {
+        "status": 200,
+        "body": {
+          "status": "refreshed",
+          "files": 1
+        }
+      },
+      "status": "passed"
+    },
+    {
+      "id": "native-list-three",
+      "expected": [
+        "ptu-conversation-call-001",
+        "ptu-conversation-call-002",
+        "ptu-conversation-call-003"
+      ],
+      "actual": [
+        "ptu-conversation-call-001",
+        "ptu-conversation-call-002",
+        "ptu-conversation-call-003"
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "ptu-conversation-call-001",
+      "expected": {
+        "id": "ptu-conversation-call-001",
+        "original_text_sha256": "978e39d88749facc61740f93bc3791cdf2c9776ac32e4ec33fde2a2d2fb4a7a2"
+      },
+      "actual": {
+        "status": 200,
+        "id": "ptu-conversation-call-001",
+        "original_text_sha256": "978e39d88749facc61740f93bc3791cdf2c9776ac32e4ec33fde2a2d2fb4a7a2"
+      },
+      "status": "passed"
+    },
+    {
+      "id": "ptu-conversation-call-002",
+      "expected": {
+        "id": "ptu-conversation-call-002",
+        "original_text_sha256": "8bd6ddbdfed50698ba957d17825db0974cb318439f9c7c0f012a91ff843347ff"
+      },
+      "actual": {
+        "status": 200,
+        "id": "ptu-conversation-call-002",
+        "original_text_sha256": "8bd6ddbdfed50698ba957d17825db0974cb318439f9c7c0f012a91ff843347ff"
+      },
+      "status": "passed"
+    },
+    {
+      "id": "ptu-conversation-call-003",
+      "expected": {
+        "id": "ptu-conversation-call-003",
+        "original_text_sha256": "e72745011250df76d13151173519d9f7bc8c02999e93117f02a8b3d2804bbab5"
+      },
+      "actual": {
+        "status": 200,
+        "id": "ptu-conversation-call-003",
+        "original_text_sha256": "e72745011250df76d13151173519d9f7bc8c02999e93117f02a8b3d2804bbab5"
+      },
+      "status": "passed"
+    },
+    {
+      "id": "disarmed-/api/processing/summarize",
+      "expected": "Explicit503 without inference or heuristic output",
+      "actual": {
+        "status": 503,
+        "body": {
+          "error": "CKM_INFERENCE_DISARMED",
+          "detail": "Read-only deployment. Inference budget9/9 is closed; automatic processing and mutation routes are disabled.",
+          "inference_armed": false,
+          "model_requests_dispatched": 0
+        }
+      },
+      "status": "passed"
+    },
+    {
+      "id": "disarmed-/api/insights/dashboard",
+      "expected": "Explicit503 without inference or heuristic output",
+      "actual": {
+        "status": 503,
+        "body": {
+          "error": "CKM_INFERENCE_DISARMED",
+          "detail": "Read-only deployment. Inference budget9/9 is closed; automatic processing and mutation routes are disabled.",
+          "inference_armed": false,
+          "model_requests_dispatched": 0
+        }
+      },
+      "status": "passed"
+    },
+    {
+      "id": "disarmed-/api/rag/ask",
+      "expected": "Explicit503 without inference or heuristic output",
+      "actual": {
+        "status": 503,
+        "body": {
+          "error": "CKM_EXPLORE_UNSUPPORTED_AND_DISARMED",
+          "detail": "Read-only deployment. Inference budget9/9 is closed; automatic processing and mutation routes are disabled.",
+          "inference_armed": false,
+          "model_requests_dispatched": 0
+        }
+      },
+      "status": "passed"
+    },
+    {
+      "id": "disarmed-/api/embeddings/index",
+      "expected": "Explicit503 without inference or heuristic output",
+      "actual": {
+        "status": 503,
+        "body": {
+          "error": "CKM_INFERENCE_DISARMED",
+          "detail": "Read-only deployment. Inference budget9/9 is closed; automatic processing and mutation routes are disabled.",
+          "inference_armed": false,
+          "model_requests_dispatched": 0
+        }
+      },
+      "status": "passed"
+    },
+    {
+      "id": "disarmed-/api/documents/analyze",
+      "expected": "Explicit503 without inference or heuristic output",
+      "actual": {
+        "status": 503,
+        "body": {
+          "error": "CKM_INFERENCE_DISARMED",
+          "detail": "Read-only deployment. Inference budget9/9 is closed; automatic processing and mutation routes are disabled.",
+          "inference_armed": false,
+          "model_requests_dispatched": 0
+        }
+      },
+      "status": "passed"
+    },
+    {
+      "id": "disarmed-/api/pipelines/run",
+      "expected": "Explicit503 without inference or heuristic output",
+      "actual": {
+        "status": 503,
+        "body": {
+          "error": "CKM_INFERENCE_DISARMED",
+          "detail": "Read-only deployment. Inference budget9/9 is closed; automatic processing and mutation routes are disabled.",
+          "inference_armed": false,
+          "model_requests_dispatched": 0
+        }
+      },
+      "status": "passed"
+    },
+    {
+      "id": "disarmed-/api/pipelines/automation/config",
+      "expected": "Explicit503 without inference or heuristic output",
+      "actual": {
+        "status": 503,
+        "body": {
+          "error": "CKM_INFERENCE_DISARMED",
+          "detail": "Read-only deployment. Inference budget9/9 is closed; automatic processing and mutation routes are disabled.",
+          "inference_armed": false,
+          "model_requests_dispatched": 0
+        }
+      },
+      "status": "passed"
+    },
+    {
+      "id": "disarmed-/api/ingestion/upload/json",
+      "expected": "Explicit503 without inference or heuristic output",
+      "actual": {
+        "status": 503,
+        "body": {
+          "error": "CKM_INFERENCE_DISARMED",
+          "detail": "Read-only deployment. Inference budget9/9 is closed; automatic processing and mutation routes are disabled.",
+          "inference_armed": false,
+          "model_requests_dispatched": 0
+        }
+      },
+      "status": "passed"
+    }
+  ],
+  "model_requests": 0,
+  "transport": "real HTTP to Uvicorn127.0.0.1:8000",
+  "probe_pid": 22,
+  "serving_pid": 1,
+  "last_response_guard_headers": {
+    "x-ckm-inference": "disarmed-9-of-9",
+    "x-ckm-auto-processing": "disabled",
+    "x-ckm-queue-worker": "disabled",
+    "x-ckm-model-dispatches": "0",
+    "x-ckm-outbound-denied": "0",
+    "x-ckm-serving-pid": "1",
+    "x-ckm-last-sql-access": "2026-09-12T05:18:57.464402+00:00"
+  },
+  "status": "passed",
+  "finished_at": "2026-09-12T05:18:57.530884+00:00"
+}
+

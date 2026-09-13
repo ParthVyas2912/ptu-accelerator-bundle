@@ -1,0 +1,50 @@
+[
+  {
+    "productName": "Azure Cosmos DB",
+    "skuName": "Free Tier",
+    "meterName": "100 RU/s",
+    "retailPrice": 0.0,
+    "unitOfMeasure": "1/Hour",
+    "currencyCode": "USD"
+  },
+  {
+    "productName": "Azure Cosmos DB autoscale",
+    "skuName": "AP1",
+    "meterName": "AP1 100 RUs",
+    "retailPrice": 0.0144,
+    "unitOfMeasure": "1/Hour",
+    "currencyCode": "USD"
+  },
+  {
+    "productName": "Azure Cosmos DB",
+    "skuName": "RUs",
+    "meterName": "100 RU/s",
+    "retailPrice": 0.0088,
+    "unitOfMeasure": "1/Hour",
+    "currencyCode": "USD"
+  },
+  {
+    "productName": "Azure Cosmos DB autoscale",
+    "skuName": "AP4",
+    "meterName": "AP4 100 RUs",
+    "retailPrice": 0.0144,
+    "unitOfMeasure": "1/Hour",
+    "currencyCode": "USD"
+  },
+  {
+    "productName": "Azure Cosmos DB autoscale",
+    "skuName": "AP2",
+    "meterName": "AP2 100 RUs",
+    "retailPrice": 0.0144,
+    "unitOfMeasure": "1/Hour",
+    "currencyCode": "USD"
+  },
+  {
+    "productName": "Azure Cosmos DB autoscale",
+    "skuName": "AP3",
+    "meterName": "AP3 100 RUs",
+    "retailPrice": 0.0144,
+    "unitOfMeasure": "1/Hour",
+    "currencyCode": "USD"
+  }
+]

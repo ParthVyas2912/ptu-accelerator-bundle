@@ -1,0 +1,14 @@
+SYNTHETIC UNCLASSIFIED EVALUATION DATA — NOT A REAL PROCUREMENT
+
+Buyer: Acme Example.
+Supplier: Example Systems.
+Requirement R1: Store all buyer data in Canada.
+Requirement R2: Maintain auditable access logs and provide a sample audit record.
+Requirement R3: Target 99.9 percent service availability.
+
+Proposal: The supplier offers Canada-hosted storage and a 99.9 percent availability
+target. The proposal contains no sample audit record, retention specification,
+or independent evidence that access logging is operating.
+
+Expected review: identify the missing audit evidence, distinguish assertions from
+verified facts, assign review actions, and consolidate a recommendation.

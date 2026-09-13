@@ -1,0 +1,17 @@
+[
+  {
+    "action": "Start",
+    "blocked_before_azure": true,
+    "error": "Modernize evaluation is closed at 10/10. Explicit new parent budget and guard reconciliation are required; the old two attempts belong to MACAE."
+  },
+  {
+    "action": "Deploy",
+    "blocked_before_azure": true,
+    "error": "Modernize evaluation is closed at 10/10. Explicit new parent budget and guard reconciliation are required; the old two attempts belong to MACAE."
+  },
+  {
+    "action": "Evaluate",
+    "blocked_before_azure": true,
+    "error": "Modernize evaluation is closed at 10/10. Explicit new parent budget and guard reconciliation are required; the old two attempts belong to MACAE."
+  }
+]

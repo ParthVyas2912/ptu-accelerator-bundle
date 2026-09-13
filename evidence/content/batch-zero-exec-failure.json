@@ -1,0 +1,4 @@
+{
+  "exitCode": 0,
+  "diagnostic": "INFO: Connecting to the container 'processor'...\nINFO: Successfully connected to container: 'processor'. [ Revision: 'ca-ptu-content-processor--0000008', Replica: 'ca-ptu-content-processor--0000008-547bfcfb9c-z6jjc'].\nTraceback (most recent call last):\n\n  File \"/opt/content_eval/zero_model_recovery.py\", line 248, in <module>\n\n    output = execute()\n\n             ^^^^^^^^^\n\n  File \"/opt/content_eval/zero_model_recovery.py\", line 137, in execute\n\n    raise RuntimeError(\"Ten original model response records must be unchanged\")\n\nRuntimeError: Ten original model response records must be unchanged\n\nINFO: received success status from cluster\n\nWARNING: Use ctrl + D to exit.\nWARNING: Disconnecting...\n"
+}

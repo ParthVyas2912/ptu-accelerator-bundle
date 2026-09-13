@@ -1,0 +1,13 @@
+{
+  "test": "upload-ptu-cwyd-travel",
+  "method": "POST",
+  "path": "/api/admin/documents",
+  "status": 200,
+  "actual": {
+    "filename": "ptu-cwyd-travel.txt",
+    "blob_path": "ptu-cwyd-documents/ptu-cwyd-travel.txt",
+    "ingestion_job_id": "839a5081-8c0c-4a9f-97ab-8411990db48a",
+    "queued": true
+  },
+  "latency_ms": 1523.01
+}

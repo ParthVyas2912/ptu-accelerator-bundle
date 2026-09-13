@@ -1,0 +1,22 @@
+{
+  "outputs": {
+    "databaseId": {
+      "type": "String",
+      "value": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Sql/servers/sql-ptu-conversation-7d804f70/databases/ptu-conversation"
+    },
+    "searchId": {
+      "type": "String",
+      "value": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Search/searchServices/srch-ptu-conversation-7d804f70"
+    },
+    "sqlServerId": {
+      "type": "String",
+      "value": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Sql/servers/sql-ptu-conversation-7d804f70"
+    },
+    "storageId": {
+      "type": "String",
+      "value": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Storage/storageAccounts/stptuconv7d804f70"
+    }
+  },
+  "state": "Succeeded",
+  "timestamp": "2026-09-12T04:04:54.921606+00:00"
+}

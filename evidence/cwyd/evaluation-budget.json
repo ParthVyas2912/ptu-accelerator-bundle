@@ -1,0 +1,12 @@
+{
+  "app": "Chat With Your Data",
+  "model_attempt_limit": 16,
+  "inference_enabled": false,
+  "requires_new_explicit_authorization": true,
+  "ledger_reset_permitted": false,
+  "historical_approved_total": 18,
+  "reclaimed_unused_attempts": 2,
+  "reallocated_to": "DKM comparison",
+  "custody_timestamp": "2026-09-11T22:42:56.549-04:00",
+  "authorization_reference": "Parent custody-only instruction: CWYD16TOTAL/16used; no new model calls."
+}

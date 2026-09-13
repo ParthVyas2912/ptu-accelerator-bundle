@@ -1,0 +1,32 @@
+{
+  "captured_at": "2026-09-12T04:00:27.8793676+00:00",
+  "allowance": {
+    "check": "allowance_closed",
+    "limit": 10,
+    "committed": 10,
+    "visible_attempts": 8,
+    "reclaimed": 2,
+    "closed_at": "2026-09-11T23:55:28.739569-04:00",
+    "requests_sha256": "f89c37cd3fc0edd956d69ebf9f9c4e76867ee39981450126e7f8e91a1e919cfd",
+    "guard_rejected_admission": true,
+    "new_model_calls": 0
+  },
+  "original_allowance": 12,
+  "committed_units": 10,
+  "visible_attempts": 8,
+  "hosted_allowances": 2,
+  "reclaimed_to_parent": 2,
+  "spendable_units": 0,
+  "all_revisions_inactive": true,
+  "stopped_revision_count": 17,
+  "actual_replica_counts": {
+    "chatbot-chat-api": 0,
+    "chatbot-scenario-api": 0,
+    "chatbot-chat-ui": 0,
+    "chatbot-scenario-ui": 0
+  },
+  "records_preserved": true,
+  "new_model_calls": 0,
+  "new_operator_allowance_required": true,
+  "network_review_lookup_count": 5
+}

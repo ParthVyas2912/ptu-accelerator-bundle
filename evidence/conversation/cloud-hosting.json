@@ -1,0 +1,644 @@
+{
+  "application": "Conversation Knowledge Mining",
+  "phase": "durable_native_read_only_serving_verified_paused",
+  "platform_verified": {
+    "environment_state": "Succeeded",
+    "environment": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.App/managedEnvironments/cae-ptu-bundle",
+    "profile": "Consumption only",
+    "registry": "acrptubundle7d804f70.azurecr.io",
+    "registry_sku": "Basic",
+    "registry_admin_enabled": false,
+    "registry_public_network_access": "Enabled",
+    "registry_auth": "Entra login; Windows wincred credential store; no keys printed or exported",
+    "client_cidr": "174.112.74.34/32"
+  },
+  "created": {
+    "resource_group": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo",
+    "identity": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id-ptu-conversation",
+    "identity_client_id": "1b458b7e-1768-45a9-b676-9a3245a4dfbe",
+    "identity_principal_id": "b0c36c36-5b9f-4efa-9f01-0e19fb97aa25",
+    "api": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.App/containerApps/ca-ptu-conversation-api",
+    "ui": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.App/containerApps/ca-ptu-conversation-ui",
+    "acr_pull_assignment_id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.ContainerRegistry/registries/acrptubundle7d804f70/providers/Microsoft.Authorization/roleAssignments/41816b87-fb9e-4fe0-8acb-c64bdfd45538",
+    "other_identity_grants": [
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.ContainerRegistry/registries/acrptubundle7d804f70/providers/Microsoft.Authorization/roleAssignments/41816b87-fb9e-4fe0-8acb-c64bdfd45538",
+        "role": "AcrPull",
+        "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.ContainerRegistry/registries/acrptubundle7d804f70"
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.CognitiveServices/accounts/aif-ptu-conversation-7d804f70/providers/Microsoft.Authorization/roleAssignments/2a1c26d8-6205-4e37-aec1-1a16d70cdefb",
+        "role": "Cognitive Services OpenAI User",
+        "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.CognitiveServices/accounts/aif-ptu-conversation-7d804f70"
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourcegroups/rg-ptu-conversation-demo/providers/Microsoft.Storage/storageAccounts/stptuconv7d804f70/providers/Microsoft.Authorization/roleAssignments/c7d58b59-2e1a-5d22-a46d-6c5419e5023b",
+        "role": "Storage Blob Data Contributor",
+        "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourcegroups/rg-ptu-conversation-demo/providers/Microsoft.Storage/storageAccounts/stptuconv7d804f70"
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourcegroups/rg-ptu-conversation-demo/providers/Microsoft.Search/searchServices/srch-ptu-conversation-7d804f70/providers/Microsoft.Authorization/roleAssignments/b7e9304f-dde4-5200-95c2-c89792274a6b",
+        "role": "Search Index Data Contributor",
+        "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourcegroups/rg-ptu-conversation-demo/providers/Microsoft.Search/searchServices/srch-ptu-conversation-7d804f70"
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourcegroups/rg-ptu-conversation-demo/providers/Microsoft.Search/searchServices/srch-ptu-conversation-7d804f70/providers/Microsoft.Authorization/roleAssignments/0ac46d26-e108-5608-b40e-405aafad1651",
+        "role": "Search Service Contributor",
+        "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourcegroups/rg-ptu-conversation-demo/providers/Microsoft.Search/searchServices/srch-ptu-conversation-7d804f70"
+      }
+    ]
+  },
+  "container_apps_state": "durable_native_read_only_serving_verified_paused",
+  "final_verified_at": "2026-09-12T05:24:46.3472084+00:00",
+  "final_scaling": {
+    "min_replicas": 0,
+    "max_replicas": 1,
+    "http_concurrency": "5"
+  },
+  "final_revisions": [
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-api--cdcg7po",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-api--0000001",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-api--0000002",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-api--0000003",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-api--0000004",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-api--0000005",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-api--0000006",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-api--0000007",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-api--0000008",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-api--serving-ro1",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-api--0000009",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-ui--ck2tl0m",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-ui--0000001",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-ui--0000002",
+      "replicas": 0
+    }
+  ],
+  "rollout_observation": "One serving configure/read attempt;15 native HTTP checks passed. Scale restored min0/max1; all14 retained revisions inactive/0.",
+  "deployment_session": "ckm-cloud-hosting",
+  "deployment_exit_code": 0,
+  "urls": {
+    "api_internal": "https://ca-ptu-conversation-api.internal.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io",
+    "ui_restricted": "https://ca-ptu-conversation-ui.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io"
+  },
+  "image_push_session": "ckm-image-push",
+  "image_push_exit_code": 0,
+  "registry_manifests": [
+    {
+      "image": "conversation/api:8a00aa5-base",
+      "digest": "sha256:baa11a820f821532ade2129fe5dd628764b9053778b3ef6d35e89fa2345ee8f8",
+      "registry_updated_utc": "2026-09-12T01:50:57.3143014Z"
+    },
+    {
+      "image": "conversation/ui:8a00aa5-runtime",
+      "digest": "sha256:aa01cc8701fc0756de15a7b27a1bf6c783c1854e0641034aab2770823266edb8",
+      "registry_updated_utc": "2026-09-12T01:51:04.7861968Z"
+    },
+    {
+      "image": "conversation/api:8a00aa5-summaryeval1",
+      "digest": "sha256:d0bb87b6b567a7e369d424f1f05c759acb3d7a897f50e8fd7c6db577709139ed",
+      "build_run": "chu"
+    },
+    {
+      "image": "conversation/api:8a00aa5-dataeval1",
+      "digest": "sha256:cf139128a3c4016dd1a4bad1179ffe8495c6ff6c95104a3e6f986f6c328563a8",
+      "build_run": "chv"
+    },
+    {
+      "image": "conversation/api:8a00aa5-dataeval2",
+      "digest": "sha256:165cafca5e81e73097f0268b226fc2c2d5f9bb291fae0f216e40dc5dddb57a85",
+      "build_run": "chw"
+    },
+    {
+      "image": "conversation/api:8a00aa5-sqltools",
+      "digest": "sha256:fa78799cb2142dfdeae5ed38c9e48d87f9cb7de15df25be6c68a6fa716fafea3",
+      "build_run": "chx"
+    },
+    {
+      "image": "conversation/api:8a00aa5-serving-ro1",
+      "digest": "sha256:84ff9d2a31ddf2e71a75d26ca58433ce29e41af0eb46823c0a0c5d5ca4bbcaf0",
+      "build_run": "ch10"
+    }
+  ],
+  "tests": [
+    {
+      "id": "arm-hosting-and-ingress",
+      "expected": "Both Consumption apps Succeeded, max1/min0; API internal and UI single /32 Allow rule",
+      "actual": "Both Succeeded and Healthy; initial replicas0; internal API; exact174.112.74.34/32 UI restriction; max1/min0",
+      "status": "passed",
+      "scope": "infrastructure_only"
+    },
+    {
+      "id": "external-ui-root",
+      "expected": "HTTP200 original React HTML through approved client path",
+      "actual": "HTTP403; response RBAC: access denied;705ms",
+      "status": "blocked",
+      "follow_up": "Explicit IPv4 curl HEAD also403. Current HTTPS public-address lookup still returned174.112.74.34, matching configured /32. Environment PNAEnabled/internalfalse verified. Exact ingress-path cause remains unresolved; no restriction broadened."
+    },
+    {
+      "id": "external-runtime-config",
+      "expected": "HTTP200 runtime-config.js",
+      "actual": "HTTP403 RBAC: access denied;349ms",
+      "status": "blocked"
+    },
+    {
+      "id": "external-api-proxy",
+      "expected": "Reach original API through restricted UI nginx",
+      "actual": "HTTP403 RBAC: access denied;332ms before app access",
+      "status": "blocked"
+    },
+    {
+      "id": "authenticated-exec-api-liveness",
+      "expected": "Original API responds healthy inside its cloud container",
+      "actual": {
+        "status": "healthy",
+        "service": "Knowledge Mining Platform"
+      },
+      "status": "passed",
+      "revision": "ca-ptu-conversation-api--0000001",
+      "replica": "ca-ptu-conversation-api--0000001-6dc6976959-w8hbd",
+      "command": "curl -fsS http://localhost:8000/",
+      "model_requests": 0
+    },
+    {
+      "id": "authenticated-exec-ui-runtime",
+      "expected": "Original runtime configuration points to same-origin /api",
+      "actual": "window._env_.APP_API_BASE_URL = /api",
+      "status": "passed",
+      "revision": "ca-ptu-conversation-ui--0000001",
+      "replica": "ca-ptu-conversation-ui--0000001-68c5d995f4-trvzw"
+    },
+    {
+      "id": "cloud-deep-application-health",
+      "expected": "Full app requires healthy SQL/Search dependencies",
+      "actual": {
+        "http_status": 503,
+        "status": "degraded",
+        "checks": {
+          "sql": "unavailable",
+          "search": "not configured",
+          "cosmos": "unavailable"
+        },
+        "version": "1.0.0"
+      },
+      "status": "blocked_expected_in_component_phase",
+      "request_id": "c9b95505-0e1c-4c60-8561-9354c44ad6e1",
+      "note": "Liveness/ARM success is not full application success; no inference invoked."
+    },
+    {
+      "id": "authenticated-exec-ui-proxy",
+      "expected": "Original nginx /api route reaches internal backend",
+      "actual": "GET localhost/api/health returned503, matching the unconfigured backend's deep-health status",
+      "status": "transport_reachable_not_full_health",
+      "command": "wget -S -O - http://localhost/api/health"
+    },
+    {
+      "id": "own-service-dns-from-cloud",
+      "expected": "UI container resolves its internal API hostname",
+      "actual": "Resolver127.0.0.11 returned100.100.0.209 for the internal API FQDN",
+      "status": "passed",
+      "note": "ACA internal service virtual address; NOT evidence of a PaaS private endpoint or private SQL/Search/Blob access."
+    },
+    {
+      "id": "cloud-ui-original-build-hash",
+      "expected": "Deployed index.html matches the previously verified original React build",
+      "actual": "d3203ec31ed505b5b3a5a792b90548ea39e1b1e952e57ffebd9c281b93c060fd",
+      "status": "passed_after_serial_retry",
+      "attempts": [
+        "Concurrent second exec returned409 ErrorGeneratingAuthToken",
+        "One serialized retry succeeded with matching SHA256"
+      ],
+      "note": "Control-plane exec retries, not model requests."
+    }
+  ],
+  "pause_session": "ckm-serving-final-pause",
+  "pause_exit_code": 0,
+  "runbook": "reports/conversation-cloud-runbook.md",
+  "public_browser_access": {
+    "status": "unverified403",
+    "blocks_authenticated_exec_validation": false,
+    "restriction_unchanged": true
+  },
+  "parent_network_confirmation": {
+    "update": "2026-09-11T22:22:10.834-04:00",
+    "evidence": "evidence/preflight/private-network-probe-result.json",
+    "blob_private_address": "10.246.2.6",
+    "blob_anonymous_https_status": 400,
+    "cosmos_private_address": "10.246.2.4",
+    "cosmos_anonymous_https_status": 401,
+    "scope": "Parent's MACAE endpoints only; not CKM authorization or a CKM data-plane test",
+    "data_authorization_verified": false,
+    "model_calls": 0
+  },
+  "scale_update_observation": "Earlier CLI response showed empty concurrency metadata; independent pre-cleanup GET and final GET returned5. Do not infer persistent empty scaling metadata from the update response alone.",
+  "model_attempts": 9,
+  "model_attempt_cap": 9,
+  "data_paas_created": [
+    "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Sql/servers/sql-ptu-conversation-7d804f70/databases/ptu-conversation",
+    "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Search/searchServices/srch-ptu-conversation-7d804f70",
+    "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Sql/servers/sql-ptu-conversation-7d804f70",
+    "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Storage/storageAccounts/stptuconv7d804f70"
+  ],
+  "ai_dependency_evidence": "evidence/conversation/summary-pass-plan.json",
+  "ai_account_created": "aif-ptu-conversation-7d804f70",
+  "ai_account_location": "swedencentral",
+  "ai_account_pna": "Disabled",
+  "scoped_inference_role_added_for_probe_process": true,
+  "serving_app_model_endpoints_still_unset": false,
+  "private_endpoints_created": [
+    "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateEndpoints/pe-conversation-ai",
+    "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateEndpoints/pe-conversation-blob",
+    "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateEndpoints/pe-conversation-search",
+    "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateEndpoints/pe-conversation-sql"
+  ],
+  "hosting_budget": {
+    "source": "https://prices.azure.com/api/retail/prices",
+    "region": "eastus2",
+    "currency": "USD",
+    "active_vcpu_second": 2.4e-05,
+    "active_gib_second": 3e-06,
+    "requests_per_million": 0.4,
+    "api_cpu": 0.5,
+    "api_memory_gib": 1,
+    "ui_cpu": 0.25,
+    "ui_memory_gib": 0.5,
+    "min_replicas_each": 0,
+    "max_replicas_each": 1,
+    "api_continuously_active_per_hour": 0.054,
+    "ui_continuously_active_per_hour": 0.027,
+    "both_continuously_active_per_hour": 0.081,
+    "compute_charge_at_zero_replicas": 0,
+    "not_included": [
+      "Requests/shared registry/logging/egress",
+      "Four retained PEs and their data processing",
+      "Retained SQL/Search/Blob charges",
+      "Unimplemented Standard Agent topology"
+    ],
+    "free_allowances_assumed": false
+  },
+  "remaining_full_workflow_blockers": [
+    "Basic Foundry Agent does not support private Search; own account Sweden Central differs from shared EastUS2 VNet. Standard setup requires Cosmos/dedicated agent subnet/region alignment not present in the listed envelope.",
+    "Actual native dashboard: unique categories3 versus SQL ground truth2; source types3 versus1. COUNT(*) cannot validate a distinct-count label.",
+    "Overbroad anonymization damages prose; file-level processing insights sees first-summary context and overgeneralizes. See manual expected/actual checks.",
+    "Existing /32 public path returned403; preserved unchanged. Control-plane exec works."
+  ],
+  "latest_helper_acknowledgment": {
+    "update": "2026-09-11T22:32:30.361-04:00",
+    "actual_ai_firewall_need_not_yet_established": false,
+    "queue_pe_deferred_for_bounded_json_flow": true,
+    "new_pe_or_pna_change": "One approved own-account PE created; no PNA change.",
+    "new_exec_sessions": 0,
+    "batch_future_exec_checks": true,
+    "respect_retry_after600": true
+  },
+  "safety": {
+    "ui_ip_restriction_atomic_with_public_ingress": true,
+    "api_ingress_internal": true,
+    "public_model_routes_unrestricted": false,
+    "pna_or_policy_weakened": false,
+    "helper_or_pe_limit_bypassed": false,
+    "duplicate_platform_created": false,
+    "automatic_azure_cleanup": false
+  },
+  "native_summary_evidence": "evidence/conversation/summary-review.json",
+  "current_api_image": "acrptubundle7d804f70.azurecr.io/conversation/api@sha256:84ff9d2a31ddf2e71a75d26ca58433ce29e41af0eb46823c0a0c5d5ca4bbcaf0",
+  "native_data_workflow_evidence": "evidence/conversation/data-workflow-review.json",
+  "current_sql_state": "Online",
+  "current_cost": {
+    "currency": "USD",
+    "invoice_measured": false,
+    "fixed_active_review_limit_per_hour": 1.5,
+    "full_max2_sql_basic_four_pes_both_apps_32gb_reference_per_hour": 1.4797652055,
+    "api_only_during_workflow_max_reference_per_hour": 1.4527652055,
+    "model_input_rate_per_million": 1.75,
+    "model_output_rate_per_million": 14,
+    "cumulative_model_token_reference_usd": 0.05975725,
+    "additional_data_workflow_token_reference_usd": 0.04570825,
+    "all_remote_builds_reference_usd": 0.06383540420000001,
+    "search_basic_per_hour": 0.101,
+    "four_private_endpoints_per_hour": 0.04,
+    "sql_per_billed_vcore_hour": 0.62611,
+    "sql_32gb_data_hourly_allowance": 0.0055452055,
+    "baseline_after_sql_actually_pauses_per_hour": 0.1465452055,
+    "baseline_if_sql_billed_at_min05_per_hour": 0.4596002055,
+    "actual_sql_state": "Online",
+    "sql_pause_observed": false,
+    "last_data_connection_check": "2026-09-12T01:18:57.464402-04:00",
+    "auto_pause_minutes": 60,
+    "aca_reported_replicas": 0,
+    "excluded": [
+      "Shared registry/DNS allocation",
+      "Blob capacity/operations",
+      "Network/data processing/egress",
+      "Logs",
+      "SQL backup overage",
+      "Taxes/discount differences"
+    ],
+    "not_ptu_charges": [
+      "SQL",
+      "Search",
+      "Blob",
+      "Private Link",
+      "ACA",
+      "ACR",
+      "CU",
+      "Separate embeddings"
+    ],
+    "serving_remote_build_reference_usd": 0.004624687200000001,
+    "last_possible_sql_access_upper_bound": "2026-09-12T05:24:46.3472084+00:00"
+  },
+  "serving_inference_armed": false,
+  "serving_native_configuration": {
+    "CKM_READ_ONLY": "true",
+    "CKM_INFERENCE_ARMED": "false",
+    "AZURE_CLIENT_ID": "1b458b7e-1768-45a9-b676-9a3245a4dfbe",
+    "APP_ENV": "development",
+    "DATABASE_PROVIDER": "sql",
+    "AZURE_SQL_SERVER": "sql-ptu-conversation-7d804f70.database.windows.net",
+    "AZURE_SQL_DATABASE": "ptu-conversation",
+    "AZURE_STORAGE_ACCOUNT": "stptuconv7d804f70",
+    "AZURE_STORAGE_CONTAINER": "ptu-conversation-documents",
+    "AZURE_SEARCH_ENDPOINT": "https://srch-ptu-conversation-7d804f70.search.windows.net",
+    "AZURE_SEARCH_INDEX_NAME": "ptu-conversation-index",
+    "AZURE_OPENAI_ENDPOINT": "https://aif-ptu-conversation-7d804f70.openai.azure.com",
+    "AZURE_OPENAI_CHAT_DEPLOYMENT": "gpt-5.2",
+    "AZURE_OPENAI_API_VERSION": "2024-10-21",
+    "ENABLE_AUTO_PIPELINE_SELECTION": "false",
+    "ENABLE_EXTERNAL_DATA_SOURCES": "false"
+  },
+  "serving_http_tests": [
+    {
+      "id": "native-deep-health",
+      "expected": "HTTP200/sql ok/search configured",
+      "actual": {
+        "status": 200,
+        "body": {
+          "status": "healthy",
+          "checks": {
+            "sql": "ok",
+            "search": "configured",
+            "cosmos": "unavailable"
+          },
+          "version": "1.0.0"
+        }
+      },
+      "status": "passed"
+    },
+    {
+      "id": "native-automatic-processing-off",
+      "expected": "enabled=false/auto_select=false",
+      "actual": {
+        "enabled": false,
+        "default_pipeline": "full_knowledge_mining",
+        "auto_select": false
+      },
+      "status": "passed"
+    },
+    {
+      "id": "native-http-sql-reload",
+      "expected": "HTTP200/refreshed/one file",
+      "actual": {
+        "status": 200,
+        "body": {
+          "status": "refreshed",
+          "files": 1
+        }
+      },
+      "status": "passed"
+    },
+    {
+      "id": "native-list-three",
+      "expected": [
+        "ptu-conversation-call-001",
+        "ptu-conversation-call-002",
+        "ptu-conversation-call-003"
+      ],
+      "actual": [
+        "ptu-conversation-call-001",
+        "ptu-conversation-call-002",
+        "ptu-conversation-call-003"
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "ptu-conversation-call-001",
+      "expected": {
+        "id": "ptu-conversation-call-001",
+        "original_text_sha256": "978e39d88749facc61740f93bc3791cdf2c9776ac32e4ec33fde2a2d2fb4a7a2"
+      },
+      "actual": {
+        "status": 200,
+        "id": "ptu-conversation-call-001",
+        "original_text_sha256": "978e39d88749facc61740f93bc3791cdf2c9776ac32e4ec33fde2a2d2fb4a7a2"
+      },
+      "status": "passed"
+    },
+    {
+      "id": "ptu-conversation-call-002",
+      "expected": {
+        "id": "ptu-conversation-call-002",
+        "original_text_sha256": "8bd6ddbdfed50698ba957d17825db0974cb318439f9c7c0f012a91ff843347ff"
+      },
+      "actual": {
+        "status": 200,
+        "id": "ptu-conversation-call-002",
+        "original_text_sha256": "8bd6ddbdfed50698ba957d17825db0974cb318439f9c7c0f012a91ff843347ff"
+      },
+      "status": "passed"
+    },
+    {
+      "id": "ptu-conversation-call-003",
+      "expected": {
+        "id": "ptu-conversation-call-003",
+        "original_text_sha256": "e72745011250df76d13151173519d9f7bc8c02999e93117f02a8b3d2804bbab5"
+      },
+      "actual": {
+        "status": 200,
+        "id": "ptu-conversation-call-003",
+        "original_text_sha256": "e72745011250df76d13151173519d9f7bc8c02999e93117f02a8b3d2804bbab5"
+      },
+      "status": "passed"
+    },
+    {
+      "id": "disarmed-/api/processing/summarize",
+      "expected": "Explicit503 without inference or heuristic output",
+      "actual": {
+        "status": 503,
+        "body": {
+          "error": "CKM_INFERENCE_DISARMED",
+          "detail": "Read-only deployment. Inference budget9/9 is closed; automatic processing and mutation routes are disabled.",
+          "inference_armed": false,
+          "model_requests_dispatched": 0
+        }
+      },
+      "status": "passed"
+    },
+    {
+      "id": "disarmed-/api/insights/dashboard",
+      "expected": "Explicit503 without inference or heuristic output",
+      "actual": {
+        "status": 503,
+        "body": {
+          "error": "CKM_INFERENCE_DISARMED",
+          "detail": "Read-only deployment. Inference budget9/9 is closed; automatic processing and mutation routes are disabled.",
+          "inference_armed": false,
+          "model_requests_dispatched": 0
+        }
+      },
+      "status": "passed"
+    },
+    {
+      "id": "disarmed-/api/rag/ask",
+      "expected": "Explicit503 without inference or heuristic output",
+      "actual": {
+        "status": 503,
+        "body": {
+          "error": "CKM_EXPLORE_UNSUPPORTED_AND_DISARMED",
+          "detail": "Read-only deployment. Inference budget9/9 is closed; automatic processing and mutation routes are disabled.",
+          "inference_armed": false,
+          "model_requests_dispatched": 0
+        }
+      },
+      "status": "passed"
+    },
+    {
+      "id": "disarmed-/api/embeddings/index",
+      "expected": "Explicit503 without inference or heuristic output",
+      "actual": {
+        "status": 503,
+        "body": {
+          "error": "CKM_INFERENCE_DISARMED",
+          "detail": "Read-only deployment. Inference budget9/9 is closed; automatic processing and mutation routes are disabled.",
+          "inference_armed": false,
+          "model_requests_dispatched": 0
+        }
+      },
+      "status": "passed"
+    },
+    {
+      "id": "disarmed-/api/documents/analyze",
+      "expected": "Explicit503 without inference or heuristic output",
+      "actual": {
+        "status": 503,
+        "body": {
+          "error": "CKM_INFERENCE_DISARMED",
+          "detail": "Read-only deployment. Inference budget9/9 is closed; automatic processing and mutation routes are disabled.",
+          "inference_armed": false,
+          "model_requests_dispatched": 0
+        }
+      },
+      "status": "passed"
+    },
+    {
+      "id": "disarmed-/api/pipelines/run",
+      "expected": "Explicit503 without inference or heuristic output",
+      "actual": {
+        "status": 503,
+        "body": {
+          "error": "CKM_INFERENCE_DISARMED",
+          "detail": "Read-only deployment. Inference budget9/9 is closed; automatic processing and mutation routes are disabled.",
+          "inference_armed": false,
+          "model_requests_dispatched": 0
+        }
+      },
+      "status": "passed"
+    },
+    {
+      "id": "disarmed-/api/pipelines/automation/config",
+      "expected": "Explicit503 without inference or heuristic output",
+      "actual": {
+        "status": 503,
+        "body": {
+          "error": "CKM_INFERENCE_DISARMED",
+          "detail": "Read-only deployment. Inference budget9/9 is closed; automatic processing and mutation routes are disabled.",
+          "inference_armed": false,
+          "model_requests_dispatched": 0
+        }
+      },
+      "status": "passed"
+    },
+    {
+      "id": "disarmed-/api/ingestion/upload/json",
+      "expected": "Explicit503 without inference or heuristic output",
+      "actual": {
+        "status": 503,
+        "body": {
+          "error": "CKM_INFERENCE_DISARMED",
+          "detail": "Read-only deployment. Inference budget9/9 is closed; automatic processing and mutation routes are disabled.",
+          "inference_armed": false,
+          "model_requests_dispatched": 0
+        }
+      },
+      "status": "passed"
+    }
+  ],
+  "native_serving_evidence": "evidence/conversation/serving-results.json",
+  "historical_component_tests_note": "The tests array retains initial component-only checks. Current health/data/read-only checks are in serving_http_tests."
+}

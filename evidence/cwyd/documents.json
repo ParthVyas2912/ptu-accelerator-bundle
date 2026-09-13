@@ -1,0 +1,37 @@
+{
+  "test": "documents",
+  "method": "GET",
+  "path": "/api/admin/documents",
+  "status": 200,
+  "actual": {
+    "documents": [
+      {
+        "source": "ptu-cwyd-equipment.txt",
+        "chunk_count": 1,
+        "last_modified": "2026-09-12T00:07:51.754441+00:00"
+      },
+      {
+        "source": "ptu-cwyd-learning.txt",
+        "chunk_count": 1,
+        "last_modified": "2026-09-12T00:08:25.146357+00:00"
+      },
+      {
+        "source": "ptu-cwyd-records.txt",
+        "chunk_count": 1,
+        "last_modified": "2026-09-12T00:08:32.368380+00:00"
+      },
+      {
+        "source": "ptu-cwyd-remote.txt",
+        "chunk_count": 1,
+        "last_modified": "2026-09-12T00:08:40.605478+00:00"
+      },
+      {
+        "source": "ptu-cwyd-travel.txt",
+        "chunk_count": 1,
+        "last_modified": "2026-09-12T00:06:05.505330+00:00"
+      }
+    ],
+    "total": 5
+  },
+  "latency_ms": 620.83
+}

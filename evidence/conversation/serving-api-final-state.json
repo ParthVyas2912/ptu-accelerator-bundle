@@ -1,0 +1,144 @@
+{
+  "checked_at": "2026-09-12T05:24:46.3472084+00:00",
+  "app": {
+    "identity": {
+      "type": "UserAssigned",
+      "userAssignedIdentities": {
+        "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourcegroups/rg-ptu-conversation-demo/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id-ptu-conversation": {
+          "clientId": "1b458b7e-1768-45a9-b676-9a3245a4dfbe",
+          "principalId": "b0c36c36-5b9f-4efa-9f01-0e19fb97aa25"
+        }
+      }
+    },
+    "image": "acrptubundle7d804f70.azurecr.io/conversation/api@sha256:84ff9d2a31ddf2e71a75d26ca58433ce29e41af0eb46823c0a0c5d5ca4bbcaf0",
+    "ingress": {
+      "additionalPortMappings": null,
+      "allowInsecure": false,
+      "clientCertificateMode": null,
+      "corsPolicy": null,
+      "customDomains": null,
+      "exposedPort": 0,
+      "external": false,
+      "fqdn": "ca-ptu-conversation-api.internal.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io",
+      "ipSecurityRestrictions": null,
+      "stickySessions": null,
+      "targetPort": 8000,
+      "targetPortHttpScheme": null,
+      "traffic": [
+        {
+          "latestRevision": true,
+          "weight": 100
+        }
+      ],
+      "transport": "Auto"
+    },
+    "latestReady": "ca-ptu-conversation-api--0000009",
+    "mode": "Multiple",
+    "name": "ca-ptu-conversation-api",
+    "scale": {
+      "cooldownPeriod": 300,
+      "maxReplicas": 1,
+      "minReplicas": 0,
+      "pollingInterval": 30,
+      "rules": [
+        {
+          "http": {
+            "auth": [],
+            "metadata": {
+              "concurrentRequests": "5"
+            }
+          },
+          "name": "http"
+        }
+      ]
+    },
+    "state": "Succeeded"
+  },
+  "native_configuration": {
+    "AZURE_OPENAI_API_VERSION": "2024-10-21",
+    "AZURE_SQL_SERVER": "sql-ptu-conversation-7d804f70.database.windows.net",
+    "AZURE_SQL_DATABASE": "ptu-conversation",
+    "AZURE_SEARCH_ENDPOINT": "https://srch-ptu-conversation-7d804f70.search.windows.net",
+    "ENABLE_EXTERNAL_DATA_SOURCES": "false",
+    "CKM_INFERENCE_ARMED": "false",
+    "AZURE_SEARCH_INDEX_NAME": "ptu-conversation-index",
+    "DATABASE_PROVIDER": "sql",
+    "CKM_READ_ONLY": "true",
+    "AZURE_STORAGE_CONTAINER": "ptu-conversation-documents",
+    "APP_ENV": "development",
+    "AZURE_CLIENT_ID": "1b458b7e-1768-45a9-b676-9a3245a4dfbe",
+    "AZURE_OPENAI_CHAT_DEPLOYMENT": "gpt-5.2",
+    "AZURE_OPENAI_ENDPOINT": "https://aif-ptu-conversation-7d804f70.openai.azure.com",
+    "AZURE_STORAGE_ACCOUNT": "stptuconv7d804f70",
+    "ENABLE_AUTO_PIPELINE_SELECTION": "false"
+  },
+  "revisions": [
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-api--cdcg7po",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-api--0000001",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-api--0000002",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-api--0000003",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-api--0000004",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-api--0000005",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-api--0000006",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-api--0000007",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-api--0000008",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-api--serving-ro1",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-api--0000009",
+      "replicas": 0
+    }
+  ],
+  "all_paused": true
+}

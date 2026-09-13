@@ -1,0 +1,272 @@
+{
+  "application": "Conversation Knowledge Mining (CKM)",
+  "currency": "USD",
+  "region": "canadacentral",
+  "source": "https://prices.azure.com/api/retail/prices",
+  "current_cloud_component_cost": {
+    "evidence": "evidence/conversation/data-workflow-review.json",
+    "region": "eastus2",
+    "both_configured_replicas_continuously_active_usd_per_hour": 0.081,
+    "actual_reported_replicas_at_final_check": 0,
+    "phase": "native_private_workflow_evaluated_apps_paused_sql_online_autopause60",
+    "invoice_cost_measured": false,
+    "caveat": "Current four-PE/Basic Search/serverless SQL costs are in current_cost. SQL still Online at final readback; the old0.85 review limit is superseded by1.50."
+  },
+  "retrieved_after_parent_message": "2026-09-11T20:53:50.147-04:00",
+  "queries": [
+    "armRegionName eq 'canadacentral' and serviceName eq 'SQL Database' and contains(productName, 'Serverless') and priceType eq 'Consumption'",
+    "armRegionName eq 'canadacentral' and serviceName eq 'Container Registry' and priceType eq 'Consumption'"
+  ],
+  "additional_pages": false,
+  "selected_meters": [
+    {
+      "productName": "SQL Database General Purpose - Serverless - Compute Gen5",
+      "skuName": "1 vCore",
+      "meterName": "vCore",
+      "retailPrice": 0.62611,
+      "unitOfMeasure": "1 Hour",
+      "effectiveStartDate": "2024-02-01T00:00:00Z"
+    },
+    {
+      "productName": "Container Registry",
+      "skuName": "Standard",
+      "meterName": "Standard Registry Unit",
+      "retailPrice": 0.6666,
+      "unitOfMeasure": "1/Day",
+      "effectiveStartDate": "2018-01-01T00:00:00Z"
+    },
+    {
+      "productName": "Container Registry",
+      "skuName": "Standard",
+      "meterName": "Task vCPU Duration",
+      "retailPrice": 0.0001,
+      "unitOfMeasure": "1 Second",
+      "effectiveStartDate": "2019-04-01T00:00:00Z"
+    }
+  ],
+  "parent_reference_rates": {
+    "search_s1_per_hour_approx": 0.34,
+    "linux_b1_per_hour_approx": 0.02
+  },
+  "native_operating_estimate": {
+    "as_of": "2026-09-11T21:22:54-04:00",
+    "currency": "USD",
+    "region": "canadacentral",
+    "search_basic_per_hour": 0.101,
+    "sql_serverless_per_billed_vcore_hour": 0.62611,
+    "sql_general_purpose_data_per_gb_month": 0.1265,
+    "sql_lrs_pitr_backup_overage_per_gb_month": 0.11,
+    "assumed_sql_data_gb_not_yet_configured": 32,
+    "hours_per_month_for_equivalence": 730,
+    "sql_data_monthly_allowance": 4.048,
+    "sql_data_hourly_equivalent": 0.0055452055,
+    "basic_plus_sql_min1_per_hour_before_storage": 0.72711,
+    "basic_plus_sql_max2_per_hour_before_storage": 1.35322,
+    "basic_plus_sql_min1_and_data_per_hour": 0.7326552055,
+    "basic_plus_sql_max2_and_data_per_hour": 1.3587652055,
+    "basic_plus_sql_paused_and_data_per_hour": 0.1065452055,
+    "fixed_active_baseline_limit": 0.85,
+    "baseline_fits_before_additional_variable_consumption": true,
+    "configured_max2_would_fit_a_hard_peak_limit": false,
+    "additional_variable_costs": [
+      "Blob/Queue capacity and operations",
+      "Applicable SQL backup overage and I/O",
+      "Model input/output/embedding tokens",
+      "Content Understanding",
+      "Egress"
+    ],
+    "excluded_services_not_deployed": [
+      "App Service",
+      "ACR",
+      "ACA",
+      "App Configuration",
+      "New Log Analytics/Application Insights"
+    ],
+    "actual_azure_resources_created": 0,
+    "actual_model_and_cu_calls": 0,
+    "auto_pause_guaranteed": false,
+    "all_in_spending_ceiling": false,
+    "new_public_meters": [
+      {
+        "productName": "Azure AI Search",
+        "skuName": "Basic",
+        "meterName": "Basic Unit",
+        "retailPrice": 0.101,
+        "unitOfMeasure": "1 Hour"
+      },
+      {
+        "productName": "SQL Database Single/Elastic Pool General Purpose - Storage",
+        "skuName": "General Purpose",
+        "meterName": "General Purpose Data Stored",
+        "retailPrice": 0.1265,
+        "unitOfMeasure": "1 GB/Month"
+      },
+      {
+        "productName": "SQL Database Single/Elastic Pool PITR Backup Storage",
+        "skuName": "Backup LRS",
+        "meterName": "LRS Data Stored",
+        "retailPrice": 0.11,
+        "unitOfMeasure": "1 GB/Month"
+      }
+    ],
+    "lookup_notes": "Initial Basic lookup received HTTP429; one bounded delayed retry returned the stated meter. No free/promotional SQL rows were used.",
+    "scope": "Historical native-only proposal before shared ACA/private fallback; its zero-resource/zero-traffic values describe that checkpoint only."
+  },
+  "historical_full_cloud_operating_estimate": {
+    "acr_registry_equivalent_per_hour": 0.027775,
+    "search_plan_registry_per_hour_approx": 0.387775,
+    "with_sql_billed_at_1_vcore_per_hour_approx": 1.013885,
+    "with_sql_billed_at_2_vcores_per_hour_approx": 1.639995,
+    "with_sql_paused_per_hour_approx": 0.387775,
+    "with_sql_active_24_hours_min_approx": 24.33324,
+    "with_sql_active_24_hours_max_approx": 39.35988
+  },
+  "exclusions": [
+    "SQL data storage and applicable backup storage",
+    "ACR task vCPU-seconds and storage overage",
+    "Blob/Queue capacity and operations",
+    "Log ingestion and retention",
+    "Content Understanding",
+    "Model input/output/embedding tokens",
+    "Egress",
+    "Taxes and subscription-specific discounts"
+  ],
+  "caveats": [
+    "Not an all-in spending ceiling.",
+    "Parent Search/B1 reference rates are approximate.",
+    "SQL serverless compute is billed by actual billable compute/memory usage within configured min1/max2, not by request count.",
+    "Auto-pause after 60 minutes is conditional; ongoing application activity can prevent it.",
+    "Free/promotional SQL or ACR task meter rows were not assumed applicable.",
+    "No new infrastructure or PTU purchase is authorized by fetching these prices."
+  ],
+  "actual_native_summary_model_reference": {
+    "source": "https://prices.azure.com/api/retail/prices",
+    "region": "swedencentral",
+    "product": "Azure OpenAI GPT5",
+    "input_sku": "GPT 5.2 inp Gl",
+    "output_sku": "GPT 5.2 opt Gl",
+    "input_usd_per_million": 1.75,
+    "output_usd_per_million": 14.0,
+    "input_reference_usd": 0.001729,
+    "output_reference_usd": 0.01232,
+    "total_reference_usd": 0.014049,
+    "actual_invoice_measured": false,
+    "scope": "Requests1-7 only; cumulative9-request reference is in current_cost."
+  },
+  "actual_separate_infrastructure_reference": {
+    "account_private_endpoint_usd_per_hour": 0.01,
+    "private_endpoint_price_region": "Global",
+    "api_compute_when_warm_usd_per_hour": 0.054,
+    "remote_build_run": "chu",
+    "remote_build_status": "Succeeded",
+    "remote_build_cpu": 2,
+    "remote_build_elapsed_seconds": 96.305683,
+    "remote_build_reference_usd": 0.019261136600000003,
+    "cu_requests": 0,
+    "embedding_inference_requests": 0,
+    "sql_or_search_services_created": false,
+    "not_covered_by_chat_ptus": [
+      "Private Link",
+      "ACA",
+      "ACR builds/storage",
+      "CU",
+      "SQL",
+      "Search",
+      "Storage",
+      "Separate embeddings"
+    ],
+    "scope": "Historical summary-only phase before SQL/Search/Blob creation; use current_cost for final footprint."
+  },
+  "full_private_lower_bound_review": {
+    "assumption": "Actual approved max2 SQL, Basic Search,32GB allowance,4PEs,both ACA replicas; separate consumption/shared allocation excluded",
+    "usd_per_hour": 1.4797652055,
+    "fixed_active_review_limit": 1.5,
+    "within_limit": true,
+    "full_topology_quote": false,
+    "additional_approval_and_cost_review_needed": "Not for this deployed envelope. A different Standard Agent topology is separate."
+  },
+  "current_cost": {
+    "currency": "USD",
+    "invoice_measured": false,
+    "fixed_active_review_limit_per_hour": 1.5,
+    "full_max2_sql_basic_four_pes_both_apps_32gb_reference_per_hour": 1.4797652055,
+    "api_only_during_workflow_max_reference_per_hour": 1.4527652055,
+    "model_input_rate_per_million": 1.75,
+    "model_output_rate_per_million": 14,
+    "cumulative_model_token_reference_usd": 0.05975725,
+    "additional_data_workflow_token_reference_usd": 0.04570825,
+    "all_remote_builds_reference_usd": 0.05921071700000001,
+    "search_basic_per_hour": 0.101,
+    "four_private_endpoints_per_hour": 0.04,
+    "sql_per_billed_vcore_hour": 0.62611,
+    "sql_32gb_data_hourly_allowance": 0.0055452055,
+    "baseline_after_sql_actually_pauses_per_hour": 0.1465452055,
+    "baseline_if_sql_billed_at_min05_per_hour": 0.4596002055,
+    "actual_sql_state": "Online",
+    "sql_pause_observed": false,
+    "last_data_connection_check": "2026-09-12T04:25:38.735333+00:00",
+    "auto_pause_minutes": 60,
+    "aca_reported_replicas": 0,
+    "excluded": [
+      "Shared registry/DNS allocation",
+      "Blob capacity/operations",
+      "Network/data processing/egress",
+      "Logs",
+      "SQL backup overage",
+      "Taxes/discount differences"
+    ],
+    "not_ptu_charges": [
+      "SQL",
+      "Search",
+      "Blob",
+      "Private Link",
+      "ACA",
+      "ACR",
+      "CU",
+      "Separate embeddings"
+    ]
+  },
+  "current_serving_cost": {
+    "currency": "USD",
+    "invoice_measured": false,
+    "fixed_active_review_limit_per_hour": 1.5,
+    "full_max2_sql_basic_four_pes_both_apps_32gb_reference_per_hour": 1.4797652055,
+    "api_only_during_workflow_max_reference_per_hour": 1.4527652055,
+    "model_input_rate_per_million": 1.75,
+    "model_output_rate_per_million": 14,
+    "cumulative_model_token_reference_usd": 0.05975725,
+    "additional_data_workflow_token_reference_usd": 0.04570825,
+    "all_remote_builds_reference_usd": 0.06383540420000001,
+    "search_basic_per_hour": 0.101,
+    "four_private_endpoints_per_hour": 0.04,
+    "sql_per_billed_vcore_hour": 0.62611,
+    "sql_32gb_data_hourly_allowance": 0.0055452055,
+    "baseline_after_sql_actually_pauses_per_hour": 0.1465452055,
+    "baseline_if_sql_billed_at_min05_per_hour": 0.4596002055,
+    "actual_sql_state": "Online",
+    "sql_pause_observed": false,
+    "last_data_connection_check": "2026-09-12T01:18:57.464402-04:00",
+    "auto_pause_minutes": 60,
+    "aca_reported_replicas": 0,
+    "excluded": [
+      "Shared registry/DNS allocation",
+      "Blob capacity/operations",
+      "Network/data processing/egress",
+      "Logs",
+      "SQL backup overage",
+      "Taxes/discount differences"
+    ],
+    "not_ptu_charges": [
+      "SQL",
+      "Search",
+      "Blob",
+      "Private Link",
+      "ACA",
+      "ACR",
+      "CU",
+      "Separate embeddings"
+    ],
+    "serving_remote_build_reference_usd": 0.004624687200000001,
+    "last_possible_sql_access_upper_bound": "2026-09-12T05:24:46.3472084+00:00"
+  }
+}

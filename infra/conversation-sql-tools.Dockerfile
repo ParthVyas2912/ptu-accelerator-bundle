@@ -1,0 +1,2 @@
+FROM acrptubundle7d804f70.azurecr.io/conversation/api@sha256:165cafca5e81e73097f0268b226fc2c2d5f9bb291fae0f216e40dc5dddb57a85
+COPY ckm_sql_identity.py /app/src/api/ckm_sql_identity.py

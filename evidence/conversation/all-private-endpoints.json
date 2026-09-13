@@ -1,0 +1,122 @@
+[
+  {
+    "connections": [
+      {
+        "etag": "W/\"1e1ec1af-2e07-4871-9891-bbcded308662\"",
+        "groupIds": [
+          "account"
+        ],
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateEndpoints/pe-conversation-ai/privateLinkServiceConnections/pe-conversation-ai",
+        "name": "pe-conversation-ai",
+        "privateLinkServiceConnectionState": {
+          "actionsRequired": "None",
+          "description": "Approved",
+          "status": "Approved"
+        },
+        "privateLinkServiceId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.CognitiveServices/accounts/aif-ptu-conversation-7d804f70",
+        "provisioningState": "Succeeded",
+        "resourceGroup": "rg-ptu-bundle-platform",
+        "type": "Microsoft.Network/privateEndpoints/privateLinkServiceConnections"
+      }
+    ],
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateEndpoints/pe-conversation-ai",
+    "name": "pe-conversation-ai",
+    "nics": [
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/networkInterfaces/pe-conversation-ai.nic.e80644cd-9604-414e-bd31-6f593e9c7c1a",
+        "resourceGroup": "rg-ptu-bundle-platform"
+      }
+    ],
+    "state": "Succeeded"
+  },
+  {
+    "connections": [
+      {
+        "etag": "W/\"574220e9-564b-4fda-85af-4ba95324f22f\"",
+        "groupIds": [
+          "blob"
+        ],
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateEndpoints/pe-conversation-blob/privateLinkServiceConnections/pe-conversation-blob",
+        "name": "pe-conversation-blob",
+        "privateLinkServiceConnectionState": {
+          "actionsRequired": "None",
+          "description": "Auto-Approved",
+          "status": "Approved"
+        },
+        "privateLinkServiceId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Storage/storageAccounts/stptuconv7d804f70",
+        "provisioningState": "Succeeded",
+        "resourceGroup": "rg-ptu-bundle-platform",
+        "type": "Microsoft.Network/privateEndpoints/privateLinkServiceConnections"
+      }
+    ],
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateEndpoints/pe-conversation-blob",
+    "name": "pe-conversation-blob",
+    "nics": [
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/networkInterfaces/pe-conversation-blob.nic.3cc18dc1-2f54-4746-a4c1-3bc8175d0c0f",
+        "resourceGroup": "rg-ptu-bundle-platform"
+      }
+    ],
+    "state": "Succeeded"
+  },
+  {
+    "connections": [
+      {
+        "etag": "W/\"99ea563b-ddb4-48bd-9cbf-372f8b20578c\"",
+        "groupIds": [
+          "searchService"
+        ],
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateEndpoints/pe-conversation-search/privateLinkServiceConnections/pe-conversation-search",
+        "name": "pe-conversation-search",
+        "privateLinkServiceConnectionState": {
+          "actionsRequired": "None",
+          "description": "Auto-approved",
+          "status": "Approved"
+        },
+        "privateLinkServiceId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Search/searchServices/srch-ptu-conversation-7d804f70",
+        "provisioningState": "Succeeded",
+        "resourceGroup": "rg-ptu-bundle-platform",
+        "type": "Microsoft.Network/privateEndpoints/privateLinkServiceConnections"
+      }
+    ],
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateEndpoints/pe-conversation-search",
+    "name": "pe-conversation-search",
+    "nics": [
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/networkInterfaces/pe-conversation-search.nic.b62d79fe-4f19-4fe2-9df4-cbd90105456e",
+        "resourceGroup": "rg-ptu-bundle-platform"
+      }
+    ],
+    "state": "Succeeded"
+  },
+  {
+    "connections": [
+      {
+        "etag": "W/\"417e8fa6-f170-4407-8c97-2e458627f880\"",
+        "groupIds": [
+          "sqlServer"
+        ],
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateEndpoints/pe-conversation-sql/privateLinkServiceConnections/pe-conversation-sql",
+        "name": "pe-conversation-sql",
+        "privateLinkServiceConnectionState": {
+          "actionsRequired": "None",
+          "description": "Auto-approved",
+          "status": "Approved"
+        },
+        "privateLinkServiceId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Sql/servers/sql-ptu-conversation-7d804f70",
+        "provisioningState": "Succeeded",
+        "resourceGroup": "rg-ptu-bundle-platform",
+        "type": "Microsoft.Network/privateEndpoints/privateLinkServiceConnections"
+      }
+    ],
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateEndpoints/pe-conversation-sql",
+    "name": "pe-conversation-sql",
+    "nics": [
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/networkInterfaces/pe-conversation-sql.nic.309f79c8-83d6-4871-a3b2-4cf193493710",
+        "resourceGroup": "rg-ptu-bundle-platform"
+      }
+    ],
+    "state": "Succeeded"
+  }
+]

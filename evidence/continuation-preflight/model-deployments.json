@@ -1,0 +1,252 @@
+[
+  {
+    "rg": "rg-ptu-conversation-demo",
+    "account": "aif-ptu-conversation-7d804f70",
+    "loc": "swedencentral",
+    "deployment": "gpt-5.2",
+    "model": "gpt-5.2",
+    "version": "2025-12-11",
+    "sku": "GlobalStandard",
+    "cap": 10
+  },
+  {
+    "rg": "rg-ptu-conversation-demo",
+    "account": "aif-ptu-conversation-7d804f70",
+    "loc": "swedencentral",
+    "deployment": "text-embedding-3-small",
+    "model": "text-embedding-3-small",
+    "version": "1",
+    "sku": "GlobalStandard",
+    "cap": 10
+  },
+  {
+    "rg": "rg-edc-foundry-hack",
+    "account": "edcfoundryhack01",
+    "loc": "canadaeast",
+    "deployment": "gpt-5.1",
+    "model": "gpt-5.1",
+    "version": "2025-11-13",
+    "sku": "GlobalStandard",
+    "cap": 100
+  },
+  {
+    "rg": "rg-edc-foundry-hack",
+    "account": "edcfoundryhack01",
+    "loc": "canadaeast",
+    "deployment": "text-embedding-3-small",
+    "model": "text-embedding-3-small",
+    "version": "1",
+    "sku": "Standard",
+    "cap": 100
+  },
+  {
+    "rg": "rg-edc-foundry-hack",
+    "account": "edcfoundryhack01",
+    "loc": "canadaeast",
+    "deployment": "gpt-4.1-mini",
+    "model": "gpt-4.1-mini",
+    "version": "2025-04-14",
+    "sku": "GlobalStandard",
+    "cap": 100
+  },
+  {
+    "rg": "rg-edc-foundry-hack",
+    "account": "edcfoundryhack01",
+    "loc": "canadaeast",
+    "deployment": "gpt-4.1-mini-guarded",
+    "model": "gpt-4.1-mini",
+    "version": "2025-04-14",
+    "sku": "GlobalStandard",
+    "cap": 20
+  },
+  {
+    "rg": "rg-specsuite-ai-can",
+    "account": "aoai-specsuite-can-1840",
+    "loc": "canadaeast",
+    "deployment": "gpt-4o",
+    "model": "gpt-4o",
+    "version": "2024-11-20",
+    "sku": "Standard",
+    "cap": 150
+  },
+  {
+    "rg": "rg-specsuite-ai-can",
+    "account": "aoai-specsuite-can-1840",
+    "loc": "canadaeast",
+    "deployment": "gpt-4o-review",
+    "model": "gpt-4o",
+    "version": "2024-11-20",
+    "sku": "GlobalStandard",
+    "cap": 300
+  },
+  {
+    "rg": "rg-pexalex",
+    "account": "cog-foundry-cbzmyrtv7w6ja",
+    "loc": "westus3",
+    "deployment": "gpt-4o",
+    "model": "gpt-4o",
+    "version": "2024-11-20",
+    "sku": "Standard",
+    "cap": 140
+  },
+  {
+    "rg": "rg-pexalex",
+    "account": "cog-foundry-cbzmyrtv7w6ja",
+    "loc": "westus3",
+    "deployment": "gpt-4o-mini",
+    "model": "gpt-4.1-mini",
+    "version": "2025-04-14",
+    "sku": "Standard",
+    "cap": 10
+  },
+  {
+    "rg": "rg-pexalex",
+    "account": "cog-foundry-cbzmyrtv7w6ja",
+    "loc": "westus3",
+    "deployment": "text-embedding-3-small",
+    "model": "text-embedding-3-small",
+    "version": "1",
+    "sku": "GlobalStandard",
+    "cap": 30
+  },
+  {
+    "rg": "accel-dkm-20260911",
+    "account": "oai-dkmeval0911a",
+    "loc": "eastus",
+    "deployment": "gpt-5-mini",
+    "model": "gpt-5-mini",
+    "version": "2025-08-07",
+    "sku": "GlobalStandard",
+    "cap": 10
+  },
+  {
+    "rg": "accel-dkm-20260911",
+    "account": "oai-dkmeval0911a",
+    "loc": "eastus",
+    "deployment": "text-embedding-3-large",
+    "model": "text-embedding-3-large",
+    "version": "1",
+    "sku": "GlobalStandard",
+    "cap": 50
+  },
+  {
+    "rg": "hinal-resume-rg",
+    "account": "hinal-openai-12757",
+    "loc": "eastus2",
+    "deployment": "gpt-4o",
+    "model": "gpt-4o",
+    "version": "2024-11-20",
+    "sku": "Standard",
+    "cap": 10
+  },
+  {
+    "rg": "rg-edc-foundry-hack",
+    "account": "edcfoundryhackeus2",
+    "loc": "eastus2",
+    "deployment": "gpt-5.1",
+    "model": "gpt-5.1",
+    "version": "2025-11-13",
+    "sku": "GlobalStandard",
+    "cap": 50
+  },
+  {
+    "rg": "rg-partvyas-3207",
+    "account": "partvyas-3207-resource",
+    "loc": "eastus2",
+    "deployment": "gpt-5.1",
+    "model": "gpt-5.1",
+    "version": "2025-11-13",
+    "sku": "GlobalStandard",
+    "cap": 420
+  },
+  {
+    "rg": "rg-planetaryexplorer",
+    "account": "cog-foundry-mgxvsbslmnvjs",
+    "loc": "eastus2",
+    "deployment": "gpt-4o",
+    "model": "gpt-4o",
+    "version": "2024-11-20",
+    "sku": "Standard",
+    "cap": 10
+  },
+  {
+    "rg": "rg-planetaryexplorer",
+    "account": "cog-foundry-mgxvsbslmnvjs",
+    "loc": "eastus2",
+    "deployment": "gpt-4o-mini",
+    "model": "gpt-4.1-mini",
+    "version": "2025-04-14",
+    "sku": "Standard",
+    "cap": 10
+  },
+  {
+    "rg": "rg-planetaryexplorer",
+    "account": "cog-foundry-mgxvsbslmnvjs",
+    "loc": "eastus2",
+    "deployment": "gpt-5",
+    "model": "gpt-5",
+    "version": "2025-08-07",
+    "sku": "GlobalStandard",
+    "cap": 200
+  },
+  {
+    "rg": "rg-planetaryexplorer",
+    "account": "cog-foundry-mgxvsbslmnvjs",
+    "loc": "eastus2",
+    "deployment": "text-embedding-3-small",
+    "model": "text-embedding-3-small",
+    "version": "1",
+    "sku": "Standard",
+    "cap": 120
+  },
+  {
+    "rg": "rg-ptu-macae-demo",
+    "account": "ptumacae7d804f70",
+    "loc": "eastus2",
+    "deployment": "gpt-5.4",
+    "model": "gpt-5.4",
+    "version": "2026-03-05",
+    "sku": "GlobalStandard",
+    "cap": 10
+  },
+  {
+    "rg": "rg-ptu-macae-demo",
+    "account": "ptumacae7d804f70",
+    "loc": "eastus2",
+    "deployment": "gpt-5.4-mini",
+    "model": "gpt-5.4-mini",
+    "version": "2026-03-17",
+    "sku": "GlobalStandard",
+    "cap": 10
+  },
+  {
+    "rg": "accel-chatbot-eval-0911",
+    "account": "aif-ccptu1feb0911",
+    "loc": "eastus2",
+    "deployment": "gpt-5.4-mini",
+    "model": "gpt-5.4-mini",
+    "version": "2026-03-17",
+    "sku": "GlobalStandard",
+    "cap": 10
+  },
+  {
+    "rg": "accel-chatbot-eval-0911",
+    "account": "aif-ccptu1feb0911",
+    "loc": "eastus2",
+    "deployment": "text-embedding-3-small",
+    "model": "text-embedding-3-small",
+    "version": "1",
+    "sku": "GlobalStandard",
+    "cap": 10
+  },
+  {
+    "rg": "rg-ptu-content-demo",
+    "account": "aif-ptuv-content-260911",
+    "loc": "eastus2",
+    "deployment": "gpt-5.1",
+    "model": "gpt-5.1",
+    "version": "2025-11-13",
+    "sku": "GlobalStandard",
+    "cap": 50
+  }
+]

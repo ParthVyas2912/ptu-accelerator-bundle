@@ -1,0 +1,10 @@
+{
+  "test": "blocked-conversation",
+  "method": "POST",
+  "path": "/api/conversation",
+  "status": 502,
+  "actual": {
+    "detail": "Upstream model error."
+  },
+  "latency_ms": 54835.75
+}

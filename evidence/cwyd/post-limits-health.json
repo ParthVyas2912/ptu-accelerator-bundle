@@ -1,0 +1,18 @@
+{
+  "post_limits_health": [
+    {
+      "url": "http://127.0.0.1:5112/",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8112/api/health",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8112/api/admin/documents",
+      "status": 200
+    }
+  ],
+  "model_attempts": 3,
+  "additional_model_attempts": 0
+}

@@ -1,0 +1,5 @@
+{
+  "observedAtUtc": "2026-09-12T00:29:15.0830203Z",
+  "clientCidr": "174.112.74.34/32",
+  "source": "Local HTTPS public-address lookup; recheck when client egress changes"
+}

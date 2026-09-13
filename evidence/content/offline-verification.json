@@ -1,0 +1,99 @@
+{
+  "recordedUtc": "2026-09-12T03:41:50.362222+00:00",
+  "mode": "offline only; no cloud commands, image builds, model calls or CU calls",
+  "modelRecordCount": 10,
+  "modelRecordsSha256Before": "e8028913511c9377a114de8eb3100a5ebfe94d36d3dba4bffc73ef8840a8b272",
+  "modelRecordsSha256After": "e8028913511c9377a114de8eb3100a5ebfe94d36d3dba4bffc73ef8840a8b272",
+  "schemaPrefix": "Schemas",
+  "schemaChecks": [
+    {
+      "name": "autoclaim.json",
+      "sha256": "0dc17d2e0b602cef3e7ab7d102b76d1901c185d512750c3102833f8b5a71976d",
+      "matchesRecordedVerifiedCopy": true
+    },
+    {
+      "name": "damagedcarimage.json",
+      "sha256": "58a9a4b68dc44b7b9330fae571a305d76699219c9f026060ce21cf4b1d8719e2",
+      "matchesRecordedVerifiedCopy": true
+    },
+    {
+      "name": "policereport.json",
+      "sha256": "e31b8afc90a256185c1c69efcef55698673316c83dd2a30ae099db2a22909aa3",
+      "matchesRecordedVerifiedCopy": true
+    },
+    {
+      "name": "repairestimate.json",
+      "sha256": "2f31b009b87fbea5e44dd6e137326784cf4b1baed986fc2fecf18ec8c7b4e05c",
+      "matchesRecordedVerifiedCopy": true
+    }
+  ],
+  "tokenizer": {
+    "dockerfileSha256": "1ee4b5b5f5ef486e0da397033e1471f5dc24cdb23345813e10d03dab6535cafa",
+    "archivedBuildRun": "chq",
+    "archivedBuildGuardedEvaluatorCheckPassed": true,
+    "recordedLivePoliceReportEvaluationPresent": true,
+    "localAssetAvailableForNewRuntimeCheck": false,
+    "limitation": "No local tokenizer cache was available; no download or new runtime/container test was attempted"
+  },
+  "statusContract": {
+    "references": [
+      {
+        "file": "src/ContentProcessorWorkflow/src/steps/claim_processor.py",
+        "line": 217,
+        "observation": "Completed is assigned on graph output, without aggregating child statuses"
+      },
+      {
+        "file": "src/ContentProcessorWorkflow/src/steps/document_process/executor/document_process_executor.py",
+        "line": 333,
+        "observation": "Per-document errors/exceptions remain results and are forwarded downstream"
+      },
+      {
+        "file": "src/ContentProcessorWorkflow/src/steps/summarize/executor/summarize_executor.py",
+        "line": 132,
+        "observation": "Non-successful documents are explicitly skipped"
+      },
+      {
+        "file": "src/ContentProcessorWorkflow/src/steps/rai/executor/rai_executor.py",
+        "line": 127,
+        "observation": "Non-successful documents are explicitly skipped"
+      },
+      {
+        "file": "src/ContentProcessorWorkflow/src/repositories/model/claim_process.py",
+        "line": 41,
+        "observation": "Documentation describes stages, not an explicit all-child-success guarantee"
+      }
+    ],
+    "decision": "No native status change: all-child-success intent is not explicit enough. Completed is not clean processing acceptance.",
+    "driverChange": "After preserving the raw response, reject a run unless every expected submitted file is present exactly once and Completed",
+    "nativeSourceChanged": false,
+    "nativeOutputsRewritten": false
+  },
+  "regression": {
+    "runner": "unittest",
+    "testFile": "scripts/content-runtime/test_claim_acceptance.py",
+    "testsPassed": 11,
+    "failures": 0,
+    "execution": "948"
+  },
+  "compute": {
+    "changedDuringHold": false,
+    "lastVerifiedStopState": {
+      "recordedUtc": "2026-09-12T02:45:48.620507+00:00",
+      "source": "Fresh guarded ARM replica list, one query per owned service",
+      "resourcesDeleted": [],
+      "requestBudgetReset": false,
+      "api": 0,
+      "processor": 0,
+      "workflow": 0,
+      "web": 0
+    }
+  },
+  "budget": {
+    "hold": true,
+    "used": 10,
+    "currentAllowance": 12,
+    "newAllocationApproved": false,
+    "portfolioCeiling": 100,
+    "allocationSource": "Pending redistribution within existing portfolio ceiling"
+  }
+}

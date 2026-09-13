@@ -1,0 +1,348 @@
+{
+  "app": "Multi-Agent Custom Automation Engine",
+  "evaluationDate": "2026-09-11",
+  "status": "NATIVE_UI_IMAGES_AND_SEARCH_READY_WAITING_FOR_PARENT_PRIVATE_RUNTIME",
+  "recommendation": "Supply shared ACA/ACR/UAMI and private data paths. Search Basic Canada Central succeeded. RFP/contract also requires Foundry hosted-tool private egress to Search and service-side model-call accounting; caller private endpoints alone are insufficient.",
+  "latestEvidenceUtc": "2026-09-12T00:54:00Z",
+  "continuationInfrastructureEvidence": "evidence/macae/continuation-infrastructure.json",
+  "containerPreparationEvidence": "evidence/macae/container-preparation.json",
+  "parentPrivateConnectivityHandoff": "evidence/macae/container-network-handoff.md",
+  "repository": {
+    "url": "https://github.com/microsoft/Multi-Agent-Custom-Automation-Engine-Solution-Accelerator",
+    "path": "C:\\Users\\partvyas\\OneDrive - Microsoft\\Desktop\\repo\\Multi-Agent-Custom-Automation-Engine-Solution-Accelerator",
+    "commit": "8ac703a71f10b622bd3c82a9cc2b5dfe921c3025",
+    "trackedChanges": []
+  },
+  "subscriptionId": "1feb53b2-854a-4ea7-b5a6-709b7d804f70",
+  "tenantId": "a600acd0-3028-4689-8402-3b471d7d924d",
+  "resourcesCreated": [
+    {"name": "rg-ptu-macae-demo", "type": "Resource group", "location": "eastus2"},
+    {"name": "ptumacae7d804f70", "type": "AIServices account", "sku": "S0", "disableLocalAuth": true},
+    {"name": "ptu-macae-project", "type": "Foundry project", "parent": "ptumacae7d804f70"},
+    {"name": "gpt-5.4", "type": "Model deployment", "version": "2026-03-05", "sku": "GlobalStandard", "capacity": 10},
+    {"name": "gpt-5.4-mini", "type": "Model deployment", "version": "2026-03-17", "sku": "GlobalStandard", "capacity": 10},
+    {"name": "ptu-macae-7d804f70-cosmos", "type": "Cosmos NoSQL", "sku": "Serverless", "regionCount": 1, "publicNetworkAccess": "Disabled", "disableLocalAuth": true},
+    {"name": "ptu-macae", "type": "Cosmos database", "parent": "ptu-macae-7d804f70-cosmos"},
+    {"name": "memory", "type": "Cosmos container", "partitionKey": "/session_id", "parent": "ptu-macae"},
+    {"name": "ptumacae7d804f70st", "type": "StorageV2", "sku": "Standard_LRS", "accessTier": "Hot", "publicNetworkAccess": "Disabled", "allowSharedKeyAccess": false},
+    {"name": "ptu-macae-rfp", "type": "Private Blob container", "parent": "ptumacae7d804f70st"},
+    {"name": "ptu-macae-contract", "type": "Private Blob container", "parent": "ptumacae7d804f70st"},
+    {"name": "ptu-macae-7d804f70-srch", "type": "Azure AI Search", "location": "canadacentral", "sku": "basic", "replicas": 1, "partitions": 1, "semanticSearch": "free", "disableLocalAuth": true, "publicNetworkAccess": "Disabled", "fixedRetailUsdPerHour": 0.101}
+  ],
+  "resourcesModified": [
+    {"scope": "new Foundry project", "change": "Foundry User role for lab principal", "assignmentId": "1e851a0e-bf2b-4145-862e-1b1183683012"},
+    {"scope": "new Foundry account", "change": "Cognitive Services OpenAI User role for lab principal", "assignmentId": "a8a44f93-86ef-4527-a83f-96b55880fbc1"},
+    {"scope": "new Cosmos database only", "change": "Cosmos Built-in Data Contributor role for lab principal", "assignmentId": "6ea7b8fb-c56f-403a-87ff-245f8a89ea5e"},
+    {"scope": "new RFP Blob container only", "change": "Storage Blob Data Contributor role for lab principal", "assignmentId": "2facee2d-1d1c-4ca7-b26a-dd4430986fe7"},
+    {"scope": "new contract Blob container only", "change": "Storage Blob Data Contributor role for lab principal", "assignmentId": "563eb9cb-3e74-40f4-b72d-ba56092dce2e"}
+  ],
+  "existingSharedResourcesModifiedByMacae": [],
+  "failedResourceCreations": [
+    {"name": "ptu-macae-7d804f70-srch", "sku": "Basic", "replicas": 1, "partitions": 1, "location": "eastus2", "error": "InsufficientResourcesAvailable", "resourcePresentAfterFailedAttempt": false, "subsequentApprovedFallback": "Successfully created in Canada Central"}
+  ],
+  "resourcesReusedForInference": [],
+  "resourcesInspected": [
+    {
+      "name": "edcfoundryhack01",
+      "resourceGroup": "rg-edc-foundry-hack",
+      "location": "canadaeast",
+      "project": "edc-hack-proj",
+      "deployedModels": [
+        {"deployment": "gpt-5.1", "model": "gpt-5.1", "version": "2025-11-13", "sku": "GlobalStandard", "capacity": 100},
+        {"deployment": "gpt-4.1-mini", "model": "gpt-4.1-mini", "version": "2025-04-14", "sku": "GlobalStandard", "capacity": 100},
+        {"deployment": "gpt-4.1-mini-guarded", "model": "gpt-4.1-mini", "version": "2025-04-14", "sku": "GlobalStandard", "capacity": 20},
+        {"deployment": "text-embedding-3-small", "model": "text-embedding-3-small", "version": "1", "sku": "Standard", "capacity": 100}
+      ],
+      "decision": "No inference reuse: required GPT-5.4 and GPT-5.4-mini deployments absent; endpoint configured for native startup only"
+    }
+  ],
+  "runtime": [
+    {
+      "component": "native backend",
+      "status": "RUNNING_ATTACHED",
+      "endpoint": "http://127.0.0.1:8111",
+      "apiPrefix": "/api/v4",
+      "shellId": "macae-backend-approved",
+      "shellPid": null,
+      "serverPid": 15244,
+      "workingDirectory": "src/backend",
+      "command": "scripts/Start-Macae.ps1 -Component backend",
+      "configuration": "New dedicated Foundry/Cosmos endpoints; Entra-only; persistent 12-call evaluation meter. Native frontend_server.py mounted after backend API routes using an external ASGI runner; unchanged source. Loopback only."
+    },
+    {
+      "component": "native MCP",
+      "status": "RUNNING_ATTACHED",
+      "endpoint": "http://127.0.0.1:5111",
+      "verifiedDomainEndpoint": "http://127.0.0.1:5111/hr/mcp",
+      "shellId": "macae-mcp-restarted",
+      "shellPid": null,
+      "serverPid": 13380,
+      "workingDirectory": "src/mcp_server",
+      "command": "scripts/Start-Macae.ps1 -Component mcp",
+      "configuration": "HOST=127.0.0.1; PORT=5111; FASTMCP_ENABLE_TELEMETRY=false; no cloud image or blob endpoints configured"
+    },
+    {
+      "component": "frontend",
+      "status": "RUNNING_GENUINE_UI_BROWSER_RENDER_VERIFIED",
+      "endpoint": "http://127.0.0.1:8111/",
+      "serverPid": 15244,
+      "source": "%LOCALAPPDATA%/ptu-eval/macae-ui-source/src/App",
+      "reason": "Resolved initial OneDrive install stall using same-commit sparse checkout and isolated dependencies outside OneDrive. Native npm build succeeded; Edge UI HTTP200 with no page errors. Team empty state is not workflow success."
+    }
+  ],
+  "setupAndTestCommands": [
+    {"command": "git clone https://github.com/microsoft/Multi-Agent-Custom-Automation-Engine-Solution-Accelerator <repository.path>", "result": "PASS"},
+    {"command": "python -m venv %LOCALAPPDATA%/ptu-eval/macae-backend; python -m pip install uv; uv sync --project <repo>/src/backend --active --frozen", "shellId": "56", "result": "PASS", "note": "Without VIRTUAL_ENV set, uv created isolated src/backend/.venv. No secrets written there."},
+    {"command": "UV_PROJECT_ENVIRONMENT=%LOCALAPPDATA%/ptu-eval/macae-mcp uv sync --project <repo>/src/mcp_server --frozen --extra dev", "shellId": "85", "result": "PASS"},
+    {"command": "npm ci --no-fund --ignore-scripts", "workingDirectory": "src/App", "shellId": "55", "result": "STOPPED_WITHOUT_COMPLETION"},
+    {"command": "node node_modules/typescript/bin/tsc --noEmit", "workingDirectory": "src/App", "shellId": "macae-frontend-typecheck", "result": "STOPPED_WITHOUT_COMPLETION"},
+    {"command": "python -m pytest src/tests/backend -m 'not integration' -q --disable-warnings --maxfail=5", "shellId": "macae-backend-tests", "result": "STOPPED_DURING_SLOW_IMPORTS", "note": "No full-suite result claimed"},
+    {"command": "src/backend/.venv/Scripts/python.exe -m pytest src/tests/backend/common/utils/test_utils_date.py src/tests/backend/middleware/test_health_check.py src/tests/backend/models/test_messages.py src/tests/backend/orchestration/test_plan_review_helpers.py -q --disable-warnings --maxfail=5", "shellId": "macae-focused-tests-corrected", "result": "PASS", "passed": 123, "warnings": 1, "durationSeconds": 16.17},
+    {"command": "az cognitiveservices model list --subscription <subscriptionId> -l eastus2", "result": "PASS_READ_ONLY", "note": "Filtered to required native text models"},
+    {"command": "az cognitiveservices usage list --subscription <subscriptionId> -l eastus2", "result": "PASS_READ_ONLY", "note": "GlobalStandard GPT-5.4 and GPT-5.4-mini each current 0 / limit 1000"},
+    {"command": "docker image ls; inspect repository Dockerfiles", "result": "INVESTIGATED_NOT_BUILT", "note": "Container route still requires native Foundry and Cosmos; no protected images used"},
+    {"command": "git clone --no-checkout --shared <repo> %LOCALAPPDATA%/ptu-eval/macae-ui-source; git sparse-checkout set src/App; git checkout 8ac703a71f10b622bd3c82a9cc2b5dfe921c3025", "result": "PASS"},
+    {"command": "npm ci --ignore-scripts --no-audit --no-fund --maxsockets=4", "workingDirectory": "%LOCALAPPDATA%/ptu-eval/macae-ui-source/src/App", "result": "PASS", "packages": 631, "durationApproxMinutes": 6},
+    {"command": "NODE_OPTIONS=--max-old-space-size=2048 npm run build", "workingDirectory": "%LOCALAPPDATA%/ptu-eval/macae-ui-source/src/App", "result": "PASS", "modules": 2608, "viteBuildSeconds": 64, "warnings": "Empty vendor chunk and chunks over500kB"},
+    {"command": "scripts/macae-functional-test.py seed-hr", "result": "BLOCKED_EXTERNAL_FIREWALL", "httpStatus": 500, "underlyingCosmosStatus": 403, "evidence": "evidence/macae/hr-seed.json"},
+    {"command": "Playwright headless Edge visit http://127.0.0.1:8111/", "result": "PASS_UI_RENDER_ONLY", "httpStatus": 200, "pageErrors": 0, "evidence": "evidence/macae/ui-browser.json"},
+    {"command": "scripts/Stop-Macae.ps1 -Component mcp; scripts/Start-Macae.ps1 -Component mcp", "result": "PASS_STOP_AND_RESTART", "stoppedPid": 8396, "restartedPid": 13380},
+    {"command": "Offline HTTPX MockTransport guard tests, including chunked response.completed SSE", "result": "PASS", "coverage": "sync/async returned token capture; persistent request13 rejection; streaming usage capture", "liveCalls": 0}
+  ],
+  "historicalHttpEvidencePhase": "The following original HTTP measurements predate approved resource creation; current continuation measurements are separately recorded.",
+  "httpEvidence": [
+    {"path": "/openapi.json", "httpStatus": 200, "latencyMs": 95.27, "actual": "Native FastAPI schema exposes /api/v4/process_request, plan_approval, team configuration and clarification routes"},
+    {"path": "/api/v4/team_configs", "httpStatus": 500, "latencyMs": 272.46, "actual": "Internal server error occurred; mandatory Cosmos endpoint absent"},
+    {"path": "/api/v4/process_request", "workflow": "onboarding", "sessionId": "ptu-macae-onboarding", "httpStatus": 400, "latencyMs": 9.24, "actual": "Error retrieving team configuration: Invalid URL scheme or hostname: SplitResult(scheme='', netloc='', path='', query='', fragment='')"},
+    {"path": "/api/v4/process_request", "workflow": "rfp", "sessionId": "ptu-macae-rfp", "httpStatus": 400, "latencyMs": 4.37, "actual": "Error retrieving team configuration: Invalid URL scheme or hostname: SplitResult(scheme='', netloc='', path='', query='', fragment='')"},
+    {"path": "/api/v4/process_request", "workflow": "contract", "sessionId": "ptu-macae-contract", "httpStatus": 400, "latencyMs": 4.51, "actual": "Error retrieving team configuration: Invalid URL scheme or hostname: SplitResult(scheme='', netloc='', path='', query='', fragment='')"}
+  ],
+  "functionalTests": [
+    {
+      "name": "Employee onboarding",
+      "input": "Synthetic test: onboard Alex Example, HR manager, start date 2026-10-01; do not perform real external actions.",
+      "expected": "HR and IT agent routing, coherent plan and human approval",
+      "actual": "Initial process_request failed without Cosmos; after approved provisioning, native HR pack upload reaches real Cosmos but returns HTTP500 with underlying Cosmos403 firewall denial. No team saved and no onboarding model call reached.",
+      "status": "BLOCKED",
+      "modelCalls": 0
+    },
+    {
+      "name": "RFP review",
+      "input": "Synthetic RFP: Acme Example requires Canada-only storage, audit logging, and 99.9 percent availability. Proposal contains no audit evidence. Identify missing evidence and consolidate a recommendation.",
+      "expected": "Specialist analysis identifies missing audit evidence and consolidates recommendation",
+      "actual": "Initial HTTP400 is historical. Canada Central Search Basic fallback succeeded. Grounding remains unverified pending private Blob/runtime connectivity, Foundry-hosted KB tool egress to private Search, and server-side model-call accounting.",
+      "status": "BLOCKED",
+      "modelCalls": 0
+    },
+    {
+      "name": "Three-conflict contract review with approval",
+      "input": "Synthetic contract policy requires Canada-only data storage, retention no more than 30 days, and human approval before payment. Contract specifies US-only storage, 365-day retention, and automatic payment without approval. Identify exactly these three conflicts and require human approval.",
+      "expected": "Identify all three explicit conflicts and require human approval",
+      "actual": "Initial HTTP400 is historical. Search capacity is resolved by Canada Central Basic fallback; private runtime and Foundry hosted-tool connectivity remain blocked. No conflict analysis or human approval reached.",
+      "status": "BLOCKED",
+      "modelCalls": 0
+    },
+    {
+      "name": "Unavailable tool",
+      "input": "tools/call ptu_macae_unavailable_tool",
+      "expected": "Explicit tool failure, no fabricated success",
+      "actual": "HTTP 200 MCP envelope with isError=true and Unknown tool: 'ptu_macae_unavailable_tool'",
+      "latencyMs": 20.79,
+      "status": "PASS_MCP_COMPONENT_ONLY",
+      "modelCalls": 0,
+      "limitation": "Agent/orchestrator degraded-path behavior remains unverified"
+    },
+    {
+      "name": "Repeatability",
+      "input": "get_workflow_blueprint with workflow=employee_onboarding repeated three times",
+      "expected": "Same native HR blueprint",
+      "actual": "Three HTTP 200/isError=false responses, 1136 characters each, identical SHA256",
+      "responseSha256": "68d26951a659e8a249777d1be25ecbb5b4725d6aec5ef6d8c9e02e126cf119c1",
+      "latenciesMs": [4.28, 5.38, 5.44],
+      "status": "PASS_DETERMINISTIC_TOOL_ONLY",
+      "limitation": "These are not three LLM plans and do not verify cross-session isolation",
+      "modelCalls": 0
+    }
+  ],
+  "mcpEvidence": {
+    "protocol": "2025-03-26",
+    "server": "MACAE-hr",
+    "version": "3.2.0",
+    "initializationHttpStatus": 200,
+    "initializationLatencyMs": 78.72,
+    "toolsListHttpStatus": 200,
+    "toolsListLatencyMs": 6.27,
+    "discoveredTools": 9,
+    "totalJsonRpcRequests": 10,
+    "toolCalls": 7,
+    "validBlueprintCalls": 3,
+    "unknownToolCalls": 1,
+    "incorrectArgumentCalls": 3,
+    "testerCorrection": "Initial harness used workflow_name rather than discovered workflow argument. All three returned isError=true validation errors. Corrected calls succeeded; no repository patch needed.",
+    "warning": "Catch-all MCP logs duplicate get_workflow_blueprint; tested domain-scoped /hr/mcp, not mixed-domain catch-all."
+  },
+  "modelTelemetry": {
+    "liveModelRequestAllowance": 12,
+    "liveModelRequestsIncludingRetries": 0,
+    "requests": [],
+    "inputTokens": null,
+    "outputTokens": null,
+    "cacheTokens": null,
+    "inferenceHttpStatus": null,
+    "inferenceLatencyMs": null,
+    "explanation": "No inference reached; no token or model-latency values estimated. Native app HTTP/MCP latencies are recorded separately.",
+    "ptuUtilization": "NOT_MEASURED_NO_PROVISIONED_DEPLOYMENT",
+    "additionalAllowanceRequested": false
+  },
+  "proposedInfrastructure": {
+    "status": "APPROVED_PHASE_A_AND_B_CREATED_SEARCH_CANADA_CENTRAL_FALLBACK_SUCCEEDED",
+    "approvalReceived": "2026-09-11T19:54:50-04:00",
+    "immediateApprovalPhase": "MACAE Phase A: native HR onboarding only",
+    "resourceGroup": "rg-ptu-macae-demo",
+    "location": "eastus2",
+    "exactPhaseAResourceNames": {
+      "foundryAccount": "ptumacae7d804f70",
+      "foundryProject": "ptu-macae-project",
+      "textDeployments": ["gpt-5.4", "gpt-5.4-mini"],
+      "cosmosAccount": "ptu-macae-7d804f70-cosmos",
+      "cosmosDatabase": "ptu-macae",
+      "cosmosContainer": "memory"
+    },
+    "nameAvailability": "Approved named resources created; Search fallback name preflight was available before successful allocation",
+    "phaseAExclusions": ["Azure compute", "ACR", "Search", "Blob Storage", "Image models", "PTUs", "Reservations", "Quota increases", "Shared-resource modifications", "azd up"],
+    "phaseABilling": "Standard-model inference plus Cosmos Serverless RU consumption and storage; supplied Canada Central prices are not used as an East US 2 quote",
+    "phaseBScope": "Parent approved US/Canadian Search Basic fallback. Canada Central Basic1x1 semantic-free succeeded with PNA Disabled; Blob already created. No SKU escalation.",
+    "tags": {"workload": "accelerator-eval", "owner": "parth", "environment": "mcaps-nonprod", "accelerator": "macae", "protected": "false"},
+    "hrMinimum": [
+      {"service": "Foundry account and project", "sku": "S0", "authentication": "Azure identity"},
+      {"service": "GPT-5.4 deployment", "version": "2026-03-05", "sku": "GlobalStandard", "capacity": 10, "quotaCurrent": 0, "quotaLimit": 1000},
+      {"service": "GPT-5.4-mini deployment", "version": "2026-03-17", "sku": "GlobalStandard", "capacity": 10, "quotaCurrent": 0, "quotaLimit": 1000},
+      {"service": "Cosmos DB NoSQL", "sku": "Serverless", "database": "ptu-macae", "container": "memory", "partitionKey": "/session_id", "localAuth": false}
+    ],
+    "rfpContractAdditions": [
+      {"service": "Blob Storage", "sku": "Standard_LRS", "dataObjectPrefix": "ptu-macae-", "billing": "Storage and transactions"},
+      {"service": "Azure AI Search", "sku": "Basic", "replicas": 1, "partitions": 1, "semanticTier": "free", "dataObjectPrefix": "ptu-macae-", "billing": "Fixed Search unit charges and applicable knowledge retrieval charges"},
+      {"service": "Foundry/Search identity connections, knowledge sources and knowledge bases", "sku": "Applicable feature billing; validate before seeding"}
+    ],
+    "compute": "Native localhost remains running. Official images and one-app three-container Consumption ACA template prepared (1vCPU/2GiB total, max1replica) against parent-supplied shared platform. No ACA/ACR/network created by MACAE.",
+    "modelCapacityNote": "Capacity 10 is catalog default; catalog minimum is null, so absolute minimum is not asserted. No quota increase requested.",
+    "rbac": "Five parent-authorized least-privilege assignments created on new project/account/database/containers only; exact roles and scopes in continuation-infrastructure.json",
+    "sharedSearch": "Not reused; no compatible existing-resource Search deployment parameter proven"
+  },
+  "defaultStackRejected": {
+    "frontend": "App Service B3, 1 instance",
+    "backend": "Container Apps Consumption, 2 CPU/4GiB, min=max replicas 1",
+    "mcp": "Container Apps Consumption, 2 CPU/4GiB, min=max replicas 1",
+    "registry": "ACR Basic",
+    "search": "Basic, 1 replica/partition",
+    "database": "Cosmos DB Serverless",
+    "storage": "Standard_LRS",
+    "monitoring": "Log Analytics PerGB2018 and App Insights",
+    "modelCapacities": {"gpt-5.4-mini": 100, "gpt-5.4": 150, "gpt-image-1.5": 5},
+    "reasons": [
+      "Creates model deployments even for existing Foundry project",
+      "App region allowlist excludes Canada",
+      "External MCP ingress configured with authentication disabled",
+      "WAF post-deploy path temporarily modifies public network settings",
+      "Unnecessary fixed B3/ACR/Search and minimum-replica compute costs for local first pass"
+    ]
+  },
+  "perFeaturePtuAndInfrastructure": [
+    {"feature": "RAI and scope evaluation", "ptuRequired": false, "modelDependence": "Model-backed checks; compatible inference required, PTU optional", "separateInfrastructure": ["Foundry project", "Cosmos"], "status": "NOT_REACHED", "liveModelCalls": 0},
+    {"feature": "Planning, manager routing, progress and synthesis", "ptuRequired": false, "modelDependence": "Repeated model turns; provisioned capacity applicable only if eligible calls explicitly route there", "separateInfrastructure": ["Foundry project", "Cosmos", "Backend hosting"], "status": "BLOCKED", "liveModelCalls": 0},
+    {"feature": "HR and IT specialists", "ptuRequired": false, "modelDependence": "Native GPT-5.4 specialists and GPT-5.4-mini manager", "separateInfrastructure": ["Cosmos", "MCP hosting", "Real downstream HR/IT integrations if implemented"], "status": "WORKFLOW_BLOCKED_BLUEPRINT_TOOL_VERIFIED", "liveModelCalls": 0},
+    {"feature": "RFP grounded review", "ptuRequired": false, "modelDependence": "Specialist and possible retrieval model calls require separate trace attribution", "separateInfrastructure": ["Search Basic", "Blob Storage", "Knowledge bases and sources", "Foundry identity connections", "Cosmos"], "status": "BLOCKED", "liveModelCalls": 0},
+    {"feature": "Contract conflict reasoning", "ptuRequired": false, "modelDependence": "Reasoning uses inference; human approval is separate from inference", "separateInfrastructure": ["Search Basic", "Blob Storage", "Foundry identity connections", "Cosmos"], "status": "BLOCKED", "liveModelCalls": 0},
+    {"feature": "MCP tools and unavailable-tool errors", "ptuRequired": false, "modelDependence": "None for tested deterministic tools; surrounding agent turns can use models", "separateInfrastructure": ["MCP hosting", "Downstream APIs where implemented"], "status": "COMPONENT_VERIFIED", "liveModelCalls": 0},
+    {"feature": "Human approval and clarification transport", "ptuRequired": false, "modelDependence": "No inference for approval/wait/transport itself; generated questions and resumed agents may call models", "separateInfrastructure": ["Frontend/backend", "WebSockets", "Cosmos", "Audit telemetry"], "status": "END_TO_END_UNVERIFIED", "liveModelCalls": 0},
+    {"feature": "UI, persistence, authentication and operations", "ptuRequired": false, "modelDependence": "No direct inference dependence", "separateInfrastructure": ["App hosting", "Cosmos", "Entra", "App Insights/Log Analytics", "Backups", "Deployment tooling"], "status": "PARTIAL_OR_UNVERIFIED", "liveModelCalls": 0}
+  ],
+  "ptuSizingReference": {
+    "url": "https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/provisioned-throughput-sizing",
+    "retrievedDate": "2026-09-11",
+    "relevantModelsListed": ["gpt-5.1", "gpt-4.1-mini", "gpt-5.4", "gpt-5.4-mini"],
+    "conclusion": "PTU is optional, not a feature prerequisite. Use model/version/deployment-specific sizing, measured request rates, input/output tokens and cache rate, and applicable minimum/increments. No universal tokens-per-PTU conversion.",
+    "limitations": "No provisioned deployment tested, no representative inference traffic measured, and no PTU sizing calculation performed. Model PTU support does not prove accelerator compatibility or regional provisioned capacity.",
+    "capacityClarification": "Proposed GlobalStandard capacity 10 per text deployment is not 10 PTUs."
+  },
+  "sharedGovernanceUpdate": {
+    "reportedDate": "2026-09-11",
+    "source": "Coordinator update",
+    "foundryDisableLocalAuth": true,
+    "authentication": "Entra DefaultAzureCredential/AzureCliCredential only; never keys or enable local auth",
+    "sharedSearch": {"name": "edc-hack-search", "sku": "Basic", "partitions": 1, "replicas": 1, "reuseApproved": false},
+    "protectedInventory": "evidence/protected-resources.json",
+    "protectedInventoryEntriesVerified": 100,
+    "azureCliGuard": "Invoke-LabAz.ps1 -AzArguments <string[]>",
+    "guardDoesNotApproveBilling": true,
+    "proposalAppName": "MACAE"
+  },
+  "additionalPreflight": {
+    "source": "Coordinator update",
+    "azdVersion": "1.23.7",
+    "azdAuthenticationCheck": "Succeeded per coordinator",
+    "repoAzdRequirement": ">=1.18.0 !=1.23.9",
+    "azdUpdateRequired": false,
+    "hostRamGb": 31.7,
+    "reportedFreeRamGb": 12,
+    "dockerLimitGb": 15.5,
+    "macaeDockerBuildsOrEmulatorsRunning": false,
+    "largeFrontendTasks": "Stopped",
+    "pricingCaveat": "Coordinator reference retail rates are Canada Central; no East US 2 price or total spend asserted"
+  },
+  "productionFit": {
+    "inferencePath": "Native FoundryChatClient with Responses-oriented agent framework; RAI safety check, scope gate, manager planning/progress, specialists, tool follow-up and final synthesis can each call models",
+    "workflowCallCounts": {"onboarding": 0, "rfp": 0, "contract": 0},
+    "futureCounts": "Dynamic, unmeasured; max_rounds=30 and max_stall_count=5 are not request budgets. Instrument SDK transport and enforce a hard request limit before live end-to-end testing.",
+    "ptuFit": "Potentially high repeated orchestration demand if steady production traffic and supported provisioned models justify capacity; no actual PTU savings/utilization demonstrated",
+    "separateBills": ["Cosmos RU/storage", "Blob storage/transactions", "AI Search capacity and feature usage", "Foundry hosted tooling where applicable", "Container/App Service compute if cloud-hosted", "ACR", "Telemetry", "Network transfer"],
+    "limitations": [
+      "Native HR tools inspected produce formatted demonstration responses, not real HR-system transactions",
+      "Human approval and cross-session isolation not verified end to end",
+      "RFP/contract knowledge grounding unverified",
+      "In-memory orchestration checkpoints require reliability assessment",
+      "Authentication, restricted ingress, actionable monitoring, backup/restore and rollback gates required before production",
+      "No DND/JDCP accreditation or data-residency claim"
+    ]
+  },
+  "approachesInvestigated": [
+    "Native documented three-service startup: backend and MCP started and real API/tool requests made; native Cosmos and required Foundry deployments remain mandatory",
+    "Native documented azd/Bicep existing-project route: inspected templates/hooks and quota; rejected uncontrolled model creation/network changes/fixed-cost stack",
+    "Documented local Docker route: inspected Dockerfiles; still depends on same mandatory cloud services and no compatible prebuilt MACAE image available locally"
+  ],
+  "coordination": {
+    "parentWriteAgentAttempt": "c8c8bae2-323d-48a1-885a-c8b48309976b",
+    "result": "No agent found",
+    "siblingRelay": "5d640c9b-ff0f-4eb1-9496-173b7e8def79",
+    "earlyProposal": "reports/macae.md",
+    "nestedAgentsLaunched": 0,
+    "routingResolved": "Parent reads proposals when agent ends turn; owner session UUID is not a messageable agent ID",
+    "specificApprovalReceived": "2026-09-11T19:54:50-04:00"
+  },
+  "reproducibility": {
+    "startBackendAndUi": "powershell -File scripts/Start-Macae.ps1 -Component backend",
+    "startMcpSeparateTerminal": "powershell -File scripts/Start-Macae.ps1 -Component mcp",
+    "stop": "powershell -File scripts/Stop-Macae.ps1 -Component all",
+    "requires": "Existing az login in authorized tenant/subscription; completed isolated dependency installs; no secrets in files",
+    "processStateLocation": "%LOCALAPPDATA%/ptu-eval/macae-state",
+    "modelBudget": "Persistent SQLite-backed 12-call cap; restart does not reset allowance. No live requests recorded.",
+    "compositionAdaptation": "External runner mounts unchanged native frontend_server.py on unchanged native backend ASGI app, so UI/API share8111 and MCP uses5111. This is deployment composition, not substitute app logic.",
+    "remoteKnowledgeBaseBudget": "Remote KB reasoning calls are blocked by evaluation guard until separately meterable/coordinated, since server-side model calls are not observable as individual HTTPX client requests."
+  },
+  "externalBlockers": [
+    {"component": "Cosmos/private runtime", "evidence": "PNA Disabled; native team save rejected403; parent shared network/ACA/ACR/UAMI not yet supplied", "requiredDecision": "Provide private runtime connection and identity; preserve policy"},
+    {"component": "Blob and Search data path", "evidence": "Both PNA Disabled; Search capacity now resolved in Canada Central", "requiredDecision": "Parent private endpoints and DNS; native ingestion from actual runtime"},
+    {"component": "Foundry hosted KB-tool egress", "evidence": "Native KB MCP executes server-side. Caller VNet PEs do not provide hosted-tool egress to private Search. Learn warns BYO injection is create-time.", "requiredDecision": "Verify supported private outbound path compatible with existing account/model reuse; no policy bypass or replacement proxy"},
+    {"component": "Remote KB model accounting", "evidence": "Service-side reasoning calls are not individual observable HTTPX client calls", "requiredDecision": "Establish aggregate accounting before enabling RFP/contract inference; max12 remains"}
+  ],
+  "guardrails": {
+    "protectedResourcesTouched": false,
+    "credentialsSaved": false,
+    "ptuPurchased": false,
+    "capacityIncreased": false,
+    "destructiveAzureCleanup": false,
+    "securityPolicyBypass": false,
+    "syntheticInputsOnly": true,
+    "localListenerAddresses": ["127.0.0.1"]
+  }
+}

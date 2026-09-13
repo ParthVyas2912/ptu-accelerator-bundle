@@ -1,0 +1,21 @@
+{
+  "case": "qa-corpus",
+  "attempted": true,
+  "request": {
+    "question": "Compare the 2025 and 2026 Cedar Bay policies: annual training days in each, the increase in days and percent, and which policy supersedes which. Cite both source documents.",
+    "documents": []
+  },
+  "response_captured": false,
+  "application_http_status": null,
+  "console_error": {
+    "type": "UnicodeEncodeError",
+    "encoding": "cp1252",
+    "character": "U+2212",
+    "position": 884,
+    "path": "Azure CLI containerapp _ssh_utils.py read_ssh / _decode_and_output_to_terminal"
+  },
+  "repeat_performed": false,
+  "expected_but_not_verified": "2025=10 days;2026=15 days;increase5 days/50%;2026 supersedes2025;citations to both.",
+  "assessment": "Attempted, output capture blocked. Cannot grade actual answer or its citations. Do not substitute expected facts for the missing app response.",
+  "transport_fix": "Future test harness persists JSON inside the frontend container before emitting lossless ASCII JSON Unicode escapes; this cannot recover the already-lost response."
+}

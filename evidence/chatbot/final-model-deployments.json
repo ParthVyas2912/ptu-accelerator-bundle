@@ -1,0 +1,18 @@
+[
+  {
+    "capacity": 10,
+    "model": "gpt-5.4-mini",
+    "name": "gpt-5.4-mini",
+    "sku": "GlobalStandard",
+    "state": "Succeeded",
+    "version": "2026-03-17"
+  },
+  {
+    "capacity": 10,
+    "model": "text-embedding-3-small",
+    "name": "text-embedding-3-small",
+    "sku": "GlobalStandard",
+    "state": "Succeeded",
+    "version": "1"
+  }
+]

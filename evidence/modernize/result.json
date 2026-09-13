@@ -1,0 +1,1265 @@
+{
+  "accelerator": "Modernize Your Code",
+  "status": "cloud_deployed_real_api_worker_batch_pass_browser_unverified_paused",
+  "cloud_fallback": {
+    "approval_received": "2026-09-11T20:51:01-04:00",
+    "platform_ready_confirmed": true,
+    "deployed": true,
+    "request_manifest": "shared-platform-request.json",
+    "private_link_group_ids_verified": true,
+    "official_source_contexts": "container-build-contexts.json",
+    "build_session": "modernize-container-build-mirror",
+    "build_resource_cap": "2GiB, 2CPU, sequential builds",
+    "source_dockerfiles": [
+      "src/backend/Dockerfile",
+      "src/frontend/Dockerfile"
+    ],
+    "backend_cpu_memory": "0.5 vCPU / 1GiB",
+    "frontend_cpu_memory": "0.25 vCPU / 0.5GiB",
+    "maximum_replicas_per_service": 1,
+    "new_public_model_ingress": false,
+    "duplicate_vnet_environment_registry_created": false,
+    "public_network_access_remains_disabled": true,
+    "runtime_guard_and_managed_identity_adapter": "Verified: 9 offline and Linux unit tests; real private Blob ETag read/write and cross-process persisted accounting",
+    "not_unchanged_native_deployment": true,
+    "private_endpoints": "Succeeded/Approved; actual private DNS and data access passed from cloud container",
+    "identity_evidence": "cloud-identities.json",
+    "budget_unit_tests_passed": 9,
+    "public_ingress_client_cidr": "174.112.74.34/32",
+    "image_evidence": "cloud-images.json",
+    "batch_evidence": "cloud-e2e.json",
+    "run_step_evidence": "cloud-run-audit.json",
+    "paused_state": {
+      "noAzureResourcesDeleted": true,
+      "apps": [
+        {
+          "maxReplicas": 1,
+          "name": "ca-ptu-modernize-api",
+          "minReplicas": 0,
+          "replicas": [],
+          "state": "Succeeded",
+          "revision": "ca-ptu-modernize-api--0000001",
+          "resources": {
+            "cpu": 0.5,
+            "ephemeralStorage": "2Gi",
+            "memory": "1Gi"
+          },
+          "ingress": {
+            "additionalPortMappings": null,
+            "allowInsecure": false,
+            "clientCertificateMode": null,
+            "corsPolicy": null,
+            "customDomains": null,
+            "exposedPort": 0,
+            "external": true,
+            "fqdn": "ca-ptu-modernize-api.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io",
+            "ipSecurityRestrictions": [
+              {
+                "action": "Allow",
+                "description": "Parent-approved MCAPS evaluator client only",
+                "ipAddressRange": "174.112.74.34/32",
+                "name": "approved-single-client"
+              }
+            ],
+            "stickySessions": null,
+            "targetPort": 8000,
+            "targetPortHttpScheme": null,
+            "traffic": [
+              {
+                "latestRevision": true,
+                "weight": 100
+              }
+            ],
+            "transport": "Auto"
+          },
+          "replicaCount": 0,
+          "revisionActive": false
+        },
+        {
+          "maxReplicas": 1,
+          "name": "ca-ptu-modernize-ui",
+          "minReplicas": 0,
+          "replicas": [],
+          "state": "Succeeded",
+          "revision": "ca-ptu-modernize-ui--wjo1usj",
+          "resources": {
+            "cpu": 0.25,
+            "ephemeralStorage": "1Gi",
+            "memory": "0.5Gi"
+          },
+          "ingress": {
+            "additionalPortMappings": null,
+            "allowInsecure": false,
+            "clientCertificateMode": null,
+            "corsPolicy": null,
+            "customDomains": null,
+            "exposedPort": 0,
+            "external": true,
+            "fqdn": "ca-ptu-modernize-ui.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io",
+            "ipSecurityRestrictions": [
+              {
+                "action": "Allow",
+                "description": "Parent-approved MCAPS evaluator client only",
+                "ipAddressRange": "174.112.74.34/32",
+                "name": "approved-single-client"
+              }
+            ],
+            "stickySessions": null,
+            "targetPort": 3000,
+            "targetPortHttpScheme": null,
+            "traffic": [
+              {
+                "latestRevision": true,
+                "weight": 100
+              }
+            ],
+            "transport": "Auto"
+          },
+          "replicaCount": 0,
+          "revisionActive": true
+        }
+      ],
+      "observedAt": "2026-09-11T21:31:33.0134656-04:00",
+      "inferenceDisarmed": true
+    }
+  },
+  "full_deployment": true,
+  "repository": {
+    "url": "https://github.com/microsoft/Modernize-your-code-solution-accelerator",
+    "path": "C:\\Users\\partvyas\\OneDrive - Microsoft\\Desktop\\repo\\Modernize-your-code-solution-accelerator",
+    "branch": "main",
+    "commit": "7592ea97550fb711d7d8b64186875967d574c5d5",
+    "describe": "v1.9.1-57-g7592ea9",
+    "commit_date": "2026-08-27T20:37:31+05:30",
+    "tracked_source_modified": true,
+    "modifications": [
+      "Three-line false-success fix in convert_script.py",
+      "Focused regression tests in convert_script_test.py"
+    ]
+  },
+  "azure": {
+    "subscription_id": "1feb53b2-854a-4ea7-b5a6-709b7d804f70",
+    "tenant_id": "a600acd0-3028-4689-8402-3b471d7d924d",
+    "reused_resource_group": "rg-edc-foundry-hack",
+    "reused_account": "edcfoundryhack01",
+    "reused_project": "edc-hack-proj",
+    "region": "canadaeast",
+    "deployment": "gpt-5.1",
+    "model_version": "2025-11-13",
+    "model_sku": "GlobalStandard",
+    "disable_local_auth": true,
+    "authentication": "Entra only; Azure CLI runtime identity; no keys",
+    "azure_cli_guard_verified": "Invoke-LabAz.ps1 -AzArguments string[]",
+    "expanded_protected_inventory_read": true,
+    "parent_account_inference_role": {
+      "role": "Cognitive Services OpenAI User",
+      "role_definition_id": "5e0bd9bd-7b93-4f28-af87-19fc36ad61bd",
+      "assignment_id": "4df8a697-fc79-448a-8f0f-54f90020f5d3",
+      "scope": "edcfoundryhack01 account",
+      "executed_by": "parent",
+      "duplicate_created_by_modernize": false,
+      "evidence": "../preflight/inference-role-assignment.json"
+    },
+    "search_required_or_used": false,
+    "model_capacity_unchanged": 100,
+    "created_billable_infrastructure": [
+      {
+        "name": "stptumodernize0911pv",
+        "type": "StorageV2",
+        "sku": "Standard_LRS",
+        "access_tier": "Hot",
+        "region": "canadacentral",
+        "status": "Succeeded",
+        "public_network_access": "Disabled",
+        "allow_shared_key_access": false,
+        "allow_blob_public_access": false,
+        "container": "ptu-modernize-files"
+      },
+      {
+        "name": "cosmos-ptu-modernize-0911",
+        "type": "Cosmos NoSQL",
+        "capacity_mode": "Serverless",
+        "region": "canadacentral",
+        "status": "Failed regional access / capacity; retained, not deleted"
+      },
+      {
+        "name": "cosmos-ptu-modernize-eus20911",
+        "type": "Cosmos NoSQL",
+        "capacity_mode": "Serverless",
+        "region": "eastus2",
+        "region_count": 1,
+        "status": "Succeeded",
+        "public_network_access": "Disabled",
+        "disable_local_auth": true,
+        "database": "ptu-modernize",
+        "containers": [
+          {
+            "name": "ptu-modernize-batches",
+            "partition_key": "/batch_id"
+          },
+          {
+            "name": "ptu-modernize-files",
+            "partition_key": "/file_id"
+          },
+          {
+            "name": "ptu-modernize-logs",
+            "partition_key": "/log_id"
+          }
+        ]
+      },
+      {
+        "name": "ca-ptu-modernize-api",
+        "type": "Container App",
+        "sku": "Consumption",
+        "region": "eastus2",
+        "status": "Deployed; revision paused; zero replicas"
+      },
+      {
+        "name": "ca-ptu-modernize-ui",
+        "type": "Container App",
+        "sku": "Consumption",
+        "region": "eastus2",
+        "status": "Deployed; min0; zero replicas"
+      },
+      {
+        "name": "pe-modernize-cosmos",
+        "type": "Private Endpoint",
+        "region": "eastus2",
+        "status": "Succeeded/Approved"
+      },
+      {
+        "name": "pe-modernize-blob",
+        "type": "Private Endpoint",
+        "region": "eastus2",
+        "status": "Succeeded/Approved"
+      }
+    ],
+    "protected_resources_called_or_changed": false,
+    "resource_deletions": [],
+    "additive_role_assignment": {
+      "role": "Foundry User",
+      "role_definition_id": "53ca6127-db72-4b80-b1b0-d745d6d5456d",
+      "assignment_id": "b0431624-b61b-53a6-9c75-10638628e3b6",
+      "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-edc-foundry-hack/providers/Microsoft.CognitiveServices/accounts/edcfoundryhack01/projects/edc-hack-proj",
+      "principal": "current Azure CLI user",
+      "arm_http_status": 201,
+      "source_reference": "infra/main.bicep documented Foundry User role",
+      "actual_shared_access_control_modification": true,
+      "executed_by": "Modernize agent",
+      "authorization_basis": "Initial contract allowed documented additive RBAC for explicitly permitted nonprotected Foundry reuse",
+      "separate_affirmative_parent_approval_received": false,
+      "macae_authorized_or_executed": false,
+      "broader_permission_or_resource_approval_inferred": false
+    },
+    "created_agent": {
+      "id": "asst_sRbr9hYitxfDBEkQ4JB5hNcU",
+      "name": "ptu-modernize-migrator-eval",
+      "synthetic_threads": 4,
+      "details": "migrator-protocol.json"
+    },
+    "proposal_status": "Approved persistence, regional fallback and shared-platform cloud fallback implemented; private data-plane and real API batch passed.",
+    "created_resource_group": {
+      "name": "rg-ptu-modernize-demo",
+      "location": "canadacentral"
+    },
+    "persistence_setup": {
+      "cosmosDatabase": "ptu-modernize",
+      "residencyLimitation": "US data persistence is for synthetic MCAPS tests only, not DND residency approval.",
+      "blobRole": {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-modernize-demo/providers/Microsoft.Storage/storageAccounts/stptumodernize0911pv/blobServices/default/containers/ptu-modernize-files/providers/Microsoft.Authorization/roleAssignments/ef21d753-052a-4fe7-83bd-c48c5e8dfeeb",
+        "roleDefinitionId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/providers/Microsoft.Authorization/roleDefinitions/ba92f5b4-2d11-453d-a403-e96b0029c9fe",
+        "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-modernize-demo/providers/Microsoft.Storage/storageAccounts/stptumodernize0911pv/blobServices/default/containers/ptu-modernize-files"
+      },
+      "app": "Modernize Your Code",
+      "fallbackApproval": "Parent East US 2 fallback approval 2026-09-11T20:11:19-04:00",
+      "subscription": "1feb53b2-854a-4ea7-b5a6-709b7d804f70",
+      "credentialsPersisted": false,
+      "cosmosRole": {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-modernize-demo/providers/Microsoft.DocumentDB/databaseAccounts/cosmos-ptu-modernize-eus20911/sqlRoleAssignments/474c6a70-aeea-4bc3-8998-b3bbdb943a24",
+        "roleDefinitionId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-modernize-demo/providers/Microsoft.DocumentDB/databaseAccounts/cosmos-ptu-modernize-eus20911/sqlRoleDefinitions/00000000-0000-0000-0000-000000000002",
+        "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-modernize-demo/providers/Microsoft.DocumentDB/databaseAccounts/cosmos-ptu-modernize-eus20911/dbs/ptu-modernize"
+      },
+      "storageAccount": "stptumodernize0911pv",
+      "resourceGroup": "rg-ptu-modernize-demo",
+      "cosmosAccount": "cosmos-ptu-modernize-eus20911",
+      "approval": "Parent explicit approval received 2026-09-11T19:58:57-04:00"
+    },
+    "residency_limitation": "US persistence/compute applies only to synthetic MCAPS testing, not DND residency approval; GlobalStandard is not a Canada-only inference guarantee.",
+    "native_agent_ids": [
+      {
+        "name": "migrator",
+        "id": "asst_lE2jgy5lQ5mA32OnzDzDWytv"
+      },
+      {
+        "name": "picker",
+        "id": "asst_cVzracBg0beK8UabQfpL8P0Q"
+      },
+      {
+        "name": "syntax_checker",
+        "id": "asst_ELlp0pOo19EVmgayUsLx9XRs"
+      },
+      {
+        "name": "fixer",
+        "id": "asst_9cvftkZGdMRvEiHL7dymJnfu"
+      },
+      {
+        "name": "semantic_verifier",
+        "id": "asst_JhlEpuStkSJAK9gZQ6c6S8lZ"
+      }
+    ],
+    "retained_previous_agent_sets": [
+      [
+        {
+          "name": "migrator",
+          "id": "asst_8VNsR0mJjofhKiT7XU1DkFZx"
+        },
+        {
+          "name": "picker",
+          "id": "asst_OMl3MBTmn2QeXKapSMPzdmaR"
+        },
+        {
+          "name": "syntax_checker",
+          "id": "asst_WojGyGwOZZsy2bXrTsWaJlSO"
+        },
+        {
+          "name": "fixer",
+          "id": "asst_aEN5cqdpBqmW274nAjbPsFhm"
+        },
+        {
+          "name": "semantic_verifier",
+          "id": "asst_MWNo5bRtmPDiiyW4GRTAtcbP"
+        }
+      ]
+    ],
+    "network_changes_on_new_accounts_only": {
+      "request": "one source-IP-only public access enable request per new successful persistence account",
+      "actual": "IP rules added, but management-group modify policies retained Disabled on both",
+      "policy_bypassed_or_exempted": false,
+      "source_ip": "20.236.11.102",
+      "shared_foundry_network_changed": false
+    },
+    "cloud_identities_and_roles": {
+      "frontendPullOnlyIdentity": {
+        "clientId": "4003ea2e-242b-4914-9947-a051a7e46e10",
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourcegroups/rg-ptu-modernize-demo/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id-ptu-modernize-ui",
+        "isolationScope": "None",
+        "location": "eastus2",
+        "name": "id-ptu-modernize-ui",
+        "principalId": "90fa0bc5-1a22-482d-b2e9-99a8d60d7299",
+        "resourceGroup": "rg-ptu-modernize-demo",
+        "systemData": null,
+        "tags": {},
+        "tenantId": "a600acd0-3028-4689-8402-3b471d7d924d",
+        "type": "Microsoft.ManagedIdentity/userAssignedIdentities"
+      },
+      "cosmosRole": {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-modernize-demo/providers/Microsoft.DocumentDB/databaseAccounts/cosmos-ptu-modernize-eus20911/sqlRoleAssignments/a327bda2-f3d0-4ee4-af7f-5ffc4f9dc2b3",
+        "name": "a327bda2-f3d0-4ee4-af7f-5ffc4f9dc2b3",
+        "principalId": "ca046adc-801d-4813-a1fe-518ce527ac4b",
+        "resourceGroup": "rg-ptu-modernize-demo",
+        "roleDefinitionId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-modernize-demo/providers/Microsoft.DocumentDB/databaseAccounts/cosmos-ptu-modernize-eus20911/sqlRoleDefinitions/00000000-0000-0000-0000-000000000002",
+        "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-modernize-demo/providers/Microsoft.DocumentDB/databaseAccounts/cosmos-ptu-modernize-eus20911/dbs/ptu-modernize",
+        "type": "Microsoft.DocumentDB/databaseAccounts/sqlRoleAssignments"
+      },
+      "assignments": [
+        {
+          "role": "ba92f5b4-2d11-453d-a403-e96b0029c9fe",
+          "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-modernize-demo/providers/Microsoft.Storage/storageAccounts/stptumodernize0911pv/blobServices/default/containers/ptu-modernize-files/providers/Microsoft.Authorization/roleAssignments/45dcd667-f055-4ce5-95c0-ab789f97b3b0",
+          "principalId": "ca046adc-801d-4813-a1fe-518ce527ac4b",
+          "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-modernize-demo/providers/Microsoft.Storage/storageAccounts/stptumodernize0911pv/blobServices/default/containers/ptu-modernize-files"
+        },
+        {
+          "role": "53ca6127-db72-4b80-b1b0-d745d6d5456d",
+          "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-edc-foundry-hack/providers/Microsoft.CognitiveServices/accounts/edcfoundryhack01/projects/edc-hack-proj/providers/Microsoft.Authorization/roleAssignments/650a2aa6-8b6a-4448-9d29-ea2ac2be4e6c",
+          "principalId": "ca046adc-801d-4813-a1fe-518ce527ac4b",
+          "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-edc-foundry-hack/providers/Microsoft.CognitiveServices/accounts/edcfoundryhack01/projects/edc-hack-proj"
+        },
+        {
+          "role": "5e0bd9bd-7b93-4f28-af87-19fc36ad61bd",
+          "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-edc-foundry-hack/providers/Microsoft.CognitiveServices/accounts/edcfoundryhack01/providers/Microsoft.Authorization/roleAssignments/2e6c5b53-aed4-474f-a8bd-260c23dcbe2a",
+          "principalId": "ca046adc-801d-4813-a1fe-518ce527ac4b",
+          "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-edc-foundry-hack/providers/Microsoft.CognitiveServices/accounts/edcfoundryhack01"
+        },
+        {
+          "role": "7f951dda-4ed3-4680-a7ca-43fe172d538d",
+          "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.ContainerRegistry/registries/acrptubundle7d804f70/providers/Microsoft.Authorization/roleAssignments/48927b15-251c-41d1-8318-d8d0d0115e5b",
+          "principalId": "ca046adc-801d-4813-a1fe-518ce527ac4b",
+          "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.ContainerRegistry/registries/acrptubundle7d804f70"
+        },
+        {
+          "role": "7f951dda-4ed3-4680-a7ca-43fe172d538d",
+          "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.ContainerRegistry/registries/acrptubundle7d804f70/providers/Microsoft.Authorization/roleAssignments/21214226-520d-4a1a-8fdc-469255760e39",
+          "principalId": "90fa0bc5-1a22-482d-b2e9-99a8d60d7299",
+          "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.ContainerRegistry/registries/acrptubundle7d804f70"
+        }
+      ],
+      "backendIdentity": {
+        "clientId": "c61fbd63-e98b-4ea2-83ff-628afbe2cfae",
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourcegroups/rg-ptu-modernize-demo/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id-ptu-modernize",
+        "isolationScope": "None",
+        "location": "eastus2",
+        "name": "id-ptu-modernize",
+        "principalId": "ca046adc-801d-4813-a1fe-518ce527ac4b",
+        "resourceGroup": "rg-ptu-modernize-demo",
+        "systemData": null,
+        "tags": {},
+        "tenantId": "a600acd0-3028-4689-8402-3b471d7d924d",
+        "type": "Microsoft.ManagedIdentity/userAssignedIdentities"
+      },
+      "approval": "Parent shared-platform ready / scoped MI and AcrPull approval 2026-09-11T20:54:31-04:00",
+      "app": "Modernize Your Code"
+    },
+    "private_endpoints": {
+      "app": "Modernize Your Code",
+      "deployment": "ptu-modernize-private-endpoints",
+      "resourceGroup": "rg-ptu-bundle-platform",
+      "status": "Succeeded",
+      "helper": "scripts/Add-LabPrivateEndpoints.ps1",
+      "parameters": "private-endpoints.parameters.json",
+      "privateEndpointIds": [
+        "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateEndpoints/pe-modernize-cosmos",
+        "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateEndpoints/pe-modernize-blob"
+      ],
+      "publicNetworkAccessChanged": false,
+      "privateDNSAndDataAccessFromCloudContainerVerified": true,
+      "limitation": "ARM private endpoint success is not full application or data-plane success."
+    },
+    "shared_platform": {
+      "resource_group": "rg-ptu-bundle-platform",
+      "environment": "cae-ptu-bundle",
+      "region": "eastus2",
+      "profile": "Consumption",
+      "registry": "acrptubundle7d804f70",
+      "registry_sku": "Basic",
+      "created_by": "parent",
+      "duplicated_by_modernize": false
+    },
+    "cloud_application_resources": [
+      {
+        "maxReplicas": 1,
+        "name": "ca-ptu-modernize-api",
+        "minReplicas": 0,
+        "replicas": [],
+        "state": "Succeeded",
+        "revision": "ca-ptu-modernize-api--0000001",
+        "resources": {
+          "cpu": 0.5,
+          "ephemeralStorage": "2Gi",
+          "memory": "1Gi"
+        },
+        "ingress": {
+          "additionalPortMappings": null,
+          "allowInsecure": false,
+          "clientCertificateMode": null,
+          "corsPolicy": null,
+          "customDomains": null,
+          "exposedPort": 0,
+          "external": true,
+          "fqdn": "ca-ptu-modernize-api.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io",
+          "ipSecurityRestrictions": [
+            {
+              "action": "Allow",
+              "description": "Parent-approved MCAPS evaluator client only",
+              "ipAddressRange": "174.112.74.34/32",
+              "name": "approved-single-client"
+            }
+          ],
+          "stickySessions": null,
+          "targetPort": 8000,
+          "targetPortHttpScheme": null,
+          "traffic": [
+            {
+              "latestRevision": true,
+              "weight": 100
+            }
+          ],
+          "transport": "Auto"
+        },
+        "replicaCount": 0,
+        "revisionActive": false
+      },
+      {
+        "maxReplicas": 1,
+        "name": "ca-ptu-modernize-ui",
+        "minReplicas": 0,
+        "replicas": [],
+        "state": "Succeeded",
+        "revision": "ca-ptu-modernize-ui--wjo1usj",
+        "resources": {
+          "cpu": 0.25,
+          "ephemeralStorage": "1Gi",
+          "memory": "0.5Gi"
+        },
+        "ingress": {
+          "additionalPortMappings": null,
+          "allowInsecure": false,
+          "clientCertificateMode": null,
+          "corsPolicy": null,
+          "customDomains": null,
+          "exposedPort": 0,
+          "external": true,
+          "fqdn": "ca-ptu-modernize-ui.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io",
+          "ipSecurityRestrictions": [
+            {
+              "action": "Allow",
+              "description": "Parent-approved MCAPS evaluator client only",
+              "ipAddressRange": "174.112.74.34/32",
+              "name": "approved-single-client"
+            }
+          ],
+          "stickySessions": null,
+          "targetPort": 3000,
+          "targetPortHttpScheme": null,
+          "traffic": [
+            {
+              "latestRevision": true,
+              "weight": 100
+            }
+          ],
+          "transport": "Auto"
+        },
+        "replicaCount": 0,
+        "revisionActive": true
+      }
+    ]
+  },
+  "endpoints": {
+    "live_foundry_project": "https://edcfoundryhack01.services.ai.azure.com/api/projects/edc-hack-proj",
+    "api_version": "2025-05-01",
+    "local_api": "http://127.0.0.1:8114",
+    "local_ui": "http://127.0.0.1:5114",
+    "ui_http_status": 200,
+    "ui_config_http_status": 200,
+    "api_health_http_status": 200,
+    "initial_agent_startup": "First attempt failed transient DNS; one retry succeeded, all five original SQL agents initialized",
+    "public_application_exposed": false,
+    "native_agents_initialized": true,
+    "cosmos_history_http_status": 200,
+    "cosmos_underlying_http_status": null,
+    "local_listen_addresses": [
+      "127.0.0.1:8114",
+      "127.0.0.1:5114"
+    ],
+    "model_route_ingress": "loopback only; original development auth mode unsuitable for public hosting",
+    "cloud_api": "https://ca-ptu-modernize-api.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io",
+    "cloud_ui": "https://ca-ptu-modernize-ui.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io",
+    "local_api_running": false,
+    "local_ui_running": false,
+    "in_container_api_health_http_status": 200,
+    "in_container_cosmos_history_http_status": 200,
+    "external_evaluator_api_http_status": 403,
+    "external_evaluator_ui_http_status": 403,
+    "public_model_route_restriction": "Only174.112.74.34/32 permitted; additionally durable model gate disarmed",
+    "current_api_revision_active": false,
+    "actual_running_app_replicas": 0,
+    "cloud_cosmos_data_access": "Real operations succeeded; individual SDK response status headers were not separately captured",
+    "historical_local_cosmos_history_http_status": 500
+  },
+  "processes": [
+    {
+      "shell_id": "modernize-deps",
+      "status": "completed exit 0; official requirements installed",
+      "mode": "attached",
+      "venv": "%LOCALAPPDATA%\\ptu-modernize-venv",
+      "command": "python -m venv <venv>; <venv>\\Scripts\\python.exe -m pip install -r <repo>\\src\\backend\\requirements.txt"
+    },
+    {
+      "shell_id": "modernize-ui-build",
+      "status": "completed successfully; npm ci 486 packages; vite build 5936 modules in 11m47s",
+      "mode": "attached",
+      "command": "cd <repo>\\src\\frontend; npm ci --no-audit --no-fund; npm run build"
+    },
+    {
+      "shell_id": "modernize-protocol-eval",
+      "status": "completed",
+      "command": "python <bundle>\\scripts\\modernize_migrator_protocol_eval.py",
+      "scope": "Migrator protocol reproduction only"
+    },
+    {
+      "shell_id": "modernize-frontend",
+      "status": "stopped after migration to approved cloud runtime",
+      "mode": "attached",
+      "command": "API_URL=http://127.0.0.1:8114 ENABLE_AUTH=false <venv>/python -m uvicorn frontend_server:app --host 127.0.0.1 --port 5114 --workers 1",
+      "pid": 34380
+    },
+    {
+      "shell_id": "modernize-backend",
+      "status": "stopped after migration to approved cloud runtime",
+      "pid": 28980,
+      "mode": "attached",
+      "command": "<venv>/python <bundle>/scripts/modernize_native.py",
+      "persistence": "actual approved Azure clients, not recording/mock substitutes"
+    },
+    {
+      "scope": "cloud",
+      "app_states": [
+        {
+          "maxReplicas": 1,
+          "name": "ca-ptu-modernize-api",
+          "minReplicas": 0,
+          "replicas": [],
+          "state": "Succeeded",
+          "revision": "ca-ptu-modernize-api--0000001",
+          "resources": {
+            "cpu": 0.5,
+            "ephemeralStorage": "2Gi",
+            "memory": "1Gi"
+          },
+          "ingress": {
+            "additionalPortMappings": null,
+            "allowInsecure": false,
+            "clientCertificateMode": null,
+            "corsPolicy": null,
+            "customDomains": null,
+            "exposedPort": 0,
+            "external": true,
+            "fqdn": "ca-ptu-modernize-api.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io",
+            "ipSecurityRestrictions": [
+              {
+                "action": "Allow",
+                "description": "Parent-approved MCAPS evaluator client only",
+                "ipAddressRange": "174.112.74.34/32",
+                "name": "approved-single-client"
+              }
+            ],
+            "stickySessions": null,
+            "targetPort": 8000,
+            "targetPortHttpScheme": null,
+            "traffic": [
+              {
+                "latestRevision": true,
+                "weight": 100
+              }
+            ],
+            "transport": "Auto"
+          },
+          "replicaCount": 0,
+          "revisionActive": false
+        },
+        {
+          "maxReplicas": 1,
+          "name": "ca-ptu-modernize-ui",
+          "minReplicas": 0,
+          "replicas": [],
+          "state": "Succeeded",
+          "revision": "ca-ptu-modernize-ui--wjo1usj",
+          "resources": {
+            "cpu": 0.25,
+            "ephemeralStorage": "1Gi",
+            "memory": "0.5Gi"
+          },
+          "ingress": {
+            "additionalPortMappings": null,
+            "allowInsecure": false,
+            "clientCertificateMode": null,
+            "corsPolicy": null,
+            "customDomains": null,
+            "exposedPort": 0,
+            "external": true,
+            "fqdn": "ca-ptu-modernize-ui.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io",
+            "ipSecurityRestrictions": [
+              {
+                "action": "Allow",
+                "description": "Parent-approved MCAPS evaluator client only",
+                "ipAddressRange": "174.112.74.34/32",
+                "name": "approved-single-client"
+              }
+            ],
+            "stickySessions": null,
+            "targetPort": 3000,
+            "targetPortHttpScheme": null,
+            "traffic": [
+              {
+                "latestRevision": true,
+                "weight": 100
+              }
+            ],
+            "transport": "Auto"
+          },
+          "replicaCount": 0,
+          "revisionActive": true
+        }
+      ],
+      "runbook": "../../reports/modernize-cloud-runbook.md"
+    }
+  ],
+  "usage": {
+    "model_requests": 10,
+    "initial_model_request_cap": 12,
+    "current_model_request_cap": 10,
+    "remaining_requests": 0,
+    "evaluation_allocation_closed": true,
+    "reallocated_unused_attempts": 2,
+    "reallocation_recipient": "MACAE",
+    "budget_custody_evidence": "budget-allocation.json",
+    "new_explicit_budget_required_for_start_or_evaluation": true,
+    "remote_ledger_cap_last_observed": 12,
+    "remote_ledger_updated_for_reallocation": false,
+    "remote_ledger_update_limitation": "Private Blob requires in-VNet data access; paused compute was not reactivated for this custody-only update. Historical headroom is not authorization; inference remains disarmed.",
+    "input_tokens": 13203,
+    "output_tokens": 2264,
+    "total_tokens": 15467,
+    "cached_input_tokens": 0,
+    "cached_token_source": "usage.prompt_token_details.cached_tokens",
+    "retries": 0,
+    "model_http_statuses": [
+      200,
+      200,
+      200,
+      200,
+      200,
+      200,
+      200,
+      200,
+      200,
+      200
+    ],
+    "model_errors": 0,
+    "model_429": 0,
+    "model_5xx": 0,
+    "prior_non_model_authentication_errors": [
+      401,
+      401
+    ],
+    "client_elapsed_seconds": [
+      36.875,
+      28.031,
+      27.031,
+      28.078
+    ],
+    "latency_definition": "thread creation, run polling and result retrieval; not pure model inference",
+    "raw_usage_evidence": "migrator-protocol.json",
+    "actual_ptu_utilization_measured": false,
+    "native_model_requests": 0,
+    "protocol_component_model_requests": 4,
+    "raw_native_ledger": "native-model-events.json",
+    "full_native_batch_processing_started": true,
+    "cloud_model_http_requests": 6,
+    "completed_service_runs": 9,
+    "cloud_completed_service_runs": 5,
+    "cloud_input_tokens": 8149,
+    "cloud_output_tokens": 930,
+    "cloud_cached_input_tokens": 0,
+    "full_native_batch_classification": "Adapted official cloud API/worker, not unchanged local native or browser E2E",
+    "cloud_processing_seconds": 39.06,
+    "cloud_end_to_end_api_seconds": 44.148,
+    "cloud_run_durations_seconds": [
+      8,
+      4,
+      3,
+      6,
+      4
+    ],
+    "cloud_request_header_seconds": [
+      1.431,
+      0.721,
+      0.691,
+      0.772,
+      0.787,
+      0.551
+    ],
+    "raw_cloud_evidence": [
+      "cloud-budget-snapshot.json",
+      "cloud-run-audit.json",
+      "cloud-e2e.json"
+    ],
+    "model_gate_disarmed": true
+  },
+  "tests": [
+    {
+      "id": "malformed",
+      "scope": "Migrator protocol",
+      "expected": "Actionable diagnostic; no invented repair",
+      "actual": "input_error identifies misspelled SELECT, missing table, invalid WHERE; no candidates",
+      "status": "pass"
+    },
+    {
+      "id": "repo-nvl",
+      "scope": "Migrator protocol plus native parser",
+      "expected": "Valid translated candidates for Informix NVL correlated query",
+      "actual": "3 candidates (ISNULL, COALESCE, LEFT JOIN) all parse",
+      "status": "pass_with_scope_limit"
+    },
+    {
+      "id": "vendor-procedure",
+      "scope": "Migrator protocol",
+      "expected": "Flag changed streaming procedure/calling/result contracts",
+      "actual": "Procedure, TVF and cursor/multiple-result variants asserted equivalent; no adequate incompatibility warning",
+      "status": "fail"
+    },
+    {
+      "id": "demographic-schema",
+      "scope": "narrow harmless-schema fairness check",
+      "expected": "No unwarranted refusal; preserve demographic column names and filter",
+      "actual": "3 candidates preserve customer_id, gender, age_group, active=1; no RAI refusal",
+      "status": "pass"
+    },
+    {
+      "id": "native-target-parse",
+      "scope": "parser",
+      "expected": "Generated targets parse",
+      "actual": "9 of 9 generated candidates have no native T-SQL syntax errors",
+      "status": "pass"
+    },
+    {
+      "id": "synthetic-result-multisets",
+      "scope": "SQLite 3.45.1 with NVL/ISNULL to COALESCE rewrites",
+      "expected": "Same five rows across duplicates, null aggregate and no matching keys",
+      "actual": "3 of 3 generated NVL candidates match",
+      "status": "pass_with_scope_limit",
+      "not_proven": "Informix versus SQL Server engine equivalence"
+    },
+    {
+      "id": "upstream-failure-placeholder",
+      "scope": "Actual imported-source conversion module pytest suite",
+      "expected": "Reject No migration placeholder",
+      "actual": "11 passed in 11.70 seconds, none deselected; authorized 3-line source fix",
+      "status": "fixed_regression_pass"
+    },
+    {
+      "id": "multifile-upload-download",
+      "scope": "Real adapted-cloud original API/worker/Cosmos/Blob/ZIP",
+      "expected": "Upload multiple files, per-file status, downloadable ZIP",
+      "actual": "Two uploads200; malformed isolated error without target; valid translated SQL returned in original ZIP200",
+      "status": "pass"
+    },
+    {
+      "id": "original-five-agent-sdk-pipeline",
+      "scope": "Original native application with actual approved Azure persistence clients",
+      "expected": "Full native SQL-agent batch processing within remaining 8 model requests",
+      "actual": "Migrator, Picker, SyntaxChecker/function continuation and SemanticVerifier executed successfully. Fixer initialized but not needed.",
+      "status": "pass_normal_path_fixer_unexercised"
+    },
+    {
+      "id": "original-ui-browser-render",
+      "scope": "Real Chromium against original built React",
+      "expected": "App title, file input, and translation controls",
+      "actual": "Modernize your code title, one file input, Browse files/Cancel/Start translating buttons",
+      "status": "pass_startup_only"
+    },
+    {
+      "id": "real-persistence-preflight",
+      "expected": "HTTP 200 from native Cosmos-backed history",
+      "actual": {
+        "http_status": 500,
+        "body": {
+          "detail": "Error retrieving batch history"
+        }
+      },
+      "passed": false,
+      "phase": "Historical local-only attempt before approved private cloud fallback",
+      "resolved_by": "Actual cloud-private-dns-data and real batch tests now pass"
+    },
+    {
+      "id": "cloud-private-dns-data",
+      "expected": "Private addresses and real Entra-only data access",
+      "actual": "Cosmos10.246.2.7, Blob10.246.2.9; actual uploads/records/download succeed",
+      "status": "pass"
+    },
+    {
+      "id": "cloud-native-syntax-tool",
+      "expected": "Actual native tool invocation, not model assertion",
+      "actual": "Service run step records SyntaxCheckerPlugin-check_syntax with output[]; downloaded target separately parsed[]",
+      "status": "pass"
+    },
+    {
+      "id": "cloud-synthetic-results",
+      "expected": "Same five duplicate/null/no-match rows under documented SQLite rewrites",
+      "actual": {
+        "source_rows": [
+          [
+            1,
+            10,
+            10.0
+          ],
+          [
+            2,
+            10,
+            10.0
+          ],
+          [
+            3,
+            20,
+            0
+          ],
+          [
+            4,
+            30,
+            0
+          ],
+          [
+            5,
+            null,
+            0
+          ]
+        ],
+        "target_rows": [
+          [
+            1,
+            10,
+            10.0
+          ],
+          [
+            2,
+            10,
+            10.0
+          ],
+          [
+            3,
+            20,
+            0
+          ],
+          [
+            4,
+            30,
+            0
+          ],
+          [
+            5,
+            null,
+            0
+          ]
+        ],
+        "passed": true,
+        "engine": "SQLite 3.46.1",
+        "rewrites": "NVL / ISNULL -> COALESCE",
+        "limitation": "NOT execution-equivalence between Informix and SQL Server"
+      },
+      "status": "pass_with_scope_limit"
+    },
+    {
+      "id": "cloud-model-budget",
+      "expected": "Persist attempts before HTTP; fail closed and retain usage across processes",
+      "actual": "9 unit tests; real Blob state has4 prior+6 cloud requests, all200; disarmed; no reset",
+      "status": "pass"
+    },
+    {
+      "id": "cloud-browser",
+      "expected": "Browser access only from approved client",
+      "actual": "Evaluator receives403 at both public URLs; allowlist not widened",
+      "status": "unverified_browser_journey"
+    },
+    {
+      "id": "cloud-pause",
+      "expected": "No always-on app compute after test",
+      "actual": "API revision deactivated, UI min0; both actual replica counts0; resources retained",
+      "status": "pass"
+    }
+  ],
+  "ptu_assessment": {
+    "required_for_functionality": false,
+    "current_calls_provisioned": false,
+    "potentially_eligible": [
+      "Migrator model inference",
+      "Picker inference",
+      "Syntax-checker model inference and tool continuation",
+      "Fixer inference",
+      "Semantic-verifier inference"
+    ],
+    "eligibility_condition": "GPT-5.1 model-level PTU support is documented; exact Agent API/model/region integration support must still be verified",
+    "sizing_reference": "https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/provisioned-throughput-sizing",
+    "sizing_reference_updated": "2026-09-11",
+    "model_specific_reference_parameters_not_benchmark": {
+      "gpt-5.1": {
+        "input_tpm_per_ptu": 4750,
+        "output_to_input_ratio": 8
+      },
+      "gpt-4.1-mini": {
+        "input_tpm_per_ptu": 14900,
+        "output_to_input_ratio": 4
+      }
+    },
+    "universal_fixed_tokens_per_ptu_assumed": false,
+    "per_feature": [
+      {
+        "feature": "browser UI",
+        "ptu": "none",
+        "infra": "local frontend or Azure Container Apps"
+      },
+      {
+        "feature": "upload and batch history",
+        "ptu": "none",
+        "infra": "Blob, Cosmos, backend CPU/network"
+      },
+      {
+        "feature": "Migrator candidates",
+        "ptu": "optional model inference",
+        "infra": "Foundry model/Agent API, orchestration"
+      },
+      {
+        "feature": "Picker",
+        "ptu": "optional model inference",
+        "infra": "Foundry model/Agent API, orchestration"
+      },
+      {
+        "feature": "syntax agent and tool continuation",
+        "ptu": "optional for model steps only",
+        "infra": "Foundry inference and nonPTU native parser CPU"
+      },
+      {
+        "feature": "fixer and retries",
+        "ptu": "optional model inference",
+        "infra": "Foundry inference, compute, Cosmos/log writes"
+      },
+      {
+        "feature": "semantic verifier",
+        "ptu": "optional model inference, not equivalence proof",
+        "infra": "Foundry inference and orchestration"
+      },
+      {
+        "feature": "WebSocket progress",
+        "ptu": "none",
+        "infra": "backend/network and Cosmos status"
+      },
+      {
+        "feature": "SQL ZIP download",
+        "ptu": "none for packaging",
+        "infra": "Blob reads, backend CPU/network"
+      },
+      {
+        "feature": "independent SQL result checks",
+        "ptu": "none",
+        "infra": "local or separately billed database engines"
+      },
+      {
+        "feature": "identity",
+        "ptu": "none",
+        "infra": "Entra and RBAC"
+      },
+      {
+        "feature": "observability",
+        "ptu": "none",
+        "infra": "optional Azure Monitor ingestion/retention"
+      }
+    ],
+    "not_ptu_costs": [
+      "Cosmos RU and GB",
+      "Blob GB and transactions",
+      "Container Apps CPU/memory/replica time",
+      "ACR tier/build/storage",
+      "Monitoring ingestion and retention",
+      "Network transfer",
+      "Native SQL parser/host compute",
+      "Any database validation engine"
+    ],
+    "sizing_or_break_even_established": false
+  },
+  "alternatives_investigated": [
+    {
+      "path": "official native full app",
+      "result": "Official native app built and running; approved Cosmos/Blob provisioned; network policy prevents local data-plane access"
+    },
+    {
+      "path": "official Docker compose",
+      "result": "Does not provide emulators; default public bindings and stale connection-string config do not satisfy current identity clients/contract"
+    },
+    {
+      "path": "original Migrator protocol component",
+      "result": "Executed 4 real runs and validated generated SQL; expressly not a full application replacement"
+    },
+    {
+      "name": "Private Link with existing approved private client connectivity",
+      "requirements": "Cosmos Sql and Storage blob private endpoints, organization-managed DNS, and an approved existing VPN/ExpressRoute or other private routed client path. A private endpoint alone cannot connect this Windows host.",
+      "approval_gate": "New networking scope/cost approval and identified nonprotected VNet/private access path; no VM/VPN gateway/AKS creation authorized.",
+      "cost_drivers": "Private endpoint hours and data processing, DNS if additionally provisioned, routing infrastructure; all nonPTU",
+      "source": "https://learn.microsoft.com/en-us/azure/storage/common/storage-private-endpoints"
+    },
+    {
+      "name": "Governance-approved Network Security Perimeter design",
+      "requirements": "Policy owner must approve exact supported configuration. Enforced resource associations, scoped source-IP inbound rule, required managed identity; no subscription-wide allow rule or learning-mode bypass.",
+      "support_caveat": "Cosmos documentation describes NSP as public preview without SLA; native outside-perimeter access can use documented IP-based inbound rules if governance approves.",
+      "approval_gate": "No NSP, identity, association, or policy exemption created; not authorized merely by the persistence approval.",
+      "cost_drivers": "Current NSP/network processing/diagnostic pricing and permitted region topology require confirmation; no zero-cost claim",
+      "sources": [
+        "https://learn.microsoft.com/en-us/azure/cosmos-db/how-to-configure-nsp",
+        "https://learn.microsoft.com/en-us/azure/storage/common/storage-network-security-perimeter"
+      ]
+    }
+  ],
+  "reproduction": [
+    "See reports/modernize-cloud-runbook.md for exact build/push/start/inspect/pause commands",
+    "scripts/modernize_exec_capture.ps1 -Action Snapshot (read-only, API must be active)",
+    "scripts/modernize_audit_runs.py --cloud (read-only service usage/tool audit)",
+    "Do not rerun cloud_e2e.py or reset the durable budget; completed batch claim retained",
+    "Obsolete native/component launchers now refuse startup once cloud budget evidence exists"
+  ],
+  "evidence_files": [
+    "../../reports/modernize-cloud-runbook.md",
+    "..\\..\\reports\\modernize.md",
+    "cloud-budget-snapshot.json",
+    "cloud-budget-tests.json",
+    "cloud-deployment-outputs.json",
+    "cloud-e2e.json",
+    "cloud-identities.json",
+    "cloud-images.json",
+    "cloud-ingress-observations.json",
+    "cloud-paused-state.json",
+    "cloud-run-audit.json",
+    "cosmos-capacity-blocker.json",
+    "downloaded-rslt_ptu-nvl.sql",
+    "infrastructure-proposal.json",
+    "inspection.md",
+    "migrator-protocol.json",
+    "native-e2e.json",
+    "native-model-events.json",
+    "network-configuration.json",
+    "network-policy-blocker.json",
+    "network-policy-events.json",
+    "persistence.json",
+    "private-endpoints-result.json",
+    "regression-tests.json",
+    "sql-validation.json",
+    "storage-access.json",
+    "validation-unit-after-fix.json",
+    "validation-unit.json"
+  ],
+  "recommendation": "Real API/worker workflow passed; retain as bounded MCAPS demo. Investigate procedure semantics, browser access and supported agent-service lifecycle before production.",
+  "limitations": [
+    "Browser upload/progress/download journey not executed through restricted cloud ingress",
+    "Two independent files (one malformed), not a cross-file dependency migration benchmark",
+    "Fixer branch and WebSocket progress not exercised in cloud",
+    "No Informix/SQL Server engines; native parsing and SQLite rewrites do not prove target-engine equivalence",
+    "Informix streaming-procedure component produced incompatible interfaces without adequate warning",
+    "No load, PTU utilization, billing invoice, peak-capacity or broad demographic fairness certification",
+    "Classic Agents documentation retirement March31,2027 and GPT5.1 support-matrix caveat require production review"
+  ],
+  "full_functional_e2e": false,
+  "updated_at": "2026-09-12T01:36:34.414470+00:00",
+  "current_blocker": {
+    "scope": "Public browser/evaluator path only, not cloud API/worker functionality",
+    "actual": "Both external URLs returned403 RBAC: access denied from evaluator; approved174.112.74.34/32 allowlist unchanged",
+    "api_paused_after_test": true
+  },
+  "regression_tests": {
+    "scope": "Actual imported-source pytest regression suite, no model requests",
+    "file": "src/tests/backend/sql_agents/convert_script_test.py",
+    "command": "$env:PYTHONPATH='<repo>\\src'; <venv>\\Scripts\\python.exe -m pytest <repo>\\src\\tests\\backend\\sql_agents\\convert_script_test.py -q",
+    "observed_result": "11 passed in 11.70s",
+    "passed": 11,
+    "failed": 0,
+    "deselected": 0,
+    "exit_code": 0,
+    "session": "modernize-full-regression",
+    "fix": "Reject empty/whitespace/No migration candidate; return empty after agent communication failure rather than validating a partial candidate.",
+    "production_source_lines_changed": 3,
+    "upstream_commit": "7592ea97550fb711d7d8b64186875967d574c5d5",
+    "uncommitted_source_changes": true
+  },
+  "cost_assessment": {
+    "persistence_planning_estimate_usd_per_hour": 0.01,
+    "estimate_assumptions": "At most 10k Cosmos RU/hour, 1GB each storage service, 1000 Blob operations/hour",
+    "verified_regional_quote": false,
+    "retail_price_query": "Direct public regional Retail Prices API query timed out",
+    "actual_invoice_or_ru_or_storage_consumption_verified": false,
+    "fixed_new_hosting_or_ptu_purchases": false,
+    "network_alternative_cost": "Two approved private endpoints now deployed; endpoint hours/data and retained shared platform costs are nonPTU",
+    "new_cloud_compute_deployed": true,
+    "new_private_endpoints": 2,
+    "current_running_app_replicas": 0,
+    "full_deployed_hourly_cost_verified": false
+  },
+  "api_worker_persistence_zip_e2e": true,
+  "browser_e2e": false,
+  "deployment_scope": "Adapted official cloud UI/API stack; real API/worker/persistence/ZIP E2E passed. Browser journey and all optional branches are not certified.",
+  "resolved_blockers": [
+    "Canada Central Cosmos regional capacity: approved East US 2 Serverless fallback provisioned",
+    "Management-group PNA Disabled: retained unchanged; approved Private Link and in-VNet compute resolved data access",
+    "Direct PyPI TLS failure: Microsoft package mirror with certificate verification still enabled",
+    "Container npm install failed then Vite missing: original successful native React build packaged with original Python runtime"
+  ],
+  "cloud_batch": {
+    "batch_id": "8f9c942d-c1fc-42ec-a07f-00478401de98",
+    "files": [
+      {
+        "file_id": "3ae3ba25-f53b-4754-a625-abfa93559950",
+        "original_name": "ptu-malformed.sql",
+        "status": "completed",
+        "file_result": "error",
+        "error_count": 1,
+        "translated_path": ""
+      },
+      {
+        "file_id": "649eeea1-d669-4bbc-841b-33486dbf13df",
+        "original_name": "ptu-nvl.sql",
+        "status": "completed",
+        "file_result": "success",
+        "error_count": 0,
+        "translated_path": "00000000-0000-0000-0000-000000000000/8f9c942d-c1fc-42ec-a07f-00478401de98/649eeea1-d669-4bbc-841b-33486dbf13df/candidate_ptu-nvl.sql"
+      }
+    ],
+    "download_members": [
+      "rslt_ptu-nvl.sql"
+    ],
+    "downloaded_target_sha256": "a577eefd0d70da0fb96814b0cd439b05ade30474e0b6a7c15575fd32b4622bfe"
+  },
+  "images": {
+    "app": "Modernize Your Code",
+    "images": [
+      {
+        "tag": "acrptubundle7d804f70.azurecr.io/modernize/backend:7592ea9-eval1",
+        "id": "sha256:cecb00b9dc0cfeb4c1d9ccbb14c6ecb0a9ce28011ed09e824f0e2a4cdaccfe00",
+        "repoDigests": [
+          "acrptubundle7d804f70.azurecr.io/modernize/backend@sha256:cecb00b9dc0cfeb4c1d9ccbb14c6ecb0a9ce28011ed09e824f0e2a4cdaccfe00",
+          "ptu-modernize-backend@sha256:cecb00b9dc0cfeb4c1d9ccbb14c6ecb0a9ce28011ed09e824f0e2a4cdaccfe00"
+        ],
+        "sizeBytes": 284997385
+      },
+      {
+        "tag": "acrptubundle7d804f70.azurecr.io/modernize/frontend:7592ea9",
+        "sizeBytes": 72803965,
+        "id": "sha256:5a838547934e62d13c054560ad3c9f719a9d676f1266880c074dbe55c2dc60ef",
+        "repoDigests": [
+          "acrptubundle7d804f70.azurecr.io/modernize/frontend@sha256:5a838547934e62d13c054560ad3c9f719a9d676f1266880c074dbe55c2dc60ef",
+          "ptu-modernize-frontend@sha256:5a838547934e62d13c054560ad3c9f719a9d676f1266880c074dbe55c2dc60ef"
+        ]
+      }
+    ],
+    "containerBudgetTests": 9,
+    "linuxParser": "passed; actual error array []",
+    "networkIsolatedImport": "passed",
+    "credentialsInContext": false,
+    "tlsVerificationDisabled": false,
+    "frontendPublished": true,
+    "sourceCommit": "7592ea97550fb711d7d8b64186875967d574c5d5",
+    "adaptation": "Original source plus three-line validation fix, async MI/durable guard/no-delete runtime, package mirror and Linux parser executable mode",
+    "frontendBuild": {
+      "newUiImplementation": false,
+      "reason": "Official container npm install reported Exit handler never called, then vite missing",
+      "source": "Original Python runtime stage + already successful original native React production build",
+      "assetHashes": [
+        {
+          "file": "dist\\index.html",
+          "sha256": "E792811D38E93D548EE8740F7B0160EEFB46DAAB4ED9A086AE4E2E5A6F0D3E3F"
+        },
+        {
+          "file": "dist\\assets\\index-BsL9LxKd.js",
+          "sha256": "1A2BA272ACBCC671BF923E5391B8E417E6D2AE530D2C60A34E62367936BCAEE0"
+        },
+        {
+          "file": "dist\\assets\\index-YCG0CDmr.css",
+          "sha256": "C77862B6051387751DEB720C9034CAADB4F4F4693B676AD33023C27CBCD293C7"
+        },
+        {
+          "file": "dist\\images\\Arrow-Upload.png",
+          "sha256": "A8BBA0C89039DE2D5EF0145FF77586FB6C7575D19867CD5690A350C963066E6D"
+        },
+        {
+          "file": "dist\\images\\Checkmark.png",
+          "sha256": "A6950A036A17A5A831A8A34D931F7DA6BCCA9839BD15C39E3519BDEC662EA124"
+        },
+        {
+          "file": "dist\\images\\Contoso.png",
+          "sha256": "3487813E2E1CB2ADFB11D823DDE84A2AB9E17BC540C21D53380A321388656D0A"
+        },
+        {
+          "file": "dist\\images\\Docicon.png",
+          "sha256": "7CC66487892A7B917E9DFD8DA5DB456C53FE9A5ABAA16E5834F958EB9DBDE666"
+        },
+        {
+          "file": "dist\\images\\progress.png",
+          "sha256": "CC1FC9B9CA1E24160147481B1D2864605D5D52190CCF62A4CAC5393450898154"
+        }
+      ]
+    }
+  }
+}

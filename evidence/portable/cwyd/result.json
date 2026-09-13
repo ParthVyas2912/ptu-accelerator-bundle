@@ -1,0 +1,1679 @@
+{
+  "app": "Chat With Your Data",
+  "status": "adapted_local_core_workflow_verified",
+  "full_app_proven": false,
+  "repository": {
+    "url": "https://github.com/Azure-Samples/chat-with-your-data-solution-accelerator",
+    "path": "C:\\\\Users\\\\[REDACTED]\\OneDrive - Microsoft\\Desktop\\repo\\chat-with-your-data-solution-accelerator",
+    "sha": "0fce71307dfa76a82ac82ec73bdde3daa47e503d",
+    "branch": "main",
+    "describe": "v2.0.0-6-g0fce7130",
+    "commit_date": "2026-08-27T06:24:04Z"
+  },
+  "subscription_id": "1feb53b2-854a-4ea7-b5a6-709b7d804f70",
+  "tenant_id": "a600acd0-3028-4689-8402-3b471d7d924d",
+  "new_azure_resources": [],
+  "new_azure_resource_groups": [],
+  "incremental_fixed_azure_cost": 0,
+  "infrastructure_proposal": "infrastructure-proposal.json",
+  "container_resource_limits": {
+    "ptu-cwyd-postgres": {
+      "memory_bytes": 536870912,
+      "memory_swap_total_bytes": 536870912,
+      "cpu_limit": 1,
+      "running_after_update": true
+    },
+    "ptu-cwyd-azurite": {
+      "memory_bytes": 536870912,
+      "memory_swap_total_bytes": 536870912,
+      "cpu_limit": 1,
+      "running_after_update": true
+    },
+    "total_container_memory_bytes": 1073741824,
+    "includes_native_process_memory": false
+  },
+  "proposed_reuse": {
+    "account": "edcfoundryhack01",
+    "resource_group": "rg-edc-foundry-hack",
+    "location": "canadaeast",
+    "project": "edc-hack-proj",
+    "chat": {
+      "deployment": "gpt-4.1-mini",
+      "version": "2025-04-14",
+      "sku": "GlobalStandard"
+    },
+    "embedding": {
+      "deployment": "text-embedding-3-small",
+      "version": "1",
+      "sku": "Standard",
+      "dimensions": 1536
+    }
+  },
+  "processes": [
+    {
+      "service": "frontend",
+      "url": "http://[REDACTED ADDRESS]:5112/",
+      "pid": 15628,
+      "shell_id": "cwyd-frontend",
+      "state": "running_http_200"
+    },
+    {
+      "service": "backend",
+      "url": "http://[REDACTED ADDRESS]:8112/",
+      "pid": 29208,
+      "shell_id": "cwyd-backend-custody",
+      "state": "running_read_only_inference_closed"
+    },
+    {
+      "service": "queue_worker",
+      "pid": null,
+      "shell_id": null,
+      "state": "stopped_evaluation_closed",
+      "implementation": "upstream batch_push._execute via evaluation queue harness, not Azure Functions host",
+      "last_running_pid": 6356
+    },
+    {
+      "service": "postgres",
+      "container": "ptu-cwyd-postgres",
+      "container_id": "6607fed0b8b2",
+      "bind": "[REDACTED ADDRESS]:15432",
+      "shell_id": "cwyd-postgres",
+      "state": "ready"
+    },
+    {
+      "service": "azurite",
+      "container": "ptu-cwyd-azurite",
+      "container_id": "bdac69e527fa",
+      "bind": [
+        "[REDACTED ADDRESS]:18100",
+        "[REDACTED ADDRESS]:18101"
+      ],
+      "shell_id": "cwyd-azurite",
+      "state": "ready"
+    }
+  ],
+  "launch_command": "B\\scripts\\Start-Cwyd.ps1 -Service <database|storage|backend|worker|frontend>",
+  "commands": [
+    "uv sync --frozen (UV_PROJECT_ENVIRONMENT=%LOCALAPPDATA%\\ptu-eval\\cwyd\\runtime)",
+    "npm ci --no-audit --no-fund (repo/src/frontend)",
+    "npm run build (repo/src/frontend)",
+    "%LOCALAPPDATA%\\ptu-eval\\cwyd\\runtime\\Scripts\\python.exe -u B\\scripts\\cwyd_runtime.py backend",
+    "%LOCALAPPDATA%\\ptu-eval\\cwyd\\runtime\\Scripts\\python.exe -u B\\scripts\\cwyd_runtime.py worker",
+    "B\\scripts\\Start-Cwyd.ps1 frontend",
+    "docker run --name ptu-cwyd-postgres -e POSTGRES_HOST_AUTH_METHOD=trust -e POSTGRES_USER=cwyd -e POSTGRES_DB=ptu_cwyd -p [REDACTED ADDRESS]:15432:5432 pgvector/pgvector:pg16",
+    "docker run --name ptu-cwyd-azurite -p [REDACTED ADDRESS]:18100:10000 -p [REDACTED ADDRESS]:18101:10001 mcr.microsoft.com/azure-storage/azurite:latest azurite --blobHost [REDACTED ADDRESS] --queueHost [REDACTED ADDRESS] --skipApiVersionCheck --silent",
+    "docker update --memory 512m --memory-swap 512m --cpus 1 ptu-cwyd-postgres ptu-cwyd-azurite",
+    "python -m pytest tests/functions/batch_push --disable-warnings -q --junitxml=B\\evidence\\cwyd\\unit-tests.xml",
+    "$env:CWYD_USE_ACCOUNT_OPENAI_ENDPOINT='true'; python B\\scripts\\cwyd_runtime.py <backend|worker>"
+  ],
+  "attached_to_session": true,
+  "repository_working_tree": "clean after restoring only our generated tsconfig.tsbuildinfo",
+  "builds": {
+    "python_locked_sync": "PASS",
+    "frontend_production_build": "PASS",
+    "frontend_modules_transformed": 2741,
+    "frontend_warning": "chunk larger than 500KB"
+  },
+  "unit_tests": {
+    "passed": 23,
+    "failed": 0,
+    "elapsed_seconds": 134.95,
+    "scope": "upstream tests/functions/batch_push",
+    "evidence": "unit-tests.xml"
+  },
+  "model_attempts": 16,
+  "model_attempt_limit": 16,
+  "remaining_first_pass_attempts": 0,
+  "measured_model_usage": [
+    {
+      "operation": "embeddings",
+      "model": "text-embedding-3-small",
+      "stream": false,
+      "started_utc": "2026-09-11T23:48:09Z",
+      "status": 401,
+      "usage": null,
+      "latency_ms": 4024.32,
+      "retry_header": "0",
+      "error": {
+        "code": "PermissionDenied",
+        "param": null,
+        "message": "The principal [REDACTED EMAIL]` lacks the required data action `Microsoft.CognitiveServices/accounts/OpenAI/deployments/embeddings/action` to perform `POST /openai/v1/embeddings` operation."
+      },
+      "id": 1
+    },
+    {
+      "operation": "embeddings",
+      "model": "text-embedding-3-small",
+      "stream": false,
+      "started_utc": "2026-09-11T23:50:51Z",
+      "status": null,
+      "usage": null,
+      "latency_ms": 5499.89,
+      "retry_header": "0",
+      "exception_type": "ConnectTimeout",
+      "id": 2
+    },
+    {
+      "operation": "embeddings",
+      "model": "text-embedding-3-small",
+      "stream": false,
+      "started_utc": "2026-09-11T23:50:57Z",
+      "status": 401,
+      "usage": null,
+      "latency_ms": 1526.38,
+      "retry_header": "1",
+      "error": {
+        "code": "PermissionDenied",
+        "param": null,
+        "message": "The principal [REDACTED EMAIL]` lacks the required data action `Microsoft.CognitiveServices/accounts/OpenAI/deployments/embeddings/action` to perform `POST /openai/v1/embeddings` operation."
+      },
+      "id": 3
+    },
+    {
+      "operation": "embeddings",
+      "model": "text-embedding-3-small",
+      "stream": false,
+      "started_utc": "2026-09-12T00:03:08Z",
+      "status": 401,
+      "usage": null,
+      "latency_ms": 2445.73,
+      "retry_header": "0",
+      "error": {
+        "code": "PermissionDenied",
+        "param": null,
+        "message": "Principal does not have access to API/Operation."
+      },
+      "id": 4
+    },
+    {
+      "operation": "embeddings",
+      "endpoint_host": "edcfoundryhack01.openai.azure.com",
+      "model": "text-embedding-3-small",
+      "stream": false,
+      "started_utc": "2026-09-12T00:06:02Z",
+      "status": 200,
+      "usage": {
+        "prompt_tokens": 73,
+        "total_tokens": 73
+      },
+      "latency_ms": 3260.86,
+      "retry_header": "0",
+      "id": 5
+    },
+    {
+      "operation": "embeddings",
+      "endpoint_host": "edcfoundryhack01.openai.azure.com",
+      "model": "text-embedding-3-small",
+      "stream": false,
+      "started_utc": "2026-09-12T00:07:50Z",
+      "status": 200,
+      "usage": {
+        "prompt_tokens": 68,
+        "total_tokens": 68
+      },
+      "latency_ms": 1544.89,
+      "retry_header": "0",
+      "id": 6
+    },
+    {
+      "operation": "embeddings",
+      "endpoint_host": "edcfoundryhack01.openai.azure.com",
+      "model": "text-embedding-3-small",
+      "stream": false,
+      "started_utc": "2026-09-12T00:08:07Z",
+      "status": null,
+      "usage": null,
+      "latency_ms": 16555.96,
+      "retry_header": "0",
+      "exception_type": "ConnectTimeout",
+      "id": 7
+    },
+    {
+      "operation": "embeddings",
+      "endpoint_host": "edcfoundryhack01.openai.azure.com",
+      "model": "text-embedding-3-small",
+      "stream": false,
+      "started_utc": "2026-09-12T00:08:24Z",
+      "status": 200,
+      "usage": {
+        "prompt_tokens": 75,
+        "total_tokens": 75
+      },
+      "latency_ms": 904.32,
+      "retry_header": "1",
+      "id": 8
+    },
+    {
+      "operation": "embeddings",
+      "endpoint_host": "edcfoundryhack01.openai.azure.com",
+      "model": "text-embedding-3-small",
+      "stream": false,
+      "started_utc": "2026-09-12T00:08:31Z",
+      "status": 200,
+      "usage": {
+        "prompt_tokens": 68,
+        "total_tokens": 68
+      },
+      "latency_ms": 682.21,
+      "retry_header": "0",
+      "id": 9
+    },
+    {
+      "operation": "embeddings",
+      "endpoint_host": "edcfoundryhack01.openai.azure.com",
+      "model": "text-embedding-3-small",
+      "stream": false,
+      "started_utc": "2026-09-12T00:08:39Z",
+      "status": 200,
+      "usage": {
+        "prompt_tokens": 68,
+        "total_tokens": 68
+      },
+      "latency_ms": 1014.15,
+      "retry_header": "0",
+      "id": 10
+    },
+    {
+      "operation": "embeddings",
+      "endpoint_host": "edcfoundryhack01.openai.azure.com",
+      "model": "text-embedding-3-small",
+      "stream": false,
+      "started_utc": "2026-09-12T00:16:21Z",
+      "status": 200,
+      "usage": {
+        "prompt_tokens": 127,
+        "total_tokens": 127
+      },
+      "latency_ms": 1104.29,
+      "retry_header": "0",
+      "id": 11
+    },
+    {
+      "operation": "responses",
+      "endpoint_host": "edcfoundryhack01.services.ai.azure.com",
+      "model": "gpt-4.1-mini",
+      "stream": false,
+      "started_utc": "2026-09-12T00:16:29Z",
+      "status": 400,
+      "usage": null,
+      "latency_ms": 1905.35,
+      "retry_header": "0",
+      "error": {
+        "code": "unsupported_parameter",
+        "param": "reasoning.effort",
+        "message": "Unsupported parameter: 'reasoning.effort' is not supported with this model."
+      },
+      "id": 12
+    },
+    {
+      "operation": "completions",
+      "endpoint_host": "edcfoundryhack01.services.ai.azure.com",
+      "model": "gpt-4.1-mini",
+      "stream": false,
+      "started_utc": "2026-09-12T00:16:31Z",
+      "status": 200,
+      "usage": {
+        "completion_tokens": 131,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "latency_checkpoint": {
+          "engine_tbt_ms": 8,
+          "engine_ttft_ms": 47,
+          "engine_ttlt_ms": 1071,
+          "pre_inference_ms": 109,
+          "service_tbt_ms": 8,
+          "service_ttft_ms": 470,
+          "service_ttlt_ms": 1490,
+          "user_visible_ttft_ms": 362
+        },
+        "prompt_tokens": 1296,
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        },
+        "total_tokens": 1427
+      },
+      "latency_ms": 2005.0,
+      "retry_header": "0",
+      "id": 13
+    },
+    {
+      "operation": "embeddings",
+      "endpoint_host": "edcfoundryhack01.openai.azure.com",
+      "model": "text-embedding-3-small",
+      "stream": false,
+      "started_utc": "2026-09-12T00:18:58Z",
+      "status": 200,
+      "usage": {
+        "prompt_tokens": 78,
+        "total_tokens": 78
+      },
+      "latency_ms": 1364.87,
+      "retry_header": "0",
+      "id": 14
+    },
+    {
+      "operation": "embeddings",
+      "endpoint_host": "edcfoundryhack01.openai.azure.com",
+      "model": "text-embedding-3-small",
+      "stream": false,
+      "started_utc": "2026-09-12T00:19:01Z",
+      "status": 200,
+      "usage": {
+        "prompt_tokens": 40,
+        "total_tokens": 40
+      },
+      "latency_ms": 628.73,
+      "retry_header": "0",
+      "id": 15
+    },
+    {
+      "operation": "completions",
+      "endpoint_host": "edcfoundryhack01.services.ai.azure.com",
+      "model": "gpt-4.1-mini",
+      "stream": false,
+      "started_utc": "2026-09-12T00:19:01Z",
+      "status": 200,
+      "usage": {
+        "completion_tokens": 79,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "latency_checkpoint": {
+          "engine_tbt_ms": 6,
+          "engine_ttft_ms": 35,
+          "engine_ttlt_ms": 534,
+          "pre_inference_ms": 113,
+          "service_tbt_ms": 6,
+          "service_ttft_ms": 459,
+          "service_ttlt_ms": 953,
+          "user_visible_ttft_ms": 347
+        },
+        "prompt_tokens": 1211,
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        },
+        "total_tokens": 1290
+      },
+      "latency_ms": 1933.29,
+      "retry_header": "0",
+      "id": 16
+    }
+  ],
+  "usage_summary": {
+    "tokens_reported": true,
+    "successful_model_responses": 10,
+    "calls_reporting_usage": 10,
+    "sum_returned_prompt_tokens": 3104,
+    "sum_returned_output_tokens": 210,
+    "sum_returned_total_tokens": 3314,
+    "retried_calls": 2,
+    "http_401": 3,
+    "http_400": 1,
+    "http_429": 0,
+    "upstream_http_5xx": 0,
+    "connection_timeouts": 2,
+    "failed_call_usage": "not returned; never estimated"
+  },
+  "unsupported_scenarios": [
+    "unchanged official deployment and full Azure Functions host/queue-trigger retry-poison semantics",
+    "browser-driven typing/clicking walkthrough; UI/admin HTTP and file links were verified",
+    "five factual questions as isolated model requests; deliberately grouped",
+    "load/concurrency/scalability/failover testing",
+    "Speech, Content Safety and rich-document Document Intelligence paths",
+    "Agent Framework / Foundry IQ Search orchestration; evaluated route is LangGraph plus pgvector",
+    "production cloud ingress/authentication and accreditation",
+    "historical source-file version URLs: stored old snippets persist, but filename download resolves current replacement"
+  ],
+  "ptu": {
+    "purchased": false,
+    "actual_utilization_measured": false,
+    "relationship": "optional sustained chat/reasoning inference capacity only; no CWYD feature requires PTU; current Standard/GlobalStandard deployments are not PTU deployments",
+    "non_ptu_services": [
+      "frontend/backend/worker compute",
+      "pgvector retrieval/history",
+      "Azurite blob/queue",
+      "local observability",
+      "Azure AI Search",
+      "ACR",
+      "Azure Monitor",
+      "Speech",
+      "Content Safety",
+      "Document Intelligence",
+      "Entra/RBAC"
+    ],
+    "sizing_reference": "https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/provisioned-throughput-sizing",
+    "sizing_reference_verified_date": "2026-09-11",
+    "provisioned_supported_chat_models": [
+      {
+        "model": "gpt-4.1-mini",
+        "version": "2025-04-14",
+        "selected_for_app": true
+      },
+      {
+        "model": "gpt-5.1",
+        "version": "2025-11-13",
+        "selected_for_app": false
+      }
+    ],
+    "embedding_provisioned_support_proven": false,
+    "universal_tokens_per_ptu_assumed": false,
+    "smoke_tests_are_ptu_tests": false,
+    "sizing_recommendation": null,
+    "sizing_inputs_missing": [
+      "representative peak RPM",
+      "representative input/output distributions",
+      "cache behavior over sustained traffic",
+      "provisioned region/capacity validation",
+      "approved representative PTU benchmark"
+    ]
+  },
+  "per_feature_ptu_dependence": [
+    {
+      "feature": "UI admin and SSE transport",
+      "ptu_required": false,
+      "potential_ptu_component": null,
+      "infrastructure": [
+        "local React/Vite",
+        "local FastAPI"
+      ],
+      "azure_alternative": [
+        "Container Apps",
+        "ACR"
+      ]
+    },
+    {
+      "feature": "document upload and queueing",
+      "ptu_required": false,
+      "potential_ptu_component": null,
+      "infrastructure": [
+        "local Azurite blob and queue",
+        "local upstream ingestion worker"
+      ],
+      "azure_alternative": [
+        "Storage",
+        "Functions on Container Apps"
+      ]
+    },
+    {
+      "feature": "parse and chunk",
+      "ptu_required": false,
+      "potential_ptu_component": null,
+      "infrastructure": [
+        "local text parser CPU"
+      ],
+      "optional_separately_billed": [
+        "Document Intelligence"
+      ]
+    },
+    {
+      "feature": "ingestion embeddings",
+      "ptu_required": false,
+      "potential_ptu_component": "not established for configured embedding model",
+      "infrastructure": [
+        "existing text-embedding-3-small Standard"
+      ],
+      "status": "six successful calls including replacement;430 reported tokens"
+    },
+    {
+      "feature": "vector index and retrieval",
+      "ptu_required": false,
+      "potential_ptu_component": null,
+      "infrastructure": [
+        "local PostgreSQL pgvector"
+      ],
+      "azure_alternative": [
+        "PostgreSQL Flexible Server",
+        "Azure AI Search"
+      ]
+    },
+    {
+      "feature": "query embeddings",
+      "ptu_required": false,
+      "potential_ptu_component": "not established for configured embedding model",
+      "infrastructure": [
+        "existing text-embedding-3-small Standard"
+      ],
+      "status": "two successful calls;167 reported tokens"
+    },
+    {
+      "feature": "factual absent-answer and cross-document responses",
+      "ptu_required": false,
+      "potential_ptu_component": "gpt-4.1-mini chat inference only on future supported provisioned deployment",
+      "infrastructure": [
+        "local LangGraph",
+        "existing gpt-4.1-mini GlobalStandard"
+      ],
+      "status": "PASS grouped real grounded response with matched source files/index/history"
+    },
+    {
+      "feature": "inline citations",
+      "ptu_required": false,
+      "potential_ptu_component": "model-generated answer text only; not citation extraction rendering or source reads",
+      "infrastructure": [
+        "chat model",
+        "local citation code",
+        "UI",
+        "blob source storage"
+      ],
+      "status": "PASS matched source IDs/snippets and persisted metadata; frontend derives file route from title"
+    },
+    {
+      "feature": "optional reasoning and capability probe",
+      "ptu_required": false,
+      "potential_ptu_component": "supported GPT5.1/GPT4.1-mini model operation on future provisioned deployment",
+      "infrastructure": [
+        "Foundry Responses API"
+      ],
+      "status": "non-reasoning GPT4.1-mini probe400 correctly falls back; no reasoning-generation proof"
+    },
+    {
+      "feature": "contradictory replacement",
+      "ptu_required": false,
+      "potential_ptu_component": "subsequent chat generation only; not freshness or index consistency",
+      "infrastructure": [
+        "blob overwrite",
+        "parser",
+        "Standard embeddings",
+        "pgvector",
+        "chat model"
+      ],
+      "status": "PASS real overwrite reembedding active index and requery91 rather than73"
+    },
+    {
+      "feature": "history and configuration",
+      "ptu_required": false,
+      "potential_ptu_component": null,
+      "infrastructure": [
+        "local PostgreSQL"
+      ],
+      "azure_alternative": [
+        "Cosmos DB",
+        "PostgreSQL"
+      ],
+      "status": "conversation history and stored citation metadata verified; configuration UI not exhaustively tested"
+    },
+    {
+      "feature": "voice safety identity monitoring",
+      "ptu_required": false,
+      "potential_ptu_component": null,
+      "infrastructure": [
+        "Entra identity",
+        "local logs and ledger"
+      ],
+      "optional_separately_billed": [
+        "Speech",
+        "Content Safety",
+        "Monitor",
+        "App Insights",
+        "Log Analytics"
+      ]
+    }
+  ],
+  "shared_policy_update": {
+    "foundry_disable_local_auth": true,
+    "verification": "read-only account show through B\\Invoke-LabAz.ps1 -AzArguments string[]",
+    "azure_authentication": "AzureCliCredential Entra only; no keys and no enable-local-auth changes",
+    "protected_inventory": "B\\evidence\\protected-resources.json",
+    "protected_resource_count": 100,
+    "all_protected_resources_inventory_only": true,
+    "guard_is_billing_approval": false,
+    "existing_search": {
+      "name": "edc-hack-search",
+      "sku": "Basic",
+      "partitions": 1,
+      "replicas": 1,
+      "used_by_cwyd": false
+    }
+  },
+  "blockers": [],
+  "required_unblock": {
+    "role": "Cognitive Services OpenAI User",
+    "role_definition_id": "5e0bd9bd-7b93-4f28-af87-19fc36ad61bd",
+    "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-edc-foundry-hack/providers/Microsoft.CognitiveServices/accounts/edcfoundryhack01",
+    "principal": "intended lab runtime Azure CLI identity",
+    "assignment_performed": false,
+    "parent_coordination": "request sent to sibling agents for relay; direct owner ID not found",
+    "cost": "RBAC assignment itself adds no fixed Azure resource charge",
+    "parent_assignment_performed": true,
+    "role_request_status": "completed by parent; account embeddings and project chat verified",
+    "role_assignment_id": "4df8a697-fc79-448a-8f0f-54f90020f5d3",
+    "principal_id": "87ccaa4c-8da9-4d6a-a626-d0da9b2e25ed"
+  },
+  "resolved_local_blockers": [
+    "local PostgreSQL AAD callback bypass scoped only to exact loopback trust database",
+    "local Azurite token-credential and endpoint-port mismatch bridged in isolated runtime",
+    "Vite hardcoded upstream proxy port overridden at launcher runtime"
+  ],
+  "initial_errors": [
+    "API ConnectError while starting",
+    "harness upload URL typo caused405 before correction and no model call",
+    "upstream PostgreSQL password callback timeout during first real startup"
+  ],
+  "approaches_investigated": [
+    "documented local pgvector/Azurite stack with isolated compatibility bridge",
+    "documented cloud azd path including existing Foundry project parameter; not provisioned"
+  ],
+  "report": "reports/cwyd.md",
+  "parent_role_assignment": {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-edc-foundry-hack/providers/Microsoft.CognitiveServices/accounts/edcfoundryhack01/providers/Microsoft.Authorization/roleAssignments/4df8a697-fc79-448a-8f0f-54f90020f5d3",
+    "principalId": "87ccaa4c-8da9-4d6a-a626-d0da9b2e25ed",
+    "roleDefinitionId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/providers/Microsoft.Authorization/roleDefinitions/5e0bd9bd-7b93-4f28-af87-19fc36ad61bd",
+    "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-edc-foundry-hack/providers/Microsoft.CognitiveServices/accounts/edcfoundryhack01",
+    "createdOn": "2026-09-11T23:53:57.904289+00:00"
+  },
+  "indexed_documents": {
+    "documents": [
+      {
+        "source": "ptu-cwyd-equipment.txt",
+        "chunk_count": 1,
+        "last_modified": "2026-09-12T00:07:51.754441+00:00"
+      },
+      {
+        "source": "ptu-cwyd-learning.txt",
+        "chunk_count": 1,
+        "last_modified": "2026-09-12T00:08:25.146357+00:00"
+      },
+      {
+        "source": "ptu-cwyd-records.txt",
+        "chunk_count": 1,
+        "last_modified": "2026-09-12T00:08:32.368380+00:00"
+      },
+      {
+        "source": "ptu-cwyd-remote.txt",
+        "chunk_count": 1,
+        "last_modified": "2026-09-12T00:08:40.605478+00:00"
+      },
+      {
+        "source": "ptu-cwyd-travel.txt",
+        "chunk_count": 1,
+        "last_modified": "2026-09-12T00:18:59.671450+00:00"
+      }
+    ],
+    "total": 5
+  },
+  "ingestion_history": [
+    {
+      "filename": "ptu-cwyd-travel.txt",
+      "started_epoch": 1789170384.665767,
+      "dequeue_count": 1,
+      "status": "failed",
+      "error_type": "AuthenticationError",
+      "latency_ms": 109259.75
+    },
+    {
+      "filename": "ptu-cwyd-travel.txt",
+      "started_epoch": 1789171375.0069714,
+      "dequeue_count": 1,
+      "status": "failed",
+      "error_type": "AuthenticationError",
+      "latency_ms": 15664.46
+    },
+    {
+      "filename": "ptu-cwyd-travel.txt",
+      "started_epoch": 1789171549.2945392,
+      "dequeue_count": 1,
+      "status": "indexed",
+      "chunks": 1,
+      "latency_ms": 16237.42
+    },
+    {
+      "filename": "ptu-cwyd-equipment.txt",
+      "started_epoch": 1789171658.5617807,
+      "dequeue_count": 1,
+      "status": "indexed",
+      "chunks": 1,
+      "latency_ms": 13220.44
+    },
+    {
+      "filename": "ptu-cwyd-learning.txt",
+      "started_epoch": 1789171671.8041475,
+      "dequeue_count": 1,
+      "status": "indexed",
+      "chunks": 1,
+      "latency_ms": 33362.93
+    },
+    {
+      "filename": "ptu-cwyd-records.txt",
+      "started_epoch": 1789171705.182576,
+      "dequeue_count": 1,
+      "status": "indexed",
+      "chunks": 1,
+      "latency_ms": 7228.16
+    },
+    {
+      "filename": "ptu-cwyd-remote.txt",
+      "started_epoch": 1789171712.4255083,
+      "dequeue_count": 1,
+      "status": "indexed",
+      "chunks": 1,
+      "latency_ms": 8202.12
+    },
+    {
+      "filename": "ptu-cwyd-travel.txt",
+      "started_epoch": 1789172330.5321548,
+      "dequeue_count": 1,
+      "status": "indexed",
+      "chunks": 1,
+      "latency_ms": 9162.57
+    }
+  ],
+  "successful_ingestion_latest": [
+    {
+      "filename": "ptu-cwyd-travel.txt",
+      "started_epoch": 1789172330.5321548,
+      "dequeue_count": 1,
+      "status": "indexed",
+      "chunks": 1,
+      "latency_ms": 9162.57
+    },
+    {
+      "filename": "ptu-cwyd-equipment.txt",
+      "started_epoch": 1789171658.5617807,
+      "dequeue_count": 1,
+      "status": "indexed",
+      "chunks": 1,
+      "latency_ms": 13220.44
+    },
+    {
+      "filename": "ptu-cwyd-learning.txt",
+      "started_epoch": 1789171671.8041475,
+      "dequeue_count": 1,
+      "status": "indexed",
+      "chunks": 1,
+      "latency_ms": 33362.93
+    },
+    {
+      "filename": "ptu-cwyd-records.txt",
+      "started_epoch": 1789171705.182576,
+      "dequeue_count": 1,
+      "status": "indexed",
+      "chunks": 1,
+      "latency_ms": 7228.16
+    },
+    {
+      "filename": "ptu-cwyd-remote.txt",
+      "started_epoch": 1789171712.4255083,
+      "dequeue_count": 1,
+      "status": "indexed",
+      "chunks": 1,
+      "latency_ms": 8202.12
+    }
+  ],
+  "evaluation_budget_request": {
+    "approved_total": 16,
+    "used": 16,
+    "requested_total": 18,
+    "approved": true,
+    "planned_additional_calls_without_retries": 6,
+    "extra_retry_allowance_requested": 2,
+    "purpose": "one grouped factual/absence/comparison chat then one contradictory replacement and follow-up chat",
+    "load_test": false,
+    "remaining": 0,
+    "approval_message_timestamp": "2026-09-11T20:14:09.876-04:00",
+    "portfolio_allocation_note": "Parent reclaimed CWYD's unused2 for DKM comparison; current CWYD cap16 total,16 used,0 remaining; inference disabled.",
+    "historical_approved_total": 18,
+    "current_cap_message_timestamp": "2026-09-11T22:42:56.549-04:00"
+  },
+  "account_embedding_endpoint_correction": {
+    "enabled_by_runtime_environment": "CWYD_USE_ACCOUNT_OPENAI_ENDPOINT=true",
+    "original_account_endpoint_host": "edcfoundryhack01.services.ai.azure.com",
+    "successful_account_endpoint_host": "edcfoundryhack01.openai.azure.com",
+    "project_chat_endpoint_unchanged": true,
+    "authentication": "same AzureCliCredential and https://ai.azure.com/.default bearer provider",
+    "changes_azure_authentication_or_resource_configuration": false,
+    "implementation": "documented SDK get_openai_client base_url override in isolated launcher; no repository source change",
+    "evidence": "model attempt4 original route401; attempts5,6,8,9,10 account OpenAI route200",
+    "causality_caveat": "Different outcomes do not isolate endpoint behavior from possible concurrent RBAC propagation.",
+    "reference": "https://learn.microsoft.com/en-us/azure/foundry-classic/openai/how-to/managed-identity"
+  },
+  "adapted_local_core_workflow_proven": true,
+  "official_unchanged_deployment_verified": false,
+  "azure_functions_host_verified": false,
+  "proof_scope": "real upstream UI/API, upload, harness-dispatched ingestion, vector retrieval, chat, citations, history and active replacement; not unchanged official hosting",
+  "usage_by_model": {
+    "text-embedding-3-small": {
+      "attempts": 13,
+      "successful_calls": 8,
+      "reported_input_tokens": 597,
+      "reported_output_tokens": null,
+      "reported_total_tokens": 597,
+      "calls_without_usage": 5
+    },
+    "gpt-4.1-mini": {
+      "attempts": 3,
+      "successful_calls": 2,
+      "reported_input_tokens": 2507,
+      "reported_output_tokens": 210,
+      "reported_total_tokens": 2717,
+      "calls_without_usage": 1
+    }
+  },
+  "final_endpoint_checks": [
+    {
+      "url": "http://[REDACTED ADDRESS]:5112/",
+      "status": 200,
+      "bytes": 546,
+      "sha256": "4fb6854ba5a19c6071e2aff942aef0b4afd723d9a2381c9df601e7cbd4821e65"
+    },
+    {
+      "url": "http://[REDACTED ADDRESS]:5112/admin",
+      "status": 200,
+      "bytes": 546,
+      "sha256": "4fb6854ba5a19c6071e2aff942aef0b4afd723d9a2381c9df601e7cbd4821e65"
+    },
+    {
+      "url": "http://[REDACTED ADDRESS]:5112/api/health",
+      "status": 200,
+      "bytes": 254,
+      "sha256": "b6125f5b19c31a6c2e293b0e66a0ce56627302febd70b0271b46edfffaf078c5"
+    },
+    {
+      "url": "http://[REDACTED ADDRESS]:8112/api/health",
+      "status": 200,
+      "bytes": 254,
+      "sha256": "b6125f5b19c31a6c2e293b0e66a0ce56627302febd70b0271b46edfffaf078c5"
+    },
+    {
+      "url": "http://[REDACTED ADDRESS]:8112/api/admin/documents",
+      "status": 200,
+      "bytes": 531,
+      "sha256": "1238b0da2b2be67ab4dea9be038715d309377f3bf7a7c4c141a26fcb2174ac50"
+    },
+    {
+      "url": "http://[REDACTED ADDRESS]:8112/api/files/ptu-cwyd-travel.txt",
+      "status": 200,
+      "bytes": 325,
+      "sha256": "ab9103c9cc0d9a9793094a9b7cb76726769e034ffee6cb94d8f67f764c4efad1"
+    }
+  ],
+  "final_functional_criteria": [
+    {
+      "name": "factual_1",
+      "expected": "73 credits per travel day with ptu-cwyd-travel.txt",
+      "actual": "The domestic meal allowance per travel day is 73 credits [doc1].",
+      "verdict": "PASS"
+    },
+    {
+      "name": "factual_2",
+      "expected": "640 credits annually with ptu-cwyd-learning.txt",
+      "actual": "The annual learning allowance is 640 credits [doc2].",
+      "verdict": "PASS"
+    },
+    {
+      "name": "factual_3",
+      "expected": "two remote days each week with ptu-cwyd-remote.txt",
+      "actual": "Employees may work remotely two days each week [doc3].",
+      "verdict": "PASS"
+    },
+    {
+      "name": "factual_4",
+      "expected": "seven-year retention with ptu-cwyd-records.txt",
+      "actual": "Completed equipment calibration records are retained for seven years [doc4].",
+      "verdict": "PASS"
+    },
+    {
+      "name": "factual_5",
+      "expected": "90-day calibration interval with ptu-cwyd-equipment.txt",
+      "actual": "Shared field sensors must be calibrated every 90 calendar days [doc5].",
+      "verdict": "PASS"
+    },
+    {
+      "name": "absent_answer",
+      "expected": "explicit insufficient evidence, no invented allowance",
+      "actual": "There is insufficient evidence about an orbital relocation allowance in the provided policies.",
+      "verdict": "PASS"
+    },
+    {
+      "name": "cross_document_comparison",
+      "expected": "21 travel days versus45 learning days; both source citations",
+      "actual": "Travel claims must be submitted within 21 calendar days of returning [doc1], whereas learning reimbursement claims must be submitted within 45 calendar days of course completion [doc2].",
+      "verdict": "PASS"
+    },
+    {
+      "name": "contradictory_replacement",
+      "expected": "active91 credits supersedes73 with travel citation",
+      "actual": "The currently active domestic meal allowance at Larkspur Research Cooperative is 91 credits per travel day. This replaces the previous amount of 73 credits. This update is specified in the Travel Policy, version 2, which is active as of 2026-09-11 and explicitly states that it supersedes version 1, where the 73 credits allowance was set [doc1].",
+      "verdict": "PASS"
+    }
+  ],
+  "final_functional_summary": {
+    "business_criteria_passed": 8,
+    "business_criteria_failed": 0,
+    "business_criteria_total": 8,
+    "actual_chat_requests": 2,
+    "five_factual_questions_grouped_in_one_request": true,
+    "integrity_and_functional_assertions_passed": 18,
+    "integrity_and_functional_assertions_failed": 0
+  },
+  "final_integrity_checks": {
+    "initial": [
+      {
+        "name": "persisted_answer",
+        "expected": "1. The domestic meal allowance per travel day is 73 credits [doc1].\n\n2. The annual learning allowance is 640 credits [doc2].\n\n3. Employees may work remotely two days each week [doc3].\n\n4. Completed equipment calibration records are retained for seven years [doc4].\n\n5. Shared field sensors must be calibrated every 90 calendar days [doc5].\n\n6. Travel claims must be submitted within 21 calendar days of returning [doc1], whereas learning reimbursement claims must be submitted within 45 calendar days of course completion [doc2].\n\n7. There is insufficient evidence about an orbital relocation allowance in the provided policies.",
+        "actual": "1. The domestic meal allowance per travel day is 73 credits [doc1].\n\n2. The annual learning allowance is 640 credits [doc2].\n\n3. Employees may work remotely two days each week [doc3].\n\n4. Completed equipment calibration records are retained for seven years [doc4].\n\n5. Shared field sensors must be calibrated every 90 calendar days [doc5].\n\n6. Travel claims must be submitted within 21 calendar days of returning [doc1], whereas learning reimbursement claims must be submitted within 45 calendar days of course completion [doc2].\n\n7. There is insufficient evidence about an orbital relocation allowance in the provided policies.",
+        "verdict": "PASS"
+      },
+      {
+        "name": "persisted_citations",
+        "expected": [
+          {
+            "id": "[doc1]",
+            "title": "ptu-cwyd-travel.txt",
+            "url": "",
+            "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative — Travel Policy, version 1, active 2026-09-01.\r\nThe domestic meal allowance is 73 credits per travel day.\r\nTravel claims must be submitted within 21 calendar days of returning.\r\nThis policy is fictional and does not describe a real organization.",
+            "score": 0.7595079453441891,
+            "metadata": {
+              "source_id": "1ebe48b006d028a979c368b0788a4eab2120c97dfdf588a29268ddb322f768b2"
+            }
+          },
+          {
+            "id": "[doc2]",
+            "title": "ptu-cwyd-learning.txt",
+            "url": "",
+            "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative — Learning Policy, version 1, active 2026-09-01.\r\nEach employee has an annual learning allowance of 640 credits.\r\nLearning reimbursement claims must be submitted within 45 calendar days of course completion.\r\nThis policy is fictional and does not describe a real organization.",
+            "score": 0.6624773421501137,
+            "metadata": {
+              "source_id": "962b9d80e3babd6d8a52fadc6f96c85927b6458ff2b4d6b2bbe789ee72e29be2"
+            }
+          },
+          {
+            "id": "[doc3]",
+            "title": "ptu-cwyd-remote.txt",
+            "url": "",
+            "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative — Remote Work Policy, version 1, active 2026-09-01.\r\nEmployees may work remotely two days each week.\r\nThe team coordinator approves the weekly remote-work schedule.\r\nThis policy is fictional and does not describe a real organization.",
+            "score": 0.629330390754327,
+            "metadata": {
+              "source_id": "30b7f2e98fa29a09601447e57f3d746f8fc3d615daf1998357e575fa2155f6c6"
+            }
+          },
+          {
+            "id": "[doc4]",
+            "title": "ptu-cwyd-records.txt",
+            "url": "",
+            "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative — Records Policy, version 1, active 2026-09-01.\r\nCompleted equipment calibration records are retained for seven years.\r\nThe records steward approves disposal after the retention period.\r\nThis policy is fictional and does not describe a real organization.",
+            "score": 0.544458223277224,
+            "metadata": {
+              "source_id": "339f57e8f8f8d2cdd300d96fa29eba9f6ed9d14122c70d066afa69b2d62c95c3"
+            }
+          },
+          {
+            "id": "[doc5]",
+            "title": "ptu-cwyd-equipment.txt",
+            "url": "",
+            "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative — Equipment Policy, version 1, active 2026-09-01.\r\nShared field sensors must be calibrated every 90 calendar days.\r\nThe laboratory coordinator maintains the calibration schedule.\r\nThis policy is fictional and does not describe a real organization.",
+            "score": 0.6197122370995956,
+            "metadata": {
+              "source_id": "706f3e7558c2b6441500eb368621fcd14381179c55cda2bd278a2787b1121289"
+            }
+          }
+        ],
+        "actual": [
+          {
+            "id": "[doc1]",
+            "url": "",
+            "score": 0.7595079453441891,
+            "title": "ptu-cwyd-travel.txt",
+            "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative — Travel Policy, version 1, active 2026-09-01.\r\nThe domestic meal allowance is 73 credits per travel day.\r\nTravel claims must be submitted within 21 calendar days of returning.\r\nThis policy is fictional and does not describe a real organization.",
+            "metadata": {
+              "source_id": "1ebe48b006d028a979c368b0788a4eab2120c97dfdf588a29268ddb322f768b2"
+            }
+          },
+          {
+            "id": "[doc2]",
+            "url": "",
+            "score": 0.6624773421501137,
+            "title": "ptu-cwyd-learning.txt",
+            "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative — Learning Policy, version 1, active 2026-09-01.\r\nEach employee has an annual learning allowance of 640 credits.\r\nLearning reimbursement claims must be submitted within 45 calendar days of course completion.\r\nThis policy is fictional and does not describe a real organization.",
+            "metadata": {
+              "source_id": "962b9d80e3babd6d8a52fadc6f96c85927b6458ff2b4d6b2bbe789ee72e29be2"
+            }
+          },
+          {
+            "id": "[doc3]",
+            "url": "",
+            "score": 0.629330390754327,
+            "title": "ptu-cwyd-remote.txt",
+            "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative — Remote Work Policy, version 1, active 2026-09-01.\r\nEmployees may work remotely two days each week.\r\nThe team coordinator approves the weekly remote-work schedule.\r\nThis policy is fictional and does not describe a real organization.",
+            "metadata": {
+              "source_id": "30b7f2e98fa29a09601447e57f3d746f8fc3d615daf1998357e575fa2155f6c6"
+            }
+          },
+          {
+            "id": "[doc4]",
+            "url": "",
+            "score": 0.544458223277224,
+            "title": "ptu-cwyd-records.txt",
+            "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative — Records Policy, version 1, active 2026-09-01.\r\nCompleted equipment calibration records are retained for seven years.\r\nThe records steward approves disposal after the retention period.\r\nThis policy is fictional and does not describe a real organization.",
+            "metadata": {
+              "source_id": "339f57e8f8f8d2cdd300d96fa29eba9f6ed9d14122c70d066afa69b2d62c95c3"
+            }
+          },
+          {
+            "id": "[doc5]",
+            "url": "",
+            "score": 0.6197122370995956,
+            "title": "ptu-cwyd-equipment.txt",
+            "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative — Equipment Policy, version 1, active 2026-09-01.\r\nShared field sensors must be calibrated every 90 calendar days.\r\nThe laboratory coordinator maintains the calibration schedule.\r\nThis policy is fictional and does not describe a real organization.",
+            "metadata": {
+              "source_id": "706f3e7558c2b6441500eb368621fcd14381179c55cda2bd278a2787b1121289"
+            }
+          }
+        ],
+        "verdict": "PASS"
+      },
+      {
+        "name": "citation_blob_and_index_grounding",
+        "expected": "every citation source ID/snippet matches real index and source blob",
+        "actual": [
+          {
+            "title": "ptu-cwyd-travel.txt",
+            "source_id": "1ebe48b006d028a979c368b0788a4eab2120c97dfdf588a29268ddb322f768b2",
+            "api_file_status": 200,
+            "source_sha256": "6f943264477d0e507bd5db615d45729f535a800d4fa97e9a688b7366718ace07",
+            "source_body": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative — Travel Policy, version 1, active 2026-09-01.\r\nThe domestic meal allowance is 73 credits per travel day.\r\nTravel claims must be submitted within 21 calendar days of returning.\r\nThis policy is fictional and does not describe a real organization.\r\n",
+            "index_rows_for_title": 1,
+            "index_content": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative — Travel Policy, version 1, active 2026-09-01.\r\nThe domestic meal allowance is 73 credits per travel day.\r\nTravel claims must be submitted within 21 calendar days of returning.\r\nThis policy is fictional and does not describe a real organization.",
+            "citation_snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative — Travel Policy, version 1, active 2026-09-01.\r\nThe domestic meal allowance is 73 credits per travel day.\r\nTravel claims must be submitted within 21 calendar days of returning.\r\nThis policy is fictional and does not describe a real organization.",
+            "verdict": "PASS"
+          },
+          {
+            "title": "ptu-cwyd-learning.txt",
+            "source_id": "962b9d80e3babd6d8a52fadc6f96c85927b6458ff2b4d6b2bbe789ee72e29be2",
+            "api_file_status": 200,
+            "source_sha256": "02f380833d1fc7715e049d67d85efa92b8c9e3428a7886d95ccd96b821fec2cb",
+            "source_body": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative — Learning Policy, version 1, active 2026-09-01.\r\nEach employee has an annual learning allowance of 640 credits.\r\nLearning reimbursement claims must be submitted within 45 calendar days of course completion.\r\nThis policy is fictional and does not describe a real organization.\r\n",
+            "index_rows_for_title": 1,
+            "index_content": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative — Learning Policy, version 1, active 2026-09-01.\r\nEach employee has an annual learning allowance of 640 credits.\r\nLearning reimbursement claims must be submitted within 45 calendar days of course completion.\r\nThis policy is fictional and does not describe a real organization.",
+            "citation_snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative — Learning Policy, version 1, active 2026-09-01.\r\nEach employee has an annual learning allowance of 640 credits.\r\nLearning reimbursement claims must be submitted within 45 calendar days of course completion.\r\nThis policy is fictional and does not describe a real organization.",
+            "verdict": "PASS"
+          },
+          {
+            "title": "ptu-cwyd-remote.txt",
+            "source_id": "30b7f2e98fa29a09601447e57f3d746f8fc3d615daf1998357e575fa2155f6c6",
+            "api_file_status": 200,
+            "source_sha256": "0d9cc560229a5c54f34472aa7351e7d01ac1b1117e6ee21c1dcd7fe752f6d5ac",
+            "source_body": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative — Remote Work Policy, version 1, active 2026-09-01.\r\nEmployees may work remotely two days each week.\r\nThe team coordinator approves the weekly remote-work schedule.\r\nThis policy is fictional and does not describe a real organization.\r\n",
+            "index_rows_for_title": 1,
+            "index_content": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative — Remote Work Policy, version 1, active 2026-09-01.\r\nEmployees may work remotely two days each week.\r\nThe team coordinator approves the weekly remote-work schedule.\r\nThis policy is fictional and does not describe a real organization.",
+            "citation_snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative — Remote Work Policy, version 1, active 2026-09-01.\r\nEmployees may work remotely two days each week.\r\nThe team coordinator approves the weekly remote-work schedule.\r\nThis policy is fictional and does not describe a real organization.",
+            "verdict": "PASS"
+          },
+          {
+            "title": "ptu-cwyd-records.txt",
+            "source_id": "339f57e8f8f8d2cdd300d96fa29eba9f6ed9d14122c70d066afa69b2d62c95c3",
+            "api_file_status": 200,
+            "source_sha256": "d6040f09b9ab6d7d0d4af73776eb65f0f8be697270ea91dd0099c8672bcc1633",
+            "source_body": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative — Records Policy, version 1, active 2026-09-01.\r\nCompleted equipment calibration records are retained for seven years.\r\nThe records steward approves disposal after the retention period.\r\nThis policy is fictional and does not describe a real organization.\r\n",
+            "index_rows_for_title": 1,
+            "index_content": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative — Records Policy, version 1, active 2026-09-01.\r\nCompleted equipment calibration records are retained for seven years.\r\nThe records steward approves disposal after the retention period.\r\nThis policy is fictional and does not describe a real organization.",
+            "citation_snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative — Records Policy, version 1, active 2026-09-01.\r\nCompleted equipment calibration records are retained for seven years.\r\nThe records steward approves disposal after the retention period.\r\nThis policy is fictional and does not describe a real organization.",
+            "verdict": "PASS"
+          },
+          {
+            "title": "ptu-cwyd-equipment.txt",
+            "source_id": "706f3e7558c2b6441500eb368621fcd14381179c55cda2bd278a2787b1121289",
+            "api_file_status": 200,
+            "source_sha256": "539927c21ddf0d824ce976df8eda751b1e6c483375ac94fd5edce32a340bc29c",
+            "source_body": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative — Equipment Policy, version 1, active 2026-09-01.\r\nShared field sensors must be calibrated every 90 calendar days.\r\nThe laboratory coordinator maintains the calibration schedule.\r\nThis policy is fictional and does not describe a real organization.\r\n",
+            "index_rows_for_title": 1,
+            "index_content": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative — Equipment Policy, version 1, active 2026-09-01.\r\nShared field sensors must be calibrated every 90 calendar days.\r\nThe laboratory coordinator maintains the calibration schedule.\r\nThis policy is fictional and does not describe a real organization.",
+            "citation_snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative — Equipment Policy, version 1, active 2026-09-01.\r\nShared field sensors must be calibrated every 90 calendar days.\r\nThe laboratory coordinator maintains the calibration schedule.\r\nThis policy is fictional and does not describe a real organization.",
+            "verdict": "PASS"
+          }
+        ],
+        "verdict": "PASS"
+      },
+      {
+        "name": "factual_1",
+        "expected": "73 credits per travel day with ptu-cwyd-travel.txt",
+        "actual": "The domestic meal allowance per travel day is 73 credits [doc1].",
+        "verdict": "PASS"
+      },
+      {
+        "name": "factual_2",
+        "expected": "640 credits annually with ptu-cwyd-learning.txt",
+        "actual": "The annual learning allowance is 640 credits [doc2].",
+        "verdict": "PASS"
+      },
+      {
+        "name": "factual_3",
+        "expected": "two remote days each week with ptu-cwyd-remote.txt",
+        "actual": "Employees may work remotely two days each week [doc3].",
+        "verdict": "PASS"
+      },
+      {
+        "name": "factual_4",
+        "expected": "seven-year retention with ptu-cwyd-records.txt",
+        "actual": "Completed equipment calibration records are retained for seven years [doc4].",
+        "verdict": "PASS"
+      },
+      {
+        "name": "factual_5",
+        "expected": "90-day calibration interval with ptu-cwyd-equipment.txt",
+        "actual": "Shared field sensors must be calibrated every 90 calendar days [doc5].",
+        "verdict": "PASS"
+      },
+      {
+        "name": "cross_document_comparison",
+        "expected": "21 travel days versus45 learning days; both source citations",
+        "actual": "Travel claims must be submitted within 21 calendar days of returning [doc1], whereas learning reimbursement claims must be submitted within 45 calendar days of course completion [doc2].",
+        "verdict": "PASS"
+      },
+      {
+        "name": "absent_answer",
+        "expected": "explicit insufficient evidence, no invented allowance",
+        "actual": "There is insufficient evidence about an orbital relocation allowance in the provided policies.",
+        "verdict": "PASS"
+      },
+      {
+        "name": "index_source_count",
+        "expected": "five policy titles and five active chunks",
+        "actual": {
+          "titles": 5,
+          "chunks": 5
+        },
+        "verdict": "PASS"
+      }
+    ],
+    "update": [
+      {
+        "name": "persisted_answer",
+        "expected": "The currently active domestic meal allowance at Larkspur Research Cooperative is 91 credits per travel day. This replaces the previous amount of 73 credits. This update is specified in the Travel Policy, version 2, which is active as of 2026-09-11 and explicitly states that it supersedes version 1, where the 73 credits allowance was set [doc1].",
+        "actual": "The currently active domestic meal allowance at Larkspur Research Cooperative is 91 credits per travel day. This replaces the previous amount of 73 credits. This update is specified in the Travel Policy, version 2, which is active as of 2026-09-11 and explicitly states that it supersedes version 1, where the 73 credits allowance was set [doc1].",
+        "verdict": "PASS"
+      },
+      {
+        "name": "persisted_citations",
+        "expected": [
+          {
+            "id": "[doc1]",
+            "title": "ptu-cwyd-travel.txt",
+            "url": "",
+            "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\nLarkspur Research Cooperative — Travel Policy, version 2, active 2026-09-11.\nThis version supersedes version 1. The domestic meal allowance is now 91 credits per travel day, replacing the previous 73 credits.\nTravel claims must be submitted within 21 calendar days of returning.",
+            "score": 0.711945021903782,
+            "metadata": {
+              "source_id": "1ebe48b006d028a979c368b0788a4eab2120c97dfdf588a29268ddb322f768b2"
+            }
+          }
+        ],
+        "actual": [
+          {
+            "id": "[doc1]",
+            "url": "",
+            "score": 0.711945021903782,
+            "title": "ptu-cwyd-travel.txt",
+            "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\nLarkspur Research Cooperative — Travel Policy, version 2, active 2026-09-11.\nThis version supersedes version 1. The domestic meal allowance is now 91 credits per travel day, replacing the previous 73 credits.\nTravel claims must be submitted within 21 calendar days of returning.",
+            "metadata": {
+              "source_id": "1ebe48b006d028a979c368b0788a4eab2120c97dfdf588a29268ddb322f768b2"
+            }
+          }
+        ],
+        "verdict": "PASS"
+      },
+      {
+        "name": "citation_blob_and_index_grounding",
+        "expected": "every citation source ID/snippet matches real index and source blob",
+        "actual": [
+          {
+            "title": "ptu-cwyd-travel.txt",
+            "source_id": "1ebe48b006d028a979c368b0788a4eab2120c97dfdf588a29268ddb322f768b2",
+            "api_file_status": 200,
+            "source_sha256": "ab9103c9cc0d9a9793094a9b7cb76726769e034ffee6cb94d8f67f764c4efad1",
+            "source_body": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\nLarkspur Research Cooperative — Travel Policy, version 2, active 2026-09-11.\nThis version supersedes version 1. The domestic meal allowance is now 91 credits per travel day, replacing the previous 73 credits.\nTravel claims must be submitted within 21 calendar days of returning.\n",
+            "index_rows_for_title": 1,
+            "index_content": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\nLarkspur Research Cooperative — Travel Policy, version 2, active 2026-09-11.\nThis version supersedes version 1. The domestic meal allowance is now 91 credits per travel day, replacing the previous 73 credits.\nTravel claims must be submitted within 21 calendar days of returning.",
+            "citation_snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\nLarkspur Research Cooperative — Travel Policy, version 2, active 2026-09-11.\nThis version supersedes version 1. The domestic meal allowance is now 91 credits per travel day, replacing the previous 73 credits.\nTravel claims must be submitted within 21 calendar days of returning.",
+            "verdict": "PASS"
+          }
+        ],
+        "verdict": "PASS"
+      },
+      {
+        "name": "contradictory_replacement",
+        "expected": "active91 credits supersedes73 with travel citation",
+        "actual": "The currently active domestic meal allowance at Larkspur Research Cooperative is 91 credits per travel day. This replaces the previous amount of 73 credits. This update is specified in the Travel Policy, version 2, which is active as of 2026-09-11 and explicitly states that it supersedes version 1, where the 73 credits allowance was set [doc1].",
+        "verdict": "PASS"
+      },
+      {
+        "name": "active_blob_and_index",
+        "expected": "one current travel chunk containing version2 and now91 credits",
+        "actual": [
+          {
+            "title": "ptu-cwyd-travel.txt",
+            "source_id": "1ebe48b006d028a979c368b0788a4eab2120c97dfdf588a29268ddb322f768b2",
+            "api_file_status": 200,
+            "source_sha256": "ab9103c9cc0d9a9793094a9b7cb76726769e034ffee6cb94d8f67f764c4efad1",
+            "source_body": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\nLarkspur Research Cooperative — Travel Policy, version 2, active 2026-09-11.\nThis version supersedes version 1. The domestic meal allowance is now 91 credits per travel day, replacing the previous 73 credits.\nTravel claims must be submitted within 21 calendar days of returning.\n",
+            "index_rows_for_title": 1,
+            "index_content": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\nLarkspur Research Cooperative — Travel Policy, version 2, active 2026-09-11.\nThis version supersedes version 1. The domestic meal allowance is now 91 credits per travel day, replacing the previous 73 credits.\nTravel claims must be submitted within 21 calendar days of returning.",
+            "citation_snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\nLarkspur Research Cooperative — Travel Policy, version 2, active 2026-09-11.\nThis version supersedes version 1. The domestic meal allowance is now 91 credits per travel day, replacing the previous 73 credits.\nTravel claims must be submitted within 21 calendar days of returning.",
+            "verdict": "PASS"
+          }
+        ],
+        "verdict": "PASS"
+      },
+      {
+        "name": "historical_answer_and_snippets_preserved",
+        "expected": "old conversation keeps original answer and citation metadata",
+        "actual": {
+          "content": "1. The domestic meal allowance per travel day is 73 credits [doc1].\n\n2. The annual learning allowance is 640 credits [doc2].\n\n3. Employees may work remotely two days each week [doc3].\n\n4. Completed equipment calibration records are retained for seven years [doc4].\n\n5. Shared field sensors must be calibrated every 90 calendar days [doc5].\n\n6. Travel claims must be submitted within 21 calendar days of returning [doc1], whereas learning reimbursement claims must be submitted within 45 calendar days of course completion [doc2].\n\n7. There is insufficient evidence about an orbital relocation allowance in the provided policies.",
+          "citations": [
+            {
+              "id": "[doc1]",
+              "url": "",
+              "score": 0.7595079453441891,
+              "title": "ptu-cwyd-travel.txt",
+              "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative — Travel Policy, version 1, active 2026-09-01.\r\nThe domestic meal allowance is 73 credits per travel day.\r\nTravel claims must be submitted within 21 calendar days of returning.\r\nThis policy is fictional and does not describe a real organization.",
+              "metadata": {
+                "source_id": "1ebe48b006d028a979c368b0788a4eab2120c97dfdf588a29268ddb322f768b2"
+              }
+            },
+            {
+              "id": "[doc2]",
+              "url": "",
+              "score": 0.6624773421501137,
+              "title": "ptu-cwyd-learning.txt",
+              "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative — Learning Policy, version 1, active 2026-09-01.\r\nEach employee has an annual learning allowance of 640 credits.\r\nLearning reimbursement claims must be submitted within 45 calendar days of course completion.\r\nThis policy is fictional and does not describe a real organization.",
+              "metadata": {
+                "source_id": "962b9d80e3babd6d8a52fadc6f96c85927b6458ff2b4d6b2bbe789ee72e29be2"
+              }
+            },
+            {
+              "id": "[doc3]",
+              "url": "",
+              "score": 0.629330390754327,
+              "title": "ptu-cwyd-remote.txt",
+              "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative — Remote Work Policy, version 1, active 2026-09-01.\r\nEmployees may work remotely two days each week.\r\nThe team coordinator approves the weekly remote-work schedule.\r\nThis policy is fictional and does not describe a real organization.",
+              "metadata": {
+                "source_id": "30b7f2e98fa29a09601447e57f3d746f8fc3d615daf1998357e575fa2155f6c6"
+              }
+            },
+            {
+              "id": "[doc4]",
+              "url": "",
+              "score": 0.544458223277224,
+              "title": "ptu-cwyd-records.txt",
+              "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative — Records Policy, version 1, active 2026-09-01.\r\nCompleted equipment calibration records are retained for seven years.\r\nThe records steward approves disposal after the retention period.\r\nThis policy is fictional and does not describe a real organization.",
+              "metadata": {
+                "source_id": "339f57e8f8f8d2cdd300d96fa29eba9f6ed9d14122c70d066afa69b2d62c95c3"
+              }
+            },
+            {
+              "id": "[doc5]",
+              "url": "",
+              "score": 0.6197122370995956,
+              "title": "ptu-cwyd-equipment.txt",
+              "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative — Equipment Policy, version 1, active 2026-09-01.\r\nShared field sensors must be calibrated every 90 calendar days.\r\nThe laboratory coordinator maintains the calibration schedule.\r\nThis policy is fictional and does not describe a real organization.",
+              "metadata": {
+                "source_id": "706f3e7558c2b6441500eb368621fcd14381179c55cda2bd278a2787b1121289"
+              }
+            }
+          ]
+        },
+        "verdict": "PASS"
+      },
+      {
+        "name": "index_source_count",
+        "expected": "five policy titles and five active chunks",
+        "actual": {
+          "titles": 5,
+          "chunks": 5
+        },
+        "verdict": "PASS"
+      }
+    ]
+  },
+  "grouped_response": {
+    "test": "questions-grouped",
+    "method": "POST",
+    "path": "/api/conversation",
+    "status": 200,
+    "actual": {
+      "content": "1. The domestic meal allowance per travel day is 73 credits [doc1].\n\n2. The annual learning allowance is 640 credits [doc2].\n\n3. Employees may work remotely two days each week [doc3].\n\n4. Completed equipment calibration records are retained for seven years [doc4].\n\n5. Shared field sensors must be calibrated every 90 calendar days [doc5].\n\n6. Travel claims must be submitted within 21 calendar days of returning [doc1], whereas learning reimbursement claims must be submitted within 45 calendar days of course completion [doc2].\n\n7. There is insufficient evidence about an orbital relocation allowance in the provided policies.",
+      "citations": [
+        {
+          "id": "[doc1]",
+          "title": "ptu-cwyd-travel.txt",
+          "url": "",
+          "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative — Travel Policy, version 1, active 2026-09-01.\r\nThe domestic meal allowance is 73 credits per travel day.\r\nTravel claims must be submitted within 21 calendar days of returning.\r\nThis policy is fictional and does not describe a real organization.",
+          "score": 0.7595079453441891,
+          "metadata": {
+            "source_id": "1ebe48b006d028a979c368b0788a4eab2120c97dfdf588a29268ddb322f768b2"
+          }
+        },
+        {
+          "id": "[doc2]",
+          "title": "ptu-cwyd-learning.txt",
+          "url": "",
+          "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative — Learning Policy, version 1, active 2026-09-01.\r\nEach employee has an annual learning allowance of 640 credits.\r\nLearning reimbursement claims must be submitted within 45 calendar days of course completion.\r\nThis policy is fictional and does not describe a real organization.",
+          "score": 0.6624773421501137,
+          "metadata": {
+            "source_id": "962b9d80e3babd6d8a52fadc6f96c85927b6458ff2b4d6b2bbe789ee72e29be2"
+          }
+        },
+        {
+          "id": "[doc3]",
+          "title": "ptu-cwyd-remote.txt",
+          "url": "",
+          "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative — Remote Work Policy, version 1, active 2026-09-01.\r\nEmployees may work remotely two days each week.\r\nThe team coordinator approves the weekly remote-work schedule.\r\nThis policy is fictional and does not describe a real organization.",
+          "score": 0.629330390754327,
+          "metadata": {
+            "source_id": "30b7f2e98fa29a09601447e57f3d746f8fc3d615daf1998357e575fa2155f6c6"
+          }
+        },
+        {
+          "id": "[doc4]",
+          "title": "ptu-cwyd-records.txt",
+          "url": "",
+          "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative — Records Policy, version 1, active 2026-09-01.\r\nCompleted equipment calibration records are retained for seven years.\r\nThe records steward approves disposal after the retention period.\r\nThis policy is fictional and does not describe a real organization.",
+          "score": 0.544458223277224,
+          "metadata": {
+            "source_id": "339f57e8f8f8d2cdd300d96fa29eba9f6ed9d14122c70d066afa69b2d62c95c3"
+          }
+        },
+        {
+          "id": "[doc5]",
+          "title": "ptu-cwyd-equipment.txt",
+          "url": "",
+          "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative — Equipment Policy, version 1, active 2026-09-01.\r\nShared field sensors must be calibrated every 90 calendar days.\r\nThe laboratory coordinator maintains the calibration schedule.\r\nThis policy is fictional and does not describe a real organization.",
+          "score": 0.6197122370995956,
+          "metadata": {
+            "source_id": "706f3e7558c2b6441500eb368621fcd14381179c55cda2bd278a2787b1121289"
+          }
+        }
+      ],
+      "conversation_id": "2e579bef-a41d-470d-aa86-3d97e0994024"
+    },
+    "latency_ms": 21772.44
+  },
+  "replacement_response": {
+    "test": "question-update",
+    "method": "POST",
+    "path": "/api/conversation",
+    "status": 200,
+    "actual": {
+      "content": "The currently active domestic meal allowance at Larkspur Research Cooperative is 91 credits per travel day. This replaces the previous amount of 73 credits. This update is specified in the Travel Policy, version 2, which is active as of 2026-09-11 and explicitly states that it supersedes version 1, where the 73 credits allowance was set [doc1].",
+      "citations": [
+        {
+          "id": "[doc1]",
+          "title": "ptu-cwyd-travel.txt",
+          "url": "",
+          "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\nLarkspur Research Cooperative — Travel Policy, version 2, active 2026-09-11.\nThis version supersedes version 1. The domestic meal allowance is now 91 credits per travel day, replacing the previous 73 credits.\nTravel claims must be submitted within 21 calendar days of returning.",
+          "score": 0.711945021903782,
+          "metadata": {
+            "source_id": "1ebe48b006d028a979c368b0788a4eab2120c97dfdf588a29268ddb322f768b2"
+          }
+        }
+      ],
+      "conversation_id": "4d71e5b7-cceb-47b7-9edb-68678404c200"
+    },
+    "latency_ms": 3524.4
+  },
+  "active_source": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\nLarkspur Research Cooperative — Travel Policy, version 2, active 2026-09-11.\nThis version supersedes version 1. The domestic meal allowance is now 91 credits per travel day, replacing the previous 73 credits.\nTravel claims must be submitted within 21 calendar days of returning.\n",
+  "recommendation": "Keep verified adapted-local data/UI read-only; inference closed pending new explicit authorization; not production-qualified",
+  "historical_checks_before_final_validation": [
+    {
+      "name": "genuine_ui",
+      "expected": "upstream React UI served",
+      "actual": "HTTP200 root element present",
+      "verdict": "PASS_UI_HEALTH_ONLY"
+    },
+    {
+      "name": "api_health",
+      "expected": "configured providers valid",
+      "actual": "HTTP200 pass",
+      "latency_ms": 1859.19,
+      "verdict": "PASS_CONFIGURATION_ONLY_NOT_INFERENCE"
+    },
+    {
+      "name": "frontend_api_proxy",
+      "expected": "UI server reaches backend",
+      "actual": "HTTP200",
+      "latency_ms": 50.7,
+      "verdict": "PASS"
+    },
+    {
+      "name": "index_listing",
+      "expected": "read local real index",
+      "actual": {
+        "documents": [
+          {
+            "source": "ptu-cwyd-equipment.txt",
+            "chunk_count": 1,
+            "last_modified": "2026-09-12T00:07:51.754441+00:00"
+          },
+          {
+            "source": "ptu-cwyd-learning.txt",
+            "chunk_count": 1,
+            "last_modified": "2026-09-12T00:08:25.146357+00:00"
+          },
+          {
+            "source": "ptu-cwyd-records.txt",
+            "chunk_count": 1,
+            "last_modified": "2026-09-12T00:08:32.368380+00:00"
+          },
+          {
+            "source": "ptu-cwyd-remote.txt",
+            "chunk_count": 1,
+            "last_modified": "2026-09-12T00:08:40.605478+00:00"
+          },
+          {
+            "source": "ptu-cwyd-travel.txt",
+            "chunk_count": 1,
+            "last_modified": "2026-09-12T00:06:05.505330+00:00"
+          }
+        ],
+        "total": 5
+      },
+      "verdict": "PASS_FIVE_INDEXED_DOCUMENTS"
+    },
+    {
+      "name": "travel_policy_upload",
+      "expected": "blob stored and ingestion queued",
+      "actual": {
+        "filename": "ptu-cwyd-travel.txt",
+        "blob_path": "ptu-cwyd-documents/ptu-cwyd-travel.txt",
+        "ingestion_job_id": "839a5081-8c0c-4a9f-97ab-8411990db48a",
+        "queued": true
+      },
+      "latency_ms": 1523.01,
+      "verdict": "PASS"
+    },
+    {
+      "name": "travel_policy_ingestion",
+      "expected": "parse embed and index",
+      "actual": {
+        "filename": "ptu-cwyd-travel.txt",
+        "started_epoch": 1789171549.2945392,
+        "dequeue_count": 1,
+        "status": "indexed",
+        "chunks": 1,
+        "latency_ms": 16237.42
+      },
+      "latency_ms": 16237.42,
+      "verdict": "PASS_AFTER_REMEDIATION"
+    },
+    {
+      "name": "initial_chat_before_endpoint_correction",
+      "expected": "grounded factual answer with source citation",
+      "actual": "HTTP502 sanitized Upstream model error",
+      "latency_ms": 54835.75,
+      "verdict": "HISTORICAL_FAILURE_NEW_CONFIGURATION_NOT_YET_TESTED"
+    },
+    {
+      "name": "five_factual_answers_and_citations",
+      "expected": {
+        "travel_credits": 73,
+        "learning_credits": 640,
+        "remote_days": 2,
+        "retention_years": 7,
+        "calibration_days": 90
+      },
+      "actual": null,
+      "verdict": "NOT_RUN_APPROVED_MODEL_BUDGET_INSUFFICIENT"
+    },
+    {
+      "name": "absent_answer",
+      "expected": "insufficient evidence for orbital relocation allowance",
+      "actual": null,
+      "verdict": "NOT_RUN_APPROVED_MODEL_BUDGET_INSUFFICIENT"
+    },
+    {
+      "name": "cross_document_comparison",
+      "expected": "travel21 versus learning45 days with both source citations",
+      "actual": null,
+      "verdict": "NOT_RUN_APPROVED_MODEL_BUDGET_INSUFFICIENT"
+    },
+    {
+      "name": "contradictory_update",
+      "expected": "active travel version2 gives91 rather than73 with citation",
+      "actual": null,
+      "verdict": "NOT_RUN_APPROVED_MODEL_BUDGET_INSUFFICIENT"
+    },
+    {
+      "name": "five_document_ingestion",
+      "expected": "five independently uploaded policies parsed embedded and indexed",
+      "actual": [
+        {
+          "filename": "ptu-cwyd-travel.txt",
+          "started_epoch": 1789171549.2945392,
+          "dequeue_count": 1,
+          "status": "indexed",
+          "chunks": 1,
+          "latency_ms": 16237.42
+        },
+        {
+          "filename": "ptu-cwyd-equipment.txt",
+          "started_epoch": 1789171658.5617807,
+          "dequeue_count": 1,
+          "status": "indexed",
+          "chunks": 1,
+          "latency_ms": 13220.44
+        },
+        {
+          "filename": "ptu-cwyd-learning.txt",
+          "started_epoch": 1789171671.8041475,
+          "dequeue_count": 1,
+          "status": "indexed",
+          "chunks": 1,
+          "latency_ms": 33362.93
+        },
+        {
+          "filename": "ptu-cwyd-records.txt",
+          "started_epoch": 1789171705.182576,
+          "dequeue_count": 1,
+          "status": "indexed",
+          "chunks": 1,
+          "latency_ms": 7228.16
+        },
+        {
+          "filename": "ptu-cwyd-remote.txt",
+          "started_epoch": 1789171712.4255083,
+          "dequeue_count": 1,
+          "status": "indexed",
+          "chunks": 1,
+          "latency_ms": 8202.12
+        }
+      ],
+      "verdict": "PASS_REAL_APP_INGESTION"
+    }
+  ],
+  "functional_tests": [
+    {
+      "name": "factual_1",
+      "expected": "73 credits per travel day with ptu-cwyd-travel.txt",
+      "actual": "The domestic meal allowance per travel day is 73 credits [doc1].",
+      "verdict": "PASS"
+    },
+    {
+      "name": "factual_2",
+      "expected": "640 credits annually with ptu-cwyd-learning.txt",
+      "actual": "The annual learning allowance is 640 credits [doc2].",
+      "verdict": "PASS"
+    },
+    {
+      "name": "factual_3",
+      "expected": "two remote days each week with ptu-cwyd-remote.txt",
+      "actual": "Employees may work remotely two days each week [doc3].",
+      "verdict": "PASS"
+    },
+    {
+      "name": "factual_4",
+      "expected": "seven-year retention with ptu-cwyd-records.txt",
+      "actual": "Completed equipment calibration records are retained for seven years [doc4].",
+      "verdict": "PASS"
+    },
+    {
+      "name": "factual_5",
+      "expected": "90-day calibration interval with ptu-cwyd-equipment.txt",
+      "actual": "Shared field sensors must be calibrated every 90 calendar days [doc5].",
+      "verdict": "PASS"
+    },
+    {
+      "name": "absent_answer",
+      "expected": "explicit insufficient evidence, no invented allowance",
+      "actual": "There is insufficient evidence about an orbital relocation allowance in the provided policies.",
+      "verdict": "PASS"
+    },
+    {
+      "name": "cross_document_comparison",
+      "expected": "21 travel days versus45 learning days; both source citations",
+      "actual": "Travel claims must be submitted within 21 calendar days of returning [doc1], whereas learning reimbursement claims must be submitted within 45 calendar days of course completion [doc2].",
+      "verdict": "PASS"
+    },
+    {
+      "name": "contradictory_replacement",
+      "expected": "active91 credits supersedes73 with travel citation",
+      "actual": "The currently active domestic meal allowance at Larkspur Research Cooperative is 91 credits per travel day. This replaces the previous amount of 73 credits. This update is specified in the Travel Policy, version 2, which is active as of 2026-09-11 and explicitly states that it supersedes version 1, where the 73 credits allowance was set [doc1].",
+      "verdict": "PASS"
+    }
+  ],
+  "lifecycle_verification": {
+    "worker_actual_stop_start": "PASS using Stop-Cwyd.ps1 worker then Start-Cwyd.ps1 worker",
+    "other_stop_targets": "backend/frontend/database/storage resolved and inspected with -WhatIf",
+    "new_worker_pid": 6356,
+    "local_data_preserved": true,
+    "no_model_calls_for_lifecycle_verification": true,
+    "scripts": [
+      "scripts/Start-Cwyd.ps1",
+      "scripts/Stop-Cwyd.ps1"
+    ],
+    "custody_update": {
+      "backend_pid": 29208,
+      "backend_mode": "read_only_inference_closed",
+      "worker_state": "stopped_evaluation_closed",
+      "frontend_and_containers_restarted": false,
+      "dependencies_rebuilt": false
+    }
+  },
+  "evaluation_inference_enabled": false,
+  "evaluation_budget_custody": {
+    "app": "Chat With Your Data",
+    "model_attempt_limit": 16,
+    "inference_enabled": false,
+    "requires_new_explicit_authorization": true,
+    "ledger_reset_permitted": false,
+    "historical_approved_total": 18,
+    "reclaimed_unused_attempts": 2,
+    "reallocated_to": "DKM comparison",
+    "custody_timestamp": "2026-09-11T22:42:56.549-04:00",
+    "authorization_reference": "Parent custody-only instruction: CWYD16TOTAL/16used; no new model calls."
+  },
+  "budget_custody_validation": {
+    "status": "PASS",
+    "evidence": "budget-custody-validation.json",
+    "checks_passed": 25,
+    "new_model_calls": 0,
+    "all16_ledger_records_unchanged": true,
+    "all8_passed_criteria_unchanged": true
+  }
+}

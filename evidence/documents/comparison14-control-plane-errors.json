@@ -1,0 +1,21 @@
+{
+  "scope": "ACA authenticated console control plane, not OpenAI inference",
+  "model_attempts_at_errors": 12,
+  "events": [
+    {
+      "utc": "2026-09-12T02:46:08Z",
+      "operation": "Read-only recovery script",
+      "status": 404,
+      "cause": "Long console command rejected by gateway before execution",
+      "adaptation": "Stage nonsecret evaluation runner in short chunks"
+    },
+    {
+      "utc": "2026-09-12T02:48:07Z",
+      "operation": "Decompress staged evaluation runner",
+      "status": 429,
+      "retry_after_seconds": 600,
+      "state": "All five encoded chunks staged; execution not started",
+      "action": "Honor at least600seconds before the next console request; no alternate identity/resource bypass"
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "checkedUtc": "2026-09-12T05:32:22.8463737Z",
+  "source": "All retained revisions, not only latest",
+  "services": [
+    {
+      "service": "api",
+      "replicas": 0,
+      "revisions": [
+        {
+          "name": "ca-ptu-content-api--0000006",
+          "active": false,
+          "replicas": 0,
+          "runningState": "Stopped"
+        },
+        {
+          "name": "ca-ptu-content-api--0000007",
+          "active": false,
+          "replicas": 0,
+          "runningState": "Stopped"
+        },
+        {
+          "name": "ca-ptu-content-api--0000008",
+          "active": false,
+          "replicas": 0,
+          "runningState": "Stopped"
+        },
+        {
+          "name": "ca-ptu-content-api--0000009",
+          "active": false,
+          "replicas": 0,
+          "runningState": "Stopped"
+        }
+      ]
+    },
+    {
+      "service": "processor",
+      "replicas": 0,
+      "revisions": [
+        {
+          "name": "ca-ptu-content-processor--0000006",
+          "active": false,
+          "replicas": 0,
+          "runningState": "Stopped"
+        },
+        {
+          "name": "ca-ptu-content-processor--0000007",
+          "active": false,
+          "replicas": 0,
+          "runningState": "Stopped"
+        },
+        {
+          "name": "ca-ptu-content-processor--0000008",
+          "active": false,
+          "replicas": 0,
+          "runningState": "Stopped"
+        },
+        {
+          "name": "ca-ptu-content-processor--0000009",
+          "active": false,
+          "replicas": 0,
+          "runningState": "Stopped"
+        }
+      ]
+    },
+    {
+      "service": "workflow",
+      "replicas": 0,
+      "revisions": [
+        {
+          "name": "ca-ptu-content-workflow--0000002",
+          "active": false,
+          "replicas": 0,
+          "runningState": "Stopped"
+        },
+        {
+          "name": "ca-ptu-content-workflow--0000003",
+          "active": false,
+          "replicas": 0,
+          "runningState": "Stopped"
+        },
+        {
+          "name": "ca-ptu-content-workflow--0000004",
+          "active": false,
+          "replicas": 0,
+          "runningState": "Stopped"
+        }
+      ]
+    },
+    {
+      "service": "web",
+      "replicas": 0,
+      "revisions": [
+        {
+          "name": "ca-ptu-content-web--0000002",
+          "active": false,
+          "replicas": 0,
+          "runningState": "Stopped"
+        },
+        {
+          "name": "ca-ptu-content-web--0000003",
+          "active": false,
+          "replicas": 0,
+          "runningState": "Stopped"
+        },
+        {
+          "name": "ca-ptu-content-web--0000004",
+          "active": false,
+          "replicas": 0,
+          "runningState": "Stopped"
+        }
+      ]
+    }
+  ]
+}

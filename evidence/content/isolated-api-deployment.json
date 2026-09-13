@@ -1,0 +1,23 @@
+{
+  "image": "acrptubundle7d804f70.azurecr.io/content/eval-api:659eaa1-scope-r1",
+  "mode": "Multiple",
+  "name": "ca-ptu-content-api",
+  "ready": "ca-ptu-content-api--0000010",
+  "revision": "ca-ptu-content-api--0000010",
+  "scale": {
+    "cooldownPeriod": 30,
+    "maxReplicas": 1,
+    "minReplicas": 1,
+    "pollingInterval": 30,
+    "rules": [
+      {
+        "http": {
+          "metadata": {
+            "concurrentRequests": "1"
+          }
+        },
+        "name": "http"
+      }
+    ]
+  }
+}

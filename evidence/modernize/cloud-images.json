@@ -1,0 +1,70 @@
+{
+  "app": "Modernize Your Code",
+  "images": [
+    {
+      "tag": "acrptubundle7d804f70.azurecr.io/modernize/backend:7592ea9-eval1",
+      "id": "sha256:cecb00b9dc0cfeb4c1d9ccbb14c6ecb0a9ce28011ed09e824f0e2a4cdaccfe00",
+      "repoDigests": [
+        "acrptubundle7d804f70.azurecr.io/modernize/backend@sha256:cecb00b9dc0cfeb4c1d9ccbb14c6ecb0a9ce28011ed09e824f0e2a4cdaccfe00",
+        "ptu-modernize-backend@sha256:cecb00b9dc0cfeb4c1d9ccbb14c6ecb0a9ce28011ed09e824f0e2a4cdaccfe00"
+      ],
+      "sizeBytes": 284997385
+    },
+    {
+      "tag": "acrptubundle7d804f70.azurecr.io/modernize/frontend:7592ea9",
+      "sizeBytes": 72803965,
+      "id": "sha256:5a838547934e62d13c054560ad3c9f719a9d676f1266880c074dbe55c2dc60ef",
+      "repoDigests": [
+        "acrptubundle7d804f70.azurecr.io/modernize/frontend@sha256:5a838547934e62d13c054560ad3c9f719a9d676f1266880c074dbe55c2dc60ef",
+        "ptu-modernize-frontend@sha256:5a838547934e62d13c054560ad3c9f719a9d676f1266880c074dbe55c2dc60ef"
+      ]
+    }
+  ],
+  "containerBudgetTests": 9,
+  "linuxParser": "passed; actual error array []",
+  "networkIsolatedImport": "passed",
+  "credentialsInContext": false,
+  "tlsVerificationDisabled": false,
+  "frontendPublished": true,
+  "sourceCommit": "7592ea97550fb711d7d8b64186875967d574c5d5",
+  "adaptation": "Original source plus three-line validation fix, async MI/durable guard/no-delete runtime, package mirror and Linux parser executable mode",
+  "frontendBuild": {
+    "newUiImplementation": false,
+    "reason": "Official container npm install reported Exit handler never called, then vite missing",
+    "source": "Original Python runtime stage + already successful original native React production build",
+    "assetHashes": [
+      {
+        "file": "dist\\index.html",
+        "sha256": "E792811D38E93D548EE8740F7B0160EEFB46DAAB4ED9A086AE4E2E5A6F0D3E3F"
+      },
+      {
+        "file": "dist\\assets\\index-BsL9LxKd.js",
+        "sha256": "1A2BA272ACBCC671BF923E5391B8E417E6D2AE530D2C60A34E62367936BCAEE0"
+      },
+      {
+        "file": "dist\\assets\\index-YCG0CDmr.css",
+        "sha256": "C77862B6051387751DEB720C9034CAADB4F4F4693B676AD33023C27CBCD293C7"
+      },
+      {
+        "file": "dist\\images\\Arrow-Upload.png",
+        "sha256": "A8BBA0C89039DE2D5EF0145FF77586FB6C7575D19867CD5690A350C963066E6D"
+      },
+      {
+        "file": "dist\\images\\Checkmark.png",
+        "sha256": "A6950A036A17A5A831A8A34D931F7DA6BCCA9839BD15C39E3519BDEC662EA124"
+      },
+      {
+        "file": "dist\\images\\Contoso.png",
+        "sha256": "3487813E2E1CB2ADFB11D823DDE84A2AB9E17BC540C21D53380A321388656D0A"
+      },
+      {
+        "file": "dist\\images\\Docicon.png",
+        "sha256": "7CC66487892A7B917E9DFD8DA5DB456C53FE9A5ABAA16E5834F958EB9DBDE666"
+      },
+      {
+        "file": "dist\\images\\progress.png",
+        "sha256": "CC1FC9B9CA1E24160147481B1D2864605D5D52190CCF62A4CAC5393450898154"
+      }
+    ]
+  }
+}

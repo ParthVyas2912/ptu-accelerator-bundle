@@ -1,0 +1,7 @@
+Perform a read-only synthetic onboarding readiness review, not provisioning or an enterprise transaction.
+
+Complete supplied record: Alex Example, HR analyst, starts2026-10-01. Manager: Morgan Example. Orientation is booked2026-10-02. Handbook acknowledged2026-09-30. Required compliance training completed2026-09-30. Manager access approval is NOT yet recorded. Standard laptop is prepared with Windows11. MFA enrollment is pending. Email: alex@example.invalid. All facts needed for this advisory assessment are supplied; no external sources are needed.
+
+Supplied policies: orientation must occur on the start date; handbook acknowledgement and training must be complete before starting; manager access approval and MFA enrollment must both be completed before access is granted; a prepared Windows11 laptop meets the device requirement.
+
+Create a plan with exactly one advisory assessment step for HRComplianceReviewer and one for ITReadinessReviewer. Present it for explicit approval. Each specialist should deliver one concise substantive assessment from these facts. The native manager should then synthesize both actual outputs into a final checklist with identified gaps and recommended corrections. Plan approval authorizes this review only: it does NOT change the missing manager access approval or any other input fact. Do not ask clarification questions, execute tools, make changes, or claim any provisioning occurred.

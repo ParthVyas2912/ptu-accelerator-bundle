@@ -1,0 +1,862 @@
+{
+  "scope": "Original app API/worker + real private Cosmos/Blob + original SQL agents, adapted cloud runtime",
+  "browser_e2e": false,
+  "started": "2026-09-11T21:20:57.925151-04:00",
+  "batch_id": "8f9c942d-c1fc-42ec-a07f-00478401de98",
+  "uploads": [
+    {
+      "name": "ptu-malformed.sql",
+      "http_status": 200,
+      "body": {
+        "batch": {
+          "batch_id": "8f9c942d-c1fc-42ec-a07f-00478401de98",
+          "user_id": "00000000-0000-0000-0000-000000000000",
+          "file_count": 1,
+          "created_at": "2026-09-11T21:20:58.292979-04:00",
+          "updated_at": "2026-09-12T01:20:58.741567",
+          "status": "ready_to_process",
+          "from_language": "Informix",
+          "to_language": "T-SQL"
+        },
+        "file": {
+          "id": "3ae3ba25-f53b-4754-a625-abfa93559950",
+          "file_id": "3ae3ba25-f53b-4754-a625-abfa93559950",
+          "batch_id": "8f9c942d-c1fc-42ec-a07f-00478401de98",
+          "original_name": "ptu-malformed.sql",
+          "blob_path": "00000000-0000-0000-0000-000000000000/8f9c942d-c1fc-42ec-a07f-00478401de98/3ae3ba25-f53b-4754-a625-abfa93559950/ptu-malformed.sql",
+          "translated_path": "",
+          "status": "ready_to_process",
+          "file_result": null,
+          "error_count": 0,
+          "syntax_count": 0,
+          "created_at": "2026-09-11T21:20:58.446825-04:00",
+          "updated_at": "2026-09-11T21:20:58.446828-04:00"
+        }
+      }
+    },
+    {
+      "name": "ptu-nvl.sql",
+      "http_status": 200,
+      "body": {
+        "batch": {
+          "id": "8f9c942d-c1fc-42ec-a07f-00478401de98",
+          "batch_id": "8f9c942d-c1fc-42ec-a07f-00478401de98",
+          "user_id": "00000000-0000-0000-0000-000000000000",
+          "file_count": 2,
+          "created_at": "2026-09-11T21:20:58.292979-04:00",
+          "updated_at": "2026-09-12T01:20:58.952611",
+          "status": "ready_to_process",
+          "from_language": "Informix",
+          "to_language": "T-SQL",
+          "_rid": "3zJwALpN42cBAAAAAAAAAA==",
+          "_self": "dbs/3zJwAA==/colls/3zJwALpN42c=/docs/3zJwALpN42cBAAAAAAAAAA==/",
+          "_etag": "\"0000a601-0000-0200-0000-6aa4a8fa0000\"",
+          "_attachments": "attachments/",
+          "_ts": 1789176058
+        },
+        "file": {
+          "id": "649eeea1-d669-4bbc-841b-33486dbf13df",
+          "file_id": "649eeea1-d669-4bbc-841b-33486dbf13df",
+          "batch_id": "8f9c942d-c1fc-42ec-a07f-00478401de98",
+          "original_name": "ptu-nvl.sql",
+          "blob_path": "00000000-0000-0000-0000-000000000000/8f9c942d-c1fc-42ec-a07f-00478401de98/649eeea1-d669-4bbc-841b-33486dbf13df/ptu-nvl.sql",
+          "translated_path": "",
+          "status": "ready_to_process",
+          "file_result": null,
+          "error_count": 0,
+          "syntax_count": 0,
+          "created_at": "2026-09-11T21:20:58.894013-04:00",
+          "updated_at": "2026-09-11T21:20:58.894015-04:00"
+        }
+      }
+    }
+  ],
+  "tests": [
+    {
+      "id": "two-file-real-upload",
+      "expected": "Both original upload API requests succeed",
+      "actual": [
+        200,
+        200
+      ],
+      "passed": true
+    },
+    {
+      "id": "real-api-zip",
+      "expected": "Valid translated SQL included; malformed SQL not published",
+      "actual": [
+        "rslt_ptu-nvl.sql"
+      ],
+      "passed": true
+    }
+  ],
+  "processing_sent": true,
+  "preflight": {
+    "http_status": 200,
+    "body": {
+      "agents_initialized": true,
+      "agents": [
+        {
+          "name": "migrator",
+          "id": "asst_NqbG3ymTG9pPmJH0vjYOoPdE"
+        },
+        {
+          "name": "picker",
+          "id": "asst_ExeIwbTnvVDi1KvOoAE8fqYr"
+        },
+        {
+          "name": "syntax_checker",
+          "id": "asst_Zkv9EKuJH44Ijg8AKCYGytxF"
+        },
+        {
+          "name": "fixer",
+          "id": "asst_YupPZYXxNjZJ0N1uofzt9nCC"
+        },
+        {
+          "name": "semantic_verifier",
+          "id": "asst_hzyVHVlWrTUQHpd1hCPGchGV"
+        }
+      ],
+      "model_http_attempts_total": 4,
+      "model_http_attempts_remaining": 8,
+      "processing_enabled": false,
+      "claimed_batch": null,
+      "persistence": "actual Azure Blob/Cosmos through approved private endpoints",
+      "deployment": "adapted official-source cloud container"
+    }
+  },
+  "history_before": {
+    "http_status": 200,
+    "body": {
+      "status_code": 404,
+      "detail": "No batch history found.",
+      "headers": null
+    }
+  },
+  "processing": {
+    "http_status": 200,
+    "body": {
+      "batch_id": "8f9c942d-c1fc-42ec-a07f-00478401de98",
+      "status": "Processing completed",
+      "message": "Files processed"
+    },
+    "elapsed_seconds": 39.06
+  },
+  "summary": {
+    "http_status": 200,
+    "body": {
+      "files": [
+        {
+          "id": "3ae3ba25-f53b-4754-a625-abfa93559950",
+          "file_id": "3ae3ba25-f53b-4754-a625-abfa93559950",
+          "batch_id": "8f9c942d-c1fc-42ec-a07f-00478401de98",
+          "original_name": "ptu-malformed.sql",
+          "blob_path": "00000000-0000-0000-0000-000000000000/8f9c942d-c1fc-42ec-a07f-00478401de98/3ae3ba25-f53b-4754-a625-abfa93559950/ptu-malformed.sql",
+          "translated_path": "",
+          "status": "completed",
+          "file_result": "error",
+          "error_count": 1,
+          "syntax_count": 0,
+          "created_at": "2026-09-11T21:20:58.446825-04:00",
+          "updated_at": "2026-09-11T21:20:58.446828-04:00",
+          "_rid": "3zJwAMXUmP8BAAAAAAAAAA==",
+          "_self": "dbs/3zJwAA==/colls/3zJwAMXUmP8=/docs/3zJwAMXUmP8BAAAAAAAAAA==/",
+          "_etag": "\"35001f2d-0000-0200-0000-6aa4a9020000\"",
+          "_attachments": "attachments/",
+          "_ts": 1789176066,
+          "logs": [
+            {
+              "id": "14d810f6-dc6d-454c-af22-dce831cca998",
+              "log_id": "14d810f6-dc6d-454c-af22-dce831cca998",
+              "file_id": "3ae3ba25-f53b-4754-a625-abfa93559950",
+              "description": {
+                "role": "assistant",
+                "name": "migrator",
+                "content": "{\"input_summary\":\"The provided input appears to attempt a SELECT statement but is syntactically invalid and incomplete as Informix SQL.\",\"candidates\":[],\"summary\":null,\"input_error\":\"The input is not valid Informix SQL: it contains a misspelled SELECT keyword (\\\"SELEC\\\"), lacks a table name after FROM, and has an incomplete WHERE clause with no condition. Please provide a complete, syntactically valid Informix query for migration.\",\"rai_error\":null}"
+              },
+              "last_candidate": "",
+              "log_type": "error",
+              "agent_type": "migrator",
+              "author_role": "assistant",
+              "timestamp": "2026-09-11T21:21:06.072326-04:00",
+              "_rid": "3zJwALwtR8wDAAAAAAAAAA==",
+              "_self": "dbs/3zJwAA==/colls/3zJwALwtR8w=/docs/3zJwALwtR8wDAAAAAAAAAA==/",
+              "_etag": "\"ab001e08-0000-0200-0000-6aa4a9020000\"",
+              "_attachments": "attachments/",
+              "_ts": 1789176066
+            },
+            {
+              "id": "58dbf0dd-2310-4df8-9e9c-7abdc526be30",
+              "log_id": "58dbf0dd-2310-4df8-9e9c-7abdc526be30",
+              "file_id": "3ae3ba25-f53b-4754-a625-abfa93559950",
+              "description": "File uploaded successfully",
+              "last_candidate": "",
+              "log_type": "success",
+              "agent_type": "human",
+              "author_role": "user",
+              "timestamp": "2026-09-11T21:20:58.543862-04:00",
+              "_rid": "3zJwALwtR8wBAAAAAAAAAA==",
+              "_self": "dbs/3zJwAA==/colls/3zJwALwtR8w=/docs/3zJwALwtR8wBAAAAAAAAAA==/",
+              "_etag": "\"ab001c08-0000-0200-0000-6aa4a8fa0000\"",
+              "_attachments": "attachments/",
+              "_ts": 1789176058
+            }
+          ],
+          "translated_content": ""
+        },
+        {
+          "id": "649eeea1-d669-4bbc-841b-33486dbf13df",
+          "file_id": "649eeea1-d669-4bbc-841b-33486dbf13df",
+          "batch_id": "8f9c942d-c1fc-42ec-a07f-00478401de98",
+          "original_name": "ptu-nvl.sql",
+          "blob_path": "00000000-0000-0000-0000-000000000000/8f9c942d-c1fc-42ec-a07f-00478401de98/649eeea1-d669-4bbc-841b-33486dbf13df/ptu-nvl.sql",
+          "translated_path": "00000000-0000-0000-0000-000000000000/8f9c942d-c1fc-42ec-a07f-00478401de98/649eeea1-d669-4bbc-841b-33486dbf13df/candidate_ptu-nvl.sql",
+          "status": "completed",
+          "file_result": "success",
+          "error_count": 0,
+          "syntax_count": 0,
+          "created_at": "2026-09-11T21:20:58.894013-04:00",
+          "updated_at": "2026-09-12T01:21:38.042807",
+          "_rid": "3zJwAMXUmP8CAAAAAAAAAA==",
+          "_self": "dbs/3zJwAA==/colls/3zJwAMXUmP8=/docs/3zJwAMXUmP8CAAAAAAAAAA==/",
+          "_etag": "\"35003e31-0000-0200-0000-6aa4a9220000\"",
+          "_attachments": "attachments/",
+          "_ts": 1789176098,
+          "logs": [
+            {
+              "id": "5fdcce98-0ef1-4384-9fdb-6a433bdbe897",
+              "log_id": "5fdcce98-0ef1-4384-9fdb-6a433bdbe897",
+              "file_id": "649eeea1-d669-4bbc-841b-33486dbf13df",
+              "description": "Migration completed successfully.",
+              "last_candidate": "SELECT o.order_id,\n       o.customer_id,\n       (SELECT ISNULL(SUM(ob.order_total), 0)\n        FROM orders_backup AS ob\n        WHERE ob.customer_id = o.customer_id) AS customer_total\nFROM orders AS o;",
+              "log_type": "success",
+              "agent_type": "agents",
+              "author_role": "assistant",
+              "timestamp": "2026-09-11T21:21:37.899086-04:00",
+              "_rid": "3zJwALwtR8wIAAAAAAAAAA==",
+              "_self": "dbs/3zJwAA==/colls/3zJwALwtR8w=/docs/3zJwALwtR8wIAAAAAAAAAA==/",
+              "_etag": "\"ab002308-0000-0200-0000-6aa4a9210000\"",
+              "_attachments": "attachments/",
+              "_ts": 1789176097
+            },
+            {
+              "id": "3d5abbd7-84b4-48c6-8543-17bdb0206fad",
+              "log_id": "3d5abbd7-84b4-48c6-8543-17bdb0206fad",
+              "file_id": "649eeea1-d669-4bbc-841b-33486dbf13df",
+              "description": {
+                "role": "assistant",
+                "name": "semantic_verifier",
+                "content": "{\"judgement\":\"Semantically Equivalent\",\"differences\":[],\"summary\":\"Both scripts compute, for each order, the same per-customer total from orders_backup with identical logic, differing only in dialect-specific null-handling functions and syntax, so they are semantically equivalent.\"}"
+              },
+              "last_candidate": "SELECT o.order_id,\n       o.customer_id,\n       (SELECT ISNULL(SUM(ob.order_total), 0)\n        FROM orders_backup AS ob\n        WHERE ob.customer_id = o.customer_id) AS customer_total\nFROM orders AS o;",
+              "log_type": "info",
+              "agent_type": "semantic_verifier",
+              "author_role": "assistant",
+              "timestamp": "2026-09-11T21:21:37.887477-04:00",
+              "_rid": "3zJwALwtR8wHAAAAAAAAAA==",
+              "_self": "dbs/3zJwAA==/colls/3zJwALwtR8w=/docs/3zJwALwtR8wHAAAAAAAAAA==/",
+              "_etag": "\"ab002208-0000-0200-0000-6aa4a9210000\"",
+              "_attachments": "attachments/",
+              "_ts": 1789176097
+            },
+            {
+              "id": "12f20b64-d92c-4816-ae14-197cbb3097b0",
+              "log_id": "12f20b64-d92c-4816-ae14-197cbb3097b0",
+              "file_id": "649eeea1-d669-4bbc-841b-33486dbf13df",
+              "description": {
+                "role": "assistant",
+                "name": "syntax_checker",
+                "content": "{\"thought\":\"The latest response contains a 'picked_query' T-SQL statement. The syntax checker plugin was invoked on that exact query, and the plugin returned no issues, indicating valid T-SQL syntax.\",\"syntax_errors\":[],\"summary\":\"No syntax errors were found in the provided T-SQL query.\"}"
+              },
+              "last_candidate": "SELECT o.order_id,\n       o.customer_id,\n       (SELECT ISNULL(SUM(ob.order_total), 0)\n        FROM orders_backup AS ob\n        WHERE ob.customer_id = o.customer_id) AS customer_total\nFROM orders AS o;",
+              "log_type": "info",
+              "agent_type": "syntax_checker",
+              "author_role": "assistant",
+              "timestamp": "2026-09-11T21:21:32.471018-04:00",
+              "_rid": "3zJwALwtR8wGAAAAAAAAAA==",
+              "_self": "dbs/3zJwAA==/colls/3zJwALwtR8w=/docs/3zJwALwtR8wGAAAAAAAAAA==/",
+              "_etag": "\"ab002108-0000-0200-0000-6aa4a91c0000\"",
+              "_attachments": "attachments/",
+              "_ts": 1789176092
+            },
+            {
+              "id": "641017e3-aed7-4283-90d9-a7f74c626028",
+              "log_id": "641017e3-aed7-4283-90d9-a7f74c626028",
+              "file_id": "649eeea1-d669-4bbc-841b-33486dbf13df",
+              "description": {
+                "role": "assistant",
+                "name": "picker",
+                "content": "{\"conclusion\":\"Candidate 1 is semantically equivalent to the source query, directly replacing Informix NVL with T-SQL ISNULL while preserving the correlated subquery and result structure; it also uses common T-SQL syntax. Candidate 2 is also equivalent but uses COALESCE instead of the more typical T-SQL ISNULL, and Candidate 3 changes the implementation to a join, which, while equivalent, is a structural change not required by the original logic.\",\"picked_query\":\"SELECT o.order_id,\\n       o.customer_id,\\n       (SELECT ISNULL(SUM(ob.order_total), 0)\\n        FROM orders_backup AS ob\\n        WHERE ob.customer_id = o.customer_id) AS customer_total\\nFROM orders AS o;\",\"summary\":\"Evaluated the three T-SQL candidates for semantic equivalence and chose the one that most directly mirrors the original Informix query using standard T-SQL functions.\"}"
+              },
+              "last_candidate": "SELECT o.order_id,\n       o.customer_id,\n       (SELECT ISNULL(SUM(ob.order_total), 0)\n        FROM orders_backup AS ob\n        WHERE ob.customer_id = o.customer_id) AS customer_total\nFROM orders AS o;",
+              "log_type": "info",
+              "agent_type": "picker",
+              "author_role": "assistant",
+              "timestamp": "2026-09-11T21:21:21.290129-04:00",
+              "_rid": "3zJwALwtR8wFAAAAAAAAAA==",
+              "_self": "dbs/3zJwAA==/colls/3zJwALwtR8w=/docs/3zJwALwtR8wFAAAAAAAAAA==/",
+              "_etag": "\"ab002008-0000-0200-0000-6aa4a9110000\"",
+              "_attachments": "attachments/",
+              "_ts": 1789176081
+            },
+            {
+              "id": "2ba7e7db-3dd1-474e-bed3-3f98eaa5e512",
+              "log_id": "2ba7e7db-3dd1-474e-bed3-3f98eaa5e512",
+              "file_id": "649eeea1-d669-4bbc-841b-33486dbf13df",
+              "description": {
+                "role": "assistant",
+                "name": "migrator",
+                "content": "{\"input_summary\":\"The query selects each order and customer from the orders table and, for each row, computes the total of order_total from orders_backup for the same customer, defaulting to 0 when the sum is NULL.\",\"candidates\":[{\"plan\":\"Replace the Informix NVL function with the T-SQL ISNULL function while keeping the correlated subquery structure unchanged.\",\"candidate_query\":\"SELECT o.order_id,\\n       o.customer_id,\\n       (SELECT ISNULL(SUM(ob.order_total), 0)\\n        FROM orders_backup AS ob\\n        WHERE ob.customer_id = o.customer_id) AS customer_total\\nFROM orders AS o;\"},\n{\"plan\":\"Use COALESCE instead of NVL/ISNULL for ANSI-style null handling, preserving the correlated subquery.\",\"candidate_query\":\"SELECT o.order_id,\\n       o.customer_id,\\n       (SELECT COALESCE(SUM(ob.order_total), 0)\\n        FROM orders_backup ob\\n        WHERE ob.customer_id = o.customer_id) AS customer_total\\nFROM orders o;\"},\n{\"plan\":\"Rewrite the correlated subquery as a LEFT JOIN with aggregation in a derived table, using ISNULL to default NULL sums to 0.\",\"candidate_query\":\"SELECT o.order_id,\\n       o.customer_id,\\n       ISNULL(cb.customer_total, 0) AS customer_total\\nFROM orders AS o\\nLEFT JOIN (\\n    SELECT ob.customer_id,\\n           SUM(ob.order_total) AS customer_total\\n    FROM orders_backup AS ob\\n    GROUP BY ob.customer_id\\n) AS cb\\n    ON cb.customer_id = o.customer_id;\"}],\"summary\":\"Converted the Informix query using NVL and a correlated subquery into three semantically equivalent T-SQL variants using ISNULL/COALESCE and an alternative join-based formulation.\",\"input_error\":null,\"rai_error\":null}"
+              },
+              "last_candidate": "",
+              "log_type": "info",
+              "agent_type": "migrator",
+              "author_role": "assistant",
+              "timestamp": "2026-09-11T21:21:14.939219-04:00",
+              "_rid": "3zJwALwtR8wEAAAAAAAAAA==",
+              "_self": "dbs/3zJwAA==/colls/3zJwALwtR8w=/docs/3zJwALwtR8wEAAAAAAAAAA==/",
+              "_etag": "\"ab001f08-0000-0200-0000-6aa4a90a0000\"",
+              "_attachments": "attachments/",
+              "_ts": 1789176074
+            },
+            {
+              "id": "83429982-f499-4481-b3d1-4587e67a66e0",
+              "log_id": "83429982-f499-4481-b3d1-4587e67a66e0",
+              "file_id": "649eeea1-d669-4bbc-841b-33486dbf13df",
+              "description": "File uploaded successfully",
+              "last_candidate": "",
+              "log_type": "success",
+              "agent_type": "human",
+              "author_role": "user",
+              "timestamp": "2026-09-11T21:20:58.903087-04:00",
+              "_rid": "3zJwALwtR8wCAAAAAAAAAA==",
+              "_self": "dbs/3zJwAA==/colls/3zJwALwtR8w=/docs/3zJwALwtR8wCAAAAAAAAAA==/",
+              "_etag": "\"ab001d08-0000-0200-0000-6aa4a8fa0000\"",
+              "_attachments": "attachments/",
+              "_ts": 1789176058
+            }
+          ],
+          "translated_content": "/*\n -- AI-generated content may be incorrect\n */\nSELECT o.order_id,\n       o.customer_id,\n       (SELECT ISNULL(SUM(ob.order_total), 0)\n        FROM orders_backup AS ob\n        WHERE ob.customer_id = o.customer_id) AS customer_total\nFROM orders AS o;"
+        }
+      ],
+      "batch": {
+        "id": "8f9c942d-c1fc-42ec-a07f-00478401de98",
+        "batch_id": "8f9c942d-c1fc-42ec-a07f-00478401de98",
+        "user_id": "00000000-0000-0000-0000-000000000000",
+        "file_count": 2,
+        "created_at": "2026-09-11T21:20:58.292979-04:00",
+        "updated_at": "2026-09-12T01:21:38.171822",
+        "status": "completed",
+        "from_language": "Informix",
+        "to_language": "T-SQL"
+      }
+    }
+  },
+  "story": {
+    "http_status": 200,
+    "body": {
+      "batch": {
+        "id": "8f9c942d-c1fc-42ec-a07f-00478401de98",
+        "batch_id": "8f9c942d-c1fc-42ec-a07f-00478401de98",
+        "user_id": "00000000-0000-0000-0000-000000000000",
+        "file_count": 2,
+        "created_at": "2026-09-11T21:20:58.292979-04:00",
+        "updated_at": "2026-09-12T01:21:38.171822",
+        "status": "completed",
+        "from_language": "Informix",
+        "to_language": "T-SQL",
+        "_rid": "3zJwALpN42cBAAAAAAAAAA==",
+        "_self": "dbs/3zJwAA==/colls/3zJwALpN42c=/docs/3zJwALpN42cBAAAAAAAAAA==/",
+        "_etag": "\"0000a901-0000-0200-0000-6aa4a9220000\"",
+        "_attachments": "attachments/",
+        "_ts": 1789176098
+      },
+      "files": [
+        {
+          "id": "3ae3ba25-f53b-4754-a625-abfa93559950",
+          "file_id": "3ae3ba25-f53b-4754-a625-abfa93559950",
+          "batch_id": "8f9c942d-c1fc-42ec-a07f-00478401de98",
+          "original_name": "ptu-malformed.sql",
+          "blob_path": "00000000-0000-0000-0000-000000000000/8f9c942d-c1fc-42ec-a07f-00478401de98/3ae3ba25-f53b-4754-a625-abfa93559950/ptu-malformed.sql",
+          "translated_path": "",
+          "status": "completed",
+          "file_result": "error",
+          "error_count": 1,
+          "syntax_count": 0,
+          "created_at": "2026-09-11T21:20:58.446825-04:00",
+          "updated_at": "2026-09-11T21:20:58.446828-04:00",
+          "_rid": "3zJwAMXUmP8BAAAAAAAAAA==",
+          "_self": "dbs/3zJwAA==/colls/3zJwAMXUmP8=/docs/3zJwAMXUmP8BAAAAAAAAAA==/",
+          "_etag": "\"35001f2d-0000-0200-0000-6aa4a9020000\"",
+          "_attachments": "attachments/",
+          "_ts": 1789176066
+        },
+        {
+          "id": "649eeea1-d669-4bbc-841b-33486dbf13df",
+          "file_id": "649eeea1-d669-4bbc-841b-33486dbf13df",
+          "batch_id": "8f9c942d-c1fc-42ec-a07f-00478401de98",
+          "original_name": "ptu-nvl.sql",
+          "blob_path": "00000000-0000-0000-0000-000000000000/8f9c942d-c1fc-42ec-a07f-00478401de98/649eeea1-d669-4bbc-841b-33486dbf13df/ptu-nvl.sql",
+          "translated_path": "00000000-0000-0000-0000-000000000000/8f9c942d-c1fc-42ec-a07f-00478401de98/649eeea1-d669-4bbc-841b-33486dbf13df/candidate_ptu-nvl.sql",
+          "status": "completed",
+          "file_result": "success",
+          "error_count": 0,
+          "syntax_count": 0,
+          "created_at": "2026-09-11T21:20:58.894013-04:00",
+          "updated_at": "2026-09-12T01:21:38.042807",
+          "_rid": "3zJwAMXUmP8CAAAAAAAAAA==",
+          "_self": "dbs/3zJwAA==/colls/3zJwAMXUmP8=/docs/3zJwAMXUmP8CAAAAAAAAAA==/",
+          "_etag": "\"35003e31-0000-0200-0000-6aa4a9220000\"",
+          "_attachments": "attachments/",
+          "_ts": 1789176098
+        }
+      ]
+    }
+  },
+  "files": [
+    {
+      "http_status": 200,
+      "body": {
+        "file": {
+          "id": "3ae3ba25-f53b-4754-a625-abfa93559950",
+          "file_id": "3ae3ba25-f53b-4754-a625-abfa93559950",
+          "batch_id": "8f9c942d-c1fc-42ec-a07f-00478401de98",
+          "original_name": "ptu-malformed.sql",
+          "blob_path": "00000000-0000-0000-0000-000000000000/8f9c942d-c1fc-42ec-a07f-00478401de98/3ae3ba25-f53b-4754-a625-abfa93559950/ptu-malformed.sql",
+          "translated_path": "",
+          "status": "completed",
+          "file_result": "error",
+          "error_count": 1,
+          "syntax_count": 0,
+          "created_at": "2026-09-11T21:20:58.446825-04:00",
+          "updated_at": "2026-09-11T21:20:58.446828-04:00"
+        },
+        "batch": {
+          "id": "8f9c942d-c1fc-42ec-a07f-00478401de98",
+          "batch_id": "8f9c942d-c1fc-42ec-a07f-00478401de98",
+          "user_id": "00000000-0000-0000-0000-000000000000",
+          "file_count": 2,
+          "created_at": "2026-09-11T21:20:58.292979-04:00",
+          "updated_at": "2026-09-12T01:21:38.171822",
+          "status": "completed",
+          "from_language": "Informix",
+          "to_language": "T-SQL"
+        },
+        "logs": [
+          {
+            "id": "14d810f6-dc6d-454c-af22-dce831cca998",
+            "log_id": "14d810f6-dc6d-454c-af22-dce831cca998",
+            "file_id": "3ae3ba25-f53b-4754-a625-abfa93559950",
+            "description": {
+              "role": "assistant",
+              "name": "migrator",
+              "content": "{\"input_summary\":\"The provided input appears to attempt a SELECT statement but is syntactically invalid and incomplete as Informix SQL.\",\"candidates\":[],\"summary\":null,\"input_error\":\"The input is not valid Informix SQL: it contains a misspelled SELECT keyword (\\\"SELEC\\\"), lacks a table name after FROM, and has an incomplete WHERE clause with no condition. Please provide a complete, syntactically valid Informix query for migration.\",\"rai_error\":null}"
+            },
+            "last_candidate": "",
+            "log_type": "error",
+            "agent_type": "migrator",
+            "author_role": "assistant",
+            "timestamp": "2026-09-11T21:21:06.072326-04:00",
+            "_rid": "3zJwALwtR8wDAAAAAAAAAA==",
+            "_self": "dbs/3zJwAA==/colls/3zJwALwtR8w=/docs/3zJwALwtR8wDAAAAAAAAAA==/",
+            "_etag": "\"ab001e08-0000-0200-0000-6aa4a9020000\"",
+            "_attachments": "attachments/",
+            "_ts": 1789176066
+          },
+          {
+            "id": "58dbf0dd-2310-4df8-9e9c-7abdc526be30",
+            "log_id": "58dbf0dd-2310-4df8-9e9c-7abdc526be30",
+            "file_id": "3ae3ba25-f53b-4754-a625-abfa93559950",
+            "description": "File uploaded successfully",
+            "last_candidate": "",
+            "log_type": "success",
+            "agent_type": "human",
+            "author_role": "user",
+            "timestamp": "2026-09-11T21:20:58.543862-04:00",
+            "_rid": "3zJwALwtR8wBAAAAAAAAAA==",
+            "_self": "dbs/3zJwAA==/colls/3zJwALwtR8w=/docs/3zJwALwtR8wBAAAAAAAAAA==/",
+            "_etag": "\"ab001c08-0000-0200-0000-6aa4a8fa0000\"",
+            "_attachments": "attachments/",
+            "_ts": 1789176058
+          }
+        ],
+        "file_content": "",
+        "translated_content": ""
+      }
+    },
+    {
+      "http_status": 200,
+      "body": {
+        "file": {
+          "id": "649eeea1-d669-4bbc-841b-33486dbf13df",
+          "file_id": "649eeea1-d669-4bbc-841b-33486dbf13df",
+          "batch_id": "8f9c942d-c1fc-42ec-a07f-00478401de98",
+          "original_name": "ptu-nvl.sql",
+          "blob_path": "00000000-0000-0000-0000-000000000000/8f9c942d-c1fc-42ec-a07f-00478401de98/649eeea1-d669-4bbc-841b-33486dbf13df/ptu-nvl.sql",
+          "translated_path": "00000000-0000-0000-0000-000000000000/8f9c942d-c1fc-42ec-a07f-00478401de98/649eeea1-d669-4bbc-841b-33486dbf13df/candidate_ptu-nvl.sql",
+          "status": "completed",
+          "file_result": "success",
+          "error_count": 0,
+          "syntax_count": 0,
+          "created_at": "2026-09-11T21:20:58.894013-04:00",
+          "updated_at": "2026-09-12T01:21:38.042807"
+        },
+        "batch": {
+          "id": "8f9c942d-c1fc-42ec-a07f-00478401de98",
+          "batch_id": "8f9c942d-c1fc-42ec-a07f-00478401de98",
+          "user_id": "00000000-0000-0000-0000-000000000000",
+          "file_count": 2,
+          "created_at": "2026-09-11T21:20:58.292979-04:00",
+          "updated_at": "2026-09-12T01:21:38.171822",
+          "status": "completed",
+          "from_language": "Informix",
+          "to_language": "T-SQL"
+        },
+        "logs": [
+          {
+            "id": "5fdcce98-0ef1-4384-9fdb-6a433bdbe897",
+            "log_id": "5fdcce98-0ef1-4384-9fdb-6a433bdbe897",
+            "file_id": "649eeea1-d669-4bbc-841b-33486dbf13df",
+            "description": "Migration completed successfully.",
+            "last_candidate": "SELECT o.order_id,\n       o.customer_id,\n       (SELECT ISNULL(SUM(ob.order_total), 0)\n        FROM orders_backup AS ob\n        WHERE ob.customer_id = o.customer_id) AS customer_total\nFROM orders AS o;",
+            "log_type": "success",
+            "agent_type": "agents",
+            "author_role": "assistant",
+            "timestamp": "2026-09-11T21:21:37.899086-04:00",
+            "_rid": "3zJwALwtR8wIAAAAAAAAAA==",
+            "_self": "dbs/3zJwAA==/colls/3zJwALwtR8w=/docs/3zJwALwtR8wIAAAAAAAAAA==/",
+            "_etag": "\"ab002308-0000-0200-0000-6aa4a9210000\"",
+            "_attachments": "attachments/",
+            "_ts": 1789176097
+          },
+          {
+            "id": "3d5abbd7-84b4-48c6-8543-17bdb0206fad",
+            "log_id": "3d5abbd7-84b4-48c6-8543-17bdb0206fad",
+            "file_id": "649eeea1-d669-4bbc-841b-33486dbf13df",
+            "description": {
+              "role": "assistant",
+              "name": "semantic_verifier",
+              "content": "{\"judgement\":\"Semantically Equivalent\",\"differences\":[],\"summary\":\"Both scripts compute, for each order, the same per-customer total from orders_backup with identical logic, differing only in dialect-specific null-handling functions and syntax, so they are semantically equivalent.\"}"
+            },
+            "last_candidate": "SELECT o.order_id,\n       o.customer_id,\n       (SELECT ISNULL(SUM(ob.order_total), 0)\n        FROM orders_backup AS ob\n        WHERE ob.customer_id = o.customer_id) AS customer_total\nFROM orders AS o;",
+            "log_type": "info",
+            "agent_type": "semantic_verifier",
+            "author_role": "assistant",
+            "timestamp": "2026-09-11T21:21:37.887477-04:00",
+            "_rid": "3zJwALwtR8wHAAAAAAAAAA==",
+            "_self": "dbs/3zJwAA==/colls/3zJwALwtR8w=/docs/3zJwALwtR8wHAAAAAAAAAA==/",
+            "_etag": "\"ab002208-0000-0200-0000-6aa4a9210000\"",
+            "_attachments": "attachments/",
+            "_ts": 1789176097
+          },
+          {
+            "id": "12f20b64-d92c-4816-ae14-197cbb3097b0",
+            "log_id": "12f20b64-d92c-4816-ae14-197cbb3097b0",
+            "file_id": "649eeea1-d669-4bbc-841b-33486dbf13df",
+            "description": {
+              "role": "assistant",
+              "name": "syntax_checker",
+              "content": "{\"thought\":\"The latest response contains a 'picked_query' T-SQL statement. The syntax checker plugin was invoked on that exact query, and the plugin returned no issues, indicating valid T-SQL syntax.\",\"syntax_errors\":[],\"summary\":\"No syntax errors were found in the provided T-SQL query.\"}"
+            },
+            "last_candidate": "SELECT o.order_id,\n       o.customer_id,\n       (SELECT ISNULL(SUM(ob.order_total), 0)\n        FROM orders_backup AS ob\n        WHERE ob.customer_id = o.customer_id) AS customer_total\nFROM orders AS o;",
+            "log_type": "info",
+            "agent_type": "syntax_checker",
+            "author_role": "assistant",
+            "timestamp": "2026-09-11T21:21:32.471018-04:00",
+            "_rid": "3zJwALwtR8wGAAAAAAAAAA==",
+            "_self": "dbs/3zJwAA==/colls/3zJwALwtR8w=/docs/3zJwALwtR8wGAAAAAAAAAA==/",
+            "_etag": "\"ab002108-0000-0200-0000-6aa4a91c0000\"",
+            "_attachments": "attachments/",
+            "_ts": 1789176092
+          },
+          {
+            "id": "641017e3-aed7-4283-90d9-a7f74c626028",
+            "log_id": "641017e3-aed7-4283-90d9-a7f74c626028",
+            "file_id": "649eeea1-d669-4bbc-841b-33486dbf13df",
+            "description": {
+              "role": "assistant",
+              "name": "picker",
+              "content": "{\"conclusion\":\"Candidate 1 is semantically equivalent to the source query, directly replacing Informix NVL with T-SQL ISNULL while preserving the correlated subquery and result structure; it also uses common T-SQL syntax. Candidate 2 is also equivalent but uses COALESCE instead of the more typical T-SQL ISNULL, and Candidate 3 changes the implementation to a join, which, while equivalent, is a structural change not required by the original logic.\",\"picked_query\":\"SELECT o.order_id,\\n       o.customer_id,\\n       (SELECT ISNULL(SUM(ob.order_total), 0)\\n        FROM orders_backup AS ob\\n        WHERE ob.customer_id = o.customer_id) AS customer_total\\nFROM orders AS o;\",\"summary\":\"Evaluated the three T-SQL candidates for semantic equivalence and chose the one that most directly mirrors the original Informix query using standard T-SQL functions.\"}"
+            },
+            "last_candidate": "SELECT o.order_id,\n       o.customer_id,\n       (SELECT ISNULL(SUM(ob.order_total), 0)\n        FROM orders_backup AS ob\n        WHERE ob.customer_id = o.customer_id) AS customer_total\nFROM orders AS o;",
+            "log_type": "info",
+            "agent_type": "picker",
+            "author_role": "assistant",
+            "timestamp": "2026-09-11T21:21:21.290129-04:00",
+            "_rid": "3zJwALwtR8wFAAAAAAAAAA==",
+            "_self": "dbs/3zJwAA==/colls/3zJwALwtR8w=/docs/3zJwALwtR8wFAAAAAAAAAA==/",
+            "_etag": "\"ab002008-0000-0200-0000-6aa4a9110000\"",
+            "_attachments": "attachments/",
+            "_ts": 1789176081
+          },
+          {
+            "id": "2ba7e7db-3dd1-474e-bed3-3f98eaa5e512",
+            "log_id": "2ba7e7db-3dd1-474e-bed3-3f98eaa5e512",
+            "file_id": "649eeea1-d669-4bbc-841b-33486dbf13df",
+            "description": {
+              "role": "assistant",
+              "name": "migrator",
+              "content": "{\"input_summary\":\"The query selects each order and customer from the orders table and, for each row, computes the total of order_total from orders_backup for the same customer, defaulting to 0 when the sum is NULL.\",\"candidates\":[{\"plan\":\"Replace the Informix NVL function with the T-SQL ISNULL function while keeping the correlated subquery structure unchanged.\",\"candidate_query\":\"SELECT o.order_id,\\n       o.customer_id,\\n       (SELECT ISNULL(SUM(ob.order_total), 0)\\n        FROM orders_backup AS ob\\n        WHERE ob.customer_id = o.customer_id) AS customer_total\\nFROM orders AS o;\"},\n{\"plan\":\"Use COALESCE instead of NVL/ISNULL for ANSI-style null handling, preserving the correlated subquery.\",\"candidate_query\":\"SELECT o.order_id,\\n       o.customer_id,\\n       (SELECT COALESCE(SUM(ob.order_total), 0)\\n        FROM orders_backup ob\\n        WHERE ob.customer_id = o.customer_id) AS customer_total\\nFROM orders o;\"},\n{\"plan\":\"Rewrite the correlated subquery as a LEFT JOIN with aggregation in a derived table, using ISNULL to default NULL sums to 0.\",\"candidate_query\":\"SELECT o.order_id,\\n       o.customer_id,\\n       ISNULL(cb.customer_total, 0) AS customer_total\\nFROM orders AS o\\nLEFT JOIN (\\n    SELECT ob.customer_id,\\n           SUM(ob.order_total) AS customer_total\\n    FROM orders_backup AS ob\\n    GROUP BY ob.customer_id\\n) AS cb\\n    ON cb.customer_id = o.customer_id;\"}],\"summary\":\"Converted the Informix query using NVL and a correlated subquery into three semantically equivalent T-SQL variants using ISNULL/COALESCE and an alternative join-based formulation.\",\"input_error\":null,\"rai_error\":null}"
+            },
+            "last_candidate": "",
+            "log_type": "info",
+            "agent_type": "migrator",
+            "author_role": "assistant",
+            "timestamp": "2026-09-11T21:21:14.939219-04:00",
+            "_rid": "3zJwALwtR8wEAAAAAAAAAA==",
+            "_self": "dbs/3zJwAA==/colls/3zJwALwtR8w=/docs/3zJwALwtR8wEAAAAAAAAAA==/",
+            "_etag": "\"ab001f08-0000-0200-0000-6aa4a90a0000\"",
+            "_attachments": "attachments/",
+            "_ts": 1789176074
+          },
+          {
+            "id": "83429982-f499-4481-b3d1-4587e67a66e0",
+            "log_id": "83429982-f499-4481-b3d1-4587e67a66e0",
+            "file_id": "649eeea1-d669-4bbc-841b-33486dbf13df",
+            "description": "File uploaded successfully",
+            "last_candidate": "",
+            "log_type": "success",
+            "agent_type": "human",
+            "author_role": "user",
+            "timestamp": "2026-09-11T21:20:58.903087-04:00",
+            "_rid": "3zJwALwtR8wCAAAAAAAAAA==",
+            "_self": "dbs/3zJwAA==/colls/3zJwALwtR8w=/docs/3zJwALwtR8wCAAAAAAAAAA==/",
+            "_etag": "\"ab001d08-0000-0200-0000-6aa4a8fa0000\"",
+            "_attachments": "attachments/",
+            "_ts": 1789176058
+          }
+        ],
+        "file_content": "",
+        "translated_content": "/*\n -- AI-generated content may be incorrect\n */\nSELECT o.order_id,\n       o.customer_id,\n       (SELECT ISNULL(SUM(ob.order_total), 0)\n        FROM orders_backup AS ob\n        WHERE ob.customer_id = o.customer_id) AS customer_total\nFROM orders AS o;"
+      }
+    }
+  ],
+  "download": {
+    "http_status": 200,
+    "members": [
+      "rslt_ptu-nvl.sql"
+    ],
+    "sql": {
+      "rslt_ptu-nvl.sql": "/*\n -- AI-generated content may be incorrect\n */\nSELECT o.order_id,\n       o.customer_id,\n       (SELECT ISNULL(SUM(ob.order_total), 0)\n        FROM orders_backup AS ob\n        WHERE ob.customer_id = o.customer_id) AS customer_total\nFROM orders AS o;"
+    }
+  },
+  "parser_tests": [
+    {
+      "name": "rslt_ptu-nvl.sql",
+      "exit_code": 0,
+      "errors": []
+    }
+  ],
+  "synthetic_result_check": {
+    "source_rows": [
+      [
+        1,
+        10,
+        10.0
+      ],
+      [
+        2,
+        10,
+        10.0
+      ],
+      [
+        3,
+        20,
+        0
+      ],
+      [
+        4,
+        30,
+        0
+      ],
+      [
+        5,
+        null,
+        0
+      ]
+    ],
+    "target_rows": [
+      [
+        1,
+        10,
+        10.0
+      ],
+      [
+        2,
+        10,
+        10.0
+      ],
+      [
+        3,
+        20,
+        0
+      ],
+      [
+        4,
+        30,
+        0
+      ],
+      [
+        5,
+        null,
+        0
+      ]
+    ],
+    "passed": true,
+    "engine": "SQLite 3.46.1",
+    "rewrites": "NVL / ISNULL -> COALESCE",
+    "limitation": "NOT execution-equivalence between Informix and SQL Server"
+  },
+  "history_after": {
+    "http_status": 200,
+    "body": [
+      {
+        "id": "8f9c942d-c1fc-42ec-a07f-00478401de98",
+        "batch_id": "8f9c942d-c1fc-42ec-a07f-00478401de98",
+        "user_id": "00000000-0000-0000-0000-000000000000",
+        "file_count": 2,
+        "created_at": "2026-09-11T21:20:58.292979-04:00",
+        "updated_at": "2026-09-12T01:21:38.171822",
+        "status": "completed",
+        "from_language": "Informix",
+        "to_language": "T-SQL",
+        "_rid": "3zJwALpN42cBAAAAAAAAAA==",
+        "_self": "dbs/3zJwAA==/colls/3zJwALpN42c=/docs/3zJwALpN42cBAAAAAAAAAA==/",
+        "_etag": "\"0000a901-0000-0200-0000-6aa4a9220000\"",
+        "_attachments": "attachments/",
+        "_ts": 1789176098
+      }
+    ]
+  },
+  "final_status": {
+    "http_status": 200,
+    "body": {
+      "agents_initialized": true,
+      "agents": [
+        {
+          "name": "migrator",
+          "id": "asst_NqbG3ymTG9pPmJH0vjYOoPdE"
+        },
+        {
+          "name": "picker",
+          "id": "asst_ExeIwbTnvVDi1KvOoAE8fqYr"
+        },
+        {
+          "name": "syntax_checker",
+          "id": "asst_Zkv9EKuJH44Ijg8AKCYGytxF"
+        },
+        {
+          "name": "fixer",
+          "id": "asst_YupPZYXxNjZJ0N1uofzt9nCC"
+        },
+        {
+          "name": "semantic_verifier",
+          "id": "asst_hzyVHVlWrTUQHpd1hCPGchGV"
+        }
+      ],
+      "model_http_attempts_total": 10,
+      "model_http_attempts_remaining": 2,
+      "processing_enabled": false,
+      "claimed_batch": "8f9c942d-c1fc-42ec-a07f-00478401de98",
+      "persistence": "actual Azure Blob/Cosmos through approved private endpoints",
+      "deployment": "adapted official-source cloud container"
+    }
+  },
+  "run_usage": {
+    "http_status": 200,
+    "body": [
+      {
+        "id": "run_VmGsS2Rmr0OdE2C6Ky6ryop9",
+        "status": "completed",
+        "usage": {
+          "prompt_tokens": 2678,
+          "completion_tokens": 152,
+          "total_tokens": 2830,
+          "prompt_token_details": {
+            "cached_tokens": 0
+          }
+        },
+        "last_error": null,
+        "created_at": 1789176082,
+        "completed_at": 1789176090,
+        "assistant_id": "asst_Zkv9EKuJH44Ijg8AKCYGytxF",
+        "agent_id": null,
+        "thread_id": "thread_46ObeaSjdpfqfB86c0ksbcul"
+      },
+      {
+        "id": "run_qIRN3HVm5645DxKDCUhTJjOT",
+        "status": "completed",
+        "usage": {
+          "prompt_tokens": 1348,
+          "completion_tokens": 113,
+          "total_tokens": 1461,
+          "prompt_token_details": {
+            "cached_tokens": 0
+          }
+        },
+        "last_error": null,
+        "created_at": 1789176061,
+        "completed_at": 1789176065,
+        "assistant_id": "asst_NqbG3ymTG9pPmJH0vjYOoPdE",
+        "agent_id": null,
+        "thread_id": "thread_LaH4kEOwLzkvb519HB13ZDKy"
+      },
+      {
+        "id": "run_Ywv9FE4GFQdL1qbHjo8vyMit",
+        "status": "completed",
+        "usage": {
+          "prompt_tokens": 1461,
+          "completion_tokens": 70,
+          "total_tokens": 1531,
+          "prompt_token_details": {
+            "cached_tokens": 0
+          }
+        },
+        "last_error": null,
+        "created_at": 1789176094,
+        "completed_at": 1789176097,
+        "assistant_id": "asst_hzyVHVlWrTUQHpd1hCPGchGV",
+        "agent_id": null,
+        "thread_id": "thread_gtUykZOzzywrNOH31jrcGhP3"
+      },
+      {
+        "id": "run_C0jxFp1WEgKHaWUUnth5U091",
+        "status": "completed",
+        "usage": {
+          "prompt_tokens": 1386,
+          "completion_tokens": 393,
+          "total_tokens": 1779,
+          "prompt_token_details": {
+            "cached_tokens": 0
+          }
+        },
+        "last_error": null,
+        "created_at": 1789176067,
+        "completed_at": 1789176073,
+        "assistant_id": "asst_NqbG3ymTG9pPmJH0vjYOoPdE",
+        "agent_id": null,
+        "thread_id": "thread_hbZ54yinssJx2oYDapD3P8RB"
+      },
+      {
+        "id": "run_Z4aVBSxprW8Q3dVuRpUIsUph",
+        "status": "completed",
+        "usage": {
+          "prompt_tokens": 1276,
+          "completion_tokens": 202,
+          "total_tokens": 1478,
+          "prompt_token_details": {
+            "cached_tokens": 0
+          }
+        },
+        "last_error": null,
+        "created_at": 1789176076,
+        "completed_at": 1789176080,
+        "assistant_id": "asst_ExeIwbTnvVDi1KvOoAE8fqYr",
+        "agent_id": null,
+        "thread_id": "thread_k8MsS2nDqMD9D7g6IWyQNtSa"
+      }
+    ]
+  },
+  "elapsed_seconds": 44.148,
+  "execProcessExitCode": 0
+}

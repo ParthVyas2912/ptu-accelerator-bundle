@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "path": "evidence/conversation/private-fallback.json",
+      "line": 232,
+      "rule": "LITERAL_SECRET",
+      "file_sha256": "5607226e097e673938d3f41b8f021eae0b5b44a2feaf1edd14a8ce439039f7cd",
+      "reason": "Reviewed credential-free deployment-description metadata; exact LF representation."
+    },
+    {
+      "path": "evidence/conversation/private-fallback.json",
+      "line": 232,
+      "rule": "LITERAL_SECRET",
+      "file_sha256": "415ae6e3cca748780dfac6be5ef0dad74615b4d4e064b6d657c767ee924f8b50",
+      "reason": "Same reviewed credential-free metadata; exact CRLF representation."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "name": "connection_config.py",
+    "bytes": 13630,
+    "sha256": "ddc723d803886a9a7d9b28d99022f424ba3f7a64065a1bcaf4e9ef31b12b7721"
+  },
+  {
+    "name": "Dockerfile",
+    "bytes": 405,
+    "sha256": "e3af3e2bef6da87e4b9bb9365bf5d74ffc1d8c92f62c8baee40613bddd986baf"
+  },
+  {
+    "name": "macae_cloud_run.py",
+    "bytes": 1692,
+    "sha256": "b6d1dd6d8f675038f737ca124d878c7f928e0e2af6fe2450614af6921172c17f"
+  },
+  {
+    "name": "macae_cosmos_budget.py",
+    "bytes": 5540,
+    "sha256": "1b7e37c5c3e5577887e40bdde2f464f53cae02726d94a7c1c81e20aad3f3aa0c"
+  },
+  {
+    "name": "macae_model_guard.py",
+    "bytes": 9360,
+    "sha256": "e406219beb8ccb28b8cd5b26a628ba7fd60dac5f97fb009d04459751badb5112"
+  },
+  {
+    "name": "macae_second_pass_admin.py",
+    "bytes": 821,
+    "sha256": "24bb9cce46e03791400f8ba8d8da29b08aabb1eff941493070ab235b8c2c29dd"
+  }
+]

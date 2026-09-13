@@ -1,0 +1,11 @@
+{
+  "httpStatus": 200,
+  "response": {
+    "status": "success",
+    "message": "Team 'PTU MACAE Human Resources Team' selected successfully",
+    "team_id": "ptu-macae-hr",
+    "team_name": "PTU MACAE Human Resources Team",
+    "agents_count": 2,
+    "team_description": "Team focused on HR and technical support for employees."
+  }
+}

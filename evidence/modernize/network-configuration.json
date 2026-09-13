@@ -1,0 +1,16 @@
+{
+  "ingress": "Exact observed lab egress IPv4 only; no service bypass",
+  "approval": "Required routine setup within parent-approved native persistence envelope",
+  "scope": "Only approved new Cosmos EUS2 and Storage accounts",
+  "app": "Modernize Your Code",
+  "authentication": "Entra only, local/shared-key and anonymous Blob access remain disabled",
+  "sharedFoundryNetworkChanged": false,
+  "sourceIp": "20.236.11.102",
+  "status": "blocked_by_management_group_modify_policy",
+  "actualPublicNetworkAccess": {
+    "cosmos": "Disabled",
+    "storage": "Disabled"
+  },
+  "effectivePublicIngress": "none; IP allowlist is ineffective while endpoints Disabled",
+  "governancePolicyBypassed": false
+}

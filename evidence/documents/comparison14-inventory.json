@@ -1,0 +1,88 @@
+{
+  "case": "recovery-inventory",
+  "utc": "2026-09-12T02:59:10.945Z",
+  "inference_calls": 0,
+  "containers": [
+    {
+      "container": "smemory",
+      "blobs": [
+        {
+          "name": "default/3951c54f0a974f79b9d8fc3d7e4591ad202609120125365840455/01-policy-2025.txt",
+          "bytes": 207
+        },
+        {
+          "name": "default/3951c54f0a974f79b9d8fc3d7e4591ad202609120125365840455/01-policy-2025.txt.extract.json",
+          "bytes": 297
+        },
+        {
+          "name": "default/3951c54f0a974f79b9d8fc3d7e4591ad202609120125365840455/01-policy-2025.txt.extract.txt",
+          "bytes": 205
+        },
+        {
+          "name": "default/3951c54f0a974f79b9d8fc3d7e4591ad202609120125365840455/01-policy-2025.txt.partition.0.txt",
+          "bytes": 199
+        },
+        {
+          "name": "default/3951c54f0a974f79b9d8fc3d7e4591ad202609120125365840455/01-policy-2025.txt.partition.0.txt.AI.AzureOpenAI.AzureOpenAITextEmbeddingGenerator.TODO.text_embedding",
+          "bytes": 39108
+        },
+        {
+          "name": "default/3951c54f0a974f79b9d8fc3d7e4591ad202609120125365840455/01-policy-2025.txt.summarize.0.txt",
+          "bytes": 219
+        },
+        {
+          "name": "default/3951c54f0a974f79b9d8fc3d7e4591ad202609120125365840455/01-policy-2025.txt.summarize.0.txt.AI.AzureOpenAI.AzureOpenAITextEmbeddingGenerator.TODO.text_embedding",
+          "bytes": 39152
+        },
+        {
+          "name": "default/3951c54f0a974f79b9d8fc3d7e4591ad202609120125365840455/01-policy-2025.txt.tags.json",
+          "bytes": 372
+        },
+        {
+          "name": "default/3951c54f0a974f79b9d8fc3d7e4591ad202609120125365840455/__pipeline_status.json",
+          "bytes": 8627
+        },
+        {
+          "name": "default/cb45ef9f464f4569ac7c4bc523ef1aab202609120215417274224/02-policy-2026-table.pdf",
+          "bytes": 950
+        },
+        {
+          "name": "default/cb45ef9f464f4569ac7c4bc523ef1aab202609120215417274224/02-policy-2026-table.pdf.extract.json",
+          "bytes": 509
+        },
+        {
+          "name": "default/cb45ef9f464f4569ac7c4bc523ef1aab202609120215417274224/02-policy-2026-table.pdf.extract.txt",
+          "bytes": 271
+        },
+        {
+          "name": "default/cb45ef9f464f4569ac7c4bc523ef1aab202609120215417274224/02-policy-2026-table.pdf.partition.0.txt",
+          "bytes": 271
+        },
+        {
+          "name": "default/cb45ef9f464f4569ac7c4bc523ef1aab202609120215417274224/02-policy-2026-table.pdf.partition.0.txt.AI.AzureOpenAI.AzureOpenAITextEmbeddingGenerator.TODO.text_embedding",
+          "bytes": 39143
+        },
+        {
+          "name": "default/cb45ef9f464f4569ac7c4bc523ef1aab202609120215417274224/02-policy-2026-table.pdf.summarize.0.txt",
+          "bytes": 258
+        },
+        {
+          "name": "default/cb45ef9f464f4569ac7c4bc523ef1aab202609120215417274224/02-policy-2026-table.pdf.summarize.0.txt.AI.AzureOpenAI.AzureOpenAITextEmbeddingGenerator.TODO.text_embedding",
+          "bytes": 39119
+        },
+        {
+          "name": "default/cb45ef9f464f4569ac7c4bc523ef1aab202609120215417274224/02-policy-2026-table.pdf.tags.json",
+          "bytes": 484
+        },
+        {
+          "name": "default/cb45ef9f464f4569ac7c4bc523ef1aab202609120215417274224/__pipeline_status.json",
+          "bytes": 9067
+        }
+      ],
+      "inspected_small_text_json": 13,
+      "exact_question_matches": []
+    }
+  ],
+  "runner_sha256": "a7128b521170cf830902d67ac8dc30de0f51ccdb6f7a8553d3aa81cfc0eedda3",
+  "local_result_file_exists": false
+}

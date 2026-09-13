@@ -1,0 +1,19 @@
+{
+  "source": "Completed authenticated CKM cloud exec session ckm-ai-private-probe, followed by ckm-live-summary-pass",
+  "endpoint": "https://aif-ptu-conversation-7d804f70.openai.azure.com",
+  "addresses": ["10.246.2.26"],
+  "authenticated_metadata_http_status": 200,
+  "metadata_model_inference_requests": 0,
+  "identity": "CKM user-assigned managed identity via DefaultAzureCredential",
+  "subsequent_inference_http200_count": 7,
+  "subsequent_inference_evidence": "evidence/conversation/summary-results.json",
+  "private_endpoint": "pe-conversation-ai",
+  "control_plane_readback": "evidence/conversation/pe-final-state.json",
+  "pna": "Disabled",
+  "local_auth_disabled": true,
+  "limitations": [
+    "Verifies own OpenAI data-plane authorization, not CU, Search, SQL or Blob.",
+    "An inbound account PE does not place the hosted Search tool in the VNet.",
+    "The pre-PE403 message alone did not establish an exclusive firewall cause."
+  ]
+}

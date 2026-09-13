@@ -1,0 +1,84 @@
+{
+  "app": "conversation",
+  "coordinator_request_at": "2026-09-12T04:44:00.578Z",
+  "original_model_request_cap": 12,
+  "current_model_request_cap": 9,
+  "cap_closed": true,
+  "confirmed_cap_reduction": {
+    "request_at": "2026-09-12T04:46:06.628Z",
+    "from": 12,
+    "to": 9,
+    "released_to_content_via_coordinator": 3,
+    "same_three_previously_released": true,
+    "additional_release_beyond_previous_handoff": 0,
+    "prior_conditional_cap_seven_was_never_accepted": true
+  },
+  "actual_model_attempts_used": 9,
+  "successful_model_requests": 9,
+  "failed_model_requests": 0,
+  "retries": 0,
+  "in_flight_model_requests": 0,
+  "reserved_model_requests": 0,
+  "unused_original_allowance": 3,
+  "unused_allowance_released_to_coordinator": 3,
+  "remaining_ckm_model_request_allowance": 0,
+  "no_further_ckm_model_dispatch_planned": true,
+  "conditional_content_transfer": {
+    "request_at": "2026-09-12T04:45:35.899Z",
+    "requested_release": 5,
+    "proposed_total_cap": 7,
+    "accepted": false,
+    "reason": "Nine attempts are already spent; a total cap of seven would be below actual consumption.",
+    "original_cap_retained": 12,
+    "minimum_total_covering_spent_inflight_reserved_and_remaining_plan": 9,
+    "maximum_reclaimable_from_original_allowance": 3,
+    "already_released_to_coordinator": 3,
+    "newly_released_by_this_confirmation": 0,
+    "double_count_warning": "The three reclaimable attempts are the same three released in the previous handoff, not three additional attempts."
+  },
+  "actual_returned_tokens": {
+    "input": 4547,
+    "output": 3700,
+    "total": 8247
+  },
+  "smallest_remaining_feasible_core_call_plan": {
+    "additional_model_requests": 0,
+    "reason": "Bounded native persistence, retrieval and model-planned SQL evaluation is complete. No model request can resolve the remaining hosted-private-Search architecture incompatibility."
+  },
+  "current_cloud_state": {
+    "control_plane_read_sessions": [
+      "1033",
+      "1031",
+      "1032"
+    ],
+    "api_retained_revisions": 11,
+    "ui_retained_revisions": 3,
+    "active_revisions": 0,
+    "replicas": 0,
+    "sql_status": "Online",
+    "sql_min_vcores": 0.5,
+    "sql_max_vcores": 2,
+    "sql_auto_pause_minutes": 60,
+    "sql_pause_observed": false,
+    "own_resource_group": "rg-ptu-conversation-demo",
+    "retained_dependencies": [
+      "S0 Foundry/project",
+      "GPT-5.2 GlobalStandard10",
+      "embedding3-small GlobalStandard10",
+      "Basic Search1x1",
+      "LRS Blob",
+      "serverless SQL",
+      "four private endpoints"
+    ],
+    "resource_inventory_reference": "evidence/conversation/result.json",
+    "checked_at": "2026-09-12T05:24:46.3472084+00:00",
+    "durable_native_serving_verified": true,
+    "serving_evidence": "evidence/conversation/serving-results.json"
+  },
+  "exact_blocking_dependency": "Native hosted AzureAISearchTool cannot access PNA-disabled Search under Basic Agent networking. Standard private-agent setup needs BYO Cosmos, a dedicated delegated agent subnet and same-region Foundry/VNet; these are not present in the deployed topology (Foundry Sweden Central, shared VNet EastUS2). Existing listed SQL/Search/Blob/AI approvals are not pending.",
+  "additional_acceptance_limitations": [
+    "Native distinct-count KPI/prose/file-context defects",
+    "Public browser path returned403; restrictions preserved"
+  ],
+  "optional_voice_load_quality_probes_planned": false
+}

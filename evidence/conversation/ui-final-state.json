@@ -1,0 +1,74 @@
+{
+  "app": {
+    "image": "acrptubundle7d804f70.azurecr.io/conversation/ui:8a00aa5-runtime",
+    "ingress": {
+      "additionalPortMappings": null,
+      "allowInsecure": false,
+      "clientCertificateMode": null,
+      "corsPolicy": null,
+      "customDomains": null,
+      "exposedPort": 0,
+      "external": true,
+      "fqdn": "ca-ptu-conversation-ui.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io",
+      "ipSecurityRestrictions": [
+        {
+          "action": "Allow",
+          "description": "Single evaluator CIDR from lab-ingress.json",
+          "ipAddressRange": "174.112.74.34/32",
+          "name": "approved-lab-client"
+        }
+      ],
+      "stickySessions": null,
+      "targetPort": 80,
+      "targetPortHttpScheme": null,
+      "traffic": [
+        {
+          "latestRevision": true,
+          "weight": 100
+        }
+      ],
+      "transport": "Auto"
+    },
+    "latestReady": "ca-ptu-conversation-ui--0000002",
+    "name": "ca-ptu-conversation-ui",
+    "scale": {
+      "cooldownPeriod": 300,
+      "maxReplicas": 1,
+      "minReplicas": 0,
+      "pollingInterval": 30,
+      "rules": [
+        {
+          "http": {
+            "auth": [],
+            "metadata": {
+              "concurrentRequests": "5"
+            }
+          },
+          "name": "http"
+        }
+      ]
+    },
+    "state": "Succeeded"
+  },
+  "checked_at": "2026-09-12T04:30:52.4655472+00:00",
+  "revisions": [
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-ui--ck2tl0m",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-ui--0000001",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-ui--0000002",
+      "replicas": 0
+    }
+  ]
+}

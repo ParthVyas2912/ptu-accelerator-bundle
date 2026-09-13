@@ -1,0 +1,16 @@
+[
+  {
+    "name": "ca-ptu-modernize-api",
+    "status": "Running",
+    "fqdn": "ca-ptu-modernize-api.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io",
+    "minReplicas": 0,
+    "maxReplicas": 1
+  },
+  {
+    "name": "ca-ptu-modernize-ui",
+    "status": "Running",
+    "fqdn": "ca-ptu-modernize-ui.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io",
+    "minReplicas": 0,
+    "maxReplicas": 1
+  }
+]

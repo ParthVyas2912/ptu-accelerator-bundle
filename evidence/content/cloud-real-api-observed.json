@@ -1,0 +1,121 @@
+{
+  "source": "Actual authenticated Azure Container Apps exec stdout, execution sessions614,621,626,632,635,641,642,649",
+  "mode": "Real private application, not mocks and not completed inference pipeline",
+  "apiHealth": {
+    "httpStatus": 200,
+    "body": {
+      "message": "I'm alive!"
+    }
+  },
+  "webInternalHttp": {
+    "httpStatus": 200,
+    "server": "nginx/1.28.3",
+    "contentType": "text/html",
+    "contentLength": 713
+  },
+  "privateDns": {
+    "stptuvcontent260911.blob.core.windows.net": [
+      "10.246.2.16"
+    ],
+    "stptuvcontent260911.queue.core.windows.net": [
+      "10.246.2.17"
+    ],
+    "cosmos-ptuv-content-260911.mongo.cosmos.azure.com": [
+      "10.246.2.14"
+    ],
+    "aif-ptuv-content-260911.cognitiveservices.azure.com": [
+      "20.62.58.5"
+    ],
+    "aif-ptuv-content-260911.openai.azure.com": [
+      "20.62.58.5"
+    ]
+  },
+  "apiManagedIdentityChecks": {
+    "blobList": "passed",
+    "queueList": "passed",
+    "appConfig40Keys": "passed",
+    "mongoPing": {
+      "ok": 1.0
+    }
+  },
+  "processorManagedIdentityChecks": {
+    "blobList": "passed",
+    "queueList": "passed",
+    "appConfig40Keys": "passed",
+    "mongoPing": {
+      "ok": 1.0
+    }
+  },
+  "schemaRegistration": {
+    "schemaCount": 4,
+    "schemaSetId": "0669038a-dcc4-46c7-b53c-1209263c070b",
+    "httpCalls": 12,
+    "allHttpStatuses": 200
+  },
+  "completeClaim": {
+    "claimId": "77f4a16d-96fe-4739-b90a-9ac0b2597bb4",
+    "createHttpStatus": 200,
+    "uploads": [
+      {
+        "file": "claim-form.pdf",
+        "status": 200
+      },
+      {
+        "file": "damage-diagram.png",
+        "status": 200
+      },
+      {
+        "file": "police-report.pdf",
+        "status": 200
+      },
+      {
+        "file": "repair-estimate.pdf",
+        "status": 200
+      }
+    ],
+    "submitted": false,
+    "inferenceCompleted": false
+  },
+  "corruptClaim": {
+    "claimId": "4ca130f8-2f91-4d3b-8276-e14297e3ef91",
+    "createHttpStatus": 200,
+    "uploads": [
+      {
+        "file": "bad-magic.pdf",
+        "status": 415
+      },
+      {
+        "file": "truncated.pdf",
+        "status": 200,
+        "note": "Header gate accepts; no CU/downstream failure tested"
+      },
+      {
+        "file": "unsupported.txt",
+        "status": 415
+      }
+    ],
+    "submitted": false
+  },
+  "workflowStartup": "Application initialized, queue service started with1 worker; no claims submitted",
+  "processorStartup": "All four real pipeline queues initialized successfully with messageCount0",
+  "modelCalls": 0,
+  "cuAnalyses": 0,
+  "returnedModelTokens": null,
+  "latencyEvidenceLocation": "Own Blob ptu-content-configuration/evaluation/functional-results.json; exact API elapsedMs persisted by driver",
+  "localFullExport": {
+    "status": "succeeded",
+    "capturedUtc": "2026-09-12T01:48:28.411290+00:00",
+    "source": "authenticated exec of baked cloud_export.py; own Blob",
+    "file": "cloud-application-evidence.json"
+  },
+  "publicBrowserVerified": false,
+  "stockAzureDeployment": false,
+  "historicalExportAttempt": {
+    "status": "deferred_after_control_plane_exec_throttle",
+    "httpStatus": 429,
+    "error": "WebSocket Handshake status429 Too Many Requests",
+    "retryAfterSeconds": 600,
+    "observedAtUtc": "2026-09-12T01:27:10Z",
+    "immediateRetryAttempted": false
+  }
+}

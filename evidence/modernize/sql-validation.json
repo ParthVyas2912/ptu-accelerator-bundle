@@ -1,0 +1,406 @@
+{
+  "scope": "independent SQL validation, not application deployment",
+  "engine": {
+    "name": "SQLite",
+    "version": "3.45.1",
+    "informix_engine_available": false,
+    "sql_server_engine_available": false
+  },
+  "parser_tests": [
+    {
+      "id": "native-valid",
+      "sql": "SELECT TOP 5 * FROM employees;",
+      "expected_valid": true,
+      "actual": {
+        "exit_code": 0,
+        "errors": [],
+        "elapsed_seconds": 1.797
+      },
+      "passed": true
+    },
+    {
+      "id": "native-malformed",
+      "sql": "SELEC FROM WHERE;",
+      "expected_valid": false,
+      "actual": {
+        "exit_code": 0,
+        "errors": [
+          {
+            "Line": 1,
+            "Column": 1,
+            "Error": "Incorrect syntax near 'SELEC'."
+          }
+        ],
+        "elapsed_seconds": 4.828
+      },
+      "passed": true
+    },
+    {
+      "id": "native-placeholder",
+      "sql": "No migration",
+      "expected_valid": false,
+      "actual": {
+        "exit_code": 0,
+        "errors": [],
+        "elapsed_seconds": 2.859
+      },
+      "passed": false
+    },
+    {
+      "id": "native-demographic-schema",
+      "sql": "SELECT customer_id, gender, age_group FROM customers WHERE active=1;",
+      "expected_valid": true,
+      "actual": {
+        "exit_code": 0,
+        "errors": [],
+        "elapsed_seconds": 3.61
+      },
+      "passed": true
+    },
+    {
+      "id": "repo-reference-q1_tsql.sql",
+      "expected": "Repository target reference parses",
+      "actual": {
+        "exit_code": 0,
+        "errors": [],
+        "elapsed_seconds": 4.672
+      },
+      "not_ai_generated_this_run": true
+    },
+    {
+      "id": "repo-reference-q2_tsql.sql",
+      "expected": "Repository target reference parses",
+      "actual": {
+        "exit_code": 0,
+        "errors": [],
+        "elapsed_seconds": 5.031
+      },
+      "not_ai_generated_this_run": true
+    },
+    {
+      "id": "repo-reference-q3_tsql.sql",
+      "expected": "Repository target reference parses",
+      "actual": {
+        "exit_code": 0,
+        "errors": [],
+        "elapsed_seconds": 3.906
+      },
+      "not_ai_generated_this_run": true
+    },
+    {
+      "id": "repo-reference-q4_tsql.sql",
+      "expected": "Repository target reference parses",
+      "actual": {
+        "exit_code": 0,
+        "errors": [],
+        "elapsed_seconds": 5.828
+      },
+      "not_ai_generated_this_run": true
+    },
+    {
+      "id": "repo-reference-q5_tsql.sql",
+      "expected": "Repository target reference parses",
+      "actual": {
+        "exit_code": 0,
+        "errors": [],
+        "elapsed_seconds": 3.375
+      },
+      "not_ai_generated_this_run": true
+    },
+    {
+      "id": "repo-reference-q6_tsql.sql",
+      "expected": "Repository target reference parses",
+      "actual": {
+        "exit_code": 0,
+        "errors": [],
+        "elapsed_seconds": 1.39
+      },
+      "not_ai_generated_this_run": true
+    },
+    {
+      "id": "repo-reference-q7_tsql.sql",
+      "expected": "Repository target reference parses",
+      "actual": {
+        "exit_code": 0,
+        "errors": [],
+        "elapsed_seconds": 5.61
+      },
+      "not_ai_generated_this_run": true
+    },
+    {
+      "id": "repo-nvl-candidate-1",
+      "actual": {
+        "exit_code": 0,
+        "errors": [],
+        "elapsed_seconds": 3.312
+      },
+      "scope": "Migrator protocol output, not full-pipeline output"
+    },
+    {
+      "id": "repo-nvl-candidate-2",
+      "actual": {
+        "exit_code": 0,
+        "errors": [],
+        "elapsed_seconds": 2.079
+      },
+      "scope": "Migrator protocol output, not full-pipeline output"
+    },
+    {
+      "id": "repo-nvl-candidate-3",
+      "actual": {
+        "exit_code": 0,
+        "errors": [],
+        "elapsed_seconds": 1.828
+      },
+      "scope": "Migrator protocol output, not full-pipeline output"
+    },
+    {
+      "id": "vendor-procedure-candidate-1",
+      "actual": {
+        "exit_code": 0,
+        "errors": [],
+        "elapsed_seconds": 2.14
+      },
+      "scope": "Migrator protocol output, not full-pipeline output"
+    },
+    {
+      "id": "vendor-procedure-candidate-2",
+      "actual": {
+        "exit_code": 0,
+        "errors": [],
+        "elapsed_seconds": 1.985
+      },
+      "scope": "Migrator protocol output, not full-pipeline output"
+    },
+    {
+      "id": "vendor-procedure-candidate-3",
+      "actual": {
+        "exit_code": 0,
+        "errors": [],
+        "elapsed_seconds": 3.5
+      },
+      "scope": "Migrator protocol output, not full-pipeline output"
+    },
+    {
+      "id": "demographic-schema-candidate-1",
+      "actual": {
+        "exit_code": 0,
+        "errors": [],
+        "elapsed_seconds": 2.265
+      },
+      "scope": "Migrator protocol output, not full-pipeline output"
+    },
+    {
+      "id": "demographic-schema-candidate-2",
+      "actual": {
+        "exit_code": 0,
+        "errors": [],
+        "elapsed_seconds": 0.938
+      },
+      "scope": "Migrator protocol output, not full-pipeline output"
+    },
+    {
+      "id": "demographic-schema-candidate-3",
+      "actual": {
+        "exit_code": 0,
+        "errors": [],
+        "elapsed_seconds": 5.453
+      },
+      "scope": "Migrator protocol output, not full-pipeline output"
+    }
+  ],
+  "equivalence_tests": [
+    {
+      "id": "repo-nvl-synthetic",
+      "candidate": 1,
+      "scope": "Migrator protocol reproduction",
+      "expected": "Same multiset across duplicate/null/no-match cases",
+      "source_rows": [
+        [
+          1,
+          10,
+          10.0
+        ],
+        [
+          2,
+          10,
+          10.0
+        ],
+        [
+          3,
+          20,
+          0
+        ],
+        [
+          4,
+          30,
+          0
+        ],
+        [
+          5,
+          null,
+          0
+        ]
+      ],
+      "target_rows": [
+        [
+          1,
+          10,
+          10.0
+        ],
+        [
+          2,
+          10,
+          10.0
+        ],
+        [
+          3,
+          20,
+          0
+        ],
+        [
+          4,
+          30,
+          0
+        ],
+        [
+          5,
+          null,
+          0
+        ]
+      ],
+      "passed": true,
+      "source_rewrite": "NVL -> COALESCE",
+      "target_rewrite": "ISNULL -> COALESCE if present",
+      "limitation": "SQLite comparison with documented function rewrite is NOT Informix/SQL Server equivalence."
+    },
+    {
+      "id": "repo-nvl-synthetic",
+      "candidate": 2,
+      "scope": "Migrator protocol reproduction",
+      "expected": "Same multiset across duplicate/null/no-match cases",
+      "source_rows": [
+        [
+          1,
+          10,
+          10.0
+        ],
+        [
+          2,
+          10,
+          10.0
+        ],
+        [
+          3,
+          20,
+          0
+        ],
+        [
+          4,
+          30,
+          0
+        ],
+        [
+          5,
+          null,
+          0
+        ]
+      ],
+      "target_rows": [
+        [
+          1,
+          10,
+          10.0
+        ],
+        [
+          2,
+          10,
+          10.0
+        ],
+        [
+          3,
+          20,
+          0
+        ],
+        [
+          4,
+          30,
+          0
+        ],
+        [
+          5,
+          null,
+          0
+        ]
+      ],
+      "passed": true,
+      "source_rewrite": "NVL -> COALESCE",
+      "target_rewrite": "ISNULL -> COALESCE if present",
+      "limitation": "SQLite comparison with documented function rewrite is NOT Informix/SQL Server equivalence."
+    },
+    {
+      "id": "repo-nvl-synthetic",
+      "candidate": 3,
+      "scope": "Migrator protocol reproduction",
+      "expected": "Same multiset across duplicate/null/no-match cases",
+      "source_rows": [
+        [
+          1,
+          10,
+          10.0
+        ],
+        [
+          2,
+          10,
+          10.0
+        ],
+        [
+          3,
+          20,
+          0
+        ],
+        [
+          4,
+          30,
+          0
+        ],
+        [
+          5,
+          null,
+          0
+        ]
+      ],
+      "target_rows": [
+        [
+          1,
+          10,
+          10.0
+        ],
+        [
+          2,
+          10,
+          10.0
+        ],
+        [
+          3,
+          20,
+          0
+        ],
+        [
+          4,
+          30,
+          0
+        ],
+        [
+          5,
+          null,
+          0
+        ]
+      ],
+      "passed": true,
+      "source_rewrite": "NVL -> COALESCE",
+      "target_rewrite": "ISNULL -> COALESCE if present",
+      "limitation": "SQLite comparison with documented function rewrite is NOT Informix/SQL Server equivalence."
+    }
+  ]
+}

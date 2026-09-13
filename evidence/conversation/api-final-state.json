@@ -1,0 +1,104 @@
+{
+  "revisions": [
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-api--cdcg7po",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-api--0000001",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-api--0000002",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-api--0000003",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-api--0000004",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-api--0000005",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-api--0000006",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-api--0000007",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-api--0000008",
+      "replicas": 0
+    }
+  ],
+  "app": {
+    "image": "acrptubundle7d804f70.azurecr.io/conversation/api@sha256:fa78799cb2142dfdeae5ed38c9e48d87f9cb7de15df25be6c68a6fa716fafea3",
+    "ingress": {
+      "additionalPortMappings": null,
+      "allowInsecure": false,
+      "clientCertificateMode": null,
+      "corsPolicy": null,
+      "customDomains": null,
+      "exposedPort": 0,
+      "external": false,
+      "fqdn": "ca-ptu-conversation-api.internal.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io",
+      "ipSecurityRestrictions": null,
+      "stickySessions": null,
+      "targetPort": 8000,
+      "targetPortHttpScheme": null,
+      "traffic": [
+        {
+          "latestRevision": true,
+          "weight": 100
+        }
+      ],
+      "transport": "Auto"
+    },
+    "latestReady": "ca-ptu-conversation-api--0000008",
+    "mode": "Multiple",
+    "name": "ca-ptu-conversation-api",
+    "scale": {
+      "cooldownPeriod": 300,
+      "maxReplicas": 1,
+      "minReplicas": 0,
+      "pollingInterval": 30,
+      "rules": [
+        {
+          "http": {
+            "auth": [],
+            "metadata": {
+              "concurrentRequests": "5"
+            }
+          },
+          "name": "http"
+        }
+      ]
+    },
+    "state": "Succeeded"
+  },
+  "checked_at": "2026-09-12T04:30:52.1308502+00:00"
+}

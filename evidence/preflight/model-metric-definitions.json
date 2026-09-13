@@ -1,0 +1,305 @@
+[
+  {
+    "name": {
+      "localizedValue": "Azure OpenAI Requests",
+      "value": "AzureOpenAIRequests"
+    },
+    "primaryAggregationType": "Total",
+    "supportedAggregationTypes": [
+      "None",
+      "Average",
+      "Minimum",
+      "Maximum",
+      "Total",
+      "Count"
+    ],
+    "dimensions": [
+      {
+        "localizedValue": "ApiName",
+        "value": "ApiName"
+      },
+      {
+        "localizedValue": "OperationName",
+        "value": "OperationName"
+      },
+      {
+        "localizedValue": "Region",
+        "value": "Region"
+      },
+      {
+        "localizedValue": "StreamType",
+        "value": "StreamType"
+      },
+      {
+        "localizedValue": "ModelDeploymentName",
+        "value": "ModelDeploymentName"
+      },
+      {
+        "localizedValue": "ModelName",
+        "value": "ModelName"
+      },
+      {
+        "localizedValue": "ModelVersion",
+        "value": "ModelVersion"
+      },
+      {
+        "localizedValue": "StatusCode",
+        "value": "StatusCode"
+      },
+      {
+        "localizedValue": "IsSpillover",
+        "value": "IsSpillover"
+      },
+      {
+        "localizedValue": "ServiceTierRequest",
+        "value": "ServiceTierRequest"
+      },
+      {
+        "localizedValue": "ServiceTierResponse",
+        "value": "ServiceTierResponse"
+      }
+    ]
+  },
+  {
+    "name": {
+      "localizedValue": "Processed Prompt Tokens",
+      "value": "ProcessedPromptTokens"
+    },
+    "primaryAggregationType": "Total",
+    "supportedAggregationTypes": [
+      "None",
+      "Average",
+      "Minimum",
+      "Maximum",
+      "Total",
+      "Count"
+    ],
+    "dimensions": [
+      {
+        "localizedValue": "ApiName",
+        "value": "ApiName"
+      },
+      {
+        "localizedValue": "ModelDeploymentName",
+        "value": "ModelDeploymentName"
+      },
+      {
+        "localizedValue": "ModelName",
+        "value": "FeatureName"
+      },
+      {
+        "localizedValue": "UsageChannel",
+        "value": "UsageChannel"
+      },
+      {
+        "localizedValue": "Region",
+        "value": "Region"
+      },
+      {
+        "localizedValue": "ModelVersion",
+        "value": "ModelVersion"
+      }
+    ]
+  },
+  {
+    "name": {
+      "localizedValue": "Generated Completion Tokens",
+      "value": "GeneratedTokens"
+    },
+    "primaryAggregationType": "Total",
+    "supportedAggregationTypes": [
+      "None",
+      "Average",
+      "Minimum",
+      "Maximum",
+      "Total",
+      "Count"
+    ],
+    "dimensions": [
+      {
+        "localizedValue": "ApiName",
+        "value": "ApiName"
+      },
+      {
+        "localizedValue": "ModelDeploymentName",
+        "value": "ModelDeploymentName"
+      },
+      {
+        "localizedValue": "ModelName",
+        "value": "FeatureName"
+      },
+      {
+        "localizedValue": "UsageChannel",
+        "value": "UsageChannel"
+      },
+      {
+        "localizedValue": "Region",
+        "value": "Region"
+      },
+      {
+        "localizedValue": "ModelVersion",
+        "value": "ModelVersion"
+      }
+    ]
+  },
+  {
+    "name": {
+      "localizedValue": "Provisioned-managed Utilization (deprecated)",
+      "value": "AzureOpenAIProvisionedManagedUtilization"
+    },
+    "primaryAggregationType": "Average",
+    "supportedAggregationTypes": [
+      "Minimum",
+      "Maximum",
+      "Average"
+    ],
+    "dimensions": [
+      {
+        "localizedValue": "Region",
+        "value": "Region"
+      },
+      {
+        "localizedValue": "StreamType",
+        "value": "StreamType"
+      },
+      {
+        "localizedValue": "ModelDeploymentName",
+        "value": "ModelDeploymentName"
+      },
+      {
+        "localizedValue": "ModelName",
+        "value": "ModelName"
+      },
+      {
+        "localizedValue": "ModelVersion",
+        "value": "ModelVersion"
+      }
+    ]
+  },
+  {
+    "name": {
+      "localizedValue": "Provisioned-managed Utilization V2",
+      "value": "AzureOpenAIProvisionedManagedUtilizationV2"
+    },
+    "primaryAggregationType": "Average",
+    "supportedAggregationTypes": [
+      "Minimum",
+      "Maximum",
+      "Average"
+    ],
+    "dimensions": [
+      {
+        "localizedValue": "Region",
+        "value": "Region"
+      },
+      {
+        "localizedValue": "StreamType",
+        "value": "StreamType"
+      },
+      {
+        "localizedValue": "ModelDeploymentName",
+        "value": "ModelDeploymentName"
+      },
+      {
+        "localizedValue": "ModelName",
+        "value": "ModelName"
+      },
+      {
+        "localizedValue": "ModelVersion",
+        "value": "ModelVersion"
+      }
+    ]
+  },
+  {
+    "name": {
+      "localizedValue": "Time to Response",
+      "value": "AzureOpenAITimeToResponse"
+    },
+    "primaryAggregationType": "Average",
+    "supportedAggregationTypes": [
+      "Minimum",
+      "Maximum",
+      "Average"
+    ],
+    "dimensions": [
+      {
+        "localizedValue": "ApiName",
+        "value": "ApiName"
+      },
+      {
+        "localizedValue": "OperationName",
+        "value": "OperationName"
+      },
+      {
+        "localizedValue": "Region",
+        "value": "Region"
+      },
+      {
+        "localizedValue": "StreamType",
+        "value": "StreamType"
+      },
+      {
+        "localizedValue": "ModelDeploymentName",
+        "value": "ModelDeploymentName"
+      },
+      {
+        "localizedValue": "ModelName",
+        "value": "ModelName"
+      },
+      {
+        "localizedValue": "ModelVersion",
+        "value": "ModelVersion"
+      },
+      {
+        "localizedValue": "StatusCode",
+        "value": "StatusCode"
+      },
+      {
+        "localizedValue": "ServiceTierRequest",
+        "value": "ServiceTierRequest"
+      },
+      {
+        "localizedValue": "ServiceTierResponse",
+        "value": "ServiceTierResponse"
+      }
+    ]
+  },
+  {
+    "name": {
+      "localizedValue": "Time to Last Byte",
+      "value": "AzureOpenAITTLTInMS"
+    },
+    "primaryAggregationType": "Average",
+    "supportedAggregationTypes": [
+      "Maximum",
+      "Minimum",
+      "Average"
+    ],
+    "dimensions": [
+      {
+        "localizedValue": "Region",
+        "value": "Region"
+      },
+      {
+        "localizedValue": "ModelDeploymentName",
+        "value": "ModelDeploymentName"
+      },
+      {
+        "localizedValue": "ModelName",
+        "value": "ModelName"
+      },
+      {
+        "localizedValue": "ModelVersion",
+        "value": "ModelVersion"
+      },
+      {
+        "localizedValue": "ServiceTierRequest",
+        "value": "ServiceTierRequest"
+      },
+      {
+        "localizedValue": "ServiceTierResponse",
+        "value": "ServiceTierResponse"
+      }
+    ]
+  }
+]

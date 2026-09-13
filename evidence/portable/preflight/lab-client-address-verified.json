@@ -1,0 +1,32 @@
+[
+  {
+    "caller": "[REDACTED IDENTITY]",
+    "clientIpAddress": null,
+    "operation": "Microsoft.App/managedEnvironments/read"
+  },
+  {
+    "caller": "[REDACTED IDENTITY]",
+    "clientIpAddress": null,
+    "operation": "Microsoft.Network/privateDnsZones/virtualNetworkLinks/read"
+  },
+  {
+    "caller": "[REDACTED IDENTITY]",
+    "clientIpAddress": null,
+    "operation": "Microsoft.Resources/deployments/operationStatuses/read"
+  },
+  {
+    "caller": "[REDACTED IDENTITY]",
+    "clientIpAddress": null,
+    "operation": "Microsoft.Network/privateDnsZones/write"
+  },
+  {
+    "caller": "[REDACTED IDENTITY]",
+    "clientIpAddress": null,
+    "operation": "Microsoft.Network/privateDnsZones/write"
+  },
+  {
+    "caller": "[REDACTED IDENTITY]",
+    "clientIpAddress": null,
+    "operation": "Microsoft.Network/privateDnsZones/write"
+  }
+]

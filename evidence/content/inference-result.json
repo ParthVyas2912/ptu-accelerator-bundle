@@ -1,0 +1,1818 @@
+{
+  "capturedUtc": "2026-09-12T02:45:48.620507+00:00",
+  "fullClaimE2ePassed": false,
+  "deploymentMode": "Adapted private container deployment on the approved shared Consumption platform",
+  "preflight": {
+    "utc": "2026-09-12T02:14:51.008301+00:00",
+    "service": "processor",
+    "clientId": "5101963f-1e38-45d2-9f7c-efa9e9f6d122",
+    "dns": {
+      "aif-ptuv-content-260911.cognitiveservices.azure.com": [
+        "10.246.2.21"
+      ],
+      "aif-ptuv-content-260911.openai.azure.com": [
+        "10.246.2.22"
+      ],
+      "aif-ptuv-content-260911.services.ai.azure.com": [
+        "10.246.2.23"
+      ]
+    },
+    "cuMetadata": {
+      "status": 200,
+      "apiVersion": "2025-11-01",
+      "analyzerId": "prebuilt-layout",
+      "elapsedMs": 540.234,
+      "returnedKeys": [
+        "analyzerId",
+        "baseAnalyzerId",
+        "config",
+        "createdAt",
+        "description",
+        "models",
+        "processingLocation",
+        "status",
+        "supportedModels",
+        "warnings"
+      ]
+    },
+    "passed": true
+  },
+  "modelAttempts": 10,
+  "modelHttpStatusCounts": {
+    "200": 10
+  },
+  "modelTokens": {
+    "prompt_tokens": 39760,
+    "completion_tokens": 23301,
+    "total_tokens": 63061,
+    "reasoning_tokens_included_in_completion": 16330,
+    "cached_prompt_tokens_included_in_prompt": 4352
+  },
+  "cuAnalysisSubmissions": 7,
+  "cuSuccessfulPageReports": {
+    "7f687fbf-19a3-4581-8a59-47f1f0d3934f": 1,
+    "7e338a97-da84-4c86-b167-49727e8e4756": 1,
+    "bbc474c0-2a9b-4441-b66a-8496d35cba39": 1,
+    "5246a3f0-b96d-4b70-8be8-747dd16287fc": 1,
+    "055fa183-df94-4c9a-990e-fc9136e2571f": 1,
+    "f4558de2-7d75-4c00-b930-918deccfd7b6": 1
+  },
+  "cuReturnedDocumentPagesStandard": 6,
+  "cuRejectedSubmissions": 1,
+  "failedCuChargeablePages": null,
+  "apiRequestsRecorded": 68,
+  "originalClaim": "77f4a16d-96fe-4739-b90a-9ac0b2597bb4",
+  "recoveryClaim": "9f9b9c98-2d6e-440f-9a67-099ffea26f51",
+  "observedFailure": "Both claim records say Completed despite four Error documents; downstream summary/gap operated without successfully completed documents",
+  "schemaRepair": {
+    "utc": "2026-09-12T02:26:20.731687+00:00",
+    "heldOriginalMessages": [
+      {
+        "messageId": "ad3a7c0c-c6e3-42ed-9ece-528e27af87e6",
+        "processId": "27477b6a-130b-4489-b02d-1c911d6550af",
+        "nextVisibleUtc": "2026-09-12 04:26:20+00:00"
+      },
+      {
+        "messageId": "9c04bf44-7021-450b-a6c9-4f0d96582c57",
+        "processId": "0de7be0e-d949-461f-9107-5db22aa806ef",
+        "nextVisibleUtc": "2026-09-12 04:26:20+00:00"
+      },
+      {
+        "messageId": "d99eca33-195d-43ef-9d9a-2f5e70b89afb",
+        "processId": "19c0161d-7198-4315-81b2-9bfcaf7a01e8",
+        "nextVisibleUtc": "2026-09-12 04:26:20+00:00"
+      },
+      {
+        "messageId": "e13169c0-1f38-4e7d-a291-501c2e1d7f52",
+        "processId": "dd126bb9-93c7-42df-b39e-6554711866c6",
+        "nextVisibleUtc": "2026-09-12 04:26:20+00:00"
+      }
+    ],
+    "sourceCollection": "ptu-content-schemas",
+    "targetCollection": "Schemas",
+    "schemas": [
+      {
+        "schemaId": "e40f3710-6659-4b6d-a1c4-f457ac94a07a",
+        "source": "ptu-content-schemas/e40f3710-6659-4b6d-a1c4-f457ac94a07a/autoclaim.json",
+        "target": "Schemas/e40f3710-6659-4b6d-a1c4-f457ac94a07a/autoclaim.json",
+        "sha256": "0dc17d2e0b602cef3e7ab7d102b76d1901c185d512750c3102833f8b5a71976d",
+        "verified": true
+      },
+      {
+        "schemaId": "e26a0118-23cd-46d8-afb8-483e6e3ed2be",
+        "source": "ptu-content-schemas/e26a0118-23cd-46d8-afb8-483e6e3ed2be/damagedcarimage.json",
+        "target": "Schemas/e26a0118-23cd-46d8-afb8-483e6e3ed2be/damagedcarimage.json",
+        "sha256": "58a9a4b68dc44b7b9330fae571a305d76699219c9f026060ce21cf4b1d8719e2",
+        "verified": true
+      },
+      {
+        "schemaId": "c56d2d29-82f5-4dc8-9659-c41e47254ce9",
+        "source": "ptu-content-schemas/c56d2d29-82f5-4dc8-9659-c41e47254ce9/policereport.json",
+        "target": "Schemas/c56d2d29-82f5-4dc8-9659-c41e47254ce9/policereport.json",
+        "sha256": "e31b8afc90a256185c1c69efcef55698673316c83dd2a30ae099db2a22909aa3",
+        "verified": true
+      },
+      {
+        "schemaId": "d5531c34-0d85-40d2-bd9e-c2d361ee2d44",
+        "source": "ptu-content-schemas/d5531c34-0d85-40d2-bd9e-c2d361ee2d44/repairestimate.json",
+        "target": "Schemas/d5531c34-0d85-40d2-bd9e-c2d361ee2d44/repairestimate.json",
+        "sha256": "2f31b009b87fbea5e44dd6e137326784cf4b1baed986fc2fecf18ec8c7b4e05c",
+        "verified": true
+      }
+    ],
+    "dataDeleted": false,
+    "reason": "API used configurable prefix; upstream Processor hardcodes case-sensitive Schemas",
+    "dataCopyVerified": true
+  },
+  "tokenizerRepair": {
+    "image": "content/eval-processor:659eaa1-r4",
+    "buildRun": "chq",
+    "method": "Precache official tiktoken o200k_base during credential-free remote build; runtime guard remains enabled",
+    "verification": "Original confidence evaluator passed inside image with runtime guard; live police-report extract/map/evaluate outputs subsequently recovered",
+    "remainingDocuments": "Other three step-output exports still held previous errors at last read; no successful full-claim tail rerun"
+  },
+  "negativeSingleFile": {
+    "processId": "835a01bf-4cc3-4474-b035-304dbe06d8be",
+    "endpoint": "/contentprocessor/submit",
+    "acceptedStatus": 202,
+    "polls": [
+      {
+        "httpStatus": 200,
+        "value": {
+          "status": "processing",
+          "process_id": "835a01bf-4cc3-4474-b035-304dbe06d8be",
+          "file_name": "truncated.pdf",
+          "message": "Processing of file 'truncated.pdf' with Process ID '835a01bf-4cc3-4474-b035-304dbe06d8be' is still in progress."
+        }
+      },
+      {
+        "httpStatus": 200,
+        "value": {
+          "status": "processing",
+          "process_id": "835a01bf-4cc3-4474-b035-304dbe06d8be",
+          "file_name": "truncated.pdf",
+          "message": "Processing of file 'truncated.pdf' with Process ID '835a01bf-4cc3-4474-b035-304dbe06d8be' is still in progress."
+        }
+      },
+      {
+        "httpStatus": 500,
+        "value": {
+          "status": "failed",
+          "process_id": "835a01bf-4cc3-4474-b035-304dbe06d8be",
+          "file_name": "truncated.pdf",
+          "message": "Processing of file 'truncated.pdf' with Process ID '835a01bf-4cc3-4474-b035-304dbe06d8be' has failed."
+        }
+      }
+    ],
+    "modelAttemptsBefore": 10,
+    "terminalHttpStatus": 500,
+    "steps": [
+      {
+        "step_name": "extract",
+        "processed_time": "error",
+        "step_result": {
+          "process_id": "835a01bf-4cc3-4474-b035-304dbe06d8be",
+          "step_name": "extract",
+          "result": {
+            "result": "error",
+            "error": "{\"exception\":\"HTTPError\",\"exception_details\":\"400 Client Error: Bad Request for url: https://aif-ptuv-content-260911.cognitiveservices.azure.com/contentunderstanding/analyzers/prebuilt-layout:analyzeBinary?api-version=2025-11-01\",\"exception_stack_trace\":\"  File \\\"/app/src/libs/pipeline/queue_handler_base.py\\\", line 177, in _connect_async\\n    step_result = await self.execute(\\n                  ^^^^^^^^^^^^^^^^^^^\\n  File \\\"/app/src/libs/pipeline/handlers/extract_handler.py\\\", line 54, in execute\\n    response = content_understanding_helper.begin_analyze_stream(\\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \\\"/app/src/libs/azure_helper/content_understanding.py\\\", line 241, in begin_analyze_stream\\n    response.raise_for_status()\\n  File \\\"/app/.venv/lib/python3.12/site-packages/requests/models.py\\\", line 1028, in raise_for_status\\n    raise HTTPError(http_error_msg, response=self)\\n\",\"exception_type\":\"HTTPError\",\"exception_message\":\"400 Client Error: Bad Request for url: https://aif-ptuv-content-260911.cognitiveservices.azure.com/contentunderstanding/analyzers/prebuilt-layout:analyzeBinary?api-version=2025-11-01\",\"exception_inner_exception\":null,\"exception_source\":\"<traceback object at 0x7cd511f3acc0>\"}"
+          },
+          "elapsed": null
+        }
+      }
+    ],
+    "modelAttemptsAfter": 10,
+    "newRequests": [
+      {
+        "kind": "cu-analyze",
+        "service": "processor",
+        "pid": 14,
+        "started": "2026-09-12T02:39:50.164145+00:00",
+        "method": "POST",
+        "host": "aif-ptuv-content-260911.cognitiveservices.azure.com",
+        "path": "/contentunderstanding/analyzers/prebuilt-layout:analyzeBinary",
+        "model": null,
+        "id": 30,
+        "containerReplica": "ca-ptu-content-processor--0000006-58dd96d99-brdfz",
+        "containerRevision": "ca-ptu-content-processor--0000006",
+        "status": 400,
+        "elapsed_ms": 4230.163,
+        "usage": null,
+        "pages": null,
+        "operation": null,
+        "error": "InvalidRequest: Invalid request."
+      }
+    ],
+    "passed": true
+  },
+  "requestLedger": [
+    {
+      "kind": "cu-metadata",
+      "service": "processor",
+      "pid": 18,
+      "started": "2026-09-12T02:14:51.288231+00:00",
+      "method": "GET",
+      "host": "aif-ptuv-content-260911.cognitiveservices.azure.com",
+      "path": "/contentunderstanding/analyzers/prebuilt-layout",
+      "model": null,
+      "id": 1,
+      "containerReplica": "ca-ptu-content-processor--0000002-769f6dc8d-mc72l",
+      "containerRevision": "ca-ptu-content-processor--0000002",
+      "status": 200,
+      "elapsed_ms": 340.043,
+      "usage": null,
+      "pages": null,
+      "operation": null,
+      "error": null
+    },
+    {
+      "kind": "cu-analyze",
+      "service": "processor",
+      "pid": 14,
+      "started": "2026-09-12T02:15:51.070602+00:00",
+      "method": "POST",
+      "host": "aif-ptuv-content-260911.cognitiveservices.azure.com",
+      "path": "/contentunderstanding/analyzers/prebuilt-layout:analyzeBinary",
+      "model": null,
+      "id": 2,
+      "containerReplica": "ca-ptu-content-processor--0000002-769f6dc8d-mc72l",
+      "containerRevision": "ca-ptu-content-processor--0000002",
+      "status": 202,
+      "elapsed_ms": 479.309,
+      "usage": null,
+      "pages": null,
+      "operation": "7f687fbf-19a3-4581-8a59-47f1f0d3934f",
+      "error": null
+    },
+    {
+      "kind": "cu-poll",
+      "service": "processor",
+      "pid": 14,
+      "started": "2026-09-12T02:15:51.708223+00:00",
+      "method": "GET",
+      "host": "aif-ptuv-content-260911.cognitiveservices.azure.com",
+      "path": "/contentunderstanding/analyzerResults/7f687fbf-19a3-4581-8a59-47f1f0d3934f",
+      "model": null,
+      "id": 3,
+      "containerReplica": "ca-ptu-content-processor--0000002-769f6dc8d-mc72l",
+      "containerRevision": "ca-ptu-content-processor--0000002",
+      "status": 200,
+      "elapsed_ms": 3371.406,
+      "usage": [
+        {
+          "documentPagesStandard": 1
+        }
+      ],
+      "pages": 1,
+      "operation": "7f687fbf-19a3-4581-8a59-47f1f0d3934f",
+      "error": null
+    },
+    {
+      "kind": "cu-analyze",
+      "service": "processor",
+      "pid": 14,
+      "started": "2026-09-12T02:15:57.911506+00:00",
+      "method": "POST",
+      "host": "aif-ptuv-content-260911.cognitiveservices.azure.com",
+      "path": "/contentunderstanding/analyzers/prebuilt-layout:analyzeBinary",
+      "model": null,
+      "id": 4,
+      "containerReplica": "ca-ptu-content-processor--0000002-769f6dc8d-mc72l",
+      "containerRevision": "ca-ptu-content-processor--0000002",
+      "status": 202,
+      "elapsed_ms": 285.698,
+      "usage": null,
+      "pages": null,
+      "operation": "7e338a97-da84-4c86-b167-49727e8e4756",
+      "error": null
+    },
+    {
+      "kind": "cu-poll",
+      "service": "processor",
+      "pid": 14,
+      "started": "2026-09-12T02:15:58.340462+00:00",
+      "method": "GET",
+      "host": "aif-ptuv-content-260911.cognitiveservices.azure.com",
+      "path": "/contentunderstanding/analyzerResults/7e338a97-da84-4c86-b167-49727e8e4756",
+      "model": null,
+      "id": 5,
+      "containerReplica": "ca-ptu-content-processor--0000002-769f6dc8d-mc72l",
+      "containerRevision": "ca-ptu-content-processor--0000002",
+      "status": 200,
+      "elapsed_ms": 124.912,
+      "usage": null,
+      "pages": null,
+      "operation": "7e338a97-da84-4c86-b167-49727e8e4756",
+      "error": null
+    },
+    {
+      "kind": "cu-poll",
+      "service": "processor",
+      "pid": 14,
+      "started": "2026-09-12T02:16:00.657782+00:00",
+      "method": "GET",
+      "host": "aif-ptuv-content-260911.cognitiveservices.azure.com",
+      "path": "/contentunderstanding/analyzerResults/7e338a97-da84-4c86-b167-49727e8e4756",
+      "model": null,
+      "id": 6,
+      "containerReplica": "ca-ptu-content-processor--0000002-769f6dc8d-mc72l",
+      "containerRevision": "ca-ptu-content-processor--0000002",
+      "status": 200,
+      "elapsed_ms": 92.756,
+      "usage": [
+        {
+          "documentPagesStandard": 1
+        }
+      ],
+      "pages": 1,
+      "operation": "7e338a97-da84-4c86-b167-49727e8e4756",
+      "error": null
+    },
+    {
+      "kind": "cu-analyze",
+      "service": "processor",
+      "pid": 14,
+      "started": "2026-09-12T02:16:02.319499+00:00",
+      "method": "POST",
+      "host": "aif-ptuv-content-260911.cognitiveservices.azure.com",
+      "path": "/contentunderstanding/analyzers/prebuilt-layout:analyzeBinary",
+      "model": null,
+      "id": 7,
+      "containerReplica": "ca-ptu-content-processor--0000002-769f6dc8d-mc72l",
+      "containerRevision": "ca-ptu-content-processor--0000002",
+      "status": 202,
+      "elapsed_ms": 148.43,
+      "usage": null,
+      "pages": null,
+      "operation": "bbc474c0-2a9b-4441-b66a-8496d35cba39",
+      "error": null
+    },
+    {
+      "kind": "cu-poll",
+      "service": "processor",
+      "pid": 14,
+      "started": "2026-09-12T02:16:02.628106+00:00",
+      "method": "GET",
+      "host": "aif-ptuv-content-260911.cognitiveservices.azure.com",
+      "path": "/contentunderstanding/analyzerResults/bbc474c0-2a9b-4441-b66a-8496d35cba39",
+      "model": null,
+      "id": 8,
+      "containerReplica": "ca-ptu-content-processor--0000002-769f6dc8d-mc72l",
+      "containerRevision": "ca-ptu-content-processor--0000002",
+      "status": 200,
+      "elapsed_ms": 78.207,
+      "usage": null,
+      "pages": null,
+      "operation": "bbc474c0-2a9b-4441-b66a-8496d35cba39",
+      "error": null
+    },
+    {
+      "kind": "cu-poll",
+      "service": "processor",
+      "pid": 14,
+      "started": "2026-09-12T02:16:04.902013+00:00",
+      "method": "GET",
+      "host": "aif-ptuv-content-260911.cognitiveservices.azure.com",
+      "path": "/contentunderstanding/analyzerResults/bbc474c0-2a9b-4441-b66a-8496d35cba39",
+      "model": null,
+      "id": 9,
+      "containerReplica": "ca-ptu-content-processor--0000002-769f6dc8d-mc72l",
+      "containerRevision": "ca-ptu-content-processor--0000002",
+      "status": 200,
+      "elapsed_ms": 424.911,
+      "usage": [
+        {
+          "documentPagesStandard": 1
+        }
+      ],
+      "pages": 1,
+      "operation": "bbc474c0-2a9b-4441-b66a-8496d35cba39",
+      "error": null
+    },
+    {
+      "kind": "model",
+      "service": "workflow",
+      "pid": 7,
+      "started": "2026-09-12T02:16:11.510822+00:00",
+      "method": "POST",
+      "host": "aif-ptuv-content-260911.openai.azure.com",
+      "path": "/openai/deployments/gpt-5.1/chat/completions",
+      "model": "gpt-5.1",
+      "id": 10,
+      "containerReplica": "ca-ptu-content-workflow--0000002-c8547f8b8-dfjjp",
+      "containerRevision": "ca-ptu-content-workflow--0000002",
+      "status": 200,
+      "elapsed_ms": 2160.126,
+      "usage": [
+        {
+          "completion_tokens": 22,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": 0
+          },
+          "latency_checkpoint": {
+            "engine_tbt_ms": 0,
+            "engine_ttft_ms": 310,
+            "engine_ttlt_ms": 318,
+            "pre_inference_ms": 285,
+            "service_tbt_ms": 10,
+            "service_ttft_ms": 1158,
+            "service_ttlt_ms": 1380,
+            "user_visible_ttft_ms": 873
+          },
+          "prompt_tokens": 551,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          },
+          "total_tokens": 573
+        }
+      ],
+      "pages": null,
+      "operation": null,
+      "error": null
+    },
+    {
+      "kind": "model",
+      "service": "workflow",
+      "pid": 7,
+      "started": "2026-09-12T02:16:13.862186+00:00",
+      "method": "POST",
+      "host": "aif-ptuv-content-260911.openai.azure.com",
+      "path": "/openai/deployments/gpt-5.1/chat/completions",
+      "model": "gpt-5.1",
+      "id": 11,
+      "containerReplica": "ca-ptu-content-workflow--0000002-c8547f8b8-dfjjp",
+      "containerRevision": "ca-ptu-content-workflow--0000002",
+      "status": 200,
+      "elapsed_ms": 1350.355,
+      "usage": [
+        {
+          "completion_tokens": 19,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": 0
+          },
+          "latency_checkpoint": {
+            "engine_tbt_ms": 0,
+            "engine_ttft_ms": 312,
+            "engine_ttlt_ms": 314,
+            "pre_inference_ms": 119,
+            "service_tbt_ms": 11,
+            "service_ttft_ms": 919,
+            "service_ttlt_ms": 1124,
+            "user_visible_ttft_ms": 800
+          },
+          "prompt_tokens": 702,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          },
+          "total_tokens": 721
+        }
+      ],
+      "pages": null,
+      "operation": null,
+      "error": null
+    },
+    {
+      "kind": "model",
+      "service": "workflow",
+      "pid": 7,
+      "started": "2026-09-12T02:16:15.526202+00:00",
+      "method": "POST",
+      "host": "aif-ptuv-content-260911.openai.azure.com",
+      "path": "/openai/deployments/gpt-5.1/chat/completions",
+      "model": "gpt-5.1",
+      "id": 12,
+      "containerReplica": "ca-ptu-content-workflow--0000002-c8547f8b8-dfjjp",
+      "containerRevision": "ca-ptu-content-workflow--0000002",
+      "status": 200,
+      "elapsed_ms": 32333.298,
+      "usage": [
+        {
+          "completion_tokens": 2658,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": 0
+          },
+          "latency_checkpoint": {
+            "engine_tbt_ms": 11,
+            "engine_ttft_ms": 520,
+            "engine_ttlt_ms": 30658,
+            "pre_inference_ms": 281,
+            "service_tbt_ms": 11,
+            "service_ttft_ms": 1656,
+            "service_ttlt_ms": 31522,
+            "user_visible_ttft_ms": 1375
+          },
+          "prompt_tokens": 4497,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          },
+          "total_tokens": 7155
+        }
+      ],
+      "pages": null,
+      "operation": null,
+      "error": null
+    },
+    {
+      "kind": "cu-analyze",
+      "service": "processor",
+      "pid": 14,
+      "started": "2026-09-12T02:28:28.880902+00:00",
+      "method": "POST",
+      "host": "aif-ptuv-content-260911.cognitiveservices.azure.com",
+      "path": "/contentunderstanding/analyzers/prebuilt-layout:analyzeBinary",
+      "model": null,
+      "id": 13,
+      "containerReplica": "ca-ptu-content-processor--0000004-6f7f445664-28mqn",
+      "containerRevision": "ca-ptu-content-processor--0000004",
+      "status": 202,
+      "elapsed_ms": 331.795,
+      "usage": null,
+      "pages": null,
+      "operation": "5246a3f0-b96d-4b70-8be8-747dd16287fc",
+      "error": null
+    },
+    {
+      "kind": "cu-poll",
+      "service": "processor",
+      "pid": 14,
+      "started": "2026-09-12T02:28:29.383947+00:00",
+      "method": "GET",
+      "host": "aif-ptuv-content-260911.cognitiveservices.azure.com",
+      "path": "/contentunderstanding/analyzerResults/5246a3f0-b96d-4b70-8be8-747dd16287fc",
+      "model": null,
+      "id": 14,
+      "containerReplica": "ca-ptu-content-processor--0000004-6f7f445664-28mqn",
+      "containerRevision": "ca-ptu-content-processor--0000004",
+      "status": 200,
+      "elapsed_ms": 276.148,
+      "usage": null,
+      "pages": null,
+      "operation": "5246a3f0-b96d-4b70-8be8-747dd16287fc",
+      "error": null
+    },
+    {
+      "kind": "cu-poll",
+      "service": "processor",
+      "pid": 14,
+      "started": "2026-09-12T02:28:31.796199+00:00",
+      "method": "GET",
+      "host": "aif-ptuv-content-260911.cognitiveservices.azure.com",
+      "path": "/contentunderstanding/analyzerResults/5246a3f0-b96d-4b70-8be8-747dd16287fc",
+      "model": null,
+      "id": 15,
+      "containerReplica": "ca-ptu-content-processor--0000004-6f7f445664-28mqn",
+      "containerRevision": "ca-ptu-content-processor--0000004",
+      "status": 200,
+      "elapsed_ms": 363.237,
+      "usage": [
+        {
+          "documentPagesStandard": 1
+        }
+      ],
+      "pages": 1,
+      "operation": "5246a3f0-b96d-4b70-8be8-747dd16287fc",
+      "error": null
+    },
+    {
+      "kind": "cu-analyze",
+      "service": "processor",
+      "pid": 14,
+      "started": "2026-09-12T02:28:34.412722+00:00",
+      "method": "POST",
+      "host": "aif-ptuv-content-260911.cognitiveservices.azure.com",
+      "path": "/contentunderstanding/analyzers/prebuilt-layout:analyzeBinary",
+      "model": null,
+      "id": 16,
+      "containerReplica": "ca-ptu-content-processor--0000004-6f7f445664-28mqn",
+      "containerRevision": "ca-ptu-content-processor--0000004",
+      "status": 202,
+      "elapsed_ms": 134.977,
+      "usage": null,
+      "pages": null,
+      "operation": "055fa183-df94-4c9a-990e-fc9136e2571f",
+      "error": null
+    },
+    {
+      "kind": "cu-poll",
+      "service": "processor",
+      "pid": 14,
+      "started": "2026-09-12T02:28:34.679020+00:00",
+      "method": "GET",
+      "host": "aif-ptuv-content-260911.cognitiveservices.azure.com",
+      "path": "/contentunderstanding/analyzerResults/055fa183-df94-4c9a-990e-fc9136e2571f",
+      "model": null,
+      "id": 17,
+      "containerReplica": "ca-ptu-content-processor--0000004-6f7f445664-28mqn",
+      "containerRevision": "ca-ptu-content-processor--0000004",
+      "status": 200,
+      "elapsed_ms": 80.609,
+      "usage": null,
+      "pages": null,
+      "operation": "055fa183-df94-4c9a-990e-fc9136e2571f",
+      "error": null
+    },
+    {
+      "kind": "cu-poll",
+      "service": "processor",
+      "pid": 14,
+      "started": "2026-09-12T02:28:36.940565+00:00",
+      "method": "GET",
+      "host": "aif-ptuv-content-260911.cognitiveservices.azure.com",
+      "path": "/contentunderstanding/analyzerResults/055fa183-df94-4c9a-990e-fc9136e2571f",
+      "model": null,
+      "id": 18,
+      "containerReplica": "ca-ptu-content-processor--0000004-6f7f445664-28mqn",
+      "containerRevision": "ca-ptu-content-processor--0000004",
+      "status": 200,
+      "elapsed_ms": 247.394,
+      "usage": [
+        {
+          "documentPagesStandard": 1
+        }
+      ],
+      "pages": 1,
+      "operation": "055fa183-df94-4c9a-990e-fc9136e2571f",
+      "error": null
+    },
+    {
+      "kind": "cu-analyze",
+      "service": "processor",
+      "pid": 14,
+      "started": "2026-09-12T02:28:38.203169+00:00",
+      "method": "POST",
+      "host": "aif-ptuv-content-260911.cognitiveservices.azure.com",
+      "path": "/contentunderstanding/analyzers/prebuilt-layout:analyzeBinary",
+      "model": null,
+      "id": 19,
+      "containerReplica": "ca-ptu-content-processor--0000004-6f7f445664-28mqn",
+      "containerRevision": "ca-ptu-content-processor--0000004",
+      "status": 202,
+      "elapsed_ms": 7128.412,
+      "usage": null,
+      "pages": null,
+      "operation": "f4558de2-7d75-4c00-b930-918deccfd7b6",
+      "error": null
+    },
+    {
+      "kind": "model",
+      "service": "processor",
+      "pid": 15,
+      "started": "2026-09-12T02:28:39.723107+00:00",
+      "method": "POST",
+      "host": "aif-ptuv-content-260911.openai.azure.com",
+      "path": "/openai/deployments/gpt-5.1/chat/completions",
+      "model": "gpt-5.1",
+      "id": 20,
+      "containerReplica": "ca-ptu-content-processor--0000004-6f7f445664-28mqn",
+      "containerRevision": "ca-ptu-content-processor--0000004",
+      "status": 200,
+      "elapsed_ms": 44952.753,
+      "usage": [
+        {
+          "completion_tokens": 5134,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 4809,
+            "rejected_prediction_tokens": 0
+          },
+          "latency_checkpoint": {
+            "engine_tbt_ms": 8,
+            "engine_ttft_ms": 687,
+            "engine_ttlt_ms": 42616,
+            "pre_inference_ms": 452,
+            "service_tbt_ms": 8,
+            "service_ttft_ms": 1628,
+            "service_ttlt_ms": 43498,
+            "user_visible_ttft_ms": 1176
+          },
+          "prompt_tokens": 8652,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          },
+          "total_tokens": 13786
+        }
+      ],
+      "pages": null,
+      "operation": null,
+      "error": null
+    },
+    {
+      "kind": "cu-poll",
+      "service": "processor",
+      "pid": 14,
+      "started": "2026-09-12T02:28:45.516783+00:00",
+      "method": "GET",
+      "host": "aif-ptuv-content-260911.cognitiveservices.azure.com",
+      "path": "/contentunderstanding/analyzerResults/f4558de2-7d75-4c00-b930-918deccfd7b6",
+      "model": null,
+      "id": 21,
+      "containerReplica": "ca-ptu-content-processor--0000004-6f7f445664-28mqn",
+      "containerRevision": "ca-ptu-content-processor--0000004",
+      "status": 200,
+      "elapsed_ms": 83.914,
+      "usage": null,
+      "pages": null,
+      "operation": "f4558de2-7d75-4c00-b930-918deccfd7b6",
+      "error": null
+    },
+    {
+      "kind": "cu-poll",
+      "service": "processor",
+      "pid": 14,
+      "started": "2026-09-12T02:28:47.762372+00:00",
+      "method": "GET",
+      "host": "aif-ptuv-content-260911.cognitiveservices.azure.com",
+      "path": "/contentunderstanding/analyzerResults/f4558de2-7d75-4c00-b930-918deccfd7b6",
+      "model": null,
+      "id": 22,
+      "containerReplica": "ca-ptu-content-processor--0000004-6f7f445664-28mqn",
+      "containerRevision": "ca-ptu-content-processor--0000004",
+      "status": 200,
+      "elapsed_ms": 97.734,
+      "usage": null,
+      "pages": null,
+      "operation": "f4558de2-7d75-4c00-b930-918deccfd7b6",
+      "error": null
+    },
+    {
+      "kind": "cu-poll",
+      "service": "processor",
+      "pid": 14,
+      "started": "2026-09-12T02:28:50.024360+00:00",
+      "method": "GET",
+      "host": "aif-ptuv-content-260911.cognitiveservices.azure.com",
+      "path": "/contentunderstanding/analyzerResults/f4558de2-7d75-4c00-b930-918deccfd7b6",
+      "model": null,
+      "id": 23,
+      "containerReplica": "ca-ptu-content-processor--0000004-6f7f445664-28mqn",
+      "containerRevision": "ca-ptu-content-processor--0000004",
+      "status": 200,
+      "elapsed_ms": 322.794,
+      "usage": [
+        {
+          "documentPagesStandard": 1
+        }
+      ],
+      "pages": 1,
+      "operation": "f4558de2-7d75-4c00-b930-918deccfd7b6",
+      "error": null
+    },
+    {
+      "kind": "model",
+      "service": "processor",
+      "pid": 15,
+      "started": "2026-09-12T02:29:26.540293+00:00",
+      "method": "POST",
+      "host": "aif-ptuv-content-260911.openai.azure.com",
+      "path": "/openai/deployments/gpt-5.1/chat/completions",
+      "model": "gpt-5.1",
+      "id": 24,
+      "containerReplica": "ca-ptu-content-processor--0000004-6f7f445664-28mqn",
+      "containerRevision": "ca-ptu-content-processor--0000004",
+      "status": 200,
+      "elapsed_ms": 22318.186,
+      "usage": [
+        {
+          "completion_tokens": 2449,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 2289,
+            "rejected_prediction_tokens": 0
+          },
+          "latency_checkpoint": {
+            "engine_tbt_ms": 8,
+            "engine_ttft_ms": 506,
+            "engine_ttlt_ms": 20061,
+            "pre_inference_ms": 446,
+            "service_tbt_ms": 8,
+            "service_ttft_ms": 1882,
+            "service_ttlt_ms": 21433,
+            "user_visible_ttft_ms": 1436
+          },
+          "prompt_tokens": 5779,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          },
+          "total_tokens": 8228
+        }
+      ],
+      "pages": null,
+      "operation": null,
+      "error": null
+    },
+    {
+      "kind": "model",
+      "service": "processor",
+      "pid": 15,
+      "started": "2026-09-12T02:29:50.661215+00:00",
+      "method": "POST",
+      "host": "aif-ptuv-content-260911.openai.azure.com",
+      "path": "/openai/deployments/gpt-5.1/chat/completions",
+      "model": "gpt-5.1",
+      "id": 25,
+      "containerReplica": "ca-ptu-content-processor--0000004-6f7f445664-28mqn",
+      "containerRevision": "ca-ptu-content-processor--0000004",
+      "status": 200,
+      "elapsed_ms": 49342.374,
+      "usage": [
+        {
+          "completion_tokens": 4707,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 4343,
+            "rejected_prediction_tokens": 0
+          },
+          "latency_checkpoint": {
+            "engine_tbt_ms": 10,
+            "engine_ttft_ms": 489,
+            "engine_ttlt_ms": 46382,
+            "pre_inference_ms": 1086,
+            "service_tbt_ms": 10,
+            "service_ttft_ms": 2130,
+            "service_ttlt_ms": 47972,
+            "user_visible_ttft_ms": 1043
+          },
+          "prompt_tokens": 6374,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          },
+          "total_tokens": 11081
+        }
+      ],
+      "pages": null,
+      "operation": null,
+      "error": null
+    },
+    {
+      "kind": "model",
+      "service": "processor",
+      "pid": 15,
+      "started": "2026-09-12T02:30:41.273540+00:00",
+      "method": "POST",
+      "host": "aif-ptuv-content-260911.openai.azure.com",
+      "path": "/openai/deployments/gpt-5.1/chat/completions",
+      "model": "gpt-5.1",
+      "id": 26,
+      "containerReplica": "ca-ptu-content-processor--0000004-6f7f445664-28mqn",
+      "containerRevision": "ca-ptu-content-processor--0000004",
+      "status": 200,
+      "elapsed_ms": 56842.675,
+      "usage": [
+        {
+          "completion_tokens": 5535,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 4889,
+            "rejected_prediction_tokens": 0
+          },
+          "latency_checkpoint": {
+            "engine_tbt_ms": 10,
+            "engine_ttft_ms": 505,
+            "engine_ttlt_ms": 54962,
+            "pre_inference_ms": 457,
+            "service_tbt_ms": 10,
+            "service_ttft_ms": 1493,
+            "service_ttlt_ms": 55906,
+            "user_visible_ttft_ms": 1037
+          },
+          "prompt_tokens": 7455,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          },
+          "total_tokens": 12990
+        }
+      ],
+      "pages": null,
+      "operation": null,
+      "error": null
+    },
+    {
+      "kind": "model",
+      "service": "workflow",
+      "pid": 7,
+      "started": "2026-09-12T02:31:45.065410+00:00",
+      "method": "POST",
+      "host": "aif-ptuv-content-260911.openai.azure.com",
+      "path": "/openai/deployments/gpt-5.1/chat/completions",
+      "model": "gpt-5.1",
+      "id": 27,
+      "containerReplica": "ca-ptu-content-workflow--0000003-7c77cd9d49-r7hsv",
+      "containerRevision": "ca-ptu-content-workflow--0000003",
+      "status": 200,
+      "elapsed_ms": 1596.267,
+      "usage": [
+        {
+          "completion_tokens": 22,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": 0
+          },
+          "latency_checkpoint": {
+            "engine_tbt_ms": 8,
+            "engine_ttft_ms": 315,
+            "engine_ttlt_ms": 496,
+            "pre_inference_ms": 134,
+            "service_tbt_ms": 10,
+            "service_ttft_ms": 926,
+            "service_ttlt_ms": 1152,
+            "user_visible_ttft_ms": 791
+          },
+          "prompt_tokens": 551,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          },
+          "total_tokens": 573
+        }
+      ],
+      "pages": null,
+      "operation": null,
+      "error": null
+    },
+    {
+      "kind": "model",
+      "service": "workflow",
+      "pid": 7,
+      "started": "2026-09-12T02:31:46.824992+00:00",
+      "method": "POST",
+      "host": "aif-ptuv-content-260911.openai.azure.com",
+      "path": "/openai/deployments/gpt-5.1/chat/completions",
+      "model": "gpt-5.1",
+      "id": 28,
+      "containerReplica": "ca-ptu-content-workflow--0000003-7c77cd9d49-r7hsv",
+      "containerRevision": "ca-ptu-content-workflow--0000003",
+      "status": 200,
+      "elapsed_ms": 2000.614,
+      "usage": [
+        {
+          "completion_tokens": 19,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": 0
+          },
+          "latency_checkpoint": {
+            "engine_tbt_ms": 0,
+            "engine_ttft_ms": 312,
+            "engine_ttlt_ms": 314,
+            "pre_inference_ms": 352,
+            "service_tbt_ms": 11,
+            "service_ttft_ms": 1240,
+            "service_ttlt_ms": 1440,
+            "user_visible_ttft_ms": 889
+          },
+          "prompt_tokens": 702,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          },
+          "total_tokens": 721
+        }
+      ],
+      "pages": null,
+      "operation": null,
+      "error": null
+    },
+    {
+      "kind": "model",
+      "service": "workflow",
+      "pid": 7,
+      "started": "2026-09-12T02:31:49.035276+00:00",
+      "method": "POST",
+      "host": "aif-ptuv-content-260911.openai.azure.com",
+      "path": "/openai/deployments/gpt-5.1/chat/completions",
+      "model": "gpt-5.1",
+      "id": 29,
+      "containerReplica": "ca-ptu-content-workflow--0000003-7c77cd9d49-r7hsv",
+      "containerRevision": "ca-ptu-content-workflow--0000003",
+      "status": 200,
+      "elapsed_ms": 30335.068,
+      "usage": [
+        {
+          "completion_tokens": 2736,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": 0
+          },
+          "latency_checkpoint": {
+            "engine_tbt_ms": 10,
+            "engine_ttft_ms": 528,
+            "engine_ttlt_ms": 29020,
+            "pre_inference_ms": 253,
+            "service_tbt_ms": 10,
+            "service_ttft_ms": 1267,
+            "service_ttlt_ms": 29755,
+            "user_visible_ttft_ms": 1014
+          },
+          "prompt_tokens": 4497,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 4352
+          },
+          "total_tokens": 7233
+        }
+      ],
+      "pages": null,
+      "operation": null,
+      "error": null
+    },
+    {
+      "kind": "cu-analyze",
+      "service": "processor",
+      "pid": 14,
+      "started": "2026-09-12T02:39:50.164145+00:00",
+      "method": "POST",
+      "host": "aif-ptuv-content-260911.cognitiveservices.azure.com",
+      "path": "/contentunderstanding/analyzers/prebuilt-layout:analyzeBinary",
+      "model": null,
+      "id": 30,
+      "containerReplica": "ca-ptu-content-processor--0000006-58dd96d99-brdfz",
+      "containerRevision": "ca-ptu-content-processor--0000006",
+      "status": 400,
+      "elapsed_ms": 4230.163,
+      "usage": null,
+      "pages": null,
+      "operation": null,
+      "error": "InvalidRequest: Invalid request."
+    }
+  ],
+  "remainingModelAllowance": 2,
+  "requestedDecision": {
+    "additionalAttempts": 5,
+    "proposedTotalCap": 17,
+    "purpose": "One clean four-document claim after both dependency fixes",
+    "observedPerClaimPlan": {
+      "mapping": 4,
+      "rai": 1,
+      "summary": 1,
+      "gap": 1
+    },
+    "newInfrastructure": false,
+    "notYetAuthorized": true,
+    "missingPoliceAndMismatch": "Not executed; additional variants require a separately bounded budget after clean E2E"
+  },
+  "apps": [
+    {
+      "containers": [
+        {
+          "env": [
+            {
+              "name": "CONTENT_CONFIGURATION_REVISION",
+              "value": "canonical-schemas-v1"
+            },
+            {
+              "name": "APP_ENV",
+              "value": "prod"
+            },
+            {
+              "name": "APP_CONFIG_ENDPOINT",
+              "value": "https://appcs-ptuv-content-260911.azconfig.io"
+            },
+            {
+              "name": "APP_CONFIGURATION_URL",
+              "value": "https://appcs-ptuv-content-260911.azconfig.io"
+            },
+            {
+              "name": "APP_LOGGING_LEVEL",
+              "value": "WARNING"
+            },
+            {
+              "name": "OTEL_SDK_DISABLED",
+              "value": "true"
+            },
+            {
+              "name": "CONCURRENT_WORKERS",
+              "value": "1"
+            },
+            {
+              "name": "MAX_RECEIVE_ATTEMPTS",
+              "value": "1"
+            },
+            {
+              "name": "VISIBILITY_TIMEOUT_MINUTES",
+              "value": "15"
+            },
+            {
+              "name": "MESSAGE_TIMEOUT_MINUTES",
+              "value": "20"
+            },
+            {
+              "name": "RETRY_VISIBILITY_DELAY_SECONDS",
+              "value": "30"
+            },
+            {
+              "name": "AZURE_CLIENT_ID",
+              "value": "7df1b86c-d3b0-483e-aa4e-c9d8b204f1e8"
+            },
+            {
+              "name": "CONTENT_SERVICE",
+              "value": "api"
+            }
+          ],
+          "image": "acrptubundle7d804f70.azurecr.io/content/eval-api:659eaa1-r6",
+          "imageType": "ContainerImage",
+          "name": "api",
+          "probes": [
+            {
+              "httpGet": {
+                "path": "/health",
+                "port": 80
+              },
+              "periodSeconds": 10,
+              "timeoutSeconds": 5,
+              "type": "Readiness"
+            },
+            {
+              "failureThreshold": 30,
+              "httpGet": {
+                "path": "/startup",
+                "port": 80
+              },
+              "initialDelaySeconds": 10,
+              "periodSeconds": 10,
+              "timeoutSeconds": 5,
+              "type": "Startup"
+            }
+          ],
+          "resources": {
+            "cpu": 0.25,
+            "ephemeralStorage": "1Gi",
+            "memory": "0.5Gi"
+          }
+        }
+      ],
+      "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-content-demo/providers/Microsoft.App/containerapps/ca-ptu-content-api",
+      "ingress": {
+        "additionalPortMappings": null,
+        "allowInsecure": true,
+        "clientCertificateMode": null,
+        "corsPolicy": null,
+        "customDomains": null,
+        "exposedPort": 0,
+        "external": false,
+        "fqdn": "ca-ptu-content-api.internal.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io",
+        "ipSecurityRestrictions": null,
+        "stickySessions": null,
+        "targetPort": 80,
+        "targetPortHttpScheme": null,
+        "traffic": [
+          {
+            "latestRevision": true,
+            "weight": 100
+          }
+        ],
+        "transport": "Http"
+      },
+      "latestRevision": "ca-ptu-content-api--0000009",
+      "name": "ca-ptu-content-api",
+      "readyRevision": "ca-ptu-content-api--0000008",
+      "scale": {
+        "cooldownPeriod": 30,
+        "maxReplicas": 1,
+        "minReplicas": 0,
+        "pollingInterval": 30,
+        "rules": [
+          {
+            "http": {
+              "metadata": {
+                "concurrentRequests": "1"
+              }
+            },
+            "name": "http"
+          }
+        ]
+      }
+    },
+    {
+      "containers": [
+        {
+          "env": [
+            {
+              "name": "CONTENT_CONFIGURATION_REVISION",
+              "value": "canonical-schemas-v1"
+            },
+            {
+              "name": "APP_ENV",
+              "value": "prod"
+            },
+            {
+              "name": "APP_CONFIG_ENDPOINT",
+              "value": "https://appcs-ptuv-content-260911.azconfig.io"
+            },
+            {
+              "name": "APP_CONFIGURATION_URL",
+              "value": "https://appcs-ptuv-content-260911.azconfig.io"
+            },
+            {
+              "name": "APP_LOGGING_LEVEL",
+              "value": "WARNING"
+            },
+            {
+              "name": "OTEL_SDK_DISABLED",
+              "value": "true"
+            },
+            {
+              "name": "CONCURRENT_WORKERS",
+              "value": "1"
+            },
+            {
+              "name": "MAX_RECEIVE_ATTEMPTS",
+              "value": "1"
+            },
+            {
+              "name": "VISIBILITY_TIMEOUT_MINUTES",
+              "value": "15"
+            },
+            {
+              "name": "MESSAGE_TIMEOUT_MINUTES",
+              "value": "20"
+            },
+            {
+              "name": "RETRY_VISIBILITY_DELAY_SECONDS",
+              "value": "30"
+            },
+            {
+              "name": "AZURE_CLIENT_ID",
+              "value": "835c3d55-d53a-489d-964c-48fd4f158870"
+            },
+            {
+              "name": "CONTENT_SERVICE",
+              "value": "workflow"
+            }
+          ],
+          "image": "acrptubundle7d804f70.azurecr.io/content/eval-workflow:659eaa1-r2",
+          "imageType": "ContainerImage",
+          "name": "workflow",
+          "probes": [],
+          "resources": {
+            "cpu": 0.5,
+            "ephemeralStorage": "2Gi",
+            "memory": "1Gi"
+          }
+        }
+      ],
+      "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-content-demo/providers/Microsoft.App/containerapps/ca-ptu-content-workflow",
+      "ingress": null,
+      "latestRevision": "ca-ptu-content-workflow--0000004",
+      "name": "ca-ptu-content-workflow",
+      "readyRevision": "ca-ptu-content-workflow--0000004",
+      "scale": {
+        "cooldownPeriod": 30,
+        "maxReplicas": 1,
+        "minReplicas": 0,
+        "pollingInterval": 30,
+        "rules": null
+      }
+    },
+    {
+      "containers": [
+        {
+          "env": [
+            {
+              "name": "CONTENT_CONFIGURATION_REVISION",
+              "value": "canonical-schemas-v1"
+            },
+            {
+              "name": "APP_ENV",
+              "value": "prod"
+            },
+            {
+              "name": "APP_CONFIG_ENDPOINT",
+              "value": "https://appcs-ptuv-content-260911.azconfig.io"
+            },
+            {
+              "name": "APP_CONFIGURATION_URL",
+              "value": "https://appcs-ptuv-content-260911.azconfig.io"
+            },
+            {
+              "name": "APP_LOGGING_LEVEL",
+              "value": "WARNING"
+            },
+            {
+              "name": "OTEL_SDK_DISABLED",
+              "value": "true"
+            },
+            {
+              "name": "CONCURRENT_WORKERS",
+              "value": "1"
+            },
+            {
+              "name": "MAX_RECEIVE_ATTEMPTS",
+              "value": "1"
+            },
+            {
+              "name": "VISIBILITY_TIMEOUT_MINUTES",
+              "value": "15"
+            },
+            {
+              "name": "MESSAGE_TIMEOUT_MINUTES",
+              "value": "20"
+            },
+            {
+              "name": "RETRY_VISIBILITY_DELAY_SECONDS",
+              "value": "30"
+            },
+            {
+              "name": "AZURE_CLIENT_ID",
+              "value": "5101963f-1e38-45d2-9f7c-efa9e9f6d122"
+            },
+            {
+              "name": "CONTENT_SERVICE",
+              "value": "processor"
+            }
+          ],
+          "image": "acrptubundle7d804f70.azurecr.io/content/eval-processor:659eaa1-r4",
+          "imageType": "ContainerImage",
+          "name": "processor",
+          "probes": [],
+          "resources": {
+            "cpu": 1.0,
+            "ephemeralStorage": "4Gi",
+            "memory": "2Gi"
+          }
+        }
+      ],
+      "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-content-demo/providers/Microsoft.App/containerapps/ca-ptu-content-processor",
+      "ingress": null,
+      "latestRevision": "ca-ptu-content-processor--0000007",
+      "name": "ca-ptu-content-processor",
+      "readyRevision": "ca-ptu-content-processor--0000007",
+      "scale": {
+        "cooldownPeriod": 30,
+        "maxReplicas": 1,
+        "minReplicas": 0,
+        "pollingInterval": 30,
+        "rules": null
+      }
+    },
+    {
+      "containers": [
+        {
+          "env": [
+            {
+              "name": "CONTENT_CONFIGURATION_REVISION",
+              "value": "canonical-schemas-v1"
+            },
+            {
+              "name": "APP_ENV",
+              "value": "prod"
+            },
+            {
+              "name": "APP_CONFIG_ENDPOINT",
+              "value": "https://appcs-ptuv-content-260911.azconfig.io"
+            },
+            {
+              "name": "APP_CONFIGURATION_URL",
+              "value": "https://appcs-ptuv-content-260911.azconfig.io"
+            },
+            {
+              "name": "APP_LOGGING_LEVEL",
+              "value": "WARNING"
+            },
+            {
+              "name": "OTEL_SDK_DISABLED",
+              "value": "true"
+            },
+            {
+              "name": "CONCURRENT_WORKERS",
+              "value": "1"
+            },
+            {
+              "name": "MAX_RECEIVE_ATTEMPTS",
+              "value": "1"
+            },
+            {
+              "name": "VISIBILITY_TIMEOUT_MINUTES",
+              "value": "15"
+            },
+            {
+              "name": "MESSAGE_TIMEOUT_MINUTES",
+              "value": "20"
+            },
+            {
+              "name": "RETRY_VISIBILITY_DELAY_SECONDS",
+              "value": "30"
+            },
+            {
+              "name": "AZURE_CLIENT_ID",
+              "value": "6d199236-8792-4d88-8952-6ea8211a2f7b"
+            },
+            {
+              "name": "CONTENT_SERVICE",
+              "value": "web"
+            },
+            {
+              "name": "APP_API_BASE_URL",
+              "value": "http://ca-ptu-content-api"
+            },
+            {
+              "name": "APP_AUTH_ENABLED",
+              "value": "false"
+            },
+            {
+              "name": "APP_CONSOLE_LOG_ENABLED",
+              "value": "false"
+            }
+          ],
+          "image": "acrptubundle7d804f70.azurecr.io/content/official-web:659eaa1",
+          "imageType": "ContainerImage",
+          "name": "web",
+          "probes": [],
+          "resources": {
+            "cpu": 0.25,
+            "ephemeralStorage": "1Gi",
+            "memory": "0.5Gi"
+          }
+        }
+      ],
+      "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-content-demo/providers/Microsoft.App/containerapps/ca-ptu-content-web",
+      "ingress": {
+        "additionalPortMappings": null,
+        "allowInsecure": true,
+        "clientCertificateMode": null,
+        "corsPolicy": null,
+        "customDomains": null,
+        "exposedPort": 0,
+        "external": false,
+        "fqdn": "ca-ptu-content-web.internal.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io",
+        "ipSecurityRestrictions": null,
+        "stickySessions": null,
+        "targetPort": 3000,
+        "targetPortHttpScheme": null,
+        "traffic": [
+          {
+            "latestRevision": true,
+            "weight": 100
+          }
+        ],
+        "transport": "Http"
+      },
+      "latestRevision": "ca-ptu-content-web--0000004",
+      "name": "ca-ptu-content-web",
+      "readyRevision": "ca-ptu-content-web--0000004",
+      "scale": {
+        "cooldownPeriod": 30,
+        "maxReplicas": 1,
+        "minReplicas": 0,
+        "pollingInterval": 30,
+        "rules": [
+          {
+            "http": {
+              "metadata": {
+                "concurrentRequests": "1"
+              }
+            },
+            "name": "http"
+          }
+        ]
+      }
+    }
+  ],
+  "newBuilds": [
+    {
+      "finish": "2026-09-12T02:12:08.448676+00:00",
+      "images": [
+        {
+          "digest": "sha256:9e6b838c827291d46727f703f9369abd911a04af1bd16f13fe937ad92fffebb3",
+          "registry": "acrptubundle7d804f70.azurecr.io",
+          "repository": "content/eval-api",
+          "tag": "659eaa1-r4"
+        }
+      ],
+      "runId": "chj",
+      "start": "2026-09-12T02:11:53.549546+00:00",
+      "status": "Succeeded"
+    },
+    {
+      "finish": "2026-09-12T02:12:53.533709+00:00",
+      "images": [
+        {
+          "digest": "sha256:f9f489acc8e15af31aede01e806dad4a7bb1bd071228653034b434e2df0224dc",
+          "registry": "acrptubundle7d804f70.azurecr.io",
+          "repository": "content/eval-processor",
+          "tag": "659eaa1-r3"
+        }
+      ],
+      "runId": "chk",
+      "start": "2026-09-12T02:11:53.918276+00:00",
+      "status": "Succeeded"
+    },
+    {
+      "finish": "2026-09-12T02:24:33.575515+00:00",
+      "images": [
+        {
+          "digest": "sha256:b215ba2c0103d6cc6abd5cf8175e822d33bc15c9fcdefae512dbe55f0df58906",
+          "registry": "acrptubundle7d804f70.azurecr.io",
+          "repository": "content/eval-api",
+          "tag": "659eaa1-r5"
+        }
+      ],
+      "runId": "chm",
+      "start": "2026-09-12T02:24:12.293997+00:00",
+      "status": "Succeeded"
+    },
+    {
+      "finish": "2026-09-12T02:32:36.788252+00:00",
+      "images": [
+        {
+          "digest": "sha256:c7a3183f6c88a34a63296e71d2763cd62796a10d9c48e97322738a8b3823b2fb",
+          "registry": "acrptubundle7d804f70.azurecr.io",
+          "repository": "content/eval-api",
+          "tag": "659eaa1-r6"
+        }
+      ],
+      "runId": "chp",
+      "start": "2026-09-12T02:32:12.599178+00:00",
+      "status": "Succeeded"
+    },
+    {
+      "finish": "2026-09-12T02:37:41.034700+00:00",
+      "images": [
+        {
+          "digest": "sha256:8a9a254663ee525d843f8b5a7d670ff2b9facf0fdf0cd6af0ce1ef7cbc8ee39a",
+          "registry": "acrptubundle7d804f70.azurecr.io",
+          "repository": "content/eval-processor",
+          "tag": "659eaa1-r4"
+        }
+      ],
+      "runId": "chq",
+      "start": "2026-09-12T02:36:19.071357+00:00",
+      "status": "Succeeded"
+    }
+  ],
+  "mongoSharedThroughput": {
+    "autoscale": null,
+    "throughput": 400
+  },
+  "stopState": {
+    "recordedUtc": "2026-09-12T02:45:48.620507+00:00",
+    "source": "Fresh guarded ARM replica list, one query per owned service",
+    "resourcesDeleted": [],
+    "requestBudgetReset": false,
+    "api": 0,
+    "processor": 0,
+    "workflow": 0,
+    "web": 0
+  },
+  "publicBrowserVerified": false,
+  "noPtuPurchaseOrEvaluation": true,
+  "runtimeMongoRoleUnchanged": true,
+  "protectedDataPlaneCalls": 0,
+  "modelMetricReconciliation": {
+    "createdUtc": "2026-09-12T03:55:57.015689+00:00",
+    "modelRecordSha256Unchanged": "e8028913511c9377a114de8eb3100a5ebfe94d36d3dba4bffc73ef8840a8b272",
+    "metricSnapshotFile": "C:\\Users\\partvyas\\OneDrive - Microsoft\\Desktop\\projects\\PTU accelerator Bundle\\evidence\\model-metrics\\aif-ptuv-content-260911.json",
+    "metricSnapshotSha256": "9ccc64a59969740d0e0b47dfef4975a01948ad6a8928bd0834d23883d2eae7d9",
+    "metricTimespan": "2026-09-11T22:52:00Z/2026-09-12T02:58:39Z",
+    "metricInterval": "PT1M",
+    "deploymentDimension": "gpt-5.1",
+    "sdkReservationsChargedToBudget": 10,
+    "clientObservedHttpResponses": 10,
+    "clientObservedHttp200": 10,
+    "responsesWithParsedUsage": 10,
+    "reservedWithoutReturnedResponse": 0,
+    "reservedModelTransportErrorsRecorded": 0,
+    "azureOpenAIRequestsSnapshot": 6.0,
+    "azureProcessedPromptTokensSnapshot": 39760.0,
+    "azureGeneratedTokensSnapshot": 23301.0,
+    "tokenTotalsMatch": true,
+    "requestCountAgreement": false,
+    "responseGroups": {
+      "processor": {
+        "responseCount": 4,
+        "promptTokensReturned": 28260,
+        "completionTokensReturned": 17825
+      },
+      "workflow": {
+        "responseCount": 6,
+        "promptTokensReturned": 11500,
+        "completionTokensReturned": 5476
+      }
+    },
+    "responseEvidence": [
+      {
+        "attemptOrdinal": 1,
+        "ledgerId": 10,
+        "service": "workflow",
+        "startedUtc": "2026-09-12T02:16:11.510822+00:00",
+        "host": "aif-ptuv-content-260911.openai.azure.com",
+        "path": "/openai/deployments/gpt-5.1/chat/completions",
+        "httpStatusObserved": 200,
+        "elapsedMs": 2160.126,
+        "promptTokensReturned": 551,
+        "completionTokensReturned": 22,
+        "error": null
+      },
+      {
+        "attemptOrdinal": 2,
+        "ledgerId": 11,
+        "service": "workflow",
+        "startedUtc": "2026-09-12T02:16:13.862186+00:00",
+        "host": "aif-ptuv-content-260911.openai.azure.com",
+        "path": "/openai/deployments/gpt-5.1/chat/completions",
+        "httpStatusObserved": 200,
+        "elapsedMs": 1350.355,
+        "promptTokensReturned": 702,
+        "completionTokensReturned": 19,
+        "error": null
+      },
+      {
+        "attemptOrdinal": 3,
+        "ledgerId": 12,
+        "service": "workflow",
+        "startedUtc": "2026-09-12T02:16:15.526202+00:00",
+        "host": "aif-ptuv-content-260911.openai.azure.com",
+        "path": "/openai/deployments/gpt-5.1/chat/completions",
+        "httpStatusObserved": 200,
+        "elapsedMs": 32333.298,
+        "promptTokensReturned": 4497,
+        "completionTokensReturned": 2658,
+        "error": null
+      },
+      {
+        "attemptOrdinal": 4,
+        "ledgerId": 20,
+        "service": "processor",
+        "startedUtc": "2026-09-12T02:28:39.723107+00:00",
+        "host": "aif-ptuv-content-260911.openai.azure.com",
+        "path": "/openai/deployments/gpt-5.1/chat/completions",
+        "httpStatusObserved": 200,
+        "elapsedMs": 44952.753,
+        "promptTokensReturned": 8652,
+        "completionTokensReturned": 5134,
+        "error": null
+      },
+      {
+        "attemptOrdinal": 5,
+        "ledgerId": 24,
+        "service": "processor",
+        "startedUtc": "2026-09-12T02:29:26.540293+00:00",
+        "host": "aif-ptuv-content-260911.openai.azure.com",
+        "path": "/openai/deployments/gpt-5.1/chat/completions",
+        "httpStatusObserved": 200,
+        "elapsedMs": 22318.186,
+        "promptTokensReturned": 5779,
+        "completionTokensReturned": 2449,
+        "error": null
+      },
+      {
+        "attemptOrdinal": 6,
+        "ledgerId": 25,
+        "service": "processor",
+        "startedUtc": "2026-09-12T02:29:50.661215+00:00",
+        "host": "aif-ptuv-content-260911.openai.azure.com",
+        "path": "/openai/deployments/gpt-5.1/chat/completions",
+        "httpStatusObserved": 200,
+        "elapsedMs": 49342.374,
+        "promptTokensReturned": 6374,
+        "completionTokensReturned": 4707,
+        "error": null
+      },
+      {
+        "attemptOrdinal": 7,
+        "ledgerId": 26,
+        "service": "processor",
+        "startedUtc": "2026-09-12T02:30:41.273540+00:00",
+        "host": "aif-ptuv-content-260911.openai.azure.com",
+        "path": "/openai/deployments/gpt-5.1/chat/completions",
+        "httpStatusObserved": 200,
+        "elapsedMs": 56842.675,
+        "promptTokensReturned": 7455,
+        "completionTokensReturned": 5535,
+        "error": null
+      },
+      {
+        "attemptOrdinal": 8,
+        "ledgerId": 27,
+        "service": "workflow",
+        "startedUtc": "2026-09-12T02:31:45.065410+00:00",
+        "host": "aif-ptuv-content-260911.openai.azure.com",
+        "path": "/openai/deployments/gpt-5.1/chat/completions",
+        "httpStatusObserved": 200,
+        "elapsedMs": 1596.267,
+        "promptTokensReturned": 551,
+        "completionTokensReturned": 22,
+        "error": null
+      },
+      {
+        "attemptOrdinal": 9,
+        "ledgerId": 28,
+        "service": "workflow",
+        "startedUtc": "2026-09-12T02:31:46.824992+00:00",
+        "host": "aif-ptuv-content-260911.openai.azure.com",
+        "path": "/openai/deployments/gpt-5.1/chat/completions",
+        "httpStatusObserved": 200,
+        "elapsedMs": 2000.614,
+        "promptTokensReturned": 702,
+        "completionTokensReturned": 19,
+        "error": null
+      },
+      {
+        "attemptOrdinal": 10,
+        "ledgerId": 29,
+        "service": "workflow",
+        "startedUtc": "2026-09-12T02:31:49.035276+00:00",
+        "host": "aif-ptuv-content-260911.openai.azure.com",
+        "path": "/openai/deployments/gpt-5.1/chat/completions",
+        "httpStatusObserved": 200,
+        "elapsedMs": 30335.068,
+        "promptTokensReturned": 4497,
+        "completionTokensReturned": 2736,
+        "error": null
+      }
+    ],
+    "matchingTokenBuckets": [
+      {
+        "metricMinuteUtc": "2026-09-12T02:17:00Z",
+        "matchingLedgerIdsByTokenTotals": [
+          10,
+          11,
+          12
+        ],
+        "clientResponseCount": 3,
+        "azureRequestMetric": 1.0,
+        "matchingPromptTokens": 5750,
+        "matchingCompletionTokens": 2699
+      },
+      {
+        "metricMinuteUtc": "2026-09-12T02:29:00Z",
+        "matchingLedgerIdsByTokenTotals": [
+          20
+        ],
+        "clientResponseCount": 1,
+        "azureRequestMetric": 1.0,
+        "matchingPromptTokens": 8652,
+        "matchingCompletionTokens": 5134
+      },
+      {
+        "metricMinuteUtc": "2026-09-12T02:30:00Z",
+        "matchingLedgerIdsByTokenTotals": [
+          24,
+          25
+        ],
+        "clientResponseCount": 2,
+        "azureRequestMetric": 2.0,
+        "matchingPromptTokens": 12153,
+        "matchingCompletionTokens": 7156
+      },
+      {
+        "metricMinuteUtc": "2026-09-12T02:31:00Z",
+        "matchingLedgerIdsByTokenTotals": [
+          26
+        ],
+        "clientResponseCount": 1,
+        "azureRequestMetric": 0.0,
+        "matchingPromptTokens": 7455,
+        "matchingCompletionTokens": 5535
+      },
+      {
+        "metricMinuteUtc": "2026-09-12T02:32:00Z",
+        "matchingLedgerIdsByTokenTotals": [
+          27,
+          28,
+          29
+        ],
+        "clientResponseCount": 3,
+        "azureRequestMetric": 2.0,
+        "matchingPromptTokens": 5750,
+        "matchingCompletionTokens": 2777
+      }
+    ],
+    "httpEvidenceBoundary": "content_guard.py records response.status_code and parses response content only after the underlying HTTPX send returns; status200 is not a reservation default",
+    "tokenizerFailureBoundary": "Evaluate called tiktoken after reading the saved mapping response. The subsequent unapproved public-asset GET was blocked before transmission and did not reserve a model attempt.",
+    "fourMappingsWereLocalFailuresBeforeModelTransmission": false,
+    "limits": [
+      "Raw HTTP headers and Azure request IDs were not retained, so there is no per-request server-ID reconciliation",
+      "Token-bucket correspondence is arithmetic corroboration, not unique server request-ID correlation",
+      "The cause of the six-versus-ten request-count difference is unresolved; reporting delay or differing metric behavior is not established",
+      "Do not add account and deployment totals, rewrite Azure metric6 as10, or credit four attempts back to the budget"
+    ],
+    "newCloudOrModelCalls": 0,
+    "budgetUsedRemains": 10
+  }
+}

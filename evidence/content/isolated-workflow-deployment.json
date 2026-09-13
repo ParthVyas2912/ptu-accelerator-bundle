@@ -1,0 +1,14 @@
+{
+  "image": "acrptubundle7d804f70.azurecr.io/content/eval-workflow:659eaa1-scope-r1",
+  "mode": "Multiple",
+  "name": "ca-ptu-content-workflow",
+  "ready": "ca-ptu-content-workflow--0000005",
+  "revision": "ca-ptu-content-workflow--0000005",
+  "scale": {
+    "cooldownPeriod": 30,
+    "maxReplicas": 1,
+    "minReplicas": 1,
+    "pollingInterval": 30,
+    "rules": null
+  }
+}

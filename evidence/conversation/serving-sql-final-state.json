@@ -1,0 +1,19 @@
+{
+  "checked_at": "2026-09-12T05:24:37.6385691+00:00",
+  "database": {
+    "autoPauseDelay": 60,
+    "minCapacity": 0.5,
+    "sku": {
+      "capacity": 2,
+      "family": "Gen5",
+      "name": "GP_S_Gen5",
+      "size": null,
+      "tier": "GeneralPurpose"
+    },
+    "status": "Online"
+  },
+  "last_observed_serving_sql_connection_at": "2026-09-12T01:18:57.464402-04:00",
+  "last_verified_http_read_at": "2026-09-12T01:18:57.530884-04:00",
+  "sql_pause_observed": false,
+  "check_type": "ARM only; no database connection opened"
+}

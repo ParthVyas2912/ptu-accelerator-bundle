@@ -1,0 +1,71 @@
+{
+  "frontendPullOnlyIdentity": {
+    "clientId": "4003ea2e-242b-4914-9947-a051a7e46e10",
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourcegroups/rg-ptu-modernize-demo/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id-ptu-modernize-ui",
+    "isolationScope": "None",
+    "location": "eastus2",
+    "name": "id-ptu-modernize-ui",
+    "principalId": "90fa0bc5-1a22-482d-b2e9-99a8d60d7299",
+    "resourceGroup": "rg-ptu-modernize-demo",
+    "systemData": null,
+    "tags": {},
+    "tenantId": "a600acd0-3028-4689-8402-3b471d7d924d",
+    "type": "Microsoft.ManagedIdentity/userAssignedIdentities"
+  },
+  "cosmosRole": {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-modernize-demo/providers/Microsoft.DocumentDB/databaseAccounts/cosmos-ptu-modernize-eus20911/sqlRoleAssignments/a327bda2-f3d0-4ee4-af7f-5ffc4f9dc2b3",
+    "name": "a327bda2-f3d0-4ee4-af7f-5ffc4f9dc2b3",
+    "principalId": "ca046adc-801d-4813-a1fe-518ce527ac4b",
+    "resourceGroup": "rg-ptu-modernize-demo",
+    "roleDefinitionId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-modernize-demo/providers/Microsoft.DocumentDB/databaseAccounts/cosmos-ptu-modernize-eus20911/sqlRoleDefinitions/00000000-0000-0000-0000-000000000002",
+    "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-modernize-demo/providers/Microsoft.DocumentDB/databaseAccounts/cosmos-ptu-modernize-eus20911/dbs/ptu-modernize",
+    "type": "Microsoft.DocumentDB/databaseAccounts/sqlRoleAssignments"
+  },
+  "assignments": [
+    {
+      "role": "ba92f5b4-2d11-453d-a403-e96b0029c9fe",
+      "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-modernize-demo/providers/Microsoft.Storage/storageAccounts/stptumodernize0911pv/blobServices/default/containers/ptu-modernize-files/providers/Microsoft.Authorization/roleAssignments/45dcd667-f055-4ce5-95c0-ab789f97b3b0",
+      "principalId": "ca046adc-801d-4813-a1fe-518ce527ac4b",
+      "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-modernize-demo/providers/Microsoft.Storage/storageAccounts/stptumodernize0911pv/blobServices/default/containers/ptu-modernize-files"
+    },
+    {
+      "role": "53ca6127-db72-4b80-b1b0-d745d6d5456d",
+      "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-edc-foundry-hack/providers/Microsoft.CognitiveServices/accounts/edcfoundryhack01/projects/edc-hack-proj/providers/Microsoft.Authorization/roleAssignments/650a2aa6-8b6a-4448-9d29-ea2ac2be4e6c",
+      "principalId": "ca046adc-801d-4813-a1fe-518ce527ac4b",
+      "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-edc-foundry-hack/providers/Microsoft.CognitiveServices/accounts/edcfoundryhack01/projects/edc-hack-proj"
+    },
+    {
+      "role": "5e0bd9bd-7b93-4f28-af87-19fc36ad61bd",
+      "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-edc-foundry-hack/providers/Microsoft.CognitiveServices/accounts/edcfoundryhack01/providers/Microsoft.Authorization/roleAssignments/2e6c5b53-aed4-474f-a8bd-260c23dcbe2a",
+      "principalId": "ca046adc-801d-4813-a1fe-518ce527ac4b",
+      "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-edc-foundry-hack/providers/Microsoft.CognitiveServices/accounts/edcfoundryhack01"
+    },
+    {
+      "role": "7f951dda-4ed3-4680-a7ca-43fe172d538d",
+      "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.ContainerRegistry/registries/acrptubundle7d804f70/providers/Microsoft.Authorization/roleAssignments/48927b15-251c-41d1-8318-d8d0d0115e5b",
+      "principalId": "ca046adc-801d-4813-a1fe-518ce527ac4b",
+      "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.ContainerRegistry/registries/acrptubundle7d804f70"
+    },
+    {
+      "role": "7f951dda-4ed3-4680-a7ca-43fe172d538d",
+      "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.ContainerRegistry/registries/acrptubundle7d804f70/providers/Microsoft.Authorization/roleAssignments/21214226-520d-4a1a-8fdc-469255760e39",
+      "principalId": "90fa0bc5-1a22-482d-b2e9-99a8d60d7299",
+      "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.ContainerRegistry/registries/acrptubundle7d804f70"
+    }
+  ],
+  "backendIdentity": {
+    "clientId": "c61fbd63-e98b-4ea2-83ff-628afbe2cfae",
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourcegroups/rg-ptu-modernize-demo/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id-ptu-modernize",
+    "isolationScope": "None",
+    "location": "eastus2",
+    "name": "id-ptu-modernize",
+    "principalId": "ca046adc-801d-4813-a1fe-518ce527ac4b",
+    "resourceGroup": "rg-ptu-modernize-demo",
+    "systemData": null,
+    "tags": {},
+    "tenantId": "a600acd0-3028-4689-8402-3b471d7d924d",
+    "type": "Microsoft.ManagedIdentity/userAssignedIdentities"
+  },
+  "approval": "Parent shared-platform ready / scoped MI and AcrPull approval 2026-09-11T20:54:31-04:00",
+  "app": "Modernize Your Code"
+}

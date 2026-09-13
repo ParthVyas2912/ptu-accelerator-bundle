@@ -1,0 +1,18 @@
+{
+  "CKM_READ_ONLY": "true",
+  "CKM_INFERENCE_ARMED": "false",
+  "AZURE_CLIENT_ID": "1b458b7e-1768-45a9-b676-9a3245a4dfbe",
+  "APP_ENV": "development",
+  "DATABASE_PROVIDER": "sql",
+  "AZURE_SQL_SERVER": "sql-ptu-conversation-7d804f70.database.windows.net",
+  "AZURE_SQL_DATABASE": "ptu-conversation",
+  "AZURE_STORAGE_ACCOUNT": "stptuconv7d804f70",
+  "AZURE_STORAGE_CONTAINER": "ptu-conversation-documents",
+  "AZURE_SEARCH_ENDPOINT": "https://srch-ptu-conversation-7d804f70.search.windows.net",
+  "AZURE_SEARCH_INDEX_NAME": "ptu-conversation-index",
+  "AZURE_OPENAI_ENDPOINT": "https://aif-ptu-conversation-7d804f70.openai.azure.com",
+  "AZURE_OPENAI_CHAT_DEPLOYMENT": "gpt-5.2",
+  "AZURE_OPENAI_API_VERSION": "2024-10-21",
+  "ENABLE_AUTO_PIPELINE_SELECTION": "false",
+  "ENABLE_EXTERNAL_DATA_SOURCES": "false"
+}

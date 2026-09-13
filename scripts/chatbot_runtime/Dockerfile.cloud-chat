@@ -1,0 +1,14 @@
+FROM acrptubundle7d804f70.azurecr.io/chatbot/chat-api-native@sha256:dbc4e698c86fab528a5cd8f4ebeb09415cbfd9d70b2d8c1bc66b3706b9b5d346
+USER root
+COPY native/ /opt/chatbot-native/
+RUN python -m venv /opt/seedenv && /opt/seedenv/bin/pip install --no-cache-dir -r /opt/chatbot-native/infra/scripts/post-provision/data_scripts/requirements.txt
+COPY runtime/ /opt/chatbot-eval/runtime/
+COPY app/ /app/app/
+RUN chmod -R a+rX /opt/chatbot-native /opt/chatbot-eval /opt/seedenv
+ENV PYTHONPATH=/opt/chatbot-eval/runtime:/app
+ENV CHATBOT_METERING=1
+ENV CHATBOT_METERING_BACKEND=cosmos
+ENV APP_ENV=prod
+ENV PYTHON_DOTENV_DISABLED=1
+USER chatuser
+CMD ["python", "/opt/chatbot-eval/runtime/cloud_entrypoint.py"]

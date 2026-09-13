@@ -1,0 +1,68 @@
+{
+  "observedAtUtc": "2026-09-12T01:57:59.7680590Z",
+  "serviceSettings": [
+    {
+      "allowBlobPublicAccess": null,
+      "allowSharedKeyAccess": null,
+      "disableLocalAuth": true,
+      "location": "eastus2",
+      "name": "ptumacae7d804f70",
+      "publicNetworkAccess": "Enabled",
+      "sku": {
+        "capacity": null,
+        "family": null,
+        "model": null,
+        "name": "S0",
+        "size": null,
+        "tier": null
+      },
+      "type": "Microsoft.CognitiveServices/accounts"
+    },
+    {
+      "allowBlobPublicAccess": null,
+      "allowSharedKeyAccess": null,
+      "disableLocalAuth": true,
+      "location": "East US 2",
+      "name": "ptu-macae-7d804f70-cosmos",
+      "publicNetworkAccess": "Disabled",
+      "sku": null,
+      "type": "Microsoft.DocumentDB/databaseAccounts"
+    },
+    {
+      "allowBlobPublicAccess": false,
+      "allowSharedKeyAccess": false,
+      "disableLocalAuth": null,
+      "location": "eastus2",
+      "name": "ptumacae7d804f70st",
+      "publicNetworkAccess": "Disabled",
+      "sku": {
+        "capacity": null,
+        "family": null,
+        "model": null,
+        "name": "Standard_LRS",
+        "size": null,
+        "tier": "Standard"
+      },
+      "type": "Microsoft.Storage/storageAccounts"
+    },
+    {
+      "allowBlobPublicAccess": null,
+      "allowSharedKeyAccess": null,
+      "disableLocalAuth": true,
+      "location": "Canada Central",
+      "name": "ptu-macae-7d804f70-srch",
+      "publicNetworkAccess": "Disabled",
+      "sku": {
+        "capacity": null,
+        "family": null,
+        "model": null,
+        "name": "basic",
+        "size": null,
+        "tier": null
+      },
+      "type": "Microsoft.Search/searchServices"
+    }
+  ],
+  "writesPerformed": 0,
+  "modelRequests": 0
+}

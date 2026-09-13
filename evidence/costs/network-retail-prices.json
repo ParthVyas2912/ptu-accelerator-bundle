@@ -1,0 +1,106 @@
+[
+  {
+    "filter": "serviceName eq 'Load Balancer' and armRegionName eq 'eastus2' and priceType eq 'Consumption'",
+    "observedAtUtc": "2026-09-12T03:10:14.4080169Z",
+    "items": []
+  },
+  {
+    "filter": "serviceName eq 'Virtual Network' and armRegionName eq 'eastus2' and priceType eq 'Consumption'",
+    "observedAtUtc": "2026-09-12T03:10:18.8590023Z",
+    "items": [
+      {
+        "productName": "Public IP Prefix",
+        "serviceName": "Virtual Network",
+        "skuName": "Standard",
+        "meterName": "Standard Static IP Addresses",
+        "retailPrice": 0.006,
+        "unitOfMeasure": "1 Hour",
+        "currencyCode": "USD",
+        "armRegionName": "eastus2",
+        "tierMinimumUnits": 0.0
+      },
+      {
+        "productName": "IP Addresses",
+        "serviceName": "Virtual Network",
+        "skuName": "Basic",
+        "meterName": "Basic IPv4 Static Public IP",
+        "retailPrice": 0.0036,
+        "unitOfMeasure": "1 Hour",
+        "currencyCode": "USD",
+        "armRegionName": "eastus2",
+        "tierMinimumUnits": 0.0
+      },
+      {
+        "productName": "IP Addresses",
+        "serviceName": "Virtual Network",
+        "skuName": "Standard",
+        "meterName": "Standard IPv4 Static Public IP",
+        "retailPrice": 0.005,
+        "unitOfMeasure": "1 Hour",
+        "currencyCode": "USD",
+        "armRegionName": "eastus2",
+        "tierMinimumUnits": 0.0
+      },
+      {
+        "productName": "IP Addresses",
+        "serviceName": "Virtual Network",
+        "skuName": "Basic",
+        "meterName": "Basic IPv4 Dynamic Public IP",
+        "retailPrice": 0.004,
+        "unitOfMeasure": "1 Hour",
+        "currencyCode": "USD",
+        "armRegionName": "eastus2",
+        "tierMinimumUnits": 0.0
+      },
+      {
+        "productName": "Global Virtual Network Peering",
+        "serviceName": "Virtual Network",
+        "skuName": "Inter-Region",
+        "meterName": "Inter-Region Egress",
+        "retailPrice": 0.035,
+        "unitOfMeasure": "1 GB",
+        "currencyCode": "USD",
+        "armRegionName": "eastus2",
+        "tierMinimumUnits": 0.0
+      },
+      {
+        "productName": "IP Addresses",
+        "serviceName": "Virtual Network",
+        "skuName": "Global",
+        "meterName": "Global IPv4 Static Public IP",
+        "retailPrice": 0.01,
+        "unitOfMeasure": "1 Hour",
+        "currencyCode": "USD",
+        "armRegionName": "eastus2",
+        "tierMinimumUnits": 0.0
+      },
+      {
+        "productName": "Global Virtual Network Peering",
+        "serviceName": "Virtual Network",
+        "skuName": "Inter-Region",
+        "meterName": "Inter-Region Ingress",
+        "retailPrice": 0.035,
+        "unitOfMeasure": "1 GB",
+        "currencyCode": "USD",
+        "armRegionName": "eastus2",
+        "tierMinimumUnits": 0.0
+      },
+      {
+        "productName": "Public IP Prefix",
+        "serviceName": "Virtual Network",
+        "skuName": "Global",
+        "meterName": "Global Static Public IP",
+        "retailPrice": 0.012,
+        "unitOfMeasure": "1 Hour",
+        "currencyCode": "USD",
+        "armRegionName": "eastus2",
+        "tierMinimumUnits": 0.0
+      }
+    ]
+  },
+  {
+    "filter": "serviceName eq 'Azure DNS' and armRegionName eq 'Global' and priceType eq 'Consumption'",
+    "observedAtUtc": "2026-09-12T03:10:19.5980029Z",
+    "items": []
+  }
+]

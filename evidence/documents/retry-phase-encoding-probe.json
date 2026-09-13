@@ -1,0 +1,9 @@
+{
+  "case": "encoding-probe",
+  "utc": "2026-09-12T02:25:35.277Z",
+  "ms": 1,
+  "result": {
+    "kind": "synthetic transport probe, not an AI answer",
+    "text": "minus − euro € snowman ☃"
+  }
+}

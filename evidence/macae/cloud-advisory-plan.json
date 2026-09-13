@@ -1,0 +1,68 @@
+{
+  "state": {
+    "sessionId": "ptu-macae-advisory-cae0694a",
+    "stage": "awaiting-explicit-approval",
+    "teamId": "4ee7ecb7-8c4e-49b6-a6ac-9d033de2eb26",
+    "planId": "3692c5c0-3107-4c1e-ae57-1b72c9c0f110",
+    "mplanId": "8311b6b0-ed92-46a3-98f1-427ceb2f372d",
+    "plan": {
+      "id": "8311b6b0-ed92-46a3-98f1-427ceb2f372d",
+      "user_id": "00000000-0000-0000-0000-000000000000",
+      "team_id": "",
+      "plan_id": "",
+      "overall_status": "created",
+      "user_request": "Perform a read-only synthetic onboarding readiness review, not provisioning or an enterprise transaction.\n\nComplete supplied record: Alex Example, HR analyst, starts2026-10-01. Manager: Morgan Example. Orientation is booked2026-10-02. Handbook acknowledged2026-09-30. Required compliance training completed2026-09-30. Manager access approval is NOT yet recorded. Standard laptop is prepared with Windows11. MFA enrollment is pending. Email: alex@example.invalid. All facts needed for this advisory assessment are supplied; no external sources are needed.\n\nSupplied policies: orientation must occur on the start date; handbook acknowledgement and training must be complete before starting; manager access approval and MFA enrollment must both be completed before access is granted; a prepared Windows11 laptop meets the device requirement.\n\nCreate a plan with exactly one advisory assessment step for HRComplianceReviewer and one for ITReadinessReviewer. Present it for explicit approval. Each specialist should deliver one concise substantive assessment from these facts. The native manager should then synthesize both actual outputs into a final checklist with identified gaps and recommended corrections. Plan approval authorizes this review only: it does NOT change the missing manager access approval or any other input fact. Do not ask clarification questions, execute tools, make changes, or claim any provisioning occurred.\n",
+      "team": [
+        "magentic_orchestrator",
+        "HRComplianceReviewer",
+        "ITReadinessReviewer"
+      ],
+      "facts": "",
+      "steps": [
+        {
+          "agent": "HRComplianceReviewer",
+          "action": "produce a read-only HR and compliance readiness assessment from the supplied onboarding facts and policies"
+        },
+        {
+          "agent": "ITReadinessReviewer",
+          "action": "produce a read-only IT readiness assessment from the supplied device and MFA facts and policies"
+        }
+      ]
+    }
+  },
+  "events": [
+    {
+      "type": "plan_approval_request",
+      "data": {
+        "plan": {
+          "id": "8311b6b0-ed92-46a3-98f1-427ceb2f372d",
+          "user_id": "00000000-0000-0000-0000-000000000000",
+          "team_id": "",
+          "plan_id": "",
+          "overall_status": "created",
+          "user_request": "Perform a read-only synthetic onboarding readiness review, not provisioning or an enterprise transaction.\n\nComplete supplied record: Alex Example, HR analyst, starts2026-10-01. Manager: Morgan Example. Orientation is booked2026-10-02. Handbook acknowledged2026-09-30. Required compliance training completed2026-09-30. Manager access approval is NOT yet recorded. Standard laptop is prepared with Windows11. MFA enrollment is pending. Email: alex@example.invalid. All facts needed for this advisory assessment are supplied; no external sources are needed.\n\nSupplied policies: orientation must occur on the start date; handbook acknowledgement and training must be complete before starting; manager access approval and MFA enrollment must both be completed before access is granted; a prepared Windows11 laptop meets the device requirement.\n\nCreate a plan with exactly one advisory assessment step for HRComplianceReviewer and one for ITReadinessReviewer. Present it for explicit approval. Each specialist should deliver one concise substantive assessment from these facts. The native manager should then synthesize both actual outputs into a final checklist with identified gaps and recommended corrections. Plan approval authorizes this review only: it does NOT change the missing manager access approval or any other input fact. Do not ask clarification questions, execute tools, make changes, or claim any provisioning occurred.\n",
+          "team": [
+            "magentic_orchestrator",
+            "HRComplianceReviewer",
+            "ITReadinessReviewer"
+          ],
+          "facts": "",
+          "steps": [
+            {
+              "agent": "HRComplianceReviewer",
+              "action": "produce a read-only HR and compliance readiness assessment from the supplied onboarding facts and policies"
+            },
+            {
+              "agent": "ITReadinessReviewer",
+              "action": "produce a read-only IT readiness assessment from the supplied device and MFA facts and policies"
+            }
+          ]
+        },
+        "status": "PENDING_APPROVAL",
+        "context": {
+          "task": "Perform a read-only synthetic onboarding readiness review, not provisioning or an enterprise transaction.\n\nComplete supplied record: Alex Example, HR analyst, starts2026-10-01. Manager: Morgan Example. Orientation is booked2026-10-02. Handbook acknowledged2026-09-30. Required compliance training completed2026-09-30. Manager access approval is NOT yet recorded. Standard laptop is prepared with Windows11. MFA enrollment is pending. Email: alex@example.invalid. All facts needed for this advisory assessment are supplied; no external sources are needed.\n\nSupplied policies: orientation must occur on the start date; handbook acknowledgement and training must be complete before starting; manager access approval and MFA enrollment must both be completed before access is granted; a prepared Windows11 laptop meets the device requirement.\n\nCreate a plan with exactly one advisory assessment step for HRComplianceReviewer and one for ITReadinessReviewer. Present it for explicit approval. Each specialist should deliver one concise substantive assessment from these facts. The native manager should then synthesize both actual outputs into a final checklist with identified gaps and recommended corrections. Plan approval authorizes this review only: it does NOT change the missing manager access approval or any other input fact. Do not ask clarification questions, execute tools, make changes, or claim any provisioning occurred.\n"
+        }
+      }
+    }
+  ]
+}

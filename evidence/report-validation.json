@@ -1,0 +1,22 @@
+{
+  "validatedAtUtc": "2026-09-12T06:27:12.373843+00:00",
+  "report": "PTU-Bundle-Evaluation-Report.docx",
+  "bytes": 35942,
+  "sha256": "a4a06155255f6d7ee3b68609c97a043a014c397edb515e20cfbe7f28c1104d2a",
+  "markdownSha256": "78c96343a6ec459fa98d3827d9d54dea894c4679f390d53e8bd2ea076cf85ebd",
+  "packageAndSkillXmlValidation": "passed",
+  "applicationSections": [
+    "Chat With Your Data",
+    "Modernize Your Code",
+    "Document Knowledge Mining",
+    "Multi-Agent Custom Automation Engine",
+    "Customer Chatbot",
+    "Content Processing",
+    "Conversation Knowledge Mining"
+  ],
+  "tableCount": 9,
+  "tableWidthAndCellGeometry": "passed",
+  "pageSize": "US Letter",
+  "criticalOutcomesAndWarnings": "present",
+  "visualRenderingPerformed": false
+}

@@ -1,0 +1,15 @@
+{
+  "parameters": {
+    "endpoints": {
+      "value": [
+        {
+          "app": "chatbot",
+          "name": "pe-chatbot-search",
+          "resourceId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-chatbot-eval-0911/providers/Microsoft.Search/searchServices/srch-ccptu1feb0911",
+          "groupId": "searchService",
+          "zoneName": "privatelink.search.windows.net"
+        }
+      ]
+    }
+  }
+}

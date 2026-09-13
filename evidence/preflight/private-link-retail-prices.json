@@ -1,0 +1,47 @@
+[
+  {
+    "productName": "Virtual Network Private Link",
+    "skuName": "Standard",
+    "meterName": "Standard Private Endpoint",
+    "retailPrice": 0.01,
+    "unitOfMeasure": "1 Hour",
+    "currencyCode": "USD",
+    "armRegionName": "attatlanta1"
+  },
+  {
+    "productName": "Virtual Network Private Link",
+    "skuName": "Standard",
+    "meterName": "Standard Private Endpoint",
+    "retailPrice": 0.01,
+    "unitOfMeasure": "1 Hour",
+    "currencyCode": "USD",
+    "armRegionName": "attdallas1"
+  },
+  {
+    "productName": "Virtual Network Private Link",
+    "skuName": "Standard",
+    "meterName": "Standard Private Endpoint",
+    "retailPrice": 0.01,
+    "unitOfMeasure": "1 Hour",
+    "currencyCode": "USD",
+    "armRegionName": "sgxsingapore1"
+  },
+  {
+    "productName": "Virtual Network Private Link",
+    "skuName": "Standard",
+    "meterName": "Standard Private Endpoint",
+    "retailPrice": 0.0125,
+    "unitOfMeasure": "1 Hour",
+    "currencyCode": "USD",
+    "armRegionName": "US Gov"
+  },
+  {
+    "productName": "Virtual Network Private Link",
+    "skuName": "Standard",
+    "meterName": "Standard Private Endpoint",
+    "retailPrice": 0.01,
+    "unitOfMeasure": "1 Hour",
+    "currencyCode": "USD",
+    "armRegionName": "Global"
+  }
+]

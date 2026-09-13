@@ -1,0 +1,16 @@
+{
+  "app": "MACAE",
+  "source": "Live ACA MCP console output observed during native HR workflow; normalized observation, not a saved raw log export",
+  "workflowSessionId": "ptu-macae-cloud-91dfa4d3",
+  "revision": "ptu-macae--0000002",
+  "observedUtcDate": "2026-09-12",
+  "blueprintCallToolRequests": 1,
+  "blueprintTimeUtc": "01:33:31",
+  "hrActionCallToolRequests": 7,
+  "hrActionTimeWindowUtc": "01:37:50–01:37:53",
+  "individualActionParametersSeparatelyRecorded": false,
+  "realEnterpriseTransactions": false,
+  "corroboratingAgentEvents": "cloud-clarification-events.json",
+  "directComponentRepeatAndErrorEvidence": "cloud-mcp-check.json",
+  "modelRequestsMadeByObservation": 0
+}

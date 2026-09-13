@@ -1,0 +1,11 @@
+{
+  "storageAccount": "stptumodernize0911pv",
+  "blobRole": {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-modernize-demo/providers/Microsoft.Storage/storageAccounts/stptumodernize0911pv/blobServices/default/containers/ptu-modernize-files/providers/Microsoft.Authorization/roleAssignments/ef21d753-052a-4fe7-83bd-c48c5e8dfeeb",
+    "roleDefinitionId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/providers/Microsoft.Authorization/roleDefinitions/ba92f5b4-2d11-453d-a403-e96b0029c9fe",
+    "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-modernize-demo/providers/Microsoft.Storage/storageAccounts/stptumodernize0911pv/blobServices/default/containers/ptu-modernize-files"
+  },
+  "credentialsPersisted": false,
+  "app": "Modernize Your Code",
+  "approval": "Parent explicit approval 2026-09-11T19:58:57-04:00"
+}

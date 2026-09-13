@@ -1,0 +1,15 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "solutionName": {"value": "ptu-macae"},
+    "name": {"value": "ptumacae7d804f70st"},
+    "location": {"value": "eastus2"},
+    "skuName": {"value": "Standard_LRS"},
+    "accessTier": {"value": "Hot"},
+    "allowBlobPublicAccess": {"value": false},
+    "allowSharedKeyAccess": {"value": false},
+    "containers": {"value": [{"name": "ptu-macae-rfp", "publicAccess": "None"}, {"name": "ptu-macae-contract", "publicAccess": "None"}]},
+    "tags": {"value": {"workload": "accelerator-eval", "owner": "parth", "environment": "mcaps-nonprod", "accelerator": "macae", "protected": "false"}}
+  }
+}

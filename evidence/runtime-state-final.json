@@ -1,0 +1,469 @@
+{
+  "observationStartUtc": "2026-09-12T05:35:58.8705671Z",
+  "observationEndUtc": "2026-09-12T06:18:05.1506455Z",
+  "apps": [
+    {
+      "name": "ca-ptu-networkcheck",
+      "resourceGroup": "rg-ptu-bundle-platform",
+      "observedAtUtc": "2026-09-12T05:36:11.5070935Z",
+      "configuration": {
+        "containers": [
+          {
+            "name": "probe",
+            "resources": {
+              "cpu": 0.25,
+              "ephemeralStorage": "1Gi",
+              "memory": "0.5Gi"
+            }
+          }
+        ],
+        "environmentId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.App/managedEnvironments/cae-ptu-bundle",
+        "externalIngress": null,
+        "fqdn": null,
+        "location": "East US 2",
+        "maxReplicas": 1,
+        "minReplicas": 0,
+        "name": "ca-ptu-networkcheck"
+      },
+      "revisions": [],
+      "totalReplicas": 0
+    },
+    {
+      "name": "ptu-macae",
+      "resourceGroup": "rg-ptu-macae-demo",
+      "observedAtUtc": "2026-09-12T05:36:23.9735763Z",
+      "configuration": {
+        "containers": [
+          {
+            "name": "frontend",
+            "resources": {
+              "cpu": 0.25,
+              "ephemeralStorage": "1Gi",
+              "memory": "0.5Gi"
+            }
+          },
+          {
+            "name": "backend",
+            "resources": {
+              "cpu": 0.5,
+              "ephemeralStorage": "2Gi",
+              "memory": "1Gi"
+            }
+          },
+          {
+            "name": "mcp",
+            "resources": {
+              "cpu": 0.25,
+              "ephemeralStorage": "1Gi",
+              "memory": "0.5Gi"
+            }
+          }
+        ],
+        "environmentId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.App/managedEnvironments/cae-ptu-bundle",
+        "externalIngress": true,
+        "fqdn": "ptu-macae.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io",
+        "location": "East US 2",
+        "maxReplicas": 1,
+        "minReplicas": 0,
+        "name": "ptu-macae"
+      },
+      "revisions": [],
+      "totalReplicas": 0
+    },
+    {
+      "name": "ca-ptu-modernize-api",
+      "resourceGroup": "rg-ptu-modernize-demo",
+      "observedAtUtc": "2026-09-12T05:36:38.4685102Z",
+      "configuration": {
+        "containers": [
+          {
+            "name": "api",
+            "resources": {
+              "cpu": 0.5,
+              "ephemeralStorage": "2Gi",
+              "memory": "1Gi"
+            }
+          }
+        ],
+        "environmentId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.App/managedEnvironments/cae-ptu-bundle",
+        "externalIngress": true,
+        "fqdn": "ca-ptu-modernize-api.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io",
+        "location": "East US 2",
+        "maxReplicas": 1,
+        "minReplicas": 0,
+        "name": "ca-ptu-modernize-api"
+      },
+      "revisions": [],
+      "totalReplicas": 0
+    },
+    {
+      "name": "ca-ptu-modernize-ui",
+      "resourceGroup": "rg-ptu-modernize-demo",
+      "observedAtUtc": "2026-09-12T05:36:52.0020101Z",
+      "configuration": {
+        "containers": [
+          {
+            "name": "ui",
+            "resources": {
+              "cpu": 0.25,
+              "ephemeralStorage": "1Gi",
+              "memory": "0.5Gi"
+            }
+          }
+        ],
+        "environmentId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.App/managedEnvironments/cae-ptu-bundle",
+        "externalIngress": true,
+        "fqdn": "ca-ptu-modernize-ui.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io",
+        "location": "East US 2",
+        "maxReplicas": 1,
+        "minReplicas": 0,
+        "name": "ca-ptu-modernize-ui"
+      },
+      "revisions": [],
+      "totalReplicas": 0
+    },
+    {
+      "name": "chatbot-chat-api",
+      "resourceGroup": "accel-chatbot-eval-0911",
+      "observedAtUtc": "2026-09-12T05:37:04.5217891Z",
+      "configuration": {
+        "containers": [
+          {
+            "name": "chatbot-chat-api",
+            "resources": {
+              "cpu": 0.5,
+              "ephemeralStorage": "2Gi",
+              "memory": "1Gi"
+            }
+          }
+        ],
+        "environmentId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.App/managedEnvironments/cae-ptu-bundle",
+        "externalIngress": false,
+        "fqdn": "chatbot-chat-api.internal.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io",
+        "location": "East US 2",
+        "maxReplicas": 1,
+        "minReplicas": 1,
+        "name": "chatbot-chat-api"
+      },
+      "revisions": [],
+      "totalReplicas": 0
+    },
+    {
+      "name": "chatbot-scenario-api",
+      "resourceGroup": "accel-chatbot-eval-0911",
+      "observedAtUtc": "2026-09-12T05:37:16.2053592Z",
+      "configuration": {
+        "containers": [
+          {
+            "name": "chatbot-scenario-api",
+            "resources": {
+              "cpu": 0.5,
+              "ephemeralStorage": "2Gi",
+              "memory": "1Gi"
+            }
+          }
+        ],
+        "environmentId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.App/managedEnvironments/cae-ptu-bundle",
+        "externalIngress": false,
+        "fqdn": "chatbot-scenario-api.internal.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io",
+        "location": "East US 2",
+        "maxReplicas": 1,
+        "minReplicas": 0,
+        "name": "chatbot-scenario-api"
+      },
+      "revisions": [],
+      "totalReplicas": 0
+    },
+    {
+      "name": "chatbot-chat-ui",
+      "resourceGroup": "accel-chatbot-eval-0911",
+      "observedAtUtc": "2026-09-12T05:37:28.5591924Z",
+      "configuration": {
+        "containers": [
+          {
+            "name": "chatbot-chat-ui",
+            "resources": {
+              "cpu": 0.25,
+              "ephemeralStorage": "1Gi",
+              "memory": "0.5Gi"
+            }
+          }
+        ],
+        "environmentId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.App/managedEnvironments/cae-ptu-bundle",
+        "externalIngress": true,
+        "fqdn": "chatbot-chat-ui.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io",
+        "location": "East US 2",
+        "maxReplicas": 1,
+        "minReplicas": 0,
+        "name": "chatbot-chat-ui"
+      },
+      "revisions": [],
+      "totalReplicas": 0
+    },
+    {
+      "name": "chatbot-scenario-ui",
+      "resourceGroup": "accel-chatbot-eval-0911",
+      "observedAtUtc": "2026-09-12T05:37:41.1514938Z",
+      "configuration": {
+        "containers": [
+          {
+            "name": "chatbot-scenario-ui",
+            "resources": {
+              "cpu": 0.25,
+              "ephemeralStorage": "1Gi",
+              "memory": "0.5Gi"
+            }
+          }
+        ],
+        "environmentId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.App/managedEnvironments/cae-ptu-bundle",
+        "externalIngress": true,
+        "fqdn": "chatbot-scenario-ui.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io",
+        "location": "East US 2",
+        "maxReplicas": 1,
+        "minReplicas": 0,
+        "name": "chatbot-scenario-ui"
+      },
+      "revisions": [],
+      "totalReplicas": 0
+    },
+    {
+      "name": "ca-dkm-api",
+      "resourceGroup": "accel-dkm-20260911",
+      "observedAtUtc": "2026-09-12T05:37:53.4052825Z",
+      "configuration": {
+        "containers": [
+          {
+            "name": "backend",
+            "resources": {
+              "cpu": 1.0,
+              "ephemeralStorage": "4Gi",
+              "memory": "2Gi"
+            }
+          }
+        ],
+        "environmentId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.App/managedEnvironments/cae-ptu-bundle",
+        "externalIngress": false,
+        "fqdn": "ca-dkm-api.internal.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io",
+        "location": "East US 2",
+        "maxReplicas": 1,
+        "minReplicas": 1,
+        "name": "ca-dkm-api"
+      },
+      "revisions": [],
+      "totalReplicas": 0
+    },
+    {
+      "name": "ca-dkm-web",
+      "resourceGroup": "accel-dkm-20260911",
+      "observedAtUtc": "2026-09-12T05:38:06.911811Z",
+      "configuration": {
+        "containers": [
+          {
+            "name": "frontend",
+            "resources": {
+              "cpu": 1.0,
+              "ephemeralStorage": "4Gi",
+              "memory": "2Gi"
+            }
+          }
+        ],
+        "environmentId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.App/managedEnvironments/cae-ptu-bundle",
+        "externalIngress": true,
+        "fqdn": "ca-dkm-web.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io",
+        "location": "East US 2",
+        "maxReplicas": 1,
+        "minReplicas": 1,
+        "name": "ca-dkm-web"
+      },
+      "revisions": [],
+      "totalReplicas": 0
+    },
+    {
+      "name": "ca-dkm-kernel",
+      "resourceGroup": "accel-dkm-20260911",
+      "observedAtUtc": "2026-09-12T05:38:20.6715142Z",
+      "configuration": {
+        "containers": [
+          {
+            "name": "kernelmemory",
+            "resources": {
+              "cpu": 1.0,
+              "ephemeralStorage": "4Gi",
+              "memory": "2Gi"
+            }
+          }
+        ],
+        "environmentId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.App/managedEnvironments/cae-ptu-bundle",
+        "externalIngress": false,
+        "fqdn": "ca-dkm-kernel.internal.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io",
+        "location": "East US 2",
+        "maxReplicas": 1,
+        "minReplicas": 1,
+        "name": "ca-dkm-kernel"
+      },
+      "revisions": [],
+      "totalReplicas": 0
+    },
+    {
+      "name": "ca-ptu-conversation-api",
+      "resourceGroup": "rg-ptu-conversation-demo",
+      "observedAtUtc": "2026-09-12T05:38:34.0929616Z",
+      "configuration": {
+        "containers": [
+          {
+            "name": "api",
+            "resources": {
+              "cpu": 0.5,
+              "ephemeralStorage": "2Gi",
+              "memory": "1Gi"
+            }
+          }
+        ],
+        "environmentId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.App/managedEnvironments/cae-ptu-bundle",
+        "externalIngress": false,
+        "fqdn": "ca-ptu-conversation-api.internal.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io",
+        "location": "East US 2",
+        "maxReplicas": 1,
+        "minReplicas": 0,
+        "name": "ca-ptu-conversation-api"
+      },
+      "revisions": [],
+      "totalReplicas": 0
+    },
+    {
+      "name": "ca-ptu-conversation-ui",
+      "resourceGroup": "rg-ptu-conversation-demo",
+      "observedAtUtc": "2026-09-12T05:38:47.3540314Z",
+      "configuration": {
+        "containers": [
+          {
+            "name": "ui",
+            "resources": {
+              "cpu": 0.25,
+              "ephemeralStorage": "1Gi",
+              "memory": "0.5Gi"
+            }
+          }
+        ],
+        "environmentId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.App/managedEnvironments/cae-ptu-bundle",
+        "externalIngress": true,
+        "fqdn": "ca-ptu-conversation-ui.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io",
+        "location": "East US 2",
+        "maxReplicas": 1,
+        "minReplicas": 0,
+        "name": "ca-ptu-conversation-ui"
+      },
+      "revisions": [],
+      "totalReplicas": 0
+    },
+    {
+      "name": "ca-ptu-content-api",
+      "resourceGroup": "rg-ptu-content-demo",
+      "observedAtUtc": "2026-09-12T06:17:26.8939795Z",
+      "configuration": {
+        "containers": [
+          {
+            "name": "api",
+            "resources": {
+              "cpu": 0.25,
+              "ephemeralStorage": "1Gi",
+              "memory": "0.5Gi"
+            }
+          }
+        ],
+        "environmentId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.App/managedEnvironments/cae-ptu-bundle",
+        "externalIngress": false,
+        "fqdn": "ca-ptu-content-api.internal.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io",
+        "location": "East US 2",
+        "maxReplicas": 1,
+        "minReplicas": 1,
+        "name": "ca-ptu-content-api"
+      },
+      "revisions": [],
+      "totalReplicas": 0
+    },
+    {
+      "name": "ca-ptu-content-web",
+      "resourceGroup": "rg-ptu-content-demo",
+      "observedAtUtc": "2026-09-12T06:17:39.0846771Z",
+      "configuration": {
+        "containers": [
+          {
+            "name": "web",
+            "resources": {
+              "cpu": 0.25,
+              "ephemeralStorage": "1Gi",
+              "memory": "0.5Gi"
+            }
+          }
+        ],
+        "environmentId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.App/managedEnvironments/cae-ptu-bundle",
+        "externalIngress": false,
+        "fqdn": "ca-ptu-content-web.internal.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io",
+        "location": "East US 2",
+        "maxReplicas": 1,
+        "minReplicas": 0,
+        "name": "ca-ptu-content-web"
+      },
+      "revisions": [],
+      "totalReplicas": 0
+    },
+    {
+      "name": "ca-ptu-content-processor",
+      "resourceGroup": "rg-ptu-content-demo",
+      "observedAtUtc": "2026-09-12T06:17:52.201606Z",
+      "configuration": {
+        "containers": [
+          {
+            "name": "processor",
+            "resources": {
+              "cpu": 1.0,
+              "ephemeralStorage": "4Gi",
+              "memory": "2Gi"
+            }
+          }
+        ],
+        "environmentId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.App/managedEnvironments/cae-ptu-bundle",
+        "externalIngress": null,
+        "fqdn": null,
+        "location": "East US 2",
+        "maxReplicas": 1,
+        "minReplicas": 1,
+        "name": "ca-ptu-content-processor"
+      },
+      "revisions": [],
+      "totalReplicas": 0
+    },
+    {
+      "name": "ca-ptu-content-workflow",
+      "resourceGroup": "rg-ptu-content-demo",
+      "observedAtUtc": "2026-09-12T06:18:05.150209Z",
+      "configuration": {
+        "containers": [
+          {
+            "name": "workflow",
+            "resources": {
+              "cpu": 0.5,
+              "ephemeralStorage": "2Gi",
+              "memory": "1Gi"
+            }
+          }
+        ],
+        "environmentId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.App/managedEnvironments/cae-ptu-bundle",
+        "externalIngress": null,
+        "fqdn": null,
+        "location": "East US 2",
+        "maxReplicas": 1,
+        "minReplicas": 1,
+        "name": "ca-ptu-content-workflow"
+      },
+      "revisions": [],
+      "totalReplicas": 0
+    }
+  ],
+  "applicationContainerApps": 16,
+  "diagnosticContainerApps": 1,
+  "totalReplicas": 0,
+  "activeRevisions": 0,
+  "scope": "Only explicitly selected new lab apps; no claim that retained PaaS services are free"
+}

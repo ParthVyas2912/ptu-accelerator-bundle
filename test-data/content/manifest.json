@@ -1,0 +1,14 @@
+{
+  "synthetic": true,
+  "serviceOutputs": false,
+  "claimId": "PTU-CONTENT-001",
+  "vin": "1TST23456DEMO0001",
+  "dateOfLoss": "2026-09-01",
+  "repairTotalUSD": 2500,
+  "expectedMissingRule": "REQ-PR-THIRD-PARTY-006",
+  "expectedMismatchRules": [
+    "DISC-VEHICLE-VIN-001",
+    "DISC-DATE-OF-LOSS-001"
+  ],
+  "note": "Inputs only. No claim processing success is implied. Image is a diagram, not a real photograph."
+}

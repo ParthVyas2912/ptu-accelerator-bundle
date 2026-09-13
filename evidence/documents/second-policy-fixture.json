@@ -1,0 +1,24 @@
+{
+  "logical_fixture": "02-policy-2026",
+  "uploaded": true,
+  "original_rendition": "02-policy-2026.txt",
+  "evaluation_rendition": "02-policy-2026-table.pdf",
+  "sha256": "1b6786929592267c2d681de3f6afc6dab06dbb7e4f3a892c793194de8d96d2de",
+  "bytes": 950,
+  "pages": 1,
+  "expected_metadata": {
+    "person": "Omar Patel",
+    "place": "Cedar Bay",
+    "document_type": "Policy"
+  },
+  "expected_facts": {
+    "year": 2026,
+    "status": "active",
+    "training_days": 15
+  },
+  "extraction": "Original PdfMarkdownDecoder using Document Intelligence prebuilt-layout",
+  "coverage": "Alternative rendition of logical case02; not an eleventh logical test or a ten-document pass.",
+  "indexed": true,
+  "document_id": "cb45ef9f464f4569ac7c4bc523ef1aab202609120215417274224",
+  "imported_time_utc": "2026-09-12T02:16:08.4574296Z"
+}

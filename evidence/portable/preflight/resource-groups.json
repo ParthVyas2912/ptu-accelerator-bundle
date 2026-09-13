@@ -1,0 +1,340 @@
+[
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/Default-ActivityLogAlerts",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "Default-ActivityLogAlerts",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-n8n-aca-repro",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "rg-n8n-aca-repro",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-occ-cosmos-test",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "rg-occ-cosmos-test",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/McapsGovernance",
+    "location": "westus2",
+    "managedBy": null,
+    "name": "McapsGovernance",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": {
+      "Action": "Do Not Delete",
+      "Contact": "https://aka.ms/mcapsazuresupport",
+      "CreatedByPolicy": "MCAPS Governance Team"
+    },
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-dev",
+    "location": "eastus2",
+    "managedBy": null,
+    "name": "rg-dev",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": {
+      "azd-env-name": "dev"
+    },
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/NetworkWatcherRG",
+    "location": "eastus2",
+    "managedBy": null,
+    "name": "NetworkWatcherRG",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/hinal-resume-rg",
+    "location": "eastus2",
+    "managedBy": null,
+    "name": "hinal-resume-rg",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-partvyas-3207",
+    "location": "eastus2",
+    "managedBy": null,
+    "name": "rg-partvyas-3207",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-planetaryexplorer",
+    "location": "eastus2",
+    "managedBy": null,
+    "name": "rg-planetaryexplorer",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": {
+      "azd-app-name": "planetary-explorer",
+      "azd-env-name": "planetaryexplorer"
+    },
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/DefaultResourceGroup-CCAN",
+    "location": "canadacentral",
+    "managedBy": null,
+    "name": "DefaultResourceGroup-CCAN",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/VisualStudioOnline-2E1EA48109BA4030AF7D69E04C5BB1DD",
+    "location": "canadacentral",
+    "managedBy": null,
+    "name": "VisualStudioOnline-2E1EA48109BA4030AF7D69E04C5BB1DD",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/ado-defender-for-cloud",
+    "location": "canadacentral",
+    "managedBy": null,
+    "name": "ado-defender-for-cloud",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/specsmith-builders-rg",
+    "location": "canadacentral",
+    "managedBy": null,
+    "name": "specsmith-builders-rg",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": {
+      "managed_by": "azd",
+      "purpose": "specsmith-builder-runtime"
+    },
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/specsuite-demo-rg",
+    "location": "canadacentral",
+    "managedBy": null,
+    "name": "specsuite-demo-rg",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-demo",
+    "location": "canadacentral",
+    "managedBy": null,
+    "name": "rg-demo",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": {
+      "azd-env-name": "demo"
+    },
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/ME_cae-demo_rg-demo_canadacentral",
+    "location": "canadacentral",
+    "managedBy": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourcegroups/rg-demo/providers/microsoft.app/managedenvironments/cae-demo",
+    "name": "ME_cae-demo_rg-demo_canadacentral",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": {
+      "aca-managed-env-id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-demo/providers/Microsoft.App/managedEnvironments/cae-demo"
+    },
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/VisualStudioOnline-FB59D40185404A5BBEB21E983A3A7F5D",
+    "location": "canadacentral",
+    "managedBy": null,
+    "name": "VisualStudioOnline-FB59D40185404A5BBEB21E983A3A7F5D",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-aiscleaner-batch-cc",
+    "location": "canadacentral",
+    "managedBy": null,
+    "name": "rg-aiscleaner-batch-cc",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-tnt-cosmos",
+    "location": "canadacentral",
+    "managedBy": null,
+    "name": "rg-tnt-cosmos",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-specsuite-aks-mcaps",
+    "location": "canadacentral",
+    "managedBy": null,
+    "name": "rg-specsuite-aks-mcaps",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/MC_rg-specsuite-aks-mcaps_aks-specsuite-mcaps_canadacentral",
+    "location": "canadacentral",
+    "managedBy": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourcegroups/rg-specsuite-aks-mcaps/providers/Microsoft.ContainerService/managedClusters/aks-specsuite-mcaps",
+    "name": "MC_rg-specsuite-aks-mcaps_aks-specsuite-mcaps_canadacentral",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": {
+      "aks-managed-cluster-name": "aks-specsuite-mcaps",
+      "aks-managed-cluster-rg": "rg-specsuite-aks-mcaps"
+    },
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/DefaultResourceGroup-CCA",
+    "location": "canadacentral",
+    "managedBy": null,
+    "name": "DefaultResourceGroup-CCA",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-gh300quiz",
+    "location": "canadacentral",
+    "managedBy": null,
+    "name": "rg-gh300quiz",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": {
+      "DataSensitivity": "Unclassified",
+      "Environment": "Demo",
+      "ProjectContact": "[REDACTED EMAIL]",
+      "ProjectName": "GH300 Quiz",
+      "TechnicalContact": "[REDACTED EMAIL]"
+    },
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-quizzly",
+    "location": "canadacentral",
+    "managedBy": null,
+    "name": "rg-quizzly",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-specsuite-ai-can",
+    "location": "canadaeast",
+    "managedBy": null,
+    "name": "rg-specsuite-ai-can",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-edc-foundry-hack",
+    "location": "canadaeast",
+    "managedBy": null,
+    "name": "rg-edc-foundry-hack",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-pexalex",
+    "location": "westus3",
+    "managedBy": null,
+    "name": "rg-pexalex",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": {
+      "azd-app-name": "planetary-explorer",
+      "azd-env-name": "pexalex"
+    },
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/ME_cae-geofm-cbzmyrtv7w6ja_rg-pexalex_westus3",
+    "location": "westus3",
+    "managedBy": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourcegroups/rg-pexalex/providers/microsoft.app/managedenvironments/cae-geofm-cbzmyrtv7w6ja",
+    "name": "ME_cae-geofm-cbzmyrtv7w6ja_rg-pexalex_westus3",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": {
+      "aca-managed-env-id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-pexalex/providers/Microsoft.App/managedEnvironments/cae-geofm-cbzmyrtv7w6ja"
+    },
+    "type": "Microsoft.Resources/resourceGroups"
+  }
+]

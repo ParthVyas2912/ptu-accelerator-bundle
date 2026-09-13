@@ -1,0 +1,45 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "value": "eastus2"
+    },
+    "managedEnvironmentId": {
+      "value": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.App/managedEnvironments/cae-ptu-bundle"
+    },
+    "runtimeIdentityResourceId": {
+      "value": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-macae-demo/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id-ptu-macae"
+    },
+    "runtimeIdentityClientId": {
+      "value": "2a0b5966-b619-49ec-a17a-71670eda045b"
+    },
+    "registryServer": {
+      "value": "acrptubundle7d804f70.azurecr.io"
+    },
+    "frontendSiteName": {
+      "value": "https://ptu-macae.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io"
+    },
+    "frontendImage": {
+      "value": "acrptubundle7d804f70.azurecr.io/macae/frontend@sha256:3e0c65062ff728b59fcf62e9935746174470344a3cdb886da83b91adac204d7a"
+    },
+    "mcpImage": {
+      "value": "acrptubundle7d804f70.azurecr.io/macae/mcp@sha256:ebf39b21927c0397035a14bac4dd941ca07dd819030985d270f3421e2306ea0b"
+    },
+    "backendImage": {
+      "value": "acrptubundle7d804f70.azurecr.io/macae/backend@sha256:edb14961ca638605bc54a1f456e1f15ddf6b08eaabf977266b9f3df193b44ad9"
+    },
+    "clientCidr": {
+      "value": "174.112.74.34/32"
+    },
+    "frontendAuthEnabled": {
+      "value": "false"
+    },
+    "minReplicas": {
+      "value": 0
+    },
+    "liveRequestsEnabled": {
+      "value": false
+    }
+  }
+}

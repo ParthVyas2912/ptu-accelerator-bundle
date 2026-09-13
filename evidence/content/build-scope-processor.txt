@@ -1,0 +1,366 @@
+WARNING: Packing source code into tar to upload...
+WARNING: Uploading archived source code from 'C:\Users\partvyas\AppData\Local\Temp\build_archive_fae5519e6d8c4b75ad82f17ea1ffe768.tar.gz'...
+WARNING: Sending context (10.982 KiB) to registry: acrptubundle7d804f70...
+WARNING: Queued a build with ID: ch11
+WARNING: Waiting for an agent...
+2026/09/12 05:40:01 Downloading source code...
+
+2026/09/12 05:40:02 Finished downloading source code
+
+2026/09/12 05:40:02 Using acb_vol_d1a239ad-659f-448f-832a-fd79f7df1c76 as the home volume
+2026/09/12 05:40:02 Setting up Docker configuration...
+2026/09/12 05:40:03 Successfully set up Docker configuration
+2026/09/12 05:40:03 Logging in to registry: acrptubundle7d804f70.azurecr.io
+2026/09/12 05:40:03 Successfully logged into acrptubundle7d804f70.azurecr.io
+2026/09/12 05:40:03 Executing step ID: build. Timeout(sec): 28800, Working directory: '', Network: ''
+2026/09/12 05:40:03 Scanning for dependencies...
+2026/09/12 05:40:04 Successfully scanned dependencies
+2026/09/12 05:40:04 Launching container with name: build
+Sending build context to Docker daemon  46.59kB
+
+
+
+Step 1/7 : FROM acrptubundle7d804f70.azurecr.io/content/eval-processor@sha256:fe0f073563841b7b9dd6f5c7faf204129dc05af2d7f977ecc4c46bff55b535a9
+acrptubundle7d804f70.azurecr.io/content/eval-processor@sha256:fe0f073563841b7b9dd6f5c7faf204129dc05af2d7f977ecc4c46bff55b535a9: Pulling from content/eval-processor
+b4e4c0127190: Pulling fs layer
+08457856946d: Pulling fs layer
+8cab6ce149c2: Pulling fs layer
+01a6a9ffe665: Pulling fs layer
+9fc491314404: Pulling fs layer
+cbbcd353f76c: Pulling fs layer
+02a27392fe49: Pulling fs layer
+f4cf3f8b1a01: Pulling fs layer
+4e37a02cd612: Pulling fs layer
+eba1ac270aca: Pulling fs layer
+f10f81efbc6d: Pulling fs layer
+ae22fe420fd6: Pulling fs layer
+2026748c1fe4: Pulling fs layer
+adcdace6b4f3: Pulling fs layer
+8669bf112d1d: Pulling fs layer
+6e7e37ea9951: Pulling fs layer
+20998db12cb5: Pulling fs layer
+e8de447d16b4: Pulling fs layer
+03da319f01bf: Pulling fs layer
+95841396d3da: Pulling fs layer
+92597f02dcec: Pulling fs layer
+dcdc76e19d22: Pulling fs layer
+db448721175b: Pulling fs layer
+cf1f4c9c6a77: Pulling fs layer
+88dc41aab3cb: Pulling fs layer
+1edd56a575f9: Pulling fs layer
+48ddfe966dde: Pulling fs layer
+d88ddaa10c82: Pulling fs layer
+a14f55d44908: Pulling fs layer
+ff53e8bf49e2: Pulling fs layer
+d7a004036816: Pulling fs layer
+e55515ec8966: Pulling fs layer
+6e7e37ea9951: Waiting
+20998db12cb5: Waiting
+e8de447d16b4: Waiting
+03da319f01bf: Waiting
+95841396d3da: Waiting
+92597f02dcec: Waiting
+dcdc76e19d22: Waiting
+db448721175b: Waiting
+cf1f4c9c6a77: Waiting
+88dc41aab3cb: Waiting
+1edd56a575f9: Waiting
+48ddfe966dde: Waiting
+d88ddaa10c82: Waiting
+01a6a9ffe665: Waiting
+a14f55d44908: Waiting
+9fc491314404: Waiting
+cbbcd353f76c: Waiting
+02a27392fe49: Waiting
+f4cf3f8b1a01: Waiting
+4e37a02cd612: Waiting
+eba1ac270aca: Waiting
+f10f81efbc6d: Waiting
+ae22fe420fd6: Waiting
+2026748c1fe4: Waiting
+adcdace6b4f3: Waiting
+8669bf112d1d: Waiting
+ff53e8bf49e2: Waiting
+d7a004036816: Waiting
+e55515ec8966: Waiting
+08457856946d: Verifying Checksum
+08457856946d: Download complete
+b4e4c0127190: Verifying Checksum
+b4e4c0127190: Download complete
+9fc491314404: Verifying Checksum
+9fc491314404: Download complete
+8cab6ce149c2: Verifying Checksum
+8cab6ce149c2: Download complete
+02a27392fe49: Verifying Checksum
+02a27392fe49: Download complete
+cbbcd353f76c: Verifying Checksum
+cbbcd353f76c: Download complete
+f4cf3f8b1a01: Verifying Checksum
+f4cf3f8b1a01: Download complete
+eba1ac270aca: Verifying Checksum
+eba1ac270aca: Download complete
+
+4e37a02cd612: Verifying Checksum
+4e37a02cd612: Download complete
+f10f81efbc6d: Verifying Checksum
+f10f81efbc6d: Download complete
+2026748c1fe4: Verifying Checksum
+2026748c1fe4: Download complete
+adcdace6b4f3: Verifying Checksum
+adcdace6b4f3: Download complete
+ae22fe420fd6: Verifying Checksum
+ae22fe420fd6: Download complete
+8669bf112d1d: Verifying Checksum
+8669bf112d1d: Download complete
+6e7e37ea9951: Verifying Checksum
+6e7e37ea9951: Download complete
+20998db12cb5: Verifying Checksum
+20998db12cb5: Download complete
+03da319f01bf: Verifying Checksum
+03da319f01bf: Download complete
+e8de447d16b4: Verifying Checksum
+e8de447d16b4: Download complete
+01a6a9ffe665: Verifying Checksum
+01a6a9ffe665: Download complete
+92597f02dcec: Download complete
+b4e4c0127190: Pull complete
+
+95841396d3da: Verifying Checksum
+95841396d3da: Download complete
+08457856946d: Pull complete
+8cab6ce149c2: Pull complete
+
+cf1f4c9c6a77: Verifying Checksum
+cf1f4c9c6a77: Download complete
+dcdc76e19d22: Verifying Checksum
+dcdc76e19d22: Download complete
+1edd56a575f9: Verifying Checksum
+1edd56a575f9: Download complete
+db448721175b: Verifying Checksum
+db448721175b: Download complete
+d88ddaa10c82: Verifying Checksum
+d88ddaa10c82: Download complete
+a14f55d44908: Verifying Checksum
+a14f55d44908: Download complete
+ff53e8bf49e2: Verifying Checksum
+ff53e8bf49e2: Download complete
+d7a004036816: Verifying Checksum
+d7a004036816: Download complete
+
+e55515ec8966: Verifying Checksum
+e55515ec8966: Download complete
+88dc41aab3cb: Verifying Checksum
+88dc41aab3cb: Download complete
+
+48ddfe966dde: Verifying Checksum
+48ddfe966dde: Download complete
+01a6a9ffe665: Pull complete
+
+9fc491314404: Pull complete
+cbbcd353f76c: Pull complete
+02a27392fe49: Pull complete
+f4cf3f8b1a01: Pull complete
+4e37a02cd612: Pull complete
+eba1ac270aca: Pull complete
+
+f10f81efbc6d: Pull complete
+ae22fe420fd6: Pull complete
+2026748c1fe4: Pull complete
+adcdace6b4f3: Pull complete
+8669bf112d1d: Pull complete
+6e7e37ea9951: Pull complete
+20998db12cb5: Pull complete
+
+e8de447d16b4: Pull complete
+03da319f01bf: Pull complete
+95841396d3da: Pull complete
+
+92597f02dcec: Pull complete
+dcdc76e19d22: Pull complete
+db448721175b: Pull complete
+cf1f4c9c6a77: Pull complete
+88dc41aab3cb: Pull complete
+
+1edd56a575f9: Pull complete
+48ddfe966dde: Pull complete
+
+d88ddaa10c82: Pull complete
+a14f55d44908: Pull complete
+ff53e8bf49e2: Pull complete
+d7a004036816: Pull complete
+e55515ec8966: Pull complete
+Digest: sha256:fe0f073563841b7b9dd6f5c7faf204129dc05af2d7f977ecc4c46bff55b535a9
+Status: Downloaded newer image for acrptubundle7d804f70.azurecr.io/content/eval-processor@sha256:fe0f073563841b7b9dd6f5c7faf204129dc05af2d7f977ecc4c46bff55b535a9
+ ---> b5f55ed38cf7
+Step 2/7 : COPY content_guard.py cloud_budget.py isolated_scope.py isolated_runtime.py test_isolated_scope.py test_inference_disarm.py /opt/content_eval/
+ ---> 849273068b29
+Step 3/7 : ENV CONTENT_INFERENCE_DISARMED=1 CONTENT_NATIVE_GUARD=1
+
+ ---> Running in 6f89963f1356
+Removing intermediate container 6f89963f1356
+ ---> d38abd8a6f8d
+Step 4/7 : RUN CONTENT_NATIVE_GUARD=0 /app/.venv/bin/python -m unittest discover -s /opt/content_eval -p 'test_isolated_scope.py' -v
+
+ ---> Running in aaea9ab255e7
+test_disarm_prevents_dequeue (test_isolated_scope.IsolationTests.test_disarm_prevents_dequeue) ... ok
+test_global_cap17_and_one_attempt_per_scoped_stage (test_isolated_scope.IsolationTests.test_global_cap17_and_one_attempt_per_scoped_stage) ... ok
+test_guard_checks_scope_before_budget_or_transport (test_isolated_scope.IsolationTests.test_guard_checks_scope_before_budget_or_transport) ... ok
+test_inference_requires_exact_context (test_isolated_scope.IsolationTests.test_inference_requires_exact_context) ... ok
+test_old_claim_and_document_rejected (test_isolated_scope.IsolationTests.test_old_claim_and_document_rejected) ... ok
+test_plain_and_base64_preserve_payload (test_isolated_scope.IsolationTests.test_plain_and_base64_preserve_payload) ... ok
+test_unrelated_messages_deferred_not_deleted_or_dispatched (test_isolated_scope.IsolationTests.test_unrelated_messages_deferred_not_deleted_or_dispatched) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.006s
+
+OK
+Removing intermediate container aaea9ab255e7
+ ---> c9d9b1048c0d
+Step 5/7 : RUN CONTENT_NATIVE_GUARD=0 /app/.venv/bin/python /opt/content_eval/test_inference_disarm.py
+
+ ---> Running in 7be33cd4c10f
+.....
+----------------------------------------------------------------------
+Ran 5 tests in 0.311s
+
+OK
+Removing intermediate container 7be33cd4c10f
+ ---> 0a7aefcc3af2
+Step 6/7 : ENTRYPOINT ["/app/.venv/bin/python", "/opt/content_eval/isolated_runtime.py"]
+
+ ---> Running in 7f403ff1fd57
+Removing intermediate container 7f403ff1fd57
+ ---> 792cc75ef32d
+Step 7/7 : CMD []
+
+ ---> Running in 364925ccb255
+Removing intermediate container 364925ccb255
+ ---> 3ed18adafaeb
+
+Successfully built 3ed18adafaeb
+Successfully tagged acrptubundle7d804f70.azurecr.io/content/eval-processor:659eaa1-scope-r1
+2026/09/12 05:41:10 Successfully executed container: build
+2026/09/12 05:41:10 Executing step ID: push. Timeout(sec): 3600, Working directory: '', Network: ''
+2026/09/12 05:41:10 Pushing image: acrptubundle7d804f70.azurecr.io/content/eval-processor:659eaa1-scope-r1, attempt 1
+The push refers to repository [acrptubundle7d804f70.azurecr.io/content/eval-processor]
+606019f9627c: Preparing
+b40f5e00a72c: Preparing
+1c85cc338434: Preparing
+eee5ede48fe2: Preparing
+fd70cc7228cb: Preparing
+8e849b5e961a: Preparing
+0ac4ba1bb25e: Preparing
+37a07a77f557: Preparing
+d7ee07feeb36: Preparing
+07bd39cfc822: Preparing
+f102c251d47c: Preparing
+3da945c77b40: Preparing
+f4833e561774: Preparing
+293da8cd0fc6: Preparing
+3beedf3a1db7: Preparing
+2c180ec9ca6f: Preparing
+2933d1632d77: Preparing
+eb01c12d5685: Preparing
+fe1167ecc620: Preparing
+fa216eaf7af5: Preparing
+443c1d48d597: Preparing
+73b1c5221fb4: Preparing
+72a1c121c3ef: Preparing
+840243b298b2: Preparing
+a682c1b5a5e1: Preparing
+67d5d35054b0: Preparing
+208c79321299: Preparing
+906350381ee4: Preparing
+e08932f70a94: Preparing
+3ae67b6c3bdf: Preparing
+74a032b83597: Preparing
+ffc8aa3c6d1e: Preparing
+cd482426e567: Preparing
+8e849b5e961a: Waiting
+0ac4ba1bb25e: Waiting
+37a07a77f557: Waiting
+d7ee07feeb36: Waiting
+07bd39cfc822: Waiting
+f102c251d47c: Waiting
+3da945c77b40: Waiting
+f4833e561774: Waiting
+293da8cd0fc6: Waiting
+3beedf3a1db7: Waiting
+2c180ec9ca6f: Waiting
+2933d1632d77: Waiting
+eb01c12d5685: Waiting
+fe1167ecc620: Waiting
+fa216eaf7af5: Waiting
+443c1d48d597: Waiting
+73b1c5221fb4: Waiting
+72a1c121c3ef: Waiting
+840243b298b2: Waiting
+a682c1b5a5e1: Waiting
+67d5d35054b0: Waiting
+208c79321299: Waiting
+906350381ee4: Waiting
+e08932f70a94: Waiting
+3ae67b6c3bdf: Waiting
+74a032b83597: Waiting
+ffc8aa3c6d1e: Waiting
+cd482426e567: Waiting
+b40f5e00a72c: Layer already exists
+eee5ede48fe2: Layer already exists
+1c85cc338434: Layer already exists
+fd70cc7228cb: Layer already exists
+0ac4ba1bb25e: Layer already exists
+8e849b5e961a: Layer already exists
+37a07a77f557: Layer already exists
+f102c251d47c: Layer already exists
+d7ee07feeb36: Layer already exists
+07bd39cfc822: Layer already exists
+3da945c77b40: Layer already exists
+2c180ec9ca6f: Layer already exists
+293da8cd0fc6: Layer already exists
+f4833e561774: Layer already exists
+3beedf3a1db7: Layer already exists
+2933d1632d77: Layer already exists
+eb01c12d5685: Layer already exists
+fa216eaf7af5: Layer already exists
+fe1167ecc620: Layer already exists
+73b1c5221fb4: Layer already exists
+840243b298b2: Layer already exists
+443c1d48d597: Layer already exists
+606019f9627c: Pushed
+a682c1b5a5e1: Layer already exists
+208c79321299: Layer already exists
+67d5d35054b0: Layer already exists
+906350381ee4: Layer already exists
+e08932f70a94: Layer already exists
+3ae67b6c3bdf: Layer already exists
+72a1c121c3ef: Layer already exists
+
+
+74a032b83597: Layer already exists
+
+ffc8aa3c6d1e: Layer already exists
+cd482426e567: Layer already exists
+659eaa1-scope-r1: digest: sha256:1522089ec724b6b08a084695e5a8f7c1433a86096951826386e5efea0dd29626 size: 7246
+
+2026/09/12 05:41:32 Successfully pushed image: acrptubundle7d804f70.azurecr.io/content/eval-processor:659eaa1-scope-r1
+2026/09/12 05:41:32 Step ID: build marked as successful (elapsed time in seconds: 66.252064)
+2026/09/12 05:41:32 Populating digests for step ID: build...
+2026/09/12 05:41:33 Successfully populated digests for step ID: build
+2026/09/12 05:41:33 Step ID: push marked as successful (elapsed time in seconds: 22.659854)
+2026/09/12 05:41:33 The following dependencies were found:
+2026/09/12 05:41:33 
+- image:
+    registry: acrptubundle7d804f70.azurecr.io
+    repository: content/eval-processor
+    tag: 659eaa1-scope-r1
+    digest: sha256:1522089ec724b6b08a084695e5a8f7c1433a86096951826386e5efea0dd29626
+  runtime-dependency:
+    registry: acrptubundle7d804f70.azurecr.io
+    repository: content/eval-processor
+    digest: sha256:fe0f073563841b7b9dd6f5c7faf204129dc05af2d7f977ecc4c46bff55b535a9
+  git: {}
+
+
+
+Run ID: ch11 was successful after 1m32s
+

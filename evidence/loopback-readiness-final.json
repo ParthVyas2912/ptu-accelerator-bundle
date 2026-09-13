@@ -1,0 +1,30 @@
+{
+  "observedAtUtc": "2026-09-12T05:38:58.199010+00:00",
+  "scope": "Read-only UI/health/schema requests, not new inference or a browser workflow",
+  "results": [
+    {
+      "url": "http://127.0.0.1:5112/",
+      "status": 200,
+      "bytes": 546,
+      "contentType": "text/html"
+    },
+    {
+      "url": "http://127.0.0.1:8112/api/health",
+      "status": 200,
+      "bytes": 254,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5115/",
+      "status": 200,
+      "bytes": 383,
+      "contentType": "text/html"
+    },
+    {
+      "url": "http://127.0.0.1:8115/openapi.json",
+      "status": 200,
+      "bytes": 58981,
+      "contentType": "application/json"
+    }
+  ]
+}

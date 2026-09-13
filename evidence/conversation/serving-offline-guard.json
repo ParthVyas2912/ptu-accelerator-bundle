@@ -1,0 +1,1 @@
+{"status": "passed", "live_model_requests": 0, "real_network_requests": 0, "sdk_transports_blocked": 4, "http_model_mutation_routes_blocked": 8, "native_health_delegation": true, "data_and_identity_mock_forwarding": true}

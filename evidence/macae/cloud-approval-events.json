@@ -1,0 +1,27 @@
+{
+  "httpStatus": 200,
+  "response": {
+    "status": "approval recorded"
+  },
+  "events": [
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": "\n\n---\n### HR Helper Agent\n\n",
+        "is_final": false
+      }
+    },
+    {
+      "type": "user_clarification_request",
+      "data": {
+        "type": "user_clarification_request",
+        "data": {
+          "request_id": "315b4659-bd2e-4a99-8f25-90da1014999f",
+          "questions": "I need the following information to proceed:\n1. Employee full name: Alex Example (confirm)\n2. Department\n3. Start date: 2026-10-01 (confirm)\n4. Manager name: Morgan Example (confirm)\n5. Orientation date/time preference: 2026-10-02 09:00 (confirm)\n6. Salary (for payroll): 70000 (confirm)\n7. Would you like to assign a mentor? If yes, who? Taylor Example (confirm)\n8. Would you like to request an ID card? Yes (confirm)\n9. Background check type: Standard or Enhanced? Standard (confirm/change)\n10. Benefits package: Standard, Premium, or Executive? Standard (confirm/change)",
+          "agent_name": "request_user_clarification"
+        }
+      }
+    }
+  ]
+}

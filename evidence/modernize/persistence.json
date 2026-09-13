@@ -1,0 +1,22 @@
+{
+  "cosmosDatabase": "ptu-modernize",
+  "residencyLimitation": "US data persistence is for synthetic MCAPS tests only, not DND residency approval.",
+  "blobRole": {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-modernize-demo/providers/Microsoft.Storage/storageAccounts/stptumodernize0911pv/blobServices/default/containers/ptu-modernize-files/providers/Microsoft.Authorization/roleAssignments/ef21d753-052a-4fe7-83bd-c48c5e8dfeeb",
+    "roleDefinitionId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/providers/Microsoft.Authorization/roleDefinitions/ba92f5b4-2d11-453d-a403-e96b0029c9fe",
+    "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-modernize-demo/providers/Microsoft.Storage/storageAccounts/stptumodernize0911pv/blobServices/default/containers/ptu-modernize-files"
+  },
+  "app": "Modernize Your Code",
+  "fallbackApproval": "Parent East US 2 fallback approval 2026-09-11T20:11:19-04:00",
+  "subscription": "1feb53b2-854a-4ea7-b5a6-709b7d804f70",
+  "credentialsPersisted": false,
+  "cosmosRole": {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-modernize-demo/providers/Microsoft.DocumentDB/databaseAccounts/cosmos-ptu-modernize-eus20911/sqlRoleAssignments/474c6a70-aeea-4bc3-8998-b3bbdb943a24",
+    "roleDefinitionId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-modernize-demo/providers/Microsoft.DocumentDB/databaseAccounts/cosmos-ptu-modernize-eus20911/sqlRoleDefinitions/00000000-0000-0000-0000-000000000002",
+    "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-modernize-demo/providers/Microsoft.DocumentDB/databaseAccounts/cosmos-ptu-modernize-eus20911/dbs/ptu-modernize"
+  },
+  "storageAccount": "stptumodernize0911pv",
+  "resourceGroup": "rg-ptu-modernize-demo",
+  "cosmosAccount": "cosmos-ptu-modernize-eus20911",
+  "approval": "Parent explicit approval received 2026-09-11T19:58:57-04:00"
+}

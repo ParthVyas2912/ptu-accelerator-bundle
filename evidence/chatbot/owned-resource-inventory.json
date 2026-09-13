@@ -1,0 +1,112 @@
+[
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-chatbot-eval-0911/providers/Microsoft.CognitiveServices/accounts/aif-ccptu1feb0911",
+    "kind": "AIServices",
+    "location": "eastus2",
+    "name": "aif-ccptu1feb0911",
+    "sku": {
+      "capacity": null,
+      "family": null,
+      "model": null,
+      "name": "S0",
+      "size": null,
+      "tier": null
+    },
+    "type": "Microsoft.CognitiveServices/accounts"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-chatbot-eval-0911/providers/Microsoft.DocumentDB/databaseAccounts/cosmos-ccptu1feb0911",
+    "kind": "GlobalDocumentDB",
+    "location": "eastus2",
+    "name": "cosmos-ccptu1feb0911",
+    "sku": null,
+    "type": "Microsoft.DocumentDB/databaseAccounts"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-chatbot-eval-0911/providers/Microsoft.CognitiveServices/accounts/aif-ccptu1feb0911/projects/proj-ccptu1feb0911",
+    "kind": "AIServices",
+    "location": "eastus2",
+    "name": "aif-ccptu1feb0911/proj-ccptu1feb0911",
+    "sku": null,
+    "type": "Microsoft.CognitiveServices/accounts/projects"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-chatbot-eval-0911/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mi-chatbot-chat-api",
+    "kind": null,
+    "location": "eastus2",
+    "name": "mi-chatbot-chat-api",
+    "sku": null,
+    "type": "Microsoft.ManagedIdentity/userAssignedIdentities"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-chatbot-eval-0911/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mi-chatbot-chat-ui",
+    "kind": null,
+    "location": "eastus2",
+    "name": "mi-chatbot-chat-ui",
+    "sku": null,
+    "type": "Microsoft.ManagedIdentity/userAssignedIdentities"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-chatbot-eval-0911/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mi-chatbot-scenario-ui",
+    "kind": null,
+    "location": "eastus2",
+    "name": "mi-chatbot-scenario-ui",
+    "sku": null,
+    "type": "Microsoft.ManagedIdentity/userAssignedIdentities"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-chatbot-eval-0911/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mi-chatbot-scenario-api",
+    "kind": null,
+    "location": "eastus2",
+    "name": "mi-chatbot-scenario-api",
+    "sku": null,
+    "type": "Microsoft.ManagedIdentity/userAssignedIdentities"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-chatbot-eval-0911/providers/Microsoft.App/containerApps/chatbot-chat-api",
+    "kind": null,
+    "location": "eastus2",
+    "name": "chatbot-chat-api",
+    "sku": null,
+    "type": "Microsoft.App/containerApps"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-chatbot-eval-0911/providers/Microsoft.App/containerApps/chatbot-scenario-api",
+    "kind": null,
+    "location": "eastus2",
+    "name": "chatbot-scenario-api",
+    "sku": null,
+    "type": "Microsoft.App/containerApps"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-chatbot-eval-0911/providers/Microsoft.App/containerApps/chatbot-chat-ui",
+    "kind": null,
+    "location": "eastus2",
+    "name": "chatbot-chat-ui",
+    "sku": null,
+    "type": "Microsoft.App/containerApps"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-chatbot-eval-0911/providers/Microsoft.App/containerApps/chatbot-scenario-ui",
+    "kind": null,
+    "location": "eastus2",
+    "name": "chatbot-scenario-ui",
+    "sku": null,
+    "type": "Microsoft.App/containerApps"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-chatbot-eval-0911/providers/Microsoft.Search/searchServices/srch-ccptu1feb0911",
+    "kind": null,
+    "location": "canadacentral",
+    "name": "srch-ccptu1feb0911",
+    "sku": {
+      "capacity": null,
+      "family": null,
+      "model": null,
+      "name": "basic",
+      "size": null,
+      "tier": null
+    },
+    "type": "Microsoft.Search/searchServices"
+  }
+]

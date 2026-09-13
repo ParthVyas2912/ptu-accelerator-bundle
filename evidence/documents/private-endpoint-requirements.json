@@ -1,0 +1,62 @@
+{
+  "accelerator": "Document Knowledge Mining",
+  "observed_date": "2026-09-11",
+  "subscription_id": "1feb53b2-854a-4ea7-b5a6-709b7d804f70",
+  "request_to_parent": "Create/connect only these three private endpoints and their private DNS zones to the shared ACA VNet. DKM agent will not change shared infrastructure or public-network policy.",
+  "required_private_endpoints": [
+    {
+      "resource_id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-dkm-20260911/providers/Microsoft.DocumentDB/databaseAccounts/cosmos-dkmeval0911a",
+      "group_id": "MongoDB",
+      "required_members": ["cosmos-dkmeval0911a-centralus", "cosmos-dkmeval0911a"],
+      "private_dns_zone": "privatelink.mongo.cosmos.azure.com",
+      "public_network_access": "Disabled",
+      "purpose": "Original MongoDB document metadata and chat history; native client cannot reach this private dependency."
+    },
+    {
+      "resource_id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-dkm-20260911/providers/Microsoft.Storage/storageAccounts/stdkmeval0911a",
+      "group_id": "blob",
+      "required_members": ["blob"],
+      "private_dns_zone": "privatelink.blob.core.windows.net",
+      "public_network_access": "Disabled",
+      "purpose": "Original document/extraction/embedding artifact storage."
+    },
+    {
+      "resource_id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-dkm-20260911/providers/Microsoft.Storage/storageAccounts/stdkmeval0911a",
+      "group_id": "queue",
+      "required_members": ["queue"],
+      "private_dns_zone": "privatelink.queue.core.windows.net",
+      "public_network_access": "Disabled",
+      "purpose": "Original distributed Kernel Memory ingestion orchestration."
+    }
+  ],
+  "not_required_for_runtime": ["Cosmos Analytical endpoint", "Storage table/file/web/dfs endpoints"],
+  "other_dkm_services": {
+    "Search": {"publicNetworkAccess": "Enabled", "disableLocalAuth": true},
+    "OpenAI": {"publicNetworkAccess": "Enabled", "disableLocalAuth": true},
+    "DocumentIntelligence": {"publicNetworkAccess": "Enabled", "disableLocalAuth": true},
+    "AppConfiguration": {"publicNetworkAccess": "Enabled", "disableLocalAuth": false, "runtime_authentication": "Azure identity; no keys requested or used"}
+  },
+  "runtime_identity": {
+    "resource_id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-dkm-20260911/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id-dkmeval0911a",
+    "client_id": "a8b91884-b691-4445-846d-e3642418e2a2",
+    "principal_id": "0ab31938-0ce1-4fa9-bdf8-98b6e3ca8c46",
+    "additional_parent_coordination": "AcrPull at shared ACR scope if this existing DKM identity will pull the DKM images; agent will not modify shared ACR RBAC."
+  },
+  "proposed_original_services": [
+    {"name": "dkm-backend", "cpu": 1, "memory_gib": 2, "max_replicas": 1, "ingress": "internal"},
+    {"name": "dkm-kernelmemory", "cpu": 1, "memory_gib": 2, "max_replicas": 1, "ingress": "internal"},
+    {"name": "dkm-frontend", "cpu": 0.25, "memory_gib": 0.5, "max_replicas": 1, "ingress": "authenticated or restricted; no public unauthenticated paid operations"}
+  ],
+  "hosting_adaptation": "Parent-approved shared Consumption ACA/Basic ACR for original upstream Dockerfiles; service URLs supplied through supported runtime configuration. No replacement app, duplicate PaaS, new models or PTUs.",
+  "retained_paas_fixed_usd_hour": 0.183,
+  "live_model_attempts": 0,
+  "live_model_attempt_cap": 12,
+  "build_evidence": {
+    "native_backend": "Previously succeeded:148 warnings,0 errors",
+    "native_kernel_memory": "Succeeded:308 warnings,0 errors,00:05:14.67",
+    "frontend_docker_image": "sha256:387bace500d977d46914e1f98cd2fddc1fe67bacb95e876085fc14a363e9e53c",
+    "frontend_docker_image_bytes": 1452431613,
+    "backend_docker_build": "Running in isolated4GiB/two-CPU builder",
+    "runtime_health": "Not yet proven; build success is not E2E evidence"
+  }
+}

@@ -1,0 +1,285 @@
+{
+  "recordedUtc": "2026-09-12T04:50:09.821756+00:00",
+  "status": "aborted_rollout_zero_inference_condition_not_met",
+  "approvedScope": {
+    "claimId": "9f9b9c98-2d6e-440f-9a67-099ffea26f51",
+    "modelRecordSha256": "e8028913511c9377a114de8eb3100a5ebfe94d36d3dba4bffc73ef8840a8b272",
+    "documents": [
+      {
+        "processId": "cfa35c35-cb8b-4504-9188-2e206de3aab4",
+        "fileName": "claim-form.pdf",
+        "inputSha256": "4c3a887124b3dc146ead5e43495a7d7b2640480a4944176fe2b8f2bf4c2ae08a"
+      },
+      {
+        "processId": "e61c8e30-193b-48e9-97fb-f7507e8830fa",
+        "fileName": "police-report.pdf",
+        "inputSha256": "6915dbe92059651a9fea89cdc65be1fcda6eff32381e3bb3a4cac6bdd3aac979"
+      },
+      {
+        "processId": "fa626df7-b125-4e40-bb01-b15f4e378eb1",
+        "fileName": "repair-estimate.pdf",
+        "inputSha256": "602bedd0a4e10000d32e9a813b1e10f1b4788241c9c12dda1ae28f481cc075e2"
+      },
+      {
+        "processId": "d8e51494-e416-49dc-b938-d1b7a74d265e",
+        "fileName": "damage-diagram.png",
+        "inputSha256": "293229e558aea1343eaabfef6e471d42c8368e86fc30484b62db3f13a235496b"
+      }
+    ]
+  },
+  "fullClaimE2ePassed": false,
+  "nativeRecoveryWorkerStarted": false,
+  "abortReason": "Live ledger has eleven model reservations, not the required ten. Both controller executions failed before Mongo/queue access or native worker startup.",
+  "disarmedProcessor": {
+    "revision": "ca-ptu-content-processor--0000008",
+    "image": "acrptubundle7d804f70.azurecr.io/content/eval-processor:659eaa1-zero-r1",
+    "digest": "sha256:fe0f073563841b7b9dd6f5c7faf204129dc05af2d7f977ecc4c46bff55b535a9",
+    "remoteBuildRun": "chy",
+    "inImageDisarmTestsPassed": 5
+  },
+  "rolloutIncident": {
+    "observedActiveCallerRevision": "ca-ptu-content-processor--0000007",
+    "source": "Client ledger rows32 and33 identify the previous regular Processor revision, not the new hard-disarmed revision8.",
+    "additionalCuRequest": {
+      "kind": "cu-analyze",
+      "service": "processor",
+      "pid": 14,
+      "started": "2026-09-12T04:33:42.523323+00:00",
+      "method": "POST",
+      "host": "aif-ptuv-content-260911.cognitiveservices.azure.com",
+      "path": "/contentunderstanding/analyzers/prebuilt-layout:analyzeBinary",
+      "model": null,
+      "id": 32,
+      "containerReplica": "ca-ptu-content-processor--0000007-6d6bc88d7d-fkkz2",
+      "containerRevision": "ca-ptu-content-processor--0000007",
+      "status": 400,
+      "elapsed_ms": 220.233,
+      "usage": null,
+      "pages": null,
+      "operation": null,
+      "error": "InvalidRequest: Invalid request."
+    },
+    "additionalModelReservation": {
+      "kind": "model",
+      "service": "processor",
+      "pid": 15,
+      "started": "2026-09-12T04:33:43.712378+00:00",
+      "method": "POST",
+      "host": "aif-ptuv-content-260911.openai.azure.com",
+      "path": "/openai/deployments/gpt-5.1/chat/completions",
+      "model": "gpt-5.1",
+      "id": 33,
+      "containerReplica": "ca-ptu-content-processor--0000007-6d6bc88d7d-fkkz2",
+      "containerRevision": "ca-ptu-content-processor--0000007"
+    },
+    "newModelProviderTransmission": "unknown",
+    "newModelHttpStatus": null,
+    "newModelReturnedUsage": null,
+    "newModelClaimAssociation": "not captured",
+    "newModelBudgetCharge": 1,
+    "zeroInferenceConditionMetAcrossRollout": false,
+    "claimQueueEffects": "Unverified for the previous revision, which could have consumed retained work. The scoped recovery controller never reached queue inspection. No assurance that all original Map retries were untouched is made.",
+    "directQueueDeletionOrManualSuccessWrites": false,
+    "fakeResponsesOrCrossClaimReplay": false
+  },
+  "ledgerSnapshotUtc": "2026-09-12T04:38:01.873947+00:00",
+  "liveSnapshotFile": "evidence/content/batch-zero-export-complete-recovery.json",
+  "liveModelReservations": 11,
+  "returnedModelResponses": 10,
+  "originalTenRecordsIdentical": true,
+  "originalTenModelSha256": "e8028913511c9377a114de8eb3100a5ebfe94d36d3dba4bffc73ef8840a8b272",
+  "liveElevenModelSha256": "4d37d6806585a217d851e77dbd4a7c816ceea605df79c5212abee9c7db1bd543",
+  "budgetResetOrRecordRewrite": false,
+  "returnedUsageTotals": {
+    "promptTokens": 39760,
+    "completionTokens": 23301,
+    "totalTokens": 63061,
+    "caveat": "Ten returned responses only; reservation33 has no captured usage. These are not a verified current total of provider-billed tokens."
+  },
+  "cuSubmissionsObserved": 9,
+  "cuSuccessfulReturnedPages": 6,
+  "cuRejected400": 3,
+  "previouslyOmittedCuRetry": {
+    "kind": "cu-analyze",
+    "service": "processor",
+    "pid": 14,
+    "started": "2026-09-12T02:42:56.605262+00:00",
+    "method": "POST",
+    "host": "aif-ptuv-content-260911.cognitiveservices.azure.com",
+    "path": "/contentunderstanding/analyzers/prebuilt-layout:analyzeBinary",
+    "model": null,
+    "id": 31,
+    "containerReplica": "ca-ptu-content-processor--0000006-58dd96d99-brdfz",
+    "containerRevision": "ca-ptu-content-processor--0000006",
+    "status": 400,
+    "elapsed_ms": 579.139,
+    "usage": null,
+    "pages": null,
+    "operation": null,
+    "error": "InvalidRequest: Invalid request."
+  },
+  "documentRecovery": [
+    {
+      "processId": "cfa35c35-cb8b-4504-9188-2e206de3aab4",
+      "fileName": "claim-form.pdf",
+      "inputSha256": "4c3a887124b3dc146ead5e43495a7d7b2640480a4944176fe2b8f2bf4c2ae08a",
+      "recoveryVerified": false,
+      "actualOutcome": "Not freshly inspected: ledger precondition aborted before artifact/DB access."
+    },
+    {
+      "processId": "e61c8e30-193b-48e9-97fb-f7507e8830fa",
+      "fileName": "police-report.pdf",
+      "inputSha256": "6915dbe92059651a9fea89cdc65be1fcda6eff32381e3bb3a4cac6bdd3aac979",
+      "recoveryVerified": false,
+      "actualOutcome": "Not freshly inspected: ledger precondition aborted before artifact/DB access."
+    },
+    {
+      "processId": "fa626df7-b125-4e40-bb01-b15f4e378eb1",
+      "fileName": "repair-estimate.pdf",
+      "inputSha256": "602bedd0a4e10000d32e9a813b1e10f1b4788241c9c12dda1ae28f481cc075e2",
+      "recoveryVerified": false,
+      "actualOutcome": "Not freshly inspected: ledger precondition aborted before artifact/DB access."
+    },
+    {
+      "processId": "d8e51494-e416-49dc-b938-d1b7a74d265e",
+      "fileName": "damage-diagram.png",
+      "inputSha256": "293229e558aea1343eaabfef6e471d42c8368e86fc30484b62db3f13a235496b",
+      "recoveryVerified": false,
+      "actualOutcome": "Not freshly inspected: ledger precondition aborted before artifact/DB access."
+    }
+  ],
+  "nativeWholeClaimCheckpointReuse": {
+    "supported": false,
+    "evidence": "ClaimProcessor starts document_processing; DocumentProcessExecutor submits every file; ContentProcessService.submit creates a fresh UUID and Extract message.",
+    "observedNormalRunModelCalls": 7,
+    "currentAllocation": 12,
+    "conservativeBudgetUsed": 11,
+    "cleanRunConservativeTotalCeiling": 18,
+    "additionalAllocationNeededForThatPlan": 6,
+    "additionalCallsRequestedOrAuthorizedHere": false
+  },
+  "shutdownCorrection": {
+    "priorChecks": "Latest-revision-only zero counts did not prove all-revision shutdown.",
+    "observedOlderApiRevision": "ca-ptu-content-api--0000008",
+    "observedOlderApiReplicas": 1,
+    "action": "Older API and all active revisions explicitly deactivated. Stop now checks all revisions and never redeploys an image.",
+    "deploymentInterlock": "Deploy-ContentCloud.ps1 rejects deployments while result.json modelCallsOnHold is true; do not clear without coordinated authorization/isolation.",
+    "offlineLifecycleRegressionTestsPassed": 2
+  },
+  "finalStop": {
+    "checkedUtc": "2026-09-12T04:46:48.0960111Z",
+    "source": "All retained revisions, not only latest",
+    "services": [
+      {
+        "service": "api",
+        "replicas": 0,
+        "revisions": [
+          {
+            "name": "ca-ptu-content-api--0000006",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          },
+          {
+            "name": "ca-ptu-content-api--0000007",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          },
+          {
+            "name": "ca-ptu-content-api--0000008",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          },
+          {
+            "name": "ca-ptu-content-api--0000009",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          }
+        ]
+      },
+      {
+        "service": "processor",
+        "replicas": 0,
+        "revisions": [
+          {
+            "name": "ca-ptu-content-processor--0000006",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          },
+          {
+            "name": "ca-ptu-content-processor--0000007",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          },
+          {
+            "name": "ca-ptu-content-processor--0000008",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          },
+          {
+            "name": "ca-ptu-content-processor--0000009",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          }
+        ]
+      },
+      {
+        "service": "workflow",
+        "replicas": 0,
+        "revisions": [
+          {
+            "name": "ca-ptu-content-workflow--0000002",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          },
+          {
+            "name": "ca-ptu-content-workflow--0000003",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          },
+          {
+            "name": "ca-ptu-content-workflow--0000004",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          }
+        ]
+      },
+      {
+        "service": "web",
+        "replicas": 0,
+        "revisions": [
+          {
+            "name": "ca-ptu-content-web--0000002",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          },
+          {
+            "name": "ca-ptu-content-web--0000003",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          },
+          {
+            "name": "ca-ptu-content-web--0000004",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          }
+        ]
+      }
+    ]
+  },
+  "paidCallsRemainOnHold": true,
+  "decision": "Do not reset the eleven-reservation ledger or weaken its recovery gate. Stop and return the incident; resolve rollout-wide disarm and reservation33 before any further recovery."
+}

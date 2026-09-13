@@ -1,0 +1,51 @@
+[
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourcegroups/accel-chatbot-eval-0911/providers/Microsoft.Search/searchServices/srch-ccptu1feb0911/providers/Microsoft.Authorization/roleAssignments/ff75c312-cef2-57c1-9378-2036b7ef3093",
+    "principalId": "06e9bc4a-c99a-424f-b90d-e8f3ac6dbd4c",
+    "principalType": "ServicePrincipal",
+    "role": "Search Index Data Reader",
+    "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourcegroups/accel-chatbot-eval-0911/providers/Microsoft.Search/searchServices/srch-ccptu1feb0911"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourcegroups/accel-chatbot-eval-0911/providers/Microsoft.Search/searchServices/srch-ccptu1feb0911/providers/Microsoft.Authorization/roleAssignments/87c9f71b-87b3-5704-8055-e439fd8373bb",
+    "principalId": "0819f28a-5759-4942-a367-ab8eaa5c5ec4",
+    "principalType": "ServicePrincipal",
+    "role": "Search Service Contributor",
+    "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourcegroups/accel-chatbot-eval-0911/providers/Microsoft.Search/searchServices/srch-ccptu1feb0911"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourcegroups/accel-chatbot-eval-0911/providers/Microsoft.Search/searchServices/srch-ccptu1feb0911/providers/Microsoft.Authorization/roleAssignments/cea04205-4813-51c8-ad7b-8dd343f39b19",
+    "principalId": "b46f6c01-3103-4353-a4cb-fca9009c41a7",
+    "principalType": "ServicePrincipal",
+    "role": "Search Index Data Reader",
+    "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourcegroups/accel-chatbot-eval-0911/providers/Microsoft.Search/searchServices/srch-ccptu1feb0911"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourcegroups/accel-chatbot-eval-0911/providers/Microsoft.Search/searchServices/srch-ccptu1feb0911/providers/Microsoft.Authorization/roleAssignments/df2808c9-2fa3-58c8-81a0-a06140c62005",
+    "principalId": "0819f28a-5759-4942-a367-ab8eaa5c5ec4",
+    "principalType": "ServicePrincipal",
+    "role": "Search Index Data Contributor",
+    "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourcegroups/accel-chatbot-eval-0911/providers/Microsoft.Search/searchServices/srch-ccptu1feb0911"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourcegroups/accel-chatbot-eval-0911/providers/Microsoft.Search/searchServices/srch-ccptu1feb0911/providers/Microsoft.Authorization/roleAssignments/90cc9562-b795-5f6d-8bfa-e2c8ce14dc9b",
+    "principalId": "06e9bc4a-c99a-424f-b90d-e8f3ac6dbd4c",
+    "principalType": "ServicePrincipal",
+    "role": "Search Service Contributor",
+    "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourcegroups/accel-chatbot-eval-0911/providers/Microsoft.Search/searchServices/srch-ccptu1feb0911"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourcegroups/accel-chatbot-eval-0911/providers/Microsoft.Search/searchServices/srch-ccptu1feb0911/providers/Microsoft.Authorization/roleAssignments/29cd9556-8b93-5979-a7b2-668825a2fd76",
+    "principalId": "5ff0b683-7230-43b2-890c-af988bc2e349",
+    "principalType": "ServicePrincipal",
+    "role": "Search Index Data Contributor",
+    "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourcegroups/accel-chatbot-eval-0911/providers/Microsoft.Search/searchServices/srch-ccptu1feb0911"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourcegroups/accel-chatbot-eval-0911/providers/Microsoft.Search/searchServices/srch-ccptu1feb0911/providers/Microsoft.Authorization/roleAssignments/00f2e8df-97d7-5c87-abf4-206834dd3318",
+    "principalId": "5ff0b683-7230-43b2-890c-af988bc2e349",
+    "principalType": "ServicePrincipal",
+    "role": "Search Service Contributor",
+    "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourcegroups/accel-chatbot-eval-0911/providers/Microsoft.Search/searchServices/srch-ccptu1feb0911"
+  }
+]

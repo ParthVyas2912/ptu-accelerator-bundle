@@ -1,0 +1,11 @@
+{
+  "httpStatus": 200,
+  "response": {
+    "status": "success",
+    "message": "Team 'MACAE Synthetic Onboarding Advisory' selected successfully",
+    "team_id": "4ee7ecb7-8c4e-49b6-a6ac-9d033de2eb26",
+    "team_name": "MACAE Synthetic Onboarding Advisory",
+    "agents_count": 2,
+    "team_description": "Two read-only specialists review supplied synthetic onboarding facts against supplied HR/compliance and IT readiness policies. They identify gaps and recommend checklist corrections, but cannot provision accounts, change records, grant access or execute transactions."
+  }
+}

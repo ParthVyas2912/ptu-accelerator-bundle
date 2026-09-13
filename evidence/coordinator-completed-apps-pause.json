@@ -1,0 +1,35 @@
+{
+  "observedAtUtc": "2026-09-12T05:35:58.6749364Z",
+  "scope": [
+    "ca-ptu-networkcheck",
+    "ptu-macae",
+    "ca-ptu-modernize-api",
+    "ca-ptu-modernize-ui",
+    "chatbot-chat-api",
+    "chatbot-scenario-api",
+    "chatbot-chat-ui",
+    "chatbot-scenario-ui",
+    "ca-dkm-api",
+    "ca-dkm-web",
+    "ca-dkm-kernel",
+    "ca-ptu-conversation-api",
+    "ca-ptu-conversation-ui"
+  ],
+  "contentExcludedBecauseEvaluationActive": true,
+  "actions": [
+    {
+      "app": "ptu-macae",
+      "resourceGroup": "rg-ptu-macae-demo",
+      "revision": "ptu-macae--0000010",
+      "action": "deactivated",
+      "observedAtUtc": "2026-09-12T05:34:42.3716827Z"
+    },
+    {
+      "app": "ca-ptu-modernize-ui",
+      "resourceGroup": "rg-ptu-modernize-demo",
+      "revision": "ca-ptu-modernize-ui--wjo1usj",
+      "action": "deactivated",
+      "observedAtUtc": "2026-09-12T05:34:58.7439098Z"
+    }
+  ]
+}

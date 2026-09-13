@@ -1,0 +1,20 @@
+{
+  "source": "Authenticated exec in CKM API replica",
+  "checked_at": "2026-09-12T03:10:01.317908+00:00",
+  "revision": "ca-ptu-conversation-api--0000003",
+  "replica": "ca-ptu-conversation-api--0000003-7675c4b7b8-b5tps",
+  "endpoint": "https://aif-ptu-conversation-7d804f70.openai.azure.com",
+  "addresses": ["51.12.73.214"],
+  "authenticated_metadata_http_status": 403,
+  "error_type": "PermissionDeniedError",
+  "message_classifier_network_denial": false,
+  "arm_verified_pna": "Disabled",
+  "arm_verified_disable_local_auth": true,
+  "private_route_present": false,
+  "authorization_success_claimed": false,
+  "decision": "Private endpoint is required to reach the PNA-disabled account; after private connectivity is established, recheck Entra authorization separately. Do not infer that the403 message proves only a firewall cause.",
+  "model_requests": 0,
+  "new_pe_requested": 1,
+  "approved_per_app_cap": 4,
+  "pna_change_requested": false
+}

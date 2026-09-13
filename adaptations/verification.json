@@ -1,0 +1,229 @@
+{
+  "verified_at_utc": "2026-09-13T02:05:57.297798+00:00",
+  "status": "passed",
+  "manifest_counts": {
+    "git_clones": 16,
+    "standalone_sources": 1,
+    "patches": 5,
+    "tracked_files": 22,
+    "authored_source_files": 17,
+    "license_copies": 8,
+    "specific_omission_records": 19
+  },
+  "patch_syntax": [
+    {
+      "path": "first-pass/chatbot/tracked.patch",
+      "exit_code": 0,
+      "stat": "0 files changed"
+    },
+    {
+      "path": "first-pass/dkm/tracked.patch",
+      "exit_code": 0,
+      "stat": "0 files changed"
+    },
+    {
+      "path": "first-pass/modernize/tracked.patch",
+      "exit_code": 0,
+      "stat": "0 files changed"
+    },
+    {
+      "path": "first-pass/macae/tracked.patch",
+      "exit_code": 0,
+      "stat": "0 files changed"
+    },
+    {
+      "path": "continuation/stepfly/tracked.patch",
+      "exit_code": 0,
+      "stat": "0 files changed"
+    }
+  ],
+  "credential_scan": {
+    "rules_tested": 9,
+    "files_scanned": 35,
+    "high_confidence_matches": 0,
+    "matched_values_printed": false
+  },
+  "python_ast_files_parsed": 6,
+  "provider_harness_guards_statically_checked": 4,
+  "provider_code_imported_or_executed": false,
+  "patches_applied_to_external_clones": false,
+  "azure_or_inference_operations": 0,
+  "file_hashes": [
+    {
+      "path": "continuation/ccv-lab/files/voicelive_probe.py",
+      "bytes": 5703,
+      "sha256": "893b1d472c2765babba046f76b4c3553fef1caa359d12e4e1981b04a15b25145"
+    },
+    {
+      "path": "continuation/ccv-lab/upstream/call-center-voice/LICENSE.md",
+      "bytes": 1141,
+      "sha256": "1791bb6659f130919ae065ca2d436934724377479cd4e7f997661ba231d9ac17"
+    },
+    {
+      "path": "continuation/netaivideoanalyzer/files/src/ConsoleAOAI-Lab-VideoAnalyzer/ConsoleAOAI-Lab-VideoAnalyzer.csproj",
+      "bytes": 883,
+      "sha256": "e2999a7ae86b042295460bf910b87880f22f1f691f94b1d370d48cd54b2c11e3"
+    },
+    {
+      "path": "continuation/netaivideoanalyzer/files/src/ConsoleAOAI-Lab-VideoAnalyzer/Program.cs",
+      "bytes": 7576,
+      "sha256": "bc8477d6760291bd6285134d006fd00c737e19c10e5cb5a141654a4c0c4df3de"
+    },
+    {
+      "path": "continuation/netaivideoanalyzer/upstream/LICENSE",
+      "bytes": 1065,
+      "sha256": "957cb08bbedcfb7baba22dc6254621fa85d0c93c9a5a2d576684e37644bf285d"
+    },
+    {
+      "path": "continuation/stepfly/files/lab_instrument.py",
+      "bytes": 7981,
+      "sha256": "e5478524339271a337eb9042976a12f3c467def06bdd7534b812c519d70d3459"
+    },
+    {
+      "path": "continuation/stepfly/files/lab_run.py",
+      "bytes": 2537,
+      "sha256": "7622cf738e4e6ab0d49f9806fc5fa6d7957c9e3482d506002ce055fe90f3eb56"
+    },
+    {
+      "path": "continuation/stepfly/files/requirements.lab.txt",
+      "bytes": 887,
+      "sha256": "187e1c7a499c0ad6a8e272e2f4cf84a2fb156868d71c62f19ac67f42ce308992"
+    },
+    {
+      "path": "continuation/stepfly/tracked.patch",
+      "bytes": 672,
+      "sha256": "862c18479cbf90eea6c521e3ef4d9d5c4c856e78f59305caf5902a3546fb6ebe"
+    },
+    {
+      "path": "continuation/stepfly/upstream/LICENSE",
+      "bytes": 1141,
+      "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383"
+    },
+    {
+      "path": "first-pass/chatbot/files/infra/chatbot-cloud-identities.bicep",
+      "bytes": 2099,
+      "sha256": "646a4190b9590f252974392232b88303842f2bc0e6ebbb6d0f5014c8e4105531"
+    },
+    {
+      "path": "first-pass/chatbot/files/infra/chatbot-cloud.bicep",
+      "bytes": 1789,
+      "sha256": "f0cbccf8e8a3a591bfbf66f6ea119a5b1e0ff9b7911316eb19e15ed14ea32491"
+    },
+    {
+      "path": "first-pass/chatbot/files/infra/chatbot-container-app.bicep",
+      "bytes": 3416,
+      "sha256": "916ed0f9d27da7cb334487f7c6023fd181d9b6c2b714b7532fb0afc6358cd238"
+    },
+    {
+      "path": "first-pass/chatbot/files/infra/chatbot-local-access.bicep",
+      "bytes": 724,
+      "sha256": "70884a0e07102c8904e9b56b21b609b514a63b0f9604fdcd69d619eba1483f18"
+    },
+    {
+      "path": "first-pass/chatbot/files/infra/chatbot-local-eval.bicep",
+      "bytes": 4565,
+      "sha256": "4ac5f6af1c1f1462a6d1aa380eadcd7c921b87c3f2ffa4f50569ec8780b50a3e"
+    },
+    {
+      "path": "first-pass/chatbot/files/infra/chatbot-registry-access.bicep",
+      "bytes": 604,
+      "sha256": "c8dc75502565ec4463e086289c6737da177b1795ae0181a791b3f5a0ae8877b1"
+    },
+    {
+      "path": "first-pass/chatbot/files/infra/chatbot-search-access.bicep",
+      "bytes": 3000,
+      "sha256": "61b26e404756e7496c177166fdcfea2c391682d3657b2c81da56651029e2e068"
+    },
+    {
+      "path": "first-pass/chatbot/files/infra/chatbot-search-approved.bicep",
+      "bytes": 992,
+      "sha256": "26d1d51bd3dc8735b8b73dc2b159b5d7beb4aca999667e257ce252529fb11222"
+    },
+    {
+      "path": "first-pass/chatbot/files/infra/chatbot-search-retry.bicep",
+      "bytes": 740,
+      "sha256": "96c2d54ddbd3f6863e8da141591a578d02409f05fd96ed68dc53a7fea3c2265b"
+    },
+    {
+      "path": "first-pass/chatbot/tracked.patch",
+      "bytes": 14455,
+      "sha256": "659e60aa054d68b1695b9815e3d26c850b0a2bb6bf0efe1b7b36d716a9854b18"
+    },
+    {
+      "path": "first-pass/chatbot/upstream/LICENSE",
+      "bytes": 1141,
+      "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383"
+    },
+    {
+      "path": "first-pass/dkm/files/App/backend-api/Microsoft.GS.DPS.Host/Helpers/EvaluationRetryConfiguration.cs",
+      "bytes": 955,
+      "sha256": "d2bc533034b6b08bbfce6a94036d4cdabeb58eb3e69f4650fc1a549bc95a1cf3"
+    },
+    {
+      "path": "first-pass/dkm/files/App/kernel-memory/service/Abstractions/Configuration/EvaluationRetryConfiguration.cs",
+      "bytes": 963,
+      "sha256": "496a8d47468ae53c5f478ebf37c09ccaf56e1f1f92da49c4051e587c8b5b9c52"
+    },
+    {
+      "path": "first-pass/dkm/tracked.patch",
+      "bytes": 10061,
+      "sha256": "c433197138151b8f13c908eed8b7ff58e66fcec613ad37c046dbe3130e6bcc4e"
+    },
+    {
+      "path": "first-pass/dkm/upstream/App/kernel-memory/LICENSE",
+      "bytes": 1141,
+      "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383"
+    },
+    {
+      "path": "first-pass/dkm/upstream/LICENSE",
+      "bytes": 1140,
+      "sha256": "d9a1b1e30d633d5732ea18e3cba9538d293ebc53e1a9e4e96ab739e0c5c4f1cb"
+    },
+    {
+      "path": "first-pass/macae/tracked.patch",
+      "bytes": 7040,
+      "sha256": "f8c17a24722e64fdfcbc205da13e1bf2edbab3793816b6f48ad52c7b6fe9b7b2"
+    },
+    {
+      "path": "first-pass/macae/upstream/LICENSE",
+      "bytes": 1142,
+      "sha256": "cf1fd5f1ee401dbd4d32f395f53dbdc42844c86e91052773c5de29d5c8181293"
+    },
+    {
+      "path": "first-pass/modernize/tracked.patch",
+      "bytes": 4588,
+      "sha256": "35f30b7ba2c079670bd88edb561acefa41dc172f37c9108399d5515608eb1ea1"
+    },
+    {
+      "path": "first-pass/modernize/upstream/LICENSE",
+      "bytes": 1140,
+      "sha256": "d9a1b1e30d633d5732ea18e3cba9538d293ebc53e1a9e4e96ab739e0c5c4f1cb"
+    },
+    {
+      "path": "manifest.json",
+      "bytes": 48929,
+      "sha256": "24c60c6d7953d719957895dc9bdc94328dc9dce809ae5a48c0868fdaae0409e1"
+    },
+    {
+      "path": "README.md",
+      "bytes": 10324,
+      "sha256": "f01e33edd85140884a74d0517500e7e260215f502b6ab7efc2084f6d6a584142"
+    },
+    {
+      "path": "tools/capture.py",
+      "bytes": 25962,
+      "sha256": "c82178e1b43b02cf89e087a6ad8852f10f452b817e4256d465ef44ea4a6a2502"
+    },
+    {
+      "path": "tools/safety.py",
+      "bytes": 2942,
+      "sha256": "4a81c9730696a354a2f351ef5efd6a6806c9c075023ffea11d570a9c36f6ccb4"
+    },
+    {
+      "path": "tools/verify.py",
+      "bytes": 7375,
+      "sha256": "abd3e5ca5d741ff342b30e8fd303ba6ca9ea9ffd181d29a1f684ffbd1d02f127"
+    }
+  ],
+  "self_hash_note": "verification.json excludes itself from hashing; rerun verifier after any archive edit."
+}

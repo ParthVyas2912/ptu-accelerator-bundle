@@ -1,0 +1,15 @@
+{
+  "cpu": 2,
+  "finish": "2026-09-12T04:21:18.815386+00:00",
+  "images": [
+    {
+      "digest": "sha256:fa78799cb2142dfdeae5ed38c9e48d87f9cb7de15df25be6c68a6fa716fafea3",
+      "registry": "acrptubundle7d804f70.azurecr.io",
+      "repository": "conversation/api",
+      "tag": "8a00aa5-sqltools"
+    }
+  ],
+  "runId": "chx",
+  "start": "2026-09-12T04:20:50.817412+00:00",
+  "status": "Succeeded"
+}

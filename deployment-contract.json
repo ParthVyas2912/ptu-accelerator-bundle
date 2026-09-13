@@ -1,0 +1,114 @@
+{
+  "subscriptionId": "1feb53b2-854a-4ea7-b5a6-709b7d804f70",
+  "repoRoot": "C:\\Users\\partvyas\\OneDrive - Microsoft\\Desktop\\repo",
+  "bundleRoot": "C:\\Users\\partvyas\\OneDrive - Microsoft\\Desktop\\projects\\PTU accelerator Bundle",
+  "newResourceGroup": "rg-ptu-bundle-demo",
+  "preferredLocation": "canadacentral",
+  "modelAttemptBudget": {
+    "portfolioMaximum": 100,
+    "defaultPerApp": 12,
+    "cwydClosedEvaluationTotal": 16,
+    "macaeApprovedTotal": 24,
+    "modernizeClosedEvaluationTotal": 10,
+    "documentsApprovedTotal": 14,
+    "chatbotClosedEvaluationUnits": 10,
+    "conversationClosedEvaluationTotal": 9,
+    "contentApprovedTotal": 17,
+    "allocatedTotal": 100,
+    "centrallyReserved": 0,
+    "counting": "All live model attempts, including completed requests, failed attempts and retries. Chatbot also commits conservative hosted-operation allowances; allowance units are not observed request counts. No load testing."
+  },
+  "approvedExceptions": {
+    "sharedPrivateConnectivity": {
+      "scope": "New rg-ptu-bundle-platform, eastus2, MCAPS tenant only",
+      "reason": "New lab Cosmos/Storage public access is disabled; run application compute through private endpoints rather than weakening policy.",
+      "resources": "Dedicated VNet 10.246.0.0/16, Consumption-only Container Apps environment, Basic ACR admin disabled, private endpoints and VNet-linked service DNS zones",
+      "networkBoundary": "This is not a JDCP spoke. Do not access/create/change any JDCP hub or protected application networking. MCAPS-local DNS is not a reusable JDCP DNS design.",
+      "hosting": "Per-app maximum one replica/service and minimum zero where compatible; small actual resource requests, not oversized upstream defaults. Workers may be paused after verification.",
+      "ingress": "Public model-consuming routes require authentication or explicit single-client CIDR restrictions from evidence/preflight/lab-ingress.json before exposure. Internal services remain nonpublic.",
+      "requirements": "Keep target public network access disabled. Use per-app managed identities and least-privilege data roles. Parent coordinates private endpoints; no duplicate platforms."
+    },
+    "content": {
+      "scope": "New rg-ptu-content-demo, eastus2",
+      "resources": "StorageV2 Standard_LRS Hot; Cosmos Mongo 7.0 single-region shared manual 400 RU/s, account ceiling 400; App Configuration Standard; AIServices S0/project CU GA and gpt-5.1 GlobalStandard initial capacity 50",
+      "knownFixedUsdPerHour": 0.082,
+      "hosting": "Native local four services; sequential startup with 4GiB aggregate memory guard; no ACA, ACR, AKS or VMs",
+      "authException": "Only the app-required Mongo connection string may use runtime-memory credentials; never write or log it. Foundry, Storage and App Configuration remain Entra-only.",
+      "requirements": "Explicit native-dependency adaptation, LRS and capped shared throughput; isolate unavoidable hardcoded object names in new accounts. Synthetic data only. Capture CU pages separately from direct model tokens."
+    },
+    "conversation": {
+      "scope": "New isolated accel-conversation-* or rg-ptu-conversation-demo resource group in a verified repo-supported region",
+      "resources": "AIServices S0/project/CU, gpt-5.2 GlobalStandard capacity 10 and text-embedding-3-small capacity 10; Search S1 1x1 if required, Basic only if confirmed compatible; LRS Blob; SQL GP_S_Gen5 serverless minimum 0.5 or 1 where documented, maximum 2 vCore, auto-pause 60 minutes",
+      "fixedActiveCostReviewLimitUsdPerHour": 1.5,
+      "hosting": "Native local apps; no App Service, ACR or Container Apps initially",
+      "requirements": "Preflight regional service availability and full cost before creation. Prefer Entra; any required SQL password runtime memory only. No stock hooks writing secret files. Synthetic non-Canada processing must be explicit. No substitute generic chat."
+    },
+    "macae": {
+      "scope": "New rg-ptu-macae-demo, eastus2",
+      "resources": "AIServices S0/project Entra-only; gpt-5.4 and gpt-5.4-mini GlobalStandard capacity 10 each; single-region Cosmos NoSQL Serverless; Phase B Search Basic 1x1 semantic free and Standard_LRS Blob",
+      "hosting": "Native local API, MCP and UI; no ACR or cloud compute",
+      "requirements": "Documented native runtime, minimum required role assignments on new resources only, real synthetic functional tests, no PTUs or existing model mutations."
+    },
+    "modernize": {
+      "scope": "New rg-ptu-modernize-demo, canadacentral",
+      "resources": "StorageV2 Standard_LRS Hot and single-region Cosmos NoSQL Serverless with native database/containers",
+      "cosmosRegionException": "EastUS2 serverless cosmos-ptu-modernize-eus20911 approved after both Canadian regions reported subscription access unavailable. Synthetic MCAPS data only; no DND residency approval. Preserve failed resources and existing Canadian storage/Foundry.",
+      "reuse": "Documented edcfoundryhack01/edc-hack-proj/gpt-5.1 runtime configuration; no existing model mutation",
+      "hosting": "Native local API/UI/worker; no new model deployments, cloud compute or ACR"
+    },
+    "chatbot": {
+      "scope": "New isolated accel-chatbot-* resource group, eastus2",
+      "resources": "AIServices S0/project Entra-only; gpt-5.4-mini GlobalStandard capacity 10, text-embedding-3-small capacity 10; realtime-mini capacity 1 only for an actual voice test; Search Basic 1x1 semantic free; Cosmos NoSQL Serverless native ecommerce database",
+      "searchRegionException": "One Basic 1x1 service may use CanadaCentral or another available US/Canadian region after EastUS2 capacity failure. No S1 escalation; document synthetic-data cross-region configuration.",
+      "hosting": "Prefer native local apps; fallback only if documented: one Linux B1 plan hosting apps and one Basic ACR",
+      "requirements": "No higher SKUs, AKS, PTUs or changes to existing model deployments; authenticate/restrict any public model-consuming endpoints."
+    },
+    "documents": {
+      "reason": "Short official-stack evaluation; preserve app fidelity instead of inventing a non-AKS replacement.",
+      "scope": "New isolated accel-dkm-* resource group only",
+      "aks": "Initial 2 workers, maximum 2; stop this new cluster after testing. D4ds_v5 was subscription-unavailable in four regions. A compatible subscription-available x86_64 general-purpose 4vCPU/16GiB alternative is approved within the same cost limit, after checking disk/CPU assumptions. Prefer existing SKU parameter; a narrow SKU parameterization is permitted and must be recorded/validated.",
+      "fixedCostReviewLimitUsdPerHour": 1.5,
+      "modelDeployments": "New Standard or GlobalStandard gpt-5-mini and text-embedding-3-large, minimum viable documented capacities within existing quota",
+      "requirements": "Record full inventory and estimate before deployment. No deletion, PTUs, protected-resource changes, policy bypass, or SKU escalation. Verify stopped cluster and report residual recurring costs."
+    }
+  },
+  "sharedModels": {
+    "resourceGroup": "rg-edc-foundry-hack",
+    "accountName": "edcfoundryhack01",
+    "openAIEndpoint": "https://edcfoundryhack01.openai.azure.com/",
+    "chatDeployment": "gpt-4.1-mini",
+    "embeddingDeployment": "text-embedding-3-small",
+    "embeddingDimensions": 1536
+  },
+  "protectedResourceGroups": [
+    "rg-specsuite-ai-can",
+    "rg-demo",
+    "specsmith-rg",
+    "rg-planetaryexplorer",
+    "rg-pexalex"
+  ],
+  "playbookText": "mcaps_ai_accelerator_deployment_and_testing_playbook_20260911_225754.txt",
+  "portfolioText": "dnd_first_ptu_driven_solution_portfolio_20260911_225535.txt",
+  "existingSearch": {
+    "resourceGroup": "rg-edc-foundry-hack",
+    "name": "edc-hack-search",
+    "endpoint": "https://edc-hack-search.search.windows.net"
+  },
+  "constraints": [
+    "No PTU purchase, reservations, provisioned capacity, model capacity increases, GPUs, VMs, AKS, premium search, or dedicated compute.",
+    "Use synthetic unclassified demonstration data only; this is MCAPS testing, not a DND/JDCP deployment or accreditation.",
+    "Preserve existing resources, data, model deployments, network settings, and user changes.",
+    "New billable Azure infrastructure must be coordinated with the parent agent before creation.",
+    "Reuse non-protected existing model endpoints only when the repository documents this configuration and model/region/API compatibility is proven; do not alter them. Do not speculatively retrofit IaC. Use unique ptu-<app>- prefixes for new search indexes and other data objects.",
+    "SpecSuite and Planetary Explorer resources are inventory-only: no model calls, new permissions, reuse, reconfiguration, retagging, or redeployment. Protect every resource with these app associations, not only the listed resource groups.",
+    "Never print credentials, tokens, keys, connection strings, or save them in source, reports, or OneDrive files. Prefer Azure identity. Runtime environment variables and Azure secret stores are allowed.",
+    "Native local servers must bind to 127.0.0.1; public cloud apps require authentication or restricted ingress before exposing paid-model operations.",
+    "Small functional tests only; no load tests or bulk ingestion. Maximum 12 live model requests per app agent in this first pass, including retries; request additional allowance from the parent before exceeding this. Retry transient failures with bounded backoff.",
+    "Keep processes attached to this session unless the user explicitly requests survival after CLI exit. Record start commands and running process/session IDs.",
+    "Record real end-to-end results separately from unit tests, UI-only health checks, compatibility adaptations, and blocked features.",
+    "Do not claim actual PTU utilization: existing inventoried deployments are Standard or GlobalStandard, not provisioned SKUs.",
+    "The user supplied readable Word documents. Use their extracted text and current official repo docs. The user's explicit parallel-subagent request overrides the playbook's sequential execution suggestion. Record other necessary deviations.",
+    "Before deployment record target tenant/subscription, resource group, location, model SKUs, proposed resources and fixed-cost items. Use accelerator-specific resource groups unless explicitly coordinated.",
+    "Use tags workload=accelerator-eval owner=parth environment=mcaps-nonprod accelerator=<shortname> protected=false. Never delete Azure resources automatically."
+  ]
+}

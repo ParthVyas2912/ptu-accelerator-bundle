@@ -1,0 +1,256 @@
+{
+  "capturedUtc": "2026-09-12T00:47:20.964437+00:00",
+  "approval": "content-native-eastus2",
+  "subscription": "1feb53b2-854a-4ea7-b5a6-709b7d804f70",
+  "resourceGroup": "rg-ptu-content-demo",
+  "resources": [
+    {
+      "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-content-demo/providers/Microsoft.Storage/storageAccounts/stptuvcontent260911",
+      "location": "eastus2",
+      "name": "stptuvcontent260911",
+      "sku": {
+        "capacity": null,
+        "family": null,
+        "model": null,
+        "name": "Standard_LRS",
+        "size": null,
+        "tier": "Standard"
+      },
+      "type": "Microsoft.Storage/storageAccounts"
+    },
+    {
+      "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-content-demo/providers/Microsoft.DocumentDB/databaseAccounts/cosmos-ptuv-content-260911",
+      "location": "eastus2",
+      "name": "cosmos-ptuv-content-260911",
+      "sku": null,
+      "type": "Microsoft.DocumentDB/databaseAccounts"
+    },
+    {
+      "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-content-demo/providers/Microsoft.AppConfiguration/configurationStores/appcs-ptuv-content-260911",
+      "location": "eastus2",
+      "name": "appcs-ptuv-content-260911",
+      "sku": {
+        "capacity": null,
+        "family": null,
+        "model": null,
+        "name": "standard",
+        "size": null,
+        "tier": null
+      },
+      "type": "Microsoft.AppConfiguration/configurationStores"
+    },
+    {
+      "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-content-demo/providers/Microsoft.CognitiveServices/accounts/aif-ptuv-content-260911",
+      "location": "eastus2",
+      "name": "aif-ptuv-content-260911",
+      "sku": {
+        "capacity": null,
+        "family": null,
+        "model": null,
+        "name": "S0",
+        "size": null,
+        "tier": null
+      },
+      "type": "Microsoft.CognitiveServices/accounts"
+    },
+    {
+      "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-content-demo/providers/Microsoft.CognitiveServices/accounts/aif-ptuv-content-260911/projects/ptu-content-project",
+      "location": "eastus2",
+      "name": "aif-ptuv-content-260911/ptu-content-project",
+      "sku": null,
+      "type": "Microsoft.CognitiveServices/accounts/projects"
+    }
+  ],
+  "storage": {
+    "networkRules": {
+      "bypass": "None",
+      "defaultAction": "Deny",
+      "ipRules": [
+        {
+          "action": "Allow",
+          "ipAddressOrRange": "174.112.74.34"
+        }
+      ],
+      "ipv6Rules": [],
+      "resourceAccessRules": null,
+      "virtualNetworkRules": []
+    },
+    "publicNetworkAccess": "Disabled",
+    "sharedKeyAccess": false,
+    "sku": "Standard_LRS",
+    "state": "Succeeded"
+  },
+  "cosmos": {
+    "api": {
+      "serverVersion": "7.0"
+    },
+    "capacity": {
+      "totalThroughputLimit": 400
+    },
+    "ipRules": [
+      {
+        "ipAddressOrRange": "174.112.74.34"
+      }
+    ],
+    "publicNetworkAccess": "Disabled",
+    "state": "Succeeded"
+  },
+  "mongoDatabaseThroughput": {
+    "autoscale": null,
+    "throughput": 400
+  },
+  "ai": {
+    "disableLocalAuth": true,
+    "network": {
+      "bypass": null,
+      "defaultAction": "Deny",
+      "ipRules": [
+        {
+          "value": "174.112.74.34"
+        }
+      ],
+      "virtualNetworkRules": []
+    },
+    "publicNetworkAccess": "Enabled",
+    "state": "Succeeded"
+  },
+  "model": {
+    "model": {
+      "callRateLimit": null,
+      "format": "OpenAI",
+      "name": "gpt-5.1",
+      "publisher": null,
+      "source": null,
+      "sourceAccount": null,
+      "version": "2025-11-13"
+    },
+    "name": "gpt-5.1",
+    "sku": {
+      "capacity": 50,
+      "family": null,
+      "name": "GlobalStandard",
+      "size": null,
+      "tier": null
+    },
+    "state": "Succeeded"
+  },
+  "appconfig": {
+    "dataPlaneProxy": {
+      "authenticationMode": "Pass-through",
+      "privateLinkDelegation": "Disabled"
+    },
+    "disableLocalAuth": true,
+    "publicNetworkAccess": "Enabled",
+    "sku": "standard",
+    "state": "Succeeded"
+  },
+  "storagePolicyModification": [
+    {
+      "properties": {
+        "ancestors": "a600acd0-3028-4689-8402-3b471d7d924d",
+        "conflictingFields": "",
+        "entity": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourcegroups/rg-ptu-content-demo/providers/Microsoft.Storage/storageAccounts/stptuvcontent260911",
+        "eventCategory": "Policy",
+        "fields": "[{\"operation\":\"AddOrReplace\",\"field\":\"Microsoft.Storage/storageAccounts/publicNetworkAccess\",\"condition\":\"[greaterOrEquals(requestContext().apiVersion, '2021-04-01')]\"}]",
+        "hierarchy": "",
+        "isComplianceCheck": "False",
+        "message": "Microsoft.Authorization/policies/modify/action",
+        "policies": "[{\"policyDefinitionId\":\"/providers/Microsoft.Management/managementGroups/a600acd0-3028-4689-8402-3b471d7d924d/providers/Microsoft.Authorization/policyDefinitions/StorageAccount_PublicNetwork_Modify\",\"policySetDefinitionId\":\"/providers/Microsoft.Management/managementGroups/a600acd0-3028-4689-8402-3b471d7d924d/providers/Microsoft.Authorization/policySetDefinitions/MCAPSGovDeployPolicies\",\"policyDefinitionReferenceId\":\"StorageAccountPublicNetworkModify\",\"policySetDefinitionName\":\"MCAPSGovDeployPolicies\",\"policySetDefinitionDisplayName\":\"Set of Deploy and Modify policies used by MCAPS Governance to ensure resources are compliant with security controls\",\"policySetDefinitionVersion\":\"1.0.0\",\"policyDefinitionName\":\"StorageAccount_PublicNetwork_Modify\",\"policyDefinitionDisplayName\":\"SFI - Disable public network access on Storage accounts (excluding NSP configured resources)\",\"policyDefinitionVersion\":\"1.0.0\",\"policyDefinitionEffect\":\"modify\",\"policyAssignmentId\":\"/providers/Microsoft.Management/managementGroups/a600acd0-3028-4689-8402-3b471d7d924d/providers/Microsoft.Authorization/policyAssignments/MCAPSGovDeployPolicies\",\"policyAssignmentName\":\"MCAPSGovDeployPolicies\",\"policyAssignmentDisplayName\":\"MCAPSGov Deploy and Modify Policies\",\"policyAssignmentScope\":\"/providers/Microsoft.Management/managementGroups/a600acd0-3028-4689-8402-3b471d7d924d\",\"policyAssignmentEnforcementMode\":\"Default\",\"policyExemptionIds\":[],\"policyEnrollmentIds\":[]}]",
+        "resourceLocation": "eastus2",
+        "skippedFields": "[]"
+      },
+      "time": "2026-09-12T00:22:51.2093923Z"
+    },
+    {
+      "properties": {
+        "ancestors": "a600acd0-3028-4689-8402-3b471d7d924d",
+        "conflictingFields": "",
+        "entity": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-content-demo/providers/Microsoft.Storage/storageAccounts/stptuvcontent260911",
+        "eventCategory": "Policy",
+        "fields": "[{\"operation\":\"AddOrReplace\",\"field\":\"Microsoft.Storage/storageAccounts/publicNetworkAccess\",\"condition\":\"[greaterOrEquals(requestContext().apiVersion, '2021-04-01')]\"}]",
+        "hierarchy": "",
+        "isComplianceCheck": "False",
+        "message": "Microsoft.Authorization/policies/modify/action",
+        "policies": "[{\"policyDefinitionId\":\"/providers/Microsoft.Management/managementGroups/a600acd0-3028-4689-8402-3b471d7d924d/providers/Microsoft.Authorization/policyDefinitions/StorageAccount_PublicNetwork_Modify\",\"policySetDefinitionId\":\"/providers/Microsoft.Management/managementGroups/a600acd0-3028-4689-8402-3b471d7d924d/providers/Microsoft.Authorization/policySetDefinitions/MCAPSGovDeployPolicies\",\"policyDefinitionReferenceId\":\"StorageAccountPublicNetworkModify\",\"policySetDefinitionName\":\"MCAPSGovDeployPolicies\",\"policySetDefinitionDisplayName\":\"Set of Deploy and Modify policies used by MCAPS Governance to ensure resources are compliant with security controls\",\"policySetDefinitionVersion\":\"1.0.0\",\"policyDefinitionName\":\"StorageAccount_PublicNetwork_Modify\",\"policyDefinitionDisplayName\":\"SFI - Disable public network access on Storage accounts (excluding NSP configured resources)\",\"policyDefinitionVersion\":\"1.0.0\",\"policyDefinitionEffect\":\"modify\",\"policyAssignmentId\":\"/providers/Microsoft.Management/managementGroups/a600acd0-3028-4689-8402-3b471d7d924d/providers/Microsoft.Authorization/policyAssignments/MCAPSGovDeployPolicies\",\"policyAssignmentName\":\"MCAPSGovDeployPolicies\",\"policyAssignmentDisplayName\":\"MCAPSGov Deploy and Modify Policies\",\"policyAssignmentScope\":\"/providers/Microsoft.Management/managementGroups/a600acd0-3028-4689-8402-3b471d7d924d\",\"policyAssignmentEnforcementMode\":\"Default\",\"policyExemptionIds\":[],\"policyEnrollmentIds\":[]}]",
+        "resourceLocation": "eastus2",
+        "skippedFields": "[]"
+      },
+      "time": "2026-09-12T00:22:49.0892167Z"
+    },
+    {
+      "properties": {
+        "ancestors": "a600acd0-3028-4689-8402-3b471d7d924d",
+        "conflictingFields": "",
+        "entity": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-content-demo/providers/Microsoft.Storage/storageAccounts/stptuvcontent260911",
+        "eventCategory": "Policy",
+        "fields": "[{\"operation\":\"AddOrReplace\",\"field\":\"Microsoft.Storage/storageAccounts/publicNetworkAccess\",\"condition\":\"[greaterOrEquals(requestContext().apiVersion, '2021-04-01')]\"}]",
+        "hierarchy": "",
+        "isComplianceCheck": "False",
+        "message": "Microsoft.Authorization/policies/modify/action",
+        "policies": "[{\"policyDefinitionId\":\"/providers/Microsoft.Management/managementGroups/a600acd0-3028-4689-8402-3b471d7d924d/providers/Microsoft.Authorization/policyDefinitions/StorageAccount_PublicNetwork_Modify\",\"policySetDefinitionId\":\"/providers/Microsoft.Management/managementGroups/a600acd0-3028-4689-8402-3b471d7d924d/providers/Microsoft.Authorization/policySetDefinitions/MCAPSGovDeployPolicies\",\"policyDefinitionReferenceId\":\"StorageAccountPublicNetworkModify\",\"policySetDefinitionName\":\"MCAPSGovDeployPolicies\",\"policySetDefinitionDisplayName\":\"Set of Deploy and Modify policies used by MCAPS Governance to ensure resources are compliant with security controls\",\"policySetDefinitionVersion\":\"1.0.0\",\"policyDefinitionName\":\"StorageAccount_PublicNetwork_Modify\",\"policyDefinitionDisplayName\":\"SFI - Disable public network access on Storage accounts (excluding NSP configured resources)\",\"policyDefinitionVersion\":\"1.0.0\",\"policyDefinitionEffect\":\"modify\",\"policyAssignmentId\":\"/providers/Microsoft.Management/managementGroups/a600acd0-3028-4689-8402-3b471d7d924d/providers/Microsoft.Authorization/policyAssignments/MCAPSGovDeployPolicies\",\"policyAssignmentName\":\"MCAPSGovDeployPolicies\",\"policyAssignmentDisplayName\":\"MCAPSGov Deploy and Modify Policies\",\"policyAssignmentScope\":\"/providers/Microsoft.Management/managementGroups/a600acd0-3028-4689-8402-3b471d7d924d\",\"policyAssignmentEnforcementMode\":\"Default\",\"policyExemptionIds\":[],\"policyEnrollmentIds\":[]}]",
+        "resourceLocation": "eastus2",
+        "skippedFields": "[]"
+      },
+      "time": "2026-09-12T00:22:46.4539101Z"
+    },
+    {
+      "properties": {
+        "ancestors": "a600acd0-3028-4689-8402-3b471d7d924d",
+        "conflictingFields": "",
+        "entity": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-content-demo/providers/Microsoft.Storage/storageAccounts/stptuvcontent260911",
+        "eventCategory": "Policy",
+        "fields": "[{\"operation\":\"AddOrReplace\",\"field\":\"Microsoft.Storage/storageAccounts/publicNetworkAccess\",\"condition\":\"[greaterOrEquals(requestContext().apiVersion, '2021-04-01')]\"}]",
+        "hierarchy": "",
+        "isComplianceCheck": "False",
+        "message": "Microsoft.Authorization/policies/modify/action",
+        "policies": "[{\"policyDefinitionId\":\"/providers/Microsoft.Management/managementGroups/a600acd0-3028-4689-8402-3b471d7d924d/providers/Microsoft.Authorization/policyDefinitions/StorageAccount_PublicNetwork_Modify\",\"policySetDefinitionId\":\"/providers/Microsoft.Management/managementGroups/a600acd0-3028-4689-8402-3b471d7d924d/providers/Microsoft.Authorization/policySetDefinitions/MCAPSGovDeployPolicies\",\"policyDefinitionReferenceId\":\"StorageAccountPublicNetworkModify\",\"policySetDefinitionName\":\"MCAPSGovDeployPolicies\",\"policySetDefinitionDisplayName\":\"Set of Deploy and Modify policies used by MCAPS Governance to ensure resources are compliant with security controls\",\"policySetDefinitionVersion\":\"1.0.0\",\"policyDefinitionName\":\"StorageAccount_PublicNetwork_Modify\",\"policyDefinitionDisplayName\":\"SFI - Disable public network access on Storage accounts (excluding NSP configured resources)\",\"policyDefinitionVersion\":\"1.0.0\",\"policyDefinitionEffect\":\"modify\",\"policyAssignmentId\":\"/providers/Microsoft.Management/managementGroups/a600acd0-3028-4689-8402-3b471d7d924d/providers/Microsoft.Authorization/policyAssignments/MCAPSGovDeployPolicies\",\"policyAssignmentName\":\"MCAPSGovDeployPolicies\",\"policyAssignmentDisplayName\":\"MCAPSGov Deploy and Modify Policies\",\"policyAssignmentScope\":\"/providers/Microsoft.Management/managementGroups/a600acd0-3028-4689-8402-3b471d7d924d\",\"policyAssignmentEnforcementMode\":\"Default\",\"policyExemptionIds\":[],\"policyEnrollmentIds\":[]}]",
+        "resourceLocation": "eastus2",
+        "skippedFields": "[]"
+      },
+      "time": "2026-09-12T00:22:31.9628694Z"
+    }
+  ],
+  "memoryAvailableGiB": 1.038,
+  "runtime": {
+    "supervisorPid": 31520,
+    "supervisorCreated": 1789173544.1085784,
+    "started": 1789173544.544848,
+    "status": "failed",
+    "memoryLimitBytes": 4294967296,
+    "peakAggregateRssBytes": 0,
+    "services": [],
+    "api": "http://127.0.0.1:8113",
+    "web": "http://127.0.0.1:5113"
+  },
+  "listeners": {
+    "8113": false,
+    "5113": false
+  },
+  "requestLedger": [
+    {
+      "id": 1,
+      "kind": "cu-metadata",
+      "service": "dependency-preflight",
+      "pid": 30364,
+      "started": "2026-09-12T00:39:33.375663+00:00",
+      "method": "GET",
+      "host": "aif-ptuv-content-260911.cognitiveservices.azure.com",
+      "path": "/contentunderstanding/analyzers/prebuilt-layout",
+      "model": null,
+      "status": 403,
+      "elapsed_ms": 1459.467,
+      "usage": null,
+      "pages": null,
+      "operation": null,
+      "error": "403: Access denied due to Virtual Network/Firewall rules."
+    }
+  ],
+  "fixedCostUsdPerHour": 0.082,
+  "fixedCostIsMeasuredBill": false,
+  "blockers": [
+    "MCAPSGovDeployPolicies / StorageAccount_PublicNetwork_Modify changed new storage publicNetworkAccess to Disabled; real Blob/Queue data-plane requests returned AuthorizationFailure. No network policy override or private endpoint was attempted.",
+    "CU GA prebuilt-layout metadata GET returned HTTP403 Virtual Network/Firewall rules despite exact client-IP allowlist; no CU analysis was sent.",
+    "Native supervisor admission refused startup with less than 5 GiB available; observed shared-host available memory fell to 0.62 GiB.",
+    "Initial AppConfig key deployment failed because ARM data-plane proxy defaulted to local authentication. Narrow Entra pass-through/Data Owner repair was applied, but immediate ARM and SDK settings writes returned Forbidden; settings remain unpopulated at latest check."
+  ]
+}

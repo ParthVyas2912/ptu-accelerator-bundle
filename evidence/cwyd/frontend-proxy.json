@@ -1,0 +1,27 @@
+{
+  "status": 200,
+  "body": {
+    "status": "pass",
+    "version": "v2",
+    "checks": [
+      {
+        "name": "foundry_iq",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "name": "database",
+        "status": "pass",
+        "detail": "db_type=postgresql"
+      },
+      {
+        "name": "search",
+        "status": "skip",
+        "detail": "index_store=pgvector (no separate search service)"
+      }
+    ]
+  },
+  "latency_ms": 50.7,
+  "url": "http://127.0.0.1:5112/api/health",
+  "verdict": "PASS frontend Vite proxy reaches genuine FastAPI"
+}

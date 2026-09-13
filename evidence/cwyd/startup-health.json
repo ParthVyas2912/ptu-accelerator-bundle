@@ -1,0 +1,26 @@
+{
+  "status": 200,
+  "actual": {
+    "status": "pass",
+    "version": "v2",
+    "checks": [
+      {
+        "name": "foundry_iq",
+        "status": "pass",
+        "detail": ""
+      },
+      {
+        "name": "database",
+        "status": "pass",
+        "detail": "db_type=postgresql"
+      },
+      {
+        "name": "search",
+        "status": "skip",
+        "detail": "index_store=pgvector (no separate search service)"
+      }
+    ]
+  },
+  "attempts": 23,
+  "startup_wait_seconds": 156.57
+}

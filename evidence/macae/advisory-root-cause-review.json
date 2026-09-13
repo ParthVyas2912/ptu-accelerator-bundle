@@ -1,0 +1,160 @@
+{
+  "app": "MACAE",
+  "reviewDateUtc": "2026-09-12",
+  "scope": "Bounded offline review of the final two-specialist advisory session, not a reinterpretation of the original onboarding demonstration",
+  "sessionId": "ptu-macae-advisory-cae0694a",
+  "investigationLookups": 6,
+  "lookups": [
+    {
+      "number": 1,
+      "source": "evidence\\macae\\cloud-advisory-request.json",
+      "method": "Read supplied input and native request response"
+    },
+    {
+      "number": 2,
+      "source": "evidence\\macae\\cloud-advisory-final.json",
+      "method": "Read saved plan/user_request and initial streaming events"
+    },
+    {
+      "number": 3,
+      "source": "evidence\\macae\\cloud-advisory-final.json",
+      "method": "Extract saved specialist outputs, terminal event, nonstreaming events and streaming field names"
+    },
+    {
+      "number": 4,
+      "source": "test-data\\macae\\advisory-team.json",
+      "method": "Read both custom specialist instructions, policies and tool flags"
+    },
+    {
+      "number": 5,
+      "source": "src\\backend\\orchestration\\orchestration_manager.py",
+      "method": "Focused static search of workflow construction, initial task and approval resume",
+      "observed": "Native workflow.run(task_text, stream=True), followed by workflow.run(stream=True, responses=responses)"
+    },
+    {
+      "number": 6,
+      "source": "src\\backend\\.venv\\Lib\\site-packages\\agent_framework_orchestrations\\_magentic.py",
+      "method": "Bounded search for participant/handoff message handling",
+      "limitation": "Search output was abbreviated; no complete per-specialist message trace was reconstructed. No additional lookup was performed."
+    }
+  ],
+  "preservedFacts": {
+    "source": "Actual saved request and saved approval plan user_request",
+    "startDate": "2026-10-01",
+    "orientationBooked": "2026-10-02",
+    "handbookAcknowledged": "2026-09-30",
+    "requiredTrainingCompleted": "2026-09-30",
+    "managerAccessApproval": "not recorded",
+    "device": "prepared Windows11 laptop",
+    "mfa": "pending",
+    "planUserRequestMatchesSavedInput": true,
+    "emptyPlanFactsField": true,
+    "emptyPlanFactsInterpretation": "The saved plan's facts field is empty, but its user_request contains the complete record. There is no evidence that this empty field was the specialist's actual prompt or caused a loss."
+  },
+  "actualSpecialistInputAvailability": {
+    "exactOutboundMessagesCaptured": false,
+    "effectiveRuntimeSystemInstructionsCaptured": false,
+    "managerRoutingInstructionCaptured": false,
+    "available": "Top-level native request, approval-plan user_request, custom team configuration and streamed specialist outputs",
+    "streamingDataFields": ["agent_name", "content", "is_final"],
+    "nonStreamingEventsInSavedFinal": ["final_result_message"],
+    "conclusion": "Upstream fact preservation is verified; delivery of those facts to each specialist cannot be verified from these artifacts."
+  },
+  "observedOutputs": {
+    "hrInvocations": 2,
+    "handbookFirstResponse": "no evidence provided that Alex Example acknowledged the handbook before start date; gap remains",
+    "trainingFirstResponse": "no evidence provided that required training was completed before start date; gap remains",
+    "orientationFirstResponse": "not confirmed/scheduled on the required start date, so this requirement is unmet",
+    "orientationSecondResponse": "not confirmed as scheduled on the required start date, so this is not satisfied",
+    "it": "Correctly treated the prepared Windows11 laptop as satisfying the device requirement and pending MFA/missing manager approval as access gaps",
+    "rawOutputEvidence": "cloud-advisory-final.json",
+    "rawOutputsModified": false
+  },
+  "hypotheses": {
+    "droppedHandoffContext": {
+      "status": "PLAUSIBLE_NOT_PROVED",
+      "evidence": "Dates survive in the saved approval plan. Actual specialist messages, routing instructions and effective runtime prompt are absent.",
+      "deterministicBugProved": false,
+      "attributionToNativeHandoffOrEvaluationChange": "UNRESOLVED",
+      "action": "No speculative context-preserving application change or library patch."
+    },
+    "conflictingDemoToolGroundTruth": {
+      "status": "NOT_EVIDENCED_IN_THIS_ADVISORY",
+      "evidence": "Both custom specialists have use_toolbox, use_file_search, use_knowledge_base, user_responses and coding_tools false. The saved final artifact contains no tool input/output events or contrary tool facts.",
+      "qualification": "This is evidence about the selected configuration and saved events, not a complete outbound/tool wire trace. Original onboarding tool outputs must not be imported as this distinct session's ground truth."
+    },
+    "legitimateDocumentaryEvidencePolicy": {
+      "status": "NOT_PRESENT_IN_REVIEWED_REQUEST_OR_CUSTOM_INSTRUCTIONS",
+      "evidence": "The request explicitly supplies all facts and says no external sources are needed. HR instructions say use only supplied facts/policies and distinguish satisfied requirements. Neither reviewed source requires documents or tool verification.",
+      "qualification": "The complete effective runtime prompt was not captured, so an additional instruction or stale definition cannot be conclusively excluded. A documentary-evidence requirement would be a legitimate separate policy if actually present; it was not established here.",
+      "policyChanged": false
+    },
+    "unsupportedFactualOmission": {
+      "status": "APP_LEVEL_FACT_UTILIZATION_MISMATCH_ESTABLISHED",
+      "evidence": "The delivered HR answer leaves handbook/training unmet despite their prior-to-start completion dates in the submitted record and saved plan.",
+      "modelOnlyHallucinationEstablished": false,
+      "qualification": "This compares the application input with its output, not a known specialist prompt with its response. Lost context, effective instructions and reasoning cannot be distinguished."
+    }
+  },
+  "orientationErratum": {
+    "previousOverstatementWithdrawn": "The report treated the orientation wording as a separate factual error or denial of any booking.",
+    "correctInterpretation": "The output qualifies its statement by the required start date. The actual booking is one day late, so orientation being unmet is correct. It omits the exact dates but does not necessarily deny that a booking exists.",
+    "otherLegitimateGaps": ["Missing manager access approval", "Pending MFA"]
+  },
+  "codeDecision": {
+    "deterministicContextLossProved": false,
+    "applicationOrFrameworkChanges": 0,
+    "contextFixApplied": false,
+    "newRegressionForContextFix": "Not applicable: no deterministic context-loss fix was justified",
+    "liveRetested": false,
+    "answersOrCompliancePolicyRewritten": false,
+    "terminalSuccess": false
+  },
+  "minimumFutureCallPlan": {
+    "authorization": "No calls authorized now; 24/24 already used. Any live plan requires a new explicit allowance/reallocation and separately authorized runtime restart.",
+    "zeroModelFirst": "Capture or locally mock the exact per-specialist outbound messages, effective instructions, routing messages and any tool results using synthetic data only. Assert both completion dates survive the native handoff before assigning a defect or making a live retest. Do not change compliance policy, insert a corrected answer or record credentials.",
+    "conditionalExistingTeamReuse": "Only if the unchanged previously RAI-checked team can be selected through the native route after restart. Do not use an update-path exemption or assume persistence without checking.",
+    "firstHrResponseDiagnostic": {
+      "minimumWithUnchangedExistingTeam": 6,
+      "minimumIfFreshConfigurationUploadNeeded": 7,
+      "breakdown": {
+        "requestRai": 1,
+        "scope": 1,
+        "facts": 1,
+        "plan": 1,
+        "firstSpecialistRouting": 1,
+        "firstHrResponse": 1
+      },
+      "explicitPlanApprovalRetained": true,
+      "scope": "A native partial diagnostic only; not a completed two-specialist workflow"
+    },
+    "completeTwoSpecialistWorkflow": {
+      "minimumWithUnchangedExistingTeam": 10,
+      "minimumIfFreshConfigurationUploadNeeded": 11,
+      "breakdown": {
+        "requestRai": 1,
+        "scope": 1,
+        "facts": 1,
+        "plan": 1,
+        "specialistRouting": 2,
+        "specialistResponses": 2,
+        "completionCheck": 1,
+        "finalSynthesis": 1
+      },
+      "qualification": "Structural lower bounds, not a promised sufficient allowance. The actual prior 12-call continuation re-invoked HR and did not finish. Replans, repeated routing and retries require separately budgeted headroom.",
+      "notAStandaloneModelSubstitute": true
+    }
+  },
+  "preservedState": {
+    "modelCallsDuringReview": 0,
+    "cloudWritesDuringReview": 0,
+    "cloudRestartsDuringReview": 0,
+    "ledgerUsed": 24,
+    "ledgerLimit": 24,
+    "inferenceEnabledAtLastObservation": false,
+    "replicasAtLastObservation": 0,
+    "lastRuntimeObservationUtc": "2026-09-12T03:06:27.6151566Z",
+    "runtimeRequeried": false,
+    "rawEvidenceAndLedgerModified": false
+  }
+}

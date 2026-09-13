@@ -1,0 +1,161 @@
+diff --git a/src/backend/orchestration/connection_config.py b/src/backend/orchestration/connection_config.py
+index 5e7b7aea..b0f1f230 100644
+--- a/src/backend/orchestration/connection_config.py
++++ b/src/backend/orchestration/connection_config.py
+@@ -13,6 +13,7 @@ from typing import Any, Dict, Optional
+ 
+ from common.models.messages import TeamConfiguration
+ from fastapi import WebSocket
++from fastapi.encoders import jsonable_encoder
+ from models.messages import WebsocketMessageType
+ from models.plan_models import MPlan
+ 
+@@ -261,21 +262,20 @@ class ConnectionConfig:
+                 return
+ 
+         try:
+-            if hasattr(message, "to_dict"):
+-                message_data = message.to_dict()
+-            elif isinstance(message, dict):
+-                message_data = message
+-            else:
+-                message_data = str(message)
+-        except Exception as e:
+-            logger.error("Error processing message data: %s", e)
+-            message_data = str(message)
++            to_dict = getattr(message, "to_dict", None)
++            message_data = to_dict() if callable(to_dict) else message
++            payload = json.dumps(jsonable_encoder({
++                "type": message_type,
++                "data": message_data,
++            }))
++        except (TypeError, ValueError):
++            logger.exception("Failed to encode WebSocket message for user %s", user_id)
++            raise
+ 
+-        payload = {"type": message_type, "data": message_data}
+         connection = self.get_connection(process_id)
+         if connection:
+             try:
+-                await connection.send_text(json.dumps(payload, default=str))
++                await connection.send_text(payload)
+                 logger.debug(
+                     "Message sent to user %s via process %s", user_id, process_id
+                 )
+diff --git a/src/tests/backend/orchestration/test_connection_config.py b/src/tests/backend/orchestration/test_connection_config.py
+index 32a804ab..a56ebaf4 100644
+--- a/src/tests/backend/orchestration/test_connection_config.py
++++ b/src/tests/backend/orchestration/test_connection_config.py
+@@ -6,7 +6,9 @@ TeamConfig. WebSockets are represented by AsyncMock/MagicMock.
+ """
+ 
+ import asyncio
++import json
+ import sys
++from datetime import datetime, timezone
+ from unittest.mock import AsyncMock, MagicMock
+ 
+ import pytest
+@@ -32,7 +34,8 @@ def _import_connection_config():
+         for name in force_real:
+             sys.modules.pop(name, None)
+         import backend.orchestration.connection_config as cc  # noqa: WPS433
+-        return cc
++        from models import messages, plan_models
++        return cc, messages, plan_models
+     finally:
+         cc_mod = sys.modules.get("backend.orchestration.connection_config")
+         for key in list(sys.modules):
+@@ -43,7 +46,7 @@ def _import_connection_config():
+             sys.modules["backend.orchestration.connection_config"] = cc_mod
+ 
+ 
+-_cc = _import_connection_config()
++_cc, _messages, _plan_models = _import_connection_config()
+ ConnectionConfig = _cc.ConnectionConfig
+ OrchestrationConfig = _cc.OrchestrationConfig
+ TeamConfig = _cc.TeamConfig
+@@ -283,15 +286,80 @@ class TestSendStatusUpdateAsync:
+         ws.send_text.assert_awaited_once()
+ 
+     @pytest.mark.asyncio
+-    async def test_message_to_dict_error_falls_back_to_str(self):
++    async def test_message_to_dict_error_is_not_sent_as_successful_string(self):
+         cc = ConnectionConfig()
+         ws = AsyncMock()
+         cc.connections["p1"] = ws
+         cc.user_to_process["u1"] = "p1"
+         msg = MagicMock()
+         msg.to_dict.side_effect = RuntimeError("bad")
+-        await cc.send_status_update_async(msg, user_id="u1")
+-        ws.send_text.assert_awaited_once()
++        with pytest.raises(RuntimeError, match="bad"):
++            await cc.send_status_update_async(msg, user_id="u1")
++        ws.send_text.assert_not_awaited()
++        assert cc.connections["p1"] is ws
++
++    @pytest.mark.asyncio
++    @pytest.mark.parametrize("replan", [False, True])
++    async def test_plan_events_preserve_nested_model_structure(self, replan):
++        cc = ConnectionConfig()
++        ws = AsyncMock()
++        cc.connections["p1"] = ws
++        cc.user_to_process["u1"] = "p1"
++        plan = _plan_models.MPlan(
++            id="internal-plan", plan_id="public-plan", user_id="u1",
++            steps=[_plan_models.MStep(agent="HRHelperAgent", action="Review synthetic onboarding")],
++        )
++        msg = (
++            _messages.ReplanApprovalRequest(new_plan=plan, reason="Requested update")
++            if replan else
++            _messages.PlanApprovalRequest(plan=plan, status=_plan_models.PlanStatus.CREATED)
++        )
++        kind = (
++            _messages.WebsocketMessageType.REPLAN_APPROVAL_REQUEST if replan else
++            _messages.WebsocketMessageType.PLAN_APPROVAL_REQUEST
++        )
++        await cc.send_status_update_async(msg, user_id="u1", message_type=kind)
++        frame = json.loads(ws.send_text.await_args.args[0])
++        assert frame["type"] == kind.value
++        data = frame["data"]
++        assert isinstance(data, dict)
++        encoded_plan = data["new_plan" if replan else "plan"]
++        assert encoded_plan["id"] == "internal-plan"
++        assert encoded_plan["overall_status"] == "created"
++        assert encoded_plan["steps"] == [
++            {"agent": "HRHelperAgent", "action": "Review synthetic onboarding"}
++        ]
++        if not replan:
++            assert data["status"] == "created"
++
++    @pytest.mark.asyncio
++    async def test_clarification_dataclass_and_datetime_dict_are_structured(self):
++        cc = ConnectionConfig()
++        ws = AsyncMock()
++        cc.connections["p1"] = ws
++        cc.user_to_process["u1"] = "p1"
++        await cc.send_status_update_async(
++            _messages.UserClarificationRequest(question="Approve demo?", request_id="r1"),
++            user_id="u1",
++        )
++        assert json.loads(ws.send_text.await_args.args[0])["data"] == {
++            "question": "Approve demo?", "request_id": "r1"
++        }
++        await cc.send_status_update_async(
++            {"timestamp": datetime(2026, 9, 12, tzinfo=timezone.utc)}, user_id="u1"
++        )
++        assert json.loads(ws.send_text.await_args.args[0])["data"]["timestamp"] == "2026-09-12T00:00:00+00:00"
++
++    @pytest.mark.asyncio
++    async def test_unencodable_payload_is_logged_and_not_stringified(self, caplog):
++        cc = ConnectionConfig()
++        ws = AsyncMock()
++        cc.connections["p1"] = ws
++        cc.user_to_process["u1"] = "p1"
++        with pytest.raises(ValueError):
++            await cc.send_status_update_async(object(), user_id="u1")
++        ws.send_text.assert_not_awaited()
++        assert "Failed to encode WebSocket message" in caplog.text
+ 
+     @pytest.mark.asyncio
+     async def test_send_error_removes_connection(self):

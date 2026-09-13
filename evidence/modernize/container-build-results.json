@@ -1,0 +1,28 @@
+{
+  "cloudPushed": false,
+  "buildsSequential": true,
+  "builderMemory": "2GiB",
+  "builder": "ptu-modernize-builder",
+  "builderCpu": 2,
+  "app": "Modernize Your Code",
+  "results": [
+    {
+      "service": "backend",
+      "exitCode": 1,
+      "tag": "ptu-modernize-backend:7592ea9-base",
+      "elapsedSeconds": 75.7461629
+    },
+    {
+      "tag": "ptu-modernize-backend:7592ea9-base",
+      "exitCode": 0,
+      "elapsedSeconds": 566.2386788,
+      "service": "backend"
+    },
+    {
+      "tag": "ptu-modernize-frontend:7592ea9",
+      "exitCode": 1,
+      "elapsedSeconds": 168.1021536,
+      "service": "frontend"
+    }
+  ]
+}

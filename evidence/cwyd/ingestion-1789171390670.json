@@ -1,0 +1,8 @@
+{
+  "filename": "ptu-cwyd-travel.txt",
+  "started_epoch": 1789171375.0069714,
+  "dequeue_count": 1,
+  "status": "failed",
+  "error_type": "AuthenticationError",
+  "latency_ms": 15664.46
+}

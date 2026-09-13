@@ -1,0 +1,10 @@
+version: v1.1.0
+steps:
+  # Original upstream Dockerfile requires BuildKit (FROM --platform and COPY --chmod).
+  # ACR's legacy dependency parser rejects it before Docker starts. Run the documented
+  # Docker Buildx command within an ACR command step instead; no Dockerfile rewrite.
+  - cmd: docker:27-cli docker buildx build --load --platform linux/amd64 --build-arg PLATFORM=linux/amd64 --file Dockerfile --tag acrptubundle7d804f70.azurecr.io/dkm/kernelmemory:7df8ed3-evalretry-r1 .
+    timeout: 1200
+  - push:
+      - acrptubundle7d804f70.azurecr.io/dkm/kernelmemory:7df8ed3-evalretry-r1
+    timeout: 300

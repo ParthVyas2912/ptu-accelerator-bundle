@@ -1,0 +1,137 @@
+[
+  {
+    "productName": "Container Registry",
+    "skuName": "Basic",
+    "meterName": "Task vCPU Duration",
+    "retailPrice": 0.0,
+    "unitOfMeasure": "1 Second",
+    "currencyCode": "USD",
+    "armRegionName": "eastus2"
+  },
+  {
+    "productName": "Container Registry",
+    "skuName": "Basic",
+    "meterName": "Task vCPU Duration",
+    "retailPrice": 0.0001,
+    "unitOfMeasure": "1 Second",
+    "currencyCode": "USD",
+    "armRegionName": "eastus2"
+  },
+  {
+    "productName": "Container Registry",
+    "skuName": "Basic",
+    "meterName": "Basic Registry Unit",
+    "retailPrice": 0.1666,
+    "unitOfMeasure": "1/Day",
+    "currencyCode": "USD",
+    "armRegionName": "eastus2"
+  },
+  {
+    "productName": "Container Registry",
+    "skuName": "Standard",
+    "meterName": "Standard Registry Unit",
+    "retailPrice": 0.6666,
+    "unitOfMeasure": "1/Day",
+    "currencyCode": "USD",
+    "armRegionName": "eastus2"
+  },
+  {
+    "productName": "Container Registry",
+    "skuName": "Standard",
+    "meterName": "Task vCPU Duration",
+    "retailPrice": 0.0,
+    "unitOfMeasure": "1 Second",
+    "currencyCode": "USD",
+    "armRegionName": "eastus2"
+  },
+  {
+    "productName": "Container Registry",
+    "skuName": "Standard",
+    "meterName": "Task vCPU Duration",
+    "retailPrice": 0.0001,
+    "unitOfMeasure": "1 Second",
+    "currencyCode": "USD",
+    "armRegionName": "eastus2"
+  },
+  {
+    "productName": "Container Registry",
+    "skuName": "Premium",
+    "meterName": "Premium Registry Unit",
+    "retailPrice": 1.6666,
+    "unitOfMeasure": "1/Day",
+    "currencyCode": "USD",
+    "armRegionName": "eastus2"
+  },
+  {
+    "productName": "Container Registry",
+    "skuName": "Basic",
+    "meterName": "Data Stored",
+    "retailPrice": 0.1,
+    "unitOfMeasure": "1 GB/Month",
+    "currencyCode": "USD",
+    "armRegionName": "eastus2"
+  },
+  {
+    "productName": "Container Registry",
+    "skuName": "Premium",
+    "meterName": "Premium Registry Replication Unit",
+    "retailPrice": 1.6666,
+    "unitOfMeasure": "1/Day",
+    "currencyCode": "USD",
+    "armRegionName": "eastus2"
+  },
+  {
+    "productName": "Container Registry",
+    "skuName": "Premium",
+    "meterName": "Data Stored",
+    "retailPrice": 0.1,
+    "unitOfMeasure": "1 GB/Month",
+    "currencyCode": "USD",
+    "armRegionName": "eastus2"
+  },
+  {
+    "productName": "Container Registry",
+    "skuName": "Premium",
+    "meterName": "Premium Connected registry",
+    "retailPrice": 0.33333,
+    "unitOfMeasure": "1/Day",
+    "currencyCode": "USD",
+    "armRegionName": "eastus2"
+  },
+  {
+    "productName": "Container Registry",
+    "skuName": "Standard",
+    "meterName": "Data Stored",
+    "retailPrice": 0.1,
+    "unitOfMeasure": "1 GB/Month",
+    "currencyCode": "USD",
+    "armRegionName": "eastus2"
+  },
+  {
+    "productName": "Container Registry",
+    "skuName": "Premium",
+    "meterName": "Task vCPU Duration",
+    "retailPrice": 0.0,
+    "unitOfMeasure": "1 Second",
+    "currencyCode": "USD",
+    "armRegionName": "eastus2"
+  },
+  {
+    "productName": "Container Registry",
+    "skuName": "Premium",
+    "meterName": "Task vCPU Duration",
+    "retailPrice": 0.0001,
+    "unitOfMeasure": "1 Second",
+    "currencyCode": "USD",
+    "armRegionName": "eastus2"
+  },
+  {
+    "productName": "Container Registry",
+    "skuName": "Premium",
+    "meterName": "Premium GB Registry Replication Data Stored",
+    "retailPrice": 0.1,
+    "unitOfMeasure": "1 GB/Month",
+    "currencyCode": "USD",
+    "armRegionName": "eastus2"
+  }
+]

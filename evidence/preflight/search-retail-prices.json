@@ -1,0 +1,242 @@
+[
+  {
+    "productName": "Azure AI Search",
+    "skuName": "Storage Optimized L1 CC",
+    "meterName": "Storage Optimized L1 CC Unit",
+    "retailPrice": 4.2229,
+    "unitOfMeasure": "1 Hour",
+    "currencyCode": "USD"
+  },
+  {
+    "productName": "Azure AI Search",
+    "skuName": "Document Cracking",
+    "meterName": "Document Cracking Image Extraction",
+    "retailPrice": 1.0,
+    "unitOfMeasure": "1K",
+    "currencyCode": "USD"
+  },
+  {
+    "productName": "Azure AI Search",
+    "skuName": "Document Cracking",
+    "meterName": "Document Cracking Image Extraction",
+    "retailPrice": 0.8,
+    "unitOfMeasure": "1K",
+    "currencyCode": "USD"
+  },
+  {
+    "productName": "Azure AI Search",
+    "skuName": "Document Cracking",
+    "meterName": "Document Cracking Image Extraction",
+    "retailPrice": 0.65,
+    "unitOfMeasure": "1K",
+    "currencyCode": "USD"
+  },
+  {
+    "productName": "Azure AI Search",
+    "skuName": "Free",
+    "meterName": "Free Unit",
+    "retailPrice": 0.0,
+    "unitOfMeasure": "1 Hour",
+    "currencyCode": "USD"
+  },
+  {
+    "productName": "Azure AI Search",
+    "skuName": "Storage Optimized L1",
+    "meterName": "Storage Optimized L1 Unit",
+    "retailPrice": 3.839,
+    "unitOfMeasure": "1 Hour",
+    "currencyCode": "USD"
+  },
+  {
+    "productName": "Azure AI Search",
+    "skuName": "Standard S2 CC",
+    "meterName": "Standard S2 CC Unit",
+    "retailPrice": 1.4784,
+    "unitOfMeasure": "1 Hour",
+    "currencyCode": "USD"
+  },
+  {
+    "productName": "Azure AI Search",
+    "skuName": "Storage Optimized L2 CC",
+    "meterName": "Storage Optimized L2 CC Unit",
+    "retailPrice": 8.4447,
+    "unitOfMeasure": "1 Hour",
+    "currencyCode": "USD"
+  },
+  {
+    "productName": "Azure AI Search",
+    "skuName": "Free Agentic Retrieval Minimum Reasoning",
+    "meterName": "Free Agentic Retrieval Minimum Reasoning Tokens",
+    "retailPrice": 0.0,
+    "unitOfMeasure": "1K",
+    "currencyCode": "USD"
+  },
+  {
+    "productName": "Azure AI Search",
+    "skuName": "Standard S2",
+    "meterName": "Standard S2 Unit",
+    "retailPrice": 1.344,
+    "unitOfMeasure": "1 Hour",
+    "currencyCode": "USD"
+  },
+  {
+    "productName": "Azure AI Search",
+    "skuName": "Storage Optimized L2",
+    "meterName": "Storage Optimized L2 Unit",
+    "retailPrice": 7.677,
+    "unitOfMeasure": "1 Hour",
+    "currencyCode": "USD"
+  },
+  {
+    "productName": "Azure AI Search",
+    "skuName": "Standard S1",
+    "meterName": "Standard S1 Unit",
+    "retailPrice": 0.336,
+    "unitOfMeasure": "1 Hour",
+    "currencyCode": "USD"
+  },
+  {
+    "productName": "Azure AI Search",
+    "skuName": "Serverless Compute",
+    "meterName": "Serverless Compute Unit",
+    "retailPrice": 0.262857,
+    "unitOfMeasure": "1 Hour",
+    "currencyCode": "USD"
+  },
+  {
+    "productName": "Azure AI Search",
+    "skuName": "Free",
+    "meterName": "Free queries",
+    "retailPrice": 0.0,
+    "unitOfMeasure": "1K",
+    "currencyCode": "USD"
+  },
+  {
+    "productName": "Azure AI Search",
+    "skuName": "Basic",
+    "meterName": "Basic Unit",
+    "retailPrice": 0.101,
+    "unitOfMeasure": "1 Hour",
+    "currencyCode": "USD"
+  },
+  {
+    "productName": "Azure AI Search",
+    "skuName": "Standard S3 CC",
+    "meterName": "Standard S3 CC Unit",
+    "retailPrice": 2.9568,
+    "unitOfMeasure": "1 Hour",
+    "currencyCode": "USD"
+  },
+  {
+    "productName": "Azure AI Search",
+    "skuName": "Basic CC",
+    "meterName": "Basic CC Unit",
+    "retailPrice": 0.1111,
+    "unitOfMeasure": "1 Hour",
+    "currencyCode": "USD"
+  },
+  {
+    "productName": "Azure AI Search",
+    "skuName": "Serverless Storage",
+    "meterName": "Serverless Storage Data Stored",
+    "retailPrice": 0.24,
+    "unitOfMeasure": "1 GB/Month",
+    "currencyCode": "USD"
+  },
+  {
+    "productName": "Azure AI Search",
+    "skuName": "Free Agentic Retrieval Medium Reasoning",
+    "meterName": "Free Agentic Retrieval Medium Reasoning Tokens",
+    "retailPrice": 0.0,
+    "unitOfMeasure": "1K",
+    "currencyCode": "USD"
+  },
+  {
+    "productName": "Azure AI Search",
+    "skuName": "Agentic Retrieval Medium Reasoning",
+    "meterName": "Agentic Retrieval Medium Reasoning Tokens",
+    "retailPrice": 0.0001,
+    "unitOfMeasure": "1K",
+    "currencyCode": "USD"
+  },
+  {
+    "productName": "Azure AI Search",
+    "skuName": "Custom Entity Skills",
+    "meterName": "Custom Entity Skills Text Records",
+    "retailPrice": 1.0,
+    "unitOfMeasure": "1K",
+    "currencyCode": "USD"
+  },
+  {
+    "productName": "Azure AI Search",
+    "skuName": "Custom Entity Skills",
+    "meterName": "Custom Entity Skills Text Records",
+    "retailPrice": 0.25,
+    "unitOfMeasure": "1K",
+    "currencyCode": "USD"
+  },
+  {
+    "productName": "Azure AI Search",
+    "skuName": "Custom Entity Skills",
+    "meterName": "Custom Entity Skills Text Records",
+    "retailPrice": 0.3,
+    "unitOfMeasure": "1K",
+    "currencyCode": "USD"
+  },
+  {
+    "productName": "Azure AI Search",
+    "skuName": "Custom Entity Skills",
+    "meterName": "Custom Entity Skills Text Records",
+    "retailPrice": 0.75,
+    "unitOfMeasure": "1K",
+    "currencyCode": "USD"
+  },
+  {
+    "productName": "Azure AI Search",
+    "skuName": "Semantic Ranker",
+    "meterName": "Semantic Ranker queries",
+    "retailPrice": 1.0,
+    "unitOfMeasure": "1K",
+    "currencyCode": "USD"
+  },
+  {
+    "productName": "Azure AI Search",
+    "skuName": "Agentic Retrieval Minimum Reasoning",
+    "meterName": "Agentic Retrieval Minimum Reasoning Tokens",
+    "retailPrice": 2.2E-05,
+    "unitOfMeasure": "1K",
+    "currencyCode": "USD"
+  },
+  {
+    "productName": "Azure AI Search",
+    "skuName": "Standard S1 CC",
+    "meterName": "Standard S1 CC Unit",
+    "retailPrice": 0.3696,
+    "unitOfMeasure": "1 Hour",
+    "currencyCode": "USD"
+  },
+  {
+    "productName": "Azure AI Search",
+    "skuName": "Standard S3",
+    "meterName": "Standard S3 Unit",
+    "retailPrice": 2.688,
+    "unitOfMeasure": "1 Hour",
+    "currencyCode": "USD"
+  },
+  {
+    "productName": "Azure AI Search",
+    "skuName": "Free Agentic Retrieval Low Reasoning",
+    "meterName": "Free Agentic Retrieval Low Reasoning Tokens",
+    "retailPrice": 0.0,
+    "unitOfMeasure": "1K",
+    "currencyCode": "USD"
+  },
+  {
+    "productName": "Azure AI Search",
+    "skuName": "Agentic Retrieval Low Reasoning",
+    "meterName": "Agentic Retrieval Low Reasoning Tokens",
+    "retailPrice": 2.2E-05,
+    "unitOfMeasure": "1K",
+    "currencyCode": "USD"
+  }
+]

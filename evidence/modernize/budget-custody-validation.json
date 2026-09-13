@@ -1,0 +1,33 @@
+{
+  "recorded_at": "2026-09-12T02:48:14.897555+00:00",
+  "allocation": {
+    "limit": 10,
+    "used": 10,
+    "remaining": 0
+  },
+  "runtime_entrypoint_checks": [
+    {
+      "entrypoint": "control.py",
+      "blocked": true,
+      "network_disabled_during_check": true
+    },
+    {
+      "entrypoint": "cloud_e2e.py",
+      "blocked": true,
+      "network_disabled_during_check": true
+    }
+  ],
+  "unit_tests_passed": 12,
+  "unit_test_output": "test_closed_arm_fails_before_blob_access (__main__.BudgetClosureTests.test_closed_arm_fails_before_blob_access) ... ok\ntest_closed_ledger_can_still_be_disarmed_and_read (__main__.BudgetClosureTests.test_closed_ledger_can_still_be_disarmed_and_read) ... ok\ntest_old_headroom_cannot_reserve_or_claim (__main__.BudgetClosureTests.test_old_headroom_cannot_reserve_or_claim) ... ok\ntest_baseline_tampering_fails_closed (__main__.BudgetTests.test_baseline_tampering_fails_closed) ... ok\ntest_concurrent_instances_cannot_overspend (__main__.BudgetTests.test_concurrent_instances_cannot_overspend) ... ok\ntest_default_disabled_fail_closed (__main__.BudgetTests.test_default_disabled_fail_closed) ... ok\ntest_disarm_blocks_without_spending (__main__.BudgetTests.test_disarm_blocks_without_spending) ... ok\ntest_exact_remaining_eight_including_failed_attempt (__main__.BudgetTests.test_exact_remaining_eight_including_failed_attempt) ... ok\ntest_old_agent_ids_preserved (__main__.BudgetTests.test_old_agent_ids_preserved) ... ok\ntest_restart_does_not_reset (__main__.BudgetTests.test_restart_does_not_reset) ... ok\ntest_service_datetimes_are_persistable (__main__.BudgetTests.test_service_datetimes_are_persistable) ... ok\ntest_single_batch_claim (__main__.BudgetTests.test_single_batch_claim) ... ok\n\n----------------------------------------------------------------------\nRan 12 tests in 0.072s\n\nOK\n",
+  "historical_finalizer_blocked": true,
+  "preserved_evidence_sha256": {
+    "result.json": "e40523f305e85f45a1232bc8b6a70cc8d4711baa7ff084f8b2c1d31b57404c0c",
+    "cloud-budget-snapshot.json": "f927bc33bf1c5df9474dc597825d23d05fd21e05254d5fe8360ba3e6547cfdc1",
+    "cloud-e2e.json": "09cfbb4e4f060a38f8433858b359b1a2d46d4f5c1ac9b7ec58bb64365b9c4540",
+    "cloud-run-audit.json": "90dd96a78bd073b2e04d6b1d26d7a9cbb77746b2c3ed50bc7be5d9c6b842fb62",
+    "cloud-paused-state.json": "0bdaf355325d5d5bcdea9073cef44a6c0c6449624d3a4890b56f5abfc66d4f00"
+  },
+  "model_calls": 0,
+  "azure_operations": 0,
+  "compute_reactivated": false
+}

@@ -1,0 +1,39 @@
+{
+  "checked_at": "2026-09-12T04:30:51.5655945+00:00",
+  "own_identity_roles": [
+    {
+      "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.ContainerRegistry/registries/acrptubundle7d804f70/providers/Microsoft.Authorization/roleAssignments/41816b87-fb9e-4fe0-8acb-c64bdfd45538",
+      "role": "AcrPull",
+      "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.ContainerRegistry/registries/acrptubundle7d804f70"
+    },
+    {
+      "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.CognitiveServices/accounts/aif-ptu-conversation-7d804f70/providers/Microsoft.Authorization/roleAssignments/2a1c26d8-6205-4e37-aec1-1a16d70cdefb",
+      "role": "Cognitive Services OpenAI User",
+      "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.CognitiveServices/accounts/aif-ptu-conversation-7d804f70"
+    },
+    {
+      "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourcegroups/rg-ptu-conversation-demo/providers/Microsoft.Storage/storageAccounts/stptuconv7d804f70/providers/Microsoft.Authorization/roleAssignments/c7d58b59-2e1a-5d22-a46d-6c5419e5023b",
+      "role": "Storage Blob Data Contributor",
+      "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourcegroups/rg-ptu-conversation-demo/providers/Microsoft.Storage/storageAccounts/stptuconv7d804f70"
+    },
+    {
+      "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourcegroups/rg-ptu-conversation-demo/providers/Microsoft.Search/searchServices/srch-ptu-conversation-7d804f70/providers/Microsoft.Authorization/roleAssignments/b7e9304f-dde4-5200-95c2-c89792274a6b",
+      "role": "Search Index Data Contributor",
+      "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourcegroups/rg-ptu-conversation-demo/providers/Microsoft.Search/searchServices/srch-ptu-conversation-7d804f70"
+    },
+    {
+      "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourcegroups/rg-ptu-conversation-demo/providers/Microsoft.Search/searchServices/srch-ptu-conversation-7d804f70/providers/Microsoft.Authorization/roleAssignments/0ac46d26-e108-5608-b40e-405aafad1651",
+      "role": "Search Service Contributor",
+      "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourcegroups/rg-ptu-conversation-demo/providers/Microsoft.Search/searchServices/srch-ptu-conversation-7d804f70"
+    }
+  ],
+  "storage": {
+    "httpsOnly": true,
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Storage/storageAccounts/stptuconv7d804f70",
+    "pna": "Disabled",
+    "publicBlob": false,
+    "sharedKey": false,
+    "sku": "Standard_LRS",
+    "state": "Succeeded"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "sessionId": "ptu-macae-cloud-91dfa4d3",
+  "events": [
+    {
+      "type": "plan_approval_request",
+      "data": "PlanApprovalRequest(plan=MPlan(id='2100d6d3-110f-4b44-a9e5-62d90f59e87c', user_id='00000000-0000-0000-0000-000000000000', team_id='', plan_id='', overall_status=<PlanStatus.CREATED: 'created'>, user_request='This is a synthetic onboarding evaluation, not a real business transaction. Onboard Alex Example, HR analyst, starting 2026-10-01. Manager Morgan Example. Orientation 2026-10-02 09:00. Mentor Taylor Example. Benefits Standard. Background check Standard. ID card required. Salary 70000. Email alex@example.invalid. Laptop standard Windows 11. VPN Standard required. Use HR and IT onboarding workflows. Present your plan for approval before execution. Do not invent completion of any action before its tool is executed.', team=['magentic_orchestrator', 'HRHelperAgent', 'TechnicalSupportAgent'], facts='', steps=[MStep(agent='HRHelperAgent', action='execute the HR onboarding workflow for the new hire'), MStep(agent='TechnicalSupportAgent', action='execute the IT onboarding workflow for the new hire'), MStep(agent='MagenticManager', action='compile the agents’ outputs into a final approval-ready onboarding plan')]), status='PENDING_APPROVAL', context={'task': 'This is a synthetic onboarding evaluation, not a real business transaction. Onboard Alex Example, HR analyst, starting 2026-10-01. Manager Morgan Example. Orientation 2026-10-02 09:00. Mentor Taylor Example. Benefits Standard. Background check Standard. ID card required. Salary 70000. Email alex@example.invalid. Laptop standard Windows 11. VPN Standard required. Use HR and IT onboarding workflows. Present your plan for approval before execution. Do not invent completion of any action before its tool is executed.'})"
+    }
+  ]
+}

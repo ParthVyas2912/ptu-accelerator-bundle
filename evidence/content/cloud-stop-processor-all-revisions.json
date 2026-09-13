@@ -1,0 +1,42 @@
+{
+  "checkedUtc": "2026-09-12T05:54:33.6777671Z",
+  "source": "All retained revisions, not only latest",
+  "services": [
+    {
+      "service": "processor",
+      "replicas": 0,
+      "revisions": [
+        {
+          "name": "ca-ptu-content-processor--0000006",
+          "active": false,
+          "replicas": 0,
+          "runningState": "Stopped"
+        },
+        {
+          "name": "ca-ptu-content-processor--0000007",
+          "active": false,
+          "replicas": 0,
+          "runningState": "Stopped"
+        },
+        {
+          "name": "ca-ptu-content-processor--0000008",
+          "active": false,
+          "replicas": 0,
+          "runningState": "Stopped"
+        },
+        {
+          "name": "ca-ptu-content-processor--0000009",
+          "active": false,
+          "replicas": 0,
+          "runningState": "Stopped"
+        },
+        {
+          "name": "ca-ptu-content-processor--0000010",
+          "active": false,
+          "replicas": 0,
+          "runningState": "Stopped"
+        }
+      ]
+    }
+  ]
+}

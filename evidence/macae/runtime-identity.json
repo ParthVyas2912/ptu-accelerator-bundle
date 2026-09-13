@@ -1,0 +1,65 @@
+{
+  "recordedAtUtc": "2026-09-12T01:07:56.4374138Z",
+  "identity": {
+    "clientId": "2a0b5966-b619-49ec-a17a-71670eda045b",
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourcegroups/rg-ptu-macae-demo/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id-ptu-macae",
+    "isolationScope": "None",
+    "location": "eastus2",
+    "name": "id-ptu-macae",
+    "principalId": "dafb622f-418d-4ab0-8c6c-1ee0b7b47346",
+    "resourceGroup": "rg-ptu-macae-demo",
+    "systemData": null,
+    "tags": {
+      "accelerator": "macae",
+      "environment": "mcaps-nonprod",
+      "owner": "parth",
+      "protected": "false",
+      "workload": "accelerator-eval"
+    },
+    "tenantId": "a600acd0-3028-4689-8402-3b471d7d924d",
+    "type": "Microsoft.ManagedIdentity/userAssignedIdentities"
+  },
+  "assignments": [
+    {
+      "role": "AcrPull",
+      "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.ContainerRegistry/registries/acrptubundle7d804f70",
+      "assignmentId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.ContainerRegistry/registries/acrptubundle7d804f70/providers/Microsoft.Authorization/roleAssignments/a42de4fa-6617-4c1c-878f-80a1c313d2c0"
+    },
+    {
+      "role": "53ca6127-db72-4b80-b1b0-d745d6d5456d",
+      "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-macae-demo/providers/Microsoft.CognitiveServices/accounts/ptumacae7d804f70/projects/ptu-macae-project",
+      "assignmentId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-macae-demo/providers/Microsoft.CognitiveServices/accounts/ptumacae7d804f70/projects/ptu-macae-project/providers/Microsoft.Authorization/roleAssignments/9daed5b8-2541-403c-b323-2de355706c50"
+    },
+    {
+      "role": "5e0bd9bd-7b93-4f28-af87-19fc36ad61bd",
+      "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-macae-demo/providers/Microsoft.CognitiveServices/accounts/ptumacae7d804f70",
+      "assignmentId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-macae-demo/providers/Microsoft.CognitiveServices/accounts/ptumacae7d804f70/providers/Microsoft.Authorization/roleAssignments/9d9cf421-1cb1-4a4e-b170-27b675a26bdf"
+    },
+    {
+      "role": "Storage Blob Data Contributor",
+      "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-macae-demo/providers/Microsoft.Storage/storageAccounts/ptumacae7d804f70st/blobServices/default/containers/ptu-macae-rfp",
+      "assignmentId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-macae-demo/providers/Microsoft.Storage/storageAccounts/ptumacae7d804f70st/blobServices/default/containers/ptu-macae-rfp/providers/Microsoft.Authorization/roleAssignments/b7ce9848-8964-432a-b179-bc83ce43735d"
+    },
+    {
+      "role": "Storage Blob Data Contributor",
+      "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-macae-demo/providers/Microsoft.Storage/storageAccounts/ptumacae7d804f70st/blobServices/default/containers/ptu-macae-contract",
+      "assignmentId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-macae-demo/providers/Microsoft.Storage/storageAccounts/ptumacae7d804f70st/blobServices/default/containers/ptu-macae-contract/providers/Microsoft.Authorization/roleAssignments/ccee101c-c98e-4e3a-ad3a-1266b6de8223"
+    },
+    {
+      "role": "Search Service Contributor",
+      "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-macae-demo/providers/Microsoft.Search/searchServices/ptu-macae-7d804f70-srch",
+      "assignmentId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-macae-demo/providers/Microsoft.Search/searchServices/ptu-macae-7d804f70-srch/providers/Microsoft.Authorization/roleAssignments/b0eb9487-d52a-492c-9828-b2f0ba2e3d34"
+    },
+    {
+      "role": "Search Index Data Contributor",
+      "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-macae-demo/providers/Microsoft.Search/searchServices/ptu-macae-7d804f70-srch",
+      "assignmentId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-macae-demo/providers/Microsoft.Search/searchServices/ptu-macae-7d804f70-srch/providers/Microsoft.Authorization/roleAssignments/fce84191-9991-4171-8586-f290fd4e3f0b"
+    },
+    {
+      "role": "Cosmos DB Built-in Data Contributor",
+      "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-macae-demo/providers/Microsoft.DocumentDB/databaseAccounts/ptu-macae-7d804f70-cosmos/dbs/ptu-macae",
+      "assignmentId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-macae-demo/providers/Microsoft.DocumentDB/databaseAccounts/ptu-macae-7d804f70-cosmos/sqlRoleAssignments/46239aff-8d71-4e40-8c0b-d691609da8c4"
+    }
+  ],
+  "purpose": "Native runtime and bounded bootstrap only; own new data/model scopes plus parent ACR pull"
+}

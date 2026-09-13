@@ -1,0 +1,1 @@
+{"scope": "CKM own SQL contained identity", "mode": "repair", "model_requests": 0, "checked_at": "2026-09-12T04:23:53.769395+00:00", "incorrect_sid_user_roles_removed": true, "users_or_data_deleted": false, "current_user": "dbo", "db_owner": 1, "reader": 1, "writer": 1, "ddl_admin": 1, "ground_truth": {"records": 3, "categories": 2, "source_types": 1}, "status": "succeeded"}

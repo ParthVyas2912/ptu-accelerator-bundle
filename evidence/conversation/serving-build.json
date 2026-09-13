@@ -1,0 +1,15 @@
+{
+  "cpu": 2,
+  "finish": "2026-09-12T05:16:29.173214+00:00",
+  "images": [
+    {
+      "digest": "sha256:84ff9d2a31ddf2e71a75d26ca58433ce29e41af0eb46823c0a0c5d5ca4bbcaf0",
+      "registry": "acrptubundle7d804f70.azurecr.io",
+      "repository": "conversation/api",
+      "tag": "8a00aa5-serving-ro1"
+    }
+  ],
+  "runId": "ch10",
+  "start": "2026-09-12T05:16:06.049778+00:00",
+  "status": "Succeeded"
+}

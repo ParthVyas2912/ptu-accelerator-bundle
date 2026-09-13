@@ -1,0 +1,93 @@
+{
+  "calculatedAtUtc": "2026-09-12T06:21:39.8976229Z",
+  "resourceSnapshotAtUtc": "2026-09-12T06:21:39.6052558Z",
+  "currency": "USD",
+  "items": [
+    {
+      "component": "AI Search Basic 1x1",
+      "quantity": 4,
+      "hourlyEquivalent": 0.404,
+      "basis": "MCAE, DKM, Chatbot and Conversation reports; four dedicated Basic services"
+    },
+    {
+      "component": "App Configuration Standard",
+      "quantity": 2,
+      "hourlyEquivalent": 0.1,
+      "basis": "Content and DKM reports"
+    },
+    {
+      "component": "Provisioned Mongo 400 RU/s allocations",
+      "quantity": 3,
+      "hourlyEquivalent": 0.096,
+      "basis": "Content shared 400; DKM baseline 400 plus native app collection 400"
+    },
+    {
+      "component": "Private endpoints",
+      "quantity": 18,
+      "hourlyEquivalent": 0.18,
+      "basis": "Resource delta and preflight/private-link-retail-prices.json"
+    },
+    {
+      "component": "Basic container registry",
+      "quantity": 1,
+      "hourlyEquivalent": 0.006941666666666666,
+      "basis": "preflight/shared-platform-retail-prices.json"
+    },
+    {
+      "component": "Private DNS zones",
+      "quantity": 10,
+      "hourlyEquivalent": 0.00684931506849315,
+      "basis": "global-network-retail-prices.json; five baseline plus ten new zones remain within the first 25-zone tier"
+    },
+    {
+      "component": "Managed Standard load balancer",
+      "quantity": 1,
+      "hourlyEquivalent": 0.025,
+      "basis": "managed-network-inventory.json confirms two LB rules; global-network-retail-prices.json"
+    },
+    {
+      "component": "Standard static IPv4 addresses",
+      "quantity": 2,
+      "hourlyEquivalent": 0.01,
+      "basis": "One visible ingress IP; Microsoft documents an additional egress IP for this external workload-profile VNet environment; network-retail-prices.json"
+    },
+    {
+      "component": "SQL data allowance at 32GB cap",
+      "quantity": 32,
+      "hourlyEquivalent": 0.0055452054794520545,
+      "basis": "conversation/pricing.json; full-cap allowance, not measured occupied storage"
+    }
+  ],
+  "scenarios": [
+    {
+      "sqlBilledVcores": 0,
+      "condition": "SQL actually paused",
+      "usdPerHour": 0.8343361872146119,
+      "usdPer24Hours": 20.024068493150686,
+      "usdPer730Hours": 609.0654166666667
+    },
+    {
+      "sqlBilledVcores": 0.5,
+      "condition": "SQL billed at 0.5 vCores; not measured usage",
+      "usdPerHour": 1.1473911872146119,
+      "usdPer24Hours": 27.537388493150686,
+      "usdPer730Hours": 837.5955666666666
+    },
+    {
+      "sqlBilledVcores": 2,
+      "condition": "SQL billed at 2 vCores; not measured usage",
+      "usdPerHour": 2.086556187214612,
+      "usdPer24Hours": 50.077348493150694,
+      "usdPer730Hours": 1523.1860166666668
+    }
+  ],
+  "caveat": "List-price reference, not the lab invoice, remaining credits, an all-in spending ceiling or a guarantee of SQL auto-pause. Do not count shared components again in app-level subtotals.",
+  "exclusions": [
+    "Actual Container Apps replicas while tests or HTTP checks run",
+    "Model, embedding, Content Understanding and Document Intelligence consumption",
+    "Serverless Cosmos operations and all database/blob/queue storage or transactions outside the stated SQL allowance",
+    "Registry task CPU and storage overage",
+    "Private Link/LB data processing, DNS queries, network egress and backup overage",
+    "Taxes, offer-specific discounts and any unlisted separately billed service"
+  ]
+}

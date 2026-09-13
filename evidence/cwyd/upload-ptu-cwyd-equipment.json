@@ -1,0 +1,13 @@
+{
+  "test": "upload-ptu-cwyd-equipment",
+  "method": "POST",
+  "path": "/api/admin/documents",
+  "status": 200,
+  "actual": {
+    "filename": "ptu-cwyd-equipment.txt",
+    "blob_path": "ptu-cwyd-documents/ptu-cwyd-equipment.txt",
+    "ingestion_job_id": "99d3e469-c26b-4eff-bc18-72d49ed7ca3e",
+    "queued": true
+  },
+  "latency_ms": 910.96
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "requestIp": "20.97.10.99",
+    "tokenIpClaim": "172.200.70.89",
+    "callerIpAddress": null,
+    "operation": "Microsoft.App/containerApps/revisions/deactivate/action"
+  },
+  {
+    "requestIp": "20.97.10.99",
+    "tokenIpClaim": "172.200.70.89",
+    "callerIpAddress": null,
+    "operation": "Microsoft.App/containerApps/revisions/deactivate/action"
+  },
+  {
+    "requestIp": "20.97.10.99",
+    "tokenIpClaim": "172.200.70.89",
+    "callerIpAddress": null,
+    "operation": "Microsoft.App/containerApps/write"
+  },
+  {
+    "requestIp": "20.97.10.99",
+    "tokenIpClaim": "172.200.70.89",
+    "callerIpAddress": null,
+    "operation": "Microsoft.App/containerApps/write"
+  },
+  {
+    "requestIp": "20.97.9.18",
+    "tokenIpClaim": "172.200.70.89",
+    "callerIpAddress": null,
+    "operation": "Microsoft.App/containerApps/listSecrets/action"
+  },
+  {
+    "requestIp": "20.97.9.18",
+    "tokenIpClaim": "172.200.70.89",
+    "callerIpAddress": null,
+    "operation": "Microsoft.App/containerApps/listSecrets/action"
+  },
+  {
+    "requestIp": "20.97.10.99",
+    "tokenIpClaim": "172.200.70.89",
+    "callerIpAddress": null,
+    "operation": "Microsoft.App/containerApps/getAuthToken/action"
+  },
+  {
+    "requestIp": "20.97.10.99",
+    "tokenIpClaim": "172.200.70.89",
+    "callerIpAddress": null,
+    "operation": "Microsoft.App/containerApps/getAuthToken/action"
+  },
+  {
+    "requestIp": "20.97.10.99",
+    "tokenIpClaim": "172.200.70.89",
+    "callerIpAddress": null,
+    "operation": "Microsoft.App/containerApps/getAuthToken/action"
+  },
+  {
+    "requestIp": "20.97.10.99",
+    "tokenIpClaim": "172.200.70.89",
+    "callerIpAddress": null,
+    "operation": "Microsoft.App/containerApps/getAuthToken/action"
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "recordedUtc": "2026-09-12T02:45:48.620507+00:00",
+  "source": "Fresh guarded ARM replica list, one query per owned service",
+  "resourcesDeleted": [],
+  "requestBudgetReset": false,
+  "api": 0,
+  "processor": 0,
+  "workflow": 0,
+  "web": 0
+}

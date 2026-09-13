@@ -1,0 +1,26 @@
+[
+  {
+    "evalRetry": [
+      "0"
+    ],
+    "image": "acrptubundle7d804f70.azurecr.io/dkm/backend:7df8ed3-evalretry-r1",
+    "latest": "ca-dkm-api--0000002",
+    "max": 1,
+    "min": 1,
+    "name": "ca-dkm-api",
+    "ready": "ca-dkm-api--0000002",
+    "state": "Succeeded"
+  },
+  {
+    "evalRetry": [
+      "0"
+    ],
+    "image": "acrptubundle7d804f70.azurecr.io/dkm/kernelmemory:7df8ed3-evalretry-r1",
+    "latest": "ca-dkm-kernel--0000001",
+    "max": 1,
+    "min": 1,
+    "name": "ca-dkm-kernel",
+    "ready": "ca-dkm-kernel--0000001",
+    "state": "Succeeded"
+  }
+]

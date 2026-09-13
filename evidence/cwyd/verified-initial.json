@@ -1,0 +1,376 @@
+{
+  "stage": "initial",
+  "conversation_id": "2e579bef-a41d-470d-aa86-3d97e0994024",
+  "app_call_latency_ms": 21772.44,
+  "tests": [
+    {
+      "name": "persisted_answer",
+      "expected": "1. The domestic meal allowance per travel day is 73 credits [doc1].\n\n2. The annual learning allowance is 640 credits [doc2].\n\n3. Employees may work remotely two days each week [doc3].\n\n4. Completed equipment calibration records are retained for seven years [doc4].\n\n5. Shared field sensors must be calibrated every 90 calendar days [doc5].\n\n6. Travel claims must be submitted within 21 calendar days of returning [doc1], whereas learning reimbursement claims must be submitted within 45 calendar days of course completion [doc2].\n\n7. There is insufficient evidence about an orbital relocation allowance in the provided policies.",
+      "actual": "1. The domestic meal allowance per travel day is 73 credits [doc1].\n\n2. The annual learning allowance is 640 credits [doc2].\n\n3. Employees may work remotely two days each week [doc3].\n\n4. Completed equipment calibration records are retained for seven years [doc4].\n\n5. Shared field sensors must be calibrated every 90 calendar days [doc5].\n\n6. Travel claims must be submitted within 21 calendar days of returning [doc1], whereas learning reimbursement claims must be submitted within 45 calendar days of course completion [doc2].\n\n7. There is insufficient evidence about an orbital relocation allowance in the provided policies.",
+      "verdict": "PASS"
+    },
+    {
+      "name": "persisted_citations",
+      "expected": [
+        {
+          "id": "[doc1]",
+          "title": "ptu-cwyd-travel.txt",
+          "url": "",
+          "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Travel Policy, version 1, active 2026-09-01.\r\nThe domestic meal allowance is 73 credits per travel day.\r\nTravel claims must be submitted within 21 calendar days of returning.\r\nThis policy is fictional and does not describe a real organization.",
+          "score": 0.7595079453441891,
+          "metadata": {
+            "source_id": "1ebe48b006d028a979c368b0788a4eab2120c97dfdf588a29268ddb322f768b2"
+          }
+        },
+        {
+          "id": "[doc2]",
+          "title": "ptu-cwyd-learning.txt",
+          "url": "",
+          "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Learning Policy, version 1, active 2026-09-01.\r\nEach employee has an annual learning allowance of 640 credits.\r\nLearning reimbursement claims must be submitted within 45 calendar days of course completion.\r\nThis policy is fictional and does not describe a real organization.",
+          "score": 0.6624773421501137,
+          "metadata": {
+            "source_id": "962b9d80e3babd6d8a52fadc6f96c85927b6458ff2b4d6b2bbe789ee72e29be2"
+          }
+        },
+        {
+          "id": "[doc3]",
+          "title": "ptu-cwyd-remote.txt",
+          "url": "",
+          "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Remote Work Policy, version 1, active 2026-09-01.\r\nEmployees may work remotely two days each week.\r\nThe team coordinator approves the weekly remote-work schedule.\r\nThis policy is fictional and does not describe a real organization.",
+          "score": 0.629330390754327,
+          "metadata": {
+            "source_id": "30b7f2e98fa29a09601447e57f3d746f8fc3d615daf1998357e575fa2155f6c6"
+          }
+        },
+        {
+          "id": "[doc4]",
+          "title": "ptu-cwyd-records.txt",
+          "url": "",
+          "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Records Policy, version 1, active 2026-09-01.\r\nCompleted equipment calibration records are retained for seven years.\r\nThe records steward approves disposal after the retention period.\r\nThis policy is fictional and does not describe a real organization.",
+          "score": 0.544458223277224,
+          "metadata": {
+            "source_id": "339f57e8f8f8d2cdd300d96fa29eba9f6ed9d14122c70d066afa69b2d62c95c3"
+          }
+        },
+        {
+          "id": "[doc5]",
+          "title": "ptu-cwyd-equipment.txt",
+          "url": "",
+          "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Equipment Policy, version 1, active 2026-09-01.\r\nShared field sensors must be calibrated every 90 calendar days.\r\nThe laboratory coordinator maintains the calibration schedule.\r\nThis policy is fictional and does not describe a real organization.",
+          "score": 0.6197122370995956,
+          "metadata": {
+            "source_id": "706f3e7558c2b6441500eb368621fcd14381179c55cda2bd278a2787b1121289"
+          }
+        }
+      ],
+      "actual": [
+        {
+          "id": "[doc1]",
+          "url": "",
+          "score": 0.7595079453441891,
+          "title": "ptu-cwyd-travel.txt",
+          "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Travel Policy, version 1, active 2026-09-01.\r\nThe domestic meal allowance is 73 credits per travel day.\r\nTravel claims must be submitted within 21 calendar days of returning.\r\nThis policy is fictional and does not describe a real organization.",
+          "metadata": {
+            "source_id": "1ebe48b006d028a979c368b0788a4eab2120c97dfdf588a29268ddb322f768b2"
+          }
+        },
+        {
+          "id": "[doc2]",
+          "url": "",
+          "score": 0.6624773421501137,
+          "title": "ptu-cwyd-learning.txt",
+          "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Learning Policy, version 1, active 2026-09-01.\r\nEach employee has an annual learning allowance of 640 credits.\r\nLearning reimbursement claims must be submitted within 45 calendar days of course completion.\r\nThis policy is fictional and does not describe a real organization.",
+          "metadata": {
+            "source_id": "962b9d80e3babd6d8a52fadc6f96c85927b6458ff2b4d6b2bbe789ee72e29be2"
+          }
+        },
+        {
+          "id": "[doc3]",
+          "url": "",
+          "score": 0.629330390754327,
+          "title": "ptu-cwyd-remote.txt",
+          "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Remote Work Policy, version 1, active 2026-09-01.\r\nEmployees may work remotely two days each week.\r\nThe team coordinator approves the weekly remote-work schedule.\r\nThis policy is fictional and does not describe a real organization.",
+          "metadata": {
+            "source_id": "30b7f2e98fa29a09601447e57f3d746f8fc3d615daf1998357e575fa2155f6c6"
+          }
+        },
+        {
+          "id": "[doc4]",
+          "url": "",
+          "score": 0.544458223277224,
+          "title": "ptu-cwyd-records.txt",
+          "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Records Policy, version 1, active 2026-09-01.\r\nCompleted equipment calibration records are retained for seven years.\r\nThe records steward approves disposal after the retention period.\r\nThis policy is fictional and does not describe a real organization.",
+          "metadata": {
+            "source_id": "339f57e8f8f8d2cdd300d96fa29eba9f6ed9d14122c70d066afa69b2d62c95c3"
+          }
+        },
+        {
+          "id": "[doc5]",
+          "url": "",
+          "score": 0.6197122370995956,
+          "title": "ptu-cwyd-equipment.txt",
+          "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Equipment Policy, version 1, active 2026-09-01.\r\nShared field sensors must be calibrated every 90 calendar days.\r\nThe laboratory coordinator maintains the calibration schedule.\r\nThis policy is fictional and does not describe a real organization.",
+          "metadata": {
+            "source_id": "706f3e7558c2b6441500eb368621fcd14381179c55cda2bd278a2787b1121289"
+          }
+        }
+      ],
+      "verdict": "PASS"
+    },
+    {
+      "name": "citation_blob_and_index_grounding",
+      "expected": "every citation source ID/snippet matches real index and source blob",
+      "actual": [
+        {
+          "title": "ptu-cwyd-travel.txt",
+          "source_id": "1ebe48b006d028a979c368b0788a4eab2120c97dfdf588a29268ddb322f768b2",
+          "api_file_status": 200,
+          "source_sha256": "6f943264477d0e507bd5db615d45729f535a800d4fa97e9a688b7366718ace07",
+          "source_body": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Travel Policy, version 1, active 2026-09-01.\r\nThe domestic meal allowance is 73 credits per travel day.\r\nTravel claims must be submitted within 21 calendar days of returning.\r\nThis policy is fictional and does not describe a real organization.\r\n",
+          "index_rows_for_title": 1,
+          "index_content": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Travel Policy, version 1, active 2026-09-01.\r\nThe domestic meal allowance is 73 credits per travel day.\r\nTravel claims must be submitted within 21 calendar days of returning.\r\nThis policy is fictional and does not describe a real organization.",
+          "citation_snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Travel Policy, version 1, active 2026-09-01.\r\nThe domestic meal allowance is 73 credits per travel day.\r\nTravel claims must be submitted within 21 calendar days of returning.\r\nThis policy is fictional and does not describe a real organization.",
+          "verdict": "PASS"
+        },
+        {
+          "title": "ptu-cwyd-learning.txt",
+          "source_id": "962b9d80e3babd6d8a52fadc6f96c85927b6458ff2b4d6b2bbe789ee72e29be2",
+          "api_file_status": 200,
+          "source_sha256": "02f380833d1fc7715e049d67d85efa92b8c9e3428a7886d95ccd96b821fec2cb",
+          "source_body": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Learning Policy, version 1, active 2026-09-01.\r\nEach employee has an annual learning allowance of 640 credits.\r\nLearning reimbursement claims must be submitted within 45 calendar days of course completion.\r\nThis policy is fictional and does not describe a real organization.\r\n",
+          "index_rows_for_title": 1,
+          "index_content": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Learning Policy, version 1, active 2026-09-01.\r\nEach employee has an annual learning allowance of 640 credits.\r\nLearning reimbursement claims must be submitted within 45 calendar days of course completion.\r\nThis policy is fictional and does not describe a real organization.",
+          "citation_snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Learning Policy, version 1, active 2026-09-01.\r\nEach employee has an annual learning allowance of 640 credits.\r\nLearning reimbursement claims must be submitted within 45 calendar days of course completion.\r\nThis policy is fictional and does not describe a real organization.",
+          "verdict": "PASS"
+        },
+        {
+          "title": "ptu-cwyd-remote.txt",
+          "source_id": "30b7f2e98fa29a09601447e57f3d746f8fc3d615daf1998357e575fa2155f6c6",
+          "api_file_status": 200,
+          "source_sha256": "0d9cc560229a5c54f34472aa7351e7d01ac1b1117e6ee21c1dcd7fe752f6d5ac",
+          "source_body": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Remote Work Policy, version 1, active 2026-09-01.\r\nEmployees may work remotely two days each week.\r\nThe team coordinator approves the weekly remote-work schedule.\r\nThis policy is fictional and does not describe a real organization.\r\n",
+          "index_rows_for_title": 1,
+          "index_content": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Remote Work Policy, version 1, active 2026-09-01.\r\nEmployees may work remotely two days each week.\r\nThe team coordinator approves the weekly remote-work schedule.\r\nThis policy is fictional and does not describe a real organization.",
+          "citation_snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Remote Work Policy, version 1, active 2026-09-01.\r\nEmployees may work remotely two days each week.\r\nThe team coordinator approves the weekly remote-work schedule.\r\nThis policy is fictional and does not describe a real organization.",
+          "verdict": "PASS"
+        },
+        {
+          "title": "ptu-cwyd-records.txt",
+          "source_id": "339f57e8f8f8d2cdd300d96fa29eba9f6ed9d14122c70d066afa69b2d62c95c3",
+          "api_file_status": 200,
+          "source_sha256": "d6040f09b9ab6d7d0d4af73776eb65f0f8be697270ea91dd0099c8672bcc1633",
+          "source_body": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Records Policy, version 1, active 2026-09-01.\r\nCompleted equipment calibration records are retained for seven years.\r\nThe records steward approves disposal after the retention period.\r\nThis policy is fictional and does not describe a real organization.\r\n",
+          "index_rows_for_title": 1,
+          "index_content": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Records Policy, version 1, active 2026-09-01.\r\nCompleted equipment calibration records are retained for seven years.\r\nThe records steward approves disposal after the retention period.\r\nThis policy is fictional and does not describe a real organization.",
+          "citation_snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Records Policy, version 1, active 2026-09-01.\r\nCompleted equipment calibration records are retained for seven years.\r\nThe records steward approves disposal after the retention period.\r\nThis policy is fictional and does not describe a real organization.",
+          "verdict": "PASS"
+        },
+        {
+          "title": "ptu-cwyd-equipment.txt",
+          "source_id": "706f3e7558c2b6441500eb368621fcd14381179c55cda2bd278a2787b1121289",
+          "api_file_status": 200,
+          "source_sha256": "539927c21ddf0d824ce976df8eda751b1e6c483375ac94fd5edce32a340bc29c",
+          "source_body": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Equipment Policy, version 1, active 2026-09-01.\r\nShared field sensors must be calibrated every 90 calendar days.\r\nThe laboratory coordinator maintains the calibration schedule.\r\nThis policy is fictional and does not describe a real organization.\r\n",
+          "index_rows_for_title": 1,
+          "index_content": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Equipment Policy, version 1, active 2026-09-01.\r\nShared field sensors must be calibrated every 90 calendar days.\r\nThe laboratory coordinator maintains the calibration schedule.\r\nThis policy is fictional and does not describe a real organization.",
+          "citation_snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Equipment Policy, version 1, active 2026-09-01.\r\nShared field sensors must be calibrated every 90 calendar days.\r\nThe laboratory coordinator maintains the calibration schedule.\r\nThis policy is fictional and does not describe a real organization.",
+          "verdict": "PASS"
+        }
+      ],
+      "verdict": "PASS"
+    },
+    {
+      "name": "factual_1",
+      "expected": "73 credits per travel day with ptu-cwyd-travel.txt",
+      "actual": "The domestic meal allowance per travel day is 73 credits [doc1].",
+      "verdict": "PASS"
+    },
+    {
+      "name": "factual_2",
+      "expected": "640 credits annually with ptu-cwyd-learning.txt",
+      "actual": "The annual learning allowance is 640 credits [doc2].",
+      "verdict": "PASS"
+    },
+    {
+      "name": "factual_3",
+      "expected": "two remote days each week with ptu-cwyd-remote.txt",
+      "actual": "Employees may work remotely two days each week [doc3].",
+      "verdict": "PASS"
+    },
+    {
+      "name": "factual_4",
+      "expected": "seven-year retention with ptu-cwyd-records.txt",
+      "actual": "Completed equipment calibration records are retained for seven years [doc4].",
+      "verdict": "PASS"
+    },
+    {
+      "name": "factual_5",
+      "expected": "90-day calibration interval with ptu-cwyd-equipment.txt",
+      "actual": "Shared field sensors must be calibrated every 90 calendar days [doc5].",
+      "verdict": "PASS"
+    },
+    {
+      "name": "cross_document_comparison",
+      "expected": "21 travel days versus45 learning days; both source citations",
+      "actual": "Travel claims must be submitted within 21 calendar days of returning [doc1], whereas learning reimbursement claims must be submitted within 45 calendar days of course completion [doc2].",
+      "verdict": "PASS"
+    },
+    {
+      "name": "absent_answer",
+      "expected": "explicit insufficient evidence, no invented allowance",
+      "actual": "There is insufficient evidence about an orbital relocation allowance in the provided policies.",
+      "verdict": "PASS"
+    },
+    {
+      "name": "index_source_count",
+      "expected": "five policy titles and five active chunks",
+      "actual": {
+        "titles": 5,
+        "chunks": 5
+      },
+      "verdict": "PASS"
+    }
+  ],
+  "history": {
+    "conversation": {
+      "id": "2e579bef-a41d-470d-aa86-3d97e0994024",
+      "user_id": "00000000-0000-0000-0000-000000000000",
+      "title": "For fictional Larkspur Research Cooperative, answer these numbered questions separately, citing the relevant policy for every supported answer: 1. What is the domestic meal allowance per travel day? 2. What is the annual learning allowance? 3. How many remote-work days are permitted each week? 4. How long are calibration records retained? 5. How often are shared field sensors calibrated? 6. Compare the travel and learning claim submission deadlines, citing BOTH policies. 7. What is the orbital relocation allowance? If it is absent from the policies, state that there is insufficient evidence; do not invent it.",
+      "created_at": "2026-09-12T00:16:33.943569+00:00",
+      "updated_at": "2026-09-12T00:16:33.974216+00:00",
+      "metadata": {}
+    },
+    "messages": [
+      {
+        "id": "a16d4c2d-52a6-4089-9e21-45d547fa6f4b",
+        "conversation_id": "2e579bef-a41d-470d-aa86-3d97e0994024",
+        "role": "user",
+        "content": "For fictional Larkspur Research Cooperative, answer these numbered questions separately, citing the relevant policy for every supported answer: 1. What is the domestic meal allowance per travel day? 2. What is the annual learning allowance? 3. How many remote-work days are permitted each week? 4. How long are calibration records retained? 5. How often are shared field sensors calibrated? 6. Compare the travel and learning claim submission deadlines, citing BOTH policies. 7. What is the orbital relocation allowance? If it is absent from the policies, state that there is insufficient evidence; do not invent it.",
+        "created_at": "2026-09-12T00:16:33.954326+00:00",
+        "feedback": null,
+        "metadata": {}
+      },
+      {
+        "id": "b287875d-caa5-4d8a-b664-b8a1c0dc13a1",
+        "conversation_id": "2e579bef-a41d-470d-aa86-3d97e0994024",
+        "role": "assistant",
+        "content": "1. The domestic meal allowance per travel day is 73 credits [doc1].\n\n2. The annual learning allowance is 640 credits [doc2].\n\n3. Employees may work remotely two days each week [doc3].\n\n4. Completed equipment calibration records are retained for seven years [doc4].\n\n5. Shared field sensors must be calibrated every 90 calendar days [doc5].\n\n6. Travel claims must be submitted within 21 calendar days of returning [doc1], whereas learning reimbursement claims must be submitted within 45 calendar days of course completion [doc2].\n\n7. There is insufficient evidence about an orbital relocation allowance in the provided policies.",
+        "created_at": "2026-09-12T00:16:33.974216+00:00",
+        "feedback": null,
+        "metadata": {
+          "citations": [
+            {
+              "id": "[doc1]",
+              "url": "",
+              "score": 0.7595079453441891,
+              "title": "ptu-cwyd-travel.txt",
+              "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Travel Policy, version 1, active 2026-09-01.\r\nThe domestic meal allowance is 73 credits per travel day.\r\nTravel claims must be submitted within 21 calendar days of returning.\r\nThis policy is fictional and does not describe a real organization.",
+              "metadata": {
+                "source_id": "1ebe48b006d028a979c368b0788a4eab2120c97dfdf588a29268ddb322f768b2"
+              }
+            },
+            {
+              "id": "[doc2]",
+              "url": "",
+              "score": 0.6624773421501137,
+              "title": "ptu-cwyd-learning.txt",
+              "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Learning Policy, version 1, active 2026-09-01.\r\nEach employee has an annual learning allowance of 640 credits.\r\nLearning reimbursement claims must be submitted within 45 calendar days of course completion.\r\nThis policy is fictional and does not describe a real organization.",
+              "metadata": {
+                "source_id": "962b9d80e3babd6d8a52fadc6f96c85927b6458ff2b4d6b2bbe789ee72e29be2"
+              }
+            },
+            {
+              "id": "[doc3]",
+              "url": "",
+              "score": 0.629330390754327,
+              "title": "ptu-cwyd-remote.txt",
+              "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Remote Work Policy, version 1, active 2026-09-01.\r\nEmployees may work remotely two days each week.\r\nThe team coordinator approves the weekly remote-work schedule.\r\nThis policy is fictional and does not describe a real organization.",
+              "metadata": {
+                "source_id": "30b7f2e98fa29a09601447e57f3d746f8fc3d615daf1998357e575fa2155f6c6"
+              }
+            },
+            {
+              "id": "[doc4]",
+              "url": "",
+              "score": 0.544458223277224,
+              "title": "ptu-cwyd-records.txt",
+              "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Records Policy, version 1, active 2026-09-01.\r\nCompleted equipment calibration records are retained for seven years.\r\nThe records steward approves disposal after the retention period.\r\nThis policy is fictional and does not describe a real organization.",
+              "metadata": {
+                "source_id": "339f57e8f8f8d2cdd300d96fa29eba9f6ed9d14122c70d066afa69b2d62c95c3"
+              }
+            },
+            {
+              "id": "[doc5]",
+              "url": "",
+              "score": 0.6197122370995956,
+              "title": "ptu-cwyd-equipment.txt",
+              "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Equipment Policy, version 1, active 2026-09-01.\r\nShared field sensors must be calibrated every 90 calendar days.\r\nThe laboratory coordinator maintains the calibration schedule.\r\nThis policy is fictional and does not describe a real organization.",
+              "metadata": {
+                "source_id": "706f3e7558c2b6441500eb368621fcd14381179c55cda2bd278a2787b1121289"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "source_checks": [
+    {
+      "title": "ptu-cwyd-travel.txt",
+      "source_id": "1ebe48b006d028a979c368b0788a4eab2120c97dfdf588a29268ddb322f768b2",
+      "api_file_status": 200,
+      "source_sha256": "6f943264477d0e507bd5db615d45729f535a800d4fa97e9a688b7366718ace07",
+      "source_body": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Travel Policy, version 1, active 2026-09-01.\r\nThe domestic meal allowance is 73 credits per travel day.\r\nTravel claims must be submitted within 21 calendar days of returning.\r\nThis policy is fictional and does not describe a real organization.\r\n",
+      "index_rows_for_title": 1,
+      "index_content": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Travel Policy, version 1, active 2026-09-01.\r\nThe domestic meal allowance is 73 credits per travel day.\r\nTravel claims must be submitted within 21 calendar days of returning.\r\nThis policy is fictional and does not describe a real organization.",
+      "citation_snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Travel Policy, version 1, active 2026-09-01.\r\nThe domestic meal allowance is 73 credits per travel day.\r\nTravel claims must be submitted within 21 calendar days of returning.\r\nThis policy is fictional and does not describe a real organization.",
+      "verdict": "PASS"
+    },
+    {
+      "title": "ptu-cwyd-learning.txt",
+      "source_id": "962b9d80e3babd6d8a52fadc6f96c85927b6458ff2b4d6b2bbe789ee72e29be2",
+      "api_file_status": 200,
+      "source_sha256": "02f380833d1fc7715e049d67d85efa92b8c9e3428a7886d95ccd96b821fec2cb",
+      "source_body": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Learning Policy, version 1, active 2026-09-01.\r\nEach employee has an annual learning allowance of 640 credits.\r\nLearning reimbursement claims must be submitted within 45 calendar days of course completion.\r\nThis policy is fictional and does not describe a real organization.\r\n",
+      "index_rows_for_title": 1,
+      "index_content": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Learning Policy, version 1, active 2026-09-01.\r\nEach employee has an annual learning allowance of 640 credits.\r\nLearning reimbursement claims must be submitted within 45 calendar days of course completion.\r\nThis policy is fictional and does not describe a real organization.",
+      "citation_snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Learning Policy, version 1, active 2026-09-01.\r\nEach employee has an annual learning allowance of 640 credits.\r\nLearning reimbursement claims must be submitted within 45 calendar days of course completion.\r\nThis policy is fictional and does not describe a real organization.",
+      "verdict": "PASS"
+    },
+    {
+      "title": "ptu-cwyd-remote.txt",
+      "source_id": "30b7f2e98fa29a09601447e57f3d746f8fc3d615daf1998357e575fa2155f6c6",
+      "api_file_status": 200,
+      "source_sha256": "0d9cc560229a5c54f34472aa7351e7d01ac1b1117e6ee21c1dcd7fe752f6d5ac",
+      "source_body": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Remote Work Policy, version 1, active 2026-09-01.\r\nEmployees may work remotely two days each week.\r\nThe team coordinator approves the weekly remote-work schedule.\r\nThis policy is fictional and does not describe a real organization.\r\n",
+      "index_rows_for_title": 1,
+      "index_content": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Remote Work Policy, version 1, active 2026-09-01.\r\nEmployees may work remotely two days each week.\r\nThe team coordinator approves the weekly remote-work schedule.\r\nThis policy is fictional and does not describe a real organization.",
+      "citation_snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Remote Work Policy, version 1, active 2026-09-01.\r\nEmployees may work remotely two days each week.\r\nThe team coordinator approves the weekly remote-work schedule.\r\nThis policy is fictional and does not describe a real organization.",
+      "verdict": "PASS"
+    },
+    {
+      "title": "ptu-cwyd-records.txt",
+      "source_id": "339f57e8f8f8d2cdd300d96fa29eba9f6ed9d14122c70d066afa69b2d62c95c3",
+      "api_file_status": 200,
+      "source_sha256": "d6040f09b9ab6d7d0d4af73776eb65f0f8be697270ea91dd0099c8672bcc1633",
+      "source_body": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Records Policy, version 1, active 2026-09-01.\r\nCompleted equipment calibration records are retained for seven years.\r\nThe records steward approves disposal after the retention period.\r\nThis policy is fictional and does not describe a real organization.\r\n",
+      "index_rows_for_title": 1,
+      "index_content": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Records Policy, version 1, active 2026-09-01.\r\nCompleted equipment calibration records are retained for seven years.\r\nThe records steward approves disposal after the retention period.\r\nThis policy is fictional and does not describe a real organization.",
+      "citation_snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Records Policy, version 1, active 2026-09-01.\r\nCompleted equipment calibration records are retained for seven years.\r\nThe records steward approves disposal after the retention period.\r\nThis policy is fictional and does not describe a real organization.",
+      "verdict": "PASS"
+    },
+    {
+      "title": "ptu-cwyd-equipment.txt",
+      "source_id": "706f3e7558c2b6441500eb368621fcd14381179c55cda2bd278a2787b1121289",
+      "api_file_status": 200,
+      "source_sha256": "539927c21ddf0d824ce976df8eda751b1e6c483375ac94fd5edce32a340bc29c",
+      "source_body": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Equipment Policy, version 1, active 2026-09-01.\r\nShared field sensors must be calibrated every 90 calendar days.\r\nThe laboratory coordinator maintains the calibration schedule.\r\nThis policy is fictional and does not describe a real organization.\r\n",
+      "index_rows_for_title": 1,
+      "index_content": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Equipment Policy, version 1, active 2026-09-01.\r\nShared field sensors must be calibrated every 90 calendar days.\r\nThe laboratory coordinator maintains the calibration schedule.\r\nThis policy is fictional and does not describe a real organization.",
+      "citation_snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Equipment Policy, version 1, active 2026-09-01.\r\nShared field sensors must be calibrated every 90 calendar days.\r\nThe laboratory coordinator maintains the calibration schedule.\r\nThis policy is fictional and does not describe a real organization.",
+      "verdict": "PASS"
+    }
+  ],
+  "passed": 11,
+  "failed": 0
+}

@@ -1,0 +1,305 @@
+{
+  "application": "Conversation Knowledge Mining",
+  "controlling_network_update": "2026-09-11T21:26:23.980-04:00",
+  "state": "native_persistence_and_model_sql_workflow_executed_with_semantic_quality_failures",
+  "actual_ckm_azure_resources_created": [
+    "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo",
+    "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id-ptu-conversation",
+    "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.App/containerApps/ca-ptu-conversation-api",
+    "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.App/containerApps/ca-ptu-conversation-ui",
+    "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.CognitiveServices/accounts/aif-ptu-conversation-7d804f70",
+    "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.CognitiveServices/accounts/aif-ptu-conversation-7d804f70/projects/proj-ptu-conversation",
+    "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.CognitiveServices/accounts/aif-ptu-conversation-7d804f70/deployments/gpt-5.2",
+    "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.CognitiveServices/accounts/aif-ptu-conversation-7d804f70/deployments/text-embedding-3-small",
+    "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateEndpoints/pe-conversation-ai",
+    "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/networkInterfaces/pe-conversation-ai.nic.e80644cd-9604-414e-bd31-6f593e9c7c1a",
+    "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Storage/storageAccounts/stptuconv7d804f70",
+    "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Search/searchServices/srch-ptu-conversation-7d804f70",
+    "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Sql/servers/sql-ptu-conversation-7d804f70",
+    "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Sql/servers/sql-ptu-conversation-7d804f70/databases/master",
+    "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Sql/servers/sql-ptu-conversation-7d804f70/databases/ptu-conversation",
+    "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateEndpoints/pe-conversation-blob",
+    "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/networkInterfaces/pe-conversation-blob.nic.3cc18dc1-2f54-4746-a4c1-3bc8175d0c0f",
+    "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateEndpoints/pe-conversation-search",
+    "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/networkInterfaces/pe-conversation-search.nic.b62d79fe-4f19-4fe2-9df4-cbd90105456e",
+    "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateEndpoints/pe-conversation-sql",
+    "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/networkInterfaces/pe-conversation-sql.nic.309f79c8-83d6-4871-a3b2-4cf193493710"
+  ],
+  "actual_resource_ids_and_tests": "evidence/conversation/result.json",
+  "actual_data_paas_created": [
+    "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Sql/servers/sql-ptu-conversation-7d804f70/databases/ptu-conversation",
+    "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Search/searchServices/srch-ptu-conversation-7d804f70",
+    "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Sql/servers/sql-ptu-conversation-7d804f70",
+    "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Storage/storageAccounts/stptuconv7d804f70"
+  ],
+  "actual_private_endpoints_created": [
+    "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateEndpoints/pe-conversation-ai",
+    "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateEndpoints/pe-conversation-blob",
+    "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateEndpoints/pe-conversation-search",
+    "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateEndpoints/pe-conversation-sql"
+  ],
+  "current_pe_approval": {
+    "parent_update": "2026-09-11T22:32:30.361-04:00",
+    "maximum_connections": 4,
+    "original_async_plan_connections": 5,
+    "bounded_json_core_plan_maximum_connections": 4,
+    "account_group_supported_by_helper": true,
+    "account_zoneNames": [
+      "privatelink.cognitiveservices.azure.com",
+      "privatelink.openai.azure.com",
+      "privatelink.services.ai.azure.com"
+    ],
+    "account_pe_requires_actual_firewall_need_verified_from_cloud": true,
+    "actual_ckm_ai_firewall_denial_observed": true,
+    "queue_pe_deferred_for_bounded_json_scenario": true,
+    "helper_modified": false,
+    "standard_agent_cosmos_network_requirement_still_separate": true,
+    "qualification": "Public403/PNA Disabled and private200/inference200 after PE; initial message classifier alone did not identify the cause."
+  },
+  "actual_model_requests": 9,
+  "model_attempt_cap": 9,
+  "shared_platform": {
+    "resource_group": "rg-ptu-bundle-platform",
+    "location": "eastus2",
+    "vnet": "vnet-ptu-bundle",
+    "address_space": "10.246.0.0/16",
+    "container_apps_environment": "cae-ptu-bundle",
+    "registry": "acrptubundle7d804f70.azurecr.io",
+    "readiness": "Parent reported ready and CKM independently verified Succeeded/Consumption-only",
+    "separate_ckm_vnet_environment_or_registry": false,
+    "dns_governance": "Parent-managed MCAPS-local zones; not JDCP"
+  },
+  "private_endpoint_targets": [
+    {
+      "target_resource_id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.CognitiveServices/accounts/aif-ptu-conversation-7d804f70",
+      "group_ids": [
+        "account"
+      ],
+      "dns_zones": [
+        "privatelink.cognitiveservices.azure.com",
+        "privatelink.openai.azure.com",
+        "privatelink.services.ai.azure.com"
+      ],
+      "state": "CREATED_APPROVED_PRIVATE_DATA_ACCESS_VERIFIED"
+    },
+    {
+      "target_resource_id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Search/searchServices/srch-ptu-conversation-7d804f70",
+      "group_ids": [
+        "searchService"
+      ],
+      "dns_zones": [
+        "privatelink.search.windows.net"
+      ],
+      "state": "CREATED_APPROVED_PRIVATE_DATA_ACCESS_VERIFIED"
+    },
+    {
+      "target_resource_id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Sql/servers/sql-ptu-conversation-7d804f70",
+      "group_ids": [
+        "sqlServer"
+      ],
+      "dns_zones": [
+        "privatelink.database.windows.net"
+      ],
+      "state": "CREATED_APPROVED_PRIVATE_DATA_ACCESS_VERIFIED"
+    },
+    {
+      "target_resource_id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Storage/storageAccounts/stptuconv7d804f70",
+      "group_ids": [
+        "blob"
+      ],
+      "dns_zones": [
+        "privatelink.blob.core.windows.net"
+      ],
+      "state": "CREATED_APPROVED_PRIVATE_DATA_ACCESS_VERIFIED"
+    },
+    {
+      "target_resource_id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Storage/storageAccounts/stptuconv7d804f70",
+      "group_ids": [
+        "queue"
+      ],
+      "dns_zones": [
+        "privatelink.queue.core.windows.net"
+      ],
+      "state": "DEFERRED_NOT_REQUIRED_FOR_BOUNDED_JSON_SCENARIO",
+      "required_for_bounded_json_scenario": false
+    }
+  ],
+  "target_notes": [
+    "All four core targets and PEs now exist; Queue is still deferred. Exact current inventory is in result.json.",
+    "Queue PE is deferred for the three-conversation JSON pass. The original /upload/json route uses BackgroundTasks/finalize_ingestion, not the document queue route. Full asynchronous file processing is not claimed.",
+    "Queue worker has a logged native unavailable/in-process fallback. Queue initialization warnings must be reported, not counted as a healthy asynchronous queue.",
+    "No DFS dependency found in the native Blob SDK path; HNS is not required for that path.",
+    "Own account PE created through the approved parent helper into existing shared DNS/subnet; no duplicate networking.",
+    "Public network access must be Disabled at initial service creation, not opened during a two-stage stock template or setup hook."
+  ],
+  "blocking_private_tool_requirement": {
+    "native_source": "infra/scripts/post-provision/create_agent.py builds AzureAISearchTool(query_type='simple'); src/api/modules/rag/service.py is agent-only",
+    "basic_agent_support": "Official Search-tool limitations explicitly exclude private Search/PNA-disabled Search with Basic Agent setup",
+    "correct_private_path": "Standard Agent setup with VNet injection; BYO Storage, Search and Cosmos; dedicated Microsoft.App/environments agent subnet",
+    "region_rule": "Foundry resource must be in the same region as its delegated VNet. Current approved Sweden Central Foundry does not match shared EastUS2 VNet.",
+    "approval_gap": [
+      "BYO Cosmos for Standard Agent setup",
+      "Dedicated agent subnet coordinated by parent, not shared with the ordinary ACA environment",
+      "Foundry region/configuration exception if using the existing EastUS2 shared VNet",
+      "Review of any additional Standard Agent managed infrastructure/cost"
+    ],
+    "no_workaround_applied": [
+      "No PNA enablement",
+      "No trusted-service network bypass",
+      "No generic LLM chat or custom replacement grounding tool",
+      "No duplicate VNet/ACA environment/ACR"
+    ],
+    "sources": [
+      "https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/tools/ai-search#limitations",
+      "https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/virtual-networks",
+      "https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/agents-networking-deep-dive"
+    ]
+  },
+  "queue_scope_evidence": {
+    "json_route": "src/api/modules/ingestion/router.py:62-86",
+    "finalization": "src/api/modules/ingestion/service.py:867-877",
+    "native_unavailable_fallback": "src/api/modules/ingestion/queue_worker.py:33-38 and queue_service.py:67-85",
+    "status": "source_verified_not_live_PaaS_validated",
+    "deviation": "Bounded JSON evaluation only; defer reliable asynchronous document/audio queue workflow."
+  },
+  "exec_coordination": {
+    "batch_runtime_checks_and_evidence": true,
+    "honor_retry_after_seconds_when_returned": 600,
+    "new_exec_calls_for_this_helper_update": 0
+  },
+  "container_preparation": {
+    "evidence": "evidence/conversation/container-build-preparation.json",
+    "build_session": "ckm-container-build",
+    "last_observed_status": "completed_exit0_builder_stopped_images_preserved",
+    "verified_at": "2026-09-11T21:42:55-04:00",
+    "builder_cpu": 1,
+    "builder_memory_gib": 2,
+    "concurrent_builds": 1,
+    "api_image": "ptu-conversation/api:8a00aa5-base",
+    "ui_image": "ptu-conversation/ui:8a00aa5-runtime",
+    "registry_push_performed": true,
+    "cloud_component_hosts_deployed": true,
+    "cloud_hosts_final_state": "paused; all retained revisions report0 replicas",
+    "offline_tests": [
+      {
+        "id": "api-image-odbc-import-schema",
+        "expected": "Linux ODBC18 registered and original API loads its OpenAPI schema",
+        "actual": {
+          "odbc18": true,
+          "routes": 71,
+          "title": "Knowledge Mining"
+        },
+        "status": "passed",
+        "network": "none",
+        "memory_limit": "1Gi",
+        "cpu_limit": 0.5,
+        "model_requests": 0
+      },
+      {
+        "id": "ui-image-nginx-config",
+        "expected": "Official nginx runtime configuration is valid",
+        "actual": "nginx configuration syntax ok; test successful",
+        "status": "passed",
+        "network": "none",
+        "memory_limit": "128Mi",
+        "cpu_limit": 0.25,
+        "model_requests": 0
+      }
+    ],
+    "windows_installer_retry": "Stopped owned ckm-odbc-retry session; Windows ODBC elevation no longer needed for container fallback. No other installer stopped."
+  },
+  "proposed_runtime": {
+    "api": {
+      "name": "ca-ptu-conversation-api",
+      "cpu": 0.5,
+      "memory": "1Gi",
+      "max_replicas": 1,
+      "target_port": 8000,
+      "external_ingress": false,
+      "minimum_replicas": "0 when HTTP/event scale activation supports processing;1 only during bounded exec/worker verification"
+    },
+    "ui": {
+      "name": "ca-ptu-conversation-ui",
+      "cpu": 0.25,
+      "memory": "0.5Gi",
+      "min_replicas": 0,
+      "max_replicas": 1,
+      "target_port": 80,
+      "external_ingress": false,
+      "public_gate": "Remain internal until parent-provided single-client CIDR or authentication is configured"
+    },
+    "identity": "Own id-ptu-conversation: AcrPull, OpenAI User, Storage Blob Data Contributor, Search Service Contributor and Search Index Data Contributor on approved scopes; contained SQL reader/writer/ddl_admin, no server-admin.",
+    "runtime_only_secret": "Generate any ADMIN_API_KEY only in process memory; it does not replace the ingress gate",
+    "public_metadata_environment": {
+      "AZURE_CLIENT_ID": "<assigned CKM managed identity client ID>",
+      "AZURE_FOUNDRY_ENDPOINT": "",
+      "AZURE_OPENAI_ENDPOINT": "<verified new account OpenAI endpoint>",
+      "AZURE_OPENAI_CHAT_DEPLOYMENT": "gpt-5.2",
+      "AZURE_OPENAI_EMBEDDING_DEPLOYMENT": "text-embedding-3-small",
+      "AZURE_AI_AGENT_ENDPOINT": "<verified new project endpoint>",
+      "AGENT_NAME_CHAT": "ptu-conversation-chat",
+      "SOLUTION_SUFFIX": "ptu-conversation",
+      "AZURE_SEARCH_ENDPOINT": "https://srch-ptu-conversation-7d804f70.search.windows.net",
+      "AZURE_SEARCH_INDEX_NAME": "ptu-conversation-index",
+      "AZURE_STORAGE_ACCOUNT": "stptuconv7d804f70",
+      "AZURE_STORAGE_CONTAINER": "ptu-conversation-documents",
+      "AZURE_SQL_SERVER": "sql-ptu-conversation-7d804f70.database.windows.net",
+      "AZURE_SQL_DATABASE": "ptu-conversation",
+      "APP_API_BASE_URL": "/api",
+      "BACKEND_API_HOST": "<internal API Container App FQDN>"
+    },
+    "remaining_gates": [
+      "Basic Foundry Agent does not support private Search; own account Sweden Central differs from shared EastUS2 VNet. Standard setup requires Cosmos/dedicated agent subnet/region alignment not present in the listed envelope.",
+      "Actual native dashboard: unique categories3 versus SQL ground truth2; source types3 versus1. COUNT(*) cannot validate a distinct-count label.",
+      "Overbroad anonymization damages prose; file-level processing insights sees first-summary context and overgeneralizes. See manual expected/actual checks.",
+      "Existing /32 public path returned403; preserved unchanged. Control-plane exec works."
+    ],
+    "configuration_status": "Now durably bound in the serving API and verified over real HTTP; inference/automatic/queue processing disarmed. Not full hosted Explore/browser deployment."
+  },
+  "cost_status": "Current approved1.50/hour limit; deployed worst-case reference1.479765 before separate consumption/shared allocation, not a historical0.85 approval gate.",
+  "full_application_deployed": false,
+  "current_cost": {
+    "currency": "USD",
+    "invoice_measured": false,
+    "fixed_active_review_limit_per_hour": 1.5,
+    "full_max2_sql_basic_four_pes_both_apps_32gb_reference_per_hour": 1.4797652055,
+    "api_only_during_workflow_max_reference_per_hour": 1.4527652055,
+    "model_input_rate_per_million": 1.75,
+    "model_output_rate_per_million": 14,
+    "cumulative_model_token_reference_usd": 0.05975725,
+    "additional_data_workflow_token_reference_usd": 0.04570825,
+    "all_remote_builds_reference_usd": 0.06383540420000001,
+    "search_basic_per_hour": 0.101,
+    "four_private_endpoints_per_hour": 0.04,
+    "sql_per_billed_vcore_hour": 0.62611,
+    "sql_32gb_data_hourly_allowance": 0.0055452055,
+    "baseline_after_sql_actually_pauses_per_hour": 0.1465452055,
+    "baseline_if_sql_billed_at_min05_per_hour": 0.4596002055,
+    "actual_sql_state": "Online",
+    "sql_pause_observed": false,
+    "last_data_connection_check": "2026-09-12T01:18:57.464402-04:00",
+    "auto_pause_minutes": 60,
+    "aca_reported_replicas": 0,
+    "excluded": [
+      "Shared registry/DNS allocation",
+      "Blob capacity/operations",
+      "Network/data processing/egress",
+      "Logs",
+      "SQL backup overage",
+      "Taxes/discount differences"
+    ],
+    "not_ptu_charges": [
+      "SQL",
+      "Search",
+      "Blob",
+      "Private Link",
+      "ACA",
+      "ACR",
+      "CU",
+      "Separate embeddings"
+    ],
+    "serving_remote_build_reference_usd": 0.004624687200000001,
+    "last_possible_sql_access_upper_bound": "2026-09-12T05:24:46.3472084+00:00"
+  },
+  "native_serving_evidence": "evidence/conversation/serving-results.json"
+}

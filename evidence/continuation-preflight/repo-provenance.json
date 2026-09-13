@@ -1,0 +1,74 @@
+[
+  {
+    "name": "call-center-voice",
+    "origin": "https://github.com/Azure-Samples/call-center-voice-agent-accelerator",
+    "branch": "main",
+    "sha": "162cef590787b3bcc0a051608a7981f2a01daf41",
+    "commitDate": "2026-08-25T15:29:30-07:00",
+    "latestTag": null
+  },
+  {
+    "name": "document-generation",
+    "origin": "https://github.com/microsoft/document-generation-solution-accelerator",
+    "branch": "main",
+    "sha": "fa956c9ec374f0f7e9b03ae2873d38e5269186fe",
+    "commitDate": "2026-08-25T16:53:40+05:30",
+    "latestTag": "v2.7.1"
+  },
+  {
+    "name": "ess-devkit",
+    "origin": "https://github.com/microsoft/Employee-Self-Service-Agent-Developer-Kit",
+    "branch": "main",
+    "sha": "3236a513b7312b13602326fbdf7778797174d45f",
+    "commitDate": "2026-09-10T22:10:01-07:00",
+    "latestTag": null
+  },
+  {
+    "name": "macae",
+    "origin": "https://github.com/microsoft/Multi-Agent-Custom-Automation-Engine-Solution-Accelerator",
+    "branch": "main",
+    "sha": "8ac703a71f10b622bd3c82a9cc2b5dfe921c3025",
+    "commitDate": "2026-08-28T11:39:18+05:30",
+    "latestTag": "v5.0.0"
+  },
+  {
+    "name": "netaivideoanalyzer",
+    "origin": "https://github.com/Azure-Samples/netaivideoanalyzer",
+    "branch": "main",
+    "sha": "1d8ed2ece3ee4c05441f98a0e06965c0207f21e7",
+    "commitDate": "2025-05-07T11:02:57-04:00",
+    "latestTag": "2024-11-09"
+  },
+  {
+    "name": "private-tenant-chat",
+    "origin": "https://github.com/microsoft/Deploy-Your-AI-Application-In-Production",
+    "branch": "main",
+    "sha": "1ed62d982f777b85f3fe281adfd7150921ccd9ce",
+    "commitDate": "2026-08-26T13:31:26+05:30",
+    "latestTag": "v1.5.3"
+  },
+  {
+    "name": "real-time-ops",
+    "origin": "https://github.com/microsoft/real-time-intelligence-operations-solution-accelerator",
+    "branch": "main",
+    "sha": "cfbdb91ee83ed31b5ccc5de7feca7a0b5b2e5f68",
+    "commitDate": "2026-08-31T18:20:01+05:30",
+    "latestTag": "v1.3.5"
+  },
+  {
+    "name": "stepfly",
+    "origin": "https://github.com/microsoft/StepFly",
+    "branch": "main",
+    "sha": "a6229192a69dd2eebc58d9b8f754dbc396029c4e",
+    "commitDate": "2026-06-01T11:30:11+08:00",
+    "latestTag": null
+  },
+  {
+    "name": "unified-data-foundation",
+    "origin": "https://github.com/microsoft/agentic-applications-for-unified-data-foundation-solution-accelerator",
+    "branch": "main",
+    "sha": "28c25024e43884b0a23c996d5cc8d3419f4e448c",
+    "commitDate": "2026-09-09T10:59:21+05:30",
+    "latestTag": "v1.25.4"
+  }
+]

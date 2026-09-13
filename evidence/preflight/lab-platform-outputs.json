@@ -1,0 +1,26 @@
+{
+  "environmentId": {
+    "type": "String",
+    "value": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.App/managedEnvironments/cae-ptu-bundle"
+  },
+  "environmentName": {
+    "type": "String",
+    "value": "cae-ptu-bundle"
+  },
+  "privateEndpointSubnetId": {
+    "type": "String",
+    "value": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/virtualNetworks/vnet-ptu-bundle/subnets/snet-private-endpoints"
+  },
+  "registryId": {
+    "type": "String",
+    "value": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.ContainerRegistry/registries/acrptubundle7d804f70"
+  },
+  "registryLoginServer": {
+    "type": "String",
+    "value": "acrptubundle7d804f70.azurecr.io"
+  },
+  "vnetId": {
+    "type": "String",
+    "value": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/virtualNetworks/vnet-ptu-bundle"
+  }
+}

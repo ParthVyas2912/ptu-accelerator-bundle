@@ -1,0 +1,55 @@
+{
+  "app": "Customer Chatbot",
+  "network_scope": "Parent-managed isolated MCAPS lab, NOT JDCP",
+  "subscription_id": "1feb53b2-854a-4ea7-b5a6-709b7d804f70",
+  "platform_resource_group": "rg-ptu-bundle-platform",
+  "platform_region": "eastus2",
+  "resource_owner_group": "accel-chatbot-eval-0911",
+  "private_endpoints_required_now": [
+    {
+      "service": "Cosmos DB NoSQL Serverless",
+      "target_resource_id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-chatbot-eval-0911/providers/Microsoft.DocumentDB/databaseAccounts/cosmos-ccptu1feb0911",
+      "group_ids": ["Sql"],
+      "required_members": ["cosmos-ccptu1feb0911-eastus2", "cosmos-ccptu1feb0911"],
+      "required_zone_names": ["privatelink.documents.azure.com"],
+      "public_hostname": "cosmos-ccptu1feb0911.documents.azure.com",
+      "public_network_access": "Disabled",
+      "disable_local_auth": true,
+      "source": "Guarded az cosmosdb private-link-resource list on the isolated account"
+    }
+  ],
+  "other_dependencies": {
+    "foundry": {
+      "target_resource_id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-chatbot-eval-0911/providers/Microsoft.CognitiveServices/accounts/aif-ccptu1feb0911",
+      "observed_public_network_access": "Enabled",
+      "disable_local_auth": true,
+      "private_endpoint_requested_now": false,
+      "notes": "Existing approved isolated account; metadata access works with Entra. No network weakening requested."
+    },
+    "search": {
+      "name": "srch-ccptu1feb0911",
+      "exists": false,
+      "reason": "East US 2 regional capacity failure; Canada Central Search Basic fallback still awaits approval.",
+      "private_endpoint_requested_now": false,
+      "notes": "Return its actual private-link metadata only after authorized service creation."
+    }
+  },
+  "cloud_container_envelope": {
+    "environment": "cae-ptu-bundle",
+    "registry": "acrptubundle7d804f70",
+    "native_services": [
+      {"name": "chatbot-chat-api", "native_target_port": 8001, "cpu": 0.5, "memory": "1Gi", "min_replicas": 0, "max_replicas": 1},
+      {"name": "chatbot-scenario-api", "native_target_port": 8000, "cpu": 0.5, "memory": "1Gi", "min_replicas": 0, "max_replicas": 1},
+      {"name": "chatbot-chat-ui", "native_target_port": 80, "cpu": 0.25, "memory": "0.5Gi", "min_replicas": 0, "max_replicas": 1},
+      {"name": "chatbot-scenario-ui", "native_target_port": 80, "cpu": 0.25, "memory": "0.5Gi", "min_replicas": 0, "max_replicas": 1}
+    ],
+    "temporary_exec_readiness": "One backend replica may need to remain active during authenticated exec/initialization, then return to min 0.",
+    "ingress": "Internal initially; no public model routes until parent-supplied client CIDR or authentication is configured.",
+    "identity": "Per-app managed identity with narrow native roles on owned resources; frontend needs only registry pull.",
+    "extra_platform_resources_to_create_by_chatbot": 0,
+    "model_call_cap": 12,
+    "live_model_calls_so_far": 0,
+    "status": "Preparing native images/configuration; not yet deployed or claimed unchanged native deployment."
+  },
+  "retired_public_network_request": true
+}

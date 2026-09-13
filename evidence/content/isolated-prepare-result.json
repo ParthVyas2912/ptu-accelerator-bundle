@@ -1,0 +1,27 @@
+{
+  "run": "missing-police-native",
+  "claimId": "887455af-d0bd-4a44-a9fc-8a30ab940620",
+  "approvedTotal": 17,
+  "mode": "disarmed",
+  "baselineSha256": "4d37d6806585a217d851e77dbd4a7c816ceea605df79c5212abee9c7db1bd543",
+  "expected": {
+    "claim-form.pdf": {
+      "sha256": "4c3a887124b3dc146ead5e43495a7d7b2640480a4944176fe2b8f2bf4c2ae08a",
+      "schemaId": "e40f3710-6659-4b6d-a1c4-f457ac94a07a"
+    },
+    "damage-diagram.png": {
+      "sha256": "293229e558aea1343eaabfef6e471d42c8368e86fc30484b62db3f13a235496b",
+      "schemaId": "e26a0118-23cd-46d8-afb8-483e6e3ed2be"
+    },
+    "repair-estimate.pdf": {
+      "sha256": "602bedd0a4e10000d32e9a813b1e10f1b4788241c9c12dda1ae28f481cc075e2",
+      "schemaId": "d5531c34-0d85-40d2-bd9e-c2d361ee2d44"
+    }
+  },
+  "documents": {},
+  "preparedAt": 1789191987.9662662,
+  "expectedGapRule": "REQ-PR-THIRD-PARTY-006",
+  "events": [],
+  "capturedUtc": "2026-09-12T05:46:29.731697+00:00",
+  "controlPlaneExitCode": 0
+}

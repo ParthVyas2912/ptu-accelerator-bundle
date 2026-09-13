@@ -1,0 +1,8 @@
+{
+  "observedAtUtc": "2026-09-12T03:32:00.4861685Z",
+  "powerShellScriptsParsed": 3,
+  "baselineRuntimeTargetRejected": true,
+  "deploymentMetricTotalsConsistent": true,
+  "missingLabCostRemainsUnknown": true,
+  "wordReportStatus": "Working draft; final closures pending"
+}

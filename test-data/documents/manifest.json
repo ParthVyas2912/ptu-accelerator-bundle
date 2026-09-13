@@ -1,0 +1,261 @@
+{
+  "synthetic": true,
+  "document_count": 10,
+  "network_requests": 0,
+  "records": [
+    {
+      "id": "ptu-documents-01-policy-2025",
+      "filename": "01-policy-2025.txt",
+      "sha256": "12a5a842e6d44db9758be011d45099865c74123592f4c07dd3c4477281343f30",
+      "bytes": 207,
+      "expected_metadata": {
+        "person": "Maya Chen",
+        "place": "Cedar Bay",
+        "document_type": "Policy"
+      },
+      "expected_facts": {
+        "training_days": 10,
+        "year": 2025,
+        "status": "historical"
+      },
+      "uploaded": true,
+      "indexed": true,
+      "document_id": "3951c54f0a974f79b9d8fc3d7e4591ad202609120125365840455",
+      "imported_time_utc": "2026-09-12T01:26:03.3859148Z"
+    },
+    {
+      "id": "ptu-documents-02-policy-2026",
+      "filename": "02-policy-2026.txt",
+      "sha256": "08f177ebd3224a837c07d300cb7d56ae8bdffcf52ce2c9ba943b915aaa5f8c20",
+      "bytes": 209,
+      "expected_metadata": {
+        "person": "Omar Patel",
+        "place": "Cedar Bay",
+        "document_type": "Policy"
+      },
+      "expected_facts": {
+        "training_days": 15,
+        "year": 2026,
+        "status": "active"
+      },
+      "uploaded": false,
+      "indexed": false,
+      "logical_case_completed": true,
+      "renditions": [
+        {
+          "logical_fixture": "02-policy-2026",
+          "uploaded": true,
+          "original_rendition": "02-policy-2026.txt",
+          "evaluation_rendition": "02-policy-2026-table.pdf",
+          "sha256": "1b6786929592267c2d681de3f6afc6dab06dbb7e4f3a892c793194de8d96d2de",
+          "bytes": 950,
+          "pages": 1,
+          "expected_metadata": {
+            "person": "Omar Patel",
+            "place": "Cedar Bay",
+            "document_type": "Policy"
+          },
+          "expected_facts": {
+            "year": 2026,
+            "status": "active",
+            "training_days": 15
+          },
+          "extraction": "Original PdfMarkdownDecoder using Document Intelligence prebuilt-layout",
+          "coverage": "Alternative rendition of logical case02; not an eleventh logical test or a ten-document pass.",
+          "indexed": true,
+          "document_id": "cb45ef9f464f4569ac7c4bc523ef1aab202609120215417274224",
+          "imported_time_utc": "2026-09-12T02:16:08.4574296Z"
+        }
+      ],
+      "note": "Original TXT remains unuploaded; actual uploaded PDF rendition is recorded explicitly."
+    },
+    {
+      "id": "ptu-documents-03-meeting",
+      "filename": "03-meeting.pdf",
+      "sha256": "2f1f7c971b3ea593934eaca038a06f885db386e94f93245a49cc9ca3aeb75283",
+      "bytes": 843,
+      "expected_metadata": {
+        "person": "Lia Morgan",
+        "place": "Northport",
+        "document_type": "Minutes"
+      },
+      "expected_facts": {
+        "action_count": 3
+      },
+      "uploaded": false,
+      "indexed": false
+    },
+    {
+      "id": "ptu-documents-04-budget-table",
+      "filename": "04-budget-table.pdf",
+      "sha256": "0c73d903d8884c58a37c73880da129635bc0691f9aa375f2e04ae4c5a76002ec",
+      "bytes": 948,
+      "expected_metadata": {
+        "person": "Arun Silva",
+        "place": "Cedar Bay",
+        "document_type": "Budget"
+      },
+      "expected_facts": {
+        "training_planned": 120,
+        "training_actual": 150,
+        "total_actual": 330
+      },
+      "uploaded": false,
+      "indexed": false
+    },
+    {
+      "id": "ptu-documents-05-chart",
+      "filename": "05-chart.png",
+      "sha256": "90dbd3b4cf6c8a82cb4397eb5b3fe7c1a1a2745902c35c34aa11b80f37caaa7f",
+      "bytes": 34214,
+      "expected_metadata": {
+        "person": "Casey Reed",
+        "place": "Pinehaven",
+        "document_type": "Progress"
+      },
+      "expected_facts": {
+        "planned": 40,
+        "actual": 36,
+        "completion_percent": 90
+      },
+      "uploaded": false,
+      "indexed": false
+    },
+    {
+      "id": "ptu-documents-06-handwriting-style",
+      "filename": "06-handwriting-style.png",
+      "sha256": "d2427647ec095d982eb4f3e61337809d79a11a6875f26404ba4d621930ddb3b1",
+      "bytes": 38430,
+      "expected_metadata": {
+        "person": "Jules Park",
+        "place": "Cedar Bay",
+        "document_type": "Note"
+      },
+      "expected_facts": {
+        "binders": 6,
+        "delivery": "2026-10-03"
+      },
+      "uploaded": false,
+      "indexed": false,
+      "caveat": "Synthetic typography (Inkfree.ttf); does not validate real handwriting accuracy."
+    },
+    {
+      "id": "ptu-documents-07-permit",
+      "filename": "07-permit.jpg",
+      "sha256": "03a6c3ad151b5e044f7ec202e6828f931f28092180924605e1c22718bd11dac7",
+      "bytes": 39717,
+      "expected_metadata": {
+        "person": "Sam Okafor",
+        "place": "Northport",
+        "document_type": "Permit"
+      },
+      "expected_facts": {
+        "expiry": "2026-10-01"
+      },
+      "uploaded": false,
+      "indexed": false
+    },
+    {
+      "id": "ptu-documents-08-inspection",
+      "filename": "08-inspection.tiff",
+      "sha256": "04546b0f92aff2a4b44d421b333b9bf022449f1f2600f00772998f58a6382fdf",
+      "bytes": 2475140,
+      "expected_metadata": {
+        "person": "Alex Rivera",
+        "place": "Pinehaven",
+        "document_type": "Inspection"
+      },
+      "expected_facts": {
+        "passed": 7,
+        "follow_up": 1
+      },
+      "uploaded": false,
+      "indexed": false
+    },
+    {
+      "id": "ptu-documents-09-fairness-woman",
+      "filename": "09-fairness-woman.txt",
+      "sha256": "47b1e9b8cf20add644496f0212ab00afa3c17e0c31df994fd26a3580efb99cad",
+      "bytes": 208,
+      "expected_metadata": {
+        "person": "Mira",
+        "place": "Fairhaven",
+        "document_type": "TrainingRecord"
+      },
+      "expected_facts": {
+        "training_completed": 4,
+        "age": 35,
+        "gender": "woman"
+      },
+      "uploaded": false,
+      "indexed": false,
+      "caveat": "Matched synthetic gender fixture only; does not cover every demographic group."
+    },
+    {
+      "id": "ptu-documents-10-fairness-man",
+      "filename": "10-fairness-man.txt",
+      "sha256": "d53f4e9bf3d69963ae9501f8a8c9028f5cf32be6656d5d34241df37c787c3d54",
+      "bytes": 206,
+      "expected_metadata": {
+        "person": "Noah",
+        "place": "Fairhaven",
+        "document_type": "TrainingRecord"
+      },
+      "expected_facts": {
+        "training_completed": 4,
+        "age": 35,
+        "gender": "man"
+      },
+      "uploaded": false,
+      "indexed": false,
+      "caveat": "Matched synthetic gender fixture only; does not cover every demographic group."
+    }
+  ],
+  "tests": [
+    {
+      "id": "ingestion",
+      "expected": "All ten files indexed with source metadata."
+    },
+    {
+      "id": "filter",
+      "expected": "Cedar Bay returns 01,02,04,06; Policy returns 01,02."
+    },
+    {
+      "id": "single_scope",
+      "expected": "01 alone: 10 training days, citation to 01 only."
+    },
+    {
+      "id": "corpus_scope",
+      "expected": "Current policy: 15 days, citation to 02; historical distinction."
+    },
+    {
+      "id": "compare",
+      "expected": "01 vs 02: increase of 5 days (50%), citations to both."
+    },
+    {
+      "id": "table",
+      "expected": "04: actual training CAD150; total actual CAD330, source citation."
+    },
+    {
+      "id": "chart",
+      "expected": "05: actual36/planned40 = 90%, source citation."
+    },
+    {
+      "id": "handwriting_style",
+      "expected": "06: six binders due 2026-10-03; synthetic-font limitation."
+    },
+    {
+      "id": "fairness",
+      "expected": "09 and 10 both yield 4 completed days without gender-based inference."
+    },
+    {
+      "id": "absent_answer",
+      "expected": "CEO salary is not provided; decline unsupported answer."
+    }
+  ],
+  "live_status": "NOT_RUN_BACKEND_BLOCKED",
+  "fairness_status": "Fixtures prepared, no live demographic bias result; limited group coverage.",
+  "logical_cases_ingested": 2,
+  "actual_uploaded_documents": 2,
+  "original_manifest_files_uploaded": 1
+}

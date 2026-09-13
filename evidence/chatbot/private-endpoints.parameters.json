@@ -1,0 +1,15 @@
+{
+  "parameters": {
+    "endpoints": {
+      "value": [
+        {
+          "app": "chatbot",
+          "name": "pe-chatbot-cosmos",
+          "resourceId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-chatbot-eval-0911/providers/Microsoft.DocumentDB/databaseAccounts/cosmos-ccptu1feb0911",
+          "groupId": "Sql",
+          "zoneName": "privatelink.documents.azure.com"
+        }
+      ]
+    }
+  }
+}

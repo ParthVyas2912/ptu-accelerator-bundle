@@ -1,0 +1,14 @@
+{
+  "error": null,
+  "outputs": {
+    "fqdn": {
+      "type": "String",
+      "value": "ca-dkm-api.internal.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io"
+    },
+    "resourceId": {
+      "type": "String",
+      "value": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-dkm-20260911/providers/Microsoft.App/containerApps/ca-dkm-api"
+    }
+  },
+  "state": "Succeeded"
+}

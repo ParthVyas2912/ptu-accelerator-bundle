@@ -1,0 +1,17 @@
+[
+  {
+    "case": "protected-resource",
+    "blocked": true,
+    "reason": "Target resource group rg-demo is not approved for macae."
+  },
+  {
+    "case": "wrong-subscription",
+    "blocked": true,
+    "reason": "Cross-subscription private endpoints are not allowed."
+  },
+  {
+    "case": "wrong-zone",
+    "blocked": true,
+    "reason": "Unapproved private-link group/DNS zone combination: blob."
+  }
+]

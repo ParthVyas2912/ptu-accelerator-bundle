@@ -1,0 +1,25 @@
+{
+  "observedAtUtc": "2026-09-12T05:00:45.4920902Z",
+  "queryStatus": "Succeeded",
+  "clientType": "PTU-Bundle-Accelerator-Report",
+  "requestedPeriod": {
+    "to": "2026-09-13T00:00:00Z",
+    "from": "2026-09-11T00:00:00Z"
+  },
+  "matchedResourceGroups": [
+    "rg-ptu-macae-demo",
+    "accel-chatbot-eval-0911",
+    "rg-ptu-content-demo",
+    "rg-ptu-bundle-platform",
+    "rg-ptu-modernize-demo",
+    "rg-ptu-conversation-demo",
+    "accel-dkm-20260911",
+    "ME_cae-ptu-bundle_rg-ptu-bundle-platform_eastus2"
+  ],
+  "currency": "USD",
+  "reportedSubscriptionSubtotal": 78.24014576249934,
+  "reportedLabGroupSubtotal": null,
+  "returnedLabRows": 0,
+  "coverage": "Reported usage only, subject to billing delay; not a final invoice or remaining-credit balance. Subscription subtotal includes pre-existing and concurrent workloads. Missing lab rows do not mean zero cost. Lab-group subtotal excludes any model usage billed to pre-existing shared EDC groups.",
+  "labRows": []
+}

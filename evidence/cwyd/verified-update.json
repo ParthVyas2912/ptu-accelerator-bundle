@@ -1,0 +1,210 @@
+{
+  "stage": "update",
+  "conversation_id": "4d71e5b7-cceb-47b7-9edb-68678404c200",
+  "app_call_latency_ms": 3524.4,
+  "tests": [
+    {
+      "name": "persisted_answer",
+      "expected": "The currently active domestic meal allowance at Larkspur Research Cooperative is 91 credits per travel day. This replaces the previous amount of 73 credits. This update is specified in the Travel Policy, version 2, which is active as of 2026-09-11 and explicitly states that it supersedes version 1, where the 73 credits allowance was set [doc1].",
+      "actual": "The currently active domestic meal allowance at Larkspur Research Cooperative is 91 credits per travel day. This replaces the previous amount of 73 credits. This update is specified in the Travel Policy, version 2, which is active as of 2026-09-11 and explicitly states that it supersedes version 1, where the 73 credits allowance was set [doc1].",
+      "verdict": "PASS"
+    },
+    {
+      "name": "persisted_citations",
+      "expected": [
+        {
+          "id": "[doc1]",
+          "title": "ptu-cwyd-travel.txt",
+          "url": "",
+          "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\nLarkspur Research Cooperative \u2014 Travel Policy, version 2, active 2026-09-11.\nThis version supersedes version 1. The domestic meal allowance is now 91 credits per travel day, replacing the previous 73 credits.\nTravel claims must be submitted within 21 calendar days of returning.",
+          "score": 0.711945021903782,
+          "metadata": {
+            "source_id": "1ebe48b006d028a979c368b0788a4eab2120c97dfdf588a29268ddb322f768b2"
+          }
+        }
+      ],
+      "actual": [
+        {
+          "id": "[doc1]",
+          "url": "",
+          "score": 0.711945021903782,
+          "title": "ptu-cwyd-travel.txt",
+          "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\nLarkspur Research Cooperative \u2014 Travel Policy, version 2, active 2026-09-11.\nThis version supersedes version 1. The domestic meal allowance is now 91 credits per travel day, replacing the previous 73 credits.\nTravel claims must be submitted within 21 calendar days of returning.",
+          "metadata": {
+            "source_id": "1ebe48b006d028a979c368b0788a4eab2120c97dfdf588a29268ddb322f768b2"
+          }
+        }
+      ],
+      "verdict": "PASS"
+    },
+    {
+      "name": "citation_blob_and_index_grounding",
+      "expected": "every citation source ID/snippet matches real index and source blob",
+      "actual": [
+        {
+          "title": "ptu-cwyd-travel.txt",
+          "source_id": "1ebe48b006d028a979c368b0788a4eab2120c97dfdf588a29268ddb322f768b2",
+          "api_file_status": 200,
+          "source_sha256": "ab9103c9cc0d9a9793094a9b7cb76726769e034ffee6cb94d8f67f764c4efad1",
+          "source_body": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\nLarkspur Research Cooperative \u2014 Travel Policy, version 2, active 2026-09-11.\nThis version supersedes version 1. The domestic meal allowance is now 91 credits per travel day, replacing the previous 73 credits.\nTravel claims must be submitted within 21 calendar days of returning.\n",
+          "index_rows_for_title": 1,
+          "index_content": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\nLarkspur Research Cooperative \u2014 Travel Policy, version 2, active 2026-09-11.\nThis version supersedes version 1. The domestic meal allowance is now 91 credits per travel day, replacing the previous 73 credits.\nTravel claims must be submitted within 21 calendar days of returning.",
+          "citation_snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\nLarkspur Research Cooperative \u2014 Travel Policy, version 2, active 2026-09-11.\nThis version supersedes version 1. The domestic meal allowance is now 91 credits per travel day, replacing the previous 73 credits.\nTravel claims must be submitted within 21 calendar days of returning.",
+          "verdict": "PASS"
+        }
+      ],
+      "verdict": "PASS"
+    },
+    {
+      "name": "contradictory_replacement",
+      "expected": "active91 credits supersedes73 with travel citation",
+      "actual": "The currently active domestic meal allowance at Larkspur Research Cooperative is 91 credits per travel day. This replaces the previous amount of 73 credits. This update is specified in the Travel Policy, version 2, which is active as of 2026-09-11 and explicitly states that it supersedes version 1, where the 73 credits allowance was set [doc1].",
+      "verdict": "PASS"
+    },
+    {
+      "name": "active_blob_and_index",
+      "expected": "one current travel chunk containing version2 and now91 credits",
+      "actual": [
+        {
+          "title": "ptu-cwyd-travel.txt",
+          "source_id": "1ebe48b006d028a979c368b0788a4eab2120c97dfdf588a29268ddb322f768b2",
+          "api_file_status": 200,
+          "source_sha256": "ab9103c9cc0d9a9793094a9b7cb76726769e034ffee6cb94d8f67f764c4efad1",
+          "source_body": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\nLarkspur Research Cooperative \u2014 Travel Policy, version 2, active 2026-09-11.\nThis version supersedes version 1. The domestic meal allowance is now 91 credits per travel day, replacing the previous 73 credits.\nTravel claims must be submitted within 21 calendar days of returning.\n",
+          "index_rows_for_title": 1,
+          "index_content": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\nLarkspur Research Cooperative \u2014 Travel Policy, version 2, active 2026-09-11.\nThis version supersedes version 1. The domestic meal allowance is now 91 credits per travel day, replacing the previous 73 credits.\nTravel claims must be submitted within 21 calendar days of returning.",
+          "citation_snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\nLarkspur Research Cooperative \u2014 Travel Policy, version 2, active 2026-09-11.\nThis version supersedes version 1. The domestic meal allowance is now 91 credits per travel day, replacing the previous 73 credits.\nTravel claims must be submitted within 21 calendar days of returning.",
+          "verdict": "PASS"
+        }
+      ],
+      "verdict": "PASS"
+    },
+    {
+      "name": "historical_answer_and_snippets_preserved",
+      "expected": "old conversation keeps original answer and citation metadata",
+      "actual": {
+        "content": "1. The domestic meal allowance per travel day is 73 credits [doc1].\n\n2. The annual learning allowance is 640 credits [doc2].\n\n3. Employees may work remotely two days each week [doc3].\n\n4. Completed equipment calibration records are retained for seven years [doc4].\n\n5. Shared field sensors must be calibrated every 90 calendar days [doc5].\n\n6. Travel claims must be submitted within 21 calendar days of returning [doc1], whereas learning reimbursement claims must be submitted within 45 calendar days of course completion [doc2].\n\n7. There is insufficient evidence about an orbital relocation allowance in the provided policies.",
+        "citations": [
+          {
+            "id": "[doc1]",
+            "url": "",
+            "score": 0.7595079453441891,
+            "title": "ptu-cwyd-travel.txt",
+            "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Travel Policy, version 1, active 2026-09-01.\r\nThe domestic meal allowance is 73 credits per travel day.\r\nTravel claims must be submitted within 21 calendar days of returning.\r\nThis policy is fictional and does not describe a real organization.",
+            "metadata": {
+              "source_id": "1ebe48b006d028a979c368b0788a4eab2120c97dfdf588a29268ddb322f768b2"
+            }
+          },
+          {
+            "id": "[doc2]",
+            "url": "",
+            "score": 0.6624773421501137,
+            "title": "ptu-cwyd-learning.txt",
+            "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Learning Policy, version 1, active 2026-09-01.\r\nEach employee has an annual learning allowance of 640 credits.\r\nLearning reimbursement claims must be submitted within 45 calendar days of course completion.\r\nThis policy is fictional and does not describe a real organization.",
+            "metadata": {
+              "source_id": "962b9d80e3babd6d8a52fadc6f96c85927b6458ff2b4d6b2bbe789ee72e29be2"
+            }
+          },
+          {
+            "id": "[doc3]",
+            "url": "",
+            "score": 0.629330390754327,
+            "title": "ptu-cwyd-remote.txt",
+            "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Remote Work Policy, version 1, active 2026-09-01.\r\nEmployees may work remotely two days each week.\r\nThe team coordinator approves the weekly remote-work schedule.\r\nThis policy is fictional and does not describe a real organization.",
+            "metadata": {
+              "source_id": "30b7f2e98fa29a09601447e57f3d746f8fc3d615daf1998357e575fa2155f6c6"
+            }
+          },
+          {
+            "id": "[doc4]",
+            "url": "",
+            "score": 0.544458223277224,
+            "title": "ptu-cwyd-records.txt",
+            "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Records Policy, version 1, active 2026-09-01.\r\nCompleted equipment calibration records are retained for seven years.\r\nThe records steward approves disposal after the retention period.\r\nThis policy is fictional and does not describe a real organization.",
+            "metadata": {
+              "source_id": "339f57e8f8f8d2cdd300d96fa29eba9f6ed9d14122c70d066afa69b2d62c95c3"
+            }
+          },
+          {
+            "id": "[doc5]",
+            "url": "",
+            "score": 0.6197122370995956,
+            "title": "ptu-cwyd-equipment.txt",
+            "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\r\nLarkspur Research Cooperative \u2014 Equipment Policy, version 1, active 2026-09-01.\r\nShared field sensors must be calibrated every 90 calendar days.\r\nThe laboratory coordinator maintains the calibration schedule.\r\nThis policy is fictional and does not describe a real organization.",
+            "metadata": {
+              "source_id": "706f3e7558c2b6441500eb368621fcd14381179c55cda2bd278a2787b1121289"
+            }
+          }
+        ]
+      },
+      "verdict": "PASS"
+    },
+    {
+      "name": "index_source_count",
+      "expected": "five policy titles and five active chunks",
+      "actual": {
+        "titles": 5,
+        "chunks": 5
+      },
+      "verdict": "PASS"
+    }
+  ],
+  "history": {
+    "conversation": {
+      "id": "4d71e5b7-cceb-47b7-9edb-68678404c200",
+      "user_id": "00000000-0000-0000-0000-000000000000",
+      "title": "What is the currently active domestic meal allowance at fictional Larkspur Research Cooperative? A previous policy said 73 credits. Cite the active source and explain whether it supersedes that amount.",
+      "created_at": "2026-09-12T00:19:03.908171+00:00",
+      "updated_at": "2026-09-12T00:19:03.934028+00:00",
+      "metadata": {}
+    },
+    "messages": [
+      {
+        "id": "09e65a59-df7c-4b81-b160-c44f5e5b9a6e",
+        "conversation_id": "4d71e5b7-cceb-47b7-9edb-68678404c200",
+        "role": "user",
+        "content": "What is the currently active domestic meal allowance at fictional Larkspur Research Cooperative? A previous policy said 73 credits. Cite the active source and explain whether it supersedes that amount.",
+        "created_at": "2026-09-12T00:19:03.921132+00:00",
+        "feedback": null,
+        "metadata": {}
+      },
+      {
+        "id": "11e4ced9-7ff6-4404-8820-05a4986ad354",
+        "conversation_id": "4d71e5b7-cceb-47b7-9edb-68678404c200",
+        "role": "assistant",
+        "content": "The currently active domestic meal allowance at Larkspur Research Cooperative is 91 credits per travel day. This replaces the previous amount of 73 credits. This update is specified in the Travel Policy, version 2, which is active as of 2026-09-11 and explicitly states that it supersedes version 1, where the 73 credits allowance was set [doc1].",
+        "created_at": "2026-09-12T00:19:03.934028+00:00",
+        "feedback": null,
+        "metadata": {
+          "citations": [
+            {
+              "id": "[doc1]",
+              "url": "",
+              "score": 0.711945021903782,
+              "title": "ptu-cwyd-travel.txt",
+              "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\nLarkspur Research Cooperative \u2014 Travel Policy, version 2, active 2026-09-11.\nThis version supersedes version 1. The domestic meal allowance is now 91 credits per travel day, replacing the previous 73 credits.\nTravel claims must be submitted within 21 calendar days of returning.",
+              "metadata": {
+                "source_id": "1ebe48b006d028a979c368b0788a4eab2120c97dfdf588a29268ddb322f768b2"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "source_checks": [
+    {
+      "title": "ptu-cwyd-travel.txt",
+      "source_id": "1ebe48b006d028a979c368b0788a4eab2120c97dfdf588a29268ddb322f768b2",
+      "api_file_status": 200,
+      "source_sha256": "ab9103c9cc0d9a9793094a9b7cb76726769e034ffee6cb94d8f67f764c4efad1",
+      "source_body": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\nLarkspur Research Cooperative \u2014 Travel Policy, version 2, active 2026-09-11.\nThis version supersedes version 1. The domestic meal allowance is now 91 credits per travel day, replacing the previous 73 credits.\nTravel claims must be submitted within 21 calendar days of returning.\n",
+      "index_rows_for_title": 1,
+      "index_content": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\nLarkspur Research Cooperative \u2014 Travel Policy, version 2, active 2026-09-11.\nThis version supersedes version 1. The domestic meal allowance is now 91 credits per travel day, replacing the previous 73 credits.\nTravel claims must be submitted within 21 calendar days of returning.",
+      "citation_snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\nLarkspur Research Cooperative \u2014 Travel Policy, version 2, active 2026-09-11.\nThis version supersedes version 1. The domestic meal allowance is now 91 credits per travel day, replacing the previous 73 credits.\nTravel claims must be submitted within 21 calendar days of returning.",
+      "verdict": "PASS"
+    }
+  ],
+  "passed": 7,
+  "failed": 0
+}

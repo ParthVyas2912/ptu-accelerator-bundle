@@ -1,0 +1,99 @@
+diff --git a/src/backend/sql_agents/convert_script.py b/src/backend/sql_agents/convert_script.py
+index a569d96f3528657b5965823b05c659371e972938..414987e0825e0fcce86afa14e811d12d940c9186 100644
+--- a/src/backend/sql_agents/convert_script.py
++++ b/src/backend/sql_agents/convert_script.py
+@@ -64,7 +64,7 @@ async def convert_script(
+         )
+ 
+         # orchestrate the chat
+-        current_migration = "No migration"
++        current_migration = ""
+         is_complete: bool = False
+         while not is_complete:
+             await comms_manager.group_chat.add_chat_message(
+@@ -271,7 +271,7 @@ async def convert_script(
+                         FileResult.ERROR,
+                     ),
+                 )
+-                break
++                return ""
+ 
+             if comms_manager.group_chat.is_complete:
+                 is_complete = True
+@@ -311,7 +311,7 @@ async def validate_migration(
+     batch_service: BatchService,
+ ) -> bool:
+     """Make sure the migrated query was returned"""
+-    if not migrated_query:
++    if not migrated_query or migrated_query.strip().casefold() in ("", "no migration"):
+         # send status update to the client of type failed
+         send_status_update(
+             status=FileProcessUpdate(
+diff --git a/src/tests/backend/sql_agents/convert_script_test.py b/src/tests/backend/sql_agents/convert_script_test.py
+index 4fc713927705f3da8879f640404c0cc85c8daa46..a7f58e40275e71858fc96a304fd0bb6cb3d7b9c0 100644
+--- a/src/tests/backend/sql_agents/convert_script_test.py
++++ b/src/tests/backend/sql_agents/convert_script_test.py
+@@ -2,6 +2,7 @@
+ # pylint: disable=too-few-public-methods,duplicate-code
+ 
+ import uuid
++import asyncio
+ from unittest.mock import AsyncMock, MagicMock, patch
+ 
+ from backend.sql_agents.convert_script import (
+@@ -24,6 +25,19 @@ class MockChatMessageContent:
+ class TestValidateMigration:
+     """Tests for validate_migration function."""
+ 
++    @pytest.mark.parametrize("candidate", ["No migration", "  NO MIGRATION  ", " \n\t"])
++    def test_validate_migration_rejects_placeholder_and_whitespace(self, candidate):
++        """A nonempty failure placeholder must never produce a success log."""
++        file_record = MagicMock()
++        file_record.file_id = str(uuid.uuid4())
++        file_record.batch_id = str(uuid.uuid4())
++        service = MagicMock()
++        service.create_file_log = AsyncMock()
++        with patch("backend.sql_agents.convert_script.send_status_update"):
++            result = asyncio.run(validate_migration(candidate, None, file_record, service))
++        assert result is False
++        assert "Migration completed successfully." not in str(service.create_file_log.call_args_list)
++
+     @pytest.mark.asyncio
+     async def test_validate_migration_success(self):
+         """Test successful migration validation."""
+@@ -230,5 +244,33 @@ class TestConvertScript:
+                     mock_sql_agents
+                 )
+ 
+-                # Should return "No migration" on error (this is the initial value)
+-                assert result == "No migration"
++                # Agent communication failure must not become a successful placeholder.
++                assert result == ""
++                assert "Migration completed successfully." not in str(
++                    mock_batch_service.create_file_log.call_args_list
++                )
++
++    def test_convert_script_discards_partial_candidate_on_communication_error(self):
++        """A selected candidate is not a completed migration if a later agent fails."""
++        file_record = MagicMock()
++        service = MagicMock()
++        service.create_file_log = AsyncMock()
++        agents = MagicMock()
++        comms = MagicMock()
++        comms.group_chat.add_chat_message = AsyncMock()
++        comms.cleanup = AsyncMock()
++
++        async def partial_then_error():
++            yield MockChatMessageContent(
++                name="picker",
++                content='{"conclusion":"selected","picked_query":"SELECT 1;","summary":"selected"}'
++            )
++            raise RuntimeError("Syntax agent unavailable")
++
++        comms.async_invoke = partial_then_error
++        with patch("backend.sql_agents.convert_script.CommsManager", return_value=comms):
++            with patch("backend.sql_agents.convert_script.send_status_update"):
++                result = asyncio.run(convert_script("SELECT 1;", file_record, service, agents))
++        assert result == ""
++        assert "Migration completed successfully." not in str(service.create_file_log.call_args_list)
++        comms.cleanup.assert_awaited_once()

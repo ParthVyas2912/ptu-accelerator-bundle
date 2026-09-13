@@ -1,0 +1,1482 @@
+[
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-n8n-aca-repro/providers/Microsoft.OperationalInsights/workspaces/workspace-rgn8nacarepromdD3",
+    "name": "workspace-rgn8nacarepromdD3",
+    "type": "Microsoft.OperationalInsights/workspaces",
+    "location": "eastus",
+    "resourceGroup": "rg-n8n-aca-repro",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-n8n-aca-repro/providers/Microsoft.App/managedEnvironments/cae-n8n-repro",
+    "name": "cae-n8n-repro",
+    "type": "Microsoft.App/managedEnvironments",
+    "location": "eastus",
+    "resourceGroup": "rg-n8n-aca-repro",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-n8n-aca-repro/providers/Microsoft.Cache/redisEnterprise/amr-n8n-repro",
+    "name": "amr-n8n-repro",
+    "type": "Microsoft.Cache/redisEnterprise",
+    "location": "eastus",
+    "resourceGroup": "rg-n8n-aca-repro",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-n8n-aca-repro/providers/Microsoft.App/containerApps/ca-n8n-badworker",
+    "name": "ca-n8n-badworker",
+    "type": "Microsoft.App/containerApps",
+    "location": "eastus",
+    "resourceGroup": "rg-n8n-aca-repro",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-n8n-aca-repro/providers/Microsoft.ContainerRegistry/registries/acrn8ngac5098",
+    "name": "acrn8ngac5098",
+    "type": "Microsoft.ContainerRegistry/registries",
+    "location": "eastus",
+    "resourceGroup": "rg-n8n-aca-repro",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-n8n-aca-repro/providers/Microsoft.KeyVault/vaults/kvn8ngac5098",
+    "name": "kvn8ngac5098",
+    "type": "Microsoft.KeyVault/vaults",
+    "location": "eastus",
+    "resourceGroup": "rg-n8n-aca-repro",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-n8n-aca-repro/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uami-n8n-gac5098",
+    "name": "uami-n8n-gac5098",
+    "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+    "location": "eastus",
+    "resourceGroup": "rg-n8n-aca-repro",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-n8n-aca-repro/providers/Microsoft.App/containerApps/ca-n8n-uami",
+    "name": "ca-n8n-uami",
+    "type": "Microsoft.App/containerApps",
+    "location": "eastus",
+    "resourceGroup": "rg-n8n-aca-repro",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-occ-cosmos-test/providers/Microsoft.DocumentDB/databaseAccounts/occ-cos-pv687593-e2",
+    "name": "occ-cos-pv687593-e2",
+    "type": "Microsoft.DocumentDB/databaseAccounts",
+    "location": "eastus2",
+    "resourceGroup": "rg-occ-cosmos-test",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-occ-cosmos-test/providers/Microsoft.Network/virtualNetworks/occ-vnet",
+    "name": "occ-vnet",
+    "type": "Microsoft.Network/virtualNetworks",
+    "location": "eastus2",
+    "resourceGroup": "rg-occ-cosmos-test",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-occ-cosmos-test/providers/Microsoft.Network/privateDnsZones/privatelink.documents.azure.com",
+    "name": "privatelink.documents.azure.com",
+    "type": "Microsoft.Network/privateDnsZones",
+    "location": "global",
+    "resourceGroup": "rg-occ-cosmos-test",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-occ-cosmos-test/providers/Microsoft.Network/privateDnsZones/privatelink.documents.azure.com/virtualNetworkLinks/occ-dns-link",
+    "name": "privatelink.documents.azure.com/occ-dns-link",
+    "type": "Microsoft.Network/privateDnsZones/virtualNetworkLinks",
+    "location": "global",
+    "resourceGroup": "rg-occ-cosmos-test",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-occ-cosmos-test/providers/Microsoft.Network/privateEndpoints/occ-cosmos-pe",
+    "name": "occ-cosmos-pe",
+    "type": "Microsoft.Network/privateEndpoints",
+    "location": "eastus2",
+    "resourceGroup": "rg-occ-cosmos-test",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-occ-cosmos-test/providers/Microsoft.Network/networkInterfaces/occ-cosmos-pe.nic.c05866f7-4a8a-42ea-ab3f-3b9f16cef319",
+    "name": "occ-cosmos-pe.nic.c05866f7-4a8a-42ea-ab3f-3b9f16cef319",
+    "type": "Microsoft.Network/networkInterfaces",
+    "location": "eastus2",
+    "resourceGroup": "rg-occ-cosmos-test",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-occ-cosmos-test/providers/Microsoft.Storage/storageAccounts/occseedpv687593",
+    "name": "occseedpv687593",
+    "type": "Microsoft.Storage/storageAccounts",
+    "location": "eastus2",
+    "resourceGroup": "rg-occ-cosmos-test",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-occ-cosmos-test/providers/Microsoft.Network/publicIPAddresses/occ-seed-vmPublicIP",
+    "name": "occ-seed-vmPublicIP",
+    "type": "Microsoft.Network/publicIPAddresses",
+    "location": "eastus2",
+    "resourceGroup": "rg-occ-cosmos-test",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-occ-cosmos-test/providers/Microsoft.Network/networkSecurityGroups/occ-seed-vmNSG",
+    "name": "occ-seed-vmNSG",
+    "type": "Microsoft.Network/networkSecurityGroups",
+    "location": "eastus2",
+    "resourceGroup": "rg-occ-cosmos-test",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-occ-cosmos-test/providers/Microsoft.Network/networkInterfaces/occ-seed-vmVMNic",
+    "name": "occ-seed-vmVMNic",
+    "type": "Microsoft.Network/networkInterfaces",
+    "location": "eastus2",
+    "resourceGroup": "rg-occ-cosmos-test",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-occ-cosmos-test/providers/Microsoft.Compute/virtualMachines/occ-seed-vm",
+    "name": "occ-seed-vm",
+    "type": "Microsoft.Compute/virtualMachines",
+    "location": "eastus2",
+    "resourceGroup": "rg-occ-cosmos-test",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/RG-OCC-COSMOS-TEST/providers/Microsoft.Compute/disks/occ-seed-vm_OsDisk_1_afdbee4b51774fbfb36e13180df38bf9",
+    "name": "occ-seed-vm_OsDisk_1_afdbee4b51774fbfb36e13180df38bf9",
+    "type": "Microsoft.Compute/disks",
+    "location": "eastus2",
+    "resourceGroup": "RG-OCC-COSMOS-TEST",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/RG-OCC-COSMOS-TEST/providers/Microsoft.Compute/virtualMachines/occ-seed-vm/extensions/MDE.Linux",
+    "name": "occ-seed-vm/MDE.Linux",
+    "type": "Microsoft.Compute/virtualMachines/extensions",
+    "location": "eastus2",
+    "resourceGroup": "RG-OCC-COSMOS-TEST",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-occ-cosmos-test/providers/Microsoft.Network/networkSecurityGroups/occ-vnet-pe-subnet-nsg-eastus2",
+    "name": "occ-vnet-pe-subnet-nsg-eastus2",
+    "type": "Microsoft.Network/networkSecurityGroups",
+    "location": "eastus2",
+    "resourceGroup": "rg-occ-cosmos-test",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-occ-cosmos-test/providers/Microsoft.Network/networkSecurityGroups/occ-vnet-vm-subnet-nsg-eastus2",
+    "name": "occ-vnet-vm-subnet-nsg-eastus2",
+    "type": "Microsoft.Network/networkSecurityGroups",
+    "location": "eastus2",
+    "resourceGroup": "rg-occ-cosmos-test",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-occ-cosmos-test/providers/Microsoft.EventGrid/systemTopics/occseedpv687593-75cfd33c-e697-461c-818b-927c8b549c2a",
+    "name": "occseedpv687593-75cfd33c-e697-461c-818b-927c8b549c2a",
+    "type": "Microsoft.EventGrid/systemTopics",
+    "location": "eastus2",
+    "resourceGroup": "rg-occ-cosmos-test",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/Default-ActivityLogAlerts/providers/Microsoft.Insights/actiongroups/AGOwner",
+    "name": "AGOwner",
+    "type": "Microsoft.Insights/actiongroups",
+    "location": "global",
+    "resourceGroup": "Default-ActivityLogAlerts",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/McapsGovernance/providers/Microsoft.Storage/storageAccounts/mcapsb5a6709b7d804f70",
+    "name": "mcapsb5a6709b7d804f70",
+    "type": "Microsoft.Storage/storageAccounts",
+    "location": "westus2",
+    "resourceGroup": "McapsGovernance",
+    "tags": {
+      "Action": "Do Not Delete",
+      "Contact": "https://aka.ms/mcapsazuresupport",
+      "CreatedByPolicy": "MCAPS Governance Team"
+    }
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/mcapsgovernance/providers/Microsoft.EventGrid/systemTopics/mcapsb5a6709b7d804f70-92c57b5d-7bd9-4ef4-912f-1ade87d784d8",
+    "name": "mcapsb5a6709b7d804f70-92c57b5d-7bd9-4ef4-912f-1ade87d784d8",
+    "type": "Microsoft.EventGrid/systemTopics",
+    "location": "westus2",
+    "resourceGroup": "mcapsgovernance",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/McapsGovernance/providers/Microsoft.OperationalInsights/workspaces/mcaps4ea7b5a6709b7d804f70-la",
+    "name": "mcaps4ea7b5a6709b7d804f70-la",
+    "type": "Microsoft.OperationalInsights/workspaces",
+    "location": "westus2",
+    "resourceGroup": "McapsGovernance",
+    "tags": {
+      "Action": "Do Not Delete",
+      "Contact": "https://aka.ms/mcapsazuresupport",
+      "CreatedByPolicy": "MCAPS Governance Team"
+    }
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatchers/NetworkWatcher_canadaeast",
+    "name": "NetworkWatcher_canadaeast",
+    "type": "Microsoft.Network/networkWatchers",
+    "location": "canadaeast",
+    "resourceGroup": "NetworkWatcherRG",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatchers/NetworkWatcher_canadacentral",
+    "name": "NetworkWatcher_canadacentral",
+    "type": "Microsoft.Network/networkWatchers",
+    "location": "canadacentral",
+    "resourceGroup": "NetworkWatcherRG",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatchers/NetworkWatcher_eastus",
+    "name": "NetworkWatcher_eastus",
+    "type": "Microsoft.Network/networkWatchers",
+    "location": "eastus",
+    "resourceGroup": "NetworkWatcherRG",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatchers/NetworkWatcher_eastus2",
+    "name": "NetworkWatcher_eastus2",
+    "type": "Microsoft.Network/networkWatchers",
+    "location": "eastus2",
+    "resourceGroup": "NetworkWatcherRG",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatchers/NetworkWatcher_swedencentral",
+    "name": "NetworkWatcher_swedencentral",
+    "type": "Microsoft.Network/networkWatchers",
+    "location": "swedencentral",
+    "resourceGroup": "NetworkWatcherRG",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/hinal-resume-rg/providers/Microsoft.CognitiveServices/accounts/hinal-openai-12757",
+    "name": "hinal-openai-12757",
+    "type": "Microsoft.CognitiveServices/accounts",
+    "location": "eastus2",
+    "resourceGroup": "hinal-resume-rg",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-partvyas-3207/providers/Microsoft.CognitiveServices/accounts/partvyas-3207-resource",
+    "name": "partvyas-3207-resource",
+    "type": "Microsoft.CognitiveServices/accounts",
+    "location": "eastus2",
+    "resourceGroup": "rg-partvyas-3207",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-partvyas-3207/providers/Microsoft.CognitiveServices/accounts/partvyas-3207-resource/projects/partvyas-3207",
+    "name": "partvyas-3207-resource/partvyas-3207",
+    "type": "Microsoft.CognitiveServices/accounts/projects",
+    "location": "eastus2",
+    "resourceGroup": "rg-partvyas-3207",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-planetaryexplorer/providers/Microsoft.OperationalInsights/workspaces/log-mgxvsbslmnvjs",
+    "name": "log-mgxvsbslmnvjs",
+    "type": "Microsoft.OperationalInsights/workspaces",
+    "location": "eastus2",
+    "resourceGroup": "rg-planetaryexplorer",
+    "tags": {
+      "azd-app-name": "planetary-explorer",
+      "azd-env-name": "planetaryexplorer"
+    }
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-planetaryexplorer/providers/Microsoft.Storage/storageAccounts/stmgxvsbslmnvjs",
+    "name": "stmgxvsbslmnvjs",
+    "type": "Microsoft.Storage/storageAccounts",
+    "location": "eastus2",
+    "resourceGroup": "rg-planetaryexplorer",
+    "tags": {
+      "azd-app-name": "planetary-explorer",
+      "azd-env-name": "planetaryexplorer"
+    }
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-planetaryexplorer/providers/Microsoft.Maps/accounts/map-mgxvsbslmnvjs",
+    "name": "map-mgxvsbslmnvjs",
+    "type": "Microsoft.Maps/accounts",
+    "location": "eastus",
+    "resourceGroup": "rg-planetaryexplorer",
+    "tags": {
+      "azd-app-name": "planetary-explorer",
+      "azd-env-name": "planetaryexplorer"
+    }
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-planetaryexplorer/providers/Microsoft.KeyVault/vaults/kv-mgxvsbslmnvjs",
+    "name": "kv-mgxvsbslmnvjs",
+    "type": "Microsoft.KeyVault/vaults",
+    "location": "eastus2",
+    "resourceGroup": "rg-planetaryexplorer",
+    "tags": {
+      "azd-app-name": "planetary-explorer",
+      "azd-env-name": "planetaryexplorer"
+    }
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-planetaryexplorer/providers/Microsoft.ContainerRegistry/registries/crmgxvsbslmnvjs",
+    "name": "crmgxvsbslmnvjs",
+    "type": "Microsoft.ContainerRegistry/registries",
+    "location": "eastus2",
+    "resourceGroup": "rg-planetaryexplorer",
+    "tags": {
+      "azd-app-name": "planetary-explorer",
+      "azd-env-name": "planetaryexplorer"
+    }
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-planetaryexplorer/providers/Microsoft.Insights/components/appi-mgxvsbslmnvjs",
+    "name": "appi-mgxvsbslmnvjs",
+    "type": "Microsoft.Insights/components",
+    "location": "eastus2",
+    "resourceGroup": "rg-planetaryexplorer",
+    "tags": {
+      "azd-app-name": "planetary-explorer",
+      "azd-env-name": "planetaryexplorer"
+    }
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-planetaryexplorer/providers/Microsoft.App/managedEnvironments/cae-mgxvsbslmnvjs",
+    "name": "cae-mgxvsbslmnvjs",
+    "type": "Microsoft.App/managedEnvironments",
+    "location": "eastus2",
+    "resourceGroup": "rg-planetaryexplorer",
+    "tags": {
+      "azd-app-name": "planetary-explorer",
+      "azd-env-name": "planetaryexplorer"
+    }
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-planetaryexplorer/providers/Microsoft.CognitiveServices/accounts/cog-foundry-mgxvsbslmnvjs",
+    "name": "cog-foundry-mgxvsbslmnvjs",
+    "type": "Microsoft.CognitiveServices/accounts",
+    "location": "eastus2",
+    "resourceGroup": "rg-planetaryexplorer",
+    "tags": {
+      "azd-app-name": "planetary-explorer",
+      "azd-env-name": "planetaryexplorer"
+    }
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-planetaryexplorer/providers/Microsoft.MachineLearningServices/workspaces/mlw-hub-mgxvsbslmnvjs",
+    "name": "mlw-hub-mgxvsbslmnvjs",
+    "type": "Microsoft.MachineLearningServices/workspaces",
+    "location": "eastus2",
+    "resourceGroup": "rg-planetaryexplorer",
+    "tags": {
+      "__SYSTEM__AIServices_Default_AIServices": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-planetaryexplorer/providers/Microsoft.CognitiveServices/accounts/cog-foundry-mgxvsbslmnvjs",
+      "__SYSTEM__AzureOpenAI_Default_AIServices_aoai": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-planetaryexplorer/providers/Microsoft.CognitiveServices/accounts/cog-foundry-mgxvsbslmnvjs",
+      "azd-app-name": "planetary-explorer",
+      "azd-env-name": "planetaryexplorer"
+    }
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-planetaryexplorer/providers/Microsoft.MachineLearningServices/workspaces/mlw-project-mgxvsbslmnvjs",
+    "name": "mlw-project-mgxvsbslmnvjs",
+    "type": "Microsoft.MachineLearningServices/workspaces",
+    "location": "eastus2",
+    "resourceGroup": "rg-planetaryexplorer",
+    "tags": {
+      "azd-app-name": "planetary-explorer",
+      "azd-env-name": "planetaryexplorer"
+    }
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-planetaryexplorer/providers/Microsoft.CognitiveServices/accounts/cog-foundry-mgxvsbslmnvjs/projects/planetary-explorer-agents",
+    "name": "cog-foundry-mgxvsbslmnvjs/planetary-explorer-agents",
+    "type": "Microsoft.CognitiveServices/accounts/projects",
+    "location": "eastus2",
+    "resourceGroup": "rg-planetaryexplorer",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-planetaryexplorer/providers/microsoft.alertsmanagement/smartDetectorAlertRules/Failure Anomalies - appi-mgxvsbslmnvjs",
+    "name": "Failure Anomalies - appi-mgxvsbslmnvjs",
+    "type": "microsoft.alertsmanagement/smartDetectorAlertRules",
+    "location": "global",
+    "resourceGroup": "rg-planetaryexplorer",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-planetaryexplorer/providers/Microsoft.App/containerApps/ca-web-mgxvsbslmnvjs",
+    "name": "ca-web-mgxvsbslmnvjs",
+    "type": "Microsoft.App/containerApps",
+    "location": "eastus2",
+    "resourceGroup": "rg-planetaryexplorer",
+    "tags": {
+      "azd-app-name": "planetary-explorer",
+      "azd-env-name": "planetaryexplorer",
+      "azd-service-name": "web"
+    }
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-planetaryexplorer/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id-ca-web-mgxvsbslmnvjs",
+    "name": "id-ca-web-mgxvsbslmnvjs",
+    "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+    "location": "eastus2",
+    "resourceGroup": "rg-planetaryexplorer",
+    "tags": {
+      "azd-app-name": "planetary-explorer",
+      "azd-env-name": "planetaryexplorer"
+    }
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-planetaryexplorer/providers/Microsoft.EventGrid/systemTopics/stmgxvsbslmnvjs-006c66d5-dc41-4344-96dd-89f7f67597c0",
+    "name": "stmgxvsbslmnvjs-006c66d5-dc41-4344-96dd-89f7f67597c0",
+    "type": "Microsoft.EventGrid/systemTopics",
+    "location": "eastus2",
+    "resourceGroup": "rg-planetaryexplorer",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatchers/NetworkWatcher_westus3",
+    "name": "NetworkWatcher_westus3",
+    "type": "Microsoft.Network/networkWatchers",
+    "location": "westus3",
+    "resourceGroup": "NetworkWatcherRG",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/DefaultResourceGroup-CCAN/providers/Microsoft.OperationalInsights/workspaces/DefaultWorkspace-1feb53b2-854a-4ea7-b5a6-709b7d804f70-CCAN",
+    "name": "DefaultWorkspace-1feb53b2-854a-4ea7-b5a6-709b7d804f70-CCAN",
+    "type": "Microsoft.OperationalInsights/workspaces",
+    "location": "canadacentral",
+    "resourceGroup": "DefaultResourceGroup-CCAN",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/VisualStudioOnline-2E1EA48109BA4030AF7D69E04C5BB1DD/providers/microsoft.visualstudio/account/partvyas",
+    "name": "partvyas",
+    "type": "microsoft.visualstudio/account",
+    "location": "canadacentral",
+    "resourceGroup": "VisualStudioOnline-2E1EA48109BA4030AF7D69E04C5BB1DD",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/ado-defender-for-cloud/providers/Microsoft.Security/securityConnectors/azure-devops",
+    "name": "azure-devops",
+    "type": "Microsoft.Security/securityConnectors",
+    "location": "canadacentral",
+    "resourceGroup": "ado-defender-for-cloud",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/ado-defender-for-cloud/providers/Microsoft.Security/securityConnectors/ado-connector",
+    "name": "ado-connector",
+    "type": "Microsoft.Security/securityConnectors",
+    "location": "canadacentral",
+    "resourceGroup": "ado-defender-for-cloud",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/specsmith-builders-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/specsmith-builder-identity",
+    "name": "specsmith-builder-identity",
+    "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+    "location": "canadacentral",
+    "resourceGroup": "specsmith-builders-rg",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/specsmith-builders-rg/providers/Microsoft.ContainerRegistry/registries/specsmithacr5ikydpqadzmgo",
+    "name": "specsmithacr5ikydpqadzmgo",
+    "type": "Microsoft.ContainerRegistry/registries",
+    "location": "canadacentral",
+    "resourceGroup": "specsmith-builders-rg",
+    "tags": {
+      "purpose": "specsmith-builder-images"
+    }
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/specsmith-builders-rg/providers/Microsoft.OperationalInsights/workspaces/specsmith-logs",
+    "name": "specsmith-logs",
+    "type": "Microsoft.OperationalInsights/workspaces",
+    "location": "canadacentral",
+    "resourceGroup": "specsmith-builders-rg",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/specsmith-builders-rg/providers/Microsoft.App/managedEnvironments/specsmith-env",
+    "name": "specsmith-env",
+    "type": "Microsoft.App/managedEnvironments",
+    "location": "canadacentral",
+    "resourceGroup": "specsmith-builders-rg",
+    "tags": {
+      "purpose": "specsmith-builder-runtime"
+    }
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/specsmith-builders-rg/providers/Microsoft.App/containerApps/temporal-dev",
+    "name": "temporal-dev",
+    "type": "Microsoft.App/containerApps",
+    "location": "canadacentral",
+    "resourceGroup": "specsmith-builders-rg",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/specsmith-builders-rg/providers/Microsoft.App/containerApps/specsmith-worker",
+    "name": "specsmith-worker",
+    "type": "Microsoft.App/containerApps",
+    "location": "canadacentral",
+    "resourceGroup": "specsmith-builders-rg",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/specsuite-demo-rg/providers/Microsoft.DBforPostgreSQL/flexibleServers/todoapi-pg-jzecsy",
+    "name": "todoapi-pg-jzecsy",
+    "type": "Microsoft.DBforPostgreSQL/flexibleServers",
+    "location": "canadacentral",
+    "resourceGroup": "specsuite-demo-rg",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/specsuite-demo-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/todoapi-uami",
+    "name": "todoapi-uami",
+    "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+    "location": "canadacentral",
+    "resourceGroup": "specsuite-demo-rg",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/specsuite-demo-rg/providers/Microsoft.OperationalInsights/workspaces/todoapi-logs",
+    "name": "todoapi-logs",
+    "type": "Microsoft.OperationalInsights/workspaces",
+    "location": "canadacentral",
+    "resourceGroup": "specsuite-demo-rg",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/specsuite-demo-rg/providers/Microsoft.ContainerRegistry/registries/todoapiacrjzecsytyvoh3m",
+    "name": "todoapiacrjzecsytyvoh3m",
+    "type": "Microsoft.ContainerRegistry/registries",
+    "location": "canadacentral",
+    "resourceGroup": "specsuite-demo-rg",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/specsuite-demo-rg/providers/Microsoft.App/managedEnvironments/todoapi-env",
+    "name": "todoapi-env",
+    "type": "Microsoft.App/managedEnvironments",
+    "location": "canadacentral",
+    "resourceGroup": "specsuite-demo-rg",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/specsuite-demo-rg/providers/Microsoft.App/containerApps/todoapi-app",
+    "name": "todoapi-app",
+    "type": "Microsoft.App/containerApps",
+    "location": "canadacentral",
+    "resourceGroup": "specsuite-demo-rg",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-demo/providers/Microsoft.Storage/storageAccounts/st45c437srh2dss",
+    "name": "st45c437srh2dss",
+    "type": "Microsoft.Storage/storageAccounts",
+    "location": "canadacentral",
+    "resourceGroup": "rg-demo",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-demo/providers/Microsoft.Network/privateDnsZones/privatelink.blob.core.windows.net",
+    "name": "privatelink.blob.core.windows.net",
+    "type": "Microsoft.Network/privateDnsZones",
+    "location": "global",
+    "resourceGroup": "rg-demo",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-demo/providers/Microsoft.OperationalInsights/workspaces/log-demo",
+    "name": "log-demo",
+    "type": "Microsoft.OperationalInsights/workspaces",
+    "location": "canadacentral",
+    "resourceGroup": "rg-demo",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-demo/providers/Microsoft.Network/virtualNetworks/vnet-demo",
+    "name": "vnet-demo",
+    "type": "Microsoft.Network/virtualNetworks",
+    "location": "canadacentral",
+    "resourceGroup": "rg-demo",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-demo/providers/Microsoft.ContainerRegistry/registries/cr45c437srh2dss",
+    "name": "cr45c437srh2dss",
+    "type": "Microsoft.ContainerRegistry/registries",
+    "location": "canadacentral",
+    "resourceGroup": "rg-demo",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-demo/providers/Microsoft.Network/privateEndpoints/pe-st45c437srh2dss-blob",
+    "name": "pe-st45c437srh2dss-blob",
+    "type": "Microsoft.Network/privateEndpoints",
+    "location": "canadacentral",
+    "resourceGroup": "rg-demo",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-demo/providers/Microsoft.App/managedEnvironments/cae-demo",
+    "name": "cae-demo",
+    "type": "Microsoft.App/managedEnvironments",
+    "location": "canadacentral",
+    "resourceGroup": "rg-demo",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-demo/providers/Microsoft.Network/networkInterfaces/pe-st45c437srh2dss-blob.nic.5a493a32-3bfb-4010-8608-9910bd825043",
+    "name": "pe-st45c437srh2dss-blob.nic.5a493a32-3bfb-4010-8608-9910bd825043",
+    "type": "Microsoft.Network/networkInterfaces",
+    "location": "canadacentral",
+    "resourceGroup": "rg-demo",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-demo/providers/Microsoft.Network/privateDnsZones/privatelink.blob.core.windows.net/virtualNetworkLinks/vnet-demo-blob-link",
+    "name": "privatelink.blob.core.windows.net/vnet-demo-blob-link",
+    "type": "Microsoft.Network/privateDnsZones/virtualNetworkLinks",
+    "location": "global",
+    "resourceGroup": "rg-demo",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/ME_cae-demo_rg-demo_canadacentral/providers/Microsoft.Network/publicIPAddresses/capp-svc-lb-ip",
+    "name": "capp-svc-lb-ip",
+    "type": "Microsoft.Network/publicIPAddresses",
+    "location": "canadacentral",
+    "resourceGroup": "ME_cae-demo_rg-demo_canadacentral",
+    "tags": {
+      "aca-managed-env-id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-demo/providers/Microsoft.App/managedEnvironments/cae-demo"
+    }
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/ME_cae-demo_rg-demo_canadacentral/providers/Microsoft.Network/loadBalancers/capp-svc-lb",
+    "name": "capp-svc-lb",
+    "type": "Microsoft.Network/loadBalancers",
+    "location": "canadacentral",
+    "resourceGroup": "ME_cae-demo_rg-demo_canadacentral",
+    "tags": {
+      "aca-managed-env-id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-demo/providers/Microsoft.App/managedEnvironments/cae-demo"
+    }
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-demo/providers/Microsoft.App/containerApps/specsuite-demo",
+    "name": "specsuite-demo",
+    "type": "Microsoft.App/containerApps",
+    "location": "canadacentral",
+    "resourceGroup": "rg-demo",
+    "tags": {
+      "azd-service-name": "specsuite"
+    }
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-demo/providers/Microsoft.Network/networkSecurityGroups/vnet-demo-aca-infra-nsg-canadacentral",
+    "name": "vnet-demo-aca-infra-nsg-canadacentral",
+    "type": "Microsoft.Network/networkSecurityGroups",
+    "location": "canadacentral",
+    "resourceGroup": "rg-demo",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-demo/providers/Microsoft.Network/networkSecurityGroups/vnet-demo-private-endpoints-nsg-canadacentral",
+    "name": "vnet-demo-private-endpoints-nsg-canadacentral",
+    "type": "Microsoft.Network/networkSecurityGroups",
+    "location": "canadacentral",
+    "resourceGroup": "rg-demo",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/VisualStudioOnline-FB59D40185404A5BBEB21E983A3A7F5D/providers/microsoft.visualstudio/account/Specsuite-demo",
+    "name": "Specsuite-demo",
+    "type": "microsoft.visualstudio/account",
+    "location": "canadacentral",
+    "resourceGroup": "VisualStudioOnline-FB59D40185404A5BBEB21E983A3A7F5D",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-demo/providers/Microsoft.EventGrid/systemTopics/st45c437srh2dss-35e5a7a5-00ce-499e-928d-b0cfc611e83e",
+    "name": "st45c437srh2dss-35e5a7a5-00ce-499e-928d-b0cfc611e83e",
+    "type": "Microsoft.EventGrid/systemTopics",
+    "location": "canadacentral",
+    "resourceGroup": "rg-demo",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-aiscleaner-batch-cc/providers/Microsoft.ContainerRegistry/registries/acraiscleanerngrc9i",
+    "name": "acraiscleanerngrc9i",
+    "type": "Microsoft.ContainerRegistry/registries",
+    "location": "canadacentral",
+    "resourceGroup": "rg-aiscleaner-batch-cc",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-aiscleaner-batch-cc/providers/Microsoft.Storage/storageAccounts/staisclninngrc9i",
+    "name": "staisclninngrc9i",
+    "type": "Microsoft.Storage/storageAccounts",
+    "location": "canadacentral",
+    "resourceGroup": "rg-aiscleaner-batch-cc",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-aiscleaner-batch-cc/providers/Microsoft.Storage/storageAccounts/staisclnoutngrc9i",
+    "name": "staisclnoutngrc9i",
+    "type": "Microsoft.Storage/storageAccounts",
+    "location": "canadacentral",
+    "resourceGroup": "rg-aiscleaner-batch-cc",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-aiscleaner-batch-cc/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id-aiscleaner",
+    "name": "id-aiscleaner",
+    "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+    "location": "canadacentral",
+    "resourceGroup": "rg-aiscleaner-batch-cc",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-aiscleaner-batch-cc/providers/Microsoft.Batch/batchAccounts/baaiscleanerngrc9i",
+    "name": "baaiscleanerngrc9i",
+    "type": "Microsoft.Batch/batchAccounts",
+    "location": "canadacentral",
+    "resourceGroup": "rg-aiscleaner-batch-cc",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-aiscleaner-batch-cc/providers/Microsoft.EventGrid/systemTopics/staisclninngrc9i-a2563a64-09da-4843-9070-de6b57408272",
+    "name": "staisclninngrc9i-a2563a64-09da-4843-9070-de6b57408272",
+    "type": "Microsoft.EventGrid/systemTopics",
+    "location": "canadacentral",
+    "resourceGroup": "rg-aiscleaner-batch-cc",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-aiscleaner-batch-cc/providers/Microsoft.EventGrid/systemTopics/staisclnoutngrc9i-77dcc9e6-336c-4c83-ab50-1327420546ed",
+    "name": "staisclnoutngrc9i-77dcc9e6-336c-4c83-ab50-1327420546ed",
+    "type": "Microsoft.EventGrid/systemTopics",
+    "location": "canadacentral",
+    "resourceGroup": "rg-aiscleaner-batch-cc",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-tnt-cosmos/providers/Microsoft.DocumentDB/databaseAccounts/cosmos-occ-tnt-8ie3xpb0",
+    "name": "cosmos-occ-tnt-8ie3xpb0",
+    "type": "Microsoft.DocumentDB/databaseAccounts",
+    "location": "canadacentral",
+    "resourceGroup": "rg-tnt-cosmos",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-tnt-cosmos/providers/Microsoft.DocumentDB/databaseAccounts/cosmos-occ-tnt-gr8s5m60",
+    "name": "cosmos-occ-tnt-gr8s5m60",
+    "type": "Microsoft.DocumentDB/databaseAccounts",
+    "location": "eastus2",
+    "resourceGroup": "rg-tnt-cosmos",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-specsuite-aks-mcaps/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id-specsuite-mcaps",
+    "name": "id-specsuite-mcaps",
+    "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+    "location": "canadacentral",
+    "resourceGroup": "rg-specsuite-aks-mcaps",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-specsuite-aks-mcaps/providers/Microsoft.ContainerService/managedClusters/aks-specsuite-mcaps",
+    "name": "aks-specsuite-mcaps",
+    "type": "Microsoft.ContainerService/managedClusters",
+    "location": "canadacentral",
+    "resourceGroup": "rg-specsuite-aks-mcaps",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/MC_rg-specsuite-aks-mcaps_aks-specsuite-mcaps_canadacentral/providers/Microsoft.Network/publicIPAddresses/d56a586f-0348-4467-b7de-c1ce702dc8d9",
+    "name": "d56a586f-0348-4467-b7de-c1ce702dc8d9",
+    "type": "Microsoft.Network/publicIPAddresses",
+    "location": "canadacentral",
+    "resourceGroup": "MC_rg-specsuite-aks-mcaps_aks-specsuite-mcaps_canadacentral",
+    "tags": {
+      "aks-managed-cluster-name": "aks-specsuite-mcaps",
+      "aks-managed-cluster-rg": "rg-specsuite-aks-mcaps",
+      "aks-managed-type": "aks-slb-managed-outbound-ip"
+    }
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/MC_rg-specsuite-aks-mcaps_aks-specsuite-mcaps_canadacentral/providers/Microsoft.Network/loadBalancers/kubernetes",
+    "name": "kubernetes",
+    "type": "Microsoft.Network/loadBalancers",
+    "location": "canadacentral",
+    "resourceGroup": "MC_rg-specsuite-aks-mcaps_aks-specsuite-mcaps_canadacentral",
+    "tags": {
+      "aks-managed-cluster-name": "aks-specsuite-mcaps",
+      "aks-managed-cluster-rg": "rg-specsuite-aks-mcaps"
+    }
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/MC_rg-specsuite-aks-mcaps_aks-specsuite-mcaps_canadacentral/providers/Microsoft.ManagedIdentity/userAssignedIdentities/aks-specsuite-mcaps-agentpool",
+    "name": "aks-specsuite-mcaps-agentpool",
+    "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+    "location": "canadacentral",
+    "resourceGroup": "MC_rg-specsuite-aks-mcaps_aks-specsuite-mcaps_canadacentral",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/mc_rg-specsuite-aks-mcaps_aks-specsuite-mcaps_canadacentral/providers/Microsoft.Network/networkSecurityGroups/aks-agentpool-20446583-nsg",
+    "name": "aks-agentpool-20446583-nsg",
+    "type": "Microsoft.Network/networkSecurityGroups",
+    "location": "canadacentral",
+    "resourceGroup": "mc_rg-specsuite-aks-mcaps_aks-specsuite-mcaps_canadacentral",
+    "tags": {
+      "aks-managed-cluster-name": "aks-specsuite-mcaps",
+      "aks-managed-cluster-rg": "rg-specsuite-aks-mcaps"
+    }
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/MC_rg-specsuite-aks-mcaps_aks-specsuite-mcaps_canadacentral/providers/Microsoft.Compute/virtualMachineScaleSets/aks-nodepool1-22046508-vmss",
+    "name": "aks-nodepool1-22046508-vmss",
+    "type": "Microsoft.Compute/virtualMachineScaleSets",
+    "location": "canadacentral",
+    "resourceGroup": "MC_rg-specsuite-aks-mcaps_aks-specsuite-mcaps_canadacentral",
+    "tags": {
+      "aks-managed-azure-cni-overlay": "true",
+      "aks-managed-bootstrap-profile-acr-name": "",
+      "aks-managed-consolidated-additional-properties": "eb7d8642-8c32-11f1-9b95-7ec329051f7b",
+      "aks-managed-createOperationID": "c41f0bda-8b90-4c40-b11f-1a791dd1b626",
+      "aks-managed-creationSource": "vmssclient-aks-nodepool1-22046508-vmss",
+      "aks-managed-enable-imds-restriction": "false",
+      "aks-managed-kubeletIdentityClientID": "ad9a9fb0-80bd-4f60-b7e2-5af4fb72450b",
+      "aks-managed-networkisolated-outbound-type": "",
+      "aks-managed-orchestrator": "Kubernetes:1.35.6",
+      "aks-managed-poolName": "nodepool1",
+      "aks-managed-resourceNameSuffix": "20446583",
+      "aks-managed-saip-default-client-id": "",
+      "aks-managed-ssh-access": "LocalUser",
+      "compute.aks.billing": "linux"
+    }
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/mc_rg-specsuite-aks-mcaps_aks-specsuite-mcaps_canadacentral/providers/Microsoft.Network/publicIPAddresses/kubernetes-a93307e5fb71b4a6d97ef8854dd3eb3c",
+    "name": "kubernetes-a93307e5fb71b4a6d97ef8854dd3eb3c",
+    "type": "Microsoft.Network/publicIPAddresses",
+    "location": "canadacentral",
+    "resourceGroup": "mc_rg-specsuite-aks-mcaps_aks-specsuite-mcaps_canadacentral",
+    "tags": {
+      "aks-managed-cluster-name": "aks-specsuite-mcaps",
+      "aks-managed-cluster-rg": "rg-specsuite-aks-mcaps",
+      "k8s-azure-cluster-name": "kubernetes",
+      "k8s-azure-service": "specsuite/specsuite"
+    }
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-demo/providers/Microsoft.Network/networkSecurityGroups/vnet-demo-aks-nodes-nsg-canadacentral",
+    "name": "vnet-demo-aks-nodes-nsg-canadacentral",
+    "type": "Microsoft.Network/networkSecurityGroups",
+    "location": "canadacentral",
+    "resourceGroup": "rg-demo",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/DefaultResourceGroup-CCA/providers/Microsoft.OperationalInsights/workspaces/DefaultWorkspace-1feb53b2-854a-4ea7-b5a6-709b7d804f70-CCA",
+    "name": "DefaultWorkspace-1feb53b2-854a-4ea7-b5a6-709b7d804f70-CCA",
+    "type": "Microsoft.OperationalInsights/workspaces",
+    "location": "canadacentral",
+    "resourceGroup": "DefaultResourceGroup-CCA",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-demo/providers/Microsoft.Network/networkSecurityGroups/vnet-demo-spectinker-vm-nsg-canadacentral",
+    "name": "vnet-demo-spectinker-vm-nsg-canadacentral",
+    "type": "Microsoft.Network/networkSecurityGroups",
+    "location": "canadacentral",
+    "resourceGroup": "rg-demo",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/specsuite-demo-rg/providers/Microsoft.Network/publicIPAddresses/vm-spectinker-demoPublicIP",
+    "name": "vm-spectinker-demoPublicIP",
+    "type": "Microsoft.Network/publicIPAddresses",
+    "location": "canadacentral",
+    "resourceGroup": "specsuite-demo-rg",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/specsuite-demo-rg/providers/Microsoft.Network/virtualNetworks/vm-spectinker-demoVNET",
+    "name": "vm-spectinker-demoVNET",
+    "type": "Microsoft.Network/virtualNetworks",
+    "location": "canadacentral",
+    "resourceGroup": "specsuite-demo-rg",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/specsuite-demo-rg/providers/Microsoft.Network/networkSecurityGroups/vm-spectinker-demoNSG",
+    "name": "vm-spectinker-demoNSG",
+    "type": "Microsoft.Network/networkSecurityGroups",
+    "location": "canadacentral",
+    "resourceGroup": "specsuite-demo-rg",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/specsuite-demo-rg/providers/Microsoft.Network/networkInterfaces/vm-spectinker-demoVMNic",
+    "name": "vm-spectinker-demoVMNic",
+    "type": "Microsoft.Network/networkInterfaces",
+    "location": "canadacentral",
+    "resourceGroup": "specsuite-demo-rg",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/specsuite-demo-rg/providers/Microsoft.Compute/virtualMachines/vm-spectinker-demo",
+    "name": "vm-spectinker-demo",
+    "type": "Microsoft.Compute/virtualMachines",
+    "location": "canadacentral",
+    "resourceGroup": "specsuite-demo-rg",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/SPECSUITE-DEMO-RG/providers/Microsoft.Compute/disks/vm-spectinker-demo_OsDisk_1_641ad6b632004f41ac5ce14eccce6b71",
+    "name": "vm-spectinker-demo_OsDisk_1_641ad6b632004f41ac5ce14eccce6b71",
+    "type": "Microsoft.Compute/disks",
+    "location": "canadacentral",
+    "resourceGroup": "SPECSUITE-DEMO-RG",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/SPECSUITE-DEMO-RG/providers/Microsoft.Compute/virtualMachines/vm-spectinker-demo/extensions/MDE.Linux",
+    "name": "vm-spectinker-demo/MDE.Linux",
+    "type": "Microsoft.Compute/virtualMachines/extensions",
+    "location": "canadacentral",
+    "resourceGroup": "SPECSUITE-DEMO-RG",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/specsuite-demo-rg/providers/Microsoft.Network/networkSecurityGroups/vm-spectinker-demoVNET-vm-spectinker-demoSubnet-nsg-canadacentral",
+    "name": "vm-spectinker-demoVNET-vm-spectinker-demoSubnet-nsg-canadacentral",
+    "type": "Microsoft.Network/networkSecurityGroups",
+    "location": "canadacentral",
+    "resourceGroup": "specsuite-demo-rg",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-gh300quiz/providers/Microsoft.Web/serverFarms/asp-gh300quiz",
+    "name": "asp-gh300quiz",
+    "type": "Microsoft.Web/serverFarms",
+    "location": "canadacentral",
+    "resourceGroup": "rg-gh300quiz",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-gh300quiz/providers/Microsoft.Web/sites/gh300-quiz",
+    "name": "gh300-quiz",
+    "type": "Microsoft.Web/sites",
+    "location": "canadacentral",
+    "resourceGroup": "rg-gh300quiz",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-quizzly/providers/Microsoft.Web/serverFarms/asp-quizzly",
+    "name": "asp-quizzly",
+    "type": "Microsoft.Web/serverFarms",
+    "location": "canadacentral",
+    "resourceGroup": "rg-quizzly",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-quizzly/providers/Microsoft.Web/sites/quizzly-live",
+    "name": "quizzly-live",
+    "type": "Microsoft.Web/sites",
+    "location": "canadacentral",
+    "resourceGroup": "rg-quizzly",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/specsuite-demo-rg/providers/Microsoft.Network/privateEndpoints/pe-blob-spectinker",
+    "name": "pe-blob-spectinker",
+    "type": "Microsoft.Network/privateEndpoints",
+    "location": "canadacentral",
+    "resourceGroup": "specsuite-demo-rg",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/specsuite-demo-rg/providers/Microsoft.Network/networkInterfaces/pe-blob-spectinker.nic.94a8cd93-5aa2-4acc-8967-96c8be9f4c28",
+    "name": "pe-blob-spectinker.nic.94a8cd93-5aa2-4acc-8967-96c8be9f4c28",
+    "type": "Microsoft.Network/networkInterfaces",
+    "location": "canadacentral",
+    "resourceGroup": "specsuite-demo-rg",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/specsuite-demo-rg/providers/Microsoft.Network/privateDnsZones/privatelink.blob.core.windows.net",
+    "name": "privatelink.blob.core.windows.net",
+    "type": "Microsoft.Network/privateDnsZones",
+    "location": "global",
+    "resourceGroup": "specsuite-demo-rg",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/specsuite-demo-rg/providers/Microsoft.Network/privateDnsZones/privatelink.blob.core.windows.net/virtualNetworkLinks/link-spectinker-vnet",
+    "name": "privatelink.blob.core.windows.net/link-spectinker-vnet",
+    "type": "Microsoft.Network/privateDnsZones/virtualNetworkLinks",
+    "location": "global",
+    "resourceGroup": "specsuite-demo-rg",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/specsuite-demo-rg/providers/Microsoft.Network/networkSecurityGroups/vm-spectinker-demoVNET-pe-subnet-nsg-canadacentral",
+    "name": "vm-spectinker-demoVNET-pe-subnet-nsg-canadacentral",
+    "type": "Microsoft.Network/networkSecurityGroups",
+    "location": "canadacentral",
+    "resourceGroup": "specsuite-demo-rg",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-demo/providers/Microsoft.Web/staticSites/specsuite-enablement-pilot",
+    "name": "specsuite-enablement-pilot",
+    "type": "Microsoft.Web/staticSites",
+    "location": "eastus2",
+    "resourceGroup": "rg-demo",
+    "tags": {
+      "access": "private-pilot",
+      "purpose": "specsuite-enablement"
+    }
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-specsuite-ai-can/providers/Microsoft.CognitiveServices/accounts/aoai-specsuite-can-1840",
+    "name": "aoai-specsuite-can-1840",
+    "type": "Microsoft.CognitiveServices/accounts",
+    "location": "canadaeast",
+    "resourceGroup": "rg-specsuite-ai-can",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-edc-foundry-hack/providers/Microsoft.CognitiveServices/accounts/edcfoundryhack01",
+    "name": "edcfoundryhack01",
+    "type": "Microsoft.CognitiveServices/accounts",
+    "location": "canadaeast",
+    "resourceGroup": "rg-edc-foundry-hack",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-edc-foundry-hack/providers/Microsoft.CognitiveServices/accounts/edcfoundryhack01/projects/edc-hack-proj",
+    "name": "edcfoundryhack01/edc-hack-proj",
+    "type": "Microsoft.CognitiveServices/accounts/projects",
+    "location": "canadaeast",
+    "resourceGroup": "rg-edc-foundry-hack",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-edc-foundry-hack/providers/Microsoft.Search/searchServices/edc-hack-search",
+    "name": "edc-hack-search",
+    "type": "Microsoft.Search/searchServices",
+    "location": "canadaeast",
+    "resourceGroup": "rg-edc-foundry-hack",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-edc-foundry-hack/providers/Microsoft.OperationalInsights/workspaces/law-edc-hack",
+    "name": "law-edc-hack",
+    "type": "Microsoft.OperationalInsights/workspaces",
+    "location": "canadaeast",
+    "resourceGroup": "rg-edc-foundry-hack",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-edc-foundry-hack/providers/Microsoft.Insights/components/appi-edc-hack",
+    "name": "appi-edc-hack",
+    "type": "Microsoft.Insights/components",
+    "location": "canadaeast",
+    "resourceGroup": "rg-edc-foundry-hack",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-edc-foundry-hack/providers/microsoft.insights/actiongroups/Application Insights Smart Detection",
+    "name": "Application Insights Smart Detection",
+    "type": "microsoft.insights/actiongroups",
+    "location": "global",
+    "resourceGroup": "rg-edc-foundry-hack",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-edc-foundry-hack/providers/microsoft.alertsmanagement/smartDetectorAlertRules/Failure Anomalies - appi-edc-hack",
+    "name": "Failure Anomalies - appi-edc-hack",
+    "type": "microsoft.alertsmanagement/smartDetectorAlertRules",
+    "location": "global",
+    "resourceGroup": "rg-edc-foundry-hack",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-edc-foundry-hack/providers/Microsoft.CognitiveServices/accounts/edcfoundryhackeus2",
+    "name": "edcfoundryhackeus2",
+    "type": "Microsoft.CognitiveServices/accounts",
+    "location": "eastus2",
+    "resourceGroup": "rg-edc-foundry-hack",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-edc-foundry-hack/providers/Microsoft.CognitiveServices/accounts/edcfoundryhackeus2/projects/rt-proj",
+    "name": "edcfoundryhackeus2/rt-proj",
+    "type": "Microsoft.CognitiveServices/accounts/projects",
+    "location": "eastus2",
+    "resourceGroup": "rg-edc-foundry-hack",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-pexalex/providers/Microsoft.Web/serverFarms/asp-cbzmyrtv7w6ja",
+    "name": "asp-cbzmyrtv7w6ja",
+    "type": "Microsoft.Web/serverFarms",
+    "location": "westus3",
+    "resourceGroup": "rg-pexalex",
+    "tags": {
+      "azd-app-name": "planetary-explorer",
+      "azd-env-name": "pexalex"
+    }
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-pexalex/providers/Microsoft.KeyVault/vaults/kv-cbzmyrtv7w6ja",
+    "name": "kv-cbzmyrtv7w6ja",
+    "type": "Microsoft.KeyVault/vaults",
+    "location": "westus3",
+    "resourceGroup": "rg-pexalex",
+    "tags": {
+      "azd-app-name": "planetary-explorer",
+      "azd-env-name": "pexalex"
+    }
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-pexalex/providers/Microsoft.ContainerRegistry/registries/crcbzmyrtv7w6ja",
+    "name": "crcbzmyrtv7w6ja",
+    "type": "Microsoft.ContainerRegistry/registries",
+    "location": "westus3",
+    "resourceGroup": "rg-pexalex",
+    "tags": {
+      "azd-app-name": "planetary-explorer",
+      "azd-env-name": "pexalex"
+    }
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-pexalex/providers/Microsoft.Maps/accounts/map-cbzmyrtv7w6ja",
+    "name": "map-cbzmyrtv7w6ja",
+    "type": "Microsoft.Maps/accounts",
+    "location": "eastus",
+    "resourceGroup": "rg-pexalex",
+    "tags": {
+      "azd-app-name": "planetary-explorer",
+      "azd-env-name": "pexalex"
+    }
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-pexalex/providers/Microsoft.DocumentDB/databaseAccounts/cosmos-cbzmyrtv7w6ja",
+    "name": "cosmos-cbzmyrtv7w6ja",
+    "type": "Microsoft.DocumentDB/databaseAccounts",
+    "location": "westus3",
+    "resourceGroup": "rg-pexalex",
+    "tags": {
+      "azd-app-name": "planetary-explorer",
+      "azd-env-name": "pexalex"
+    }
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-pexalex/providers/Microsoft.OperationalInsights/workspaces/log-cbzmyrtv7w6ja",
+    "name": "log-cbzmyrtv7w6ja",
+    "type": "Microsoft.OperationalInsights/workspaces",
+    "location": "westus3",
+    "resourceGroup": "rg-pexalex",
+    "tags": {
+      "azd-app-name": "planetary-explorer",
+      "azd-env-name": "pexalex"
+    }
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-pexalex/providers/Microsoft.Storage/storageAccounts/stcbzmyrtv7w6ja",
+    "name": "stcbzmyrtv7w6ja",
+    "type": "Microsoft.Storage/storageAccounts",
+    "location": "westus3",
+    "resourceGroup": "rg-pexalex",
+    "tags": {
+      "azd-app-name": "planetary-explorer",
+      "azd-env-name": "pexalex"
+    }
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-pexalex/providers/Microsoft.Web/sites/app-planetaryexplorer-cbzmyrtv7w6ja",
+    "name": "app-planetaryexplorer-cbzmyrtv7w6ja",
+    "type": "Microsoft.Web/sites",
+    "location": "westus3",
+    "resourceGroup": "rg-pexalex",
+    "tags": {
+      "azd-app-name": "planetary-explorer",
+      "azd-env-name": "pexalex",
+      "azd-service-name": "web"
+    }
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-pexalex/providers/Microsoft.Insights/components/appi-cbzmyrtv7w6ja",
+    "name": "appi-cbzmyrtv7w6ja",
+    "type": "Microsoft.Insights/components",
+    "location": "westus3",
+    "resourceGroup": "rg-pexalex",
+    "tags": {
+      "azd-app-name": "planetary-explorer",
+      "azd-env-name": "pexalex"
+    }
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-pexalex/providers/Microsoft.CognitiveServices/accounts/cog-foundry-cbzmyrtv7w6ja",
+    "name": "cog-foundry-cbzmyrtv7w6ja",
+    "type": "Microsoft.CognitiveServices/accounts",
+    "location": "westus3",
+    "resourceGroup": "rg-pexalex",
+    "tags": {
+      "azd-app-name": "planetary-explorer",
+      "azd-env-name": "pexalex"
+    }
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-pexalex/providers/Microsoft.App/managedEnvironments/cae-cbzmyrtv7w6ja",
+    "name": "cae-cbzmyrtv7w6ja",
+    "type": "Microsoft.App/managedEnvironments",
+    "location": "westus3",
+    "resourceGroup": "rg-pexalex",
+    "tags": {
+      "azd-app-name": "planetary-explorer",
+      "azd-env-name": "pexalex"
+    }
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-pexalex/providers/Microsoft.MachineLearningServices/workspaces/mlw-hub-cbzmyrtv7w6ja",
+    "name": "mlw-hub-cbzmyrtv7w6ja",
+    "type": "Microsoft.MachineLearningServices/workspaces",
+    "location": "westus3",
+    "resourceGroup": "rg-pexalex",
+    "tags": {
+      "__SYSTEM__AIServices_Default_AIServices": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-pexalex/providers/Microsoft.CognitiveServices/accounts/cog-foundry-cbzmyrtv7w6ja",
+      "__SYSTEM__AzureOpenAI_Default_AIServices_aoai": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-pexalex/providers/Microsoft.CognitiveServices/accounts/cog-foundry-cbzmyrtv7w6ja",
+      "azd-app-name": "planetary-explorer",
+      "azd-env-name": "pexalex"
+    }
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-pexalex/providers/Microsoft.MachineLearningServices/workspaces/mlw-project-cbzmyrtv7w6ja",
+    "name": "mlw-project-cbzmyrtv7w6ja",
+    "type": "Microsoft.MachineLearningServices/workspaces",
+    "location": "westus3",
+    "resourceGroup": "rg-pexalex",
+    "tags": {
+      "azd-app-name": "planetary-explorer",
+      "azd-env-name": "pexalex"
+    }
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-pexalex/providers/Microsoft.CognitiveServices/accounts/cog-foundry-cbzmyrtv7w6ja/projects/planetary-explorer-agents",
+    "name": "cog-foundry-cbzmyrtv7w6ja/planetary-explorer-agents",
+    "type": "Microsoft.CognitiveServices/accounts/projects",
+    "location": "westus3",
+    "resourceGroup": "rg-pexalex",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-pexalex/providers/Microsoft.App/containerApps/ca-web-cbzmyrtv7w6ja",
+    "name": "ca-web-cbzmyrtv7w6ja",
+    "type": "Microsoft.App/containerApps",
+    "location": "westus3",
+    "resourceGroup": "rg-pexalex",
+    "tags": {
+      "azd-app-name": "planetary-explorer",
+      "azd-env-name": "pexalex",
+      "azd-service-name": "api"
+    }
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-pexalex/providers/microsoft.alertsmanagement/smartDetectorAlertRules/Failure Anomalies - appi-cbzmyrtv7w6ja",
+    "name": "Failure Anomalies - appi-cbzmyrtv7w6ja",
+    "type": "microsoft.alertsmanagement/smartDetectorAlertRules",
+    "location": "global",
+    "resourceGroup": "rg-pexalex",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-pexalex/providers/Microsoft.EventGrid/systemTopics/stcbzmyrtv7w6ja-a1135792-af51-493c-bb2c-c5486f50dc16",
+    "name": "stcbzmyrtv7w6ja-a1135792-af51-493c-bb2c-c5486f50dc16",
+    "type": "Microsoft.EventGrid/systemTopics",
+    "location": "westus3",
+    "resourceGroup": "rg-pexalex",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-pexalex/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id-ca-geofm-worker-cbzmyrtv7w6ja",
+    "name": "id-ca-geofm-worker-cbzmyrtv7w6ja",
+    "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+    "location": "westus3",
+    "resourceGroup": "rg-pexalex",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-pexalex/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id-ca-geofm-cbzmyrtv7w6ja",
+    "name": "id-ca-geofm-cbzmyrtv7w6ja",
+    "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+    "location": "westus3",
+    "resourceGroup": "rg-pexalex",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-pexalex/providers/Microsoft.App/containerApps/ca-geofm-worker-cbzmyrtv7w6ja",
+    "name": "ca-geofm-worker-cbzmyrtv7w6ja",
+    "type": "Microsoft.App/containerApps",
+    "location": "westus3",
+    "resourceGroup": "rg-pexalex",
+    "tags": {
+      "azd-service-name": "geofm-worker"
+    }
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-pexalex/providers/Microsoft.App/containerApps/ca-geofm-cbzmyrtv7w6ja",
+    "name": "ca-geofm-cbzmyrtv7w6ja",
+    "type": "Microsoft.App/containerApps",
+    "location": "westus3",
+    "resourceGroup": "rg-pexalex",
+    "tags": {
+      "azd-service-name": "geofm"
+    }
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-pexalex/providers/Microsoft.Network/privateDnsZones/privatelink.queue.core.windows.net",
+    "name": "privatelink.queue.core.windows.net",
+    "type": "Microsoft.Network/privateDnsZones",
+    "location": "global",
+    "resourceGroup": "rg-pexalex",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-pexalex/providers/Microsoft.Network/privateDnsZones/privatelink.blob.core.windows.net",
+    "name": "privatelink.blob.core.windows.net",
+    "type": "Microsoft.Network/privateDnsZones",
+    "location": "global",
+    "resourceGroup": "rg-pexalex",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-pexalex/providers/Microsoft.Network/virtualNetworks/vnet-geofm-cbzmyrtv7w6ja",
+    "name": "vnet-geofm-cbzmyrtv7w6ja",
+    "type": "Microsoft.Network/virtualNetworks",
+    "location": "westus3",
+    "resourceGroup": "rg-pexalex",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-pexalex/providers/Microsoft.App/managedEnvironments/cae-geofm-cbzmyrtv7w6ja",
+    "name": "cae-geofm-cbzmyrtv7w6ja",
+    "type": "Microsoft.App/managedEnvironments",
+    "location": "westus3",
+    "resourceGroup": "rg-pexalex",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-pexalex/providers/Microsoft.Network/privateEndpoints/pe-stcbzmyrtv7w6ja-queue",
+    "name": "pe-stcbzmyrtv7w6ja-queue",
+    "type": "Microsoft.Network/privateEndpoints",
+    "location": "westus3",
+    "resourceGroup": "rg-pexalex",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-pexalex/providers/Microsoft.Network/privateEndpoints/pe-stcbzmyrtv7w6ja-blob",
+    "name": "pe-stcbzmyrtv7w6ja-blob",
+    "type": "Microsoft.Network/privateEndpoints",
+    "location": "westus3",
+    "resourceGroup": "rg-pexalex",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-pexalex/providers/Microsoft.Network/networkInterfaces/pe-stcbzmyrtv7w6ja-blob.nic.fcab1d1f-4f45-4e08-8646-1efface85fd2",
+    "name": "pe-stcbzmyrtv7w6ja-blob.nic.fcab1d1f-4f45-4e08-8646-1efface85fd2",
+    "type": "Microsoft.Network/networkInterfaces",
+    "location": "westus3",
+    "resourceGroup": "rg-pexalex",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-pexalex/providers/Microsoft.Network/networkInterfaces/pe-stcbzmyrtv7w6ja-queue.nic.3f8089a9-c014-4e37-9825-a6346d81c1b0",
+    "name": "pe-stcbzmyrtv7w6ja-queue.nic.3f8089a9-c014-4e37-9825-a6346d81c1b0",
+    "type": "Microsoft.Network/networkInterfaces",
+    "location": "westus3",
+    "resourceGroup": "rg-pexalex",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-pexalex/providers/Microsoft.Network/privateDnsZones/privatelink.blob.core.windows.net/virtualNetworkLinks/vnet-geofm-cbzmyrtv7w6ja-blob-link",
+    "name": "privatelink.blob.core.windows.net/vnet-geofm-cbzmyrtv7w6ja-blob-link",
+    "type": "Microsoft.Network/privateDnsZones/virtualNetworkLinks",
+    "location": "global",
+    "resourceGroup": "rg-pexalex",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-pexalex/providers/Microsoft.Network/privateDnsZones/privatelink.queue.core.windows.net/virtualNetworkLinks/vnet-geofm-cbzmyrtv7w6ja-queue-link",
+    "name": "privatelink.queue.core.windows.net/vnet-geofm-cbzmyrtv7w6ja-queue-link",
+    "type": "Microsoft.Network/privateDnsZones/virtualNetworkLinks",
+    "location": "global",
+    "resourceGroup": "rg-pexalex",
+    "tags": null
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/ME_cae-geofm-cbzmyrtv7w6ja_rg-pexalex_westus3/providers/Microsoft.Network/publicIPAddresses/capp-svc-lb-ip",
+    "name": "capp-svc-lb-ip",
+    "type": "Microsoft.Network/publicIPAddresses",
+    "location": "westus3",
+    "resourceGroup": "ME_cae-geofm-cbzmyrtv7w6ja_rg-pexalex_westus3",
+    "tags": {
+      "aca-managed-env-id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-pexalex/providers/Microsoft.App/managedEnvironments/cae-geofm-cbzmyrtv7w6ja"
+    }
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/ME_cae-geofm-cbzmyrtv7w6ja_rg-pexalex_westus3/providers/Microsoft.Network/loadBalancers/capp-svc-lb",
+    "name": "capp-svc-lb",
+    "type": "Microsoft.Network/loadBalancers",
+    "location": "westus3",
+    "resourceGroup": "ME_cae-geofm-cbzmyrtv7w6ja_rg-pexalex_westus3",
+    "tags": {
+      "aca-managed-env-id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-pexalex/providers/Microsoft.App/managedEnvironments/cae-geofm-cbzmyrtv7w6ja"
+    }
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-pexalex/providers/Microsoft.Network/networkSecurityGroups/vnet-geofm-cbzmyrtv7w6ja-snet-aca-nsg-westus3",
+    "name": "vnet-geofm-cbzmyrtv7w6ja-snet-aca-nsg-westus3",
+    "type": "Microsoft.Network/networkSecurityGroups",
+    "location": "westus3",
+    "resourceGroup": "rg-pexalex",
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-pexalex/providers/Microsoft.Network/networkSecurityGroups/vnet-geofm-cbzmyrtv7w6ja-snet-pe-nsg-westus3",
+    "name": "vnet-geofm-cbzmyrtv7w6ja-snet-pe-nsg-westus3",
+    "type": "Microsoft.Network/networkSecurityGroups",
+    "location": "westus3",
+    "resourceGroup": "rg-pexalex",
+    "tags": {}
+  }
+]

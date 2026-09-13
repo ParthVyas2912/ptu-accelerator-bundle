@@ -1,0 +1,41 @@
+{
+  "checkedUtc": "2026-09-12T04:19:15.9697082Z",
+  "status": "not_started_approved_claim_has_no_recorded_evaluate_checkpoint",
+  "approvedClaimId": "77f4a16d-96fe-4739-b90a-9ac0b2597bb4",
+  "eligibilityEvidence": "Recorded production results and preserved queue-message metadata; no new data-plane or inference execution",
+  "approvedClaimDocumentOutcomes": {
+    "claim-form.pdf": "Error",
+    "damage-diagram.png": "Error",
+    "repair-estimate.pdf": "Error",
+    "police-report.pdf": "Error"
+  },
+  "failureStage": "Map",
+  "failureReason": "Schema BlobNotFound before model invocation",
+  "processorModelResponsesInApprovedClaimRun": 0,
+  "preservedRetryQueue": "content-pipeline-map-queue",
+  "allFourDocumentIdsMatchPreservedMapMessages": true,
+  "mapMessageNextVisibleUtc": "2026-09-12T04:26:20Z",
+  "differentClaimWithPersistedMappings": "9f9b9c98-2d6e-440f-9a67-099ffea26f51",
+  "differentClaimRecoveryAuthorizedByThisInstruction": false,
+  "decision": "Stop before activation. Evaluate requires the native SchemaMappedData artifact; creating it for the approved original claim would require mapping/model work. Do not substitute the recovery claim or copy its outputs across claims.",
+  "recoveryStarted": false,
+  "servicesStarted": 0,
+  "modelCallsInitiated": 0,
+  "cuAnalysesInitiated": 0,
+  "queueOrClaimMutations": 0,
+  "resourceMutations": 0,
+  "hardDisarmDeploymentAttempted": false,
+  "hardDisarmNote": "No recovery/service activation was attempted because the approved target failed the checkpoint-eligibility precondition.",
+  "replicas": {
+    "api": 0,
+    "processor": 0,
+    "workflow": 0,
+    "web": 0
+  },
+  "replicaEvidence": "Fresh guarded ARM replica lists, execution983",
+  "recordedModelCount": 10,
+  "recordedModelSha256": "e8028913511c9377a114de8eb3100a5ebfe94d36d3dba4bffc73ef8840a8b272",
+  "currentModelAllocation": 12,
+  "paidCallsRemainOnHold": true,
+  "fullClaimE2ePassed": false
+}

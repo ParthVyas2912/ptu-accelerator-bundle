@@ -1,0 +1,10 @@
+{
+  "ledger_count": 16,
+  "ledger_sha256": "8788e98b329badc7ad37d2fd85c24976755665c34af4620dd9ccc80dbeb2556d",
+  "model_calls_sha256": "d0adbf563e31802878632f0d5981c3d7b5ee0ca73fa855efd6e8de393bf8fa8d",
+  "criteria_sha256": "10aa6ef3b59c95dfb7f020db6d6c4674018e788141d3990434f51abe715afcca",
+  "business_criteria_passed": 8,
+  "frontend_pid": 15628,
+  "stopped_backend_pid": 8992,
+  "stopped_worker_pid": 6356
+}

@@ -1,0 +1,12 @@
+{
+  "observedAtUtc": "2026-09-12T06:24:29.4500452Z",
+  "cloudAppsVerified": 17,
+  "activeRevisions": 0,
+  "replicas": 0,
+  "baselineResourcesMissing": 0,
+  "portfolioUnitsAllocated": 100,
+  "reserve": 0,
+  "parentScriptsParsed": 4,
+  "wordValidation": "Passed skill XML validation, ZIP integrity, seven app sections, critical-warning text and table/page geometry checks",
+  "reportEvidence": "evidence\\report-validation.json"
+}

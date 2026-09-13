@@ -1,0 +1,115 @@
+{
+  "status": "PASS",
+  "model_calls_added": 0,
+  "model_attempt_limit": 16,
+  "model_attempts": 16,
+  "remaining_attempts": 0,
+  "inference_enabled": false,
+  "checks": [
+    {
+      "name": "persistent status is closed16/16",
+      "passed": true
+    },
+    {
+      "name": "persistent disabled policy blocks https://edcfoundryhack01.openai.azure.com/openai/v1/embeddings",
+      "passed": true
+    },
+    {
+      "name": "persistent disabled policy blocks https://edcfoundryhack01.services.ai.azure.com/api/projects/edc-hack-proj/openai/v1/responses",
+      "passed": true
+    },
+    {
+      "name": "exhausted16-total cap independently blocks a toggled enable flag",
+      "passed": true
+    },
+    {
+      "name": "launcher disable setting independently blocks inference",
+      "passed": true
+    },
+    {
+      "name": "missing policy fails closed",
+      "passed": true
+    },
+    {
+      "name": "obsolete18-total policy fails closed",
+      "passed": true
+    },
+    {
+      "name": "zero HTTP transport invocations in mocked guard tests",
+      "passed": true
+    },
+    {
+      "name": "direct worker launch refuses ingestion",
+      "passed": true
+    },
+    {
+      "name": "Start script refuses worker launch",
+      "passed": true
+    },
+    {
+      "name": "explicit503 before handlers for http://127.0.0.1:8112/api/conversation",
+      "passed": true
+    },
+    {
+      "name": "explicit503 before handlers for http://127.0.0.1:8112/api/admin/documents",
+      "passed": true
+    },
+    {
+      "name": "explicit503 before handlers for http://127.0.0.1:5112/api/conversation",
+      "passed": true
+    },
+    {
+      "name": "read-only endpoint200 http://127.0.0.1:5112/",
+      "passed": true
+    },
+    {
+      "name": "read-only endpoint200 http://127.0.0.1:5112/admin",
+      "passed": true
+    },
+    {
+      "name": "read-only endpoint200 http://127.0.0.1:8112/api/health",
+      "passed": true
+    },
+    {
+      "name": "five source documents remain",
+      "passed": true
+    },
+    {
+      "name": "active replacement blob preserved",
+      "passed": true
+    },
+    {
+      "name": "stored answer and citations preserved questions-grouped.json",
+      "passed": true
+    },
+    {
+      "name": "stored answer and citations preserved question-update.json",
+      "passed": true
+    },
+    {
+      "name": "five active index rows and replacement retained",
+      "passed": true
+    },
+    {
+      "name": "all16 SQLite records unchanged",
+      "passed": true
+    },
+    {
+      "name": "raw model evidence byte-for-byte unchanged",
+      "passed": true
+    },
+    {
+      "name": "all8 passed business criteria unchanged",
+      "passed": true
+    },
+    {
+      "name": "result reflects closed16-total custody",
+      "passed": true
+    }
+  ],
+  "ledger_sha256": "8788e98b329badc7ad37d2fd85c24976755665c34af4620dd9ccc80dbeb2556d",
+  "model_calls_sha256": "d0adbf563e31802878632f0d5981c3d7b5ee0ca73fa855efd6e8de393bf8fa8d",
+  "criteria_sha256": "10aa6ef3b59c95dfb7f020db6d6c4674018e788141d3990434f51abe715afcca",
+  "azure_changes": false,
+  "other_apps_modified": false
+}

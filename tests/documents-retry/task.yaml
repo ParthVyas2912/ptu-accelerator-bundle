@@ -1,0 +1,10 @@
+version: v1.1.0
+steps:
+  - cmd: mcr.microsoft.com/dotnet/sdk:8.0 dotnet build Legacy.csproj --configuration Release -p:BaseIntermediateOutputPath=obj/legacy/ -p:OutputPath=bin/legacy/
+    timeout: 300
+  - cmd: mcr.microsoft.com/dotnet/sdk:8.0 dotnet bin/legacy/Legacy.dll
+    timeout: 120
+  - cmd: mcr.microsoft.com/dotnet/sdk:8.0 dotnet build Modern.csproj --configuration Release -p:BaseIntermediateOutputPath=obj/modern/ -p:OutputPath=bin/modern/
+    timeout: 300
+  - cmd: mcr.microsoft.com/dotnet/sdk:8.0 dotnet bin/modern/Modern.dll
+    timeout: 120

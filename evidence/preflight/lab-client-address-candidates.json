@@ -1,0 +1,22 @@
+[
+  {
+    "clientIpAddress": "52.136.29.147",
+    "operation": "Microsoft.Network/networkInterfaces/write"
+  },
+  {
+    "clientIpAddress": "52.136.29.147",
+    "operation": "Microsoft.Network/networkInterfaces/write"
+  },
+  {
+    "clientIpAddress": "52.136.29.147",
+    "operation": "Microsoft.Network/networkInterfaces/write"
+  },
+  {
+    "clientIpAddress": "52.136.29.147",
+    "operation": "Microsoft.Network/networkInterfaces/write"
+  },
+  {
+    "clientIpAddress": "20.97.9.18",
+    "operation": "Microsoft.ContainerRegistry/registries/write"
+  }
+]

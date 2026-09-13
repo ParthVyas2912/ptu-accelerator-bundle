@@ -1,0 +1,29 @@
+{
+  "nativeParserPassed": true,
+  "specialists": [
+    "HRComplianceReviewer",
+    "ITReadinessReviewer"
+  ],
+  "allToolAndClarificationFlagsFalse": true,
+  "newConfigRaiRetained": true,
+  "expectedMinimumNewCalls": 11,
+  "available": 12,
+  "retryBuffer": 1,
+  "threeSpecialistsIncludingNewConfigRaiMinimum": 13,
+  "breakdown": {
+    "new_team_rai": 1,
+    "request_rai": 1,
+    "scope": 1,
+    "facts": 1,
+    "plan": 1,
+    "routing": 2,
+    "specialist_responses": 2,
+    "completion_check": 1,
+    "final_synthesis": 1
+  },
+  "modelCalls": 0,
+  "driverParserChecksPassed": 2,
+  "teamSha256": "bc96c167f8303be694471adee4c0b39083ddb2aa0d3b081d23dc032c7a8b6b55",
+  "requestSha256": "81f624013b7008aadfd9bad673d92f88a4ae31c6ef0089978b6ee8d2364e193f",
+  "scope": "Two-specialist read-only HR/compliance and IT advisory review; no enterprise actions"
+}

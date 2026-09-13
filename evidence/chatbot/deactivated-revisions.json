@@ -1,0 +1,127 @@
+{
+  "captured_at": "2026-09-12T03:58:56.7975514+00:00",
+  "apps": [
+    {
+      "revisions": [
+        {
+          "active": false,
+          "name": "chatbot-chat-api--tnidmf4",
+          "replicas": 0,
+          "runningState": "Stopped"
+        },
+        {
+          "active": false,
+          "name": "chatbot-chat-api--0000001",
+          "replicas": 0,
+          "runningState": "Stopped"
+        },
+        {
+          "active": false,
+          "name": "chatbot-chat-api--0000002",
+          "replicas": 0,
+          "runningState": "Stopped"
+        },
+        {
+          "active": false,
+          "name": "chatbot-chat-api--0000003",
+          "replicas": 0,
+          "runningState": "Stopped"
+        },
+        {
+          "active": false,
+          "name": "chatbot-chat-api--0000004",
+          "replicas": 0,
+          "runningState": "Stopped"
+        },
+        {
+          "active": false,
+          "name": "chatbot-chat-api--0000005",
+          "replicas": 0,
+          "runningState": "Stopped"
+        },
+        {
+          "active": false,
+          "name": "chatbot-chat-api--0000006",
+          "replicas": 0,
+          "runningState": "Stopped"
+        },
+        {
+          "active": false,
+          "name": "chatbot-chat-api--0000007",
+          "replicas": 0,
+          "runningState": "Stopped"
+        },
+        {
+          "active": false,
+          "name": "chatbot-chat-api--0000008",
+          "replicas": 0,
+          "runningState": "Stopped"
+        }
+      ],
+      "app": "chatbot-chat-api"
+    },
+    {
+      "revisions": [
+        {
+          "active": false,
+          "name": "chatbot-scenario-api--wi2n560",
+          "replicas": 0,
+          "runningState": "Stopped"
+        },
+        {
+          "active": false,
+          "name": "chatbot-scenario-api--0000001",
+          "replicas": 0,
+          "runningState": "Stopped"
+        }
+      ],
+      "app": "chatbot-scenario-api"
+    },
+    {
+      "revisions": [
+        {
+          "active": false,
+          "name": "chatbot-chat-ui--a0yxsr1",
+          "replicas": 0,
+          "runningState": "Stopped"
+        },
+        {
+          "active": false,
+          "name": "chatbot-chat-ui--0000001",
+          "replicas": 0,
+          "runningState": "Stopped"
+        }
+      ],
+      "app": "chatbot-chat-ui"
+    },
+    {
+      "revisions": [
+        {
+          "active": false,
+          "name": "chatbot-scenario-ui--k9l1gx2",
+          "replicas": 0,
+          "runningState": "Stopped"
+        },
+        {
+          "active": false,
+          "name": "chatbot-scenario-ui--0000001",
+          "replicas": 0,
+          "runningState": "Stopped"
+        },
+        {
+          "active": false,
+          "name": "chatbot-scenario-ui--0000002",
+          "replicas": 0,
+          "runningState": "Stopped"
+        },
+        {
+          "active": false,
+          "name": "chatbot-scenario-ui--0000003",
+          "replicas": 0,
+          "runningState": "Stopped"
+        }
+      ],
+      "app": "chatbot-scenario-ui"
+    }
+  ]
+}

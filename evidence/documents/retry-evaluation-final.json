@@ -1,0 +1,205 @@
+{
+  "status": "CORE_INGESTION_AND_DOCUMENT_QA_VERIFIED_PAUSED_PARTIAL",
+  "source_sha": "7df8ed33a86dd4f0f9e7417e882039fd38556e59",
+  "finalized": true,
+  "full_application_e2e_passed": false,
+  "retry_regression": {
+    "run": "chg",
+    "legacy_assertions": 16,
+    "modern_assertions": 13,
+    "live_model_calls": 0,
+    "result": "PASS",
+    "caveat": "Stock fake-transport baseline1 with injected HttpClient; factory-identity tests prove unset/empty follows unchanged original construction. Eval0=1 attempt;eval2=3."
+  },
+  "remote_builds": {
+    "backend": {
+      "run": "che",
+      "status": "Succeeded",
+      "duration_seconds": 111
+    },
+    "kernelmemory": {
+      "run": "chh",
+      "status": "Succeeded",
+      "duration_seconds": 195
+    }
+  },
+  "build_failures_preserved": [
+    "chc: harness run executable-path mismatch",
+    "chd: absolute task path invalid remotely",
+    "chf: legacy ACR dependency scanner cannot parse original FROM --platform"
+  ],
+  "kernel_build_adaptation": "Native Docker Buildx within approved ACR quick command task; original Dockerfile unchanged.",
+  "tests": {
+    "PASS": 15,
+    "FAIL": 2,
+    "BLOCKED": 1,
+    "NOT_RUN": 1
+  },
+  "model_metrics": {
+    "label": "final",
+    "captured_utc": "2026-09-12T02:25:41.905055+00:00",
+    "timespan": "2026-09-12T01:24:00Z/2026-09-12T02:25:22Z",
+    "by_deployment": {
+      "text-embedding-3-large": {
+        "ModelRequests": 6.0,
+        "InputTokens": 311.0,
+        "TotalTokens": 311.0
+      },
+      "gpt-5-mini": {
+        "ModelRequests": 6.0,
+        "InputTokens": 1588.0,
+        "OutputTokens": 5872.0,
+        "TotalTokens": 7460.0
+      }
+    },
+    "requests": 12.0,
+    "statuses": [
+      {
+        "modeldeploymentname": "gpt-5-mini",
+        "statuscode": "200",
+        "requests": 6.0
+      },
+      {
+        "modeldeploymentname": "text-embedding-3-large",
+        "statuscode": "200",
+        "requests": 6.0
+      }
+    ],
+    "total_tokens": 7771.0,
+    "input_tokens": 1899.0,
+    "output_tokens": 5872.0,
+    "alias_check": true
+  },
+  "document_intelligence": {
+    "TotalCalls": 3.0,
+    "SuccessfulCalls": 3.0,
+    "TotalErrors": 0,
+    "ProcessedPages": 1.0
+  },
+  "remaining_attempts": 0,
+  "comparison_verified": false,
+  "browser_verified": false,
+  "unicode_transport_probe": {
+    "case": "encoding-probe",
+    "utc": "2026-09-12T02:25:35.277Z",
+    "ms": 1,
+    "result": {
+      "kind": "synthetic transport probe, not an AI answer",
+      "text": "minus \u2212 euro \u20ac snowman \u2603"
+    }
+  },
+  "runtime_state": {
+    "captured_utc": "2026-09-12T02:32:44.1812175Z",
+    "apps": [
+      {
+        "name": "ca-dkm-api",
+        "revisions": [
+          {
+            "active": false,
+            "health": "Healthy",
+            "name": "ca-dkm-api--re51g88",
+            "replicas": 0
+          },
+          {
+            "active": false,
+            "health": "Healthy",
+            "name": "ca-dkm-api--0000001",
+            "replicas": 0
+          },
+          {
+            "active": false,
+            "health": "Healthy",
+            "name": "ca-dkm-api--0000002",
+            "replicas": 0
+          }
+        ]
+      },
+      {
+        "name": "ca-dkm-kernel",
+        "revisions": [
+          {
+            "active": false,
+            "health": "Healthy",
+            "name": "ca-dkm-kernel--mnddx2g",
+            "replicas": 0
+          },
+          {
+            "active": false,
+            "health": "Healthy",
+            "name": "ca-dkm-kernel--0000001",
+            "replicas": 0
+          }
+        ]
+      },
+      {
+        "name": "ca-dkm-web",
+        "revisions": [
+          {
+            "active": false,
+            "health": "Healthy",
+            "name": "ca-dkm-web--qvokiy4",
+            "replicas": 0
+          },
+          {
+            "active": false,
+            "health": "Healthy",
+            "name": "ca-dkm-web--0000001",
+            "replicas": 0
+          },
+          {
+            "active": false,
+            "health": "Healthy",
+            "name": "ca-dkm-web--0000002",
+            "replicas": 0
+          }
+        ]
+      }
+    ]
+  },
+  "post_pause_metrics_unchanged": {
+    "label": "post-pause",
+    "captured_utc": "2026-09-12T02:32:48.714494+00:00",
+    "timespan": "2026-09-12T01:24:00Z/2026-09-12T02:32:25Z",
+    "by_deployment": {
+      "text-embedding-3-large": {
+        "ModelRequests": 6.0,
+        "InputTokens": 311.0,
+        "TotalTokens": 311.0
+      },
+      "gpt-5-mini": {
+        "ModelRequests": 6.0,
+        "InputTokens": 1588.0,
+        "OutputTokens": 5872.0,
+        "TotalTokens": 7460.0
+      }
+    },
+    "requests": 12.0,
+    "statuses": [
+      {
+        "modeldeploymentname": "gpt-5-mini",
+        "statuscode": "200",
+        "requests": 6.0
+      },
+      {
+        "modeldeploymentname": "text-embedding-3-large",
+        "statuscode": "200",
+        "requests": 6.0
+      }
+    ],
+    "total_tokens": 7771.0,
+    "input_tokens": 1899.0,
+    "output_tokens": 5872.0,
+    "alias_check": true
+  },
+  "cost_usd_hour": {
+    "original_seven_paas_baseline": 0.183,
+    "implicit_DPS_Documents_collection_400_ru": 0.032,
+    "current_paas_fixed_estimate": 0.215,
+    "three_private_endpoints_estimate": 0.03,
+    "three_active_1cpu_2gib_replicas_retail": 0.324,
+    "active_total_before_shared_allocations_and_usage": 0.569,
+    "all_revisions_paused_residual_before_shared_allocations_and_usage": 0.245,
+    "caveat": "Retail estimates, not invoice; shared ACR/environment/DNS allocation, storage, tokens, extraction, requests, network and taxes excluded. Subscription free grants not assumed.",
+    "aca_retail_source": "https://prices.azure.com/api/retail/prices?$filter=armRegionName%20eq%20%27eastus2%27%20and%20serviceName%20eq%20%27Azure%20Container%20Apps%27"
+  }
+}

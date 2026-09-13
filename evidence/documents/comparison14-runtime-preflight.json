@@ -1,0 +1,24 @@
+[
+  {
+    "image": "acrptubundle7d804f70.azurecr.io/dkm/backend:7df8ed3-evalretry-r1",
+    "name": "ca-dkm-api",
+    "ready": "ca-dkm-api--0000002",
+    "retry": [
+      "0"
+    ]
+  },
+  {
+    "image": "acrptubundle7d804f70.azurecr.io/dkm/frontend:7df8ed3-aca20260911",
+    "name": "ca-dkm-web",
+    "ready": "ca-dkm-web--0000002",
+    "retry": []
+  },
+  {
+    "image": "acrptubundle7d804f70.azurecr.io/dkm/kernelmemory:7df8ed3-evalretry-r1",
+    "name": "ca-dkm-kernel",
+    "ready": "ca-dkm-kernel--0000001",
+    "retry": [
+      "0"
+    ]
+  }
+]

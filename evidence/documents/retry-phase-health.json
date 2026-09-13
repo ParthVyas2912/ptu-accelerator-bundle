@@ -1,0 +1,15 @@
+{
+  "case": "health",
+  "utc": "2026-09-12T02:15:18.869Z",
+  "ms": 2127,
+  "result": {
+    "kernel": {
+      "status": 200,
+      "body": "\"Service is running.\""
+    },
+    "backend": {
+      "status": 200,
+      "body": "{\"documents\":[{\"documentId\":\"3951c54f0a974f79b9d8fc3d7e4591ad202609120125365840455\",\"fileName\":\"01-policy-2025.txt\",\"keywords\":{\"classification\":\"synthetic, fictional, unclassified\",\"person\":\"Maya Chen\",\"place\":\"Cedar Bay\",\"document_type\":\"Policy\",\"purpose\":\"evaluation\",\"version\":\"2025, historical\",\"training_allowance\":\"10 days, annual training allowance\",\"applicability\":\"applies to all fictional staff, fictional staff\"},\"importedTime\":\"2026-09-12T01:26:03.385Z\",\"processingTime\":\"00:00:25.7567145\",\"mimeType\":\"text/plain\",\"summary\":\"One person asks \\\"Hello how are you?\\\" and the other replies \\\"Hello\\\".\\n\\nA synthetic, fictional, unclassified 2025 historical policy for Cedar Bay names Maya Chen and grants all fictional staff ten days of annual training.\\n\",\"id\":\"5bca8547-dd7f-44b8-b57d-bf365092404c\",\"__partitionkey\":\"8248\"}],\"keywordFilterInfo\":{\"applicability\":[\"applies to all fictional staff\",\"fictional staff\"],\"classification\":[\"fictional\",\"synthetic\",\"unclassified\"],\"document_type\":[\"Policy\"],\"person\":[\"Maya Chen\"],\"place\":[\"Cedar Bay\"],\"purpose\":[\"evaluation\"],\"training_allowance\":[\"10 days\",\"annual training allowance\"],\"version\":[\"2025\",\"historical\"]},\"totalPages\":1,\"totalRecords\":1,\"currentPage\":1}"
+    }
+  }
+}

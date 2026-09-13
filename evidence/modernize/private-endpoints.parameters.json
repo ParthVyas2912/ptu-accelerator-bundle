@@ -1,0 +1,22 @@
+{
+  "parameters": {
+    "endpoints": {
+      "value": [
+        {
+          "app": "modernize",
+          "name": "pe-modernize-cosmos",
+          "resourceId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-modernize-demo/providers/Microsoft.DocumentDB/databaseAccounts/cosmos-ptu-modernize-eus20911",
+          "groupId": "Sql",
+          "zoneName": "privatelink.documents.azure.com"
+        },
+        {
+          "app": "modernize",
+          "name": "pe-modernize-blob",
+          "resourceId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-modernize-demo/providers/Microsoft.Storage/storageAccounts/stptumodernize0911pv",
+          "groupId": "blob",
+          "zoneName": "privatelink.blob.core.windows.net"
+        }
+      ]
+    }
+  }
+}

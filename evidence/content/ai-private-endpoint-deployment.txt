@@ -1,0 +1,9 @@
+Succeeded
+{
+  "privateEndpointIds": {
+    "type": "Array",
+    "value": [
+      "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateEndpoints/pe-content-ai"
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "sessionId": "ptu-macae-cloud-91dfa4d3",
+  "input": "This is a synthetic onboarding evaluation, not a real business transaction. Onboard Alex Example, HR analyst, starting 2026-10-01. Manager Morgan Example. Orientation 2026-10-02 09:00. Mentor Taylor Example. Benefits Standard. Background check Standard. ID card required. Salary 70000. Email alex@example.invalid. Laptop standard Windows 11. VPN Standard required. Use HR and IT onboarding workflows. Present your plan for approval before execution. Do not invent completion of any action before its tool is executed.",
+  "httpStatus": 200,
+  "response": {
+    "status": "Request started successfully",
+    "session_id": "ptu-macae-cloud-91dfa4d3",
+    "plan_id": "82e5df2b-00a2-4a12-a248-af425f12caa6"
+  },
+  "elapsedMs": 14326.34
+}

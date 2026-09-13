@@ -1,0 +1,15 @@
+{
+  "autoPauseDelay": 60,
+  "backup": "Local",
+  "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Sql/servers/sql-ptu-conversation-7d804f70/databases/ptu-conversation",
+  "maxSizeBytes": 34359738368,
+  "minCapacity": 0.5,
+  "sku": {
+    "capacity": 2,
+    "family": "Gen5",
+    "name": "GP_S_Gen5",
+    "size": null,
+    "tier": "GeneralPurpose"
+  },
+  "status": "Online"
+}

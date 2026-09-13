@@ -1,0 +1,236 @@
+[
+  {
+    "pack": "contract_compliance",
+    "level": "PASS",
+    "check": "pack.json parses",
+    "detail": "valid JSON"
+  },
+  {
+    "pack": "contract_compliance",
+    "level": "PASS",
+    "check": "blob_indexes source exists",
+    "detail": "datasets/summary (1 files)"
+  },
+  {
+    "pack": "contract_compliance",
+    "level": "PASS",
+    "check": "blob_indexes source exists",
+    "detail": "datasets/risk (2 files)"
+  },
+  {
+    "pack": "contract_compliance",
+    "level": "PASS",
+    "check": "blob_indexes source exists",
+    "detail": "datasets/compliance (2 files)"
+  },
+  {
+    "pack": "contract_compliance",
+    "level": "PASS",
+    "check": "contract_compliance_team.json team-level required fields",
+    "detail": "all present"
+  },
+  {
+    "pack": "contract_compliance",
+    "level": "FAIL",
+    "check": "contract_compliance_team.json team_id is hex UUID",
+    "detail": "team_id='team-compliance-1'"
+  },
+  {
+    "pack": "contract_compliance",
+    "level": "PASS",
+    "check": "contract_compliance_team.json status == visible",
+    "detail": "visible"
+  },
+  {
+    "pack": "contract_compliance",
+    "level": "FAIL",
+    "check": "contract_compliance_team.json unique agent input_key",
+    "detail": "duplicates ['']"
+  },
+  {
+    "pack": "contract_compliance",
+    "level": "PASS",
+    "check": "contract_compliance_team.json starting_tasks required fields",
+    "detail": "1 task(s)"
+  },
+  {
+    "pack": "contract_compliance",
+    "level": "PASS",
+    "check": "agent KB registered in seed_knowledge_bases.py",
+    "detail": "ContractSummaryAgent -> macae-contract-summary-kb"
+  },
+  {
+    "pack": "contract_compliance",
+    "level": "PASS",
+    "check": "agent KB registered in seed_knowledge_bases.py",
+    "detail": "ContractRiskAgent -> macae-contract-risk-kb"
+  },
+  {
+    "pack": "contract_compliance",
+    "level": "PASS",
+    "check": "agent KB registered in seed_knowledge_bases.py",
+    "detail": "ContractComplianceAgent -> macae-contract-compliance-kb"
+  },
+  {
+    "pack": "contract_compliance",
+    "level": "PASS",
+    "check": "pack index referenced by a knowledge source",
+    "detail": "contract-summary-doc-index"
+  },
+  {
+    "pack": "contract_compliance",
+    "level": "PASS",
+    "check": "pack index referenced by a knowledge source",
+    "detail": "contract-risk-doc-index"
+  },
+  {
+    "pack": "contract_compliance",
+    "level": "PASS",
+    "check": "pack index referenced by a knowledge source",
+    "detail": "contract-compliance-doc-index"
+  },
+  {
+    "pack": "contract_compliance",
+    "level": "PASS",
+    "check": "pack registered in Selecting-Team-Config-And-Data.ps1",
+    "detail": "referenced"
+  },
+  {
+    "pack": "rfp_evaluation",
+    "level": "PASS",
+    "check": "pack.json parses",
+    "detail": "valid JSON"
+  },
+  {
+    "pack": "rfp_evaluation",
+    "level": "PASS",
+    "check": "blob_indexes source exists",
+    "detail": "datasets/summary (1 files)"
+  },
+  {
+    "pack": "rfp_evaluation",
+    "level": "PASS",
+    "check": "blob_indexes source exists",
+    "detail": "datasets/risk (2 files)"
+  },
+  {
+    "pack": "rfp_evaluation",
+    "level": "PASS",
+    "check": "blob_indexes source exists",
+    "detail": "datasets/compliance (2 files)"
+  },
+  {
+    "pack": "rfp_evaluation",
+    "level": "PASS",
+    "check": "rfp_analysis_team.json team-level required fields",
+    "detail": "all present"
+  },
+  {
+    "pack": "rfp_evaluation",
+    "level": "FAIL",
+    "check": "rfp_analysis_team.json team_id is hex UUID",
+    "detail": "team_id='team-clm-1'"
+  },
+  {
+    "pack": "rfp_evaluation",
+    "level": "PASS",
+    "check": "rfp_analysis_team.json status == visible",
+    "detail": "visible"
+  },
+  {
+    "pack": "rfp_evaluation",
+    "level": "FAIL",
+    "check": "rfp_analysis_team.json unique agent input_key",
+    "detail": "duplicates ['']"
+  },
+  {
+    "pack": "rfp_evaluation",
+    "level": "PASS",
+    "check": "rfp_analysis_team.json starting_tasks required fields",
+    "detail": "1 task(s)"
+  },
+  {
+    "pack": "rfp_evaluation",
+    "level": "PASS",
+    "check": "agent KB registered in seed_knowledge_bases.py",
+    "detail": "RfpSummaryAgent -> macae-rfp-summary-kb"
+  },
+  {
+    "pack": "rfp_evaluation",
+    "level": "PASS",
+    "check": "agent KB registered in seed_knowledge_bases.py",
+    "detail": "RfpRiskAgent -> macae-rfp-risk-kb"
+  },
+  {
+    "pack": "rfp_evaluation",
+    "level": "PASS",
+    "check": "agent KB registered in seed_knowledge_bases.py",
+    "detail": "RfpComplianceAgent -> macae-rfp-compliance-kb"
+  },
+  {
+    "pack": "rfp_evaluation",
+    "level": "PASS",
+    "check": "pack index referenced by a knowledge source",
+    "detail": "macae-rfp-summary-index"
+  },
+  {
+    "pack": "rfp_evaluation",
+    "level": "PASS",
+    "check": "pack index referenced by a knowledge source",
+    "detail": "macae-rfp-risk-index"
+  },
+  {
+    "pack": "rfp_evaluation",
+    "level": "PASS",
+    "check": "pack index referenced by a knowledge source",
+    "detail": "macae-rfp-compliance-index"
+  },
+  {
+    "pack": "rfp_evaluation",
+    "level": "PASS",
+    "check": "pack registered in Selecting-Team-Config-And-Data.ps1",
+    "detail": "referenced"
+  },
+  {
+    "pack": "hr_onboarding",
+    "level": "PASS",
+    "check": "pack.json parses",
+    "detail": "valid JSON"
+  },
+  {
+    "pack": "hr_onboarding",
+    "level": "PASS",
+    "check": "hr.json team-level required fields",
+    "detail": "all present"
+  },
+  {
+    "pack": "hr_onboarding",
+    "level": "FAIL",
+    "check": "hr.json team_id is hex UUID",
+    "detail": "team_id='team-1'"
+  },
+  {
+    "pack": "hr_onboarding",
+    "level": "PASS",
+    "check": "hr.json status == visible",
+    "detail": "visible"
+  },
+  {
+    "pack": "hr_onboarding",
+    "level": "FAIL",
+    "check": "hr.json unique agent input_key",
+    "detail": "duplicates ['']"
+  },
+  {
+    "pack": "hr_onboarding",
+    "level": "PASS",
+    "check": "hr.json starting_tasks required fields",
+    "detail": "1 task(s)"
+  },
+  {
+    "pack": "hr_onboarding",
+    "level": "PASS",
+    "check": "pack registered in Selecting-Team-Config-And-Data.ps1",
+    "detail": "referenced"
+  }
+]

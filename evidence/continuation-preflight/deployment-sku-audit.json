@@ -1,0 +1,202 @@
+[
+  {
+    "account": "aif-ptu-conversation-7d804f70",
+    "deployment": "gpt-5.2",
+    "model": "gpt-5.2",
+    "version": "2025-12-11",
+    "sku": "GlobalStandard",
+    "capacity": 10
+  },
+  {
+    "account": "aif-ptu-conversation-7d804f70",
+    "deployment": "text-embedding-3-small",
+    "model": "text-embedding-3-small",
+    "version": "1",
+    "sku": "GlobalStandard",
+    "capacity": 10
+  },
+  {
+    "account": "edcfoundryhack01",
+    "deployment": "gpt-5.1",
+    "model": "gpt-5.1",
+    "version": "2025-11-13",
+    "sku": "GlobalStandard",
+    "capacity": 100
+  },
+  {
+    "account": "edcfoundryhack01",
+    "deployment": "text-embedding-3-small",
+    "model": "text-embedding-3-small",
+    "version": "1",
+    "sku": "Standard",
+    "capacity": 100
+  },
+  {
+    "account": "edcfoundryhack01",
+    "deployment": "gpt-4.1-mini",
+    "model": "gpt-4.1-mini",
+    "version": "2025-04-14",
+    "sku": "GlobalStandard",
+    "capacity": 100
+  },
+  {
+    "account": "edcfoundryhack01",
+    "deployment": "gpt-4.1-mini-guarded",
+    "model": "gpt-4.1-mini",
+    "version": "2025-04-14",
+    "sku": "GlobalStandard",
+    "capacity": 20
+  },
+  {
+    "account": "aoai-specsuite-can-1840",
+    "deployment": "gpt-4o",
+    "model": "gpt-4o",
+    "version": "2024-11-20",
+    "sku": "Standard",
+    "capacity": 150
+  },
+  {
+    "account": "aoai-specsuite-can-1840",
+    "deployment": "gpt-4o-review",
+    "model": "gpt-4o",
+    "version": "2024-11-20",
+    "sku": "GlobalStandard",
+    "capacity": 300
+  },
+  {
+    "account": "cog-foundry-cbzmyrtv7w6ja",
+    "deployment": "gpt-4o",
+    "model": "gpt-4o",
+    "version": "2024-11-20",
+    "sku": "Standard",
+    "capacity": 140
+  },
+  {
+    "account": "cog-foundry-cbzmyrtv7w6ja",
+    "deployment": "gpt-4o-mini",
+    "model": "gpt-4.1-mini",
+    "version": "2025-04-14",
+    "sku": "Standard",
+    "capacity": 10
+  },
+  {
+    "account": "cog-foundry-cbzmyrtv7w6ja",
+    "deployment": "text-embedding-3-small",
+    "model": "text-embedding-3-small",
+    "version": "1",
+    "sku": "GlobalStandard",
+    "capacity": 30
+  },
+  {
+    "account": "oai-dkmeval0911a",
+    "deployment": "gpt-5-mini",
+    "model": "gpt-5-mini",
+    "version": "2025-08-07",
+    "sku": "GlobalStandard",
+    "capacity": 10
+  },
+  {
+    "account": "oai-dkmeval0911a",
+    "deployment": "text-embedding-3-large",
+    "model": "text-embedding-3-large",
+    "version": "1",
+    "sku": "GlobalStandard",
+    "capacity": 50
+  },
+  {
+    "account": "hinal-openai-12757",
+    "deployment": "gpt-4o",
+    "model": "gpt-4o",
+    "version": "2024-11-20",
+    "sku": "Standard",
+    "capacity": 10
+  },
+  {
+    "account": "edcfoundryhackeus2",
+    "deployment": "gpt-5.1",
+    "model": "gpt-5.1",
+    "version": "2025-11-13",
+    "sku": "GlobalStandard",
+    "capacity": 50
+  },
+  {
+    "account": "partvyas-3207-resource",
+    "deployment": "gpt-5.1",
+    "model": "gpt-5.1",
+    "version": "2025-11-13",
+    "sku": "GlobalStandard",
+    "capacity": 420
+  },
+  {
+    "account": "cog-foundry-mgxvsbslmnvjs",
+    "deployment": "gpt-4o",
+    "model": "gpt-4o",
+    "version": "2024-11-20",
+    "sku": "Standard",
+    "capacity": 10
+  },
+  {
+    "account": "cog-foundry-mgxvsbslmnvjs",
+    "deployment": "gpt-4o-mini",
+    "model": "gpt-4.1-mini",
+    "version": "2025-04-14",
+    "sku": "Standard",
+    "capacity": 10
+  },
+  {
+    "account": "cog-foundry-mgxvsbslmnvjs",
+    "deployment": "gpt-5",
+    "model": "gpt-5",
+    "version": "2025-08-07",
+    "sku": "GlobalStandard",
+    "capacity": 200
+  },
+  {
+    "account": "cog-foundry-mgxvsbslmnvjs",
+    "deployment": "text-embedding-3-small",
+    "model": "text-embedding-3-small",
+    "version": "1",
+    "sku": "Standard",
+    "capacity": 120
+  },
+  {
+    "account": "ptumacae7d804f70",
+    "deployment": "gpt-5.4",
+    "model": "gpt-5.4",
+    "version": "2026-03-05",
+    "sku": "GlobalStandard",
+    "capacity": 10
+  },
+  {
+    "account": "ptumacae7d804f70",
+    "deployment": "gpt-5.4-mini",
+    "model": "gpt-5.4-mini",
+    "version": "2026-03-17",
+    "sku": "GlobalStandard",
+    "capacity": 10
+  },
+  {
+    "account": "aif-ccptu1feb0911",
+    "deployment": "gpt-5.4-mini",
+    "model": "gpt-5.4-mini",
+    "version": "2026-03-17",
+    "sku": "GlobalStandard",
+    "capacity": 10
+  },
+  {
+    "account": "aif-ccptu1feb0911",
+    "deployment": "text-embedding-3-small",
+    "model": "text-embedding-3-small",
+    "version": "1",
+    "sku": "GlobalStandard",
+    "capacity": 10
+  },
+  {
+    "account": "aif-ptuv-content-260911",
+    "deployment": "gpt-5.1",
+    "model": "gpt-5.1",
+    "version": "2025-11-13",
+    "sku": "GlobalStandard",
+    "capacity": 50
+  }
+]

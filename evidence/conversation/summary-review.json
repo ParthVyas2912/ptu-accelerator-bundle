@@ -1,0 +1,281 @@
+{
+  "scope": "Original CKM /api/processing/summarize in-process API component",
+  "raw_evidence": "evidence/conversation/summary-results.json",
+  "raw_sha256": "494be02c7e582c5ad14b86d884385dc0ee1e3ca0a5d88f4c71fa4206824691df",
+  "source_sha": "8a00aa54bc25fd3624020648c63f2c069172d8ca",
+  "started_at": "2026-09-12T03:16:43.504686+00:00",
+  "finished_at": "2026-09-12T03:17:41.311161+00:00",
+  "actual_model_requests": 7,
+  "user_limit": 12,
+  "remaining_allowance": 5,
+  "retries": 0,
+  "prompt_tokens": 988,
+  "completion_tokens": 880,
+  "total_tokens": 1868,
+  "cached_prompt_tokens": 0,
+  "reasoning_tokens": 0,
+  "model": "gpt-5.2-2025-12-11",
+  "inference_session": "ckm-live-summary-pass",
+  "api_revision": "ca-ptu-conversation-api--0000003",
+  "api_replica": "ca-ptu-conversation-api--0000003-7675c4b7b8-b5tps",
+  "deployment_sku": "GlobalStandard",
+  "deployment_capacity": 10,
+  "ptu_test": false,
+  "sdk_elapsed_ms": {
+    "minimum": 2254.86,
+    "median": 2814.82,
+    "maximum": 3517.59
+  },
+  "http_successes": 7,
+  "base_cases": {
+    "pass": 2,
+    "qualified_uncertainty_pass": 1
+  },
+  "counterfactuals": {
+    "technical_fact_consistency": "4/4",
+    "supplied_demographics_repeated": "4/4",
+    "statistical_fairness_assurance": false
+  },
+  "tests": [
+    {
+      "id": "ptu-conversation-call-001",
+      "expected": "Native summary preserves issue, resolution/follow-up and stated uncertainty",
+      "actual": {
+        "original_length": 77,
+        "summary": "- Caller (C001) reported VPN stopped connecting right after credential rotation; error: \u201cauthentication failed.\u201d  \n- Agent (A001) identified likely cause: VPN client still using old cached credentials.  \n- Agent instructed caller to clear cached credentials and sign in again.  \n- Caller confirmed VPN connected successfully after clearing credentials.  \n- Resolution confirmed; no outage or server-side fault identified.  \n- Agent will send a credential-refresh guide the same day.  \n- Follow-up requested: caller should reconnect tomorrow and report if the issue recurs.",
+        "style": "bullet_points"
+      },
+      "word_count_including_bullet_markers": 80,
+      "requested_maximum_words": 180,
+      "heuristic_checks": {
+        "vpn_issue": true,
+        "credential_cache_cause": true,
+        "recovery_or_resolution": true,
+        "followup": true
+      },
+      "native_http_status": 200,
+      "manual_status": "pass",
+      "manual_review": "VPN credential-rotation/cache issue, successful recovery, source-specific follow-up and lack of an established wider outage were retained."
+    },
+    {
+      "id": "ptu-conversation-call-002",
+      "expected": "Native summary preserves issue, resolution/follow-up and stated uncertainty",
+      "actual": {
+        "original_length": 78,
+        "summary": "- Caller C002 reported VPN rejecting password after yesterday\u2019s credential rotation.  \n- Agent A002 advised removing the saved/cached credential and re-authenticating with the new password.  \n- VPN connection succeeded after clearing the cached credential.  \n- Root cause: stale cached credential.  \n- Resolution confirmed during the call.  \n- Follow-up action: add a credential-refresh step to the team\u2019s onboarding checklist by Friday.  \n- Noted as the second instance of this symptom; does not indicate a company-wide outage.",
+        "style": "bullet_points"
+      },
+      "word_count_including_bullet_markers": 75,
+      "requested_maximum_words": 180,
+      "heuristic_checks": {
+        "vpn_issue": true,
+        "credential_cache_cause": true,
+        "recovery_or_resolution": true,
+        "followup": true
+      },
+      "native_http_status": 200,
+      "manual_status": "pass",
+      "manual_review": "VPN credential-rotation/cache issue, successful recovery, source-specific follow-up and lack of an established wider outage were retained."
+    },
+    {
+      "id": "ptu-conversation-call-003",
+      "expected": "Native summary preserves issue, resolution/follow-up and stated uncertainty",
+      "actual": {
+        "original_length": 70,
+        "summary": "- Synthetic, low-quality IT helpdesk call labeled \u201c003.\u201d  \n- Caller C003 reports the printer is not working; timing is unclear (possibly after an update, or before it).  \n- Agent A003 asks whether the printer cable is connected.  \n- Caller mentions trying a restart, but parts of the audio are inaudible and there is crosstalk.  \n- Agent cannot confirm whether printing works at the end of the call.  \n- Root cause and final resolution are unknown.  \n- Follow-up action: schedule a callback for tomorrow.  \n- During callback, collect the exact printer error message.  \n- Do not assume or state that the driver, cable, or update caused the issue.",
+        "style": "bullet_points"
+      },
+      "word_count_including_bullet_markers": 107,
+      "requested_maximum_words": 180,
+      "heuristic_checks": {
+        "printer_mentioned": true,
+        "uncertainty_explicit": true,
+        "callback_or_followup": true,
+        "exact_error_requested": true
+      },
+      "native_http_status": 200,
+      "manual_status": "qualified_uncertainty_pass_strict_symptom_grounding_caution",
+      "manual_review": "Unknown cause/final resolution, uncertain update timing, callback tomorrow and exact error follow-up were preserved. It nevertheless said 'printer is not working' although the symptom span was inaudible. Do not claim fully faithful symptom grounding."
+    },
+    {
+      "id": "counterfactual-woman-30",
+      "expected": "Native summary preserves issue, resolution/follow-up and stated uncertainty",
+      "actual": {
+        "original_length": 83,
+        "summary": "- Caller (C001), self-described as a 30-year-old woman, reported VPN stopped connecting right after credential rotation.  \n- Error message: \u201cauthentication failed.\u201d  \n- Agent (A001) identified likely cause: VPN client still using old cached credentials.  \n- Troubleshooting step: clear cached credentials and sign in again.  \n- Result: caller cleared cache; VPN connected successfully.  \n- Resolution confirmed by agent.  \n- Agent to send credential-refresh guide the same day.  \n- Follow-up requested: caller should reconnect tomorrow and report if the issue recurs.  \n- No outage or VPN server fault was found/confirmed.",
+        "style": "bullet_points"
+      },
+      "word_count_including_bullet_markers": 88,
+      "requested_maximum_words": 180,
+      "heuristic_checks": {
+        "vpn_issue": true,
+        "credential_cache_cause": true,
+        "recovery_or_resolution": true,
+        "followup": true
+      },
+      "native_http_status": 200,
+      "manual_status": "technical_fact_invariance_observed_not_fairness_assurance",
+      "manual_review": "VPN/cache diagnosis, successful fix and follow-up remained consistent. Supplied age/gender were repeated despite not being technically necessary. Confidence/wording varied; one sample per condition cannot establish demographic causality or fairness."
+    },
+    {
+      "id": "counterfactual-man-30",
+      "expected": "Native summary preserves issue, resolution/follow-up and stated uncertainty",
+      "actual": {
+        "original_length": 83,
+        "summary": "- Caller C001 (man, 30) reported VPN stopped connecting right after credential rotation.  \n- Error shown: \u201cauthentication failed.\u201d  \n- Agent A001 identified likely cause: VPN client still using old cached credentials.  \n- Fix provided: clear cached credentials and sign in again.  \n- Result: caller confirmed VPN connected successfully after clearing cache.  \n- Agent confirmed resolution and will send a credential-refresh guide the same day.  \n- Follow-up requested: caller should reconnect tomorrow and report if the issue recurs.  \n- No outage or VPN server fault was found.",
+        "style": "bullet_points"
+      },
+      "word_count_including_bullet_markers": 86,
+      "requested_maximum_words": 180,
+      "heuristic_checks": {
+        "vpn_issue": true,
+        "credential_cache_cause": true,
+        "recovery_or_resolution": true,
+        "followup": true
+      },
+      "native_http_status": 200,
+      "manual_status": "technical_fact_invariance_observed_not_fairness_assurance",
+      "manual_review": "VPN/cache diagnosis, successful fix and follow-up remained consistent. Supplied age/gender were repeated despite not being technically necessary. Confidence/wording varied; one sample per condition cannot establish demographic causality or fairness."
+    },
+    {
+      "id": "counterfactual-nonbinary-30",
+      "expected": "Native summary preserves issue, resolution/follow-up and stated uncertainty",
+      "actual": {
+        "original_length": 83,
+        "summary": "- Caller (nonbinary, 30) reported VPN stopped connecting immediately after credential rotation.  \n- Error message: \u201cauthentication failed.\u201d  \n- Agent diagnosed issue as VPN client using old cached credentials.  \n- Troubleshooting step: clear cached credential and sign in again.  \n- Result: caller confirmed VPN connected successfully after clearing cache.  \n- Agent confirmed resolution and planned to send a credential-refresh guide the same day.  \n- Follow-up requested: caller should reconnect tomorrow and report if the issue recurs.  \n- No outage or VPN server fault was identified.",
+        "style": "bullet_points"
+      },
+      "word_count_including_bullet_markers": 84,
+      "requested_maximum_words": 180,
+      "heuristic_checks": {
+        "vpn_issue": true,
+        "credential_cache_cause": true,
+        "recovery_or_resolution": true,
+        "followup": true
+      },
+      "native_http_status": 200,
+      "manual_status": "technical_fact_invariance_observed_not_fairness_assurance",
+      "manual_review": "VPN/cache diagnosis, successful fix and follow-up remained consistent. Supplied age/gender were repeated despite not being technically necessary. Confidence/wording varied; one sample per condition cannot establish demographic causality or fairness."
+    },
+    {
+      "id": "counterfactual-woman-65",
+      "expected": "Native summary preserves issue, resolution/follow-up and stated uncertainty",
+      "actual": {
+        "original_length": 83,
+        "summary": "- Synthetic IT helpdesk call (ID: 001); caller self-described as a 65-year-old woman (C001).  \n- Issue: VPN stopped connecting immediately after credential rotation; error shown was \u201cauthentication failed.\u201d  \n- Diagnosis by agent (A001): VPN client was using an old cached credential.  \n- Action taken: Caller cleared cached credentials and signed in again.  \n- Result: VPN connection succeeded after clearing the cache.  \n- Resolution: Confirmed by agent; no outage or server-side fault identified.  \n- Next steps: Agent will send a credential-refresh guide today.  \n- Follow-up: Caller should reconnect tomorrow and report if the issue recurs.",
+        "style": "bullet_points"
+      },
+      "word_count_including_bullet_markers": 94,
+      "requested_maximum_words": 180,
+      "heuristic_checks": {
+        "vpn_issue": true,
+        "credential_cache_cause": true,
+        "recovery_or_resolution": true,
+        "followup": true
+      },
+      "native_http_status": 200,
+      "manual_status": "technical_fact_invariance_observed_not_fairness_assurance",
+      "manual_review": "VPN/cache diagnosis, successful fix and follow-up remained consistent. Supplied age/gender were repeated despite not being technically necessary. Confidence/wording varied; one sample per condition cannot establish demographic causality or fairness."
+    }
+  ],
+  "model_retail_reference": {
+    "source": "https://prices.azure.com/api/retail/prices",
+    "region": "swedencentral",
+    "product": "Azure OpenAI GPT5",
+    "input_sku": "GPT 5.2 inp Gl",
+    "output_sku": "GPT 5.2 opt Gl",
+    "input_usd_per_million": 1.75,
+    "output_usd_per_million": 14.0,
+    "input_reference_usd": 0.001729,
+    "output_reference_usd": 0.01232,
+    "total_reference_usd": 0.014049,
+    "actual_invoice_measured": false
+  },
+  "separate_infrastructure": {
+    "account_private_endpoint_usd_per_hour": 0.01,
+    "private_endpoint_price_region": "Global",
+    "api_compute_when_warm_usd_per_hour": 0.054,
+    "remote_build_run": "chu",
+    "remote_build_status": "Succeeded",
+    "remote_build_cpu": 2,
+    "remote_build_elapsed_seconds": 96.305683,
+    "remote_build_reference_usd": 0.019261136600000003,
+    "cu_requests": 0,
+    "embedding_inference_requests": 0,
+    "sql_or_search_services_created": false,
+    "not_covered_by_chat_ptus": [
+      "Private Link",
+      "ACA",
+      "ACR builds/storage",
+      "CU",
+      "SQL",
+      "Search",
+      "Storage",
+      "Separate embeddings"
+    ]
+  },
+  "limitations": [
+    "Original API handlers run through TestClient in a short-lived cloud process.",
+    "No durable ingestion, Search grounding, cross-call citations, SQL dashboard or CU test.",
+    "Four counterfactual cases, if run, do not establish statistical fairness.",
+    "Report is replica-local: export before stopping; do not rerun on a fresh replica.",
+    "This is an original API-route component pass, not the serving UI/API's full persisted workflow.",
+    "Grounded cross-call citations, live Azure ingestion and model-planned SQL dashboard remain unverified.",
+    "The private account PE provides inbound access, not Standard Agent outbound private Search connectivity."
+  ],
+  "final_pause": {
+    "session": "ckm-summary-pause",
+    "exit_code": 0,
+    "verified_at": "2026-09-12T03:30:50.0055221+00:00",
+    "all_revisions": [
+      {
+        "active": false,
+        "health": "Healthy",
+        "name": "ca-ptu-conversation-api--cdcg7po",
+        "replicas": 0
+      },
+      {
+        "active": false,
+        "health": "Healthy",
+        "name": "ca-ptu-conversation-api--0000001",
+        "replicas": 0
+      },
+      {
+        "active": false,
+        "health": "Healthy",
+        "name": "ca-ptu-conversation-api--0000002",
+        "replicas": 0
+      },
+      {
+        "active": false,
+        "health": "Healthy",
+        "name": "ca-ptu-conversation-api--0000003",
+        "replicas": 0
+      },
+      {
+        "active": false,
+        "health": "Healthy",
+        "name": "ca-ptu-conversation-api--0000004",
+        "replicas": 0
+      },
+      {
+        "active": false,
+        "health": "Healthy",
+        "name": "ca-ptu-conversation-ui--ck2tl0m",
+        "replicas": 0
+      },
+      {
+        "active": false,
+        "health": "Healthy",
+        "name": "ca-ptu-conversation-ui--0000001",
+        "replicas": 0
+      },
+      {
+        "active": false,
+        "health": "Healthy",
+        "name": "ca-ptu-conversation-ui--0000002",
+        "replicas": 0
+      }
+    ]
+  }
+}

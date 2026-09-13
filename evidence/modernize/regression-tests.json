@@ -1,0 +1,15 @@
+{
+  "scope": "Actual imported-source pytest regression suite, no model requests",
+  "file": "src/tests/backend/sql_agents/convert_script_test.py",
+  "command": "$env:PYTHONPATH='<repo>\\src'; <venv>\\Scripts\\python.exe -m pytest <repo>\\src\\tests\\backend\\sql_agents\\convert_script_test.py -q",
+  "observed_result": "11 passed in 11.70s",
+  "passed": 11,
+  "failed": 0,
+  "deselected": 0,
+  "exit_code": 0,
+  "session": "modernize-full-regression",
+  "fix": "Reject empty/whitespace/No migration candidate; return empty after agent communication failure rather than validating a partial candidate.",
+  "production_source_lines_changed": 3,
+  "upstream_commit": "7592ea97550fb711d7d8b64186875967d574c5d5",
+  "uncommitted_source_changes": true
+}

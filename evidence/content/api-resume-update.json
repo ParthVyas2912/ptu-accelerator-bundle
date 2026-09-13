@@ -1,0 +1,47 @@
+{
+  "recordedUtc": "2026-09-12T01:55:19.390462+00:00",
+  "image": "acrptubundle7d804f70.azurecr.io/content/eval-api:659eaa1-r3",
+  "build": {
+    "finish": "2026-09-12T01:45:50.550494+00:00",
+    "images": [
+      {
+        "digest": "sha256:bcf6c4910140b9c8750262144cd6f2a1bcd179904155cfdf6ecfd031e10424d9",
+        "registry": "acrptubundle7d804f70.azurecr.io",
+        "repository": "content/eval-api",
+        "tag": "659eaa1-r3"
+      }
+    ],
+    "runId": "chb",
+    "start": "2026-09-12T01:45:33.931343+00:00",
+    "status": "Succeeded"
+  },
+  "sourceContextKiB": 3.184,
+  "localBuildsOrInstallsStarted": false,
+  "cloudExecExportSucceeded": true,
+  "apiRequestCount": 21,
+  "apiElapsedMs": {
+    "min": 3.415,
+    "median": 102.3,
+    "max": 1593.644
+  },
+  "statusCounts": {
+    "200": 19,
+    "415": 2
+  },
+  "modelAttempts": 0,
+  "cuAnalyses": 0,
+  "budgetBlobPresent": false,
+  "interpretation": "Real schema/claim/upload/negative validation only; no inference or PTU evaluation",
+  "parentAction": {
+    "privateEndpointName": "pe-content-ai",
+    "resourceId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-content-demo/providers/Microsoft.CognitiveServices/accounts/aif-ptuv-content-260911",
+    "groupId": "account",
+    "zones": [
+      "privatelink.cognitiveservices.azure.com",
+      "privatelink.openai.azure.com",
+      "privatelink.services.ai.azure.com"
+    ],
+    "lastArmCheck": "ResourceNotFound; guarded execution692",
+    "reason": "Fourth approved PE requires parent helper account/multi-zone support or central creation"
+  }
+}

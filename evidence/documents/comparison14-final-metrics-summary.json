@@ -1,0 +1,35 @@
+{
+  "label": "comparison14-final",
+  "captured_utc": "2026-09-12T03:06:49.998577+00:00",
+  "timespan": "2026-09-12T01:24:00Z/2026-09-12T03:06:27Z",
+  "by_deployment": {
+    "gpt-5-mini": {
+      "ModelRequests": 7.0,
+      "InputTokens": 2061.0,
+      "OutputTokens": 7424.0,
+      "TotalTokens": 9485.0
+    },
+    "text-embedding-3-large": {
+      "ModelRequests": 7.0,
+      "InputTokens": 351.0,
+      "TotalTokens": 351.0
+    }
+  },
+  "requests": 14.0,
+  "statuses": [
+    {
+      "modeldeploymentname": "gpt-5-mini",
+      "statuscode": "200",
+      "requests": 7.0
+    },
+    {
+      "modeldeploymentname": "text-embedding-3-large",
+      "statuscode": "200",
+      "requests": 7.0
+    }
+  ],
+  "total_tokens": 9836.0,
+  "input_tokens": 2412.0,
+  "output_tokens": 7424.0,
+  "alias_check": true
+}

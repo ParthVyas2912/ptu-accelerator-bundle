@@ -1,0 +1,32 @@
+{
+  "label": "v4-insurance",
+  "timestamp_utc": "2026-09-12T18:13:50.3691477Z",
+  "endpoint": "https://edcfoundryhack01.openai.azure.com/",
+  "requested_model": "gpt-4.1-mini",
+  "video_file": "insurance_v3.mp4",
+  "requested_frames": 10,
+  "prompt_chars": 555,
+  "auth": "entra-default-azure-credential",
+  "frames_decoded": 422,
+  "decode_error": null,
+  "frame_sampling_step": 43,
+  "frames_submitted": 10,
+  "frame_indexes": [
+    0,
+    43,
+    86,
+    129,
+    172,
+    215,
+    258,
+    301,
+    344,
+    387
+  ],
+  "frame_bytes_total": 1093927,
+  "outcome": "exception",
+  "exception_type": "ClientResultException",
+  "message": "HTTP 400 (invalid_request_error: content_policy_violation)\r\n\r\nYour input image may contain content that is not allowed by our content safety system.",
+  "client_elapsed_s": 5.8097,
+  "model_attempts": 1
+}

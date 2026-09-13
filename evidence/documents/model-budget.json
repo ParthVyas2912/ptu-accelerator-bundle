@@ -1,0 +1,110 @@
+{
+  "accelerator": "Document Knowledge Mining",
+  "cap_including_retries": 14,
+  "scope": "All three DKM services against oai-dkmeval0911a; no shared models or new PTUs.",
+  "known_requests_before_first_ingestion": 0,
+  "azure_metric_baseline": {
+    "metric": "AzureOpenAIRequests",
+    "timespan": "2026-09-12T00:20:00Z/2026-09-12T01:24:27Z",
+    "points": [],
+    "meaning": "No reported metric points; combined with no initiated model operations, zero known requests before test."
+  },
+  "actual_observed_attempts": 14,
+  "remaining_attempts": 0,
+  "further_paid_actions_blocked_pending_safe_retry_control": false,
+  "reservation_correction": "Initial estimate missed direct embedding of SyntheticData in GenerateEmbeddingsHandlerBase. Actual first upload used4 successful requests. Correct stock retry-inclusive ingestion bound is13, not9; no second paid operation initiated.",
+  "completed_reservation": {
+    "operation": "Original backend Documents/ImportDocument",
+    "file": "01-policy-2025.txt",
+    "bytes": 207,
+    "expected_without_retries": 3,
+    "maximum_reserved_attempts": 9,
+    "breakdown": {
+      "keyword_extraction": 4,
+      "summarization": 1,
+      "one_original_text_partition_embedding": 4
+    },
+    "state": "completed_http200; telemetry confirms4 attempts"
+  },
+  "retry_caveats": [
+    "Text generator honors MaxRetries=0.",
+    "Embedding wrapper does NOT consume its MaxRetries setting; it constructs Semantic Kernel embedding service with default SDK retries.",
+    "Keyword handler and backend final chat also construct Semantic Kernel clients with default SDK retries.",
+    "System.ClientModel ClientRetryPolicy defaults to three retries, hence four attempts reserved per such SDK operation.",
+    "Azure queue threshold1 permits the first delivery only; threshold0 would poison even the initial dequeue. No handler retry is allowed.",
+    "Correction: although only original extracted text is partitioned, GenerateEmbeddingsHandlerBase directly includes SyntheticData, so summary adds an embedding request.",
+    "Do not issue a second paid action until this operation's outcome and metrics are reconciled."
+  ],
+  "sdk_retry_reference": "https://raw.githubusercontent.com/Azure/azure-sdk-for-net/main/sdk/core/System.ClientModel/src/Pipeline/ClientRetryPolicy.cs",
+  "retry_control_deployed_verified": true,
+  "evaluation_retry_proof": "retry-runtime-config.json; remote-chg.log:29 assertions passed",
+  "remaining_plan": [
+    "Second single-page PDF: normally4 requests, reserve6 for original empty-keyword fallback; reconcile before proceeding",
+    "If actual second ingestion4: original backend /Documents/Ask one-document query2 + corpus comparison2 =12 total",
+    "If fallback/errors consume more: reduce scope rather than exceed12; /chat extra synthesis is not tested"
+  ],
+  "retry_caveats_status": "Historical caveats describe original images. New explicitly opted-in images disable SDK retries; queue threshold1 and existing text-generator retries0 remain.",
+  "separately_metered_extraction": "Document Intelligence prebuilt-layout analyze/page usage recorded separately from the twelve OpenAI request cap.",
+  "reconciled_operations": [
+    {
+      "case": "ingest-second",
+      "baseline": 4,
+      "maximum": 6,
+      "started_utc": "2026-09-12T02:15:29.8883137Z",
+      "automatic_retry": false,
+      "observed_delta": 4.0,
+      "observed_total": 8.0,
+      "evidence": "after-second-settled-metrics-summary.json"
+    },
+    {
+      "case": "qa-document",
+      "baseline": 8.0,
+      "maximum": 2,
+      "started_utc": "2026-09-12T02:20:25.4063927Z",
+      "automatic_retry": false,
+      "observed_delta": 2.0,
+      "observed_total": 10.0,
+      "evidence": "after-document-qa-metrics-summary.json"
+    },
+    {
+      "case": "qa-corpus",
+      "baseline": 10.0,
+      "maximum": 2,
+      "started_utc": "2026-09-12T02:22:40.1227934Z",
+      "automatic_retry": false,
+      "observed_delta": 2.0,
+      "observed_total": 12.0,
+      "evidence": "final-metrics-summary.json",
+      "application_response_captured": false,
+      "grade": "UNVERIFIED: console encoding failure"
+    },
+    {
+      "case": "qa-corpus-approved14",
+      "baseline": 12,
+      "maximum": 2,
+      "automatic_retry": false,
+      "started_utc": "2026-09-12T03:00:48.523497+00:00",
+      "capture_proof": {
+        "url": "https://stdkmeval0911a.blob.core.windows.net/smemory/_dkm-evaluation/comparison14-capture-probe.json",
+        "sha256": "79e8fdb4b072f397fd8417e90b1ca594a55ec24e607053218d15bcd6a2ffe789",
+        "bytes": 162,
+        "persisted": true
+      },
+      "observed_delta": 2.0,
+      "observed_total": 14,
+      "application_response_captured": true,
+      "grade": "PASS: both source facts/citations and differences",
+      "evidence": "comparison14-final-metrics-summary.json"
+    }
+  ],
+  "pending_operation": null,
+  "cap_exhausted": true,
+  "further_paid_actions_blocked_reason": "Final fourteen-attempt cap exhausted; guard disarmed",
+  "final_comparison_approval": {
+    "previous_cap": 12,
+    "additional_attempts": 2,
+    "allowed_case": "qa-corpus-approved14",
+    "approval_file": "comparison14-approval.json",
+    "guard_armed": false
+  }
+}

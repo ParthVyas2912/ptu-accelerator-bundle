@@ -1,0 +1,225 @@
+{
+  "call-center-voice": {
+    "files": 86,
+    "iac": {
+      "bicep": 13,
+      "terraform": 0,
+      "arm": 0
+    },
+    "preview_markers": [],
+    "gitignore_env": true,
+    "secret_hits": [],
+    "has_tests": false,
+    "license": "     MIT License      Copyright (c) Microsoft Corporation.      Permission is hereby granted, free of charge, to any per",
+    "support": null,
+    "gitignore_azure": true
+  },
+  "document-generation": {
+    "files": 250,
+    "iac": {
+      "bicep": 9,
+      "terraform": 0,
+      "arm": 1
+    },
+    "preview_markers": [],
+    "gitignore_env": true,
+    "secret_hits": [],
+    "has_tests": true,
+    "license": "    MIT License      Copyright (c) Microsoft Corporation.      Permission is hereby granted, free of charge, to any pers",
+    "support": "# Support  ## How to file issues and get help    This project uses GitHub Issues to track bugs and feature requests. Please search the existing  issues before filing new issues to avoid duplicates.  For new issues, file your bug or  feature request as a new Issue.  For help and questions about using this project, please submit an issue on this repository.  ## Microsoft Support Policy    Support fo",
+    "gitignore_azure": true
+  },
+  "ess-devkit": {
+    "files": 931,
+    "iac": {
+      "bicep": 0,
+      "terraform": 0,
+      "arm": 0
+    },
+    "preview_markers": [],
+    "gitignore_env": true,
+    "secret_hits": [],
+    "has_tests": true,
+    "license": "MIT License  Copyright (c) Microsoft Corporation.  Permission is hereby granted, free of charge, to any person obtaining",
+    "support": "# Support  ## How to file issues and get help  This project uses GitHub Issues to track bugs and feature requests. Please search the existing issues before filing new issues to avoid duplicates. For new issues, file your bug or feature request as a new Issue.  For help and questions about using this project, please look at the docs in this repository and our [Contributor's Guide](CONTRIBUTING.md) ",
+    "gitignore_azure": false
+  },
+  "macae": {
+    "files": 598,
+    "iac": {
+      "bicep": 46,
+      "terraform": 0,
+      "arm": 3
+    },
+    "preview_markers": [],
+    "gitignore_env": true,
+    "secret_hits": [
+      {
+        "file": "src\\tests\\backend\\common\\utils\\test_event_utils.py",
+        "kind": "CONNECTION_STRING",
+        "snippet": "Instrume..."
+      },
+      {
+        "file": "src\\tests\\backend\\common\\utils\\test_event_utils.py",
+        "kind": "CONNECTION_STRING",
+        "snippet": "valid_co..."
+      },
+      {
+        "file": "src\\tests\\backend\\common\\utils\\test_event_utils.py",
+        "kind": "CONNECTION_STRING",
+        "snippet": "valid_co..."
+      },
+      {
+        "file": "src\\tests\\backend\\common\\utils\\test_event_utils.py",
+        "kind": "CONNECTION_STRING",
+        "snippet": "valid_co..."
+      },
+      {
+        "file": "src\\tests\\backend\\common\\utils\\test_event_utils.py",
+        "kind": "CONNECTION_STRING",
+        "snippet": "valid_co..."
+      },
+      {
+        "file": "src\\tests\\backend\\common\\utils\\test_event_utils.py",
+        "kind": "CONNECTION_STRING",
+        "snippet": "valid_co..."
+      },
+      {
+        "file": "src\\tests\\backend\\common\\utils\\test_event_utils.py",
+        "kind": "CONNECTION_STRING",
+        "snippet": "valid_co..."
+      },
+      {
+        "file": "src\\tests\\backend\\common\\utils\\test_event_utils.py",
+        "kind": "CONNECTION_STRING",
+        "snippet": "Instrume..."
+      },
+      {
+        "file": "src\\tests\\backend\\common\\utils\\test_event_utils.py",
+        "kind": "CONNECTION_STRING",
+        "snippet": "valid_co..."
+      },
+      {
+        "file": "src\\tests\\backend\\common\\utils\\test_event_utils.py",
+        "kind": "CONNECTION_STRING",
+        "snippet": "valid_co..."
+      },
+      {
+        "file": "src\\tests\\backend\\common\\utils\\test_event_utils.py",
+        "kind": "CONNECTION_STRING",
+        "snippet": "valid_co..."
+      },
+      {
+        "file": "src\\tests\\backend\\common\\utils\\test_event_utils.py",
+        "kind": "CONNECTION_STRING",
+        "snippet": "valid_co..."
+      },
+      {
+        "file": "src\\tests\\backend\\common\\utils\\test_event_utils.py",
+        "kind": "CONNECTION_STRING",
+        "snippet": "valid_co..."
+      },
+      {
+        "file": "src\\tests\\backend\\common\\utils\\test_event_utils.py",
+        "kind": "CONNECTION_STRING",
+        "snippet": "valid_co..."
+      },
+      {
+        "file": "src\\tests\\backend\\common\\utils\\test_event_utils.py",
+        "kind": "CONNECTION_STRING",
+        "snippet": "valid_co..."
+      }
+    ],
+    "has_tests": true,
+    "license": "     Copyright (c) Microsoft Corporation.      MIT License      Permission is hereby granted, free of charge, to any per",
+    "support": "# Support  ## How to file issues and get help    This project uses GitHub Issues to track bugs and feature requests. Please search the existing  issues before filing new issues to avoid duplicates.  For new issues, file your bug or  feature request as a new Issue.  ## Microsoft Support Policy    Support for this **PROJECT or PRODUCT** is limited to the resources listed above. ",
+    "gitignore_azure": true
+  },
+  "netaivideoanalyzer": {
+    "files": 148,
+    "iac": {
+      "bicep": 3,
+      "terraform": 0,
+      "arm": 0
+    },
+    "preview_markers": [],
+    "gitignore_env": false,
+    "secret_hits": [],
+    "has_tests": false,
+    "license": "MIT License  Copyright (c) 2024 El Bruno  Permission is hereby granted, free of charge, to any person obtaining a copy o",
+    "support": null,
+    "gitignore_azure": true
+  },
+  "private-tenant-chat": {
+    "files": 145,
+    "iac": {
+      "bicep": 4,
+      "terraform": 0,
+      "arm": 1
+    },
+    "preview_markers": [],
+    "gitignore_env": true,
+    "secret_hits": [
+      {
+        "file": "scripts\\automationScripts\\OneLakeIndex\\04_create_onelake_datasource.ps1",
+        "kind": "connectionString",
+        "snippet": "Resource..."
+      }
+    ],
+    "has_tests": true,
+    "license": "    MIT License      Copyright (c) Microsoft Corporation.      Permission is hereby granted, free of charge, to any pers",
+    "support": "# TODO: The maintainer of this repo has not yet edited this file  **REPO OWNER**: Do you want Customer Service & Support (CSS) support for this product/project?  - **No CSS support:** Fill out this template with information about how to file issues and get help. - **Yes CSS support:** Fill out an intake form at [aka.ms/onboardsupport](https://aka.ms/onboardsupport). CSS will work with/help you to ",
+    "gitignore_azure": true
+  },
+  "real-time-ops": {
+    "files": 188,
+    "iac": {
+      "bicep": 2,
+      "terraform": 0,
+      "arm": 0
+    },
+    "preview_markers": [],
+    "gitignore_env": true,
+    "secret_hits": [
+      {
+        "file": "docs\\EventSimulatorGuide.md",
+        "kind": "CONNECTION_STRING",
+        "snippet": "Endpoint..."
+      }
+    ],
+    "has_tests": true,
+    "license": "    MIT License      Copyright (c) Microsoft Corporation.      Permission is hereby granted, free of charge, to any pers",
+    "support": "# TODO: The maintainer of this repo has not yet edited this file  **REPO OWNER**: Do you want Customer Service & Support (CSS) support for this product/project?  - **No CSS support:** Fill out this template with information about how to file issues and get help. - **Yes CSS support:** Fill out an intake form at [aka.ms/onboardsupport](https://aka.ms/onboardsupport). CSS will work with/help you to ",
+    "gitignore_azure": true
+  },
+  "stepfly": {
+    "files": 67,
+    "iac": {
+      "bicep": 0,
+      "terraform": 0,
+      "arm": 0
+    },
+    "preview_markers": [],
+    "gitignore_env": false,
+    "secret_hits": [],
+    "has_tests": false,
+    "license": "    MIT License      Copyright (c) Microsoft Corporation.      Permission is hereby granted, free of charge, to any pers",
+    "support": "# TODO: The maintainer of this repo has not yet edited this file  **REPO OWNER**: Do you want Customer Service & Support (CSS) support for this product/project?  - **No CSS support:** Fill out this template with information about how to file issues and get help. - **Yes CSS support:** Fill out an intake form at [aka.ms/onboardsupport](https://aka.ms/onboardsupport). CSS will work with/help you to ",
+    "gitignore_azure": false
+  },
+  "unified-data-foundation": {
+    "files": 479,
+    "iac": {
+      "bicep": 74,
+      "terraform": 0,
+      "arm": 3
+    },
+    "preview_markers": [],
+    "gitignore_env": false,
+    "secret_hits": [],
+    "has_tests": true,
+    "license": "    MIT License      Copyright (c) Microsoft Corporation.      Permission is hereby granted, free of charge, to any pers",
+    "support": null,
+    "gitignore_azure": true
+  }
+}

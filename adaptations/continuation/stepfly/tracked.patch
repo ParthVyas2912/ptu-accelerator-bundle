@@ -1,0 +1,30 @@
+diff --git a/config/config.json b/config/config.json
+index 0209271c55db1ed5c1372554339deb8778c270e4..e33191a672b0be8f0b02dc3d60f8d6491cfc2e64 100644
+--- a/config/config.json
++++ b/config/config.json
+@@ -2,7 +2,7 @@
+   "llm": {
+     "api_base": "",
+     "api_key": "",
+-    "model": "gpt-4o"
++    "model": "gpt-4.1-mini"
+   },
+   "memory_database": {
+     "reset_on_start": true,
+@@ -38,7 +38,7 @@
+       "incident_tsg_loader",
+       "schedule_tool"
+     ],
+-    "max_executor_number": 3
++    "max_executor_number": 1
+   },
+   "executor": {
+     "only_dependent_node_context": false,
+@@ -53,4 +53,5 @@
+     ]
+   },
+   "max_steps": 50
+-} 
+\ No newline at end of file
++} 
++

@@ -1,0 +1,9 @@
+{
+  "case": "ingest-second",
+  "utc": "2026-09-12T02:16:08.801Z",
+  "ms": 27154,
+  "result": {
+    "status": 200,
+    "body": "{\"documentId\":\"cb45ef9f464f4569ac7c4bc523ef1aab202609120215417274224\",\"importedTime\":\"2026-09-12T02:16:08.4574296Z\",\"fileName\":\"02-policy-2026-table.pdf\",\"processingTime\":\"00:00:25.6951030\",\"mimeType\":\"application/pdf\",\"keywords\":{\"classification\":\"synthetic, fictional, unclassified\",\"person\":\"Omar Patel\",\"place\":\"Cedar Bay\",\"document_type\":\"Policy\",\"version\":\"2026\",\"status\":\"active\",\"supersedes\":\"2025 training policy\",\"allowances\":\"Annual training: 15 days/year\",\"topics\":\"training\",\"structure\":\"table present, columns: Allowance, Days/year\"},\"summary\":\"One person asks \\\"Hello, how are you?\\\" and the other replies \\\"Hello\\\".  \\nThe synthetic, fictional, unclassified 2026 policy for Cedar Bay, authored by Omar Patel, is active, supersedes the 2025 training policy, and grants 15 days per year for annual training.\\n\"}"
+  }
+}

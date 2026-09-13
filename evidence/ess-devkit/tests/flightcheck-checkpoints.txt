@@ -1,0 +1,34 @@
+Registered setup checkpoints (run one with --checkpoint <ID>):
+
+  CHECKPOINT       PRIORITY   CATEGORY             ROLES
+  ----------------------------------------------------------------------------
+  DV-CONN-001      High       Workday Extension    ESS Maker / Agent Developer
+  ENV-001          Critical   Environment          Power Platform Admin
+  ENV-002          Critical   Environment          Power Platform Admin
+  ENV-009          High       Environment          Power Platform Admin
+  ENV-CAPACITY-001 Critical   Environment          Power Platform Admin
+  ESS-SOLN-001     Critical   Solution             ESS Maker / Agent Developer
+  TOPIC-INTEGRATION-* High       Workday Topics       ESS Maker / Agent Developer
+  TOPIC-TRIGGER-*  High       Workday Topics       ESS Maker / Agent Developer
+  WD-API-CLIENT-001 Critical   Workday Tenant       Workday Admin
+  WD-ASSIGN-001    Critical   Entra App            Entra Admin
+  WD-CONN-*        High       Workday              Power Platform Admin
+  WD-CONN-010      High       Workday              Entra Admin, Workday Admin
+  WD-CONN-012      High       Workday              Power Platform Admin
+  WD-CONN-102      High       Workday              Entra Admin, Workday Admin
+  WD-CONN-AUTH-001 High       Workday Extension    ESS Maker / Agent Developer
+  WD-ENTRA-CONSENT-001 Critical   Entra App            Entra Admin
+  WD-ENTRA-NAMEID-001 High       Entra App            Entra Admin
+  WD-ENTRA-SCOPE-001 Critical   Entra App            Entra Admin
+  WD-ENTRA-SIGNOPT-001 High       Entra App            Entra Admin
+  WD-ENV-*         Critical   Workday              Power Platform Admin
+  WD-FLOW-*        High       Workday              Power Platform Admin
+  WD-NET-001       High       Workday Extension    Power Platform Admin
+  WD-PKG-001       High       Workday              Power Platform Admin
+  WD-REST-001      High       Workday Extension    ESS Maker / Agent Developer
+  WD-REST-002      High       Workday Extension    ESS Maker / Agent Developer
+  WD-RUN-001       High       Workday              Workday Admin, ESS Maker / Agent Developer
+  WD-TENANT-001    High       Workday Tenant       Workday Admin
+  WD-WF-*          High       Workday              Workday Admin
+
+Families (-*) run every emitted member; an exact dynamic ID (e.g. WD-FLOW-002) runs the family and reports just that row.

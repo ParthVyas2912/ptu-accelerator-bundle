@@ -1,0 +1,58 @@
+{
+  "scope": "isolated original validation-function unit test, not E2E",
+  "source": "src\\backend\\sql_agents\\convert_script.py",
+  "source_sha256": "3266c5d4a462b9ab50eac6460bd961ff826207b211fb7bc00a004316e73b71e1",
+  "tests": [
+    {
+      "candidate": "",
+      "expected_accept": false,
+      "actual_accept": false,
+      "passed": true,
+      "last_log": {
+        "args": [
+          "synthetic-file",
+          "No migrated query returned. Migration failed.",
+          "",
+          "error",
+          "semantic_verifier",
+          "assistant"
+        ],
+        "kwargs": {}
+      }
+    },
+    {
+      "candidate": "SELECT 1;",
+      "expected_accept": true,
+      "actual_accept": true,
+      "passed": true,
+      "last_log": {
+        "args": [],
+        "kwargs": {
+          "file_id": "synthetic-file",
+          "description": "Migration completed successfully.",
+          "last_candidate": "SELECT 1;",
+          "log_type": "success",
+          "agent_type": "agents",
+          "author_role": "assistant"
+        }
+      }
+    },
+    {
+      "candidate": "No migration",
+      "expected_accept": false,
+      "actual_accept": false,
+      "passed": true,
+      "last_log": {
+        "args": [
+          "synthetic-file",
+          "No migrated query returned. Migration failed.",
+          "",
+          "error",
+          "semantic_verifier",
+          "assistant"
+        ],
+        "kwargs": {}
+      }
+    }
+  ]
+}

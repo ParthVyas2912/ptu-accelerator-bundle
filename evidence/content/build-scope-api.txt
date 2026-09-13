@@ -1,0 +1,194 @@
+WARNING: Packing source code into tar to upload...
+WARNING: Uploading archived source code from 'C:\Users\partvyas\AppData\Local\Temp\build_archive_9310a8591a2b464abbcad43f23e87384.tar.gz'...
+WARNING: Sending context (14.797 KiB) to registry: acrptubundle7d804f70...
+WARNING: Queued a build with ID: ch13
+WARNING: Waiting for an agent...
+2026/09/12 05:40:02 Downloading source code...
+
+2026/09/12 05:40:03 Finished downloading source code
+
+2026/09/12 05:40:04 Using acb_vol_37578a0e-5ce7-4bdd-a010-2a136aa06b86 as the home volume
+2026/09/12 05:40:04 Setting up Docker configuration...
+2026/09/12 05:40:04 Successfully set up Docker configuration
+2026/09/12 05:40:04 Logging in to registry: acrptubundle7d804f70.azurecr.io
+2026/09/12 05:40:05 Successfully logged into acrptubundle7d804f70.azurecr.io
+2026/09/12 05:40:05 Executing step ID: build. Timeout(sec): 28800, Working directory: '', Network: ''
+2026/09/12 05:40:05 Scanning for dependencies...
+2026/09/12 05:40:05 Successfully scanned dependencies
+2026/09/12 05:40:05 Launching container with name: build
+Sending build context to Docker daemon  62.46kB
+
+
+
+Step 1/7 : FROM acrptubundle7d804f70.azurecr.io/content/eval-api@sha256:c7a3183f6c88a34a63296e71d2763cd62796a10d9c48e97322738a8b3823b2fb
+acrptubundle7d804f70.azurecr.io/content/eval-api@sha256:c7a3183f6c88a34a63296e71d2763cd62796a10d9c48e97322738a8b3823b2fb: Pulling from content/eval-api
+8d0e3d4378da: Pulling fs layer
+508cc1ba44d9: Pulling fs layer
+c3c209f08297: Pulling fs layer
+29b91e9a1adf: Pulling fs layer
+f19239daeb3d: Pulling fs layer
+4438e85d56e9: Pulling fs layer
+b1b86495d5dc: Pulling fs layer
+631532c330ea: Pulling fs layer
+e98674f8b29f: Pulling fs layer
+f45d5f68df07: Pulling fs layer
+11c77689f35f: Pulling fs layer
+70d648304e54: Pulling fs layer
+f19239daeb3d: Waiting
+29b91e9a1adf: Waiting
+4438e85d56e9: Waiting
+b1b86495d5dc: Waiting
+631532c330ea: Waiting
+e98674f8b29f: Waiting
+f45d5f68df07: Waiting
+11c77689f35f: Waiting
+70d648304e54: Waiting
+c3c209f08297: Verifying Checksum
+c3c209f08297: Download complete
+29b91e9a1adf: Verifying Checksum
+29b91e9a1adf: Download complete
+508cc1ba44d9: Verifying Checksum
+508cc1ba44d9: Download complete
+4438e85d56e9: Verifying Checksum
+4438e85d56e9: Download complete
+8d0e3d4378da: Verifying Checksum
+8d0e3d4378da: Download complete
+631532c330ea: Verifying Checksum
+631532c330ea: Download complete
+e98674f8b29f: Verifying Checksum
+e98674f8b29f: Download complete
+f19239daeb3d: Verifying Checksum
+f19239daeb3d: Download complete
+f45d5f68df07: Verifying Checksum
+f45d5f68df07: Download complete
+70d648304e54: Verifying Checksum
+70d648304e54: Download complete
+11c77689f35f: Verifying Checksum
+11c77689f35f: Download complete
+b1b86495d5dc: Verifying Checksum
+b1b86495d5dc: Download complete
+8d0e3d4378da: Pull complete
+
+508cc1ba44d9: Pull complete
+c3c209f08297: Pull complete
+29b91e9a1adf: Pull complete
+f19239daeb3d: Pull complete
+
+4438e85d56e9: Pull complete
+b1b86495d5dc: Pull complete
+
+631532c330ea: Pull complete
+e98674f8b29f: Pull complete
+f45d5f68df07: Pull complete
+11c77689f35f: Pull complete
+70d648304e54: Pull complete
+Digest: sha256:c7a3183f6c88a34a63296e71d2763cd62796a10d9c48e97322738a8b3823b2fb
+Status: Downloaded newer image for acrptubundle7d804f70.azurecr.io/content/eval-api@sha256:c7a3183f6c88a34a63296e71d2763cd62796a10d9c48e97322738a8b3823b2fb
+ ---> ad0f4acf83ad
+Step 2/7 : COPY content_guard.py cloud_budget.py isolated_scope.py isolated_runtime.py test_isolated_scope.py test_inference_disarm.py exercise_app.py isolated_driver.py /opt/content_eval/
+ ---> 385922b0d477
+Step 3/7 : ENV CONTENT_INFERENCE_DISARMED=1 CONTENT_NATIVE_GUARD=1
+ ---> Running in c87be7f7bd90
+Removing intermediate container c87be7f7bd90
+ ---> f70131b2d918
+Step 4/7 : RUN CONTENT_NATIVE_GUARD=0 /app/.venv/bin/python -m unittest discover -s /opt/content_eval -p 'test_isolated_scope.py' -v
+
+ ---> Running in 9a99675586fc
+test_disarm_prevents_dequeue (test_isolated_scope.IsolationTests.test_disarm_prevents_dequeue) ... ok
+test_global_cap17_and_one_attempt_per_scoped_stage (test_isolated_scope.IsolationTests.test_global_cap17_and_one_attempt_per_scoped_stage) ... ok
+test_guard_checks_scope_before_budget_or_transport (test_isolated_scope.IsolationTests.test_guard_checks_scope_before_budget_or_transport) ... ok
+test_inference_requires_exact_context (test_isolated_scope.IsolationTests.test_inference_requires_exact_context) ... ok
+test_old_claim_and_document_rejected (test_isolated_scope.IsolationTests.test_old_claim_and_document_rejected) ... ok
+test_plain_and_base64_preserve_payload (test_isolated_scope.IsolationTests.test_plain_and_base64_preserve_payload) ... ok
+test_unrelated_messages_deferred_not_deleted_or_dispatched (test_isolated_scope.IsolationTests.test_unrelated_messages_deferred_not_deleted_or_dispatched) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.005s
+
+OK
+
+Removing intermediate container 9a99675586fc
+ ---> 68dcc709f269
+Step 5/7 : RUN CONTENT_NATIVE_GUARD=0 /app/.venv/bin/python /opt/content_eval/test_inference_disarm.py
+ ---> Running in 98fd7b11e8db
+.....
+----------------------------------------------------------------------
+Ran 5 tests in 0.361s
+
+
+OK
+Removing intermediate container 98fd7b11e8db
+ ---> 38494eccce21
+Step 6/7 : ENTRYPOINT ["/app/.venv/bin/python", "/opt/content_eval/cloud_entry.py"]
+ ---> Running in 2f20c498fe57
+Removing intermediate container 2f20c498fe57
+ ---> d21006b78d16
+Step 7/7 : CMD []
+ ---> Running in 51d7d59864b7
+Removing intermediate container 51d7d59864b7
+ ---> 1e263e181549
+Successfully built 1e263e181549
+
+Successfully tagged acrptubundle7d804f70.azurecr.io/content/eval-api:659eaa1-scope-r1
+2026/09/12 05:40:22 Successfully executed container: build
+2026/09/12 05:40:22 Executing step ID: push. Timeout(sec): 3600, Working directory: '', Network: ''
+2026/09/12 05:40:22 Pushing image: acrptubundle7d804f70.azurecr.io/content/eval-api:659eaa1-scope-r1, attempt 1
+The push refers to repository [acrptubundle7d804f70.azurecr.io/content/eval-api]
+8efc181b46ae: Preparing
+34dcc5965b79: Preparing
+42381d3f5d29: Preparing
+d91687c9bda6: Preparing
+4db085a6010f: Preparing
+bcd462250894: Preparing
+70f21debf31f: Preparing
+6d73a8999cff: Preparing
+8e3c659a9c18: Preparing
+9a08987deca5: Preparing
+8395f0a2065c: Preparing
+cc91f6143fbd: Preparing
+945c3aa9c504: Preparing
+bcd462250894: Waiting
+70f21debf31f: Waiting
+6d73a8999cff: Waiting
+8e3c659a9c18: Waiting
+9a08987deca5: Waiting
+8395f0a2065c: Waiting
+cc91f6143fbd: Waiting
+945c3aa9c504: Waiting
+4db085a6010f: Layer already exists
+d91687c9bda6: Layer already exists
+34dcc5965b79: Layer already exists
+42381d3f5d29: Layer already exists
+70f21debf31f: Layer already exists
+6d73a8999cff: Layer already exists
+bcd462250894: Layer already exists
+8e3c659a9c18: Layer already exists
+9a08987deca5: Layer already exists
+8395f0a2065c: Layer already exists
+cc91f6143fbd: Layer already exists
+945c3aa9c504: Layer already exists
+
+8efc181b46ae: Pushed
+659eaa1-scope-r1: digest: sha256:7d5c97ad6a055fb806e6113fde10aa91af9ee73778d008f46126bf7ef90974e9 size: 3038
+2026/09/12 05:40:29 Successfully pushed image: acrptubundle7d804f70.azurecr.io/content/eval-api:659eaa1-scope-r1
+2026/09/12 05:40:29 Step ID: build marked as successful (elapsed time in seconds: 17.111765)
+2026/09/12 05:40:29 Populating digests for step ID: build...
+2026/09/12 05:40:29 Successfully populated digests for step ID: build
+2026/09/12 05:40:29 Step ID: push marked as successful (elapsed time in seconds: 6.947905)
+2026/09/12 05:40:29 The following dependencies were found:
+2026/09/12 05:40:29 
+- image:
+    registry: acrptubundle7d804f70.azurecr.io
+    repository: content/eval-api
+    tag: 659eaa1-scope-r1
+    digest: sha256:7d5c97ad6a055fb806e6113fde10aa91af9ee73778d008f46126bf7ef90974e9
+  runtime-dependency:
+    registry: acrptubundle7d804f70.azurecr.io
+    repository: content/eval-api
+    digest: sha256:c7a3183f6c88a34a63296e71d2763cd62796a10d9c48e97322738a8b3823b2fb
+  git: {}
+
+
+
+Run ID: ch13 was successful after 27s
+

@@ -1,0 +1,31 @@
+{
+  "connections": [
+    {
+      "etag": "W/\"6ad84f24-1bfe-4fd8-8ed8-375194da251c\"",
+      "groupIds": [
+        "searchService"
+      ],
+      "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateEndpoints/pe-chatbot-search/privateLinkServiceConnections/pe-chatbot-search",
+      "name": "pe-chatbot-search",
+      "privateLinkServiceConnectionState": {
+        "actionsRequired": "None",
+        "description": "Auto-approved",
+        "status": "Approved"
+      },
+      "privateLinkServiceId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-chatbot-eval-0911/providers/Microsoft.Search/searchServices/srch-ccptu1feb0911",
+      "provisioningState": "Succeeded",
+      "resourceGroup": "rg-ptu-bundle-platform",
+      "type": "Microsoft.Network/privateEndpoints/privateLinkServiceConnections"
+    }
+  ],
+  "customDnsConfigs": [],
+  "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateEndpoints/pe-chatbot-search",
+  "location": "eastus2",
+  "networkInterfaces": [
+    {
+      "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/networkInterfaces/pe-chatbot-search.nic.d7553765-0959-47f1-928d-11289ef58989",
+      "resourceGroup": "rg-ptu-bundle-platform"
+    }
+  ],
+  "state": "Succeeded"
+}

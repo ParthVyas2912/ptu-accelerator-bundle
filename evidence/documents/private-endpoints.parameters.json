@@ -1,0 +1,29 @@
+{
+  "parameters": {
+    "endpoints": {
+      "value": [
+        {
+          "app": "documents",
+          "name": "pe-documents-mongo",
+          "resourceId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-dkm-20260911/providers/Microsoft.DocumentDB/databaseAccounts/cosmos-dkmeval0911a",
+          "groupId": "MongoDB",
+          "zoneName": "privatelink.mongo.cosmos.azure.com"
+        },
+        {
+          "app": "documents",
+          "name": "pe-documents-blob",
+          "resourceId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-dkm-20260911/providers/Microsoft.Storage/storageAccounts/stdkmeval0911a",
+          "groupId": "blob",
+          "zoneName": "privatelink.blob.core.windows.net"
+        },
+        {
+          "app": "documents",
+          "name": "pe-documents-queue",
+          "resourceId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-dkm-20260911/providers/Microsoft.Storage/storageAccounts/stdkmeval0911a",
+          "groupId": "queue",
+          "zoneName": "privatelink.queue.core.windows.net"
+        }
+      ]
+    }
+  }
+}

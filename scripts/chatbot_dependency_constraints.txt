@@ -1,0 +1,6 @@
+# Bound unpinned transitive dependencies to the native rc6 / OTel 1.40 stack.
+# These constraints do not loosen any repository-pinned direct dependency.
+agent-framework-openai==1.0.0rc6
+opentelemetry-exporter-otlp-proto-grpc==1.40.0
+opentelemetry-exporter-otlp-proto-http==1.40.0
+azure-monitor-opentelemetry-exporter==1.0.0b49

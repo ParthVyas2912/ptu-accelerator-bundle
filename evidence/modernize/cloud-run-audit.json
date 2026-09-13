@@ -1,0 +1,262 @@
+{
+  "scope": "Read-only Azure service run usage and tool-step audit",
+  "audited": "2026-09-12T01:24:18.763154+00:00",
+  "runs": [
+    {
+      "id": "run_VmGsS2Rmr0OdE2C6Ky6ryop9",
+      "status": "completed",
+      "usage": {
+        "prompt_tokens": 2678,
+        "completion_tokens": 152,
+        "total_tokens": 2830,
+        "prompt_token_details": {
+          "cached_tokens": 0
+        }
+      },
+      "last_error": null,
+      "created_at": 1789176082,
+      "completed_at": 1789176090,
+      "started_at": 1789176088,
+      "failed_at": null,
+      "model": "gpt-5.1",
+      "thread_id": "thread_46ObeaSjdpfqfB86c0ksbcul",
+      "agent_id": "asst_Zkv9EKuJH44Ijg8AKCYGytxF",
+      "agent_name": "syntax_checker",
+      "steps": [
+        {
+          "id": "step_L1Blecov18k8QFKRNujuGAsl",
+          "type": "message_creation",
+          "status": "completed",
+          "usage": {
+            "prompt_tokens": 1383,
+            "completion_tokens": 71,
+            "total_tokens": 1454,
+            "prompt_token_details": {
+              "cached_tokens": 0
+            }
+          },
+          "step_details": {
+            "type": "message_creation",
+            "message_creation": {
+              "message_id": "msg_3G1zjpaV0tTvGmqoLH7coqZO"
+            }
+          },
+          "created_at": 1789176090,
+          "completed_at": 1789176090,
+          "last_error": null
+        },
+        {
+          "id": "step_UcrmWfN65N8C3sKCiiui0FZh",
+          "type": "tool_calls",
+          "status": "completed",
+          "usage": {
+            "prompt_tokens": 1295,
+            "completion_tokens": 81,
+            "total_tokens": 1376,
+            "prompt_token_details": {
+              "cached_tokens": 0
+            }
+          },
+          "step_details": {
+            "type": "tool_calls",
+            "tool_calls": [
+              {
+                "id": "call_cG0Wiuv7Z6tzPT6RzRmkBTiR",
+                "type": "function",
+                "function": {
+                  "name": "SyntaxCheckerPlugin-check_syntax",
+                  "arguments": "{\"candidate_sql\":\"SELECT o.order_id,\\n       o.customer_id,\\n       (SELECT ISNULL(SUM(ob.order_total), 0)\\n        FROM orders_backup AS ob\\n        WHERE ob.customer_id = o.customer_id) AS customer_total\\nFROM orders AS o;\"}",
+                  "output": "[]\n"
+                }
+              }
+            ]
+          },
+          "created_at": 1789176085,
+          "completed_at": 1789176088,
+          "last_error": null
+        }
+      ]
+    },
+    {
+      "id": "run_qIRN3HVm5645DxKDCUhTJjOT",
+      "status": "completed",
+      "usage": {
+        "prompt_tokens": 1348,
+        "completion_tokens": 113,
+        "total_tokens": 1461,
+        "prompt_token_details": {
+          "cached_tokens": 0
+        }
+      },
+      "last_error": null,
+      "created_at": 1789176061,
+      "completed_at": 1789176065,
+      "started_at": 1789176061,
+      "failed_at": null,
+      "model": "gpt-5.1",
+      "thread_id": "thread_LaH4kEOwLzkvb519HB13ZDKy",
+      "agent_id": "asst_NqbG3ymTG9pPmJH0vjYOoPdE",
+      "agent_name": "migrator",
+      "steps": [
+        {
+          "id": "step_b22ARYN67aejQieb6QMNxJMk",
+          "type": "message_creation",
+          "status": "completed",
+          "usage": {
+            "prompt_tokens": 1348,
+            "completion_tokens": 113,
+            "total_tokens": 1461,
+            "prompt_token_details": {
+              "cached_tokens": 0
+            }
+          },
+          "step_details": {
+            "type": "message_creation",
+            "message_creation": {
+              "message_id": "msg_YOHCutkJna32oK0HrqQxRpzG"
+            }
+          },
+          "created_at": 1789176064,
+          "completed_at": 1789176065,
+          "last_error": null
+        }
+      ]
+    },
+    {
+      "id": "run_Ywv9FE4GFQdL1qbHjo8vyMit",
+      "status": "completed",
+      "usage": {
+        "prompt_tokens": 1461,
+        "completion_tokens": 70,
+        "total_tokens": 1531,
+        "prompt_token_details": {
+          "cached_tokens": 0
+        }
+      },
+      "last_error": null,
+      "created_at": 1789176094,
+      "completed_at": 1789176097,
+      "started_at": 1789176094,
+      "failed_at": null,
+      "model": "gpt-5.1",
+      "thread_id": "thread_gtUykZOzzywrNOH31jrcGhP3",
+      "agent_id": "asst_hzyVHVlWrTUQHpd1hCPGchGV",
+      "agent_name": "semantic_verifier",
+      "steps": [
+        {
+          "id": "step_ynZ3iX9XFC34H2GXPvV424jP",
+          "type": "message_creation",
+          "status": "completed",
+          "usage": {
+            "prompt_tokens": 1461,
+            "completion_tokens": 70,
+            "total_tokens": 1531,
+            "prompt_token_details": {
+              "cached_tokens": 0
+            }
+          },
+          "step_details": {
+            "type": "message_creation",
+            "message_creation": {
+              "message_id": "msg_1x2CmQQYfgCSnHwXraayTb2q"
+            }
+          },
+          "created_at": 1789176096,
+          "completed_at": 1789176097,
+          "last_error": null
+        }
+      ]
+    },
+    {
+      "id": "run_C0jxFp1WEgKHaWUUnth5U091",
+      "status": "completed",
+      "usage": {
+        "prompt_tokens": 1386,
+        "completion_tokens": 393,
+        "total_tokens": 1779,
+        "prompt_token_details": {
+          "cached_tokens": 0
+        }
+      },
+      "last_error": null,
+      "created_at": 1789176067,
+      "completed_at": 1789176073,
+      "started_at": 1789176067,
+      "failed_at": null,
+      "model": "gpt-5.1",
+      "thread_id": "thread_hbZ54yinssJx2oYDapD3P8RB",
+      "agent_id": "asst_NqbG3ymTG9pPmJH0vjYOoPdE",
+      "agent_name": "migrator",
+      "steps": [
+        {
+          "id": "step_XTjClAFu6GnVoI8uTTMpfHHU",
+          "type": "message_creation",
+          "status": "completed",
+          "usage": {
+            "prompt_tokens": 1386,
+            "completion_tokens": 393,
+            "total_tokens": 1779,
+            "prompt_token_details": {
+              "cached_tokens": 0
+            }
+          },
+          "step_details": {
+            "type": "message_creation",
+            "message_creation": {
+              "message_id": "msg_S0vodkbnptwJcJmDcOIvsOLQ"
+            }
+          },
+          "created_at": 1789176069,
+          "completed_at": 1789176073,
+          "last_error": null
+        }
+      ]
+    },
+    {
+      "id": "run_Z4aVBSxprW8Q3dVuRpUIsUph",
+      "status": "completed",
+      "usage": {
+        "prompt_tokens": 1276,
+        "completion_tokens": 202,
+        "total_tokens": 1478,
+        "prompt_token_details": {
+          "cached_tokens": 0
+        }
+      },
+      "last_error": null,
+      "created_at": 1789176076,
+      "completed_at": 1789176080,
+      "started_at": 1789176076,
+      "failed_at": null,
+      "model": "gpt-5.1",
+      "thread_id": "thread_k8MsS2nDqMD9D7g6IWyQNtSa",
+      "agent_id": "asst_ExeIwbTnvVDi1KvOoAE8fqYr",
+      "agent_name": "picker",
+      "steps": [
+        {
+          "id": "step_d6KEWMukHBckZR4pnlbZTkoN",
+          "type": "message_creation",
+          "status": "completed",
+          "usage": {
+            "prompt_tokens": 1276,
+            "completion_tokens": 202,
+            "total_tokens": 1478,
+            "prompt_token_details": {
+              "cached_tokens": 0
+            }
+          },
+          "step_details": {
+            "type": "message_creation",
+            "message_creation": {
+              "message_id": "msg_Ua5j3OrJNfvuzSkuEvas2YY1"
+            }
+          },
+          "created_at": 1789176078,
+          "completed_at": 1789176080,
+          "last_error": null
+        }
+      ]
+    }
+  ],
+  "new_model_requests": 0
+}

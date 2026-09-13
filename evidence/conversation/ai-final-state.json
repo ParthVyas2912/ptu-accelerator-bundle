@@ -1,0 +1,55 @@
+{
+  "models": [
+    {
+      "model": {
+        "callRateLimit": null,
+        "format": "OpenAI",
+        "name": "gpt-5.2",
+        "publisher": null,
+        "source": null,
+        "sourceAccount": null,
+        "version": "2025-12-11"
+      },
+      "name": "gpt-5.2",
+      "sku": {
+        "capacity": 10,
+        "family": null,
+        "name": "GlobalStandard",
+        "size": null,
+        "tier": null
+      },
+      "state": "Succeeded",
+      "upgrade": "NoAutoUpgrade"
+    },
+    {
+      "model": {
+        "callRateLimit": null,
+        "format": "OpenAI",
+        "name": "text-embedding-3-small",
+        "publisher": null,
+        "source": null,
+        "sourceAccount": null,
+        "version": "1"
+      },
+      "name": "text-embedding-3-small",
+      "sku": {
+        "capacity": 10,
+        "family": null,
+        "name": "GlobalStandard",
+        "size": null,
+        "tier": null
+      },
+      "state": "Succeeded",
+      "upgrade": "NoAutoUpgrade"
+    }
+  ],
+  "checked_at": "2026-09-12T03:30:46.2645765+00:00",
+  "account": {
+    "disableLocalAuth": true,
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.CognitiveServices/accounts/aif-ptu-conversation-7d804f70",
+    "location": "swedencentral",
+    "pna": "Disabled",
+    "sku": "S0",
+    "state": "Succeeded"
+  }
+}

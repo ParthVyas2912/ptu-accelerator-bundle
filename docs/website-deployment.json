@@ -1,0 +1,18 @@
+{
+  "repository": "https://github.com/ParthVyas2912/ptu-accelerator-bundle",
+  "repositoryVisibility": "private",
+  "publicUrl": "https://blue-beach-0fb8cd70f.5.azurestaticapps.net/",
+  "resourceGroup": "rg-ptu-bundle-web",
+  "resourceName": "ptu-bundle-portal",
+  "resourceType": "Microsoft.Web/staticSites",
+  "sku": "Free",
+  "location": "eastus2",
+  "backend": false,
+  "liveInference": false,
+  "publishedDirectory": "site/dist",
+  "sourceContentBoundary": "Curated public-safe content only; no private reports or evidence",
+  "verification": {
+    "resourceProvisioned": true,
+    "contentPublished": false
+  }
+}

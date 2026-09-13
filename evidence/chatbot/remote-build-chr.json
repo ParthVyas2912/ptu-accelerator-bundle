@@ -1,0 +1,15 @@
+{
+  "finishTime": "2026-09-12T02:49:26.830072+00:00",
+  "outputImages": [
+    {
+      "digest": "sha256:cfa0aef36f2ead25786e2a6f5fe41ed24d05dc97a8551759271b366e66540639",
+      "registry": "acrptubundle7d804f70.azurecr.io",
+      "repository": "chatbot/chat-api",
+      "tag": "cb86d11-eval3"
+    }
+  ],
+  "runErrorMessage": null,
+  "runId": "chr",
+  "startTime": "2026-09-12T02:47:57.186953+00:00",
+  "status": "Succeeded"
+}

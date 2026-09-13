@@ -1,0 +1,15 @@
+{
+  "observedAtUtc": "2026-09-12T06:21:44.6010461Z",
+  "status": "Paused",
+  "autoPauseDelay": 60,
+  "minCapacity": 0.5,
+  "sku": {
+    "capacity": 2,
+    "family": "Gen5",
+    "name": "GP_S_Gen5",
+    "size": null,
+    "tier": "GeneralPurpose"
+  },
+  "maxSizeBytes": 34359738368,
+  "note": "Read-only ARM status; not an invoice or measurement of billed vCore usage."
+}

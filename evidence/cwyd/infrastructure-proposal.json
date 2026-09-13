@@ -1,0 +1,129 @@
+{
+  "app": "Chat With Your Data (CWYD)",
+  "proposal_status": "approved existing-resource envelope; adapted-local functional evaluation complete",
+  "tenant_id": "a600acd0-3028-4689-8402-3b471d7d924d",
+  "subscription_id": "1feb53b2-854a-4ea7-b5a6-709b7d804f70",
+  "new_azure_resources": [],
+  "new_resource_groups": [],
+  "new_models_or_capacity_changes": [],
+  "incremental_fixed_azure_cost": 0,
+  "incremental_fixed_azure_cost_note": "No new Azure resources. Existing shared-service costs and local host costs remain; successful Standard-model usage would be separately metered.",
+  "existing_resources_to_reuse": [
+    {
+      "account": "edcfoundryhack01",
+      "resource_group": "rg-edc-foundry-hack",
+      "location": "canadaeast",
+      "project": "edc-hack-proj",
+      "authentication": "Entra AzureCliCredential; disableLocalAuth=true",
+      "deployments": [
+        {
+          "name": "gpt-4.1-mini",
+          "version": "2025-04-14",
+          "sku": "GlobalStandard",
+          "capacity": 100,
+          "modify": false
+        },
+        {
+          "name": "text-embedding-3-small",
+          "version": "1",
+          "sku": "Standard",
+          "capacity": 100,
+          "dimensions": 1536,
+          "modify": false
+        }
+      ]
+    }
+  ],
+  "existing_search": {
+    "name": "edc-hack-search",
+    "sku": "Basic",
+    "replicas": 1,
+    "partitions": 1,
+    "use": false
+  },
+  "local_services": [
+    {
+      "name": "upstream React Vite",
+      "url": "http://127.0.0.1:5112/",
+      "pid": 15628
+    },
+    {
+      "name": "upstream FastAPI",
+      "url": "http://127.0.0.1:8112/",
+      "pid": 29208
+    },
+    {
+      "name": "upstream ingestion implementation via local queue harness",
+      "pid": null,
+      "last_running_pid": 6356,
+      "state": "stopped_evaluation_closed"
+    },
+    {
+      "name": "ptu-cwyd-postgres",
+      "memory_limit_bytes": 536870912,
+      "memory_swap_total_bytes": 536870912,
+      "cpu_limit": 1
+    },
+    {
+      "name": "ptu-cwyd-azurite",
+      "memory_limit_bytes": 536870912,
+      "memory_swap_total_bytes": 536870912,
+      "cpu_limit": 1
+    }
+  ],
+  "container_memory_limit_total_bytes": 1073741824,
+  "native_processes_included_in_container_memory_limit": false,
+  "authorization_needed": {
+    "operation": "Parent performed additive role assignment; no duplicate by CWYD",
+    "principal": "87ccaa4c-8da9-4d6a-a626-d0da9b2e25ed",
+    "role": "Cognitive Services OpenAI User",
+    "role_definition_id": "5e0bd9bd-7b93-4f28-af87-19fc36ad61bd",
+    "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-edc-foundry-hack/providers/Microsoft.CognitiveServices/accounts/edcfoundryhack01",
+    "reason": "Actual ingestion HTTP401 for missing embeddings/action; chat HTTP502",
+    "approval_owner": "parent coordinating shared nonprotected Foundry access",
+    "fixed_resource_cost": 0,
+    "assignment_id": "4df8a697-fc79-448a-8f0f-54f90020f5d3",
+    "status": "completed by parent; no further role or infrastructure request"
+  },
+  "deployment_tooling": {
+    "azd_required_for_selected_local_route": false,
+    "reported_installed_azd": "1.23.7",
+    "repo_azure_yaml_requirement": ">=1.18.0 and !=1.23.9",
+    "azd_upgrade_required": false,
+    "azure_cli_wrapper": "B\\Invoke-LabAz.ps1 -AzArguments string[]"
+  },
+  "model_attempts_used": 16,
+  "model_attempts_remaining": 0,
+  "ptu_purchase_proposed": false,
+  "protected_resources_reused_or_modified": false,
+  "proposal_delivery": "Provided directly to caller and persisted here; write_agent to original owner ID returned No agent found.",
+  "evaluation_budget_request": {
+    "approved_total": 16,
+    "used": 16,
+    "requested_total": 18,
+    "approved": true,
+    "planned_additional_calls_without_retries": 6,
+    "extra_retry_allowance_requested": 2,
+    "purpose": "one grouped factual/absence/comparison chat then one contradictory replacement and follow-up chat",
+    "load_test": false,
+    "remaining": 0,
+    "approval_message_timestamp": "2026-09-11T20:14:09.876-04:00",
+    "portfolio_allocation_note": "Parent reclaimed CWYD's unused2 for DKM comparison; current CWYD cap16 total,16 used,0 remaining; inference disabled.",
+    "historical_approved_total": 18,
+    "current_cap_message_timestamp": "2026-09-11T22:42:56.549-04:00"
+  },
+  "model_attempt_limit": 16,
+  "evaluation_inference_enabled": false,
+  "evaluation_budget_custody": {
+    "app": "Chat With Your Data",
+    "model_attempt_limit": 16,
+    "inference_enabled": false,
+    "requires_new_explicit_authorization": true,
+    "ledger_reset_permitted": false,
+    "historical_approved_total": 18,
+    "reclaimed_unused_attempts": 2,
+    "reallocated_to": "DKM comparison",
+    "custody_timestamp": "2026-09-11T22:42:56.549-04:00",
+    "authorization_reference": "Parent custody-only instruction: CWYD16TOTAL/16used; no new model calls."
+  }
+}

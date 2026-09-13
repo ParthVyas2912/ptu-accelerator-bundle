@@ -1,0 +1,667 @@
+{
+  "httpStatus": 200,
+  "response": {
+    "status": "clarification recorded"
+  },
+  "events": [
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": "Completed",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": ":\n",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": "-",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " Background",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " check",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " initiated",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " for",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " Alex",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " Example",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " (",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": "Standard",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": ")\n",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": "-",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " Orientation",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " scheduled",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " for",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " ",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": "202",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": "6",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": "-",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": "10",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": "-",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": "02",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " ",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": "09",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": ":",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": "00",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": "\n",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": "-",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " Employee",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " handbook",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " provided",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": "\n",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": "-",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " Benefits",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " registered",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " (",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": "Standard",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": ")\n",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": "-",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " Payroll",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " set",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " up",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " (",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": "700",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": "00",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": ")\n",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": "-",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " Mentor",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " assigned",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": ":",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " Taylor",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " Example",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": "\n",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": "-",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " ID",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " card",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " requested",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " for",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " HR",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": "\n\n",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": "HR",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " tasks",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " are",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " now",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " complete",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": ".",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " Other",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " agents",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " may",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " still",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " need",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " to",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " complete",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " their",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " portions",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " of",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " the",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " onboarding",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": " process",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Helper Agent",
+        "content": ".",
+        "is_final": false
+      }
+    },
+    {
+      "type": "final_result_message",
+      "data": {
+        "type": "final_result_message",
+        "data": {
+          "content": "Error during orchestration: (\"<class 'agent_framework_foundry._chat_client.FoundryChatClient'> service failed to complete the prompt: Connection error.\", APIConnectionError('Connection error.'))",
+          "status": "error",
+          "timestamp": 684.949
+        }
+      }
+    }
+  ]
+}

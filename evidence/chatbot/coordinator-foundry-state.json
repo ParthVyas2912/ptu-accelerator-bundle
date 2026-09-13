@@ -1,0 +1,6 @@
+{
+  "disableLocalAuth": true,
+  "networkInjections": null,
+  "publicNetworkAccess": "Enabled",
+  "state": "Succeeded"
+}

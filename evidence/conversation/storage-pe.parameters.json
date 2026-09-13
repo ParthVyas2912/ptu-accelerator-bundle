@@ -1,0 +1,22 @@
+{
+  "parameters": {
+    "endpoints": {
+      "value": [
+        {
+          "app": "conversation",
+          "name": "pe-conversation-sql",
+          "resourceId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Sql/servers/sql-ptu-conversation-7d804f70",
+          "groupId": "sqlServer",
+          "zoneName": "privatelink.database.windows.net"
+        },
+        {
+          "app": "conversation",
+          "name": "pe-conversation-blob",
+          "resourceId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Storage/storageAccounts/stptuconv7d804f70",
+          "groupId": "blob",
+          "zoneName": "privatelink.blob.core.windows.net"
+        }
+      ]
+    }
+  }
+}

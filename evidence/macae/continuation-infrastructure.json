@@ -1,0 +1,51 @@
+{
+  "approvalReceived": "2026-09-11T19:54:50-04:00",
+  "subscription": "1feb53b2-854a-4ea7-b5a6-709b7d804f70",
+  "resourceGroup": "rg-ptu-macae-demo",
+  "region": "eastus2",
+  "deployments": [
+    {"name": "ptu-macae-foundry", "state": "Succeeded", "nativeModule": "infra/bicep/modules/ai/ai-foundry-project.bicep"},
+    {"name": "ptu-macae-cosmos", "state": "Succeeded", "nativeModule": "infra/bicep/modules/data/cosmos-db-nosql.bicep"},
+    {"name": "gpt-5.4", "state": "Succeeded", "modelVersion": "2026-03-05", "sku": "GlobalStandard", "capacity": 10},
+    {"name": "gpt-5.4-mini", "state": "Succeeded", "modelVersion": "2026-03-17", "sku": "GlobalStandard", "capacity": 10},
+    {"name": "ptu-macae-storage", "state": "Succeeded", "nativeModule": "infra/bicep/modules/data/storage-account.bicep"},
+    {"name": "ptu-macae-search", "state": "Failed", "nativeModule": "infra/bicep/modules/ai/ai-search.bicep", "errorCode": "InsufficientResourcesAvailable", "requestId": "e3624788-0fba-4018-8ced-def7f4444807", "message": "The region eastus2 is currently out of the resources required to provision new services. Try creating the service in another region."}
+  ],
+  "effectiveNetworkState": {
+    "foundry": {"name": "ptumacae7d804f70", "publicNetworkAccess": "Enabled", "disableLocalAuth": true},
+    "cosmos": {"name": "ptu-macae-7d804f70-cosmos", "publicNetworkAccess": "Disabled", "disableLocalAuth": true, "ipRules": [], "isVirtualNetworkFilterEnabled": false},
+    "storage": {"name": "ptumacae7d804f70st", "publicNetworkAccess": "Disabled", "allowSharedKeyAccess": false},
+    "changedByEvaluatorToBypassPolicy": false
+  },
+  "policyEvidence": {
+    "cosmosSuccessfulModifyEventsUtc": ["2026-09-12T00:01:27.513027Z", "2026-09-12T00:01:28.7904668Z", "2026-09-12T00:01:29.469619Z"],
+    "storageSuccessfulModifyEventsUtc": ["2026-09-12T00:10:13.3181194Z", "2026-09-12T00:10:13.8163252Z"],
+    "foundryDiagnosticSettingsObserved": "setByPolicy-MCAPSGovernance",
+    "note": "Policy modify actions and effective disabled public network state observed. No exemption, public-network re-enable, or private endpoint deployment attempted."
+  },
+  "roleAssignments": [
+    {"assignmentId": "1e851a0e-bf2b-4145-862e-1b1183683012", "role": "Foundry User", "roleDefinitionId": "53ca6127-db72-4b80-b1b0-d745d6d5456d", "scope": "new Foundry project ptu-macae-project"},
+    {"assignmentId": "a8a44f93-86ef-4527-a83f-96b55880fbc1", "role": "Cognitive Services OpenAI User", "roleDefinitionId": "5e0bd9bd-7b93-4f28-af87-19fc36ad61bd", "scope": "new Foundry account ptumacae7d804f70"},
+    {"assignmentId": "6ea7b8fb-c56f-403a-87ff-245f8a89ea5e", "role": "Cosmos DB Built-in Data Contributor", "roleDefinitionId": "00000000-0000-0000-0000-000000000002", "scope": "new Cosmos database /dbs/ptu-macae"},
+    {"assignmentId": "2facee2d-1d1c-4ca7-b26a-dd4430986fe7", "role": "Storage Blob Data Contributor", "roleDefinitionId": "ba92f5b4-2d11-453d-a403-e96b0029c9fe", "scope": "new Blob container ptu-macae-rfp"},
+    {"assignmentId": "563eb9cb-3e74-40f4-b72d-ba56092dce2e", "role": "Storage Blob Data Contributor", "roleDefinitionId": "ba92f5b4-2d11-453d-a403-e96b0029c9fe", "scope": "new Blob container ptu-macae-contract"}
+  ],
+  "rolePrincipalId": "87ccaa4c-8da9-4d6a-a626-d0da9b2e25ed",
+  "billingBaseline": {
+    "source": "https://prices.azure.com/api/retail/prices",
+    "retrievedUtc": "2026-09-12T00:09:00Z",
+    "searchRegion": "eastus2",
+    "searchSku": "Basic",
+    "searchUsdPerHourPerUnit": 0.101,
+    "search730HourEstimateUsd": 73.73,
+    "searchActuallyCreated": false,
+    "currentNewFixedComputeRegistrySearchPtuBaselineUsdPerHour": 0,
+    "exclusions": ["Cosmos RU/storage", "Blob transactions/storage", "Standard inference", "Applicable governance diagnostic ingestion", "Taxes and negotiated pricing"]
+  },
+  "nativeRuntimeChecks": {
+    "foundryAgentsMetadataList": {"httpStatus": 200, "agentsCount": 0, "credential": "AzureCliCredential(process_timeout=60)", "modelRequests": 0},
+    "credentialFirstAttempt": "Default 10-second Azure CLI credential process timeout failed; bounded 60-second metadata retry succeeded",
+    "hrTeamUpload": {"httpStatus": 500, "underlyingServiceStatus": 403, "underlyingError": "Cosmos public-internet request blocked by account firewall", "sourceIpReported": "52.148.138.235", "activityId": "3b038958-9e4a-4a23-9d12-394a4545f0ef", "file": "hr-seed.json"},
+    "frontendBrowser": {"httpStatus": 200, "title": "Multi-Agent - Custom Automation Engine", "pageErrors": [], "state": "No team selected; upload-team empty state", "file": "ui-browser.json", "screenshot": "macae-ui.png"}
+  }
+}

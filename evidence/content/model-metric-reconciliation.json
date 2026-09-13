@@ -1,0 +1,232 @@
+{
+  "createdUtc": "2026-09-12T03:55:57.015689+00:00",
+  "modelRecordSha256Unchanged": "e8028913511c9377a114de8eb3100a5ebfe94d36d3dba4bffc73ef8840a8b272",
+  "metricSnapshotFile": "C:\\Users\\partvyas\\OneDrive - Microsoft\\Desktop\\projects\\PTU accelerator Bundle\\evidence\\model-metrics\\aif-ptuv-content-260911.json",
+  "metricSnapshotSha256": "9ccc64a59969740d0e0b47dfef4975a01948ad6a8928bd0834d23883d2eae7d9",
+  "metricTimespan": "2026-09-11T22:52:00Z/2026-09-12T02:58:39Z",
+  "metricInterval": "PT1M",
+  "deploymentDimension": "gpt-5.1",
+  "sdkReservationsChargedToBudget": 10,
+  "clientObservedHttpResponses": 10,
+  "clientObservedHttp200": 10,
+  "responsesWithParsedUsage": 10,
+  "reservedWithoutReturnedResponse": 0,
+  "reservedModelTransportErrorsRecorded": 0,
+  "azureOpenAIRequestsSnapshot": 6.0,
+  "azureProcessedPromptTokensSnapshot": 39760.0,
+  "azureGeneratedTokensSnapshot": 23301.0,
+  "tokenTotalsMatch": true,
+  "requestCountAgreement": false,
+  "responseGroups": {
+    "processor": {
+      "responseCount": 4,
+      "promptTokensReturned": 28260,
+      "completionTokensReturned": 17825
+    },
+    "workflow": {
+      "responseCount": 6,
+      "promptTokensReturned": 11500,
+      "completionTokensReturned": 5476
+    }
+  },
+  "responseEvidence": [
+    {
+      "attemptOrdinal": 1,
+      "ledgerId": 10,
+      "service": "workflow",
+      "startedUtc": "2026-09-12T02:16:11.510822+00:00",
+      "host": "aif-ptuv-content-260911.openai.azure.com",
+      "path": "/openai/deployments/gpt-5.1/chat/completions",
+      "httpStatusObserved": 200,
+      "elapsedMs": 2160.126,
+      "promptTokensReturned": 551,
+      "completionTokensReturned": 22,
+      "error": null
+    },
+    {
+      "attemptOrdinal": 2,
+      "ledgerId": 11,
+      "service": "workflow",
+      "startedUtc": "2026-09-12T02:16:13.862186+00:00",
+      "host": "aif-ptuv-content-260911.openai.azure.com",
+      "path": "/openai/deployments/gpt-5.1/chat/completions",
+      "httpStatusObserved": 200,
+      "elapsedMs": 1350.355,
+      "promptTokensReturned": 702,
+      "completionTokensReturned": 19,
+      "error": null
+    },
+    {
+      "attemptOrdinal": 3,
+      "ledgerId": 12,
+      "service": "workflow",
+      "startedUtc": "2026-09-12T02:16:15.526202+00:00",
+      "host": "aif-ptuv-content-260911.openai.azure.com",
+      "path": "/openai/deployments/gpt-5.1/chat/completions",
+      "httpStatusObserved": 200,
+      "elapsedMs": 32333.298,
+      "promptTokensReturned": 4497,
+      "completionTokensReturned": 2658,
+      "error": null
+    },
+    {
+      "attemptOrdinal": 4,
+      "ledgerId": 20,
+      "service": "processor",
+      "startedUtc": "2026-09-12T02:28:39.723107+00:00",
+      "host": "aif-ptuv-content-260911.openai.azure.com",
+      "path": "/openai/deployments/gpt-5.1/chat/completions",
+      "httpStatusObserved": 200,
+      "elapsedMs": 44952.753,
+      "promptTokensReturned": 8652,
+      "completionTokensReturned": 5134,
+      "error": null
+    },
+    {
+      "attemptOrdinal": 5,
+      "ledgerId": 24,
+      "service": "processor",
+      "startedUtc": "2026-09-12T02:29:26.540293+00:00",
+      "host": "aif-ptuv-content-260911.openai.azure.com",
+      "path": "/openai/deployments/gpt-5.1/chat/completions",
+      "httpStatusObserved": 200,
+      "elapsedMs": 22318.186,
+      "promptTokensReturned": 5779,
+      "completionTokensReturned": 2449,
+      "error": null
+    },
+    {
+      "attemptOrdinal": 6,
+      "ledgerId": 25,
+      "service": "processor",
+      "startedUtc": "2026-09-12T02:29:50.661215+00:00",
+      "host": "aif-ptuv-content-260911.openai.azure.com",
+      "path": "/openai/deployments/gpt-5.1/chat/completions",
+      "httpStatusObserved": 200,
+      "elapsedMs": 49342.374,
+      "promptTokensReturned": 6374,
+      "completionTokensReturned": 4707,
+      "error": null
+    },
+    {
+      "attemptOrdinal": 7,
+      "ledgerId": 26,
+      "service": "processor",
+      "startedUtc": "2026-09-12T02:30:41.273540+00:00",
+      "host": "aif-ptuv-content-260911.openai.azure.com",
+      "path": "/openai/deployments/gpt-5.1/chat/completions",
+      "httpStatusObserved": 200,
+      "elapsedMs": 56842.675,
+      "promptTokensReturned": 7455,
+      "completionTokensReturned": 5535,
+      "error": null
+    },
+    {
+      "attemptOrdinal": 8,
+      "ledgerId": 27,
+      "service": "workflow",
+      "startedUtc": "2026-09-12T02:31:45.065410+00:00",
+      "host": "aif-ptuv-content-260911.openai.azure.com",
+      "path": "/openai/deployments/gpt-5.1/chat/completions",
+      "httpStatusObserved": 200,
+      "elapsedMs": 1596.267,
+      "promptTokensReturned": 551,
+      "completionTokensReturned": 22,
+      "error": null
+    },
+    {
+      "attemptOrdinal": 9,
+      "ledgerId": 28,
+      "service": "workflow",
+      "startedUtc": "2026-09-12T02:31:46.824992+00:00",
+      "host": "aif-ptuv-content-260911.openai.azure.com",
+      "path": "/openai/deployments/gpt-5.1/chat/completions",
+      "httpStatusObserved": 200,
+      "elapsedMs": 2000.614,
+      "promptTokensReturned": 702,
+      "completionTokensReturned": 19,
+      "error": null
+    },
+    {
+      "attemptOrdinal": 10,
+      "ledgerId": 29,
+      "service": "workflow",
+      "startedUtc": "2026-09-12T02:31:49.035276+00:00",
+      "host": "aif-ptuv-content-260911.openai.azure.com",
+      "path": "/openai/deployments/gpt-5.1/chat/completions",
+      "httpStatusObserved": 200,
+      "elapsedMs": 30335.068,
+      "promptTokensReturned": 4497,
+      "completionTokensReturned": 2736,
+      "error": null
+    }
+  ],
+  "matchingTokenBuckets": [
+    {
+      "metricMinuteUtc": "2026-09-12T02:17:00Z",
+      "matchingLedgerIdsByTokenTotals": [
+        10,
+        11,
+        12
+      ],
+      "clientResponseCount": 3,
+      "azureRequestMetric": 1.0,
+      "matchingPromptTokens": 5750,
+      "matchingCompletionTokens": 2699
+    },
+    {
+      "metricMinuteUtc": "2026-09-12T02:29:00Z",
+      "matchingLedgerIdsByTokenTotals": [
+        20
+      ],
+      "clientResponseCount": 1,
+      "azureRequestMetric": 1.0,
+      "matchingPromptTokens": 8652,
+      "matchingCompletionTokens": 5134
+    },
+    {
+      "metricMinuteUtc": "2026-09-12T02:30:00Z",
+      "matchingLedgerIdsByTokenTotals": [
+        24,
+        25
+      ],
+      "clientResponseCount": 2,
+      "azureRequestMetric": 2.0,
+      "matchingPromptTokens": 12153,
+      "matchingCompletionTokens": 7156
+    },
+    {
+      "metricMinuteUtc": "2026-09-12T02:31:00Z",
+      "matchingLedgerIdsByTokenTotals": [
+        26
+      ],
+      "clientResponseCount": 1,
+      "azureRequestMetric": 0.0,
+      "matchingPromptTokens": 7455,
+      "matchingCompletionTokens": 5535
+    },
+    {
+      "metricMinuteUtc": "2026-09-12T02:32:00Z",
+      "matchingLedgerIdsByTokenTotals": [
+        27,
+        28,
+        29
+      ],
+      "clientResponseCount": 3,
+      "azureRequestMetric": 2.0,
+      "matchingPromptTokens": 5750,
+      "matchingCompletionTokens": 2777
+    }
+  ],
+  "httpEvidenceBoundary": "content_guard.py records response.status_code and parses response content only after the underlying HTTPX send returns; status200 is not a reservation default",
+  "tokenizerFailureBoundary": "Evaluate called tiktoken after reading the saved mapping response. The subsequent unapproved public-asset GET was blocked before transmission and did not reserve a model attempt.",
+  "fourMappingsWereLocalFailuresBeforeModelTransmission": false,
+  "limits": [
+    "Raw HTTP headers and Azure request IDs were not retained, so there is no per-request server-ID reconciliation",
+    "Token-bucket correspondence is arithmetic corroboration, not unique server request-ID correlation",
+    "The cause of the six-versus-ten request-count difference is unresolved; reporting delay or differing metric behavior is not established",
+    "Do not add account and deployment totals, rewrite Azure metric6 as10, or credit four attempts back to the budget"
+  ],
+  "newCloudOrModelCalls": 0,
+  "budgetUsedRemains": 10
+}

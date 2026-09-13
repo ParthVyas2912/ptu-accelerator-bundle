@@ -1,0 +1,7 @@
+**
+!macae_model_guard.py
+!macae_cosmos_budget.py
+!macae_cloud_run.py
+!macae_cloud_test.py
+!macae_cloud_ingest.py
+!macae-backend-eval.Dockerfile

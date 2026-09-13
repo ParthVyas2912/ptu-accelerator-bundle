@@ -1,0 +1,2351 @@
+{
+  "state": {
+    "sessionId": "ptu-macae-advisory-cae0694a",
+    "stage": "terminal-unverified-or-failed",
+    "teamId": "4ee7ecb7-8c4e-49b6-a6ac-9d033de2eb26",
+    "planId": "3692c5c0-3107-4c1e-ae57-1b72c9c0f110",
+    "mplanId": "8311b6b0-ed92-46a3-98f1-427ceb2f372d",
+    "plan": {
+      "id": "8311b6b0-ed92-46a3-98f1-427ceb2f372d",
+      "user_id": "00000000-0000-0000-0000-000000000000",
+      "team_id": "",
+      "plan_id": "",
+      "overall_status": "created",
+      "user_request": "Perform a read-only synthetic onboarding readiness review, not provisioning or an enterprise transaction.\n\nComplete supplied record: Alex Example, HR analyst, starts2026-10-01. Manager: Morgan Example. Orientation is booked2026-10-02. Handbook acknowledged2026-09-30. Required compliance training completed2026-09-30. Manager access approval is NOT yet recorded. Standard laptop is prepared with Windows11. MFA enrollment is pending. Email: alex@example.invalid. All facts needed for this advisory assessment are supplied; no external sources are needed.\n\nSupplied policies: orientation must occur on the start date; handbook acknowledgement and training must be complete before starting; manager access approval and MFA enrollment must both be completed before access is granted; a prepared Windows11 laptop meets the device requirement.\n\nCreate a plan with exactly one advisory assessment step for HRComplianceReviewer and one for ITReadinessReviewer. Present it for explicit approval. Each specialist should deliver one concise substantive assessment from these facts. The native manager should then synthesize both actual outputs into a final checklist with identified gaps and recommended corrections. Plan approval authorizes this review only: it does NOT change the missing manager access approval or any other input fact. Do not ask clarification questions, execute tools, make changes, or claim any provisioning occurred.\n",
+      "team": [
+        "magentic_orchestrator",
+        "HRComplianceReviewer",
+        "ITReadinessReviewer"
+      ],
+      "facts": "",
+      "steps": [
+        {
+          "agent": "HRComplianceReviewer",
+          "action": "produce a read-only HR and compliance readiness assessment from the supplied onboarding facts and policies"
+        },
+        {
+          "agent": "ITReadinessReviewer",
+          "action": "produce a read-only IT readiness assessment from the supplied device and MFA facts and policies"
+        }
+      ]
+    }
+  },
+  "events": [
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": "\n\n---\n### HR Compliance Reviewer\n\n",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": "HR",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": "/",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": "COM",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": "PLI",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": "ANCE",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " REVIEW",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": "\n\n",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": "Orientation",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " timing",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": ":",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " not",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " confirmed",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": "/s",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": "cheduled",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " on",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " the",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " required",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " start",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " date",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": ",",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " so",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " this",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " requirement",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " is",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " unmet",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": ".",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " Handbook",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " acknowledgement",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": ":",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " no",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " evidence",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " provided",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " that",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " Alex",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " Example",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " acknowledged",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " the",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " handbook",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " before",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " start",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " date",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": ";",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " gap",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " remains",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": ".",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " Compliance",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " training",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": ":",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " no",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " evidence",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " provided",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " that",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " required",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " training",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " was",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " completed",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " before",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " start",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " date",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": ";",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " gap",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " remains",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": ".",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " Manager",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " access",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " approval",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": ":",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " no",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " manager",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " access",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " approval",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " is",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " shown",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": ";",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " the",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " workflow",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " tester",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": "’s",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " plan",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " approval",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " does",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " not",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " count",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": ".",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " S",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": "atisfied",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " requirements",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": ":",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " none",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " confirmed",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " from",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " the",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " supplied",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " facts",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": ".",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " Recommended",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " correction",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": ":",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " schedule",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " orientation",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " on",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " the",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " start",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " date",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": ",",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " obtain",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " handbook",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " acknowledgement",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": ",",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " complete",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " required",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " compliance",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " training",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " before",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " start",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": ",",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " and",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " secure",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " actual",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " manager",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " access",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " approval",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": ".",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": "\n\n---\n### IT Readiness Reviewer\n\n",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": "IT",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " READ",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": "INESS",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " REVIEW",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": "\n\n",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": "The",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " Windows",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " ",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": "11",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " laptop",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " satisfies",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " the",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " device",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " requirement",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": ".",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " However",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": ",",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " MFA",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " enrollment",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " is",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " still",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " pending",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": ",",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " which",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " blocks",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " access",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " readiness",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": ".",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " No",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " access",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " should",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " be",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " granted",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " without",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " both",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " manager",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " access",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " approval",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " and",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " completed",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " MFA",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " enrollment",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": ".",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " IT",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " gaps",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": ":",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " pending",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " MFA",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " enrollment",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " and",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " missing",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " approval",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " for",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " access",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": ".",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " Recommended",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " correction",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": ":",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " complete",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " MFA",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " enrollment",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " and",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " obtain",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " manager",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " access",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " approval",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " before",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " any",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " account",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": "/access",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": " provisioning",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "IT Readiness Reviewer",
+        "content": ".",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": "\n\n---\n### HR Compliance Reviewer\n\n",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": "HR",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": "/",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": "COM",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": "PLI",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": "ANCE",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " REVIEW",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": "\n\n",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": "Orientation",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " timing",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": ":",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " not",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " confirmed",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " as",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " scheduled",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " on",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " the",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " required",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " start",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " date",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": ",",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " so",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " this",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " is",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " not",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " satisfied",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": ".",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " Handbook",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " acknowledgement",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": ":",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " no",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " evidence",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " of",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " completion",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " before",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " the",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " start",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " date",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": ";",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " gap",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " remains",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": ".",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " Compliance",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " training",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": ":",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " no",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " evidence",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " of",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " completion",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " before",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " the",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " start",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " date",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": ";",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " gap",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " remains",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": ".",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " S",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": "atisfied",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " requirements",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": ":",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " none",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " confirmed",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " from",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " the",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " supplied",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " facts",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": ".",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " Recommended",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " correction",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": ":",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " schedule",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " orientation",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " on",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " the",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " start",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " date",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " and",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " obtain",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " both",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " handbook",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " acknowledgement",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " and",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " required",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " training",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " completion",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " before",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": " start",
+        "is_final": false
+      }
+    },
+    {
+      "type": "agent_message_streaming",
+      "data": {
+        "agent_name": "HR Compliance Reviewer",
+        "content": ".",
+        "is_final": false
+      }
+    },
+    {
+      "type": "ping",
+      "data": {
+        "ts": 367.578
+      }
+    },
+    {
+      "type": "final_result_message",
+      "data": {
+        "type": "final_result_message",
+        "data": {
+          "content": "Error during orchestration: (\"<class 'agent_framework_foundry._chat_client.FoundryChatClient'> service failed to complete the prompt: Connection error.\", APIConnectionError('Connection error.'))",
+          "status": "error",
+          "timestamp": 373.463
+        }
+      }
+    }
+  ],
+  "terminal": {
+    "content": "Error during orchestration: (\"<class 'agent_framework_foundry._chat_client.FoundryChatClient'> service failed to complete the prompt: Connection error.\", APIConnectionError('Connection error.'))",
+    "status": "error",
+    "timestamp": 373.463
+  },
+  "specialistOutputs": {
+    "itreadinessreviewer": "\n\n---\n### IT Readiness Reviewer\n\nIT READINESS REVIEW\n\nThe Windows 11 laptop satisfies the device requirement. However, MFA enrollment is still pending, which blocks access readiness. No access should be granted without both manager access approval and completed MFA enrollment. IT gaps: pending MFA enrollment and missing approval for access. Recommended correction: complete MFA enrollment and obtain manager access approval before any account/access provisioning.",
+    "hrcompliancereviewer": "\n\n---\n### HR Compliance Reviewer\n\nHR/COMPLIANCE REVIEW\n\nOrientation timing: not confirmed/scheduled on the required start date, so this requirement is unmet. Handbook acknowledgement: no evidence provided that Alex Example acknowledged the handbook before start date; gap remains. Compliance training: no evidence provided that required training was completed before start date; gap remains. Manager access approval: no manager access approval is shown; the workflow tester’s plan approval does not count. Satisfied requirements: none confirmed from the supplied facts. Recommended correction: schedule orientation on the start date, obtain handbook acknowledgement, complete required compliance training before start, and secure actual manager access approval.\n\n---\n### HR Compliance Reviewer\n\nHR/COMPLIANCE REVIEW\n\nOrientation timing: not confirmed as scheduled on the required start date, so this is not satisfied. Handbook acknowledgement: no evidence of completion before the start date; gap remains. Compliance training: no evidence of completion before the start date; gap remains. Satisfied requirements: none confirmed from the supplied facts. Recommended correction: schedule orientation on the start date and obtain both handbook acknowledgement and required training completion before start."
+  },
+  "nativeTerminalAndBothSpecialistsVerified": false,
+  "scope": "Two-specialist read-only HR/compliance and IT advisory checklist; no provisioning"
+}

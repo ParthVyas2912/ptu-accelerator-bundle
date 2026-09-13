@@ -1,0 +1,93 @@
+{
+  "noAzureResourcesDeleted": true,
+  "apps": [
+    {
+      "maxReplicas": 1,
+      "name": "ca-ptu-modernize-api",
+      "minReplicas": 0,
+      "replicas": [],
+      "state": "Succeeded",
+      "revision": "ca-ptu-modernize-api--0000001",
+      "resources": {
+        "cpu": 0.5,
+        "ephemeralStorage": "2Gi",
+        "memory": "1Gi"
+      },
+      "ingress": {
+        "additionalPortMappings": null,
+        "allowInsecure": false,
+        "clientCertificateMode": null,
+        "corsPolicy": null,
+        "customDomains": null,
+        "exposedPort": 0,
+        "external": true,
+        "fqdn": "ca-ptu-modernize-api.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io",
+        "ipSecurityRestrictions": [
+          {
+            "action": "Allow",
+            "description": "Parent-approved MCAPS evaluator client only",
+            "ipAddressRange": "174.112.74.34/32",
+            "name": "approved-single-client"
+          }
+        ],
+        "stickySessions": null,
+        "targetPort": 8000,
+        "targetPortHttpScheme": null,
+        "traffic": [
+          {
+            "latestRevision": true,
+            "weight": 100
+          }
+        ],
+        "transport": "Auto"
+      },
+      "replicaCount": 0,
+      "revisionActive": false
+    },
+    {
+      "maxReplicas": 1,
+      "name": "ca-ptu-modernize-ui",
+      "minReplicas": 0,
+      "replicas": [],
+      "state": "Succeeded",
+      "revision": "ca-ptu-modernize-ui--wjo1usj",
+      "resources": {
+        "cpu": 0.25,
+        "ephemeralStorage": "1Gi",
+        "memory": "0.5Gi"
+      },
+      "ingress": {
+        "additionalPortMappings": null,
+        "allowInsecure": false,
+        "clientCertificateMode": null,
+        "corsPolicy": null,
+        "customDomains": null,
+        "exposedPort": 0,
+        "external": true,
+        "fqdn": "ca-ptu-modernize-ui.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io",
+        "ipSecurityRestrictions": [
+          {
+            "action": "Allow",
+            "description": "Parent-approved MCAPS evaluator client only",
+            "ipAddressRange": "174.112.74.34/32",
+            "name": "approved-single-client"
+          }
+        ],
+        "stickySessions": null,
+        "targetPort": 3000,
+        "targetPortHttpScheme": null,
+        "traffic": [
+          {
+            "latestRevision": true,
+            "weight": 100
+          }
+        ],
+        "transport": "Auto"
+      },
+      "replicaCount": 0,
+      "revisionActive": true
+    }
+  ],
+  "observedAt": "2026-09-11T21:31:33.0134656-04:00",
+  "inferenceDisarmed": true
+}

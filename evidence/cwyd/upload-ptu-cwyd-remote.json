@@ -1,0 +1,13 @@
+{
+  "test": "upload-ptu-cwyd-remote",
+  "method": "POST",
+  "path": "/api/admin/documents",
+  "status": 200,
+  "actual": {
+    "filename": "ptu-cwyd-remote.txt",
+    "blob_path": "ptu-cwyd-documents/ptu-cwyd-remote.txt",
+    "ingestion_job_id": "879a13ec-73a4-446c-841f-65c2ecf0f020",
+    "queued": true
+  },
+  "latency_ms": 864.36
+}

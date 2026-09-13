@@ -1,0 +1,84 @@
+{
+  "app": "Modernize Your Code",
+  "status": "Preparing official-source images; waiting for parent shared-platform readiness",
+  "subscription": "1feb53b2-854a-4ea7-b5a6-709b7d804f70",
+  "appResourceGroup": "rg-ptu-modernize-demo",
+  "sharedPlatform": {
+    "resourceGroup": "rg-ptu-bundle-platform",
+    "region": "eastus2",
+    "environment": "cae-ptu-bundle",
+    "registry": "acrptubundle7d804f70",
+    "network": "vnet-ptu-bundle",
+    "createDuplicates": false,
+    "dnsContext": "Parent-managed MCAPS private DNS; NOT JDCP or another subscription"
+  },
+  "privateEndpointTargets": [
+    {
+      "resourceId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-modernize-demo/providers/Microsoft.DocumentDB/databaseAccounts/cosmos-ptu-modernize-eus20911",
+      "groupIds": ["Sql"],
+      "resourceRegion": "eastus2",
+      "privateDnsZone": "privatelink.documents.azure.com",
+      "publicNetworkAccess": "Disabled",
+      "endpoint": "https://cosmos-ptu-modernize-eus20911.documents.azure.com:443/"
+    },
+    {
+      "resourceId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-modernize-demo/providers/Microsoft.Storage/storageAccounts/stptumodernize0911pv",
+      "groupIds": ["blob"],
+      "resourceRegion": "canadacentral",
+      "privateDnsZone": "privatelink.blob.core.windows.net",
+      "publicNetworkAccess": "Disabled",
+      "endpoint": "https://stptumodernize0911pv.blob.core.windows.net"
+    }
+  ],
+  "excludeFromPrivateEndpointProvisioning": ["cosmos-ptu-modernize-0911 (failed Canadian attempt; retain untouched)"],
+  "plannedServices": [
+    {
+      "name": "ca-ptu-modernize-api",
+      "sourceDockerfile": "src/backend/Dockerfile",
+      "image": "acrptubundle7d804f70.azurecr.io/modernize/backend:7592ea9-eval1",
+      "cpu": 0.5,
+      "memory": "1Gi",
+      "maxReplicas": 1,
+      "minimum": "0 when HTTP ingress/trigger is configured; temporary 1 during bounded ingress-disabled authenticated exec test",
+      "targetPort": 8000,
+      "ingress": "Initially absent; no public model route before parent CIDR restriction or authentication",
+      "worker": "Original process_batch_async in API process; no separate worker service required"
+    },
+    {
+      "name": "ca-ptu-modernize-ui",
+      "sourceDockerfile": "src/frontend/Dockerfile",
+      "image": "acrptubundle7d804f70.azurecr.io/modernize/frontend:7592ea9",
+      "cpu": 0.25,
+      "memory": "0.5Gi",
+      "maxReplicas": 1,
+      "minReplicas": 0,
+      "targetPort": 3000,
+      "ingress": "Only after parent readiness and approved access restriction"
+    }
+  ],
+  "plannedIdentity": {
+    "name": "id-ptu-modernize",
+    "type": "UserAssigned",
+    "created": false,
+    "roles": [
+      "Blob Data Contributor at OWN ptu-modernize-files container",
+      "Cosmos SQL built-in Data Contributor at OWN ptu-modernize database",
+      "Foundry User at approved edc-hack-proj project",
+      "Cognitive Services OpenAI User at approved edcfoundryhack01 account",
+      "AcrPull at parent shared acrptubundle7d804f70 registry (parent-coordinated)"
+    ]
+  },
+  "model": {"deployment": "gpt-5.1", "existingSku": "GlobalStandard", "newModelOrPTU": false},
+  "observedNativeMemoryBytes": {"backend": 149716992, "frontend": 51736576},
+  "runtimeAdaptations": [
+    "Authorized three-line No migration false-success fix",
+    "Async managed-identity credential for async Foundry/Cosmos clients",
+    "Durable global model-attempt guard in OWN private Blob to preserve total12 across container restarts/revisions",
+    "Disable SDK retries and automatic remote agent/thread deletions",
+    "Stop old local backend before cloud model tests to prevent competing budget ledgers",
+    "Explicitly report this as adapted official cloud-container deployment, not unchanged native deployment"
+  ],
+  "calls": {"used": 4, "remaining": 8, "totalCap": 12},
+  "costDrivers": "Consumption vCPU/GiB-seconds, PE hours/data, shared Basic ACR/monitoring share, existing Serverless RU/GB and Blob operations/GB; all nonPTU except eligible model inference on a supported provisioned deployment",
+  "residency": "East US 2 persistence/compute permitted only for synthetic MCAPS evaluation, not DND residency approval"
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id-ptu-conversation",
+    "location": "eastus2",
+    "name": "id-ptu-conversation",
+    "type": "Microsoft.ManagedIdentity/userAssignedIdentities"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.App/containerApps/ca-ptu-conversation-api",
+    "location": "eastus2",
+    "name": "ca-ptu-conversation-api",
+    "type": "Microsoft.App/containerApps"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.App/containerApps/ca-ptu-conversation-ui",
+    "location": "eastus2",
+    "name": "ca-ptu-conversation-ui",
+    "type": "Microsoft.App/containerApps"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.CognitiveServices/accounts/aif-ptu-conversation-7d804f70",
+    "location": "swedencentral",
+    "name": "aif-ptu-conversation-7d804f70",
+    "type": "Microsoft.CognitiveServices/accounts"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.CognitiveServices/accounts/aif-ptu-conversation-7d804f70/projects/proj-ptu-conversation",
+    "location": "swedencentral",
+    "name": "aif-ptu-conversation-7d804f70/proj-ptu-conversation",
+    "type": "Microsoft.CognitiveServices/accounts/projects"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Storage/storageAccounts/stptuconv7d804f70",
+    "location": "canadacentral",
+    "name": "stptuconv7d804f70",
+    "type": "Microsoft.Storage/storageAccounts"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Search/searchServices/srch-ptu-conversation-7d804f70",
+    "location": "canadacentral",
+    "name": "srch-ptu-conversation-7d804f70",
+    "type": "Microsoft.Search/searchServices"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Sql/servers/sql-ptu-conversation-7d804f70",
+    "location": "canadacentral",
+    "name": "sql-ptu-conversation-7d804f70",
+    "type": "Microsoft.Sql/servers"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Sql/servers/sql-ptu-conversation-7d804f70/databases/master",
+    "location": "canadacentral",
+    "name": "sql-ptu-conversation-7d804f70/master",
+    "type": "Microsoft.Sql/servers/databases"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Sql/servers/sql-ptu-conversation-7d804f70/databases/ptu-conversation",
+    "location": "canadacentral",
+    "name": "sql-ptu-conversation-7d804f70/ptu-conversation",
+    "type": "Microsoft.Sql/servers/databases"
+  }
+]

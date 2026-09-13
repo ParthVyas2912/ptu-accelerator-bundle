@@ -1,0 +1,22 @@
+{
+  "toolNames": [
+    "get_workflow_blueprint",
+    "schedule_orientation_session",
+    "assign_mentor",
+    "register_for_benefits",
+    "provide_employee_handbook",
+    "initiate_background_check",
+    "request_id_card",
+    "set_up_payroll",
+    "ask_user"
+  ],
+  "workflow": "employee_onboarding",
+  "sameRepeatedBlueprint": true,
+  "blueprintCharacters": 1136,
+  "blueprintSha256": "68d26951a659e8a249777d1be25ecbb5b4725d6aec5ef6d8c9e02e126cf119c1",
+  "unavailableTool": {
+    "exception": "ToolError",
+    "message": "Unknown tool: 'ptu_macae_unavailable_tool'"
+  },
+  "modelCalls": 0
+}

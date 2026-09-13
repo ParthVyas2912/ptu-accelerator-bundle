@@ -1,0 +1,82 @@
+{
+  "scope": "Read-only diagnosis after allowance closure; no app activation or generation",
+  "focused_lookups": 8,
+  "existing_response_fetches": 0,
+  "new_model_calls": 0,
+  "allowance_remains_closed": true,
+  "committed_units": 10,
+  "spendable_units": 0,
+  "existing_response_id_found": false,
+  "identifier_findings": {
+    "searched": "Retained Chatbot JSON/log evidence",
+    "native_response_id": "ptu-chatbot-catalog-eval-20260912 is an application session ID, not a provider Responses ID",
+    "ledger_ids": "Local budget-attempt UUIDs, not provider Responses IDs",
+    "prior_400_request_id": "84924d979faecb8f874854582b0e1bda is an error correlation ID, not an established retrievable response ID",
+    "fetch_decision": "No existing-response fetch attempted because no valid stored provider response ID was available; no identifier was guessed"
+  },
+  "persisted_evidence": {
+    "native_http_status": 200,
+    "native_text": "I can not assist with your request.",
+    "catalog_specialist_http_status": 200,
+    "catalog_specialist_usage": null,
+    "catalog_specialist_recorded_error": null,
+    "final_orchestrator_returned_output_tokens": 12,
+    "provider_response_status": "not retained",
+    "provider_incomplete_details": "not retained",
+    "provider_output_item_types": "not retained",
+    "specialist_raw_output_or_tool_terminal_error": "not retained",
+    "legacy_run_last_error": "No legacy Assistants run ID/object retained; actual path uses Prompt agents through Responses"
+  },
+  "findings": [
+    {
+      "topic": "Application constant fallback",
+      "evidence": "Native routers/chat.py:435-441 uses result.text, then str(result), otherwise HTTP500. It contains no literal refusal fallback on this path.",
+      "conclusion": "The inspected HTTP handler does not manufacture the observed refusal string."
+    },
+    {
+      "topic": "Prompt-defined refusal",
+      "evidence": "scenarios/ecommerce/agents/chat_agent.txt:11-15 explicitly instructs that exact phrase for RAI rejection.",
+      "conclusion": "The text matches a prompt-defined response, consistent with provider/model-sourced refusal text. This does not prove the trigger or a structured provider refusal."
+    },
+    {
+      "topic": "Output-text versus structured refusal",
+      "evidence": "agent_framework_openai/_chat_client.py:1558 onward maps both message.output_text and message.refusal to text content.",
+      "conclusion": "The final text loses that distinction; the persisted record cannot identify which provider content-part type was returned."
+    },
+    {
+      "topic": "Reasoning and text extraction",
+      "evidence": "The SDK emits reasoning as text_reasoning, including empty markers for encrypted-only reasoning. Core Message.text includes only type=text; Agent.as_tool returns final_response.text and response __str__ also returns text.",
+      "conclusion": "Reasoning-only/non-text specialist output can produce empty tool text rather than a fabricated refusal constant. Whether this occurred is unverified."
+    },
+    {
+      "topic": "Provider terminal status",
+      "evidence": "The inspected nonstream parser builds ChatResponse with response_id and raw_representation. It sets a continuation token for queued/in_progress but does not reject failed/incomplete status in the displayed parser. The native router persists only content and recommendation metadata.",
+      "conclusion": "Important provider state exists in memory but was not retained. HTTP200 and error=null in the budget ledger do not establish completed specialist execution."
+    },
+    {
+      "topic": "Output-token incompletion",
+      "evidence": "The evaluation requested max_output_tokens=2048. Final orchestrator output was12 tokens; specialist usage and incomplete_details are absent.",
+      "conclusion": "No evidence proves output-token exhaustion. Specialist truncation/incompletion cannot be excluded; null usage is not zero usage."
+    },
+    {
+      "topic": "Tool or private Search error",
+      "evidence": "Product specialist invocation is recorded, but no provider tool terminal result/error or raw response was persisted. The source parser's default branch logs unparsed output types at debug level.",
+      "conclusion": "No specific Search/private-network/tool failure is established. The later failed-SSE logging improvement does not prove this historical response was streamed or failed."
+    }
+  ],
+  "overall_conclusion": "Refusal-shaped text is observed and matches the orchestrator prompt, but structured model refusal, preceding empty/incomplete specialist output and tool failure cannot be separated from retained data. Networking is not a proven cause.",
+  "proposal_not_executed": {
+    "before_any_future_generation": "Require a fresh explicit operator allowance; current closure remains in force.",
+    "retain_whitelisted_metadata": [
+      "provider response.id and status",
+      "error code and redacted diagnostic message",
+      "incomplete_details",
+      "output item/content-part types and statuses",
+      "tool terminal status/error and specialist text-presence",
+      "returned token/reasoning-token counts"
+    ],
+    "native_handling": "Record incomplete/failed/queued or empty specialist outcomes explicitly before text-only flattening; do not convert them into business-success evidence.",
+    "follow_up": "Retrieve an existing stored response by its captured provider ID before another generation. Do not change networking or safety configuration based only on this generic string.",
+    "new_infrastructure_required_for_diagnostic_capture": false
+  }
+}

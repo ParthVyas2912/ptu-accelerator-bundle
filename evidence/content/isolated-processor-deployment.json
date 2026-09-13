@@ -1,0 +1,14 @@
+{
+  "image": "acrptubundle7d804f70.azurecr.io/content/eval-processor:659eaa1-scope-r2",
+  "mode": "Multiple",
+  "name": "ca-ptu-content-processor",
+  "ready": "ca-ptu-content-processor--0000011",
+  "revision": "ca-ptu-content-processor--0000011",
+  "scale": {
+    "cooldownPeriod": 30,
+    "maxReplicas": 1,
+    "minReplicas": 1,
+    "pollingInterval": 30,
+    "rules": null
+  }
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-dkm-20260911/providers/Microsoft.Search/searchServices/srch-dkmeval0911a",
+    "location": "centralus",
+    "name": "srch-dkmeval0911a",
+    "type": "Microsoft.Search/searchServices"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-dkm-20260911/providers/Microsoft.DocumentDB/databaseAccounts/cosmos-dkmeval0911a",
+    "location": "centralus",
+    "name": "cosmos-dkmeval0911a",
+    "type": "Microsoft.DocumentDB/databaseAccounts"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-dkm-20260911/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id-dkmeval0911a",
+    "location": "centralus",
+    "name": "id-dkmeval0911a",
+    "type": "Microsoft.ManagedIdentity/userAssignedIdentities"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-dkm-20260911/providers/Microsoft.Storage/storageAccounts/stdkmeval0911a",
+    "location": "centralus",
+    "name": "stdkmeval0911a",
+    "type": "Microsoft.Storage/storageAccounts"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-dkm-20260911/providers/Microsoft.CognitiveServices/accounts/di-dkmeval0911a",
+    "location": "centralus",
+    "name": "di-dkmeval0911a",
+    "type": "Microsoft.CognitiveServices/accounts"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-dkm-20260911/providers/Microsoft.CognitiveServices/accounts/oai-dkmeval0911a",
+    "location": "eastus",
+    "name": "oai-dkmeval0911a",
+    "type": "Microsoft.CognitiveServices/accounts"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-dkm-20260911/providers/Microsoft.AppConfiguration/configurationStores/appcs-dkmeval0911a",
+    "location": "centralus",
+    "name": "appcs-dkmeval0911a",
+    "type": "Microsoft.AppConfiguration/configurationStores"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-dkm-20260911/providers/Microsoft.App/containerApps/ca-dkm-api",
+    "location": "eastus2",
+    "name": "ca-dkm-api",
+    "type": "Microsoft.App/containerApps"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-dkm-20260911/providers/Microsoft.App/containerApps/ca-dkm-web",
+    "location": "eastus2",
+    "name": "ca-dkm-web",
+    "type": "Microsoft.App/containerApps"
+  },
+  {
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-dkm-20260911/providers/Microsoft.App/containerApps/ca-dkm-kernel",
+    "location": "eastus2",
+    "name": "ca-dkm-kernel",
+    "type": "Microsoft.App/containerApps"
+  }
+]

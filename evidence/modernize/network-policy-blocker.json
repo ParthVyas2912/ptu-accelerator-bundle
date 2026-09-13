@@ -1,0 +1,55 @@
+{
+  "app": "Modernize Your Code",
+  "status": "blocked_by_enforced_management_group_network_policy",
+  "assignment": "/providers/Microsoft.Management/managementGroups/a600acd0-3028-4689-8402-3b471d7d924d/providers/Microsoft.Authorization/policyAssignments/MCAPSGovDeployPolicies",
+  "definitions": ["CosmosDB_PublicNetwork_Modify", "StorageAccount_PublicNetwork_Modify"],
+  "effect": "modify",
+  "cosmos": {
+    "name": "cosmos-ptu-modernize-eus20911",
+    "provisioningState": "Succeeded",
+    "publicNetworkAccess": "Disabled",
+    "ipRules": ["20.236.11.102"],
+    "disableLocalAuth": true
+  },
+  "storage": {
+    "name": "stptumodernize0911pv",
+    "publicNetworkAccess": "Disabled",
+    "defaultAction": "Deny",
+    "bypass": "None",
+    "ipRules": ["20.236.11.102"],
+    "allowSharedKeyAccess": false,
+    "allowBlobPublicAccess": false
+  },
+  "actual_probe": {
+    "application_route": "http://127.0.0.1:8114/api/batch-history",
+    "http_status": 500,
+    "underlying_cosmos_status": 403,
+    "reason": "Request originated from IP 20.236.11.102 through public internet. This is blocked by your Cosmos DB account firewall settings.",
+    "first_activity_id": "36842e82-3ebd-4030-a4fa-cc175fc633df"
+  },
+  "attempted_change": "One IP-restricted public endpoint enable request on each approved NEW account; Azure policy returned Disabled. No repeated enable requests after identifying modify policy.",
+  "governance_bypassed": false,
+  "policy_or_assignment_or_exemption_changed": false,
+  "protected_or_shared_network_changed": false,
+  "additional_model_requests": 0,
+  "alternatives_investigated_not_executed": [
+    {
+      "name": "Private Link with existing approved private client connectivity",
+      "requirements": "Cosmos Sql and Storage blob private endpoints, organization-managed DNS, and an approved existing VPN/ExpressRoute or other private routed client path. A private endpoint alone cannot connect this Windows host.",
+      "approval_gate": "New networking scope/cost approval and identified nonprotected VNet/private access path; no VM/VPN gateway/AKS creation authorized.",
+      "cost_drivers": "Private endpoint hours and data processing, DNS if additionally provisioned, routing infrastructure; all nonPTU",
+      "source": "https://learn.microsoft.com/en-us/azure/storage/common/storage-private-endpoints"
+    },
+    {
+      "name": "Governance-approved Network Security Perimeter design",
+      "requirements": "Policy owner must approve exact supported configuration. Enforced resource associations, scoped source-IP inbound rule, required managed identity; no subscription-wide allow rule or learning-mode bypass.",
+      "support_caveat": "Cosmos documentation describes NSP as public preview without SLA; native outside-perimeter access can use documented IP-based inbound rules if governance approves.",
+      "approval_gate": "No NSP, identity, association, or policy exemption created; not authorized merely by the persistence approval.",
+      "cost_drivers": "Current NSP/network processing/diagnostic pricing and permitted region topology require confirmation; no zero-cost claim",
+      "sources": [
+        "https://learn.microsoft.com/en-us/azure/cosmos-db/how-to-configure-nsp",
+        "https://learn.microsoft.com/en-us/azure/storage/common/storage-network-security-perimeter"
+      ]
+    }
+  ]
+}

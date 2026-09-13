@@ -1,0 +1,10 @@
+{
+  "url": "http://127.0.0.1:8111/",
+  "http_status": 200,
+  "title": "Multi-Agent - Custom Automation Engine",
+  "latency_ms": 5647.21,
+  "body_text": "Welcome! Please upload a team configuration file to get started.\nContoso\nCurrent Team\nNo team selected\nNew task\n\n\nCompleted\nG\nGuest\nMulti-Agent Planner\nHow can I help?\n0/5000\nAI-generated content may be incorrect\nSelect a team to see available tasks",
+  "page_errors": [],
+  "failed_local_responses": [],
+  "limitation": "UI rendering only; no successful model workflow claimed"
+}

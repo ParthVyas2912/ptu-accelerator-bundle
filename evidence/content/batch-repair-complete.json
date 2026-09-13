@@ -1,0 +1,1101 @@
+{
+  "repair": {
+    "utc": "2026-09-12T02:26:20.731687+00:00",
+    "heldOriginalMessages": [
+      {
+        "messageId": "ad3a7c0c-c6e3-42ed-9ece-528e27af87e6",
+        "processId": "27477b6a-130b-4489-b02d-1c911d6550af",
+        "nextVisibleUtc": "2026-09-12 04:26:20+00:00"
+      },
+      {
+        "messageId": "9c04bf44-7021-450b-a6c9-4f0d96582c57",
+        "processId": "0de7be0e-d949-461f-9107-5db22aa806ef",
+        "nextVisibleUtc": "2026-09-12 04:26:20+00:00"
+      },
+      {
+        "messageId": "d99eca33-195d-43ef-9d9a-2f5e70b89afb",
+        "processId": "19c0161d-7198-4315-81b2-9bfcaf7a01e8",
+        "nextVisibleUtc": "2026-09-12 04:26:20+00:00"
+      },
+      {
+        "messageId": "e13169c0-1f38-4e7d-a291-501c2e1d7f52",
+        "processId": "dd126bb9-93c7-42df-b39e-6554711866c6",
+        "nextVisibleUtc": "2026-09-12 04:26:20+00:00"
+      }
+    ],
+    "sourceCollection": "ptu-content-schemas",
+    "targetCollection": "Schemas",
+    "schemas": [
+      {
+        "schemaId": "e40f3710-6659-4b6d-a1c4-f457ac94a07a",
+        "source": "ptu-content-schemas/e40f3710-6659-4b6d-a1c4-f457ac94a07a/autoclaim.json",
+        "target": "Schemas/e40f3710-6659-4b6d-a1c4-f457ac94a07a/autoclaim.json",
+        "sha256": "0dc17d2e0b602cef3e7ab7d102b76d1901c185d512750c3102833f8b5a71976d",
+        "verified": true
+      },
+      {
+        "schemaId": "e26a0118-23cd-46d8-afb8-483e6e3ed2be",
+        "source": "ptu-content-schemas/e26a0118-23cd-46d8-afb8-483e6e3ed2be/damagedcarimage.json",
+        "target": "Schemas/e26a0118-23cd-46d8-afb8-483e6e3ed2be/damagedcarimage.json",
+        "sha256": "58a9a4b68dc44b7b9330fae571a305d76699219c9f026060ce21cf4b1d8719e2",
+        "verified": true
+      },
+      {
+        "schemaId": "c56d2d29-82f5-4dc8-9659-c41e47254ce9",
+        "source": "ptu-content-schemas/c56d2d29-82f5-4dc8-9659-c41e47254ce9/policereport.json",
+        "target": "Schemas/c56d2d29-82f5-4dc8-9659-c41e47254ce9/policereport.json",
+        "sha256": "e31b8afc90a256185c1c69efcef55698673316c83dd2a30ae099db2a22909aa3",
+        "verified": true
+      },
+      {
+        "schemaId": "d5531c34-0d85-40d2-bd9e-c2d361ee2d44",
+        "source": "ptu-content-schemas/d5531c34-0d85-40d2-bd9e-c2d361ee2d44/repairestimate.json",
+        "target": "Schemas/d5531c34-0d85-40d2-bd9e-c2d361ee2d44/repairestimate.json",
+        "sha256": "2f31b009b87fbea5e44dd6e137326784cf4b1baed986fc2fecf18ec8c7b4e05c",
+        "verified": true
+      }
+    ],
+    "dataDeleted": false,
+    "reason": "API used configurable prefix; upstream Processor hardcodes case-sensitive Schemas",
+    "dataCopyVerified": true
+  },
+  "evidence": {
+    "ai-preflight.json": {
+      "utc": "2026-09-12T02:14:51.008301+00:00",
+      "service": "processor",
+      "clientId": "5101963f-1e38-45d2-9f7c-efa9e9f6d122",
+      "dns": {
+        "aif-ptuv-content-260911.cognitiveservices.azure.com": [
+          "10.246.2.21"
+        ],
+        "aif-ptuv-content-260911.openai.azure.com": [
+          "10.246.2.22"
+        ],
+        "aif-ptuv-content-260911.services.ai.azure.com": [
+          "10.246.2.23"
+        ]
+      },
+      "cuMetadata": {
+        "status": 200,
+        "apiVersion": "2025-11-01",
+        "analyzerId": "prebuilt-layout",
+        "elapsedMs": 540.234,
+        "returnedKeys": [
+          "analyzerId",
+          "baseAnalyzerId",
+          "config",
+          "createdAt",
+          "description",
+          "models",
+          "processingLocation",
+          "status",
+          "supportedModels",
+          "warnings"
+        ]
+      },
+      "passed": true
+    },
+    "functional-results.json": {
+      "syntheticOnly": true,
+      "api": "http://127.0.0.1:80",
+      "apiCalls": [
+        {
+          "timestamp": "2026-09-12T01:21:52.932264+00:00",
+          "method": "GET",
+          "path": "/schemavault/",
+          "status": 200,
+          "elapsedMs": 1347.442,
+          "result": []
+        },
+        {
+          "timestamp": "2026-09-12T01:21:53.870231+00:00",
+          "method": "POST",
+          "path": "/schemavault/",
+          "status": 200,
+          "elapsedMs": 700.55,
+          "result": {
+            "Id": "e40f3710-6659-4b6d-a1c4-f457ac94a07a",
+            "ClassName": "AutoInsuranceClaimForm",
+            "Description": "Auto Insurance Claim Form",
+            "FileName": "autoclaim.json",
+            "ContentType": "application/json",
+            "Format": "json",
+            "Created_On": "2026-09-12T01:21:53Z",
+            "Updated_On": null
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:21:54.681126+00:00",
+          "method": "POST",
+          "path": "/schemavault/",
+          "status": 200,
+          "elapsedMs": 210.875,
+          "result": {
+            "Id": "e26a0118-23cd-46d8-afb8-483e6e3ed2be",
+            "ClassName": "DamagedVehicleImageAssessment",
+            "Description": "Damaged Vehicle Image Assessment",
+            "FileName": "damagedcarimage.json",
+            "ContentType": "application/json",
+            "Format": "json",
+            "Created_On": "2026-09-12T01:21:54Z",
+            "Updated_On": null
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:21:55.100428+00:00",
+          "method": "POST",
+          "path": "/schemavault/",
+          "status": 200,
+          "elapsedMs": 196.441,
+          "result": {
+            "Id": "c56d2d29-82f5-4dc8-9659-c41e47254ce9",
+            "ClassName": "PoliceReportDocument",
+            "Description": "Police Report Document",
+            "FileName": "policereport.json",
+            "ContentType": "application/json",
+            "Format": "json",
+            "Created_On": "2026-09-12T01:21:55Z",
+            "Updated_On": null
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:21:55.596725+00:00",
+          "method": "POST",
+          "path": "/schemavault/",
+          "status": 200,
+          "elapsedMs": 178.53,
+          "result": {
+            "Id": "d5531c34-0d85-40d2-bd9e-c2d361ee2d44",
+            "ClassName": "RepairEstimateDocument",
+            "Description": "Repair Estimate Document",
+            "FileName": "repairestimate.json",
+            "ContentType": "application/json",
+            "Format": "json",
+            "Created_On": "2026-09-12T01:21:55Z",
+            "Updated_On": null
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:21:57.411273+00:00",
+          "method": "GET",
+          "path": "/schemasetvault/",
+          "status": 200,
+          "elapsedMs": 1593.644,
+          "result": []
+        },
+        {
+          "timestamp": "2026-09-12T01:21:57.538888+00:00",
+          "method": "POST",
+          "path": "/schemasetvault/",
+          "status": 200,
+          "elapsedMs": 25.96,
+          "result": {
+            "Id": "0669038a-dcc4-46c7-b53c-1209263c070b",
+            "Name": "Auto Claim",
+            "Description": "Claim schema set for auto claims processing",
+            "Created_On": "2026-09-12T01:21:57.515619Z",
+            "Updated_On": "2026-09-12T01:21:57.515622Z",
+            "Schemas": []
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:21:57.790423+00:00",
+          "method": "GET",
+          "path": "/schemasetvault/0669038a-dcc4-46c7-b53c-1209263c070b/schemas",
+          "status": 200,
+          "elapsedMs": 90.895,
+          "result": []
+        },
+        {
+          "timestamp": "2026-09-12T01:21:58.022563+00:00",
+          "method": "POST",
+          "path": "/schemasetvault/0669038a-dcc4-46c7-b53c-1209263c070b/schemas",
+          "status": 200,
+          "elapsedMs": 102.3,
+          "result": {
+            "Id": "0669038a-dcc4-46c7-b53c-1209263c070b",
+            "Name": "Auto Claim",
+            "Description": "Claim schema set for auto claims processing",
+            "Created_On": "2026-09-12T01:21:57.515619Z",
+            "Updated_On": "2026-09-12T01:21:57.995989Z",
+            "Schemas": [
+              {
+                "Id": "f3fb04fa-f4bf-4fa4-9118-9171a9ed37cf",
+                "SchemaId": "e40f3710-6659-4b6d-a1c4-f457ac94a07a",
+                "Description": "Auto Insurance Claim Form"
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:21:58.103478+00:00",
+          "method": "POST",
+          "path": "/schemasetvault/0669038a-dcc4-46c7-b53c-1209263c070b/schemas",
+          "status": 200,
+          "elapsedMs": 22.778,
+          "result": {
+            "Id": "0669038a-dcc4-46c7-b53c-1209263c070b",
+            "Name": "Auto Claim",
+            "Description": "Claim schema set for auto claims processing",
+            "Created_On": "2026-09-12T01:21:57.515619Z",
+            "Updated_On": "2026-09-12T01:21:58.093577Z",
+            "Schemas": [
+              {
+                "Id": "f3fb04fa-f4bf-4fa4-9118-9171a9ed37cf",
+                "SchemaId": "e40f3710-6659-4b6d-a1c4-f457ac94a07a",
+                "Description": "Auto Insurance Claim Form"
+              },
+              {
+                "Id": "f4039a8c-f208-4da7-82f2-5960f37d1a83",
+                "SchemaId": "e26a0118-23cd-46d8-afb8-483e6e3ed2be",
+                "Description": "Damaged Vehicle Image Assessment"
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:21:58.246637+00:00",
+          "method": "POST",
+          "path": "/schemasetvault/0669038a-dcc4-46c7-b53c-1209263c070b/schemas",
+          "status": 200,
+          "elapsedMs": 37.968,
+          "result": {
+            "Id": "0669038a-dcc4-46c7-b53c-1209263c070b",
+            "Name": "Auto Claim",
+            "Description": "Claim schema set for auto claims processing",
+            "Created_On": "2026-09-12T01:21:57.515619Z",
+            "Updated_On": "2026-09-12T01:21:58.235204Z",
+            "Schemas": [
+              {
+                "Id": "f3fb04fa-f4bf-4fa4-9118-9171a9ed37cf",
+                "SchemaId": "e40f3710-6659-4b6d-a1c4-f457ac94a07a",
+                "Description": "Auto Insurance Claim Form"
+              },
+              {
+                "Id": "f4039a8c-f208-4da7-82f2-5960f37d1a83",
+                "SchemaId": "e26a0118-23cd-46d8-afb8-483e6e3ed2be",
+                "Description": "Damaged Vehicle Image Assessment"
+              },
+              {
+                "Id": "9ce0a46c-b4ed-455a-9bd7-0ce2566ee670",
+                "SchemaId": "c56d2d29-82f5-4dc8-9659-c41e47254ce9",
+                "Description": "Police Report Document"
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:21:58.332974+00:00",
+          "method": "POST",
+          "path": "/schemasetvault/0669038a-dcc4-46c7-b53c-1209263c070b/schemas",
+          "status": 200,
+          "elapsedMs": 25.425,
+          "result": {
+            "Id": "0669038a-dcc4-46c7-b53c-1209263c070b",
+            "Name": "Auto Claim",
+            "Description": "Claim schema set for auto claims processing",
+            "Created_On": "2026-09-12T01:21:57.515619Z",
+            "Updated_On": "2026-09-12T01:21:58.319512Z",
+            "Schemas": [
+              {
+                "Id": "f3fb04fa-f4bf-4fa4-9118-9171a9ed37cf",
+                "SchemaId": "e40f3710-6659-4b6d-a1c4-f457ac94a07a",
+                "Description": "Auto Insurance Claim Form"
+              },
+              {
+                "Id": "f4039a8c-f208-4da7-82f2-5960f37d1a83",
+                "SchemaId": "e26a0118-23cd-46d8-afb8-483e6e3ed2be",
+                "Description": "Damaged Vehicle Image Assessment"
+              },
+              {
+                "Id": "9ce0a46c-b4ed-455a-9bd7-0ce2566ee670",
+                "SchemaId": "c56d2d29-82f5-4dc8-9659-c41e47254ce9",
+                "Description": "Police Report Document"
+              },
+              {
+                "Id": "10cdbcc7-eebf-4540-91af-7e0cc841f7a4",
+                "SchemaId": "d5531c34-0d85-40d2-bd9e-c2d361ee2d44",
+                "Description": "Repair Estimate Document"
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:22:41.840282+00:00",
+          "method": "PUT",
+          "path": "/claimprocessor/claims",
+          "status": 200,
+          "elapsedMs": 266.237,
+          "result": {
+            "claim_id": "77f4a16d-96fe-4739-b90a-9ac0b2597bb4",
+            "schema_collection_id": "0669038a-dcc4-46c7-b53c-1209263c070b",
+            "created_time": "2026-09-12T01:22:41.829681Z",
+            "last_modified_time": "2026-09-12T01:22:41.829687Z",
+            "items": []
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:22:42.162433+00:00",
+          "method": "POST",
+          "path": "/claimprocessor/claims/77f4a16d-96fe-4739-b90a-9ac0b2597bb4/files",
+          "status": 200,
+          "elapsedMs": 47.712,
+          "result": {
+            "batch_id": "77f4a16d-96fe-4739-b90a-9ac0b2597bb4",
+            "file_name": "claim-form.pdf",
+            "size": 1142,
+            "mime_type": "application/pdf"
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:22:42.770219+00:00",
+          "method": "POST",
+          "path": "/claimprocessor/claims/77f4a16d-96fe-4739-b90a-9ac0b2597bb4/files",
+          "status": 200,
+          "elapsedMs": 397.503,
+          "result": {
+            "batch_id": "77f4a16d-96fe-4739-b90a-9ac0b2597bb4",
+            "file_name": "damage-diagram.png",
+            "size": 6636,
+            "mime_type": "image/png"
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:22:43.002568+00:00",
+          "method": "POST",
+          "path": "/claimprocessor/claims/77f4a16d-96fe-4739-b90a-9ac0b2597bb4/files",
+          "status": 200,
+          "elapsedMs": 113.872,
+          "result": {
+            "batch_id": "77f4a16d-96fe-4739-b90a-9ac0b2597bb4",
+            "file_name": "police-report.pdf",
+            "size": 962,
+            "mime_type": "application/pdf"
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:22:43.388919+00:00",
+          "method": "POST",
+          "path": "/claimprocessor/claims/77f4a16d-96fe-4739-b90a-9ac0b2597bb4/files",
+          "status": 200,
+          "elapsedMs": 117.662,
+          "result": {
+            "batch_id": "77f4a16d-96fe-4739-b90a-9ac0b2597bb4",
+            "file_name": "repair-estimate.pdf",
+            "size": 1184,
+            "mime_type": "application/pdf"
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:23:25.896523+00:00",
+          "method": "PUT",
+          "path": "/claimprocessor/claims",
+          "status": 200,
+          "elapsedMs": 19.181,
+          "result": {
+            "claim_id": "4ca130f8-2f91-4d3b-8276-e14297e3ef91",
+            "schema_collection_id": "0669038a-dcc4-46c7-b53c-1209263c070b",
+            "created_time": "2026-09-12T01:23:25.879851Z",
+            "last_modified_time": "2026-09-12T01:23:25.879856Z",
+            "items": []
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:23:26.219758+00:00",
+          "method": "POST",
+          "path": "/claimprocessor/claims/4ca130f8-2f91-4d3b-8276-e14297e3ef91/files",
+          "status": 415,
+          "elapsedMs": 3.415,
+          "result": {
+            "message": "Unsupported or mismatched file type. Only PDF, JPEG, JPG, and PNG are supported.",
+            "file_name": "bad-magic.pdf"
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:23:26.421770+00:00",
+          "method": "POST",
+          "path": "/claimprocessor/claims/4ca130f8-2f91-4d3b-8276-e14297e3ef91/files",
+          "status": 200,
+          "elapsedMs": 53.15,
+          "result": {
+            "batch_id": "4ca130f8-2f91-4d3b-8276-e14297e3ef91",
+            "file_name": "truncated.pdf",
+            "size": 20,
+            "mime_type": "application/pdf"
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:23:26.517258+00:00",
+          "method": "POST",
+          "path": "/claimprocessor/claims/4ca130f8-2f91-4d3b-8276-e14297e3ef91/files",
+          "status": 415,
+          "elapsedMs": 4.141,
+          "result": {
+            "message": "Unsupported or mismatched file type. Only PDF, JPEG, JPG, and PNG are supported.",
+            "file_name": "unsupported.txt"
+          }
+        },
+        {
+          "timestamp": "2026-09-12T02:15:42.055349+00:00",
+          "method": "POST",
+          "path": "/claimprocessor/claims",
+          "status": 202,
+          "elapsedMs": 3437.331,
+          "result": {
+            "status": "success",
+            "message": "claim id '77f4a16d-96fe-4739-b90a-9ac0b2597bb4' has been submitted for processing.",
+            "location": "/claims/77f4a16d-96fe-4739-b90a-9ac0b2597bb4/status"
+          }
+        },
+        {
+          "timestamp": "2026-09-12T02:15:42.379710+00:00",
+          "method": "GET",
+          "path": "/claimprocessor/claims/77f4a16d-96fe-4739-b90a-9ac0b2597bb4/status",
+          "status": 200,
+          "elapsedMs": 32.888,
+          "result": {
+            "status": "Pending",
+            "message": "Claim Batch '77f4a16d-96fe-4739-b90a-9ac0b2597bb4' is in progress."
+          }
+        },
+        {
+          "timestamp": "2026-09-12T02:15:57.651216+00:00",
+          "method": "GET",
+          "path": "/claimprocessor/claims/77f4a16d-96fe-4739-b90a-9ac0b2597bb4/status",
+          "status": 200,
+          "elapsedMs": 9.793,
+          "result": {
+            "status": "Processing",
+            "message": "Claim Batch '77f4a16d-96fe-4739-b90a-9ac0b2597bb4' is in progress."
+          }
+        },
+        {
+          "timestamp": "2026-09-12T02:16:13.018664+00:00",
+          "method": "GET",
+          "path": "/claimprocessor/claims/77f4a16d-96fe-4739-b90a-9ac0b2597bb4/status",
+          "status": 200,
+          "elapsedMs": 185.427,
+          "result": {
+            "status": "RAIAnalysis",
+            "message": "Claim Batch '77f4a16d-96fe-4739-b90a-9ac0b2597bb4' is in progress."
+          }
+        },
+        {
+          "timestamp": "2026-09-12T02:16:28.262238+00:00",
+          "method": "GET",
+          "path": "/claimprocessor/claims/77f4a16d-96fe-4739-b90a-9ac0b2597bb4/status",
+          "status": 200,
+          "elapsedMs": 29.319,
+          "result": {
+            "status": "GapAnalysis",
+            "message": "Claim Batch '77f4a16d-96fe-4739-b90a-9ac0b2597bb4' is in progress."
+          }
+        },
+        {
+          "timestamp": "2026-09-12T02:16:43.951069+00:00",
+          "method": "GET",
+          "path": "/claimprocessor/claims/77f4a16d-96fe-4739-b90a-9ac0b2597bb4/status",
+          "status": 200,
+          "elapsedMs": 155.129,
+          "result": {
+            "status": "GapAnalysis",
+            "message": "Claim Batch '77f4a16d-96fe-4739-b90a-9ac0b2597bb4' is in progress."
+          }
+        },
+        {
+          "timestamp": "2026-09-12T02:16:59.251891+00:00",
+          "method": "GET",
+          "path": "/claimprocessor/claims/77f4a16d-96fe-4739-b90a-9ac0b2597bb4/status",
+          "status": 302,
+          "elapsedMs": 126.362,
+          "result": {
+            "status": "Completed",
+            "message": "Claim Batch '77f4a16d-96fe-4739-b90a-9ac0b2597bb4' has been completed.",
+            "location": "/claimprocessor/claims/77f4a16d-96fe-4739-b90a-9ac0b2597bb4"
+          }
+        },
+        {
+          "timestamp": "2026-09-12T02:17:00.275293+00:00",
+          "method": "GET",
+          "path": "/claimprocessor/claims/77f4a16d-96fe-4739-b90a-9ac0b2597bb4",
+          "status": 200,
+          "elapsedMs": 11.285,
+          "result": {
+            "status": "success",
+            "data": {
+              "id": "77f4a16d-96fe-4739-b90a-9ac0b2597bb4",
+              "process_name": "claim-20260912012241829681-0000-77F4A1",
+              "schemaset_id": "0669038a-dcc4-46c7-b53c-1209263c070b",
+              "metadata_id": null,
+              "processed_documents": [
+                {
+                  "process_id": "27477b6a-130b-4489-b02d-1c911d6550af",
+                  "file_name": "claim-form.pdf",
+                  "mime_type": "application/pdf",
+                  "entity_score": 0.0,
+                  "schema_score": 0.0,
+                  "status": "Error",
+                  "processed_time": ""
+                },
+                {
+                  "process_id": "0de7be0e-d949-461f-9107-5db22aa806ef",
+                  "file_name": "damage-diagram.png",
+                  "mime_type": "image/png",
+                  "entity_score": 0.0,
+                  "schema_score": 0.0,
+                  "status": "Error",
+                  "processed_time": ""
+                },
+                {
+                  "process_id": "19c0161d-7198-4315-81b2-9bfcaf7a01e8",
+                  "file_name": "repair-estimate.pdf",
+                  "mime_type": "application/pdf",
+                  "entity_score": 0.0,
+                  "schema_score": 0.0,
+                  "status": "Error",
+                  "processed_time": ""
+                },
+                {
+                  "process_id": "dd126bb9-93c7-42df-b39e-6554711866c6",
+                  "file_name": "police-report.pdf",
+                  "mime_type": "application/pdf",
+                  "entity_score": 0.0,
+                  "schema_score": 0.0,
+                  "status": "Error",
+                  "processed_time": ""
+                }
+              ],
+              "status": "Completed",
+              "process_summary": "I can't summarize due to mismatched contents.",
+              "process_gaps": "{\n  \"status\": \"ok\",\n  \"inputs\": {\n    \"loss_type\": {\n      \"value\": \"unknown\",\n      \"confidence\": \"low\",\n      \"evidence\": []\n    },\n    \"jurisdiction\": {\n      \"value\": \"unknown\",\n      \"confidence\": \"low\",\n      \"evidence\": []\n    },\n    \"loss_amount\": {\n      \"value\": null,\n      \"confidence\": \"low\",\n      \"evidence\": []\n    },\n    \"has_injuries\": {\n      \"value\": \"unknown\",\n      \"confidence\": \"low\",\n      \"evidence\": []\n    },\n    \"involves_third_party\": {\n      \"value\": \"unknown\",\n      \"confidence\": \"low\",\n      \"evidence\": []\n    },\n    \"photos_provided_count\": {\n      \"value\": 0,\n      \"confidence\": \"low\",\n      \"evidence\": []\n    }\n  },\n  \"documents\": [],\n  \"_rule_evaluation\": {\n    \"required_documents\": [\n      {\n        \"rule_id\": \"REQ-CLAIM-FORM-000\",\n        \"condition\": \"loss_type exists\",\n        \"condition_triggered\": false,\n        \"required_doc_present\": null,\n        \"is_gap\": false\n      },\n      {\n        \"rule_id\": \"REQ-PR-THEFT-001\",\n        \"condition\": \"loss_type in [theft, vehicle_theft, burglary]\",\n        \"condition_triggered\": false,\n        \"required_doc_present\": null,\n        \"is_gap\": false\n      },\n      {\n        \"rule_id\": \"REQ-PHOTO-COLLISION-002\",\n        \"condition\": \"loss_type == collision and photos_provided_count < 1\",\n        \"condition_triggered\": false,\n        \"required_doc_present\": null,\n        \"is_gap\": false\n      },\n      {\n        \"rule_id\": \"REQ-ESTIMATE-AMOUNT-003\",\n        \"condition\": \"loss_amount >= 2000\",\n        \"condition_triggered\": false,\n        \"required_doc_present\": null,\n        \"is_gap\": false\n      },\n      {\n        \"rule_id\": \"REQ-MED-INJURY-004\",\n        \"condition\": \"has_injuries == true\",\n        \"condition_triggered\": false,\n        \"required_doc_present\": null,\n        \"is_gap\": false\n      },\n      {\n        \"rule_id\": \"REQ-ID-JURISDICTION-CA-005\",\n        \"condition\": \"jurisdiction == CA and involves_third_party == true\",\n        \"condition_triggered\": false,\n        \"required_doc_present\": null,\n        \"is_gap\": false\n      },\n      {\n        \"rule_id\": \"REQ-PR-THIRD-PARTY-006\",\n        \"condition\": \"involves_third_party == true\",\n        \"condition_triggered\": false,\n        \"required_doc_present\": null,\n        \"is_gap\": false\n      }\n    ],\n    \"discrepancy_checks\": [\n      {\n        \"check_id\": \"DISC-CLAIM-NUMBER-001\",\n        \"field\": \"claim_number\",\n        \"check_type\": \"conflict\",\n        \"values_found\": {\n          \"claim_form\": null,\n          \"police_report\": null,\n          \"repair_estimate\": null\n        },\n        \"has_conflict\": false,\n        \"is_discrepancy\": false\n      },\n      {\n        \"check_id\": \"DISC-CLAIM-NUMBER-002\",\n        \"field\": \"claim_number\",\n        \"check_type\": \"existence\",\n        \"values_found\": {\n          \"claim_form\": null,\n          \"police_report\": null,\n          \"repair_estimate\": null\n        },\n        \"has_conflict\": true,\n        \"is_discrepancy\": true\n      },\n      {\n        \"check_id\": \"DISC-POLICY-NUMBER-001\",\n        \"field\": \"policy_number\",\n        \"check_type\": \"conflict\",\n        \"values_found\": {\n          \"claim_form\": null,\n          \"police_report\": null,\n          \"repair_estimate\": null\n        },\n        \"has_conflict\": false,\n        \"is_discrepancy\": false\n      },\n      {\n        \"check_id\": \"DISC-DATE-OF-LOSS-001\",\n        \"field\": \"date_of_loss\",\n        \"check_type\": \"conflict\",\n        \"values_found\": {\n          \"claim_form\": null,\n          \"police_report\": null\n        },\n        \"has_conflict\": false,\n        \"is_discrepancy\": false\n      },\n      {\n        \"check_id\": \"DISC-VEHICLE-VIN-001\",\n        \"field\": \"vin\",\n        \"check_type\": \"conflict\",\n        \"values_found\": {\n          \"claim_form\": null,\n          \"police_report\": null,\n          \"repair_estimate\": null\n        },\n        \"has_conflict\": false,\n        \"is_discrepancy\": false\n      },\n      {\n        \"check_id\": \"DISC-VEHICLE-PLATE-001\",\n        \"field\": \"license_plate\",\n        \"check_type\": \"conflict\",\n        \"values_found\": {\n          \"claim_form\": null,\n          \"police_report\": null,\n          \"repair_estimate\": null,\n          \"damage_photo\": null\n        },\n        \"has_conflict\": false,\n        \"is_discrepancy\": false\n      },\n      {\n        \"check_id\": \"DISC-ESTIMATE-TOTAL-001\",\n        \"field\": \"total_estimate\",\n        \"check_type\": \"conflict\",\n        \"values_found\": {\n          \"claim_form\": null,\n          \"repair_estimate\": null\n        },\n        \"has_conflict\": false,\n        \"is_discrepancy\": false\n      },\n      {\n        \"check_id\": \"DISC-DAMAGE-DESCRIPTION-001\",\n        \"field\": \"damage_description\",\n        \"check_type\": \"conflict\",\n        \"values_found\": {\n          \"claim_form\": null,\n          \"repair_estimate\": null,\n          \"damage_photo\": null\n        },\n        \"has_conflict\": false,\n        \"is_discrepancy\": false\n      }\n    ],\n    \"observation_triggers\": [\n      {\n        \"trigger_id\": \"OBS-NO-ESTIMATE-001\",\n        \"condition_met\": true,\n        \"finding\": \"No loss amount or repair estimate information was available in the provided extracts.\"\n      },\n      {\n        \"trigger_id\": \"OBS-UNKNOWN-INJURIES-001\",\n        \"condition_met\": true,\n        \"finding\": \"Injury status could not be determined from the available extracts.\"\n      },\n      {\n        \"trigger_id\": \"OBS-MISSING-DEDUCTIBLE-001\",\n        \"condition_met\": true,\n        \"finding\": \"No claim_form document was available, so deductible information could not be confirmed.\"\n      },\n      {\n        \"trigger_id\": \"OBS-PHOTO-EXTRA-DAMAGE-001\",\n        \"condition_met\": false,\n        \"finding\": null\n      }\n    ]\n  },\n  \"gaps\": [],\n  \"discrepancies\": [\n    {\n      \"check_id\": \"DISC-CLAIM-NUMBER-002\",\n      \"severity\": \"medium\",\n      \"field\": \"claim_number\",\n      \"check_type\": \"existence\",\n      \"values_by_source\": {\n        \"claim_form\": null,\n        \"police_report\": null,\n        \"repair_estimate\": null\n      },\n      \"evidence_filenames\": []\n    }\n  ],\n  \"observations\": [\n    {\n      \"observation_id\": \"OBS-NO-ESTIMATE-001\",\n      \"severity\": \"info\",\n      \"description\": \"No loss amount or repair estimate information is available. An adjuster should ensure that a repair estimate or loss amount is obtained before progressing the claim.\",\n      \"evidence_filenames\": []\n    },\n    {\n      \"observation_id\": \"OBS-UNKNOWN-INJURIES-001\",\n      \"severity\": \"info\",\n      \"description\": \"Injury status is undetermined based on the available extracts. The adjuster should confirm directly with the claimant whether any injuries occurred.\",\n      \"evidence_filenames\": []\n    },\n    {\n      \"observation_id\": \"OBS-MISSING-DEDUCTIBLE-001\",\n      \"severity\": \"info\",\n      \"description\": \"No claim form document was provided, so policy deductible information is not available. Coverage verification will be needed before calculating payments.\",\n      \"evidence_filenames\": []\n    },\n    {\n      \"observation_id\": \"OBS-AUTO-001\",\n      \"severity\": \"info\",\n      \"description\": \"No recognizable claim-related documents (claim form, police report, repair estimate, or damage photos) were available in the extracts, so most required fields and checks could not be fully evaluated.\",\n      \"evidence_filenames\": []\n    }\n  ],\n  \"narrative_report\": \"Executive Summary:\\nFound 0 Gaps, 1 Discrepancy(ies) (1 medium), 4 Observation(s).\\nThe available inputs did not include any recognizable claim documents, so only limited evaluation was possible. The main issue identified is the absence of a claim number in any source, with several informational observations about missing or unknown key data.\\n\\nDiscrepancies (1 \u2013 1 Medium)\\n- Claim number is missing from all authoritative documents, so it does not exist in any source and cannot be used for tracking\\n\\nObservations (4 \u2013 Info)\\n- No loss amount or repair estimate information is available; an estimate or loss amount will be needed before progressing the claim\\n- Injury status is undetermined and should be confirmed with the claimant\\n- No claim form was provided, so deductible information is unavailable and must be verified before payment calculation\\n- No recognizable claim documents were available, limiting the ability to evaluate required information and checks\\n\\nGaps Summary & Detail:\\nNo gaps were identified. Because there were no recognizable claim documents and key canonical inputs such as loss type and jurisdiction are unknown, most required-document rules did not trigger and therefore no formal gaps could be recorded under the defined policy.\\n\\nDiscrepancies Summary & Detail:\\n1 Discrepancy identified: 1 medium.\\nThe single discrepancy arises from check DISC-CLAIM-NUMBER-002, which is an existence check on the claim_number field across the claim_form, police_report, and repair_estimate sources. The field is absent or null in all three logical sources, so the existence check fails. This is classified as a medium-severity discrepancy because a claim number is required for proper tracking. No filenames could be cited as evidence because no concrete documents were present in the extracts.\\n\\nObservations & Advisories:\\n4 Observations: 4 info.\\nThe first observation reflects that there is no loss amount or repair estimate information available, meaning an adjuster will need to obtain a repair estimate or otherwise determine the loss amount before the claim can be advanced.\\nThe second observation notes that injury status is unknown; this should be clarified with the claimant to ensure any bodily injury exposures are appropriately addressed.\\nThe third observation explains that without a claim form, deductible details cannot be confirmed, so coverage verification is required before any payments can be calculated.\\nThe fourth observation highlights that no recognizable claim-related documents were supplied, which significantly restricts the ability to assess compliance with required-document rules or to cross-check identifiers and other key fields.\\n\\nAnalysis Context:\\nBecause no specific document extracts were provided, all canonical input fields had to be treated as unknown or null. The loss_type, jurisdiction, has_injuries, and involves_third_party fields are all set to unknown with low confidence, and loss_amount is null with low confidence due to the absence of any supporting evidence. The photos_provided_count is set to zero, also with low confidence, because there is no indication that any damage photos were supplied.\\nNo documents could be inventoried under the defined schemas, so the documents list is empty. As a result, for all discrepancy checks involving claim number, policy number, date of loss, VIN, license plate, total estimate, and damage description, the values for each referenced document type were null. Only the existence check for the claim number produced a discrepancy; other conflict checks did not, because they require at least two non-null differing values to be treated as conflicts. The observations captured the absence of a loss amount, the undetermined injury status, the missing deductible information due to the lack of a claim form, and the overall lack of recognizable claim documents, which together explain why the analysis is necessarily limited and why follow-up information will be required to fully evaluate the claim under the policy rules.\"\n}",
+              "process_comment": "",
+              "process_time": "2026-09-12T02:15:42.790260+00:00",
+              "processed_time": "00:01:05.500"
+            }
+          }
+        }
+      ],
+      "schemas": {
+        "autoclaim.json": "e40f3710-6659-4b6d-a1c4-f457ac94a07a",
+        "damagedcarimage.json": "e26a0118-23cd-46d8-afb8-483e6e3ed2be",
+        "policereport.json": "c56d2d29-82f5-4dc8-9659-c41e47254ce9",
+        "repairestimate.json": "d5531c34-0d85-40d2-bd9e-c2d361ee2d44"
+      },
+      "cases": {
+        "complete": {
+          "claimId": "77f4a16d-96fe-4739-b90a-9ac0b2597bb4",
+          "submitted": true,
+          "submissionAttempted": true,
+          "lastDetail": {
+            "status": "success",
+            "data": {
+              "id": "77f4a16d-96fe-4739-b90a-9ac0b2597bb4",
+              "process_name": "claim-20260912012241829681-0000-77F4A1",
+              "schemaset_id": "0669038a-dcc4-46c7-b53c-1209263c070b",
+              "metadata_id": null,
+              "processed_documents": [
+                {
+                  "process_id": "27477b6a-130b-4489-b02d-1c911d6550af",
+                  "file_name": "claim-form.pdf",
+                  "mime_type": "application/pdf",
+                  "entity_score": 0.0,
+                  "schema_score": 0.0,
+                  "status": "Error",
+                  "processed_time": ""
+                },
+                {
+                  "process_id": "0de7be0e-d949-461f-9107-5db22aa806ef",
+                  "file_name": "damage-diagram.png",
+                  "mime_type": "image/png",
+                  "entity_score": 0.0,
+                  "schema_score": 0.0,
+                  "status": "Error",
+                  "processed_time": ""
+                },
+                {
+                  "process_id": "19c0161d-7198-4315-81b2-9bfcaf7a01e8",
+                  "file_name": "repair-estimate.pdf",
+                  "mime_type": "application/pdf",
+                  "entity_score": 0.0,
+                  "schema_score": 0.0,
+                  "status": "Error",
+                  "processed_time": ""
+                },
+                {
+                  "process_id": "dd126bb9-93c7-42df-b39e-6554711866c6",
+                  "file_name": "police-report.pdf",
+                  "mime_type": "application/pdf",
+                  "entity_score": 0.0,
+                  "schema_score": 0.0,
+                  "status": "Error",
+                  "processed_time": ""
+                }
+              ],
+              "status": "Completed",
+              "process_summary": "I can't summarize due to mismatched contents.",
+              "process_gaps": "{\n  \"status\": \"ok\",\n  \"inputs\": {\n    \"loss_type\": {\n      \"value\": \"unknown\",\n      \"confidence\": \"low\",\n      \"evidence\": []\n    },\n    \"jurisdiction\": {\n      \"value\": \"unknown\",\n      \"confidence\": \"low\",\n      \"evidence\": []\n    },\n    \"loss_amount\": {\n      \"value\": null,\n      \"confidence\": \"low\",\n      \"evidence\": []\n    },\n    \"has_injuries\": {\n      \"value\": \"unknown\",\n      \"confidence\": \"low\",\n      \"evidence\": []\n    },\n    \"involves_third_party\": {\n      \"value\": \"unknown\",\n      \"confidence\": \"low\",\n      \"evidence\": []\n    },\n    \"photos_provided_count\": {\n      \"value\": 0,\n      \"confidence\": \"low\",\n      \"evidence\": []\n    }\n  },\n  \"documents\": [],\n  \"_rule_evaluation\": {\n    \"required_documents\": [\n      {\n        \"rule_id\": \"REQ-CLAIM-FORM-000\",\n        \"condition\": \"loss_type exists\",\n        \"condition_triggered\": false,\n        \"required_doc_present\": null,\n        \"is_gap\": false\n      },\n      {\n        \"rule_id\": \"REQ-PR-THEFT-001\",\n        \"condition\": \"loss_type in [theft, vehicle_theft, burglary]\",\n        \"condition_triggered\": false,\n        \"required_doc_present\": null,\n        \"is_gap\": false\n      },\n      {\n        \"rule_id\": \"REQ-PHOTO-COLLISION-002\",\n        \"condition\": \"loss_type == collision and photos_provided_count < 1\",\n        \"condition_triggered\": false,\n        \"required_doc_present\": null,\n        \"is_gap\": false\n      },\n      {\n        \"rule_id\": \"REQ-ESTIMATE-AMOUNT-003\",\n        \"condition\": \"loss_amount >= 2000\",\n        \"condition_triggered\": false,\n        \"required_doc_present\": null,\n        \"is_gap\": false\n      },\n      {\n        \"rule_id\": \"REQ-MED-INJURY-004\",\n        \"condition\": \"has_injuries == true\",\n        \"condition_triggered\": false,\n        \"required_doc_present\": null,\n        \"is_gap\": false\n      },\n      {\n        \"rule_id\": \"REQ-ID-JURISDICTION-CA-005\",\n        \"condition\": \"jurisdiction == CA and involves_third_party == true\",\n        \"condition_triggered\": false,\n        \"required_doc_present\": null,\n        \"is_gap\": false\n      },\n      {\n        \"rule_id\": \"REQ-PR-THIRD-PARTY-006\",\n        \"condition\": \"involves_third_party == true\",\n        \"condition_triggered\": false,\n        \"required_doc_present\": null,\n        \"is_gap\": false\n      }\n    ],\n    \"discrepancy_checks\": [\n      {\n        \"check_id\": \"DISC-CLAIM-NUMBER-001\",\n        \"field\": \"claim_number\",\n        \"check_type\": \"conflict\",\n        \"values_found\": {\n          \"claim_form\": null,\n          \"police_report\": null,\n          \"repair_estimate\": null\n        },\n        \"has_conflict\": false,\n        \"is_discrepancy\": false\n      },\n      {\n        \"check_id\": \"DISC-CLAIM-NUMBER-002\",\n        \"field\": \"claim_number\",\n        \"check_type\": \"existence\",\n        \"values_found\": {\n          \"claim_form\": null,\n          \"police_report\": null,\n          \"repair_estimate\": null\n        },\n        \"has_conflict\": true,\n        \"is_discrepancy\": true\n      },\n      {\n        \"check_id\": \"DISC-POLICY-NUMBER-001\",\n        \"field\": \"policy_number\",\n        \"check_type\": \"conflict\",\n        \"values_found\": {\n          \"claim_form\": null,\n          \"police_report\": null,\n          \"repair_estimate\": null\n        },\n        \"has_conflict\": false,\n        \"is_discrepancy\": false\n      },\n      {\n        \"check_id\": \"DISC-DATE-OF-LOSS-001\",\n        \"field\": \"date_of_loss\",\n        \"check_type\": \"conflict\",\n        \"values_found\": {\n          \"claim_form\": null,\n          \"police_report\": null\n        },\n        \"has_conflict\": false,\n        \"is_discrepancy\": false\n      },\n      {\n        \"check_id\": \"DISC-VEHICLE-VIN-001\",\n        \"field\": \"vin\",\n        \"check_type\": \"conflict\",\n        \"values_found\": {\n          \"claim_form\": null,\n          \"police_report\": null,\n          \"repair_estimate\": null\n        },\n        \"has_conflict\": false,\n        \"is_discrepancy\": false\n      },\n      {\n        \"check_id\": \"DISC-VEHICLE-PLATE-001\",\n        \"field\": \"license_plate\",\n        \"check_type\": \"conflict\",\n        \"values_found\": {\n          \"claim_form\": null,\n          \"police_report\": null,\n          \"repair_estimate\": null,\n          \"damage_photo\": null\n        },\n        \"has_conflict\": false,\n        \"is_discrepancy\": false\n      },\n      {\n        \"check_id\": \"DISC-ESTIMATE-TOTAL-001\",\n        \"field\": \"total_estimate\",\n        \"check_type\": \"conflict\",\n        \"values_found\": {\n          \"claim_form\": null,\n          \"repair_estimate\": null\n        },\n        \"has_conflict\": false,\n        \"is_discrepancy\": false\n      },\n      {\n        \"check_id\": \"DISC-DAMAGE-DESCRIPTION-001\",\n        \"field\": \"damage_description\",\n        \"check_type\": \"conflict\",\n        \"values_found\": {\n          \"claim_form\": null,\n          \"repair_estimate\": null,\n          \"damage_photo\": null\n        },\n        \"has_conflict\": false,\n        \"is_discrepancy\": false\n      }\n    ],\n    \"observation_triggers\": [\n      {\n        \"trigger_id\": \"OBS-NO-ESTIMATE-001\",\n        \"condition_met\": true,\n        \"finding\": \"No loss amount or repair estimate information was available in the provided extracts.\"\n      },\n      {\n        \"trigger_id\": \"OBS-UNKNOWN-INJURIES-001\",\n        \"condition_met\": true,\n        \"finding\": \"Injury status could not be determined from the available extracts.\"\n      },\n      {\n        \"trigger_id\": \"OBS-MISSING-DEDUCTIBLE-001\",\n        \"condition_met\": true,\n        \"finding\": \"No claim_form document was available, so deductible information could not be confirmed.\"\n      },\n      {\n        \"trigger_id\": \"OBS-PHOTO-EXTRA-DAMAGE-001\",\n        \"condition_met\": false,\n        \"finding\": null\n      }\n    ]\n  },\n  \"gaps\": [],\n  \"discrepancies\": [\n    {\n      \"check_id\": \"DISC-CLAIM-NUMBER-002\",\n      \"severity\": \"medium\",\n      \"field\": \"claim_number\",\n      \"check_type\": \"existence\",\n      \"values_by_source\": {\n        \"claim_form\": null,\n        \"police_report\": null,\n        \"repair_estimate\": null\n      },\n      \"evidence_filenames\": []\n    }\n  ],\n  \"observations\": [\n    {\n      \"observation_id\": \"OBS-NO-ESTIMATE-001\",\n      \"severity\": \"info\",\n      \"description\": \"No loss amount or repair estimate information is available. An adjuster should ensure that a repair estimate or loss amount is obtained before progressing the claim.\",\n      \"evidence_filenames\": []\n    },\n    {\n      \"observation_id\": \"OBS-UNKNOWN-INJURIES-001\",\n      \"severity\": \"info\",\n      \"description\": \"Injury status is undetermined based on the available extracts. The adjuster should confirm directly with the claimant whether any injuries occurred.\",\n      \"evidence_filenames\": []\n    },\n    {\n      \"observation_id\": \"OBS-MISSING-DEDUCTIBLE-001\",\n      \"severity\": \"info\",\n      \"description\": \"No claim form document was provided, so policy deductible information is not available. Coverage verification will be needed before calculating payments.\",\n      \"evidence_filenames\": []\n    },\n    {\n      \"observation_id\": \"OBS-AUTO-001\",\n      \"severity\": \"info\",\n      \"description\": \"No recognizable claim-related documents (claim form, police report, repair estimate, or damage photos) were available in the extracts, so most required fields and checks could not be fully evaluated.\",\n      \"evidence_filenames\": []\n    }\n  ],\n  \"narrative_report\": \"Executive Summary:\\nFound 0 Gaps, 1 Discrepancy(ies) (1 medium), 4 Observation(s).\\nThe available inputs did not include any recognizable claim documents, so only limited evaluation was possible. The main issue identified is the absence of a claim number in any source, with several informational observations about missing or unknown key data.\\n\\nDiscrepancies (1 \u2013 1 Medium)\\n- Claim number is missing from all authoritative documents, so it does not exist in any source and cannot be used for tracking\\n\\nObservations (4 \u2013 Info)\\n- No loss amount or repair estimate information is available; an estimate or loss amount will be needed before progressing the claim\\n- Injury status is undetermined and should be confirmed with the claimant\\n- No claim form was provided, so deductible information is unavailable and must be verified before payment calculation\\n- No recognizable claim documents were available, limiting the ability to evaluate required information and checks\\n\\nGaps Summary & Detail:\\nNo gaps were identified. Because there were no recognizable claim documents and key canonical inputs such as loss type and jurisdiction are unknown, most required-document rules did not trigger and therefore no formal gaps could be recorded under the defined policy.\\n\\nDiscrepancies Summary & Detail:\\n1 Discrepancy identified: 1 medium.\\nThe single discrepancy arises from check DISC-CLAIM-NUMBER-002, which is an existence check on the claim_number field across the claim_form, police_report, and repair_estimate sources. The field is absent or null in all three logical sources, so the existence check fails. This is classified as a medium-severity discrepancy because a claim number is required for proper tracking. No filenames could be cited as evidence because no concrete documents were present in the extracts.\\n\\nObservations & Advisories:\\n4 Observations: 4 info.\\nThe first observation reflects that there is no loss amount or repair estimate information available, meaning an adjuster will need to obtain a repair estimate or otherwise determine the loss amount before the claim can be advanced.\\nThe second observation notes that injury status is unknown; this should be clarified with the claimant to ensure any bodily injury exposures are appropriately addressed.\\nThe third observation explains that without a claim form, deductible details cannot be confirmed, so coverage verification is required before any payments can be calculated.\\nThe fourth observation highlights that no recognizable claim-related documents were supplied, which significantly restricts the ability to assess compliance with required-document rules or to cross-check identifiers and other key fields.\\n\\nAnalysis Context:\\nBecause no specific document extracts were provided, all canonical input fields had to be treated as unknown or null. The loss_type, jurisdiction, has_injuries, and involves_third_party fields are all set to unknown with low confidence, and loss_amount is null with low confidence due to the absence of any supporting evidence. The photos_provided_count is set to zero, also with low confidence, because there is no indication that any damage photos were supplied.\\nNo documents could be inventoried under the defined schemas, so the documents list is empty. As a result, for all discrepancy checks involving claim number, policy number, date of loss, VIN, license plate, total estimate, and damage description, the values for each referenced document type were null. Only the existence check for the claim number produced a discrepancy; other conflict checks did not, because they require at least two non-null differing values to be treated as conflicts. The observations captured the absence of a loss amount, the undetermined injury status, the missing deductible information due to the lack of a claim form, and the overall lack of recognizable claim documents, which together explain why the analysis is necessarily limited and why follow-up information will be required to fully evaluate the claim under the policy rules.\"\n}",
+              "process_comment": "",
+              "process_time": "2026-09-12T02:15:42.790260+00:00",
+              "processed_time": "00:01:05.500"
+            }
+          },
+          "lastStatus": {
+            "status": "Completed",
+            "message": "Claim Batch '77f4a16d-96fe-4739-b90a-9ac0b2597bb4' has been completed.",
+            "location": "/claimprocessor/claims/77f4a16d-96fe-4739-b90a-9ac0b2597bb4"
+          }
+        },
+        "corrupt": {
+          "claimId": "4ca130f8-2f91-4d3b-8276-e14297e3ef91",
+          "submitted": false
+        }
+      },
+      "schemaSetId": "0669038a-dcc4-46c7-b53c-1209263c070b"
+    },
+    "content-call-budget.json": {
+      "version": 1,
+      "scope": "content-only",
+      "requests": [
+        {
+          "kind": "cu-metadata",
+          "service": "processor",
+          "pid": 18,
+          "started": "2026-09-12T02:14:51.288231+00:00",
+          "method": "GET",
+          "host": "aif-ptuv-content-260911.cognitiveservices.azure.com",
+          "path": "/contentunderstanding/analyzers/prebuilt-layout",
+          "model": null,
+          "id": 1,
+          "containerReplica": "ca-ptu-content-processor--0000002-769f6dc8d-mc72l",
+          "containerRevision": "ca-ptu-content-processor--0000002",
+          "status": 200,
+          "elapsed_ms": 340.043,
+          "usage": null,
+          "pages": null,
+          "operation": null,
+          "error": null
+        },
+        {
+          "kind": "cu-analyze",
+          "service": "processor",
+          "pid": 14,
+          "started": "2026-09-12T02:15:51.070602+00:00",
+          "method": "POST",
+          "host": "aif-ptuv-content-260911.cognitiveservices.azure.com",
+          "path": "/contentunderstanding/analyzers/prebuilt-layout:analyzeBinary",
+          "model": null,
+          "id": 2,
+          "containerReplica": "ca-ptu-content-processor--0000002-769f6dc8d-mc72l",
+          "containerRevision": "ca-ptu-content-processor--0000002",
+          "status": 202,
+          "elapsed_ms": 479.309,
+          "usage": null,
+          "pages": null,
+          "operation": "7f687fbf-19a3-4581-8a59-47f1f0d3934f",
+          "error": null
+        },
+        {
+          "kind": "cu-poll",
+          "service": "processor",
+          "pid": 14,
+          "started": "2026-09-12T02:15:51.708223+00:00",
+          "method": "GET",
+          "host": "aif-ptuv-content-260911.cognitiveservices.azure.com",
+          "path": "/contentunderstanding/analyzerResults/7f687fbf-19a3-4581-8a59-47f1f0d3934f",
+          "model": null,
+          "id": 3,
+          "containerReplica": "ca-ptu-content-processor--0000002-769f6dc8d-mc72l",
+          "containerRevision": "ca-ptu-content-processor--0000002",
+          "status": 200,
+          "elapsed_ms": 3371.406,
+          "usage": [
+            {
+              "documentPagesStandard": 1
+            }
+          ],
+          "pages": 1,
+          "operation": "7f687fbf-19a3-4581-8a59-47f1f0d3934f",
+          "error": null
+        },
+        {
+          "kind": "cu-analyze",
+          "service": "processor",
+          "pid": 14,
+          "started": "2026-09-12T02:15:57.911506+00:00",
+          "method": "POST",
+          "host": "aif-ptuv-content-260911.cognitiveservices.azure.com",
+          "path": "/contentunderstanding/analyzers/prebuilt-layout:analyzeBinary",
+          "model": null,
+          "id": 4,
+          "containerReplica": "ca-ptu-content-processor--0000002-769f6dc8d-mc72l",
+          "containerRevision": "ca-ptu-content-processor--0000002",
+          "status": 202,
+          "elapsed_ms": 285.698,
+          "usage": null,
+          "pages": null,
+          "operation": "7e338a97-da84-4c86-b167-49727e8e4756",
+          "error": null
+        },
+        {
+          "kind": "cu-poll",
+          "service": "processor",
+          "pid": 14,
+          "started": "2026-09-12T02:15:58.340462+00:00",
+          "method": "GET",
+          "host": "aif-ptuv-content-260911.cognitiveservices.azure.com",
+          "path": "/contentunderstanding/analyzerResults/7e338a97-da84-4c86-b167-49727e8e4756",
+          "model": null,
+          "id": 5,
+          "containerReplica": "ca-ptu-content-processor--0000002-769f6dc8d-mc72l",
+          "containerRevision": "ca-ptu-content-processor--0000002",
+          "status": 200,
+          "elapsed_ms": 124.912,
+          "usage": null,
+          "pages": null,
+          "operation": "7e338a97-da84-4c86-b167-49727e8e4756",
+          "error": null
+        },
+        {
+          "kind": "cu-poll",
+          "service": "processor",
+          "pid": 14,
+          "started": "2026-09-12T02:16:00.657782+00:00",
+          "method": "GET",
+          "host": "aif-ptuv-content-260911.cognitiveservices.azure.com",
+          "path": "/contentunderstanding/analyzerResults/7e338a97-da84-4c86-b167-49727e8e4756",
+          "model": null,
+          "id": 6,
+          "containerReplica": "ca-ptu-content-processor--0000002-769f6dc8d-mc72l",
+          "containerRevision": "ca-ptu-content-processor--0000002",
+          "status": 200,
+          "elapsed_ms": 92.756,
+          "usage": [
+            {
+              "documentPagesStandard": 1
+            }
+          ],
+          "pages": 1,
+          "operation": "7e338a97-da84-4c86-b167-49727e8e4756",
+          "error": null
+        },
+        {
+          "kind": "cu-analyze",
+          "service": "processor",
+          "pid": 14,
+          "started": "2026-09-12T02:16:02.319499+00:00",
+          "method": "POST",
+          "host": "aif-ptuv-content-260911.cognitiveservices.azure.com",
+          "path": "/contentunderstanding/analyzers/prebuilt-layout:analyzeBinary",
+          "model": null,
+          "id": 7,
+          "containerReplica": "ca-ptu-content-processor--0000002-769f6dc8d-mc72l",
+          "containerRevision": "ca-ptu-content-processor--0000002",
+          "status": 202,
+          "elapsed_ms": 148.43,
+          "usage": null,
+          "pages": null,
+          "operation": "bbc474c0-2a9b-4441-b66a-8496d35cba39",
+          "error": null
+        },
+        {
+          "kind": "cu-poll",
+          "service": "processor",
+          "pid": 14,
+          "started": "2026-09-12T02:16:02.628106+00:00",
+          "method": "GET",
+          "host": "aif-ptuv-content-260911.cognitiveservices.azure.com",
+          "path": "/contentunderstanding/analyzerResults/bbc474c0-2a9b-4441-b66a-8496d35cba39",
+          "model": null,
+          "id": 8,
+          "containerReplica": "ca-ptu-content-processor--0000002-769f6dc8d-mc72l",
+          "containerRevision": "ca-ptu-content-processor--0000002",
+          "status": 200,
+          "elapsed_ms": 78.207,
+          "usage": null,
+          "pages": null,
+          "operation": "bbc474c0-2a9b-4441-b66a-8496d35cba39",
+          "error": null
+        },
+        {
+          "kind": "cu-poll",
+          "service": "processor",
+          "pid": 14,
+          "started": "2026-09-12T02:16:04.902013+00:00",
+          "method": "GET",
+          "host": "aif-ptuv-content-260911.cognitiveservices.azure.com",
+          "path": "/contentunderstanding/analyzerResults/bbc474c0-2a9b-4441-b66a-8496d35cba39",
+          "model": null,
+          "id": 9,
+          "containerReplica": "ca-ptu-content-processor--0000002-769f6dc8d-mc72l",
+          "containerRevision": "ca-ptu-content-processor--0000002",
+          "status": 200,
+          "elapsed_ms": 424.911,
+          "usage": [
+            {
+              "documentPagesStandard": 1
+            }
+          ],
+          "pages": 1,
+          "operation": "bbc474c0-2a9b-4441-b66a-8496d35cba39",
+          "error": null
+        },
+        {
+          "kind": "model",
+          "service": "workflow",
+          "pid": 7,
+          "started": "2026-09-12T02:16:11.510822+00:00",
+          "method": "POST",
+          "host": "aif-ptuv-content-260911.openai.azure.com",
+          "path": "/openai/deployments/gpt-5.1/chat/completions",
+          "model": "gpt-5.1",
+          "id": 10,
+          "containerReplica": "ca-ptu-content-workflow--0000002-c8547f8b8-dfjjp",
+          "containerRevision": "ca-ptu-content-workflow--0000002",
+          "status": 200,
+          "elapsed_ms": 2160.126,
+          "usage": [
+            {
+              "completion_tokens": 22,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "latency_checkpoint": {
+                "engine_tbt_ms": 0,
+                "engine_ttft_ms": 310,
+                "engine_ttlt_ms": 318,
+                "pre_inference_ms": 285,
+                "service_tbt_ms": 10,
+                "service_ttft_ms": 1158,
+                "service_ttlt_ms": 1380,
+                "user_visible_ttft_ms": 873
+              },
+              "prompt_tokens": 551,
+              "prompt_tokens_details": {
+                "audio_tokens": 0,
+                "cached_tokens": 0
+              },
+              "total_tokens": 573
+            }
+          ],
+          "pages": null,
+          "operation": null,
+          "error": null
+        },
+        {
+          "kind": "model",
+          "service": "workflow",
+          "pid": 7,
+          "started": "2026-09-12T02:16:13.862186+00:00",
+          "method": "POST",
+          "host": "aif-ptuv-content-260911.openai.azure.com",
+          "path": "/openai/deployments/gpt-5.1/chat/completions",
+          "model": "gpt-5.1",
+          "id": 11,
+          "containerReplica": "ca-ptu-content-workflow--0000002-c8547f8b8-dfjjp",
+          "containerRevision": "ca-ptu-content-workflow--0000002",
+          "status": 200,
+          "elapsed_ms": 1350.355,
+          "usage": [
+            {
+              "completion_tokens": 19,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "latency_checkpoint": {
+                "engine_tbt_ms": 0,
+                "engine_ttft_ms": 312,
+                "engine_ttlt_ms": 314,
+                "pre_inference_ms": 119,
+                "service_tbt_ms": 11,
+                "service_ttft_ms": 919,
+                "service_ttlt_ms": 1124,
+                "user_visible_ttft_ms": 800
+              },
+              "prompt_tokens": 702,
+              "prompt_tokens_details": {
+                "audio_tokens": 0,
+                "cached_tokens": 0
+              },
+              "total_tokens": 721
+            }
+          ],
+          "pages": null,
+          "operation": null,
+          "error": null
+        },
+        {
+          "kind": "model",
+          "service": "workflow",
+          "pid": 7,
+          "started": "2026-09-12T02:16:15.526202+00:00",
+          "method": "POST",
+          "host": "aif-ptuv-content-260911.openai.azure.com",
+          "path": "/openai/deployments/gpt-5.1/chat/completions",
+          "model": "gpt-5.1",
+          "id": 12,
+          "containerReplica": "ca-ptu-content-workflow--0000002-c8547f8b8-dfjjp",
+          "containerRevision": "ca-ptu-content-workflow--0000002",
+          "status": 200,
+          "elapsed_ms": 32333.298,
+          "usage": [
+            {
+              "completion_tokens": 2658,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "latency_checkpoint": {
+                "engine_tbt_ms": 11,
+                "engine_ttft_ms": 520,
+                "engine_ttlt_ms": 30658,
+                "pre_inference_ms": 281,
+                "service_tbt_ms": 11,
+                "service_ttft_ms": 1656,
+                "service_ttlt_ms": 31522,
+                "user_visible_ttft_ms": 1375
+              },
+              "prompt_tokens": 4497,
+              "prompt_tokens_details": {
+                "audio_tokens": 0,
+                "cached_tokens": 0
+              },
+              "total_tokens": 7155
+            }
+          ],
+          "pages": null,
+          "operation": null,
+          "error": null
+        }
+      ]
+    },
+    "claim-run-complete.json": {
+      "case": "complete",
+      "claimId": "77f4a16d-96fe-4739-b90a-9ac0b2597bb4",
+      "startedUtc": "2026-09-12T02:15:38.544276+00:00",
+      "statuses": [
+        {
+          "utc": "2026-09-12T02:15:42.515097+00:00",
+          "value": {
+            "status": "Pending",
+            "message": "Claim Batch '77f4a16d-96fe-4739-b90a-9ac0b2597bb4' is in progress."
+          }
+        },
+        {
+          "utc": "2026-09-12T02:15:57.736493+00:00",
+          "value": {
+            "status": "Processing",
+            "message": "Claim Batch '77f4a16d-96fe-4739-b90a-9ac0b2597bb4' is in progress."
+          }
+        },
+        {
+          "utc": "2026-09-12T02:16:13.081607+00:00",
+          "value": {
+            "status": "RAIAnalysis",
+            "message": "Claim Batch '77f4a16d-96fe-4739-b90a-9ac0b2597bb4' is in progress."
+          }
+        },
+        {
+          "utc": "2026-09-12T02:16:28.494418+00:00",
+          "value": {
+            "status": "GapAnalysis",
+            "message": "Claim Batch '77f4a16d-96fe-4739-b90a-9ac0b2597bb4' is in progress."
+          }
+        },
+        {
+          "utc": "2026-09-12T02:16:44.013681+00:00",
+          "value": {
+            "status": "GapAnalysis",
+            "message": "Claim Batch '77f4a16d-96fe-4739-b90a-9ac0b2597bb4' is in progress."
+          }
+        },
+        {
+          "utc": "2026-09-12T02:16:59.344827+00:00",
+          "value": {
+            "status": "Completed",
+            "message": "Claim Batch '77f4a16d-96fe-4739-b90a-9ac0b2597bb4' has been completed.",
+            "location": "/claimprocessor/claims/77f4a16d-96fe-4739-b90a-9ac0b2597bb4"
+          }
+        }
+      ],
+      "submittedThisRun": true,
+      "modelAttemptsObserved": 3,
+      "terminalStatus": "Completed",
+      "finishedUtc": "2026-09-12T02:17:00.446626+00:00"
+    },
+    "claim-run-corrupt.json": null,
+    "claim-run-missing-police.json": null,
+    "claim-run-vin-date-mismatch.json": null,
+    "claim-run-complete-recovery.json": null,
+    "schema-name-repair.json": {
+      "utc": "2026-09-12T02:26:20.731687+00:00",
+      "heldOriginalMessages": [
+        {
+          "messageId": "ad3a7c0c-c6e3-42ed-9ece-528e27af87e6",
+          "processId": "27477b6a-130b-4489-b02d-1c911d6550af",
+          "nextVisibleUtc": "2026-09-12 04:26:20+00:00"
+        },
+        {
+          "messageId": "9c04bf44-7021-450b-a6c9-4f0d96582c57",
+          "processId": "0de7be0e-d949-461f-9107-5db22aa806ef",
+          "nextVisibleUtc": "2026-09-12 04:26:20+00:00"
+        },
+        {
+          "messageId": "d99eca33-195d-43ef-9d9a-2f5e70b89afb",
+          "processId": "19c0161d-7198-4315-81b2-9bfcaf7a01e8",
+          "nextVisibleUtc": "2026-09-12 04:26:20+00:00"
+        },
+        {
+          "messageId": "e13169c0-1f38-4e7d-a291-501c2e1d7f52",
+          "processId": "dd126bb9-93c7-42df-b39e-6554711866c6",
+          "nextVisibleUtc": "2026-09-12 04:26:20+00:00"
+        }
+      ],
+      "sourceCollection": "ptu-content-schemas",
+      "targetCollection": "Schemas",
+      "schemas": [
+        {
+          "schemaId": "e40f3710-6659-4b6d-a1c4-f457ac94a07a",
+          "source": "ptu-content-schemas/e40f3710-6659-4b6d-a1c4-f457ac94a07a/autoclaim.json",
+          "target": "Schemas/e40f3710-6659-4b6d-a1c4-f457ac94a07a/autoclaim.json",
+          "sha256": "0dc17d2e0b602cef3e7ab7d102b76d1901c185d512750c3102833f8b5a71976d",
+          "verified": true
+        },
+        {
+          "schemaId": "e26a0118-23cd-46d8-afb8-483e6e3ed2be",
+          "source": "ptu-content-schemas/e26a0118-23cd-46d8-afb8-483e6e3ed2be/damagedcarimage.json",
+          "target": "Schemas/e26a0118-23cd-46d8-afb8-483e6e3ed2be/damagedcarimage.json",
+          "sha256": "58a9a4b68dc44b7b9330fae571a305d76699219c9f026060ce21cf4b1d8719e2",
+          "verified": true
+        },
+        {
+          "schemaId": "c56d2d29-82f5-4dc8-9659-c41e47254ce9",
+          "source": "ptu-content-schemas/c56d2d29-82f5-4dc8-9659-c41e47254ce9/policereport.json",
+          "target": "Schemas/c56d2d29-82f5-4dc8-9659-c41e47254ce9/policereport.json",
+          "sha256": "e31b8afc90a256185c1c69efcef55698673316c83dd2a30ae099db2a22909aa3",
+          "verified": true
+        },
+        {
+          "schemaId": "d5531c34-0d85-40d2-bd9e-c2d361ee2d44",
+          "source": "ptu-content-schemas/d5531c34-0d85-40d2-bd9e-c2d361ee2d44/repairestimate.json",
+          "target": "Schemas/d5531c34-0d85-40d2-bd9e-c2d361ee2d44/repairestimate.json",
+          "sha256": "2f31b009b87fbea5e44dd6e137326784cf4b1baed986fc2fecf18ec8c7b4e05c",
+          "verified": true
+        }
+      ],
+      "dataDeleted": false,
+      "reason": "API used configurable prefix; upstream Processor hardcodes case-sensitive Schemas",
+      "dataCopyVerified": true
+    },
+    "complete-recovery-document-outputs.json": null
+  },
+  "localCaptureUtc": "2026-09-12T02:26:25.516199+00:00",
+  "controlPlaneExitCode": 0
+}

@@ -1,0 +1,11 @@
+{
+  "captured_at": "2026-09-11T23:08:14.5617385-04:00",
+  "replica_counts": {
+    "chatbot-chat-api": 0,
+    "chatbot-scenario-api": 0,
+    "chatbot-chat-ui": 0,
+    "chatbot-scenario-ui": 0
+  },
+  "ingress_and_scaler_verified": true,
+  "api_rechecked_at": "2026-09-12T03:10:13.0627594+00:00"
+}

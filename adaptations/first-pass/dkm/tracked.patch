@@ -1,0 +1,216 @@
+diff --git a/App/backend-api/.dockerignore b/App/backend-api/.dockerignore
+index fe1152bdb8442f4d14f9b9533e63fe0c2680bcee..a1cd36f3f2062b15fe92045919ebf8cc692b7f3e 100644
+--- a/App/backend-api/.dockerignore
++++ b/App/backend-api/.dockerignore
+@@ -1,6 +1,8 @@
+ **/.classpath
+ **/.dockerignore
+ **/.env
++**/.env.*
++**/.azure
+ **/.git
+ **/.gitignore
+ **/.project
+diff --git a/App/backend-api/Microsoft.GS.DPS.Host/DependencyConfiguration/ServiceDependencies.cs b/App/backend-api/Microsoft.GS.DPS.Host/DependencyConfiguration/ServiceDependencies.cs
+index c3e51299aa3f35f7f3cc9d876355bc3001b426d3..5b05be0ce5066a1b8dfe4ab4783307f5db3e651c 100644
+--- a/App/backend-api/Microsoft.GS.DPS.Host/DependencyConfiguration/ServiceDependencies.cs
++++ b/App/backend-api/Microsoft.GS.DPS.Host/DependencyConfiguration/ServiceDependencies.cs
+@@ -13,6 +13,8 @@ using Microsoft.GS.DPS.Storage.AISearch;
+ using Microsoft.GS.DPSHost.AppConfiguration;
+ using Microsoft.Extensions.DependencyInjection;
+ using Microsoft.GS.DPSHost.Helpers;
++using Azure.AI.OpenAI;
++using System.ClientModel.Primitives;
+ 
+ namespace Microsoft.GS.DPSHost.ServiceConfiguration
+ {
+@@ -29,12 +31,28 @@ namespace Microsoft.GS.DPSHost.ServiceConfiguration
+                 .AddSingleton<Microsoft.GS.DPS.API.UserInterface.DataCacheManager>()
+                 .AddSingleton<Microsoft.SemanticKernel.Kernel>(x =>
+                 {
+-                    return Kernel.CreateBuilder()
++                    return EvaluationRetryConfiguration.Create(
++                        () => Kernel.CreateBuilder()
+                                  .AddAzureOpenAIChatCompletion(deploymentName: builder.Configuration.GetSection("Application:AIServices:GPT-4o-mini")["ModelName"] ?? "",
+                                                               endpoint: builder.Configuration.GetSection("Application:AIServices:GPT-4o-mini")["Endpoint"] ?? "",
+                                                               credentials: AzureCredentialHelper.GetAzureCredential())
+ 
+-                                 .Build();
++                                 .Build(),
++                        retries =>
++                        {
++                            var options = new AzureOpenAIClientOptions
++                            {
++                                RetryPolicy = new ClientRetryPolicy(retries)
++                            };
++                            var client = new AzureOpenAIClient(
++                                new Uri(builder.Configuration.GetSection("Application:AIServices:GPT-4o-mini")["Endpoint"] ?? ""),
++                                AzureCredentialHelper.GetAzureCredential(), options);
++                            return Kernel.CreateBuilder()
++                                .AddAzureOpenAIChatCompletion(
++                                    builder.Configuration.GetSection("Application:AIServices:GPT-4o-mini")["ModelName"] ?? "",
++                                    client)
++                                .Build();
++                        });
+                 })
+                 .AddSingleton<ChatSessionRepository>(x =>
+                 {
+diff --git a/App/frontend-app/.dockerignore b/App/frontend-app/.dockerignore
+index 3c3629e647f5ddf82548912e337bea9826b434af..d5f153440a50a7761aef22053e761ee5761ae7f7 100644
+--- a/App/frontend-app/.dockerignore
++++ b/App/frontend-app/.dockerignore
+@@ -1 +1,8 @@
+ node_modules
++**/.env
++**/.env.*
++**/.azure
++**/.git
++**/secrets*.json
++**/secrets*.yaml
++**/secrets*.yml
+diff --git a/App/kernel-memory/.dockerignore b/App/kernel-memory/.dockerignore
+index 1b0280aeeec517fe2d61339f84c5b81c5383feee..72db4ae83a93f44adc56bb21c87ff3d96f5d1b73 100644
+--- a/App/kernel-memory/.dockerignore
++++ b/App/kernel-memory/.dockerignore
+@@ -1,5 +1,8 @@
+ .dockerignore
+ .env
++**/.env
++**/.env.*
++**/.azure
+ .git
+ .gitignore
+ .vs
+@@ -8,6 +11,8 @@ docker-compose.yml
+ docker-compose.*.yml
+ */bin
+ */obj
++**/bin
++**/obj
+ 
+ # To make sure that the local appsettings files are not copied when building the image locally.
+ # These files are not in GitHub thanks to .gitignore
+diff --git a/App/kernel-memory/extensions/AzureOpenAI/AzureOpenAITextEmbeddingGenerator.cs b/App/kernel-memory/extensions/AzureOpenAI/AzureOpenAITextEmbeddingGenerator.cs
+index 4e1ca1e5c3211f7d20f00599c478dd14076554ea..52dd4b49f38743653b9eb359bc5403135251c513 100644
+--- a/App/kernel-memory/extensions/AzureOpenAI/AzureOpenAITextEmbeddingGenerator.cs
++++ b/App/kernel-memory/extensions/AzureOpenAI/AzureOpenAITextEmbeddingGenerator.cs
+@@ -8,6 +8,10 @@ using System.Net.Http;
+ using System.Threading;
+ using System.Threading.Tasks;
+ using Azure.Identity;
++using Azure;
++using Azure.AI.OpenAI;
++using Azure.Core.Pipeline;
++using Microsoft.KernelMemory.Configuration;
+ using Microsoft.Extensions.Logging;
+ using Microsoft.KernelMemory.AI.OpenAI;
+ using Microsoft.KernelMemory.Diagnostics;
+@@ -46,6 +50,36 @@ public sealed class AzureOpenAITextEmbeddingGenerator : ITextEmbeddingGenerator,
+         this.MaxTokens = config.MaxTokenTotal;
+         this.MaxBatchSize = config.MaxEmbeddingBatchSize;
+ 
++        var evaluationClient = EvaluationRetryConfiguration.Create<AzureOpenAITextEmbeddingGenerationService?>(
++            () => null,
++            retries =>
++            {
++                var options = new OpenAIClientOptions();
++                options.Retry.MaxRetries = retries;
++                if (httpClient is not null)
++                {
++                    options.Transport = new HttpClientTransport(httpClient);
++                }
++
++                var client = config.Auth switch
++                {
++                    AzureOpenAIConfig.AuthTypes.AzureIdentity =>
++                        new OpenAIClient(new Uri(config.Endpoint), new DefaultAzureCredential(), options),
++                    AzureOpenAIConfig.AuthTypes.ManualTokenCredential =>
++                        new OpenAIClient(new Uri(config.Endpoint), config.GetTokenCredential(), options),
++                    AzureOpenAIConfig.AuthTypes.APIKey =>
++                        new OpenAIClient(new Uri(config.Endpoint), new AzureKeyCredential(config.APIKey), options),
++                    _ => throw new NotImplementedException($"Azure OpenAI auth type '{config.Auth}' not available")
++                };
++                return new AzureOpenAITextEmbeddingGenerationService(
++                    config.Deployment, client, config.Deployment, loggerFactory, config.EmbeddingDimensions);
++            });
++        if (evaluationClient is not null)
++        {
++            this._client = evaluationClient;
++            return;
++        }
++
+         switch (config.Auth)
+         {
+             case AzureOpenAIConfig.AuthTypes.AzureIdentity:
+diff --git a/App/kernel-memory/service/Core/Handlers/KeywordExtractingHandler.cs b/App/kernel-memory/service/Core/Handlers/KeywordExtractingHandler.cs
+index fb1ca9221aaf80e5245697697e13c813328ef319..3c8f6d5c594d315e9c5b1c07e28f00c2495db568 100644
+--- a/App/kernel-memory/service/Core/Handlers/KeywordExtractingHandler.cs
++++ b/App/kernel-memory/service/Core/Handlers/KeywordExtractingHandler.cs
+@@ -6,6 +6,8 @@ using System.Text.Json;
+ using System.Threading;
+ using System.Threading.Tasks;
+ using Azure.Identity;
++using Azure.AI.OpenAI;
++using Microsoft.KernelMemory.Configuration;
+ using Microsoft.Extensions.Logging;
+ using Microsoft.KernelMemory.Diagnostics;
+ using Microsoft.KernelMemory.Pipeline;
+@@ -36,11 +38,24 @@ public sealed class KeywordExtractingHandler : IPipelineStepHandler
+         this._config = config;
+ 
+         //init Semantic Kernel
+-        this._kernel = Kernel.CreateBuilder()
++        this._kernel = EvaluationRetryConfiguration.Create(
++            () => Kernel.CreateBuilder()
+             .AddAzureOpenAIChatCompletion(deploymentName: (string)this._config.Services["AzureOpenAIText"]["Deployment"],
+                                                 endpoint: (string)this._config.Services["AzureOpenAIText"]["Endpoint"],
+                                                   credentials: new DefaultAzureCredential())
+-            .Build();
++            .Build(),
++            retries =>
++            {
++                var options = new OpenAIClientOptions();
++                options.Retry.MaxRetries = retries;
++                var client = new OpenAIClient(
++                    new Uri((string)this._config.Services["AzureOpenAIText"]["Endpoint"]),
++                    new DefaultAzureCredential(), options);
++                return Kernel.CreateBuilder()
++                    .AddAzureOpenAIChatCompletion(
++                        (string)this._config.Services["AzureOpenAIText"]["Deployment"], client)
++                    .Build();
++            });
+     }
+ 
+     public async Task<(bool success, DataPipeline updatedPipeline)> InvokeAsync(DataPipeline pipeline, CancellationToken cancellationToken = default)
+@@ -152,4 +167,3 @@ public sealed class KeywordExtractingHandler : IPipelineStepHandler
+     }
+ 
+ }
+-
+diff --git a/infra/main.bicep b/infra/main.bicep
+index 69e39912dedb61a7056fee64149377264e4e7b92..abe3c24202329775c9b161a91bbe617f2b380711 100644
+--- a/infra/main.bicep
++++ b/infra/main.bicep
+@@ -73,6 +73,13 @@ param vmAdminPassword string?
+ @description('Optional. Size of the Jumpbox Virtual Machine when created. Set to custom value if enablePrivateNetworking is true.')
+ param vmSize string = 'Standard_D2s_v5'
+ 
++@description('AKS worker SKU. The alternative is an approved availability adaptation with the same x64 4-vCPU/16-GiB envelope.')
++@allowed([
++  'Standard_D4ds_v5'
++  'Standard_D4s_v6'
++])
++param aksNodeVmSize string = 'Standard_D4ds_v5'
++
+ @description('Optional. The tags to apply to all deployed Azure resources.')
+ param tags resourceInput<'Microsoft.Resources/resourceGroups@2025-04-01'>.tags = {}
+ 
+@@ -976,7 +983,7 @@ module managedCluster 'br/public:avm/res/container-service/managed-cluster:0.13.
+     primaryAgentPoolProfiles: [
+       {
+         name: 'agentpool'
+-        vmSize: 'Standard_D4ds_v5'
++        vmSize: aksNodeVmSize
+         count: 2
+         osType: 'Linux'
+         mode: 'System'

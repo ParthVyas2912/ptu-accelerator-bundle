@@ -1,0 +1,6 @@
+{
+  "path": "/app/orchestration/connection_config.py",
+  "sha256": "ddc723d803886a9a7d9b28d99022f424ba3f7a64065a1bcaf4e9ef31b12b7721",
+  "component": "Patched native ConnectionConfig; source-hash verification only, not a fabricated workflow event",
+  "modelCalls": 0
+}

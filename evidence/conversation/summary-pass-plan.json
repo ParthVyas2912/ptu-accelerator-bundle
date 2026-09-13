@@ -1,0 +1,194 @@
+{
+  "scope": "Approved AI dependency plus bounded original summarization API component, not replacement Explore",
+  "source_sha": "8a00aa54bc25fd3624020648c63f2c069172d8ca",
+  "account": "aif-ptu-conversation-7d804f70",
+  "project": "proj-ptu-conversation",
+  "resource_group": "rg-ptu-conversation-demo",
+  "location": "swedencentral",
+  "sku": "S0",
+  "initial_public_network_access": "Disabled",
+  "local_auth_disabled": true,
+  "models": [
+    {
+      "name": "gpt-5.2",
+      "version": "2025-12-11",
+      "sku": "GlobalStandard",
+      "capacity": 10
+    },
+    {
+      "name": "text-embedding-3-small",
+      "version": "1",
+      "sku": "GlobalStandard",
+      "capacity": 10
+    }
+  ],
+  "preflight": {
+    "catalog_rechecked": true,
+    "gpt52_quota_current": 0,
+    "gpt52_quota_limit": 1000,
+    "embedding_quota_current": 40,
+    "embedding_quota_limit": 1000,
+    "existing_ckm_ai_accounts_before_creation": [],
+    "bicep_validation": "Succeeded",
+    "meter_offline_tests": 4,
+    "meter_offline_tests_passed": true
+  },
+  "actual_ai_deployment": {
+    "session": "ckm-ai-deploy",
+    "exit_code": 0,
+    "state": "Succeeded",
+    "account_id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.CognitiveServices/accounts/aif-ptu-conversation-7d804f70",
+    "project_id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.CognitiveServices/accounts/aif-ptu-conversation-7d804f70/projects/proj-ptu-conversation",
+    "openai_endpoint": "https://aif-ptu-conversation-7d804f70.openai.azure.com/",
+    "project_endpoint": "https://aif-ptu-conversation-7d804f70.services.ai.azure.com/api/projects/proj-ptu-conversation",
+    "actual_pna": "Disabled",
+    "actual_disable_local_auth": true,
+    "both_model_deployments_succeeded": true,
+    "both_actual_capacities": 10,
+    "both_actual_skus": "GlobalStandard",
+    "version_upgrade_option": "NoAutoUpgrade",
+    "inference_role_assignment": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.CognitiveServices/accounts/aif-ptu-conversation-7d804f70/providers/Microsoft.Authorization/roleAssignments/2a1c26d8-6205-4e37-aec1-1a16d70cdefb",
+    "inference_role": "Cognitive Services OpenAI User",
+    "inference_principal": "b0c36c36-5b9f-4efa-9f01-0e19fb97aa25",
+    "no_shared_models_modified": true
+  },
+  "remote_build": {
+    "tag": "conversation/api:8a00aa5-summaryeval1",
+    "first_submission": "CLI-only failure before build: unrecognized --cpu; exit2. No cloud run was created by that submission.",
+    "correction": "Removed unsupported --cpu, then used the minimal-context cwd for original Dockerfile resolution; no new pool or local build.",
+    "session": "ckm-summary-remote-build-context",
+    "local_build_started": false,
+    "original_dockerfile_source_unchanged": true,
+    "eol_observation": "Git archive converted27 LF lines to CRLF; normalized bytes were identical to the original Git blob.",
+    "second_submission": "CLI-only Dockerfile-path failure; no remote build created.",
+    "actual_run": {
+      "cpu": 2,
+      "finish": "2026-09-11T23:04:53.408381-04:00",
+      "images": [
+        {
+          "digest": "sha256:d0bb87b6b567a7e369d424f1f05c759acb3d7a897f50e8fd7c6db577709139ed",
+          "registry": "acrptubundle7d804f70.azurecr.io",
+          "repository": "conversation/api",
+          "tag": "8a00aa5-summaryeval1"
+        }
+      ],
+      "runId": "chu",
+      "start": "2026-09-11T23:03:17.102698-04:00",
+      "status": "Succeeded"
+    },
+    "context_kib": 152.068,
+    "local_client_exit": 1,
+    "client_failure_evidence": "evidence/conversation/remote-build-chu-client-failure.txt",
+    "remote_build_succeeded_despite_client_encoding_failure": true
+  },
+  "pass": {
+    "native_route": "/api/processing/summarize",
+    "execution": "Original FastAPI route through TestClient in a short-lived cloud process",
+    "serving_app_model_endpoints_remain_unset": true,
+    "base_conversations": 3,
+    "counterfactual_cases": 4,
+    "hard_pass_request_limit": 7,
+    "overall_user_limit_including_retries": 12,
+    "sdk_retries": 0,
+    "streaming_allowed": false,
+    "max_completion_tokens_per_request": 360,
+    "report_duplicate_guard": "Exclusive replica-local report creation; never rerun on a fresh replica without checking/exporting global evidence",
+    "actual_usage_and_elapsed_captured": true,
+    "generic_chat_or_retrieval_substitution": false,
+    "status": "completed_manually_reviewed_qualified",
+    "actual_model_requests": 7,
+    "result": "evidence/conversation/summary-review.json"
+  },
+  "network": {
+    "new_pe_limit_for_this_step": 1,
+    "group_id": "account",
+    "conditional_only_after_cloud_probe": true,
+    "target": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.CognitiveServices/accounts/aif-ptu-conversation-7d804f70",
+    "zoneNames": [
+      "privatelink.cognitiveservices.azure.com",
+      "privatelink.openai.azure.com",
+      "privatelink.services.ai.azure.com"
+    ],
+    "public_network_or_policy_changes": false,
+    "actual_pe_id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateEndpoints/pe-conversation-ai",
+    "before_metadata_http": 403,
+    "after_metadata_http": 200,
+    "after_openai_private_ip": "10.246.2.26",
+    "actual_model_http200_requests": 7,
+    "remaining_app_pe_allowance": 3
+  },
+  "cost_driver_review_before_creation": {
+    "fixed_model_reservation_or_ptu_charge": 0,
+    "account_project_base": "S0 consumption services, not dedicated/PTU capacity",
+    "conditional_account_pe": "One endpoint-hour plus processed-data consumption only if probe establishes need",
+    "api_compute_when_warm_usd_per_hour": 0.054,
+    "ui_compute_for_this_step": "Keep paused",
+    "remote_build": "Approved shared ACR quick build,2CPU,900-second timeout, no local build",
+    "remote_build_reference_usd_per_vcpu_second": 0.0001,
+    "remote_build_max_reference_per_attempt_usd": 0.18,
+    "model_consumption": "At most7 requests, each max360 completion tokens, bounded synthetic input. Record returned usage; no invoice cost claimed.",
+    "no_new_sql_search_storage_cosmos_for_this_component": true,
+    "no_automatic_azure_cleanup": true
+  },
+  "limitations": [
+    "No durable Azure ingestion, Search grounding/citations or SQL dashboard is claimed.",
+    "Standard Agent private-Search topology still needs a separate decision.",
+    "Counterfactual checks are narrow feature checks, not statistical fairness assurance.",
+    "Sweden Central/GlobalStandard processing is not Canada-confined and remains synthetic only."
+  ],
+  "final_pause": {
+    "session": "ckm-summary-pause",
+    "exit_code": 0,
+    "verified_at": "2026-09-12T03:30:50.0055221+00:00",
+    "all_revisions": [
+      {
+        "active": false,
+        "health": "Healthy",
+        "name": "ca-ptu-conversation-api--cdcg7po",
+        "replicas": 0
+      },
+      {
+        "active": false,
+        "health": "Healthy",
+        "name": "ca-ptu-conversation-api--0000001",
+        "replicas": 0
+      },
+      {
+        "active": false,
+        "health": "Healthy",
+        "name": "ca-ptu-conversation-api--0000002",
+        "replicas": 0
+      },
+      {
+        "active": false,
+        "health": "Healthy",
+        "name": "ca-ptu-conversation-api--0000003",
+        "replicas": 0
+      },
+      {
+        "active": false,
+        "health": "Healthy",
+        "name": "ca-ptu-conversation-api--0000004",
+        "replicas": 0
+      },
+      {
+        "active": false,
+        "health": "Healthy",
+        "name": "ca-ptu-conversation-ui--ck2tl0m",
+        "replicas": 0
+      },
+      {
+        "active": false,
+        "health": "Healthy",
+        "name": "ca-ptu-conversation-ui--0000001",
+        "replicas": 0
+      },
+      {
+        "active": false,
+        "health": "Healthy",
+        "name": "ca-ptu-conversation-ui--0000002",
+        "replicas": 0
+      }
+    ]
+  }
+}

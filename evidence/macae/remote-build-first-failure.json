@@ -1,0 +1,13 @@
+{
+  "observedLocalTime": "2026-09-11T22:22:26-04:00",
+  "stage": "Azure CLI pre-upload Dockerfile validation",
+  "exitCode": 1,
+  "error": "Unable to find 'Dockerfile'.",
+  "cloudRunQueued": false,
+  "originalCliLog": "C:\\Users\\partvyas\\.azure\\commands\\2026-09-11.22-22-23.acr_build.17612.log",
+  "originalCliLogLaterPresent": false,
+  "logPreservationNote": "The original three-line CLI log was read during diagnosis; it was no longer present when later copying. The complete observed error, exit code and cause are preserved here.",
+  "cause": "--file Dockerfile was resolved against the caller working directory, not the separately supplied clean context",
+  "correction": "Use the absolute Dockerfile path inside the six-file manifest-verified clean context",
+  "retryLimit": "One corrected retry; no local build started"
+}

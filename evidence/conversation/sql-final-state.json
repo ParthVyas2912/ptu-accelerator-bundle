@@ -1,0 +1,31 @@
+{
+  "database": {
+    "autoPauseDelay": 60,
+    "backup": "Local",
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Sql/servers/sql-ptu-conversation-7d804f70/databases/ptu-conversation",
+    "maxSizeBytes": 34359738368,
+    "minCapacity": 0.5,
+    "sku": {
+      "capacity": 2,
+      "family": "Gen5",
+      "name": "GP_S_Gen5",
+      "size": null,
+      "tier": "GeneralPurpose"
+    },
+    "status": "Online"
+  },
+  "server": {
+    "admin": {
+      "administratorType": "ActiveDirectory",
+      "azureAdOnlyAuthentication": true,
+      "login": "CKM lab administrator",
+      "principalType": "User",
+      "sid": "87ccaa4c-8da9-4d6a-a626-d0da9b2e25ed",
+      "tenantId": "a600acd0-3028-4689-8402-3b471d7d924d"
+    },
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Sql/servers/sql-ptu-conversation-7d804f70",
+    "pna": "Disabled",
+    "tls": "1.2"
+  },
+  "checked_at": "2026-09-12T04:30:48.0627633+00:00"
+}

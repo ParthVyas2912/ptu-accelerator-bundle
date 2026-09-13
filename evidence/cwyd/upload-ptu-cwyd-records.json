@@ -1,0 +1,13 @@
+{
+  "test": "upload-ptu-cwyd-records",
+  "method": "POST",
+  "path": "/api/admin/documents",
+  "status": 200,
+  "actual": {
+    "filename": "ptu-cwyd-records.txt",
+    "blob_path": "ptu-cwyd-documents/ptu-cwyd-records.txt",
+    "ingestion_job_id": "3d2dcf2b-193c-4fb3-bfee-47e3da84c30f",
+    "queued": true
+  },
+  "latency_ms": 576.69
+}

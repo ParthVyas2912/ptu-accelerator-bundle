@@ -1,0 +1,39 @@
+{
+  "modelCalls": 0,
+  "sourceCommit": "8ac703a71f10b622bd3c82a9cc2b5dfe921c3025",
+  "nativeScriptSha256": "be4e3b6f55798f88ecf711652d0d19f435603852a497121c172bc29e4192be00",
+  "adaptation": "Only AzureCliCredential constructor replaced by supplied runtime ManagedIdentityCredential",
+  "datasets": [
+    {
+      "container": "ptu-macae-rfp",
+      "blob": "ptu-macae-rfp.txt",
+      "bytes": 695,
+      "index": "ptu-macae-rfp-index",
+      "documentCount": 1,
+      "keyword": "Canada",
+      "matches": [
+        {
+          "title": "ptu-macae-rfp.txt",
+          "id": "1",
+          "@search.score": 0.36820328,
+          "@search.reranker_score": null,
+          "@search.highlights": null,
+          "@search.captions": null,
+          "@search.document_debug_info": null,
+          "@search.reranker_boosted_score": null
+        }
+      ],
+      "sha256": "76f12c59c91a62374d5d5394b1eb1322c70140469d049c5d2f4af7b748905b65"
+    },
+    {
+      "container": "ptu-macae-contract",
+      "blob": "ptu-macae-contract.txt",
+      "bytes": 651,
+      "index": "ptu-macae-contract-index",
+      "documentCount": 0,
+      "keyword": "Canada",
+      "matches": [],
+      "sha256": "a03ccd29a7be3e211703f015f64e640a5d31ab6b43f3a732910e37e0f07eafea"
+    }
+  ]
+}

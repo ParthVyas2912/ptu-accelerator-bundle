@@ -1,0 +1,12 @@
+{
+  "submitted": {
+    "m_plan_id": "8311b6b0-ed92-46a3-98f1-427ceb2f372d",
+    "plan_id": "3692c5c0-3107-4c1e-ae57-1b72c9c0f110",
+    "approved": true,
+    "feedback": "Explicit synthetic evaluator approval of the inspected two-specialist advisory plan only. No enterprise action or access approval is granted."
+  },
+  "httpStatus": 200,
+  "response": {
+    "status": "approval recorded"
+  }
+}

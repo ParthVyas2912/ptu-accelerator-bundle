@@ -1,0 +1,91 @@
+{
+  "app": "Modernize Your Code",
+  "approval_status": "approved_2026-09-11T19:58:57-04:00_storage_created_cosmos_region_blocked",
+  "subscription_id": "1feb53b2-854a-4ea7-b5a6-709b7d804f70",
+  "tenant_id": "a600acd0-3028-4689-8402-3b471d7d924d",
+  "resource_group": "rg-ptu-modernize-demo",
+  "location": "canadacentral",
+  "tags": {
+    "workload": "accelerator-eval",
+    "owner": "parth",
+    "environment": "mcaps-nonprod",
+    "accelerator": "modernize",
+    "protected": "false"
+  },
+  "new_resources": [
+    {
+      "name": "stptumodernize0911pv",
+      "type": "Microsoft.Storage/storageAccounts",
+      "kind": "StorageV2",
+      "sku": "Standard_LRS",
+      "access_tier": "Hot",
+      "blob_public_access": false,
+      "shared_key_access": false,
+      "https_only": true,
+      "container": "ptu-modernize-files",
+      "container_access": "private",
+      "cost_drivers": ["stored GB", "operations", "network transfer"],
+      "name_check": {"nameAvailable": true}
+    },
+    {
+      "name": "cosmos-ptu-modernize-0911",
+      "type": "Microsoft.DocumentDB/databaseAccounts",
+      "api": "NoSQL",
+      "capacity_mode": "Serverless",
+      "regions": ["canadacentral"],
+      "local_auth": false,
+      "database": "ptu-modernize",
+      "containers": [
+        {"name": "ptu-modernize-batches", "partition_key": "/batch_id"},
+        {"name": "ptu-modernize-files", "partition_key": "/file_id"},
+        {"name": "ptu-modernize-logs", "partition_key": "/log_id"}
+      ],
+      "cost_drivers": ["consumed RUs", "stored GB"],
+      "reserved_throughput": false,
+      "name_check": {"exists": false}
+    }
+  ],
+  "existing_model": {
+    "resource_group": "rg-edc-foundry-hack",
+    "account": "edcfoundryhack01",
+    "project": "edc-hack-proj",
+    "region": "canadaeast",
+    "deployment": "gpt-5.1",
+    "model_version": "2025-11-13",
+    "sku": "GlobalStandard",
+    "changes_requested": false,
+    "inference_tests_succeeded": 4
+  },
+  "hosting": {
+    "type": "official native local Python backend and built React frontend",
+    "backend_bind": "127.0.0.1:8114",
+    "frontend_bind": "127.0.0.1:5114",
+    "large_emulators": false,
+    "new_cloud_hosting": false
+  },
+  "access": [
+    "Storage Blob Data Contributor scoped to new Blob container for local Entra user",
+    "Cosmos DB Built-in Data Contributor scoped to new database for local Entra user",
+    "Existing nonprotected Foundry project-scoped role already established"
+  ],
+  "excluded_purchases": [
+    "PTU", "new model deployment", "GPU", "VM", "AKS", "Search",
+    "App Service", "Container Apps", "Container Registry", "premium infrastructure"
+  ],
+  "source_configuration": {
+    "guide": "docs/LocalDevelopmentSetup.md",
+    "fields": [
+      "COSMOSDB_ENDPOINT", "COSMOSDB_DATABASE", "COSMOSDB_BATCH_CONTAINER",
+      "COSMOSDB_FILE_CONTAINER", "COSMOSDB_LOG_CONTAINER", "AZURE_BLOB_ACCOUNT_NAME",
+      "AZURE_BLOB_CONTAINER_NAME", "AI_PROJECT_ENDPOINT", "API_URL", "APP_ENV"
+    ],
+    "secret_files": false
+  },
+  "azd": {
+    "installed": "1.23.7",
+    "repo_requirement": ">=1.18.0 !=1.23.9",
+    "update_required": false,
+    "full_azd_up_requested": false
+  },
+  "azure_commands": "Use B/Invoke-LabAz.ps1 -AzArguments string[] for supported CLI operations; no create command executed before explicit approval."
+}

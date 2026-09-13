@@ -1,0 +1,70 @@
+[
+  {
+    "etag": "\"4c7311cc-b430-4384-9d33-fdc51a49ff95\"",
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-edc-foundry-hack/providers/Microsoft.CognitiveServices/accounts/edcfoundryhackeus2/deployments/gpt-5.1",
+    "name": "gpt-5.1",
+    "properties": {
+      "callRateLimit": null,
+      "capabilities": {
+        "area": "US",
+        "assistants": "true",
+        "chatCompletion": "true",
+        "responses": "true"
+      },
+      "capacitySettings": null,
+      "currentCapacity": 50,
+      "dynamicThrottlingEnabled": null,
+      "model": {
+        "callRateLimit": null,
+        "format": "OpenAI",
+        "name": "gpt-5.1",
+        "publisher": null,
+        "source": null,
+        "sourceAccount": null,
+        "version": "2025-11-13"
+      },
+      "parentDeploymentName": null,
+      "provisioningState": "Succeeded",
+      "raiPolicyName": "Microsoft.DefaultV2",
+      "rateLimits": [
+        {
+          "count": 500.0,
+          "dynamicThrottlingEnabled": null,
+          "key": "request",
+          "matchPatterns": null,
+          "minCount": null,
+          "renewalPeriod": 60.0
+        },
+        {
+          "count": 50000.0,
+          "dynamicThrottlingEnabled": null,
+          "key": "token",
+          "matchPatterns": null,
+          "minCount": null,
+          "renewalPeriod": 60.0
+        }
+      ],
+      "scaleSettings": null,
+      "spilloverDeploymentName": null,
+      "versionUpgradeOption": "OnceNewDefaultVersionAvailable"
+    },
+    "resourceGroup": "rg-edc-foundry-hack",
+    "sku": {
+      "capacity": 50,
+      "family": null,
+      "name": "GlobalStandard",
+      "size": null,
+      "tier": null
+    },
+    "systemData": {
+      "createdAt": "2026-08-07T18:39:35.841972+00:00",
+      "createdBy": "[REDACTED IDENTITY]",
+      "createdByType": "User",
+      "lastModifiedAt": "2026-08-07T18:39:35.841972+00:00",
+      "lastModifiedBy": "[REDACTED IDENTITY]",
+      "lastModifiedByType": "User"
+    },
+    "tags": null,
+    "type": "Microsoft.CognitiveServices/accounts/deployments"
+  }
+]

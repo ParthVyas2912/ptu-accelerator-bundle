@@ -1,0 +1,84 @@
+{
+  "accelerator": "content",
+  "verifiedAt": "2026-09-11T20:52:00-04:00",
+  "subscriptionId": "1feb53b2-854a-4ea7-b5a6-709b7d804f70",
+  "resourceGroup": "rg-ptu-content-demo",
+  "platformResourceGroup": "rg-ptu-bundle-platform",
+  "platformManagedByParent": true,
+  "networkContext": "MCAPS isolated shared platform, NOT JDCP. No JDCP hub DNS or other-subscription resources are requested.",
+  "evidenceMethod": "Guarded az network private-link-resource list --id for each owned account.",
+  "privateEndpoints": [
+    {
+      "suggestedName": "pe-ptu-content-blob",
+      "targetResourceId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-content-demo/providers/Microsoft.Storage/storageAccounts/stptuvcontent260911",
+      "groupIds": ["blob"],
+      "requiredZoneNames": ["privatelink.blob.core.windows.net"],
+      "required": true,
+      "reason": "Original application documents, schema descriptors and shared evaluation metadata. Account PNA is Disabled by governance."
+    },
+    {
+      "suggestedName": "pe-ptu-content-queue",
+      "targetResourceId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-content-demo/providers/Microsoft.Storage/storageAccounts/stptuvcontent260911",
+      "groupIds": ["queue"],
+      "requiredZoneNames": ["privatelink.queue.core.windows.net"],
+      "required": true,
+      "reason": "All four processing stages plus workflow and dead-letter queues; Blob PE alone does not provide Queue access."
+    },
+    {
+      "suggestedName": "pe-ptu-content-mongo",
+      "targetResourceId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-content-demo/providers/Microsoft.DocumentDB/databaseAccounts/cosmos-ptuv-content-260911",
+      "groupIds": ["MongoDB"],
+      "requiredZoneNames": ["privatelink.mongo.cosmos.azure.com"],
+      "requiredMembers": ["cosmos-ptuv-content-260911-eastus2", "cosmos-ptuv-content-260911"],
+      "required": true,
+      "reason": "Mongo RU-based 7.0, not NoSQL Sql endpoint. PNA is Disabled; database shared manual400 and account ceiling400 are already verified."
+    },
+    {
+      "suggestedName": "pe-ptu-content-ai",
+      "targetResourceId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-content-demo/providers/Microsoft.CognitiveServices/accounts/aif-ptuv-content-260911",
+      "groupIds": ["account"],
+      "requiredZoneNames": ["privatelink.cognitiveservices.azure.com", "privatelink.openai.azure.com", "privatelink.services.ai.azure.com"],
+      "requiredMembers": ["default", "secondary", "third"],
+      "required": true,
+      "reason": "Owned EastUS2 CU GA and approved GPT5.1 deployment; public client-allowlisted CU metadata currently403. Account-level PE, not a project-level PE."
+    },
+    {
+      "suggestedName": "pe-ptu-content-appconfig",
+      "targetResourceId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-content-demo/providers/Microsoft.AppConfiguration/configurationStores/appcs-ptuv-content-260911",
+      "groupIds": ["configurationStores"],
+      "requiredZoneNames": ["privatelink.azconfig.io"],
+      "required": false,
+      "reason": "Optional for fully private dependency path. Current PNA Enabled/Entra-only; reads work. Configuration-write403 is a distinct authorization/propagation issue, not proven fixed by PE."
+    }
+  ],
+  "portsWithinPrivateNetwork": {"blobQueueAiAppConfigHttps": 443, "cosmosMongoTls": 10255},
+  "applicationPlan": [
+    {"name": "ca-ptu-content-api", "service": "ContentProcessorAPI", "cpu": 0.25, "memoryGi": 0.5, "minReplicas": 0, "maxReplicas": 1, "ingress": "internal initially", "targetPort": 80, "uvicornWorkers": 1},
+    {"name": "ca-ptu-content-processor", "service": "ContentProcessor", "cpu": 1, "memoryGi": 2, "minReplicas": 0, "maxReplicas": 1, "ingress": "disabled", "activation": "Managed-identity Storage Queue scalers for extract/map/evaluate/save; hold one during bounded processing only if needed"},
+    {"name": "ca-ptu-content-workflow", "service": "ContentProcessorWorkflow", "cpu": 0.5, "memoryGi": 1, "minReplicas": 0, "maxReplicas": 1, "ingress": "disabled", "activation": "Managed-identity Storage Queue scaler for ptu-content-claim-queue"},
+    {"name": "ca-ptu-content-web", "service": "ContentProcessorWeb", "cpu": 0.25, "memoryGi": 0.5, "minReplicas": 0, "maxReplicas": 1, "ingress": "internal until parent clientCIDR/auth configured", "targetPort": 3000}
+  ],
+  "maximumConcurrentAllocation": {"vCpu": 2, "memoryGi": 4, "replicasTotal": 4},
+  "computeCostScenario": {"currency": "USD", "allActivePerHour": 0.216, "basis": "2vCPU*0.000024/sec +4GiB*0.000003/sec, 3600seconds; prior EastUS2 retail rates; before grants and request charges", "isMeasuredBill": false, "isFixedCost": false},
+  "unchangedDependencyFixedCostUsdPerHour": 0.082,
+  "managedIdentityPlan": {
+    "oneIdentityPerApp": true,
+    "acrPull": "Each app identity scoped only to acrptubundle7d804f70",
+    "api": ["App Configuration Data Reader on own store", "Storage Blob Data Contributor on own account", "Storage Queue Data Contributor on own account", "Own Cosmos runtime connection-string read only"],
+    "processor": ["App Configuration Data Reader on own store", "Storage Blob Data Contributor on own account", "Storage Queue Data Contributor on own account", "Cognitive Services User and Cognitive Services OpenAI User on own AI account", "Own Cosmos runtime connection-string read only"],
+    "workflow": ["App Configuration Data Reader on own store", "Storage Blob Data Contributor on own account", "Storage Queue Data Contributor on own account", "Cognitive Services OpenAI User on own AI account", "Own Cosmos runtime connection-string read only"],
+    "web": ["AcrPull only"],
+    "mongoCaveat": "Builtin Cosmos DB Account Reader Role does NOT grant listConnectionStrings; it only grants readonlykeys. Need narrowly scoped custom role Microsoft.DocumentDB/databaseAccounts/read plus Microsoft.DocumentDB/databaseAccounts/listConnectionStrings/action at own Cosmos account, or parent-provided equivalent. Connection string stays runtime memory only; never ACA secret, AppConfig, source, image, log or file.",
+    "sharedFoundryUse": false
+  },
+  "readiness": {
+    "sharedPlatformReady": false,
+    "imagesBuiltOrPushed": false,
+    "containerAppsCreated": false,
+    "officialDockerfilesInspected": true,
+    "trackedApplicationSourceModified": false,
+    "containerRuntimeGuardAdapterRequired": true,
+    "cloudUsageBudget": "12 model requests total including retries, not per container. Native used0. Cloud must use durable shared atomic budget rather than separate ephemeral SQLite files.",
+    "noPublicAccessPolicyRelaxation": true
+  }
+}

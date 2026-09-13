@@ -1,0 +1,56 @@
+{
+  "model_events": [],
+  "threads": [],
+  "blocked_deletes": 0,
+  "prior_model_calls": 4,
+  "total_cap": 12,
+  "backend_pid": 28980,
+  "endpoint": "https://edcfoundryhack01.services.ai.azure.com/api/projects/edc-hack-proj",
+  "backend_url": "http://127.0.0.1:8114",
+  "agents": [
+    {
+      "name": "migrator",
+      "id": "asst_lE2jgy5lQ5mA32OnzDzDWytv"
+    },
+    {
+      "name": "picker",
+      "id": "asst_cVzracBg0beK8UabQfpL8P0Q"
+    },
+    {
+      "name": "syntax_checker",
+      "id": "asst_ELlp0pOo19EVmgayUsLx9XRs"
+    },
+    {
+      "name": "fixer",
+      "id": "asst_9cvftkZGdMRvEiHL7dymJnfu"
+    },
+    {
+      "name": "semantic_verifier",
+      "id": "asst_JhlEpuStkSJAK9gZQ6c6S8lZ"
+    }
+  ],
+  "previous_agent_sets": [
+    [
+      {
+        "name": "migrator",
+        "id": "asst_8VNsR0mJjofhKiT7XU1DkFZx"
+      },
+      {
+        "name": "picker",
+        "id": "asst_OMl3MBTmn2QeXKapSMPzdmaR"
+      },
+      {
+        "name": "syntax_checker",
+        "id": "asst_WojGyGwOZZsy2bXrTsWaJlSO"
+      },
+      {
+        "name": "fixer",
+        "id": "asst_aEN5cqdpBqmW274nAjbPsFhm"
+      },
+      {
+        "name": "semantic_verifier",
+        "id": "asst_MWNo5bRtmPDiiyW4GRTAtcbP"
+      }
+    ]
+  ]
+}

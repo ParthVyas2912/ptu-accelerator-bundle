@@ -1,0 +1,282 @@
+[
+  {
+    "account": "aif-ptu-conversation-7d804f70",
+    "resourceGroup": "rg-ptu-conversation-demo",
+    "resourceId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.CognitiveServices/accounts/aif-ptu-conversation-7d804f70",
+    "startTimeUtc": "2026-09-11T22:52:00Z",
+    "endTimeUtc": "2026-09-12T06:17:14Z",
+    "metrics": [
+      {
+        "metric": "AzureOpenAIRequests",
+        "unit": "Count",
+        "total": 9.0,
+        "returnedNonNullPoints": 445,
+        "deployments": [
+          {
+            "deploymentName": "gpt-5.2",
+            "total": 9.0,
+            "returnedNonNullPoints": 445
+          }
+        ]
+      },
+      {
+        "metric": "ProcessedPromptTokens",
+        "unit": "Count",
+        "total": 4547.0,
+        "returnedNonNullPoints": 445,
+        "deployments": [
+          {
+            "deploymentName": "gpt-5.2",
+            "total": 4547.0,
+            "returnedNonNullPoints": 445
+          }
+        ]
+      },
+      {
+        "metric": "GeneratedTokens",
+        "unit": "Count",
+        "total": 3700.0,
+        "returnedNonNullPoints": 445,
+        "deployments": [
+          {
+            "deploymentName": "gpt-5.2",
+            "total": 3700.0,
+            "returnedNonNullPoints": 445
+          }
+        ]
+      }
+    ],
+    "attribution": "New dedicated lab account only, split by ModelDeploymentName. Account totals and deployment series are the same observations, not additive. Includes service-mediated calls visible to these metrics. Reporting delay and differing instrumentation boundaries can cause differences from SDK evidence."
+  },
+  {
+    "account": "oai-dkmeval0911a",
+    "resourceGroup": "accel-dkm-20260911",
+    "resourceId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-dkm-20260911/providers/Microsoft.CognitiveServices/accounts/oai-dkmeval0911a",
+    "startTimeUtc": "2026-09-11T22:52:00Z",
+    "endTimeUtc": "2026-09-12T06:17:14Z",
+    "metrics": [
+      {
+        "metric": "AzureOpenAIRequests",
+        "unit": "Count",
+        "total": 14.0,
+        "returnedNonNullPoints": 890,
+        "deployments": [
+          {
+            "deploymentName": "gpt-5-mini",
+            "total": 7.0,
+            "returnedNonNullPoints": 445
+          },
+          {
+            "deploymentName": "text-embedding-3-large",
+            "total": 7.0,
+            "returnedNonNullPoints": 445
+          }
+        ]
+      },
+      {
+        "metric": "ProcessedPromptTokens",
+        "unit": "Count",
+        "total": 2412.0,
+        "returnedNonNullPoints": 890,
+        "deployments": [
+          {
+            "deploymentName": "gpt-5-mini",
+            "total": 2061.0,
+            "returnedNonNullPoints": 445
+          },
+          {
+            "deploymentName": "text-embedding-3-large",
+            "total": 351.0,
+            "returnedNonNullPoints": 445
+          }
+        ]
+      },
+      {
+        "metric": "GeneratedTokens",
+        "unit": "Count",
+        "total": 7424.0,
+        "returnedNonNullPoints": 445,
+        "deployments": [
+          {
+            "deploymentName": "gpt-5-mini",
+            "total": 7424.0,
+            "returnedNonNullPoints": 445
+          }
+        ]
+      }
+    ],
+    "attribution": "New dedicated lab account only, split by ModelDeploymentName. Account totals and deployment series are the same observations, not additive. Includes service-mediated calls visible to these metrics. Reporting delay and differing instrumentation boundaries can cause differences from SDK evidence."
+  },
+  {
+    "account": "ptumacae7d804f70",
+    "resourceGroup": "rg-ptu-macae-demo",
+    "resourceId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-macae-demo/providers/Microsoft.CognitiveServices/accounts/ptumacae7d804f70",
+    "startTimeUtc": "2026-09-11T22:52:00Z",
+    "endTimeUtc": "2026-09-12T06:17:14Z",
+    "metrics": [
+      {
+        "metric": "AzureOpenAIRequests",
+        "unit": "Count",
+        "total": 24.0,
+        "returnedNonNullPoints": 890,
+        "deployments": [
+          {
+            "deploymentName": "gpt-5.4-mini",
+            "total": 15.0,
+            "returnedNonNullPoints": 445
+          },
+          {
+            "deploymentName": "gpt-5.4",
+            "total": 9.0,
+            "returnedNonNullPoints": 445
+          }
+        ]
+      },
+      {
+        "metric": "ProcessedPromptTokens",
+        "unit": "Count",
+        "total": 36352.0,
+        "returnedNonNullPoints": 890,
+        "deployments": [
+          {
+            "deploymentName": "gpt-5.4-mini",
+            "total": 23326.0,
+            "returnedNonNullPoints": 445
+          },
+          {
+            "deploymentName": "gpt-5.4",
+            "total": 13026.0,
+            "returnedNonNullPoints": 445
+          }
+        ]
+      },
+      {
+        "metric": "GeneratedTokens",
+        "unit": "Count",
+        "total": 3997.0,
+        "returnedNonNullPoints": 890,
+        "deployments": [
+          {
+            "deploymentName": "gpt-5.4-mini",
+            "total": 3486.0,
+            "returnedNonNullPoints": 445
+          },
+          {
+            "deploymentName": "gpt-5.4",
+            "total": 511.0,
+            "returnedNonNullPoints": 445
+          }
+        ]
+      }
+    ],
+    "attribution": "New dedicated lab account only, split by ModelDeploymentName. Account totals and deployment series are the same observations, not additive. Includes service-mediated calls visible to these metrics. Reporting delay and differing instrumentation boundaries can cause differences from SDK evidence."
+  },
+  {
+    "account": "aif-ccptu1feb0911",
+    "resourceGroup": "accel-chatbot-eval-0911",
+    "resourceId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-chatbot-eval-0911/providers/Microsoft.CognitiveServices/accounts/aif-ccptu1feb0911",
+    "startTimeUtc": "2026-09-11T22:52:00Z",
+    "endTimeUtc": "2026-09-12T06:17:14Z",
+    "metrics": [
+      {
+        "metric": "AzureOpenAIRequests",
+        "unit": "Count",
+        "total": 7.0,
+        "returnedNonNullPoints": 890,
+        "deployments": [
+          {
+            "deploymentName": "text-embedding-3-small",
+            "total": 4.0,
+            "returnedNonNullPoints": 445
+          },
+          {
+            "deploymentName": "gpt-5.4-mini",
+            "total": 3.0,
+            "returnedNonNullPoints": 445
+          }
+        ]
+      },
+      {
+        "metric": "ProcessedPromptTokens",
+        "unit": "Count",
+        "total": 4413.0,
+        "returnedNonNullPoints": 890,
+        "deployments": [
+          {
+            "deploymentName": "text-embedding-3-small",
+            "total": 2347.0,
+            "returnedNonNullPoints": 445
+          },
+          {
+            "deploymentName": "gpt-5.4-mini",
+            "total": 2066.0,
+            "returnedNonNullPoints": 445
+          }
+        ]
+      },
+      {
+        "metric": "GeneratedTokens",
+        "unit": "Count",
+        "total": 116.0,
+        "returnedNonNullPoints": 445,
+        "deployments": [
+          {
+            "deploymentName": "gpt-5.4-mini",
+            "total": 116.0,
+            "returnedNonNullPoints": 445
+          }
+        ]
+      }
+    ],
+    "attribution": "New dedicated lab account only, split by ModelDeploymentName. Account totals and deployment series are the same observations, not additive. Includes service-mediated calls visible to these metrics. Reporting delay and differing instrumentation boundaries can cause differences from SDK evidence."
+  },
+  {
+    "account": "aif-ptuv-content-260911",
+    "resourceGroup": "rg-ptu-content-demo",
+    "resourceId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-content-demo/providers/Microsoft.CognitiveServices/accounts/aif-ptuv-content-260911",
+    "startTimeUtc": "2026-09-11T22:52:00Z",
+    "endTimeUtc": "2026-09-12T06:17:14Z",
+    "metrics": [
+      {
+        "metric": "AzureOpenAIRequests",
+        "unit": "Count",
+        "total": 12.0,
+        "returnedNonNullPoints": 445,
+        "deployments": [
+          {
+            "deploymentName": "gpt-5.1",
+            "total": 12.0,
+            "returnedNonNullPoints": 445
+          }
+        ]
+      },
+      {
+        "metric": "ProcessedPromptTokens",
+        "unit": "Count",
+        "total": 119537.0,
+        "returnedNonNullPoints": 445,
+        "deployments": [
+          {
+            "deploymentName": "gpt-5.1",
+            "total": 119537.0,
+            "returnedNonNullPoints": 445
+          }
+        ]
+      },
+      {
+        "metric": "GeneratedTokens",
+        "unit": "Count",
+        "total": 46854.0,
+        "returnedNonNullPoints": 445,
+        "deployments": [
+          {
+            "deploymentName": "gpt-5.1",
+            "total": 46854.0,
+            "returnedNonNullPoints": 445
+          }
+        ]
+      }
+    ],
+    "attribution": "New dedicated lab account only, split by ModelDeploymentName. Account totals and deployment series are the same observations, not additive. Includes service-mediated calls visible to these metrics. Reporting delay and differing instrumentation boundaries can cause differences from SDK evidence."
+  }
+]

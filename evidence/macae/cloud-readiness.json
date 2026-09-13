@@ -1,0 +1,84 @@
+{
+  "modelCalls": 0,
+  "checks": [
+    {
+      "name": "dns",
+      "host": "ptu-macae-7d804f70-cosmos.documents.azure.com",
+      "addresses": [
+        "10.246.2.4"
+      ],
+      "private": true
+    },
+    {
+      "name": "dns",
+      "host": "ptumacae7d804f70st.blob.core.windows.net",
+      "addresses": [
+        "10.246.2.6"
+      ],
+      "private": true
+    },
+    {
+      "name": "dns",
+      "host": "ptu-macae-7d804f70-srch.search.windows.net",
+      "addresses": [
+        "10.246.2.20"
+      ],
+      "private": true
+    },
+    {
+      "name": "cosmos-container-metadata",
+      "ok": true,
+      "result": {
+        "containerId": "memory",
+        "partitionKey": {
+          "paths": [
+            "/session_id"
+          ],
+          "kind": "Hash"
+        }
+      },
+      "elapsedMs": 866.9
+    },
+    {
+      "name": "ptu-macae-rfp",
+      "ok": true,
+      "result": {
+        "blobNames": [
+          "ptu-macae-rfp.txt"
+        ]
+      },
+      "elapsedMs": 135.28
+    },
+    {
+      "name": "ptu-macae-contract",
+      "ok": true,
+      "result": {
+        "blobNames": [
+          "ptu-macae-contract.txt"
+        ]
+      },
+      "elapsedMs": 12.19
+    },
+    {
+      "name": "search-index-list",
+      "ok": true,
+      "result": {
+        "indexes": [
+          "ptu-macae-contract-index",
+          "ptu-macae-rfp-index"
+        ]
+      },
+      "elapsedMs": 234.8
+    },
+    {
+      "name": "native-frontend-config",
+      "ok": true,
+      "result": {
+        "API_URL": "/api",
+        "ENABLE_AUTH": "false"
+      },
+      "elapsedMs": 74.64
+    }
+  ],
+  "success": true
+}

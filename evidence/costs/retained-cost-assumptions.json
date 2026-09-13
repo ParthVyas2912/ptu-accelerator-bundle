@@ -1,0 +1,36 @@
+{
+  "currency": "USD",
+  "hoursPerMonth": 730,
+  "scope": "Reference retained footprint after all application replicas are zero. SQL compute is a separate conditional scenario, not assumed paused.",
+  "items": [
+    {"component": "AI Search Basic 1x1", "quantity": 4, "unitPrice": 0.101, "period": "hour", "basis": "MCAE, DKM, Chatbot and Conversation reports; four dedicated Basic services"},
+    {"component": "App Configuration Standard", "quantity": 2, "unitPrice": 0.05, "period": "hour", "basis": "Content and DKM reports"},
+    {"component": "Provisioned Mongo 400 RU/s allocations", "quantity": 3, "unitPrice": 0.032, "period": "hour", "basis": "Content shared 400; DKM baseline 400 plus native app collection 400"},
+    {"component": "Private endpoints", "quantity": 18, "unitPrice": 0.01, "period": "hour", "basis": "Resource delta and preflight/private-link-retail-prices.json"},
+    {"component": "Basic container registry", "quantity": 1, "unitPrice": 0.1666, "period": "day", "basis": "preflight/shared-platform-retail-prices.json"},
+    {"component": "Private DNS zones", "quantity": 10, "unitPrice": 0.5, "period": "month", "basis": "global-network-retail-prices.json; five baseline plus ten new zones remain within the first 25-zone tier"},
+    {"component": "Managed Standard load balancer", "quantity": 1, "unitPrice": 0.025, "period": "hour", "basis": "managed-network-inventory.json confirms two LB rules; global-network-retail-prices.json"},
+    {"component": "Standard static IPv4 addresses", "quantity": 2, "unitPrice": 0.005, "period": "hour", "basis": "One visible ingress IP; Microsoft documents an additional egress IP for this external workload-profile VNet environment; network-retail-prices.json"},
+    {"component": "SQL data allowance at 32GB cap", "quantity": 32, "unitPrice": 0.1265, "period": "month", "basis": "conversation/pricing.json; full-cap allowance, not measured occupied storage"}
+  ],
+  "sqlCompute": {
+    "unitPricePerBilledVcoreHour": 0.62611,
+    "minimumConfiguredVcores": 0.5,
+    "maximumConfiguredVcores": 2,
+    "basis": "conversation/pricing.json; Canada Central GP_S_Gen5 serverless"
+  },
+  "exclusions": [
+    "Actual Container Apps replicas while tests or HTTP checks run",
+    "Model, embedding, Content Understanding and Document Intelligence consumption",
+    "Serverless Cosmos operations and all database/blob/queue storage or transactions outside the stated SQL allowance",
+    "Registry task CPU and storage overage",
+    "Private Link/LB data processing, DNS queries, network egress and backup overage",
+    "Taxes, offer-specific discounts and any unlisted separately billed service"
+  ],
+  "sources": [
+    "https://learn.microsoft.com/en-us/azure/container-apps/billing",
+    "https://learn.microsoft.com/en-us/azure/container-apps/custom-virtual-networks#managed-resources",
+    "https://prices.azure.com/api/retail/prices"
+  ],
+  "caveat": "List-price reference, not the lab invoice, remaining credits, an all-in spending ceiling or a guarantee of SQL auto-pause. Do not count shared components again in app-level subtotals."
+}

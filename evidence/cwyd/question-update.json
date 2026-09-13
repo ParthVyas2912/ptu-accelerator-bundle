@@ -1,0 +1,23 @@
+{
+  "test": "question-update",
+  "method": "POST",
+  "path": "/api/conversation",
+  "status": 200,
+  "actual": {
+    "content": "The currently active domestic meal allowance at Larkspur Research Cooperative is 91 credits per travel day. This replaces the previous amount of 73 credits. This update is specified in the Travel Policy, version 2, which is active as of 2026-09-11 and explicitly states that it supersedes version 1, where the 73 credits allowance was set [doc1].",
+    "citations": [
+      {
+        "id": "[doc1]",
+        "title": "ptu-cwyd-travel.txt",
+        "url": "",
+        "snippet": "FICTIONAL UNCLASSIFIED DEMONSTRATION POLICY\nLarkspur Research Cooperative \u2014 Travel Policy, version 2, active 2026-09-11.\nThis version supersedes version 1. The domestic meal allowance is now 91 credits per travel day, replacing the previous 73 credits.\nTravel claims must be submitted within 21 calendar days of returning.",
+        "score": 0.711945021903782,
+        "metadata": {
+          "source_id": "1ebe48b006d028a979c368b0788a4eab2120c97dfdf588a29268ddb322f768b2"
+        }
+      }
+    ],
+    "conversation_id": "4d71e5b7-cceb-47b7-9edb-68678404c200"
+  },
+  "latency_ms": 3524.4
+}

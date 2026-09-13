@@ -1,0 +1,341 @@
+{
+  "status": "CORE_INGESTION_DOCUMENT_AND_CORPUS_QA_COMPARISON_VERIFIED_PAUSED_PARTIAL",
+  "finalized": true,
+  "approval": {
+    "approved_utc": "2026-09-12T02:42:56.545Z",
+    "app": "Document Knowledge Mining",
+    "previous_cap": 12,
+    "approved_total": 14,
+    "additional_provider_attempts": 2,
+    "only_operation": "Corpus/two-document comparison using existing two documents",
+    "recover_before_inference": true,
+    "persist_full_response_to_owned_blob_before_console": true,
+    "sdk_retries": 0,
+    "portfolio_allocation": 100,
+    "reallocated_from": "CWYD: revised allocation16,used16",
+    "no_new_infrastructure_or_models": true
+  },
+  "recovery": {
+    "inference_calls": 0,
+    "status": "NO_RECOVERABLE_COMPARISON_FOUND",
+    "mongo_DPS_collections": [
+      "Documents"
+    ],
+    "mongo_default_collections": [],
+    "source_findings": [
+      {
+        "file": "App/backend-api/Microsoft.GS.DPS.Host/API/KernelMemory/KernelMemory.cs",
+        "lines": "523-539",
+        "finding": "Original /Documents/Ask returns MemoryWebClient answer directly, without history/response persistence."
+      },
+      {
+        "file": "App/kernel-memory/service/Core/Search/SearchClient.cs",
+        "lines": "332-361",
+        "finding": "Generated text assigned to MemoryAnswer and returned; no response write in this path."
+      },
+      {
+        "file": "App/kernel-memory/service/Abstractions/Models/MemoryAnswer.cs",
+        "lines": "17-57",
+        "finding": "Response contract contains question/text/citations, no stored provider response ID."
+      }
+    ],
+    "known_stored_response_id": null,
+    "reconstruction_performed": false,
+    "blob_inventory_evidence": "comparison14-inventory.json",
+    "containers_checked": [
+      "smemory"
+    ],
+    "blob_count": 18,
+    "small_text_json_contents_checked": 13,
+    "matching_response_found": false,
+    "conclusion": "Owned Blob contains only two document pipelines; eligible text/JSON inspection found no prior question/answer. No Mongo history collection or stored provider response ID. No reconstruction performed."
+  },
+  "comparison": {
+    "status": "PASS",
+    "endpoint": "/Documents/Ask",
+    "http_status": 200,
+    "elapsed_ms": 15103,
+    "request": {
+      "question": "Compare the 2025 and 2026 Cedar Bay policies: annual training days in each, the increase in days and percent, and which policy supersedes which. Cite both source documents.",
+      "documents": []
+    },
+    "expected": {
+      "2025_training_days": 10,
+      "2026_training_days": 15,
+      "increase_days": 5,
+      "increase_percent": 50,
+      "supersession": "2026 supersedes2025"
+    },
+    "actual_answer": "Summary\n- The 2025 Cedar Bay policy (historical) grants 10 days per year of annual training to all fictional staff. (Source: 01-policy-2025.txt)\n- The 2026 Cedar Bay policy (active) grants 15 days per year of annual training. (Source: 02-policy-2026-table.pdf)\n- The 2026 policy is explicitly identified as active and supersedes the 2025 training policy. (Source: 02-policy-2026-table.pdf)\n\nDetails from each document\n- 2025 policy (01-policy-2025.txt)\n  - Document identification: SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION; Person: Maya Chen; Place: Cedar Bay; Document type: Policy; Version: 2025; historical. (Source: 01-policy-2025.txt)\n  - Annual training allowance: 10 days. The file states: \"Annual training allowance: 10 days.\" and notes it \"Applies to all fictional staff.\" (Source: 01-policy-2025.txt)\n\n- 2026 policy (02-policy-2026-table.pdf)\n  - Document identification: SYNTHETIC / FICTIONAL / UNCLASSIFIED; Person: Omar Patel; Place: Cedar Bay; Document type: Policy; Version: 2026; active. It is described as superseding the 2025 training policy. (Source: 02-policy-2026-table.pdf)\n  - Annual training allowance: 15 days per year. The table in the document shows \"Annual training \u2014 15 Days/year.\" (Source: 02-policy-2026-table.pdf)\n\nNumeric comparison: increase in days and percent\n- Raw increase in days:\n  - 2026 days \u2212 2025 days = 15 \u2212 10 = 5 additional days per year. (Sources: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n\n- Percent increase calculation:\n  - Percent increase = (Increase \u00f7 Original amount) \u00d7 100%\n  - Using 2025 as the original amount: (5 \u00f7 10) \u00d7 100% = 0.5 \u00d7 100% = 50%\n  - Therefore, the 2026 policy represents a 50% increase in annual training days relative to the 2025 policy. (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n\nSupersession and status\n- The 2026 policy is explicitly marked active and is described as superseding the 2025 training policy. The 2025 policy is described as historical (Version: 2025; historical). Thus:\n  - Which policy supersedes which: The 2026 Cedar Bay policy supersedes the 2025 Cedar Bay policy. (Source confirming supersession and active/historical status: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n\nContextual notes drawn from the documents\n- Both documents are labeled synthetic, fictional, and unclassified. The 2025 historical policy names Maya Chen; the 2026 active policy names Omar Patel. The 2025 document specifies its 10-day annual training allowance applies to all fictional staff; the 2026 table lists the allowance as 15 days/year. (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n\nConcise answer (directly addressing the requested comparison)\n- Annual training days: 2025 = 10 days/year (01-policy-2025.txt); 2026 = 15 days/year (02-policy-2026-table.pdf).\n- Increase in days: +5 days/year (15 \u2212 10 = 5). (Sources: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n- Percent increase: 50% increase ((5 \u00f7 10) \u00d7 100% = 50%). (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n- Supersession: The 2026 policy (active) supersedes the 2025 policy (historical). (Source: 02-policy-2026-table.pdf; corroborating 01-policy-2025.txt)\n\nSources cited\n- 01-policy-2025.txt \u2014 SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION. Person: Maya Chen; Place: Cedar Bay; Document type: Policy; Version: 2025; historical. Annual training allowance: 10 days. Applies to all fictional staff. (Source: 01-policy-2025.txt)\n- 02-policy-2026-table.pdf \u2014 SYNTHETIC / FICTIONAL / UNCLASSIFIED. Person: Omar Patel; Place: Cedar Bay; Document type: Policy; Version: 2026; active; supersedes the 2025 training policy. Table: Annual training \u2014 15 days/year. (Source: 02-policy-2026-table.pdf)",
+    "citation_document_ids": [
+      "cb45ef9f464f4569ac7c4bc523ef1aab202609120215417274224",
+      "3951c54f0a974f79b9d8fc3d7e4591ad202609120125365840455"
+    ],
+    "citation_source_names": [
+      "02-policy-2026-table.pdf",
+      "01-policy-2025.txt"
+    ],
+    "source_hashes_verified": true,
+    "response_storage": {
+      "url": "https://stdkmeval0911a.blob.core.windows.net/smemory/_dkm-evaluation/comparison14-result.json",
+      "sha256": "99a60b96a6867bf9f96ff9297daf2d7497158b79f3cfa57f11a9357619327704",
+      "bytes": 9493,
+      "persisted": true
+    },
+    "full_response_evidence": "comparison14-read-result.json",
+    "new_inference": {
+      "requests": 2.0,
+      "input_tokens": 513.0,
+      "output_tokens": 1552.0,
+      "total_tokens": 2065.0
+    },
+    "initial_lost_attempt_preserved": "retry-phase-qa-corpus-uncaptured.json"
+  },
+  "capture_probe": {
+    "case": "capture-probe",
+    "proof": {
+      "url": "https://stdkmeval0911a.blob.core.windows.net/smemory/_dkm-evaluation/comparison14-capture-probe.json",
+      "sha256": "79e8fdb4b072f397fd8417e90b1ca594a55ec24e607053218d15bcd6a2ffe789",
+      "bytes": 162,
+      "persisted": true
+    },
+    "value": {
+      "case": "comparison14-capture-probe",
+      "synthetic_transport_only": true,
+      "inference_calls": 0,
+      "text": "minus \u2212 euro \u20ac snowman \u2603",
+      "utc": "2026-09-12T02:59:36.054Z"
+    }
+  },
+  "offline_capture_tests": {
+    "passed": 4,
+    "model_calls": 0
+  },
+  "metrics": {
+    "label": "comparison14-final",
+    "captured_utc": "2026-09-12T03:06:49.998577+00:00",
+    "timespan": "2026-09-12T01:24:00Z/2026-09-12T03:06:27Z",
+    "by_deployment": {
+      "gpt-5-mini": {
+        "ModelRequests": 7.0,
+        "InputTokens": 2061.0,
+        "OutputTokens": 7424.0,
+        "TotalTokens": 9485.0
+      },
+      "text-embedding-3-large": {
+        "ModelRequests": 7.0,
+        "InputTokens": 351.0,
+        "TotalTokens": 351.0
+      }
+    },
+    "requests": 14.0,
+    "statuses": [
+      {
+        "modeldeploymentname": "gpt-5-mini",
+        "statuscode": "200",
+        "requests": 7.0
+      },
+      {
+        "modeldeploymentname": "text-embedding-3-large",
+        "statuscode": "200",
+        "requests": 7.0
+      }
+    ],
+    "total_tokens": 9836.0,
+    "input_tokens": 2412.0,
+    "output_tokens": 7424.0,
+    "alias_check": true
+  },
+  "prior_twelve_attempts_preserved": true,
+  "new_attempts": 2,
+  "document_intelligence": {
+    "TotalCalls": 3.0,
+    "SuccessfulCalls": 3.0,
+    "TotalErrors": 0,
+    "ProcessedPages": 1.0,
+    "scope": "Separate extraction billing:3 successful DI HTTP calls including polling,1 processed page; not OpenAI requests or PTU traffic.",
+    "final_metrics_evidence": "comparison14-di-metrics.json"
+  },
+  "runtime_state": {
+    "captured_utc": "2026-09-12T03:07:22.7584925Z",
+    "apps": [
+      {
+        "name": "ca-dkm-api",
+        "revisions": [
+          {
+            "active": false,
+            "health": "Healthy",
+            "name": "ca-dkm-api--re51g88",
+            "replicas": 0
+          },
+          {
+            "active": false,
+            "health": "Healthy",
+            "name": "ca-dkm-api--0000001",
+            "replicas": 0
+          },
+          {
+            "active": false,
+            "health": "Healthy",
+            "name": "ca-dkm-api--0000002",
+            "replicas": 0
+          }
+        ]
+      },
+      {
+        "name": "ca-dkm-kernel",
+        "revisions": [
+          {
+            "active": false,
+            "health": "Healthy",
+            "name": "ca-dkm-kernel--mnddx2g",
+            "replicas": 0
+          },
+          {
+            "active": false,
+            "health": "Healthy",
+            "name": "ca-dkm-kernel--0000001",
+            "replicas": 0
+          }
+        ]
+      },
+      {
+        "name": "ca-dkm-web",
+        "revisions": [
+          {
+            "active": false,
+            "health": "Healthy",
+            "name": "ca-dkm-web--qvokiy4",
+            "replicas": 0
+          },
+          {
+            "active": false,
+            "health": "Healthy",
+            "name": "ca-dkm-web--0000001",
+            "replicas": 0
+          },
+          {
+            "active": false,
+            "health": "Healthy",
+            "name": "ca-dkm-web--0000002",
+            "replicas": 0
+          }
+        ]
+      }
+    ]
+  },
+  "guard": {
+    "armed": false,
+    "cap": 14,
+    "baseline": 12,
+    "allowed_operation": "Only corpus/two-document comparison",
+    "maximum_provider_attempts": 2,
+    "recovery_checked": true,
+    "capture_verified": true,
+    "capture_proof": {
+      "url": "https://stdkmeval0911a.blob.core.windows.net/smemory/_dkm-evaluation/comparison14-capture-probe.json",
+      "sha256": "79e8fdb4b072f397fd8417e90b1ca594a55ec24e607053218d15bcd6a2ffe789",
+      "bytes": 162,
+      "persisted": true
+    },
+    "consumed_utc": "2026-09-12T03:00:48.7725850Z",
+    "finalized": true,
+    "disarmed_reason": "Single approved repeat completed; no further inference authorized"
+  },
+  "persistence": {
+    "case": "comparison14-persistence",
+    "utc": "2026-09-12T03:03:22.231Z",
+    "kernel_status": 200,
+    "backend_status": 200,
+    "total_documents": 2,
+    "documents": [
+      {
+        "documentId": "cb45ef9f464f4569ac7c4bc523ef1aab202609120215417274224",
+        "fileName": "02-policy-2026-table.pdf",
+        "keywords": {
+          "classification": "synthetic, fictional, unclassified",
+          "person": "Omar Patel",
+          "place": "Cedar Bay",
+          "document_type": "Policy",
+          "version": "2026",
+          "status": "active",
+          "supersedes": "2025 training policy",
+          "allowances": "Annual training: 15 days/year",
+          "topics": "training",
+          "structure": "table present, columns: Allowance, Days/year"
+        },
+        "importedTime": "2026-09-12T02:16:08.457Z",
+        "processingTime": "00:00:25.6951030",
+        "mimeType": "application/pdf",
+        "summary": "One person asks \"Hello, how are you?\" and the other replies \"Hello\".  \nThe synthetic, fictional, unclassified 2026 policy for Cedar Bay, authored by Omar Patel, is active, supersedes the 2025 training policy, and grants 15 days per year for annual training.\n",
+        "id": "91e0e62f-b25e-41e2-b197-ecfcd5c17b63",
+        "__partitionkey": "2776"
+      },
+      {
+        "documentId": "3951c54f0a974f79b9d8fc3d7e4591ad202609120125365840455",
+        "fileName": "01-policy-2025.txt",
+        "keywords": {
+          "classification": "synthetic, fictional, unclassified",
+          "person": "Maya Chen",
+          "place": "Cedar Bay",
+          "document_type": "Policy",
+          "purpose": "evaluation",
+          "version": "2025, historical",
+          "training_allowance": "10 days, annual training allowance",
+          "applicability": "applies to all fictional staff, fictional staff"
+        },
+        "importedTime": "2026-09-12T01:26:03.385Z",
+        "processingTime": "00:00:25.7567145",
+        "mimeType": "text/plain",
+        "summary": "One person asks \"Hello how are you?\" and the other replies \"Hello\".\n\nA synthetic, fictional, unclassified 2025 historical policy for Cedar Bay names Maya Chen and grants all fictional staff ten days of annual training.\n",
+        "id": "5bca8547-dd7f-44b8-b57d-bf365092404c",
+        "__partitionkey": "8248"
+      }
+    ],
+    "files": [
+      {
+        "id": "3951c54f0a974f79b9d8fc3d7e4591ad202609120125365840455",
+        "name": "01-policy-2025.txt",
+        "status": 200,
+        "bytes": 207,
+        "sha256": "12a5a842e6d44db9758be011d45099865c74123592f4c07dd3c4477281343f30"
+      },
+      {
+        "id": "cb45ef9f464f4569ac7c4bc523ef1aab202609120215417274224",
+        "name": "02-policy-2026-table.pdf",
+        "status": 200,
+        "bytes": 950,
+        "sha256": "1b6786929592267c2d681de3f6afc6dab06dbb7e4f3a892c793194de8d96d2de"
+      }
+    ],
+    "inference_calls": 0
+  },
+  "functional_checks": {
+    "PASS": 25,
+    "FAIL": 2,
+    "BLOCKED": 0,
+    "NOT_RUN": 1
+  },
+  "limits": [
+    "2/10logicalfixtures",
+    "publicbrowser403",
+    "bothsummarygreetingdefects",
+    "full/chatnotrun",
+    "chart/handwriting/fairnessnotrun"
+  ],
+  "full_app_e2e_passed": false,
+  "cost_usd_hour": {
+    "original_seven_paas_baseline": 0.183,
+    "implicit_DPS_Documents_collection_400_ru": 0.032,
+    "current_paas_fixed_estimate": 0.215,
+    "three_private_endpoints_estimate": 0.03,
+    "three_active_1cpu_2gib_replicas_retail": 0.324,
+    "active_total_before_shared_allocations_and_usage": 0.569,
+    "all_revisions_paused_residual_before_shared_allocations_and_usage": 0.245,
+    "caveat": "Retail estimates, not invoice; shared ACR/environment/DNS allocation, storage, tokens, extraction, requests, network and taxes excluded. Subscription free grants not assumed.",
+    "aca_retail_source": "https://prices.azure.com/api/retail/prices?$filter=armRegionName%20eq%20%27eastus2%27%20and%20serviceName%20eq%20%27Azure%20Container%20Apps%27"
+  },
+  "model_or_infrastructure_configuration_changes": false,
+  "runtime_state_changes": "Resumed then paused existing revisions only",
+  "data_changes": "Probe, immutable attempt lock and response evidence blobs in existing smemory; no additional documents ingested"
+}

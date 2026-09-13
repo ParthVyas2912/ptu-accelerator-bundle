@@ -1,0 +1,64 @@
+{
+  "kind": "privacy-minimized derivatives, not original provider evidence",
+  "method": "Remove identity fields, email addresses, local user paths and IPv4 strings.",
+  "warning": "Broad minimization can remove synthetic identity/address values too. Use original local evidence for exact forensic reproduction.",
+  "originalsModified": false,
+  "files": [
+    {
+      "originalLocalPath": "evidence\\continuation-preflight\\ai-accounts.json",
+      "derivativePath": "evidence\\portable\\continuation-preflight\\ai-accounts.json",
+      "originalSha256": "7ca3b94ac3acb2c7f5a839824e53b798f53cd147e8654411b948ccbe0c9a552c",
+      "derivativeSha256": "2f122c8bdd7af0826ebace8bf49ea97bde8813b6950d2a6fa65fab913877d073",
+      "replacements": 27
+    },
+    {
+      "originalLocalPath": "evidence\\continuation-preflight\\resource-groups.json",
+      "derivativePath": "evidence\\portable\\continuation-preflight\\resource-groups.json",
+      "originalSha256": "9a5d9ed4e1e07572a66cb7e919163a707b43775df921dd33f5abaed19859d1dc",
+      "derivativeSha256": "5be54c2dbbcffa78a2398209b8ca465e9fb618770c32d6c8f5331a7b7b6b23a1",
+      "replacements": 3
+    },
+    {
+      "originalLocalPath": "evidence\\cwyd\\model-calls.json",
+      "derivativePath": "evidence\\portable\\cwyd\\model-calls.json",
+      "originalSha256": "d0adbf563e31802878632f0d5981c3d7b5ee0ca73fa855efd6e8de393bf8fa8d",
+      "derivativeSha256": "73897a503599ca68a6b03d1ddeaaee439fc7614ca5cf5f6bcd209f0f428cc8b7",
+      "replacements": 2
+    },
+    {
+      "originalLocalPath": "evidence\\cwyd\\result.json",
+      "derivativePath": "evidence\\portable\\cwyd\\result.json",
+      "originalSha256": "cf20cdf8dbc57303801c42512fd69113875ef7af0b509cabf0b711ba16f7a999",
+      "derivativeSha256": "932e3d0a0631889a7599978ee4b00c1659bed958f5f23767397ef844eaa092dd",
+      "replacements": 19
+    },
+    {
+      "originalLocalPath": "evidence\\preflight\\account.json",
+      "derivativePath": "evidence\\portable\\preflight\\account.json",
+      "originalSha256": "7b8c32749ca7db8ca13667aa510acc9fb6b583bc39d110c7a75faf1e6363d54e",
+      "derivativeSha256": "e4ca7cc806256ad86178a739a8047c59278cb90a9777a5850eab7d9cbdc2a58f",
+      "replacements": 1
+    },
+    {
+      "originalLocalPath": "evidence\\preflight\\eastus2-models.json",
+      "derivativePath": "evidence\\portable\\preflight\\eastus2-models.json",
+      "originalSha256": "5e5a10c32999f99f4704cb425520582362511c6ebf454cd59394a0e65f83d983",
+      "derivativeSha256": "1be6dc3909988ac6c59f647355e53badd3ce704145b3d4621fea24a2965dc89b",
+      "replacements": 2
+    },
+    {
+      "originalLocalPath": "evidence\\preflight\\lab-client-address-verified.json",
+      "derivativePath": "evidence\\portable\\preflight\\lab-client-address-verified.json",
+      "originalSha256": "0334ad1a54bd455d506f1a23134edc27683aa462915cab4697d76d2333fd12f4",
+      "derivativeSha256": "df5a16296260e9bc4d020de4230c1badcee7c15d581e4cf60d748a9037522375",
+      "replacements": 6
+    },
+    {
+      "originalLocalPath": "evidence\\preflight\\resource-groups.json",
+      "derivativePath": "evidence\\portable\\preflight\\resource-groups.json",
+      "originalSha256": "e3ee209fc5b59fec77ae82c0d70efbf059d69f263a3397312e5d5e472242f2f2",
+      "derivativeSha256": "18d2f2ae53e1d37688de756556ba0f21cd385473d883573f076ad42428e51901",
+      "replacements": 2
+    }
+  ]
+}

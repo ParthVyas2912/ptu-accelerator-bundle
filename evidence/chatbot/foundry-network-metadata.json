@@ -1,0 +1,28 @@
+{
+  "disableLocalAuth": true,
+  "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-chatbot-eval-0911/providers/Microsoft.CognitiveServices/accounts/aif-ccptu1feb0911",
+  "identity": {
+    "principalId": "5ff0b683-7230-43b2-890c-af988bc2e349",
+    "tenantId": "a600acd0-3028-4689-8402-3b471d7d924d",
+    "type": "SystemAssigned",
+    "userAssignedIdentities": null
+  },
+  "kind": "AIServices",
+  "location": "eastus2",
+  "networkAcls": {
+    "bypass": null,
+    "defaultAction": "Allow",
+    "ipRules": [],
+    "virtualNetworkRules": []
+  },
+  "networkInjections": null,
+  "privateEndpointConnections": [],
+  "publicNetworkAccess": "Enabled",
+  "sku": {
+    "capacity": null,
+    "family": null,
+    "name": "S0",
+    "size": null,
+    "tier": null
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "accelerator": "Document Knowledge Mining",
+  "observed_at": "2026-09-11T20:23:00-04:00",
+  "approval": "Coordinator 20:12 approval: equivalent subscription-available x64 general-purpose 4-vCPU/16-GiB worker, initial2/max2, full fixed estimate <=USD1.50/hour; only worker SKU parameterization allowed.",
+  "selected": {
+    "region": "centralus",
+    "sku": "Standard_D4s_v6",
+    "vcpus": 4,
+    "memory_gib": 16,
+    "architecture": "x64",
+    "hyperv_generations": "V2",
+    "disk_controller": "NVMe",
+    "resource_volume_mb": 0,
+    "ephemeral_os_disk_supported": false,
+    "location_restriction": false,
+    "zone_restrictions": ["3"],
+    "template_availability_zones": [],
+    "quota": {"StandardDsv6Family": {"current": 0, "limit": 100}, "regional_cores": {"current": 0, "limit": 100}},
+    "physical_capacity_guaranteed": false
+  },
+  "availability_matrix": [
+    {"region": "centralus", "sku": "Standard_D4s_v5", "location_restricted": true},
+    {"region": "centralus", "sku": "Standard_D4as_v5", "location_restricted": true},
+    {"region": "centralus", "sku": "Standard_D4ads_v5", "location_restricted": true},
+    {"region": "centralus", "sku": "Standard_D4s_v6", "location_restricted": false, "restricted_zones": ["3"]},
+    {"region": "centralus", "sku": "Standard_D4as_v6", "location_restricted": true},
+    {"region": "centralus", "sku": "Standard_D4ads_v6", "location_restricted": true},
+    {"region": "eastus", "sku": "Standard_D4s_v5", "location_restricted": true},
+    {"region": "eastus", "sku": "Standard_D4as_v5", "location_restricted": true},
+    {"region": "eastus", "sku": "Standard_D4ads_v5", "location_restricted": true},
+    {"region": "eastus", "sku": "Standard_D4s_v6", "location_restricted": true},
+    {"region": "eastus", "sku": "Standard_D4as_v6", "location_restricted": true},
+    {"region": "eastus", "sku": "Standard_D4ads_v6", "location_restricted": true}
+  ],
+  "restriction_reason": "NotAvailableForSubscription",
+  "regional_services": {
+    "cosmos_centralus": {"status": "Online", "isSubscriptionRegionAccessAllowedForRegular": true, "isSubscriptionRegionAccessAllowedForAz": true, "isResidencyRestricted": false},
+    "document_intelligence_centralus": {"kind": "FormRecognizer", "sku": "S0", "restrictions": []},
+    "registered_providers": ["Microsoft.ContainerService", "Microsoft.DocumentDB", "Microsoft.Search", "Microsoft.CognitiveServices", "Microsoft.Storage", "Microsoft.ContainerRegistry", "Microsoft.AppConfiguration"],
+    "provider_metadata_supports_centralus": ["Microsoft.Search/searchServices", "Microsoft.Storage/storageAccounts", "Microsoft.ContainerRegistry/registries", "Microsoft.AppConfiguration/configurationStores"],
+    "caveat": "Regional metadata and ARM validation are preflight evidence, not a guarantee of physical capacity at resource creation."
+  },
+  "compatibility": {
+    "azure_backed_runtime": ["AzureBlobs document storage", "AzureQueues distributed orchestration", "AzureAISearch vectors", "AzureOpenAI text and embeddings"],
+    "ephemeral_local_disk_required": false,
+    "cpu_vendor_specific_or_gpu_requirement_found": false,
+    "evidence": ["Deployment/appconfig/kernelmemory/appsettings.Development.json.template", "Deployment/kubernetes/deploy.deployment.yaml.template", "official .NET8/Node20 Linux Dockerfiles"],
+    "aks_gen2_documentation": "https://learn.microsoft.com/en-us/azure/aks/generation-2-vms",
+    "aks_support_caveat": "Linux automatically selects Gen2 on supported Gen2-only VM sizes. Final node provisioning is the runtime support check; no preview flags or custom bypass headers will be used."
+  },
+  "adaptation": {
+    "file": "infra/main.bicep",
+    "parameter": "aksNodeVmSize",
+    "preserved_default": "Standard_D4ds_v5",
+    "allowed_values": ["Standard_D4ds_v5", "Standard_D4s_v6"],
+    "diff": "Add described allowed string parameter; replace only primaryAgentPoolProfiles[0].vmSize literal with parameter. Eight insertions, one deletion; no node count, zones, OS or other SKU changes.",
+    "compiler": "Bicep 0.44.1",
+    "compile": "Succeeded; five existing template warnings",
+    "parameter_validation": "Both official parameter files pass, 0 errors, 0 warnings",
+    "arm_group_validation": "Succeeded; error null",
+    "compiled_template": "dkm-adapted-main.json"
+  },
+  "cost": {
+    "currency": "USD",
+    "worker_retail_price_hour": 0.228,
+    "worker_count": 2,
+    "retail_meter_id": "1b3fa6d6-532d-55e2-8a78-a3ce7a8a4764",
+    "retail_product": "Virtual Machines Dsv6 Series",
+    "retail_type": "Consumption",
+    "retail_source": "https://prices.azure.com/api/retail/prices?$filter=armRegionName%20eq%20%27centralus%27%20and%20armSkuName%20eq%20%27Standard_D4s_v6%27",
+    "expected_fixed_hour": 0.914775,
+    "conservative_fixed_hour": 1.034775,
+    "planning_hour_allowance": 1.10,
+    "approval_threshold_fixed_hour": 1.50,
+    "caveat": "Public retail estimate, not an invoice or hard billing cap; token/page/transaction/network usage and taxes extra. Local retail requests returned429; web fetch returned the authoritative retail meter."
+  }
+}

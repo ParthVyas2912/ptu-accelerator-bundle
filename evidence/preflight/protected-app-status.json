@@ -1,0 +1,23 @@
+[
+  {
+    "name": "specsuite-demo",
+    "resourceGroup": "rg-demo",
+    "fqdn": "specsuite-demo.redplant-4add1127.canadacentral.azurecontainerapps.io",
+    "runningStatus": "Running",
+    "provisioningState": "Succeeded"
+  },
+  {
+    "name": "ca-web-mgxvsbslmnvjs",
+    "resourceGroup": "rg-planetaryexplorer",
+    "fqdn": "ca-web-mgxvsbslmnvjs.kindglacier-3c521d46.eastus2.azurecontainerapps.io",
+    "runningStatus": "Running",
+    "provisioningState": "Succeeded"
+  },
+  {
+    "name": "ca-web-cbzmyrtv7w6ja",
+    "resourceGroup": "rg-pexalex",
+    "fqdn": "ca-web-cbzmyrtv7w6ja.jollysea-b072c86a.westus3.azurecontainerapps.io",
+    "runningStatus": "Running",
+    "provisioningState": "Succeeded"
+  }
+]

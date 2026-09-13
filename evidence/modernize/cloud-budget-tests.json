@@ -1,0 +1,20 @@
+{
+  "scope": "Offline unit tests only, no model or Azure calls",
+  "observed": "9 tests passed in 0.010s",
+  "session": "modernize-cloud-budget-tests",
+  "passed": 9,
+  "failed": 0,
+  "cases": [
+    "Default disarmed fails closed",
+    "Exactly eight remaining calls, including 401 failures",
+    "State persists across budget-client reconstruction",
+    "Disarm blocks without spending a request",
+    "Only one batch processing claim allowed",
+    "32 concurrent attempts across clients cannot spend beyond eight",
+    "Changed baseline fails closed",
+    "Prior cloud agent identifiers retained",
+    "Service datetime usage objects are serializable"
+  ],
+  "real_private_blob_etag_roundtrip": "Passed in cloud: actual initialization, read/write, atomic reservations, disarm and cross-process snapshot; 4 prior plus 6 cloud requests preserved",
+  "tls_build_note": "Direct files.pythonhosted.org TLS handshake failed. Isolated Docker build contexts now select the same Microsoft packagefeedproxy used successfully by native pip; TLS verification remains enabled and dependency requirements are unchanged."
+}

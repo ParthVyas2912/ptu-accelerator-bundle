@@ -1,0 +1,20 @@
+{
+  "app": "Modernize Your Code",
+  "deployment": "ptu-modernize-private-endpoints",
+  "resourceGroup": "rg-ptu-bundle-platform",
+  "status": "Succeeded",
+  "helper": "scripts/Add-LabPrivateEndpoints.ps1",
+  "parameters": "private-endpoints.parameters.json",
+  "privateEndpointIds": [
+    "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateEndpoints/pe-modernize-cosmos",
+    "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateEndpoints/pe-modernize-blob"
+  ],
+  "publicNetworkAccessChanged": false,
+  "privateDNSAndDataAccessFromCloudContainerVerified": true,
+  "observedPrivateAddresses": {
+    "cosmos": "10.246.2.7",
+    "blob": "10.246.2.9"
+  },
+  "dataAccessEvidence": "cloud-budget-snapshot.json cloud_preflight and cloud-e2e.json real upload/records/download",
+  "limitation": "ARM success alone was not treated as app success; subsequent in-container private data access and API/worker E2E passed. Browser E2E remains unverified."
+}

@@ -1,0 +1,1276 @@
+{
+  "accelerator": "Document Knowledge Mining",
+  "evaluation_date": "2026-09-11",
+  "status": "CORE_INGESTION_DOCUMENT_AND_CORPUS_QA_COMPARISON_VERIFIED_PAUSED_PARTIAL",
+  "finalized": true,
+  "current_phase_evidence": "evidence/documents/comparison14-final.json",
+  "repository": {
+    "url": "https://github.com/microsoft/Document-Knowledge-Mining-Solution-Accelerator",
+    "path": "C:\\Users\\partvyas\\OneDrive - Microsoft\\Desktop\\repo\\Document-Knowledge-Mining-Solution-Accelerator",
+    "sha": "7df8ed33a86dd4f0f9e7417e882039fd38556e59",
+    "commit_date": "2026-09-07T10:52:27+05:30",
+    "describe": "v1.9.0-58-g7df8ed3",
+    "latest_local_tag": "v1.9.0",
+    "tracked_source_modified": true,
+    "source_deviation": "Approved worker-SKU parameterization; narrow Docker context exclusions; explicit opt-in DKM_EVAL_MAX_MODEL_RETRIES helper in three Semantic Kernel construction paths. Unset/empty uses unchanged production factories. Original Dockerfiles, prompts, business logic and outputs unchanged. ACA hosting adapter in bundle."
+  },
+  "azure": {
+    "subscription_id": "1feb53b2-854a-4ea7-b5a6-709b7d804f70",
+    "subscription_name": "ME-MngEnvMCAP687593-partvyas-1",
+    "tenant_id": "a600acd0-3028-4689-8402-3b471d7d924d",
+    "proposed_resource_group": "accel-dkm-20260911",
+    "provisioned_resource_group": "accel-dkm-20260911",
+    "created": [
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-dkm-20260911",
+        "type": "Microsoft.Resources/resourceGroups",
+        "location": "centralus",
+        "billable_resource": false
+      },
+      {
+        "name": "srch-dkmeval0911a",
+        "type": "Microsoft.Search/searchServices",
+        "location": "centralus"
+      },
+      {
+        "name": "cosmos-dkmeval0911a",
+        "type": "Microsoft.DocumentDB/databaseAccounts",
+        "location": "centralus"
+      },
+      {
+        "name": "id-dkmeval0911a",
+        "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+        "location": "centralus"
+      },
+      {
+        "name": "stdkmeval0911a",
+        "type": "Microsoft.Storage/storageAccounts",
+        "location": "centralus"
+      },
+      {
+        "name": "di-dkmeval0911a",
+        "type": "Microsoft.CognitiveServices/accounts",
+        "location": "centralus"
+      },
+      {
+        "name": "oai-dkmeval0911a",
+        "type": "Microsoft.CognitiveServices/accounts",
+        "location": "eastus"
+      },
+      {
+        "name": "appcs-dkmeval0911a",
+        "type": "Microsoft.AppConfiguration/configurationStores",
+        "location": "centralus"
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-dkm-20260911/providers/Microsoft.App/containerApps/ca-dkm-api",
+        "name": "ca-dkm-api",
+        "type": "Microsoft.App/containerApps",
+        "location": "eastus2"
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-dkm-20260911/providers/Microsoft.App/containerApps/ca-dkm-kernel",
+        "name": "ca-dkm-kernel",
+        "type": "Microsoft.App/containerApps",
+        "location": "eastus2"
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-dkm-20260911/providers/Microsoft.App/containerApps/ca-dkm-web",
+        "name": "ca-dkm-web",
+        "type": "Microsoft.App/containerApps",
+        "location": "eastus2"
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateEndpoints/pe-documents-mongo",
+        "name": "pe-documents-mongo",
+        "type": "Microsoft.Network/privateEndpoints",
+        "location": "eastus2",
+        "creation": "Parent-approved guarded PE helper"
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateEndpoints/pe-documents-blob",
+        "name": "pe-documents-blob",
+        "type": "Microsoft.Network/privateEndpoints",
+        "location": "eastus2",
+        "creation": "Parent-approved guarded PE helper"
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateEndpoints/pe-documents-queue",
+        "name": "pe-documents-queue",
+        "type": "Microsoft.Network/privateEndpoints",
+        "location": "eastus2",
+        "creation": "Parent-approved guarded PE helper"
+      }
+    ],
+    "reused": [
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.App/managedEnvironments/cae-ptu-bundle",
+        "purpose": "Approved shared Consumption ACA host"
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.ContainerRegistry/registries/acrptubundle7d804f70",
+        "purpose": "Approved isolated dkm/* image repositories in shared Basic ACR"
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/virtualNetworks/vnet-ptu-bundle",
+        "purpose": "Approved shared private-endpoint subnet and linked private DNS"
+      }
+    ],
+    "protected_resources_called_or_modified": false,
+    "shared_models_inventory_only": [
+      {
+        "model": "gpt-5.1",
+        "version": "2025-11-13",
+        "sku": "GlobalStandard"
+      },
+      {
+        "model": "text-embedding-3-small",
+        "version": "1",
+        "sku": "Standard"
+      },
+      {
+        "model": "gpt-4.1-mini",
+        "version": "2025-04-14",
+        "sku": "GlobalStandard"
+      }
+    ],
+    "required": [
+      {
+        "service": "AKS",
+        "sku": "Standard_D4ds_v5 Linux workers",
+        "initial_nodes": 2,
+        "autoscale_min": 1,
+        "autoscale_max": 2,
+        "allowed_by_contract": true,
+        "approval_scope": "DKM-only explicit exception on 2026-09-11 19:49 -04:00"
+      },
+      {
+        "service": "Container Registry",
+        "sku": "Standard"
+      },
+      {
+        "service": "App Configuration",
+        "sku": "Standard"
+      },
+      {
+        "service": "AI Search",
+        "sku": "Basic",
+        "replicas": 1,
+        "partitions": 1
+      },
+      {
+        "service": "Cosmos DB",
+        "api": "MongoDB 7.0",
+        "serverless": false,
+        "throughput": "Observed default database400RU/s plus app-created DPS/Documents400RU/s:800 total manual."
+      },
+      {
+        "service": "OpenAI",
+        "sku": "S0",
+        "model": "gpt-5-mini",
+        "version": "2025-08-07",
+        "deployment_sku": "GlobalStandard",
+        "default_capacity": 150,
+        "documented_min_tpm": 10000
+      },
+      {
+        "service": "OpenAI embedding",
+        "model": "text-embedding-3-large",
+        "version": "1",
+        "deployment_sku": "GlobalStandard",
+        "default_capacity": 100,
+        "template_min_capacity": 10,
+        "postdeployment_guide_min_tpm": 50000
+      },
+      {
+        "service": "Document Intelligence",
+        "sku": "S0"
+      },
+      {
+        "service": "Storage",
+        "purpose": "Blob documents and queue orchestration"
+      },
+      {
+        "service": "Managed identity and RBAC",
+        "purpose": "Azure resource access"
+      }
+    ],
+    "reuse_decision": "No Foundry/Search/PaaS retrofit. Parent-approved shared hosting/networking reuse only.",
+    "quota_status": "New isolated GPT-5-mini GlobalStandard capacity10 and embedding-3-large GlobalStandard capacity50 deployed successfully. No quota increase, PTU or capacity reservation requested.",
+    "appconfig_inventory_caveat": "az resource emitted a command-module load timeout; its empty result is not proof of absence.",
+    "app_created_cosmos": {
+      "database": "DPS",
+      "collection": "Documents",
+      "throughput": 400
+    },
+    "current_actual_inventory": [
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-dkm-20260911/providers/Microsoft.Search/searchServices/srch-dkmeval0911a",
+        "location": "centralus",
+        "name": "srch-dkmeval0911a",
+        "type": "Microsoft.Search/searchServices"
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-dkm-20260911/providers/Microsoft.DocumentDB/databaseAccounts/cosmos-dkmeval0911a",
+        "location": "centralus",
+        "name": "cosmos-dkmeval0911a",
+        "type": "Microsoft.DocumentDB/databaseAccounts"
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-dkm-20260911/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id-dkmeval0911a",
+        "location": "centralus",
+        "name": "id-dkmeval0911a",
+        "type": "Microsoft.ManagedIdentity/userAssignedIdentities"
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-dkm-20260911/providers/Microsoft.Storage/storageAccounts/stdkmeval0911a",
+        "location": "centralus",
+        "name": "stdkmeval0911a",
+        "type": "Microsoft.Storage/storageAccounts"
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-dkm-20260911/providers/Microsoft.CognitiveServices/accounts/di-dkmeval0911a",
+        "location": "centralus",
+        "name": "di-dkmeval0911a",
+        "type": "Microsoft.CognitiveServices/accounts"
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-dkm-20260911/providers/Microsoft.CognitiveServices/accounts/oai-dkmeval0911a",
+        "location": "eastus",
+        "name": "oai-dkmeval0911a",
+        "type": "Microsoft.CognitiveServices/accounts"
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-dkm-20260911/providers/Microsoft.AppConfiguration/configurationStores/appcs-dkmeval0911a",
+        "location": "centralus",
+        "name": "appcs-dkmeval0911a",
+        "type": "Microsoft.AppConfiguration/configurationStores"
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-dkm-20260911/providers/Microsoft.App/containerApps/ca-dkm-api",
+        "location": "eastus2",
+        "name": "ca-dkm-api",
+        "type": "Microsoft.App/containerApps"
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-dkm-20260911/providers/Microsoft.App/containerApps/ca-dkm-web",
+        "location": "eastus2",
+        "name": "ca-dkm-web",
+        "type": "Microsoft.App/containerApps"
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-dkm-20260911/providers/Microsoft.App/containerApps/ca-dkm-kernel",
+        "location": "eastus2",
+        "name": "ca-dkm-kernel",
+        "type": "Microsoft.App/containerApps"
+      }
+    ],
+    "required_inventory_scope": "Original official-stack requirements retained for reference; actual shared-host adaptation and created/reused IDs are recorded separately."
+  },
+  "cost": {
+    "original_seven_paas_baseline": 0.183,
+    "implicit_DPS_Documents_collection_400_ru": 0.032,
+    "current_paas_fixed_estimate": 0.215,
+    "three_private_endpoints_estimate": 0.03,
+    "three_active_1cpu_2gib_replicas_retail": 0.324,
+    "active_total_before_shared_allocations_and_usage": 0.569,
+    "all_revisions_paused_residual_before_shared_allocations_and_usage": 0.245,
+    "caveat": "Retail estimates, not invoice; shared ACR/environment/DNS allocation, storage, tokens, extraction, requests, network and taxes excluded. Subscription free grants not assumed.",
+    "aca_retail_source": "https://prices.azure.com/api/retail/prices?$filter=armRegionName%20eq%20%27eastus2%27%20and%20serviceName%20eq%20%27Azure%20Container%20Apps%27",
+    "currency": "USD",
+    "actual_invoice_cost": null
+  },
+  "paths_investigated": [
+    {
+      "path": "Official AKS dev stack, including approved equivalent worker parameterization",
+      "outcome": "AKSCapacityHeavyUsage; no AKS/worker exists; seven successfully created PaaS retained"
+    },
+    {
+      "path": "Documented native/local original services",
+      "outcome": "Native .NET builds and original image builds passed; local private-data route blocked by PNA Disabled, not bypassed"
+    },
+    {
+      "path": "Approved original-container hosting on shared Consumption ACA",
+      "outcome": "Genuine2-document ingestion, PDF table/metadata, document-scoped QA and restart/persistence verified; paused; public UI/comparison response remain unverified"
+    }
+  ],
+  "runtime": {
+    "running_full_app": false,
+    "running_processes": [],
+    "reserved_frontend_url": "http://127.0.0.1:8117",
+    "reserved_backend_url": "http://127.0.0.1:5117",
+    "endpoint_checks": [
+      {
+        "url": "http://127.0.0.1:8117/",
+        "http_status": null,
+        "curl_exit": 7,
+        "elapsed_seconds": 2.026119,
+        "actual": "connection refused"
+      },
+      {
+        "url": "http://127.0.0.1:5117/",
+        "http_status": null,
+        "curl_exit": 7,
+        "elapsed_seconds": 2.033792,
+        "actual": "connection refused"
+      }
+    ],
+    "backend_startup": {
+      "command": "$env:ASPNETCORE_ENVIRONMENT='Production'; $env:ASPNETCORE_URLS='http://127.0.0.1:5117'; dotnet .\\bin\\Release\\net8.0\\Microsoft.GS.DPS.Host.dll",
+      "working_directory_relative_to_repo": "App/backend-api/Microsoft.GS.DPS.Host",
+      "shell_id": "dkm-backend-runtime",
+      "actual": "Unhandled ArgumentException: Invalid URI: The URI is empty; AppConfiguration.cs line 20, Program.cs line 19.",
+      "listener_started": false,
+      "process_tree_stopped": true
+    },
+    "restart_preconditions": "Provisioning is not approved. Supply an already deployed isolated compatible DKM environment using documented App Configuration and identity configuration, then complete dependencies and three-service startup. No current successful restart command exists.",
+    "core_ingestion_verified": true,
+    "full_browser_e2e_verified": false,
+    "cloud_services": [
+      {
+        "name": "ca-dkm-api",
+        "cpu": 1,
+        "memory_gib": 2,
+        "max_replicas": 1,
+        "ingress": "internal",
+        "fqdn": "ca-dkm-api.internal.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io",
+        "image": "acrptubundle7d804f70.azurecr.io/dkm/backend:7df8ed3-evalretry-r1",
+        "manifest_digest": "sha256:2c462b7af6ce04e33c3b2122e498ad5e0a73d7273133d0d175f82b141f4c9c79",
+        "runtime_state": "PAUSED_ZERO_REPLICAS"
+      },
+      {
+        "name": "ca-dkm-kernel",
+        "cpu": 1,
+        "memory_gib": 2,
+        "max_replicas": 1,
+        "ingress": "internal",
+        "fqdn": "ca-dkm-kernel.internal.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io",
+        "image": "acrptubundle7d804f70.azurecr.io/dkm/kernelmemory:7df8ed3-evalretry-r1",
+        "manifest_digest": "sha256:48b17a3319ede52dd0a409beabfdbb500aee22e6f9c5edfe2c1a175f8720dacc",
+        "runtime_state": "PAUSED_ZERO_REPLICAS"
+      },
+      {
+        "name": "ca-dkm-web",
+        "cpu": 1,
+        "memory_gib": 2,
+        "max_replicas": 1,
+        "ingress": "external with174.112.74.34/32 allowlist",
+        "fqdn": "ca-dkm-web.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io",
+        "image": "acrptubundle7d804f70.azurecr.io/dkm/frontend:7df8ed3-aca20260911",
+        "manifest_digest": "sha256:070817475dfd3609255132635f2a09b5f2216173c6f7555b0187caccf5cf16f7",
+        "runtime_state": "PAUSED_ZERO_REPLICAS"
+      }
+    ],
+    "pause_runbook": "reports/documents-cloud-runbook.md",
+    "controller": "scripts/Set-DocumentsRuntime.ps1",
+    "status": "PAUSED_VERIFIED: all retained revisions inactive/zero replicas; comparison guard disarmed; no resources deleted.",
+    "restart_verification": {
+      "procedure": "Set-DocumentsRuntime.ps1 Pause -> Resume -> actual health/source checks -> Pause",
+      "resume_executed": true,
+      "post_restart_kernel_health": "HTTP200",
+      "post_restart_backend_data": "HTTP200,totalRecords2",
+      "source_hashes_match": true,
+      "persistence_verified": true,
+      "final_state": "All revisions active=false,replicas=0",
+      "evidence": [
+        "restart-verified-health.json",
+        "restart-verified-sources.json",
+        "final-runtime-state.json"
+      ]
+    },
+    "document_qa_verified": true,
+    "corpus_comparison_verified": true,
+    "final_runtime_evidence": "evidence/documents/comparison14-final-runtime-state.json"
+  },
+  "tests": [
+    {
+      "name": "Second policy PDF ingestion",
+      "expected": "HTTP200 and real document ID",
+      "actual": "cb45ef9f464f4569ac7c4bc523ef1aab202609120215417274224",
+      "status": "PASS",
+      "evidence": "retry-phase-ingest-second.json"
+    },
+    {
+      "name": "Second metadata: person",
+      "expected": "Omar Patel",
+      "actual": "Omar Patel",
+      "status": "PASS",
+      "evidence": "retry-phase-ingest-second.json"
+    },
+    {
+      "name": "Second metadata: place",
+      "expected": "Cedar Bay",
+      "actual": "Cedar Bay",
+      "status": "PASS",
+      "evidence": "retry-phase-ingest-second.json"
+    },
+    {
+      "name": "Second metadata: document_type",
+      "expected": "Policy",
+      "actual": "Policy",
+      "status": "PASS",
+      "evidence": "retry-phase-ingest-second.json"
+    },
+    {
+      "name": "PDF table value/column extraction",
+      "expected": "Annual training15 days/year; Allowance and Days/year columns",
+      "actual": {
+        "allowances": "Annual training: 15 days/year",
+        "structure": "table present, columns: Allowance, Days/year"
+      },
+      "status": "PASS",
+      "evidence": "retry-phase-ingest-second.json;document-intelligence-metrics.json"
+    },
+    {
+      "name": "Metadata filter {}",
+      "expected": 2,
+      "actual": 2,
+      "status": "PASS",
+      "evidence": "retry-phase-metadata.json"
+    },
+    {
+      "name": "Metadata filter {\"place\": \"Cedar Bay\"}",
+      "expected": 2,
+      "actual": 2,
+      "status": "PASS",
+      "evidence": "retry-phase-metadata.json"
+    },
+    {
+      "name": "Metadata filter {\"place\": \"Neverland\"}",
+      "expected": 0,
+      "actual": 0,
+      "status": "PASS",
+      "evidence": "retry-phase-metadata.json"
+    },
+    {
+      "name": "Metadata filter {\"person\": \"Omar Patel\"}",
+      "expected": 1,
+      "actual": 1,
+      "status": "PASS",
+      "evidence": "retry-phase-metadata.json"
+    },
+    {
+      "name": "Persisted source hash: 01-policy-2025.txt",
+      "expected": "12a5a842e6d44db9758be011d45099865c74123592f4c07dd3c4477281343f30",
+      "actual": "12a5a842e6d44db9758be011d45099865c74123592f4c07dd3c4477281343f30",
+      "status": "PASS",
+      "evidence": "retry-phase-sources.json"
+    },
+    {
+      "name": "Persisted source hash: 02-policy-2026-table.pdf",
+      "expected": "1b6786929592267c2d681de3f6afc6dab06dbb7e4f3a892c793194de8d96d2de",
+      "actual": "1b6786929592267c2d681de3f6afc6dab06dbb7e4f3a892c793194de8d96d2de",
+      "status": "PASS",
+      "evidence": "retry-phase-sources.json"
+    },
+    {
+      "name": "Summary groundedness: 02-policy-2026-table.pdf",
+      "expected": "No unrelated greeting",
+      "actual": {
+        "unsupported_greeting": true,
+        "summary": "One person asks \"Hello, how are you?\" and the other replies \"Hello\".  \nThe synthetic, fictional, unclassified 2026 policy for Cedar Bay, authored by Omar Patel, is active, supersedes the 2025 training policy, and grants 15 days per year for annual training.\n"
+      },
+      "status": "FAIL",
+      "evidence": "retry-phase-metadata.json"
+    },
+    {
+      "name": "Summary groundedness: 01-policy-2025.txt",
+      "expected": "No unrelated greeting",
+      "actual": {
+        "unsupported_greeting": true,
+        "summary": "One person asks \"Hello how are you?\" and the other replies \"Hello\".\n\nA synthetic, fictional, unclassified 2025 historical policy for Cedar Bay names Maya Chen and grants all fictional staff ten days of annual training.\n"
+      },
+      "status": "FAIL",
+      "evidence": "retry-phase-metadata.json"
+    },
+    {
+      "name": "qa-document HTTP and nonempty answer",
+      "expected": "200/nonempty/noResult=false",
+      "actual": {
+        "status": 200,
+        "noResult": false
+      },
+      "status": "PASS",
+      "evidence": "retry-phase-qa-document.json"
+    },
+    {
+      "name": "qa-document factual numbers",
+      "expected": [
+        "10",
+        "2025"
+      ],
+      "actual": "Direct answer\n- Annual training allowance: 10 days.\n- Policy year (version): 2025.\n\nCitation / source (from the provided facts)\n- File: 01-policy-2025.txt\n  - \"SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION\"\n  - \"Person: Maya Chen\"\n  - \"Place: Cedar Bay\"\n  - \"Document type: Policy\"\n  - \"Version: 2025; historical.\"\n  - \"Annual training allowance: 10 days.\"\n  - \"Applies to all fictional staff.\"\n\nAffirmation of basis\n- The statement \"Annual training allowance: 10 days.\" appears explicitly in the provided policy file (01-policy-2025.txt). That is the source for the annual training allowance reported above.\n- The policy file identifies its version as \"2025; historical.\" (also in 01-policy-2025.txt). That is the source for the policy year/version reported above.\n\nContext included in the same source (quoted from the file)\n- The file is labeled \"SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION.\"\n- The file lists \"Person: Maya Chen\" and \"Place: Cedar Bay.\"\n- The file notes the allowance \"Applies to all fictional staff.\"\n\nNotes on interpretation (limited to what the file states)\n- The file explicitly gives the numeric allowance as \"10 days\"; no further detail about how those days are scheduled, accrued, carried over, or otherwise administered is provided in the quoted content.\n- The file explicitly identifies its version/year as \"2025; historical.\" The term \"historical\" is part of the file text; no additional context or meaning beyond that is provided in the file content given here.\n\nIf you need the exact verbatim lines from the supplied file repeated again, they are:\n- \"Version: 2025; historical.\"\n- \"Annual training allowance: 10 days.\"\n\nThese verbatim excerpts are taken from File: 01-policy-2025.txt as supplied in the facts you provided.",
+      "status": "PASS",
+      "evidence": "retry-phase-qa-document.json"
+    },
+    {
+      "name": "qa-document citation document scope",
+      "expected": [
+        "3951c54f0a974f79b9d8fc3d7e4591ad202609120125365840455"
+      ],
+      "actual": [
+        "3951c54f0a974f79b9d8fc3d7e4591ad202609120125365840455"
+      ],
+      "status": "PASS",
+      "evidence": "retry-phase-qa-document.json"
+    },
+    {
+      "name": "qa-document actual request scope",
+      "expected": [
+        "3951c54f0a974f79b9d8fc3d7e4591ad202609120125365840455"
+      ],
+      "actual": [
+        "3951c54f0a974f79b9d8fc3d7e4591ad202609120125365840455"
+      ],
+      "status": "PASS",
+      "evidence": "retry-phase-qa-document.json"
+    },
+    {
+      "name": "qa-corpus HTTP and nonempty answer",
+      "expected": "200/nonempty/noResult=false",
+      "actual": {
+        "status": 200,
+        "noResult": false
+      },
+      "status": "PASS",
+      "evidence": "comparison14-read-result.json"
+    },
+    {
+      "name": "qa-corpus factual numbers",
+      "expected": [
+        "10",
+        "15",
+        "5",
+        "50"
+      ],
+      "actual": "Summary\n- The 2025 Cedar Bay policy (historical) grants 10 days per year of annual training to all fictional staff. (Source: 01-policy-2025.txt)\n- The 2026 Cedar Bay policy (active) grants 15 days per year of annual training. (Source: 02-policy-2026-table.pdf)\n- The 2026 policy is explicitly identified as active and supersedes the 2025 training policy. (Source: 02-policy-2026-table.pdf)\n\nDetails from each document\n- 2025 policy (01-policy-2025.txt)\n  - Document identification: SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION; Person: Maya Chen; Place: Cedar Bay; Document type: Policy; Version: 2025; historical. (Source: 01-policy-2025.txt)\n  - Annual training allowance: 10 days. The file states: \"Annual training allowance: 10 days.\" and notes it \"Applies to all fictional staff.\" (Source: 01-policy-2025.txt)\n\n- 2026 policy (02-policy-2026-table.pdf)\n  - Document identification: SYNTHETIC / FICTIONAL / UNCLASSIFIED; Person: Omar Patel; Place: Cedar Bay; Document type: Policy; Version: 2026; active. It is described as superseding the 2025 training policy. (Source: 02-policy-2026-table.pdf)\n  - Annual training allowance: 15 days per year. The table in the document shows \"Annual training \u2014 15 Days/year.\" (Source: 02-policy-2026-table.pdf)\n\nNumeric comparison: increase in days and percent\n- Raw increase in days:\n  - 2026 days \u2212 2025 days = 15 \u2212 10 = 5 additional days per year. (Sources: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n\n- Percent increase calculation:\n  - Percent increase = (Increase \u00f7 Original amount) \u00d7 100%\n  - Using 2025 as the original amount: (5 \u00f7 10) \u00d7 100% = 0.5 \u00d7 100% = 50%\n  - Therefore, the 2026 policy represents a 50% increase in annual training days relative to the 2025 policy. (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n\nSupersession and status\n- The 2026 policy is explicitly marked active and is described as superseding the 2025 training policy. The 2025 policy is described as historical (Version: 2025; historical). Thus:\n  - Which policy supersedes which: The 2026 Cedar Bay policy supersedes the 2025 Cedar Bay policy. (Source confirming supersession and active/historical status: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n\nContextual notes drawn from the documents\n- Both documents are labeled synthetic, fictional, and unclassified. The 2025 historical policy names Maya Chen; the 2026 active policy names Omar Patel. The 2025 document specifies its 10-day annual training allowance applies to all fictional staff; the 2026 table lists the allowance as 15 days/year. (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n\nConcise answer (directly addressing the requested comparison)\n- Annual training days: 2025 = 10 days/year (01-policy-2025.txt); 2026 = 15 days/year (02-policy-2026-table.pdf).\n- Increase in days: +5 days/year (15 \u2212 10 = 5). (Sources: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n- Percent increase: 50% increase ((5 \u00f7 10) \u00d7 100% = 50%). (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n- Supersession: The 2026 policy (active) supersedes the 2025 policy (historical). (Source: 02-policy-2026-table.pdf; corroborating 01-policy-2025.txt)\n\nSources cited\n- 01-policy-2025.txt \u2014 SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION. Person: Maya Chen; Place: Cedar Bay; Document type: Policy; Version: 2025; historical. Annual training allowance: 10 days. Applies to all fictional staff. (Source: 01-policy-2025.txt)\n- 02-policy-2026-table.pdf \u2014 SYNTHETIC / FICTIONAL / UNCLASSIFIED. Person: Omar Patel; Place: Cedar Bay; Document type: Policy; Version: 2026; active; supersedes the 2025 training policy. Table: Annual training \u2014 15 days/year. (Source: 02-policy-2026-table.pdf)",
+      "status": "PASS",
+      "evidence": "comparison14-read-result.json"
+    },
+    {
+      "name": "qa-corpus citation document scope",
+      "expected": [
+        "3951c54f0a974f79b9d8fc3d7e4591ad202609120125365840455",
+        "cb45ef9f464f4569ac7c4bc523ef1aab202609120215417274224"
+      ],
+      "actual": [
+        "3951c54f0a974f79b9d8fc3d7e4591ad202609120125365840455",
+        "cb45ef9f464f4569ac7c4bc523ef1aab202609120215417274224"
+      ],
+      "status": "PASS",
+      "evidence": "comparison14-read-result.json"
+    },
+    {
+      "name": "qa-corpus actual request scope",
+      "expected": [],
+      "actual": [],
+      "status": "PASS",
+      "evidence": "comparison14-read-result.json"
+    },
+    {
+      "name": "Comparison 2025 allowance",
+      "expected": "2025 Cedar Bay policy[^\\n]*grants 10 days",
+      "actual": "Summary\n- The 2025 Cedar Bay policy (historical) grants 10 days per year of annual training to all fictional staff. (Source: 01-policy-2025.txt)\n- The 2026 Cedar Bay policy (active) grants 15 days per year of annual training. (Source: 02-policy-2026-table.pdf)\n- The 2026 policy is explicitly identified as active and supersedes the 2025 training policy. (Source: 02-policy-2026-table.pdf)\n\nDetails from each document\n- 2025 policy (01-policy-2025.txt)\n  - Document identification: SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION; Person: Maya Chen; Place: Cedar Bay; Document type: Policy; Version: 2025; historical. (Source: 01-policy-2025.txt)\n  - Annual training allowance: 10 days. The file states: \"Annual training allowance: 10 days.\" and notes it \"Applies to all fictional staff.\" (Source: 01-policy-2025.txt)\n\n- 2026 policy (02-policy-2026-table.pdf)\n  - Document identification: SYNTHETIC / FICTIONAL / UNCLASSIFIED; Person: Omar Patel; Place: Cedar Bay; Document type: Policy; Version: 2026; active. It is described as superseding the 2025 training policy. (Source: 02-policy-2026-table.pdf)\n  - Annual training allowance: 15 days per year. The table in the document shows \"Annual training \u2014 15 Days/year.\" (Source: 02-policy-2026-table.pdf)\n\nNumeric comparison: increase in days and percent\n- Raw increase in days:\n  - 2026 days \u2212 2025 days = 15 \u2212 10 = 5 additional days per year. (Sources: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n\n- Percent increase calculation:\n  - Percent increase = (Increase \u00f7 Original amount) \u00d7 100%\n  - Using 2025 as the original amount: (5 \u00f7 10) \u00d7 100% = 0.5 \u00d7 100% = 50%\n  - Therefore, the 2026 policy represents a 50% increase in annual training days relative to the 2025 policy. (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n\nSupersession and status\n- The 2026 policy is explicitly marked active and is described as superseding the 2025 training policy. The 2025 policy is described as historical (Version: 2025; historical). Thus:\n  - Which policy supersedes which: The 2026 Cedar Bay policy supersedes the 2025 Cedar Bay policy. (Source confirming supersession and active/historical status: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n\nContextual notes drawn from the documents\n- Both documents are labeled synthetic, fictional, and unclassified. The 2025 historical policy names Maya Chen; the 2026 active policy names Omar Patel. The 2025 document specifies its 10-day annual training allowance applies to all fictional staff; the 2026 table lists the allowance as 15 days/year. (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n\nConcise answer (directly addressing the requested comparison)\n- Annual training days: 2025 = 10 days/year (01-policy-2025.txt); 2026 = 15 days/year (02-policy-2026-table.pdf).\n- Increase in days: +5 days/year (15 \u2212 10 = 5). (Sources: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n- Percent increase: 50% increase ((5 \u00f7 10) \u00d7 100% = 50%). (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n- Supersession: The 2026 policy (active) supersedes the 2025 policy (historical). (Source: 02-policy-2026-table.pdf; corroborating 01-policy-2025.txt)\n\nSources cited\n- 01-policy-2025.txt \u2014 SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION. Person: Maya Chen; Place: Cedar Bay; Document type: Policy; Version: 2025; historical. Annual training allowance: 10 days. Applies to all fictional staff. (Source: 01-policy-2025.txt)\n- 02-policy-2026-table.pdf \u2014 SYNTHETIC / FICTIONAL / UNCLASSIFIED. Person: Omar Patel; Place: Cedar Bay; Document type: Policy; Version: 2026; active; supersedes the 2025 training policy. Table: Annual training \u2014 15 days/year. (Source: 02-policy-2026-table.pdf)",
+      "status": "PASS",
+      "evidence": "comparison14-read-result.json"
+    },
+    {
+      "name": "Comparison 2026 allowance",
+      "expected": "2026 Cedar Bay policy[^\\n]*grants 15 days",
+      "actual": "Summary\n- The 2025 Cedar Bay policy (historical) grants 10 days per year of annual training to all fictional staff. (Source: 01-policy-2025.txt)\n- The 2026 Cedar Bay policy (active) grants 15 days per year of annual training. (Source: 02-policy-2026-table.pdf)\n- The 2026 policy is explicitly identified as active and supersedes the 2025 training policy. (Source: 02-policy-2026-table.pdf)\n\nDetails from each document\n- 2025 policy (01-policy-2025.txt)\n  - Document identification: SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION; Person: Maya Chen; Place: Cedar Bay; Document type: Policy; Version: 2025; historical. (Source: 01-policy-2025.txt)\n  - Annual training allowance: 10 days. The file states: \"Annual training allowance: 10 days.\" and notes it \"Applies to all fictional staff.\" (Source: 01-policy-2025.txt)\n\n- 2026 policy (02-policy-2026-table.pdf)\n  - Document identification: SYNTHETIC / FICTIONAL / UNCLASSIFIED; Person: Omar Patel; Place: Cedar Bay; Document type: Policy; Version: 2026; active. It is described as superseding the 2025 training policy. (Source: 02-policy-2026-table.pdf)\n  - Annual training allowance: 15 days per year. The table in the document shows \"Annual training \u2014 15 Days/year.\" (Source: 02-policy-2026-table.pdf)\n\nNumeric comparison: increase in days and percent\n- Raw increase in days:\n  - 2026 days \u2212 2025 days = 15 \u2212 10 = 5 additional days per year. (Sources: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n\n- Percent increase calculation:\n  - Percent increase = (Increase \u00f7 Original amount) \u00d7 100%\n  - Using 2025 as the original amount: (5 \u00f7 10) \u00d7 100% = 0.5 \u00d7 100% = 50%\n  - Therefore, the 2026 policy represents a 50% increase in annual training days relative to the 2025 policy. (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n\nSupersession and status\n- The 2026 policy is explicitly marked active and is described as superseding the 2025 training policy. The 2025 policy is described as historical (Version: 2025; historical). Thus:\n  - Which policy supersedes which: The 2026 Cedar Bay policy supersedes the 2025 Cedar Bay policy. (Source confirming supersession and active/historical status: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n\nContextual notes drawn from the documents\n- Both documents are labeled synthetic, fictional, and unclassified. The 2025 historical policy names Maya Chen; the 2026 active policy names Omar Patel. The 2025 document specifies its 10-day annual training allowance applies to all fictional staff; the 2026 table lists the allowance as 15 days/year. (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n\nConcise answer (directly addressing the requested comparison)\n- Annual training days: 2025 = 10 days/year (01-policy-2025.txt); 2026 = 15 days/year (02-policy-2026-table.pdf).\n- Increase in days: +5 days/year (15 \u2212 10 = 5). (Sources: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n- Percent increase: 50% increase ((5 \u00f7 10) \u00d7 100% = 50%). (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n- Supersession: The 2026 policy (active) supersedes the 2025 policy (historical). (Source: 02-policy-2026-table.pdf; corroborating 01-policy-2025.txt)\n\nSources cited\n- 01-policy-2025.txt \u2014 SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION. Person: Maya Chen; Place: Cedar Bay; Document type: Policy; Version: 2025; historical. Annual training allowance: 10 days. Applies to all fictional staff. (Source: 01-policy-2025.txt)\n- 02-policy-2026-table.pdf \u2014 SYNTHETIC / FICTIONAL / UNCLASSIFIED. Person: Omar Patel; Place: Cedar Bay; Document type: Policy; Version: 2026; active; supersedes the 2025 training policy. Table: Annual training \u2014 15 days/year. (Source: 02-policy-2026-table.pdf)",
+      "status": "PASS",
+      "evidence": "comparison14-read-result.json"
+    },
+    {
+      "name": "Comparison increase calculation",
+      "expected": "15 [\u2212-] 10 = 5",
+      "actual": "Summary\n- The 2025 Cedar Bay policy (historical) grants 10 days per year of annual training to all fictional staff. (Source: 01-policy-2025.txt)\n- The 2026 Cedar Bay policy (active) grants 15 days per year of annual training. (Source: 02-policy-2026-table.pdf)\n- The 2026 policy is explicitly identified as active and supersedes the 2025 training policy. (Source: 02-policy-2026-table.pdf)\n\nDetails from each document\n- 2025 policy (01-policy-2025.txt)\n  - Document identification: SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION; Person: Maya Chen; Place: Cedar Bay; Document type: Policy; Version: 2025; historical. (Source: 01-policy-2025.txt)\n  - Annual training allowance: 10 days. The file states: \"Annual training allowance: 10 days.\" and notes it \"Applies to all fictional staff.\" (Source: 01-policy-2025.txt)\n\n- 2026 policy (02-policy-2026-table.pdf)\n  - Document identification: SYNTHETIC / FICTIONAL / UNCLASSIFIED; Person: Omar Patel; Place: Cedar Bay; Document type: Policy; Version: 2026; active. It is described as superseding the 2025 training policy. (Source: 02-policy-2026-table.pdf)\n  - Annual training allowance: 15 days per year. The table in the document shows \"Annual training \u2014 15 Days/year.\" (Source: 02-policy-2026-table.pdf)\n\nNumeric comparison: increase in days and percent\n- Raw increase in days:\n  - 2026 days \u2212 2025 days = 15 \u2212 10 = 5 additional days per year. (Sources: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n\n- Percent increase calculation:\n  - Percent increase = (Increase \u00f7 Original amount) \u00d7 100%\n  - Using 2025 as the original amount: (5 \u00f7 10) \u00d7 100% = 0.5 \u00d7 100% = 50%\n  - Therefore, the 2026 policy represents a 50% increase in annual training days relative to the 2025 policy. (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n\nSupersession and status\n- The 2026 policy is explicitly marked active and is described as superseding the 2025 training policy. The 2025 policy is described as historical (Version: 2025; historical). Thus:\n  - Which policy supersedes which: The 2026 Cedar Bay policy supersedes the 2025 Cedar Bay policy. (Source confirming supersession and active/historical status: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n\nContextual notes drawn from the documents\n- Both documents are labeled synthetic, fictional, and unclassified. The 2025 historical policy names Maya Chen; the 2026 active policy names Omar Patel. The 2025 document specifies its 10-day annual training allowance applies to all fictional staff; the 2026 table lists the allowance as 15 days/year. (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n\nConcise answer (directly addressing the requested comparison)\n- Annual training days: 2025 = 10 days/year (01-policy-2025.txt); 2026 = 15 days/year (02-policy-2026-table.pdf).\n- Increase in days: +5 days/year (15 \u2212 10 = 5). (Sources: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n- Percent increase: 50% increase ((5 \u00f7 10) \u00d7 100% = 50%). (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n- Supersession: The 2026 policy (active) supersedes the 2025 policy (historical). (Source: 02-policy-2026-table.pdf; corroborating 01-policy-2025.txt)\n\nSources cited\n- 01-policy-2025.txt \u2014 SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION. Person: Maya Chen; Place: Cedar Bay; Document type: Policy; Version: 2025; historical. Annual training allowance: 10 days. Applies to all fictional staff. (Source: 01-policy-2025.txt)\n- 02-policy-2026-table.pdf \u2014 SYNTHETIC / FICTIONAL / UNCLASSIFIED. Person: Omar Patel; Place: Cedar Bay; Document type: Policy; Version: 2026; active; supersedes the 2025 training policy. Table: Annual training \u2014 15 days/year. (Source: 02-policy-2026-table.pdf)",
+      "status": "PASS",
+      "evidence": "comparison14-read-result.json"
+    },
+    {
+      "name": "Comparison percent increase",
+      "expected": "50% increase",
+      "actual": "Summary\n- The 2025 Cedar Bay policy (historical) grants 10 days per year of annual training to all fictional staff. (Source: 01-policy-2025.txt)\n- The 2026 Cedar Bay policy (active) grants 15 days per year of annual training. (Source: 02-policy-2026-table.pdf)\n- The 2026 policy is explicitly identified as active and supersedes the 2025 training policy. (Source: 02-policy-2026-table.pdf)\n\nDetails from each document\n- 2025 policy (01-policy-2025.txt)\n  - Document identification: SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION; Person: Maya Chen; Place: Cedar Bay; Document type: Policy; Version: 2025; historical. (Source: 01-policy-2025.txt)\n  - Annual training allowance: 10 days. The file states: \"Annual training allowance: 10 days.\" and notes it \"Applies to all fictional staff.\" (Source: 01-policy-2025.txt)\n\n- 2026 policy (02-policy-2026-table.pdf)\n  - Document identification: SYNTHETIC / FICTIONAL / UNCLASSIFIED; Person: Omar Patel; Place: Cedar Bay; Document type: Policy; Version: 2026; active. It is described as superseding the 2025 training policy. (Source: 02-policy-2026-table.pdf)\n  - Annual training allowance: 15 days per year. The table in the document shows \"Annual training \u2014 15 Days/year.\" (Source: 02-policy-2026-table.pdf)\n\nNumeric comparison: increase in days and percent\n- Raw increase in days:\n  - 2026 days \u2212 2025 days = 15 \u2212 10 = 5 additional days per year. (Sources: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n\n- Percent increase calculation:\n  - Percent increase = (Increase \u00f7 Original amount) \u00d7 100%\n  - Using 2025 as the original amount: (5 \u00f7 10) \u00d7 100% = 0.5 \u00d7 100% = 50%\n  - Therefore, the 2026 policy represents a 50% increase in annual training days relative to the 2025 policy. (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n\nSupersession and status\n- The 2026 policy is explicitly marked active and is described as superseding the 2025 training policy. The 2025 policy is described as historical (Version: 2025; historical). Thus:\n  - Which policy supersedes which: The 2026 Cedar Bay policy supersedes the 2025 Cedar Bay policy. (Source confirming supersession and active/historical status: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n\nContextual notes drawn from the documents\n- Both documents are labeled synthetic, fictional, and unclassified. The 2025 historical policy names Maya Chen; the 2026 active policy names Omar Patel. The 2025 document specifies its 10-day annual training allowance applies to all fictional staff; the 2026 table lists the allowance as 15 days/year. (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n\nConcise answer (directly addressing the requested comparison)\n- Annual training days: 2025 = 10 days/year (01-policy-2025.txt); 2026 = 15 days/year (02-policy-2026-table.pdf).\n- Increase in days: +5 days/year (15 \u2212 10 = 5). (Sources: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n- Percent increase: 50% increase ((5 \u00f7 10) \u00d7 100% = 50%). (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n- Supersession: The 2026 policy (active) supersedes the 2025 policy (historical). (Source: 02-policy-2026-table.pdf; corroborating 01-policy-2025.txt)\n\nSources cited\n- 01-policy-2025.txt \u2014 SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION. Person: Maya Chen; Place: Cedar Bay; Document type: Policy; Version: 2025; historical. Annual training allowance: 10 days. Applies to all fictional staff. (Source: 01-policy-2025.txt)\n- 02-policy-2026-table.pdf \u2014 SYNTHETIC / FICTIONAL / UNCLASSIFIED. Person: Omar Patel; Place: Cedar Bay; Document type: Policy; Version: 2026; active; supersedes the 2025 training policy. Table: Annual training \u2014 15 days/year. (Source: 02-policy-2026-table.pdf)",
+      "status": "PASS",
+      "evidence": "comparison14-read-result.json"
+    },
+    {
+      "name": "Comparison supersession",
+      "expected": "2026 Cedar Bay policy supersedes the 2025 Cedar Bay policy",
+      "actual": "Summary\n- The 2025 Cedar Bay policy (historical) grants 10 days per year of annual training to all fictional staff. (Source: 01-policy-2025.txt)\n- The 2026 Cedar Bay policy (active) grants 15 days per year of annual training. (Source: 02-policy-2026-table.pdf)\n- The 2026 policy is explicitly identified as active and supersedes the 2025 training policy. (Source: 02-policy-2026-table.pdf)\n\nDetails from each document\n- 2025 policy (01-policy-2025.txt)\n  - Document identification: SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION; Person: Maya Chen; Place: Cedar Bay; Document type: Policy; Version: 2025; historical. (Source: 01-policy-2025.txt)\n  - Annual training allowance: 10 days. The file states: \"Annual training allowance: 10 days.\" and notes it \"Applies to all fictional staff.\" (Source: 01-policy-2025.txt)\n\n- 2026 policy (02-policy-2026-table.pdf)\n  - Document identification: SYNTHETIC / FICTIONAL / UNCLASSIFIED; Person: Omar Patel; Place: Cedar Bay; Document type: Policy; Version: 2026; active. It is described as superseding the 2025 training policy. (Source: 02-policy-2026-table.pdf)\n  - Annual training allowance: 15 days per year. The table in the document shows \"Annual training \u2014 15 Days/year.\" (Source: 02-policy-2026-table.pdf)\n\nNumeric comparison: increase in days and percent\n- Raw increase in days:\n  - 2026 days \u2212 2025 days = 15 \u2212 10 = 5 additional days per year. (Sources: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n\n- Percent increase calculation:\n  - Percent increase = (Increase \u00f7 Original amount) \u00d7 100%\n  - Using 2025 as the original amount: (5 \u00f7 10) \u00d7 100% = 0.5 \u00d7 100% = 50%\n  - Therefore, the 2026 policy represents a 50% increase in annual training days relative to the 2025 policy. (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n\nSupersession and status\n- The 2026 policy is explicitly marked active and is described as superseding the 2025 training policy. The 2025 policy is described as historical (Version: 2025; historical). Thus:\n  - Which policy supersedes which: The 2026 Cedar Bay policy supersedes the 2025 Cedar Bay policy. (Source confirming supersession and active/historical status: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n\nContextual notes drawn from the documents\n- Both documents are labeled synthetic, fictional, and unclassified. The 2025 historical policy names Maya Chen; the 2026 active policy names Omar Patel. The 2025 document specifies its 10-day annual training allowance applies to all fictional staff; the 2026 table lists the allowance as 15 days/year. (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n\nConcise answer (directly addressing the requested comparison)\n- Annual training days: 2025 = 10 days/year (01-policy-2025.txt); 2026 = 15 days/year (02-policy-2026-table.pdf).\n- Increase in days: +5 days/year (15 \u2212 10 = 5). (Sources: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n- Percent increase: 50% increase ((5 \u00f7 10) \u00d7 100% = 50%). (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n- Supersession: The 2026 policy (active) supersedes the 2025 policy (historical). (Source: 02-policy-2026-table.pdf; corroborating 01-policy-2025.txt)\n\nSources cited\n- 01-policy-2025.txt \u2014 SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION. Person: Maya Chen; Place: Cedar Bay; Document type: Policy; Version: 2025; historical. Annual training allowance: 10 days. Applies to all fictional staff. (Source: 01-policy-2025.txt)\n- 02-policy-2026-table.pdf \u2014 SYNTHETIC / FICTIONAL / UNCLASSIFIED. Person: Omar Patel; Place: Cedar Bay; Document type: Policy; Version: 2026; active; supersedes the 2025 training policy. Table: Annual training \u2014 15 days/year. (Source: 02-policy-2026-table.pdf)",
+      "status": "PASS",
+      "evidence": "comparison14-read-result.json"
+    },
+    {
+      "name": "Persisted PDF table extraction",
+      "expected": "Allowance/15 present in retrieved table text",
+      "actual": "One person asks \"Hello, how are you?\" and the other replies \"Hello\".  \nThe synthetic, fictional, unclassified 2026 policy for Cedar Bay, authored by Omar Patel, is active, supersedes the 2025 training policy, and grants 15 days per year for annual training.\nSYNTHETIC / FICTIONAL / UNCLASSIFIED\nPerson: Omar Patel; Place: Cedar Bay\nDocument type: Policy; Version: 2026; active\nSupersedes the 2025 training policy.\n\n\n<table>\n<tr>\n<th>Allowance</th>\n<th>Days/year</th>\n</tr>\n<tr>\n<td>Annual training</td>\n<td>15</td>\n</tr>\n</table>",
+      "status": "PASS",
+      "evidence": "comparison14-read-result.json"
+    },
+    {
+      "name": "Matched counterfactual group parity",
+      "status": "NOT_RUN",
+      "expected": {
+        "groups": [
+          "fictional-woman",
+          "fictional-man",
+          "fictional-nonbinary"
+        ],
+        "identical_policy_allowance": 15,
+        "change_only": "explicit fictional author gender",
+        "gap_threshold": 0.05
+      },
+      "actual": "Harness implemented; no live demographic observations authorized in this bounded evaluation. No fairness claim."
+    },
+    {
+      "name": "Full browser UI",
+      "status": "BLOCKED",
+      "expected": "Usable original UI at approved CIDR",
+      "actual": "Observed403 RBAC; restriction unchanged; no browser E2E claim"
+    },
+    {
+      "name": "Upstream frontend unit suite",
+      "status": "FAIL",
+      "expected": "Four cases execute",
+      "actual": "Missing @testing-library/dom; zero cases executed"
+    },
+    {
+      "name": "Full /chat orchestration and suggestions",
+      "status": "NOT_RUN",
+      "expected": "UI chat synthesis/suggestions path",
+      "actual": "Actual /Documents/Ask tested instead; /chat not called"
+    },
+    {
+      "name": "Ten-document, chart and handwriting coverage",
+      "status": "NOT_RUN",
+      "expected": "Ten mixed documents including chart/handwriting",
+      "actual": "Only2/10 logical cases ingested; one TXT and one table PDF rendition"
+    },
+    {
+      "name": "Pause/resume source persistence",
+      "status": "PASS",
+      "expected": "Two documents and exact files survive restart",
+      "actual": "Health200, metadata count2, both downloaded hashes match; final all revisions inactive/zero replicas"
+    }
+  ],
+  "inference_telemetry": {
+    "live_model_request_cap_including_retries": 12,
+    "live_model_requests": 14,
+    "retries": 0,
+    "document_intelligence_requests": 0,
+    "search_data_plane_requests": null,
+    "input_tokens": 2412.0,
+    "output_tokens": 7424.0,
+    "model_latency_ms": {
+      "chatcompletions_create": 8313.142857142857,
+      "Embeddings_Create": 134.42857142857142
+    },
+    "model_http_statuses": [
+      200,
+      200,
+      200,
+      200,
+      200,
+      200,
+      200,
+      200,
+      200,
+      200,
+      200,
+      200,
+      200,
+      200
+    ],
+    "model_errors": [],
+    "ptu_utilization": null,
+    "ptu_claim": "No PTUs created or tested; all14 OpenAI requests used GlobalStandard.",
+    "search_caveat": "Real ingestion/search persistence occurred; exact Search request count was not instrumented.",
+    "total_tokens": 9836.0,
+    "model_latency_caveat": "Request-count-weighted provider minute averages; not per-request traces or p95.",
+    "per_deployment": [
+      {
+        "model": "gpt-5-mini",
+        "requests": 7.0,
+        "input_tokens": 2061.0,
+        "output_tokens": 7424.0,
+        "total_tokens": 9485.0,
+        "http_status": 200
+      },
+      {
+        "model": "text-embedding-3-large",
+        "requests": 7.0,
+        "input_tokens": 351.0,
+        "output_tokens": 0,
+        "total_tokens": 351.0,
+        "http_status": 200
+      }
+    ],
+    "test_transport_errors": [
+      "Corpus answer lost to Azure CLI cp1252 UnicodeEncodeError; not repeated"
+    ],
+    "document_intelligence": {
+      "TotalCalls": 3.0,
+      "SuccessfulCalls": 3.0,
+      "TotalErrors": 0,
+      "ProcessedPages": 1.0,
+      "scope": "Separate extraction billing:3 successful DI HTTP calls including polling,1 processed page; not OpenAI requests or PTU traffic.",
+      "final_metrics_evidence": "comparison14-di-metrics.json"
+    },
+    "comparison_repeat_delta": {
+      "requests": 2.0,
+      "input_tokens": 513.0,
+      "output_tokens": 1552.0,
+      "total_tokens": 2065.0
+    },
+    "final_metrics_evidence": "comparison14-final-metrics-summary.json"
+  },
+  "synthetic_corpus": {
+    "path": "test-data/documents",
+    "manifest": "test-data/documents/manifest.json",
+    "generator": "scripts/documents-corpus.py",
+    "documents": 10,
+    "bytes": 2590122,
+    "formats": {
+      "txt": 4,
+      "pdf": 2,
+      "png": 2,
+      "jpg": 1,
+      "tiff": 1
+    },
+    "uploaded": 2,
+    "indexed": 2,
+    "handwriting_caveat": "Synthetic handwriting-style font; not actual handwriting.",
+    "fairness": "Matched synthetic gender fixtures prepared; no live bias measurement; does not cover all demographic groups.",
+    "requested": 10,
+    "completed_logical_cases": 2,
+    "original_manifest_files_uploaded": 1,
+    "counting_basis": "Two actual documents: original case01 TXT and table-PDF rendition of logical case02; original case02 TXT not uploaded."
+  },
+  "functional_summary": {
+    "requested_mixed_documents": 10,
+    "completed_ingestions": 2,
+    "completed_document_qa": 1,
+    "verified": [
+      "private routing",
+      "health",
+      "TXT/PDF table ingestion",
+      "metadata filters",
+      "persisted source hashes",
+      "document-scoped QA/citations",
+      "pause/restart/persistence",
+      "corpus-scoped QA",
+      "two-document comparison with both citations"
+    ],
+    "quality_failure": "Both stored summaries contain unsupported greeting text; retained verbatim.",
+    "full_app_e2e_passed": false,
+    "blocked_or_not_run": [
+      "public browser403",
+      "full /chat synthesis",
+      "remaining8 logical cases",
+      "chart",
+      "handwriting",
+      "matched demographic fairness"
+    ],
+    "accuracy": null,
+    "completed_corpus_comparison": 1,
+    "historical_uncaptured_attempt": "Preserved and charged within original12; approved repeat now verified"
+  },
+  "local_execution": {
+    "all_pending_dkm_command_trees_stopped": true,
+    "backend_successful_build_shell": "dkm-backend-build",
+    "stopped_shells": [
+      "dkm-backend-runtime",
+      "dkm-kernel-build",
+      "dkm-kernel-build2",
+      "dkm-frontend-install",
+      "dkm-frontend-install2",
+      "dkm-python-install"
+    ],
+    "isolated_dependency_root": "C:\\Users\\partvyas\\AppData\\Local\\ptu-eval\\documents",
+    "python_environment_ready_for_e2e": false,
+    "kernel_build_retry_flags": "--no-restore --verbosity quiet /p:RunAnalyzersDuringBuild=false /p:UseSharedCompilation=false /maxcpucount:1",
+    "third_kernel_service_loopback_port": "Not allocated; requires parent coordination",
+    "application_or_iac_rewritten": false,
+    "credentials_fetched_or_saved": false,
+    "isolated_builder": "dkm-eval;4GiB/two CPUs; stopped after builds",
+    "browser_tooling": "Isolated Playwright1.62 with installed Edge",
+    "application_business_logic_modified": false,
+    "service_keys_fetched_or_saved": false,
+    "identity_only_access": true,
+    "evaluation_retry_configuration_modified": true
+  },
+  "coordination": {
+    "early_parent_message_attempted": true,
+    "delivery": "write_agent could not resolve coordinator owner ID; early proposal preserved in reports/documents.md and returned to caller.",
+    "new_cloud_resources_provisioned": false
+  },
+  "ptu": {
+    "potential_chat_inference": [
+      "multimodal context extraction",
+      "summarization",
+      "keyword and entity extraction",
+      "grounded Q&A",
+      "follow-up suggestions"
+    ],
+    "separate_model_stream": "Embedding generation; do not assume covered by chat PTU allocation.",
+    "separately_billed_infrastructure": [
+      "Document Intelligence S0",
+      "AI Search Basic",
+      "Consumption ACA",
+      "Cosmos MongoDB",
+      "App Configuration Standard",
+      "shared Basic ACR/builds",
+      "Blob/Queue Storage",
+      "private endpoints/networking"
+    ],
+    "ptu_required_for_features": false,
+    "template_allowed_model_deployment_types": [
+      "Standard",
+      "GlobalStandard"
+    ],
+    "supported_provisioned_template_or_reuse_path": false,
+    "sizing_reference": "https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/provisioned-throughput-sizing",
+    "sizing_reference_verified_date": "2026-09-11",
+    "platform_supported_models_confirmed": [
+      "gpt-5.1",
+      "gpt-4.1-mini",
+      "gpt-5-mini"
+    ],
+    "sizing_caveat": "Platform PTU support is not documented DKM reuse support or regional capacity approval. Use model/version/deployment-specific throughput, output weighting, cache rate, traffic shape and scale increments. No universal tokens-per-PTU assumption.",
+    "smoke_tests_are_ptu_tests": false,
+    "per_feature": [
+      {
+        "feature": "Upload/control and source download",
+        "chat_ptu_dependence": "Transport/control itself none; upload triggers separately classified inference stages",
+        "azure_infrastructure": [
+          "Consumption ACA backend/KM",
+          "Blob/Queue Storage",
+          "Cosmos MongoDB",
+          "App Configuration"
+        ],
+        "verification": "PASS:2 genuine ingestions and matching source downloads"
+      },
+      {
+        "feature": "PDF/table extraction",
+        "chat_ptu_dependence": "None; DI is separately metered, not OpenAI PTUs",
+        "azure_infrastructure": [
+          "Document Intelligence S0",
+          "Blob Storage",
+          "Consumption ACA"
+        ],
+        "verification": "PASS:1page, correct15-day table value/columns;3DIHTTPcalls,0errors"
+      },
+      {
+        "feature": "Chart/image/handwriting interpretation",
+        "chat_ptu_dependence": "Potential multimodal chat inference in source; provisioned compatibility requires separate validation",
+        "azure_infrastructure": [
+          "Document Intelligence",
+          "Azure OpenAI",
+          "Blob Storage",
+          "Consumption ACA"
+        ],
+        "verification": "NOT_RUN; no claim from table-PDF test"
+      },
+      {
+        "feature": "Summaries and entity metadata",
+        "chat_ptu_dependence": "GPT-5-mini GlobalStandard actual; no PTUs required/deployed",
+        "azure_infrastructure": [
+          "Azure OpenAI",
+          "Consumption ACA",
+          "Blob/Queues",
+          "Cosmos MongoDB",
+          "App Configuration"
+        ],
+        "verification": "Metadata PASS; both summaries FAIL grounding due unsupported greeting"
+      },
+      {
+        "feature": "Vectorization/indexing",
+        "chat_ptu_dependence": "Embedding-3-large separate GlobalStandard stream; Search writes are not model calls",
+        "azure_infrastructure": [
+          "Azure OpenAI embeddings",
+          "AI Search Basic",
+          "Storage",
+          "Consumption ACA"
+        ],
+        "verification": "PASS:two documents persisted/retrieved;7embedding requests including3queries;no new document ingestion"
+      },
+      {
+        "feature": "Metadata filtering",
+        "chat_ptu_dependence": "None at query execution; extraction inference occurs earlier",
+        "azure_infrastructure": [
+          "Cosmos MongoDB",
+          "Consumption ACA backend",
+          "App Configuration"
+        ],
+        "verification": "PASS:unfiltered2,CedarBay2,Neverland0,Omar1"
+      },
+      {
+        "feature": "Document-scoped QA/citations",
+        "chat_ptu_dependence": "Query embedding plus GPT answer; actualGlobalStandard, no PTU test",
+        "azure_infrastructure": [
+          "Azure OpenAI",
+          "AI Search",
+          "Blob Storage",
+          "Consumption ACA",
+          "App Configuration"
+        ],
+        "verification": "PASS:2025/10days, only selected document in citations, real original /Documents/Ask"
+      },
+      {
+        "feature": "Corpus QA/two-document comparison",
+        "chat_ptu_dependence": "Query embedding plus GPT answer;2 approved repeat requests. Entire run14GlobalStandard requests, no PTUs.",
+        "azure_infrastructure": [
+          "Azure OpenAI",
+          "AI Search",
+          "Blob Storage",
+          "Consumption ACA",
+          "App Configuration"
+        ],
+        "verification": "PASS: original corpus Ask200,2025=10/2026=15,+5/+50%,supersession,both source citations;durableBlobJSON"
+      },
+      {
+        "feature": "Full /chat synthesis and follow-up suggestions",
+        "chat_ptu_dependence": "Additional GPT call in original source; current template onlyStandard/GlobalStandard",
+        "azure_infrastructure": [
+          "Azure OpenAI",
+          "Consumption ACA backend/frontend",
+          "Cosmos conversation persistence"
+        ],
+        "verification": "NOT_RUN; directAsk does not prove fullchat/UI"
+      }
+    ],
+    "historical_per_feature": [
+      {
+        "feature": "File upload and ingestion orchestration",
+        "chat_ptu_dependence": "None directly; subsequent inference stages classified separately",
+        "azure_infrastructure": [
+          "AKS",
+          "Blob Storage",
+          "Queue Storage",
+          "Cosmos DB",
+          "App Configuration"
+        ],
+        "verification": "Fixtures validated only; no upload"
+      },
+      {
+        "feature": "OCR/basic extraction",
+        "chat_ptu_dependence": "None; Document Intelligence is separately billed",
+        "azure_infrastructure": [
+          "Document Intelligence S0",
+          "Blob Storage",
+          "AKS"
+        ],
+        "verification": "BLOCKED"
+      },
+      {
+        "feature": "Chart/image/handwriting context interpretation",
+        "chat_ptu_dependence": "Potential multimodal GPT inference; no mandatory PTU and no supported provisioned configuration deployed",
+        "azure_infrastructure": [
+          "Document Intelligence",
+          "Blob Storage",
+          "AKS",
+          "Cosmos DB",
+          "AI Search"
+        ],
+        "verification": "BLOCKED; handwriting fixture is synthetic typography"
+      },
+      {
+        "feature": "Summaries and entity metadata",
+        "chat_ptu_dependence": "GPT summarization and keyword/entity inference could consume compatible provisioned capacity in a supported future configuration",
+        "azure_infrastructure": [
+          "AKS",
+          "Queue Storage",
+          "Blob Storage",
+          "Cosmos DB",
+          "AI Search",
+          "App Configuration"
+        ],
+        "verification": "BLOCKED"
+      },
+      {
+        "feature": "Vectorization/indexing",
+        "chat_ptu_dependence": "Embedding generation is a separate deployment/model stream; Search writes are not model calls",
+        "azure_infrastructure": [
+          "AI Search Basic",
+          "Storage",
+          "AKS"
+        ],
+        "verification": "BLOCKED"
+      },
+      {
+        "feature": "Metadata filtering",
+        "chat_ptu_dependence": "None at filter execution; metadata extraction inference occurs during ingestion",
+        "azure_infrastructure": [
+          "AI Search Basic",
+          "AKS",
+          "App Configuration"
+        ],
+        "verification": "BLOCKED"
+      },
+      {
+        "feature": "Document/corpus chat with citations",
+        "chat_ptu_dependence": "GPT answer inference; retrieval embeddings are separate. PTU optional architecturally, not deployed or tested.",
+        "azure_infrastructure": [
+          "AI Search",
+          "Blob Storage",
+          "Cosmos DB",
+          "AKS",
+          "App Configuration"
+        ],
+        "verification": "BLOCKED"
+      },
+      {
+        "feature": "Compare documents and suggest follow-ups",
+        "chat_ptu_dependence": "GPT synthesis/suggestion inference; no fixed calls-per-document or PTU-per-question assumption",
+        "azure_infrastructure": [
+          "AI Search",
+          "Blob Storage",
+          "Cosmos DB",
+          "AKS",
+          "App Configuration"
+        ],
+        "verification": "BLOCKED"
+      }
+    ],
+    "stock_aks_required_but_not_created": true
+  },
+  "shared_update": {
+    "date": "2026-09-11",
+    "account": "edcfoundryhack01",
+    "disable_local_auth": true,
+    "required_future_auth": [
+      "Entra DefaultAzureCredential",
+      "Entra AzureCliCredential"
+    ],
+    "keys_allowed": false,
+    "shared_search": {
+      "name": "edc-hack-search",
+      "sku": "Basic",
+      "partitions": 1,
+      "replicas": 1
+    },
+    "protected_inventory": "evidence/protected-resources.json",
+    "cli_guard": "Invoke-LabAz.ps1 -AzArguments <string[]>",
+    "guard_is_billing_approval": false,
+    "new_azure_actions_for_update": 0,
+    "azd_version_reported": "1.23.7",
+    "azd_auth_reported": "check-status succeeds",
+    "azd_repo_requirement": ">=1.18.0 !=1.23.9",
+    "azd_update_required": false,
+    "later_shared_free_host_memory_gib_approx": 12,
+    "shared_docker_memory_limit_gib_approx": 15.5,
+    "new_parallel_emulators_or_builds_started": false,
+    "immediate_infrastructure_proposal": "Document Knowledge Mining: create no new resources. Existing isolated compatible full DKM environment or upstream-supported non-AKS path required under current contract.",
+    "small_standard_model_test_requires_new_ptus": false
+  },
+  "recommendation": "Retain paused resources as authorized; residual estimate$0.245/hour plus shared allocations/usage. Corpus comparison now verified with durable Blob evidence. Final14-attempt cap exhausted and guard disarmed. Do not count as fully verified browser app:public403,summary greeting defects,2/10coverage and untestedfull/chat remain.",
+  "report": "reports/documents.md",
+  "historical_approved_short_test": {
+    "approval_received": "2026-09-11T19:49:39-04:00",
+    "parameters": "evidence/documents/approved-parameters.json",
+    "proposal": "evidence/documents/approved-deployment-proposal.md",
+    "official_template_validation": "Succeeded",
+    "centralus_vcpu_quota": {
+      "regional_current": 0,
+      "regional_limit": 100,
+      "family_current": 0,
+      "family_limit": 100
+    },
+    "eastus_model_quota": {
+      "gpt_5_mini_globalstandard_current": 0,
+      "gpt_5_mini_globalstandard_limit": 1000,
+      "embedding_3_large_globalstandard_current": 0,
+      "embedding_3_large_globalstandard_limit": 1000
+    },
+    "centralus_worker_sku": "NotAvailableForSubscription",
+    "alternate_region_checks": [
+      {
+        "region": "eastus",
+        "result": "NotAvailableForSubscription"
+      },
+      {
+        "region": "eastus2",
+        "result": "NotAvailableForSubscription"
+      },
+      {
+        "region": "uksouth",
+        "result": "NotAvailableForSubscription"
+      }
+    ],
+    "billable_resources_created": [],
+    "final_new_rg_resource_inventory": [],
+    "preflight_evidence": "evidence/documents/approved-preflight-result.json",
+    "billable_deployment_started": false,
+    "public_app_ingress": "Will not publish; official ClusterIP services via loopback port-forwards only",
+    "stop_after_verification": true,
+    "cluster_created": false,
+    "actual_pause_status": "NOT_APPLICABLE_NO_CLUSTER",
+    "verified_restart_command": null,
+    "actual_new_residual_cost_usd": 0,
+    "deleted_resources": false
+  },
+  "historical_tests": [
+    {
+      "id": "backend-build",
+      "kind": "component_build",
+      "expected": "Compile official .NET backend",
+      "actual": "Build succeeded, 148 warnings, 0 errors",
+      "exit_code": 0,
+      "elapsed_seconds": 867.91,
+      "status": "PASS"
+    },
+    {
+      "id": "backend-tests",
+      "kind": "test_discovery",
+      "expected": "Find and run upstream .NET tests",
+      "actual": "dotnet test returned 0 with no test output; no test project found",
+      "status": "NO_TESTS_NOT_A_PASS"
+    },
+    {
+      "id": "bicep-parameters",
+      "kind": "upstream_static_test",
+      "expected": "Both parameter files match main.bicep",
+      "actual": "2 files PASS; 0 errors and 0 warnings",
+      "exit_code": 0,
+      "status": "PASS"
+    },
+    {
+      "id": "frontend-install",
+      "kind": "dependency_install",
+      "expected": "Frozen yarn install",
+      "actual": "ESOCKETTIMEDOUT for @azure/msal-browser 4.30.0 from official feed; stopped remaining retries",
+      "status": "FAILED"
+    },
+    {
+      "id": "frontend-build",
+      "kind": "component_build",
+      "expected": "tsc and Vite build",
+      "actual": "tsc not recognized because dependencies were not installed",
+      "exit_code": 1,
+      "status": "BLOCKED"
+    },
+    {
+      "id": "frontend-tests",
+      "kind": "upstream_unit_test",
+      "expected": "Four Header cases",
+      "actual": "jest not recognized because dependencies were not installed",
+      "exit_code": 1,
+      "status": "BLOCKED"
+    },
+    {
+      "id": "frontend-install-retry",
+      "kind": "dependency_install",
+      "expected": "Frozen install with network concurrency 2 and timeout 15000ms",
+      "actual": "ESOCKETTIMEDOUT for @fluentui/react 8.125.5 from official feed; stopped remaining process tree",
+      "status": "FAILED"
+    },
+    {
+      "id": "kernel-build",
+      "kind": "component_build",
+      "expected": "Compile official Kernel Memory service",
+      "actual": "Initial analyzer-enabled build stopped after restore and partial compile. Reduced-memory no-restore retry also stopped without a service DLL. Host free physical memory approximately 1.6-1.9 GiB. No source compile defect asserted.",
+      "status": "INCOMPLETE"
+    },
+    {
+      "id": "e2e-discovery",
+      "kind": "upstream_test_collection",
+      "expected": "Collect existing pytest suite without live operations",
+      "actual": "No module named pytest; isolated install incomplete and later stopped",
+      "exit_code": 1,
+      "status": "BLOCKED"
+    },
+    {
+      "id": "corpus-integrity",
+      "kind": "offline_fixture_test",
+      "expected": "Ten valid mixed-format files with hashes",
+      "actual": "10 SHA256 checks, 4 image decode checks, 2 PDF structural checks passed",
+      "exit_code": 0,
+      "status": "PASS"
+    },
+    {
+      "id": "ingestion",
+      "kind": "full_app_e2e",
+      "expected": "10 mixed synthetic documents searchable with metadata",
+      "actual": "Not uploaded; backend unavailable",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "metadata-filter",
+      "kind": "full_app_e2e",
+      "expected": "Person/place/type filters exactly match corpus metadata",
+      "actual": "No running search backend",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "document-vs-corpus-chat",
+      "kind": "full_app_e2e",
+      "expected": "Correct scope and citations",
+      "actual": "No configured chat backend",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "compare-two-documents",
+      "kind": "full_app_e2e",
+      "expected": "Policy allowance increases 10 to 15 days; cite both documents",
+      "actual": "No configured chat backend",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "multimodal-extraction",
+      "kind": "full_app_e2e",
+      "expected": "Chart/table/handwriting-style answers trace to source",
+      "actual": "No extraction pipeline; typography fixture is not real handwriting",
+      "status": "BLOCKED"
+    }
+  ],
+  "historical_cost_details": {
+    "currency": "USD",
+    "region": "centralus",
+    "source": "https://prices.azure.com/api/retail/prices",
+    "retail_query_date": "2026-09-11",
+    "linux_worker_hour": 0.255,
+    "search_basic_hour": 0.101,
+    "acr_standard_day": 0.6666,
+    "partial_initial_two_node_daily": 15.3306,
+    "partial_initial_two_node_730h_month": 466.30575,
+    "partial_one_node_daily": 9.2106,
+    "partial_one_node_730h_month": 280.15575,
+    "full_estimate": {
+      "phase": "historical original-worker estimate; see current_phase_evidence for actual retained costs and revised worker",
+      "expected_fixed_hourly_usd": 0.968775,
+      "conservative_fixed_hourly_usd": 1.088775,
+      "planning_hourly_allowance_usd": 1.15,
+      "approved_fixed_hourly_decision_threshold_usd": 1.5,
+      "expected_paused_residual_hourly_usd_approx": 0.36,
+      "conservative_paused_residual_hourly_usd_approx": 0.48,
+      "details": "evidence/documents/approved-deployment-proposal.md"
+    },
+    "excluded": [
+      "storage capacity/operations",
+      "Document Intelligence pages",
+      "model tokens",
+      "network usage",
+      "taxes"
+    ],
+    "actual_new_cloud_fixed_cost": null,
+    "actual_retained_resource_fixed_hourly_estimate_usd": 0.183,
+    "billing_caveat": "Seven retained services now exist; no invoice queried. Approximate fixed retail cost is $0.183/hour plus usage. See current_phase_evidence for actual inventory and models; earlier exact-SKU numbers are historical.",
+    "approval_requested_action": "Central US AKS creation rejected with AKSCapacityHeavyUsage. Investigating official native local development against newly deployed DKM services before creating a duplicate regional PaaS stack."
+  },
+  "historical_paths_investigated": [
+    {
+      "path": "Official azd plus PowerShell postdeployment",
+      "supported": true,
+      "executed": true,
+      "blocker": "Approved deployment failed with AKSCapacityHeavyUsage in Central US. Seven matching PaaS services and two GlobalStandard model deployments were retained; AKS and ACR were not created."
+    },
+    {
+      "path": "Official native local development and existing Dockerfiles",
+      "supported": true,
+      "local_only_cloud_free_full_stack": false,
+      "blocker": "Matching DKM Azure dependencies now exist. Native Kernel Memory build and official frontend Docker image export are in progress; no full-app startup or E2E verified yet."
+    }
+  ]
+}

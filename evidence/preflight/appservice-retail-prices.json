@@ -1,0 +1,50 @@
+[
+  {
+    "productName": "Azure App Service Premium v3 Plan",
+    "skuName": "P1 v3",
+    "meterName": "P1 v3 App",
+    "retailPrice": 0.328,
+    "unitOfMeasure": "1 Hour",
+    "currencyCode": "USD"
+  },
+  {
+    "productName": "Azure App Service Standard Plan",
+    "skuName": "S1",
+    "meterName": "S1 App",
+    "retailPrice": 0.11,
+    "unitOfMeasure": "1 Hour",
+    "currencyCode": "USD"
+  },
+  {
+    "productName": "Azure App Service Premium v3 Plan - Linux",
+    "skuName": "P1 v3",
+    "meterName": "P1 v3 App",
+    "retailPrice": 0.168,
+    "unitOfMeasure": "1 Hour",
+    "currencyCode": "USD"
+  },
+  {
+    "productName": "Azure App Service Basic Plan - Linux",
+    "skuName": "B1",
+    "meterName": "B1",
+    "retailPrice": 0.018,
+    "unitOfMeasure": "1 Hour",
+    "currencyCode": "USD"
+  },
+  {
+    "productName": "Azure App Service Basic Plan",
+    "skuName": "B1",
+    "meterName": "B1 App",
+    "retailPrice": 0.083,
+    "unitOfMeasure": "1 Hour",
+    "currencyCode": "USD"
+  },
+  {
+    "productName": "Azure App Service Standard Plan - Linux",
+    "skuName": "S1",
+    "meterName": "S1 App",
+    "retailPrice": 0.088,
+    "unitOfMeasure": "1 Hour",
+    "currencyCode": "USD"
+  }
+]

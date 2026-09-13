@@ -1,0 +1,3569 @@
+{
+  "accelerator": "Conversation Knowledge Mining",
+  "status": "durable_native_read_only_serving_verified_paused",
+  "full_application_deployed": false,
+  "native_preflight_evidence": "evidence/conversation/native-preflight.json",
+  "private_fallback_evidence": "evidence/conversation/private-fallback.json",
+  "cloud_hosting_evidence": "evidence/conversation/cloud-hosting.json",
+  "cloud_runbook": "reports/conversation-cloud-runbook.md",
+  "bounded_native_summary_pass": {
+    "evidence": "evidence/conversation/summary-pass-plan.json",
+    "status": "completed_manually_reviewed_with_uncertainty_caution",
+    "ai_model_requests_used": 7,
+    "hard_pass_limit": 7,
+    "sdk_retries": 0,
+    "original_route": "/api/processing/summarize",
+    "not_replacement_explore": true,
+    "result_evidence": "evidence/conversation/summary-review.json",
+    "historical_phase_note": "Serving endpoints were unset during that earlier phase; current durable serving state is in native_serving.",
+    "serving_api_model_endpoints_unset_during_summary_phase": true
+  },
+  "latest_helper_update": {
+    "parent_update": "2026-09-11T22:32:30.361-04:00",
+    "account_group_and_three_zones_supported": true,
+    "pe_cap_per_app": 4,
+    "bounded_json_queue_pe_deferred_after_source_inspection": true,
+    "bounded_json_core_pe_plan_maximum": 4,
+    "actual_ai_firewall_blocker_observed": true,
+    "new_pe_created": true,
+    "standard_agent_private_search_requirements_resolved": false,
+    "exec_retry_after_600_will_be_honored": true,
+    "connectivity_evidence": "Public metadata403 with PNA Disabled; after approved PE private10.246.2.26/metadata200 and7 inference200. Initial403 message alone did not isolate the cause."
+  },
+  "latest_network_coordination": {
+    "parent_update": "2026-09-11T22:22:10.834-04:00",
+    "evidence": "evidence/preflight/private-network-probe-result.json",
+    "parent_probe_read": true,
+    "parent_verified_private_dns_and_https": true,
+    "parent_verified_application_data_authorization": false,
+    "scope": "Parent MACAE Blob/Cosmos route probes; not CKM data access",
+    "ckm_already_verified_authenticated_exec": true,
+    "public_browser_access": "unverified403; not a prerequisite for control-plane validation",
+    "waiting_for_public_diagnostic_access": false,
+    "remaining_gate": "Standard Agent private-Search topology, not account inbound PE, DNS, inference role, or exec readiness.",
+    "new_entra_registration_or_admin_consent_requested": false
+  },
+  "container_smoke_tests": [
+    {
+      "id": "api-image-odbc-import-schema",
+      "expected": "Official API image has ODBC18 and imports original OpenAPI",
+      "actual": {
+        "odbc18": true,
+        "routes": 71,
+        "title": "Knowledge Mining"
+      },
+      "status": "passed",
+      "network": "none",
+      "model_requests": 0
+    },
+    {
+      "id": "ui-image-nginx-config",
+      "expected": "Official nginx runtime configuration validates",
+      "actual": "nginx syntax ok and configuration test successful",
+      "status": "passed",
+      "network": "none",
+      "model_requests": 0
+    }
+  ],
+  "blockers": [
+    {
+      "id": "hosted-private-search-compatibility",
+      "evidence": "Basic Foundry Agent does not support private Search; own account Sweden Central differs from shared EastUS2 VNet. Standard setup requires Cosmos/dedicated agent subnet/region alignment not present in the listed envelope."
+    },
+    {
+      "id": "native-dashboard-kpi-semantics",
+      "evidence": "Actual native dashboard: unique categories3 versus SQL ground truth2; source types3 versus1. COUNT(*) cannot validate a distinct-count label."
+    },
+    {
+      "id": "native-narrative-quality",
+      "evidence": "Overbroad anonymization damages prose; file-level processing insights sees first-summary context and overgeneralizes. See manual expected/actual checks."
+    },
+    {
+      "id": "public-browser-unverified",
+      "evidence": "Existing /32 public path returned403; preserved unchanged. Control-plane exec works."
+    }
+  ],
+  "current_decision": {
+    "controlling_parent_update": "2026-09-12T05:10:48.032Z",
+    "action_required": "No listed-dependency approval gate remains. Private hosted Explore is incompatible with Basic Agent networking; current native quality defects are documented separately.",
+    "blocking_prerequisite": "Hosted Search tool needs Standard Agent private networking/BYO Cosmos/dedicated subnet/region alignment, not another approval for deployed SQL/Search/Blob.",
+    "installer_session": "ckm-odbc-retry",
+    "installer_status": "Stopped owned pending session after container fallback; official API image supplies Linux ODBC18.",
+    "container_build_session": "ckm-container-build",
+    "container_build_exit_code": 0,
+    "container_images_built": true,
+    "container_offline_smoke_tests_passed": true,
+    "registry_push_performed": true,
+    "cloud_hosting_deployed": true,
+    "cloud_hosting_phase": "durable_native_read_only_serving_verified_paused",
+    "cloud_hosting_session": "ckm-cloud-hosting",
+    "pause_session": "ckm-serving-final-pause",
+    "pause_exit_code": 0,
+    "all_cloud_revisions_inactive": true,
+    "cloud_reported_replicas": 0,
+    "final_cloud_verified_at": "2026-09-12T05:24:46.3472084+00:00",
+    "installer_winget_pid": 33272,
+    "contemporaneous_consent_pid": 15740,
+    "own_hosting_resources_created_including_rg": 4,
+    "shared_acr_pull_role_assignments_created": 1,
+    "data_paas_resources_created": 4,
+    "model_requests_used": 9,
+    "model_request_cap": 9,
+    "additional_standard_agent_architecture_outside_current_envelope": true,
+    "remaining_allowance": 0,
+    "ai_resources_created_count": 4,
+    "account_private_endpoints_created": 1,
+    "rollout_observation": "One serving configure/read attempt;15 native HTTP checks passed. Scale restored min0/max1; all14 retained revisions inactive/0.",
+    "total_private_endpoints_created": 4
+  },
+  "repo": {
+    "url": "https://github.com/microsoft/Conversation-Knowledge-Mining-Solution-Accelerator",
+    "path": "C:\\Users\\partvyas\\OneDrive - Microsoft\\Desktop\\repo\\Conversation-Knowledge-Mining-Solution-Accelerator",
+    "branch": "main",
+    "sha": "8a00aa54bc25fd3624020648c63f2c069172d8ca",
+    "commit_timestamp": "2026-09-01T11:24:23+05:30",
+    "latest_local_tag": "v3.23.4",
+    "describe": "v3.23.4-369-g8a00aa54",
+    "tracked_source_changes": []
+  },
+  "azure": {
+    "subscription_id": "1feb53b2-854a-4ea7-b5a6-709b7d804f70",
+    "tenant_id": "a600acd0-3028-4689-8402-3b471d7d924d",
+    "subscription_name": "ME-MngEnvMCAP687593-partvyas-1",
+    "created_resources": [
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo",
+        "type": "Microsoft.Resources/resourceGroups",
+        "location": "canadacentral"
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id-ptu-conversation",
+        "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+        "location": "eastus2",
+        "principal_id": "b0c36c36-5b9f-4efa-9f01-0e19fb97aa25",
+        "client_id": "1b458b7e-1768-45a9-b676-9a3245a4dfbe"
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.App/containerApps/ca-ptu-conversation-api",
+        "type": "Microsoft.App/containerApps",
+        "location": "eastus2",
+        "profile": "Consumption",
+        "cpu": 0.5,
+        "memory_gib": 1,
+        "max_replicas": 1,
+        "phase": "component-only",
+        "image": "acrptubundle7d804f70.azurecr.io/conversation/api@sha256:84ff9d2a31ddf2e71a75d26ca58433ce29e41af0eb46823c0a0c5d5ca4bbcaf0",
+        "serving_phase": "durable_native_read_only_serving_verified_paused",
+        "replicas": 0
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.App/containerApps/ca-ptu-conversation-ui",
+        "type": "Microsoft.App/containerApps",
+        "location": "eastus2",
+        "profile": "Consumption",
+        "cpu": 0.25,
+        "memory_gib": 0.5,
+        "max_replicas": 1,
+        "phase": "component-only"
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.CognitiveServices/accounts/aif-ptu-conversation-7d804f70",
+        "type": "Microsoft.CognitiveServices/accounts",
+        "location": "swedencentral",
+        "sku": "S0",
+        "public_network_access": "Disabled",
+        "disable_local_auth": true
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.CognitiveServices/accounts/aif-ptu-conversation-7d804f70/projects/proj-ptu-conversation",
+        "type": "Microsoft.CognitiveServices/accounts/projects",
+        "location": "swedencentral"
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.CognitiveServices/accounts/aif-ptu-conversation-7d804f70/deployments/gpt-5.2",
+        "model": "gpt-5.2",
+        "version": "2025-12-11",
+        "sku": "GlobalStandard",
+        "capacity": 10,
+        "state": "Succeeded",
+        "version_upgrade": "NoAutoUpgrade"
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.CognitiveServices/accounts/aif-ptu-conversation-7d804f70/deployments/text-embedding-3-small",
+        "model": "text-embedding-3-small",
+        "version": "1",
+        "sku": "GlobalStandard",
+        "capacity": 10,
+        "state": "Succeeded",
+        "version_upgrade": "NoAutoUpgrade"
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateEndpoints/pe-conversation-ai",
+        "type": "Microsoft.Network/privateEndpoints",
+        "location": "eastus2",
+        "state": "Succeeded",
+        "connections": [
+          {
+            "etag": "W/\"1e1ec1af-2e07-4871-9891-bbcded308662\"",
+            "groupIds": [
+              "account"
+            ],
+            "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateEndpoints/pe-conversation-ai/privateLinkServiceConnections/pe-conversation-ai",
+            "name": "pe-conversation-ai",
+            "privateLinkServiceConnectionState": {
+              "actionsRequired": "None",
+              "description": "Approved",
+              "status": "Approved"
+            },
+            "privateLinkServiceId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.CognitiveServices/accounts/aif-ptu-conversation-7d804f70",
+            "provisioningState": "Succeeded",
+            "resourceGroup": "rg-ptu-bundle-platform",
+            "type": "Microsoft.Network/privateEndpoints/privateLinkServiceConnections"
+          }
+        ]
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/networkInterfaces/pe-conversation-ai.nic.e80644cd-9604-414e-bd31-6f593e9c7c1a",
+        "type": "Microsoft.Network/networkInterfaces",
+        "location": "eastus2",
+        "purpose": "Implicit own PE NIC"
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Storage/storageAccounts/stptuconv7d804f70",
+        "location": "canadacentral",
+        "name": "stptuconv7d804f70",
+        "type": "Microsoft.Storage/storageAccounts",
+        "sku": "Standard_LRS",
+        "public_network_access": "Disabled",
+        "allow_shared_key": false
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Search/searchServices/srch-ptu-conversation-7d804f70",
+        "location": "canadacentral",
+        "name": "srch-ptu-conversation-7d804f70",
+        "type": "Microsoft.Search/searchServices",
+        "sku": "Basic",
+        "replicas": 1,
+        "partitions": 1,
+        "public_network_access": "Disabled",
+        "disable_local_auth": true
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Sql/servers/sql-ptu-conversation-7d804f70",
+        "location": "canadacentral",
+        "name": "sql-ptu-conversation-7d804f70",
+        "type": "Microsoft.Sql/servers",
+        "public_network_access": "Disabled",
+        "entra_only": true,
+        "administrator": {
+          "administratorType": "ActiveDirectory",
+          "azureAdOnlyAuthentication": true,
+          "login": "CKM lab administrator",
+          "principalType": "User",
+          "sid": "87ccaa4c-8da9-4d6a-a626-d0da9b2e25ed",
+          "tenantId": "a600acd0-3028-4689-8402-3b471d7d924d"
+        }
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Sql/servers/sql-ptu-conversation-7d804f70/databases/master",
+        "location": "canadacentral",
+        "name": "sql-ptu-conversation-7d804f70/master",
+        "type": "Microsoft.Sql/servers/databases"
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Sql/servers/sql-ptu-conversation-7d804f70/databases/ptu-conversation",
+        "location": "canadacentral",
+        "name": "sql-ptu-conversation-7d804f70/ptu-conversation",
+        "type": "Microsoft.Sql/servers/databases",
+        "sku": "GP_S_Gen5",
+        "min_vcores": 0.5,
+        "max_vcores": 2,
+        "auto_pause_minutes": 60,
+        "max_data_bytes": 34359738368,
+        "backup": "Local",
+        "state": "Online"
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateEndpoints/pe-conversation-blob",
+        "type": "Microsoft.Network/privateEndpoints",
+        "location": "eastus2",
+        "state": "Succeeded",
+        "connections": [
+          {
+            "etag": "W/\"574220e9-564b-4fda-85af-4ba95324f22f\"",
+            "groupIds": [
+              "blob"
+            ],
+            "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateEndpoints/pe-conversation-blob/privateLinkServiceConnections/pe-conversation-blob",
+            "name": "pe-conversation-blob",
+            "privateLinkServiceConnectionState": {
+              "actionsRequired": "None",
+              "description": "Auto-Approved",
+              "status": "Approved"
+            },
+            "privateLinkServiceId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Storage/storageAccounts/stptuconv7d804f70",
+            "provisioningState": "Succeeded",
+            "resourceGroup": "rg-ptu-bundle-platform",
+            "type": "Microsoft.Network/privateEndpoints/privateLinkServiceConnections"
+          }
+        ]
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/networkInterfaces/pe-conversation-blob.nic.3cc18dc1-2f54-4746-a4c1-3bc8175d0c0f",
+        "type": "Microsoft.Network/networkInterfaces",
+        "location": "eastus2",
+        "purpose": "Implicit own PE NIC"
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateEndpoints/pe-conversation-search",
+        "type": "Microsoft.Network/privateEndpoints",
+        "location": "eastus2",
+        "state": "Succeeded",
+        "connections": [
+          {
+            "etag": "W/\"99ea563b-ddb4-48bd-9cbf-372f8b20578c\"",
+            "groupIds": [
+              "searchService"
+            ],
+            "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateEndpoints/pe-conversation-search/privateLinkServiceConnections/pe-conversation-search",
+            "name": "pe-conversation-search",
+            "privateLinkServiceConnectionState": {
+              "actionsRequired": "None",
+              "description": "Auto-approved",
+              "status": "Approved"
+            },
+            "privateLinkServiceId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Search/searchServices/srch-ptu-conversation-7d804f70",
+            "provisioningState": "Succeeded",
+            "resourceGroup": "rg-ptu-bundle-platform",
+            "type": "Microsoft.Network/privateEndpoints/privateLinkServiceConnections"
+          }
+        ]
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/networkInterfaces/pe-conversation-search.nic.b62d79fe-4f19-4fe2-9df4-cbd90105456e",
+        "type": "Microsoft.Network/networkInterfaces",
+        "location": "eastus2",
+        "purpose": "Implicit own PE NIC"
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateEndpoints/pe-conversation-sql",
+        "type": "Microsoft.Network/privateEndpoints",
+        "location": "eastus2",
+        "state": "Succeeded",
+        "connections": [
+          {
+            "etag": "W/\"417e8fa6-f170-4407-8c97-2e458627f880\"",
+            "groupIds": [
+              "sqlServer"
+            ],
+            "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateEndpoints/pe-conversation-sql/privateLinkServiceConnections/pe-conversation-sql",
+            "name": "pe-conversation-sql",
+            "privateLinkServiceConnectionState": {
+              "actionsRequired": "None",
+              "description": "Auto-approved",
+              "status": "Approved"
+            },
+            "privateLinkServiceId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Sql/servers/sql-ptu-conversation-7d804f70",
+            "provisioningState": "Succeeded",
+            "resourceGroup": "rg-ptu-bundle-platform",
+            "type": "Microsoft.Network/privateEndpoints/privateLinkServiceConnections"
+          }
+        ]
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/networkInterfaces/pe-conversation-sql.nic.309f79c8-83d6-4871-a3b2-4cf193493710",
+        "type": "Microsoft.Network/networkInterfaces",
+        "location": "eastus2",
+        "purpose": "Implicit own PE NIC"
+      }
+    ],
+    "modified_resources": [
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.App/containerApps/ca-ptu-conversation-api",
+        "change": "Own component host: all revisions paused; min0/max1 retained; API pinned to evaluator digest; ingress restrictions unchanged."
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.App/containerApps/ca-ptu-conversation-ui",
+        "change": "Own component host: all revisions paused; min0/max1 retained; API pinned to evaluator digest; ingress restrictions unchanged."
+      }
+    ],
+    "reused_resources": [
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.App/managedEnvironments/cae-ptu-bundle",
+        "purpose": "Approved shared Consumption hosting"
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.ContainerRegistry/registries/acrptubundle7d804f70",
+        "purpose": "Only conversation/api and conversation/ui image push/pull"
+      }
+    ],
+    "shared_scope_rbac_changes": [
+      {
+        "assignment_id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.ContainerRegistry/registries/acrptubundle7d804f70/providers/Microsoft.Authorization/roleAssignments/41816b87-fb9e-4fe0-8acb-c64bdfd45538",
+        "role": "AcrPull",
+        "principal_id": "b0c36c36-5b9f-4efa-9f01-0e19fb97aa25",
+        "approval": "Latest parent shared-platform readiness update"
+      }
+    ],
+    "inventory_only": [
+      {
+        "resource_group": "rg-edc-foundry-hack",
+        "name": "edcfoundryhack01",
+        "location": "canadaeast",
+        "kind": "AIServices",
+        "local_auth_disabled": true,
+        "models": [
+          {
+            "deployment": "gpt-5.1",
+            "model": "gpt-5.1",
+            "version": "2025-11-13",
+            "sku": "GlobalStandard",
+            "capacity": 100
+          },
+          {
+            "deployment": "gpt-4.1-mini",
+            "model": "gpt-4.1-mini",
+            "version": "2025-04-14",
+            "sku": "GlobalStandard",
+            "capacity": 100
+          },
+          {
+            "deployment": "text-embedding-3-small",
+            "model": "text-embedding-3-small",
+            "version": "1",
+            "sku": "Standard",
+            "capacity": 100
+          },
+          {
+            "deployment": "gpt-4.1-mini-guarded",
+            "model": "gpt-4.1-mini",
+            "version": "2025-04-14",
+            "sku": "GlobalStandard",
+            "capacity": 20
+          }
+        ]
+      },
+      {
+        "resource_group": "rg-edc-foundry-hack",
+        "name": "edc-hack-search",
+        "location": "canadaeast",
+        "sku": "Basic",
+        "partitions": 1,
+        "replicas": 1,
+        "semantic_tier": "free",
+        "authentication": "aadOrApiKey"
+      }
+    ],
+    "own_scope_rbac_changes": [
+      {
+        "role": "Cognitive Services OpenAI User",
+        "principal_id": "b0c36c36-5b9f-4efa-9f01-0e19fb97aa25",
+        "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.CognitiveServices/accounts/aif-ptu-conversation-7d804f70",
+        "assignment_id": "2a1c26d8-6205-4e37-aec1-1a16d70cdefb"
+      }
+    ],
+    "final_configuration_evidence": [
+      "evidence/conversation/ai-final-state.json",
+      "evidence/conversation/pe-final-state.json",
+      "evidence/conversation/api-final-state.json",
+      "evidence/conversation/ui-final-state.json",
+      "evidence/conversation/sql-final-state.json",
+      "evidence/conversation/storage-and-roles-final.json",
+      "evidence/conversation/all-private-endpoints.json",
+      "evidence/conversation/serving-api-final-state.json",
+      "evidence/conversation/serving-ui-final-state.json",
+      "evidence/conversation/serving-sql-final-state.json"
+    ],
+    "final_own_identity_roles": [
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.ContainerRegistry/registries/acrptubundle7d804f70/providers/Microsoft.Authorization/roleAssignments/41816b87-fb9e-4fe0-8acb-c64bdfd45538",
+        "role": "AcrPull",
+        "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.ContainerRegistry/registries/acrptubundle7d804f70"
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.CognitiveServices/accounts/aif-ptu-conversation-7d804f70/providers/Microsoft.Authorization/roleAssignments/2a1c26d8-6205-4e37-aec1-1a16d70cdefb",
+        "role": "Cognitive Services OpenAI User",
+        "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.CognitiveServices/accounts/aif-ptu-conversation-7d804f70"
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourcegroups/rg-ptu-conversation-demo/providers/Microsoft.Storage/storageAccounts/stptuconv7d804f70/providers/Microsoft.Authorization/roleAssignments/c7d58b59-2e1a-5d22-a46d-6c5419e5023b",
+        "role": "Storage Blob Data Contributor",
+        "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourcegroups/rg-ptu-conversation-demo/providers/Microsoft.Storage/storageAccounts/stptuconv7d804f70"
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourcegroups/rg-ptu-conversation-demo/providers/Microsoft.Search/searchServices/srch-ptu-conversation-7d804f70/providers/Microsoft.Authorization/roleAssignments/b7e9304f-dde4-5200-95c2-c89792274a6b",
+        "role": "Search Index Data Contributor",
+        "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourcegroups/rg-ptu-conversation-demo/providers/Microsoft.Search/searchServices/srch-ptu-conversation-7d804f70"
+      },
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourcegroups/rg-ptu-conversation-demo/providers/Microsoft.Search/searchServices/srch-ptu-conversation-7d804f70/providers/Microsoft.Authorization/roleAssignments/0ac46d26-e108-5608-b40e-405aafad1651",
+        "role": "Search Service Contributor",
+        "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourcegroups/rg-ptu-conversation-demo/providers/Microsoft.Search/searchServices/srch-ptu-conversation-7d804f70"
+      }
+    ],
+    "sql_identity": {
+      "initial_error": "Used principal/object ID rather than client/application ID for a TYPE=E service-principal contained user; fresh post-handoff SQL initialization failed.",
+      "corrected_user": "id-ptu-conversation-runtime",
+      "client_id_used_for_sql_sid": "1b458b7e-1768-45a9-b676-9a3245a4dfbe",
+      "azure_rbac_still_uses_principal_id": "b0c36c36-5b9f-4efa-9f01-0e19fb97aa25",
+      "roles": [
+        "db_datareader",
+        "db_datawriter",
+        "db_ddladmin"
+      ],
+      "db_owner": false,
+      "app_is_server_admin": false,
+      "incorrect_user_roles_removed": true,
+      "users_or_data_deleted": false,
+      "final_verified": {
+        "scope": "CKM own SQL contained identity",
+        "mode": "verify",
+        "model_requests": 0,
+        "checked_at": "2026-09-12T04:25:38.735333+00:00",
+        "current_user": "id-ptu-conversation-runtime",
+        "db_owner": 0,
+        "reader": 1,
+        "writer": 1,
+        "ddl_admin": 1,
+        "ground_truth": {
+          "records": 3,
+          "categories": 2,
+          "source_types": 1
+        },
+        "native_sql_initialized_and_reloaded": true,
+        "status": "succeeded"
+      },
+      "source": "https://learn.microsoft.com/en-us/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-current#k-create-a-contained-database-user-from-a-microsoft-entra-principal-without-validation"
+    }
+  },
+  "approval": {
+    "new_infrastructure_approved": true,
+    "shared_private_platform_fallback_approved": true,
+    "shared_platform_ready": true,
+    "foundry_standard_agent_additions_approved": false,
+    "approved_topology": "Deployed isolated S0/project/models, Basic Search, LRS Blob and serverless SQL plus shared Consumption ACA/Basic ACR/private networking. Standard Agent Cosmos/subnet/region additions are outside the listed envelope.",
+    "conditional_fixed_active_limit_usd_per_hour": 1.5,
+    "pre_creation_gate": "None for the deployed listed dependencies. Hosted private Explore has a separate architecture compatibility blocker.",
+    "parent_direct_proposal_attempted": true,
+    "parent_direct_result": "No agent found for owner ID c8c8bae2-323d-48a1-885a-c8b48309976b",
+    "sibling_relay_delivered_to": "4e60aab9-4a84-4c09-abec-6d978702968b",
+    "acr_standard_correction_relayed": true
+  },
+  "required_infrastructure": {
+    "proposed_resource_group": "rg-ptu-conversation-demo",
+    "primary_location": "canadacentral",
+    "ai_location": "swedencentral",
+    "state": "created_native_private_persistence_verified_hosted_explore_blocked",
+    "resources": [
+      {
+        "type": "AIServices account / Foundry project / CU",
+        "sku": "S0",
+        "location": "swedencentral",
+        "billing": "Model tokens and separate CU consumption"
+      },
+      {
+        "type": "Chat deployment",
+        "model": "gpt-5.2",
+        "version": "2025-12-11",
+        "sku": "GlobalStandard",
+        "capacity": 10,
+        "ptu": false
+      },
+      {
+        "type": "Embedding deployment",
+        "model": "text-embedding-3-small",
+        "version": "1",
+        "sku": "GlobalStandard",
+        "capacity": 10,
+        "dimensions": 1536,
+        "ptu": false
+      },
+      {
+        "type": "AI Search",
+        "sku": "Basic",
+        "replicas": 1,
+        "partitions": 1,
+        "location": "canadacentral",
+        "retail_usd_per_hour": 0.101
+      },
+      {
+        "type": "SQL logical server/database",
+        "sku": "GP_S_Gen5",
+        "compute_model": "Serverless",
+        "min_vcores": 0.5,
+        "max_vcores": 2,
+        "auto_pause_minutes": 60,
+        "location": "canadacentral",
+        "authentication": "Entra-only; contained managed-identity user with reader/writer/DDL roles"
+      },
+      {
+        "type": "StorageV2 Blob/required Queue",
+        "sku": "Standard_LRS",
+        "location": "canadacentral",
+        "authentication": "Entra"
+      }
+    ],
+    "excluded": [
+      "App Service",
+      "Separate CKM ACR",
+      "Separate CKM ACA environment/VNet",
+      "AKS",
+      "Cosmos/dedicated agent subnet/region alignment outside the listed envelope",
+      "PTUs",
+      "GPU",
+      "App Configuration not required by native code",
+      "new monitoring resources"
+    ],
+    "cost_evidence": "evidence/conversation/pricing.json#native_operating_estimate",
+    "residency": "Synthetic data only; Sweden Central metadata/services and potentially global model processing are non-Canada deviations.",
+    "hosting_location": "eastus2"
+  },
+  "historical_full_cloud_infrastructure": {
+    "proposed_resource_group": "rg-ptu-conversation-demo",
+    "primary_location": "canadacentral",
+    "ai_location": "swedencentral",
+    "allowed_ai_locations": [
+      "australiaeast",
+      "swedencentral",
+      "southeastasia"
+    ],
+    "resources": [
+      {
+        "type": "AIServices account and Foundry project",
+        "sku": "S0",
+        "billing": "Underlying AI service usage",
+        "ptu_covers": false
+      },
+      {
+        "type": "Azure OpenAI chat",
+        "model": "gpt-5.2",
+        "version": "2025-12-11",
+        "sku": "GlobalStandard",
+        "default_capacity": 150,
+        "bicep_minimum_capacity": 10,
+        "billing": "Input/output tokens",
+        "ptu_covers": "Only if explicitly routed to a future supported provisioned chat deployment; none used"
+      },
+      {
+        "type": "Azure OpenAI embeddings",
+        "model": "text-embedding-3-small",
+        "version": "1",
+        "sku": "GlobalStandard",
+        "default_capacity": 80,
+        "bicep_minimum_capacity": 10,
+        "billing": "Embedding input tokens",
+        "ptu_covers": "Not covered by a different chat deployment's PTUs",
+        "dimensions": 1536
+      },
+      {
+        "type": "Content Understanding endpoint",
+        "billing": "Content extraction, page/audio/video meters",
+        "ptu_covers": false
+      },
+      {
+        "type": "AI Search",
+        "sku": "Standard S1",
+        "partitions": 1,
+        "replicas": 1,
+        "semantic_tier": "free",
+        "billing": "Continuous search-unit hours plus applicable semantic usage",
+        "ptu_covers": false
+      },
+      {
+        "type": "Linux App Service plan with two apps",
+        "default_sku": "B3",
+        "smallest_applicable_exposed_tier": "B1",
+        "instances": 1,
+        "billing": "Continuous plan hours",
+        "authorization": "Dedicated fixed-charge compute requires separate approval; not created",
+        "ptu_covers": false
+      },
+      {
+        "type": "Azure SQL",
+        "sku": "GP_S_Gen5",
+        "tier": "GeneralPurpose serverless",
+        "max_vcores": 2,
+        "min_vcores": 1,
+        "autopause_minutes": 60,
+        "billing": "Active vCore-seconds, storage/backups",
+        "ptu_covers": false
+      },
+      {
+        "type": "Container Registry",
+        "sku": "Standard",
+        "billing": "Registry-day, storage, ACR build minutes",
+        "ptu_covers": false
+      },
+      {
+        "type": "Blob and Queue Storage",
+        "sku": "Standard_LRS",
+        "hierarchical_namespace": true,
+        "billing": "Storage, operations, egress",
+        "ptu_covers": false
+      },
+      {
+        "type": "Log Analytics and Application Insights",
+        "sku": "PerGB2018",
+        "retention_days": 365,
+        "billing": "Ingestion and retention beyond included allowance",
+        "ptu_covers": false
+      },
+      {
+        "type": "Managed identities, RBAC, app authentication or restricted ingress",
+        "billing": "Identity/control configuration, no inference capacity",
+        "ptu_covers": false
+      }
+    ],
+    "excluded": [
+      "Cosmos DB",
+      "PTU",
+      "GPU",
+      "VM",
+      "AKS",
+      "Bastion",
+      "WAF networking bundle",
+      "premium Search",
+      "premium compute"
+    ],
+    "dollar_quote": null,
+    "quote_limitation": "No rate/discount/uptime quote verified; exact service and SKU cost drivers documented instead"
+  },
+  "historical_stock_path_risks": [
+    {
+      "id": "reuse-mutates-models",
+      "evidence": "infra/bicep/main.bicep:273-287 unconditionally deploys models even when existingFoundryProjectResourceId is provided"
+    },
+    {
+      "id": "model-and-location-mismatch",
+      "evidence": "Default gpt-5.2/2025-12-11 absent from candidate Canada East account; vanilla allowed AI locations exclude Canada East"
+    },
+    {
+      "id": "onedrive-secret-hooks",
+      "evidence": "azure.yaml stores ADMIN_API_KEY in azd environment and exports azd values to .env"
+    },
+    {
+      "id": "cloud-auth-ingress",
+      "evidence": "Optional app authentication plus open SQL firewall in stock vanilla template; no public paid app exposed"
+    },
+    {
+      "id": "superseded-full-cloud-approval",
+      "evidence": "Original S1 Search/App Service/Standard ACR topology was not approved. The new native envelope is approved and excludes those hosting/registry services."
+    },
+    {
+      "id": "local-not-full",
+      "evidence": "Explore is Foundry-agent-only; SQL powers persistent state/insights; CU handles document/audio extraction"
+    }
+  ],
+  "approaches_investigated": [
+    {
+      "approach": "Stock latest azd with existing Foundry",
+      "result": "Rejected: model redeployment, incompatible default model/region, secret-writing hooks"
+    },
+    {
+      "approach": "Documented Search BYOD",
+      "result": "Connector is supported but does not remove agent/SQL/CU requirements or suppress default new S1 provisioning; no unapproved connection/index created"
+    },
+    {
+      "approach": "Original local FastAPI/React path",
+      "result": "Preparing isolated dependencies and authentic HTTP component tests; cannot substitute for full cloud workflows"
+    },
+    {
+      "approach": "Stock Docker Compose",
+      "result": "Stale nonexistent Dockerfile names, .env requirement and unrestricted default port bindings; native loopback route selected"
+    }
+  ],
+  "local": {
+    "venv": "%LOCALAPPDATA%\\ptu-eval\\conversation\\venv",
+    "backend_endpoint": "http://127.0.0.1:8115",
+    "frontend_endpoint": "http://127.0.0.1:5115",
+    "backend_target": "http://127.0.0.1:8115",
+    "frontend_target": "http://127.0.0.1:5115",
+    "running_processes": [
+      {
+        "role": "backend",
+        "pid": 4676,
+        "shell_id": "ckm-api",
+        "attached": true
+      },
+      {
+        "role": "frontend",
+        "pid": 23408,
+        "shell_id": "ckm-ui",
+        "attached": true
+      }
+    ],
+    "restart_commands": [
+      "pwsh -File \"C:\\Users\\partvyas\\OneDrive - Microsoft\\Desktop\\projects\\PTU accelerator Bundle\\scripts\\Start-Conversation.ps1\" -Component Backend",
+      "pwsh -File \"C:\\Users\\partvyas\\OneDrive - Microsoft\\Desktop\\projects\\PTU accelerator Bundle\\scripts\\Start-Conversation.ps1\" -Component BuildFrontend",
+      "pwsh -File \"C:\\Users\\partvyas\\OneDrive - Microsoft\\Desktop\\projects\\PTU accelerator Bundle\\scripts\\Start-Conversation.ps1\" -Component Frontend"
+    ],
+    "lifetime": "Servers will be session-attached, not detached",
+    "secrets": "Runtime-generated admin credential only; no saved .env/credentials",
+    "isolated_frontend": "C:\\Users\\partvyas\\AppData\\Local\\ptu-eval\\conversation\\frontend",
+    "frontend_adapter": {
+      "source_copy": "git archive HEAD:src/app",
+      "changed": "1438 public tarball URLs and registry mirror in isolated build copy only",
+      "unchanged": "All locked package versions, integrity hashes and application source logic"
+    },
+    "listeners_verified": {
+      "127.0.0.1:8115": 4676,
+      "127.0.0.1:5115": 23408
+    },
+    "source_integrity_verification": {
+      "original_frontend_source_public_files_compared": 38,
+      "source_changes": [],
+      "locked_versions_and_integrities_identical": true
+    }
+  },
+  "tests": [
+    {
+      "id": "python-source-syntax",
+      "type": "static",
+      "expected": "All original API Python files parse",
+      "actual": "87 files parsed",
+      "status": "pass"
+    },
+    {
+      "id": "synthetic-fixture",
+      "type": "static",
+      "expected": "Three unique fictional conversations, two repeated VPN cases and one ambiguous case",
+      "actual": "Fixture assertions passed",
+      "status": "pass"
+    },
+    {
+      "id": "upstream-unit-suite",
+      "type": "unit",
+      "expected": "Documented src/tests/api suite",
+      "actual": "Directory absent in HEAD; workflows are configured to skip absent tests",
+      "status": "not_available"
+    },
+    {
+      "id": "audio-transcription",
+      "type": "optional_workflow",
+      "expected": "Compare synthetic audio-derived transcript against supplied text if supported/deployed",
+      "actual": "CU audio capability exists; no synthetic audio or CU deployment exercised",
+      "status": "not_run"
+    },
+    {
+      "id": "root-health",
+      "classification": "component",
+      "expected": "HTTP 200 original app liveness",
+      "actual": {
+        "status": "healthy",
+        "service": "Knowledge Mining Platform"
+      },
+      "http_status": 200,
+      "elapsed_ms": 5.596,
+      "status": "pass"
+    },
+    {
+      "id": "deep-health",
+      "classification": "component",
+      "expected": "HTTP 503; SQL unavailable; Search not configured",
+      "actual": {
+        "status": "degraded",
+        "checks": {
+          "sql": "unavailable",
+          "search": "not configured",
+          "cosmos": "unavailable"
+        },
+        "version": "1.0.0"
+      },
+      "http_status": 503,
+      "elapsed_ms": 353.594,
+      "status": "pass"
+    },
+    {
+      "id": "disable-auto-pipeline",
+      "classification": "component",
+      "expected": "Original API accepts disabled automatic pipeline for bounded evaluation",
+      "actual": {
+        "enabled": false,
+        "default_pipeline": "full_knowledge_mining",
+        "auto_select": true
+      },
+      "http_status": 200,
+      "elapsed_ms": 9.091,
+      "status": "pass"
+    },
+    {
+      "id": "upload-denied-anonymous",
+      "classification": "component",
+      "expected": "HTTP 403 for contributor upload without role",
+      "actual": {
+        "total_loaded": 3,
+        "by_type": {
+          "conversation": 3
+        },
+        "sample_ids": [
+          "ptu-conversation-call-001",
+          "ptu-conversation-call-002",
+          "ptu-conversation-call-003"
+        ],
+        "quick_insights": null,
+        "skipped": 0
+      },
+      "http_status": 200,
+      "elapsed_ms": 36.684,
+      "status": "blocked_or_fail",
+      "limitation": "Original local sample-user fallback and User.best_role confer contributor when roles are absent. This probe's 403 expectation failed: actual 200. Not a public authenticated deployment; loopback-only is mandatory."
+    },
+    {
+      "id": "upload-three",
+      "classification": "component",
+      "expected": "HTTP 200; exactly three conversations accepted",
+      "actual": {
+        "total_loaded": 3,
+        "by_type": {
+          "conversation": 3
+        },
+        "sample_ids": [
+          "ptu-conversation-call-001",
+          "ptu-conversation-call-002",
+          "ptu-conversation-call-003"
+        ],
+        "quick_insights": null,
+        "skipped": 0
+      },
+      "http_status": 200,
+      "elapsed_ms": 14.418,
+      "status": "pass"
+    },
+    {
+      "id": "stats-three",
+      "classification": "component",
+      "expected": "Three conversation records in original app memory",
+      "actual": {
+        "total_documents": 3,
+        "by_type": {
+          "conversation": 3
+        },
+        "by_dimension": {}
+      },
+      "http_status": 200,
+      "elapsed_ms": 5.779,
+      "status": "pass"
+    },
+    {
+      "id": "read-source",
+      "classification": "component",
+      "expected": "Ambiguous transcript preserved with explicit unknown resolution",
+      "actual": {
+        "id": "ptu-conversation-call-003",
+        "type": "conversation",
+        "text": "SYNTHETIC LOW-QUALITY IT HELPDESK CALL 003. Caller C003: The printer [inaudible] after the update, or perhaps before it. Agent A003: Is the cable connected? Caller C003: [crosstalk] I tried restarting [inaudible]. Agent A003: I cannot confirm whether printing now works. The cause and final resolution remain unknown. Follow-up: schedule a callback tomorrow and obtain the exact error message. Do not infer that the driver, cable, or update caused the problem.",
+        "metadata": {
+          "product": null,
+          "category": "Printer",
+          "timestamp": null,
+          "source_type": "synthetic",
+          "source_file": "support-conversations.json",
+          "language": null
+        }
+      },
+      "http_status": 200,
+      "elapsed_ms": 4.874,
+      "status": "pass"
+    },
+    {
+      "id": "summary-ptu-conversation-call-001",
+      "classification": "requested_workflow",
+      "expected": "Correct issue, resolution and follow-up summary",
+      "actual": "Not invoked: no approved compatible model endpoint configured. No generated summary is claimed.",
+      "http_status": null,
+      "elapsed_ms": null,
+      "status": "blocked"
+    },
+    {
+      "id": "summary-ptu-conversation-call-002",
+      "classification": "requested_workflow",
+      "expected": "Correct issue, resolution and follow-up summary",
+      "actual": "Not invoked: no approved compatible model endpoint configured. No generated summary is claimed.",
+      "http_status": null,
+      "elapsed_ms": null,
+      "status": "blocked"
+    },
+    {
+      "id": "summary-ptu-conversation-call-003",
+      "classification": "requested_workflow",
+      "expected": "Correct issue, resolution and follow-up summary",
+      "actual": "Not invoked: no approved compatible model endpoint configured. No generated summary is claimed.",
+      "http_status": null,
+      "elapsed_ms": null,
+      "status": "blocked"
+    },
+    {
+      "id": "cross-call-citations",
+      "classification": "requested_workflow",
+      "expected": "Calls 001 and 002, stale cached credentials, refresh fixed both, citations",
+      "actual": {
+        "error": "INTERNAL_SERVER_ERROR",
+        "detail": "An error occurred while processing your question. Please try again.",
+        "request_id": "3a24390f-815a-4b0f-8d91-9c6f38c75ebd"
+      },
+      "http_status": 500,
+      "elapsed_ms": 96.528,
+      "status": "blocked",
+      "root_cause": "Original API log: AGENT_NAME_CHAT is not configured; Foundry invocation never started."
+    },
+    {
+      "id": "repeated-theme",
+      "classification": "requested_workflow",
+      "expected": "Stale cached credential after rotation in calls 001 and 002; not company-wide outage",
+      "actual": {
+        "error": "INTERNAL_SERVER_ERROR",
+        "detail": "An error occurred while processing your question. Please try again.",
+        "request_id": "b7f0790a-0025-4521-8e7f-b939da1b12de"
+      },
+      "http_status": 500,
+      "elapsed_ms": 13.204,
+      "status": "blocked",
+      "root_cause": "Original API log: AGENT_NAME_CHAT is not configured; Foundry invocation never started."
+    },
+    {
+      "id": "ambiguous-uncertainty",
+      "classification": "requested_workflow",
+      "expected": "Call 003: cause and resolution unknown; callback tomorrow, no invented cause",
+      "actual": {
+        "error": "INTERNAL_SERVER_ERROR",
+        "detail": "An error occurred while processing your question. Please try again.",
+        "request_id": "c0892874-ac44-4922-aa1f-29c7648573c1"
+      },
+      "http_status": 500,
+      "elapsed_ms": 11.522,
+      "status": "blocked",
+      "root_cause": "Original API log: AGENT_NAME_CHAT is not configured; Foundry invocation never started."
+    },
+    {
+      "id": "insights-dashboard",
+      "classification": "requested_workflow",
+      "expected": "Nonempty model-planned and SQL-computed dashboard",
+      "actual": {
+        "data_context": {
+          "total_records": 3,
+          "filtered_records": 3,
+          "filters_applied": {}
+        },
+        "headline": "Unified Knowledge Insights",
+        "summary": "Analyzed 3 records across 1 source(s) from uploaded, built-in, and connected knowledge sources.",
+        "key_insights": [
+          "Insights include all first-class knowledge sources in the current runtime.",
+          "Use source and type filters to narrow to the exact data slice you want."
+        ],
+        "standout_findings": [],
+        "kpis": [
+          {
+            "metric": "sampled_records",
+            "label": "Sampled records",
+            "value": 3,
+            "format": "number"
+          },
+          {
+            "metric": "source_count",
+            "label": "Active sources",
+            "value": 1,
+            "format": "number"
+          }
+        ],
+        "sections": [
+          {
+            "id": "source-distribution",
+            "title": "Knowledge Source Coverage",
+            "type": "distribution",
+            "charts": [
+              {
+                "insight_type": "distribution",
+                "title": "Records by source",
+                "description": "Coverage across uploaded, seeded, and connected sources.",
+                "visualization": "donut",
+                "field": "source",
+                "data": [
+                  {
+                    "label": "Uploaded Documents",
+                    "value": 3
+                  }
+                ]
+              },
+              {
+                "insight_type": "distribution",
+                "title": "Records by type",
+                "description": "Distribution of content types in the active scope.",
+                "visualization": "bar",
+                "field": "type",
+                "data": [
+                  {
+                    "label": "conversation",
+                    "value": 3
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "filters": [
+          {
+            "field": "source",
+            "label": "Source",
+            "type": "categorical",
+            "multi_select": false,
+            "values": [
+              "Uploaded Documents"
+            ]
+          },
+          {
+            "field": "type",
+            "label": "Type",
+            "type": "categorical",
+            "multi_select": false,
+            "values": [
+              "conversation"
+            ]
+          }
+        ],
+        "suggested_questions": [
+          "Which source contributes most of the current data?",
+          "How is record volume distributed across source types?"
+        ],
+        "runtime": {
+          "schemaVersion": "1.0",
+          "generatedAt": "2026-09-11T23:54:32.344927+00:00",
+          "recordCount": 3,
+          "counts": {
+            "topics": 0,
+            "entities": 0,
+            "relationships": 0
+          },
+          "summarySignals": [
+            "Unified Knowledge Insights",
+            "Insights include all first-class knowledge sources in the current runtime.",
+            "Use source and type filters to narrow to the exact data slice you want."
+          ],
+          "kpis": [
+            {
+              "id": "sampled_records",
+              "label": "Sampled records",
+              "value": 3,
+              "format": "number",
+              "trendDirection": "stable",
+              "trendValue": null,
+              "confidence": null
+            },
+            {
+              "id": "source_count",
+              "label": "Active sources",
+              "value": 1,
+              "format": "number",
+              "trendDirection": "stable",
+              "trendValue": null,
+              "confidence": null
+            }
+          ],
+          "topics": [],
+          "entities": [],
+          "relationships": [],
+          "insights": [
+            {
+              "id": "insight_1",
+              "category": "Insight",
+              "title": "Insights include all first-class knowledge sources in the current runtime.",
+              "confidence": null,
+              "impactScore": 0.7,
+              "context": "Unified Knowledge Insights",
+              "explanation": "Analyzed 3 records across 1 source(s) from uploaded, built-in, and connected knowledge sources.",
+              "evidenceCount": 0,
+              "evidence": []
+            },
+            {
+              "id": "insight_2",
+              "category": "Insight",
+              "title": "Use source and type filters to narrow to the exact data slice you want.",
+              "confidence": null,
+              "impactScore": 0.7,
+              "context": "Unified Knowledge Insights",
+              "explanation": "Analyzed 3 records across 1 source(s) from uploaded, built-in, and connected knowledge sources.",
+              "evidenceCount": 0,
+              "evidence": []
+            }
+          ],
+          "unexpectedPatterns": [],
+          "actions": [
+            {
+              "id": "action_1",
+              "label": "Which source contributes most of the current data?",
+              "intentType": "explore"
+            },
+            {
+              "id": "action_2",
+              "label": "How is record volume distributed across source types?",
+              "intentType": "explore"
+            }
+          ]
+        }
+      },
+      "http_status": 200,
+      "elapsed_ms": 91.295,
+      "status": "blocked",
+      "limitation": "HTTP 200 returns native fallback analytics: 3 sampled records / 1 source. No configured model or SQL; model-planned SQL workflow is not established."
+    },
+    {
+      "id": "reject-unsupported",
+      "classification": "component",
+      "expected": "HTTP 400 for unsupported executable upload",
+      "actual": {
+        "error": "BAD_REQUEST",
+        "detail": "Unsupported file type: .exe. Accepted: csv, docx, jpeg, jpg, json, mp3, mp4, pdf, png, txt, wav, xlsx",
+        "request_id": "3d7608cf-4881-434f-a987-ec602d741264"
+      },
+      "http_status": 400,
+      "elapsed_ms": 36.606,
+      "status": "pass"
+    },
+    {
+      "id": "python-dependency-check",
+      "classification": "build",
+      "expected": "Pinned backend requirements install and pip check reports no conflicts",
+      "actual": "Exact requirements installed; No broken requirements found.",
+      "status": "pass"
+    },
+    {
+      "id": "stock-frontend-install",
+      "classification": "build",
+      "expected": "npm ci using original lockfile/mirror completes",
+      "actual": "Exit 1: mirror package download 403 after signed redirect expired; OneDrive EPERM cleanup warnings. Raw signed URL not retained in report.",
+      "status": "fail"
+    },
+    {
+      "id": "native-fallback-analytics",
+      "classification": "component",
+      "expected": "Deterministic local chart data counts three records and one source",
+      "actual": {
+        "sampled_records": 3,
+        "source_count": 1,
+        "headline": "Unified Knowledge Insights"
+      },
+      "status": "pass",
+      "observation_from": "insights-dashboard"
+    },
+    {
+      "id": "isolated-frontend-initial-install",
+      "classification": "build",
+      "expected": "Same locked dependencies install outside OneDrive from public npm",
+      "actual": "Exit 1: ERR_SSL_SSL/TLS_ALERT_HANDSHAKE_FAILURE for public he@1.2.0 tarball; TLS verification was not disabled",
+      "status": "fail"
+    },
+    {
+      "id": "isolated-frontend-tls12-install",
+      "classification": "build",
+      "expected": "Bounded TLS 1.2 retry with normal certificate verification installs same locked packages",
+      "actual": "Added 1437 packages in 6m; original react-scripts build then started",
+      "status": "pass"
+    },
+    {
+      "id": "frontend-production-build",
+      "classification": "build",
+      "status": "pass",
+      "expected": "Original react-scripts optimized production build succeeds",
+      "actual": "Compiled successfully; exit 0",
+      "index_sha256": "d3203ec31ed505b5b3a5a792b90548ea39e1b1e952e57ffebd9c281b93c060fd"
+    },
+    {
+      "id": "frontend-http",
+      "classification": "ui_only_health",
+      "expected": "HTTP 200 from original compiled React app on loopback port 5115",
+      "actual": {
+        "http_status": 200,
+        "root_mount": true
+      },
+      "elapsed_ms": 33.538,
+      "status": "pass",
+      "limitation": "Not a browser interaction or model workflow test"
+    },
+    {
+      "id": "loopback-cors",
+      "classification": "component",
+      "expected": "Backend CORS permits the configured local frontend origin",
+      "actual": {
+        "http_status": 200,
+        "allow_origin": "http://127.0.0.1:5115"
+      },
+      "status": "pass"
+    }
+  ],
+  "traffic": {
+    "model_request_budget": 12,
+    "live_model_requests": 9,
+    "retries": 0,
+    "input_tokens_returned": 4547,
+    "output_tokens_returned": 3700,
+    "request_sequence": [
+      {
+        "sequence": 1,
+        "case": "ptu-conversation-call-001",
+        "deployment": "gpt-5.2",
+        "expected_model_version": "2025-12-11",
+        "started_at": "2026-09-12T03:16:46.841103+00:00",
+        "status": "completed",
+        "usage": {
+          "completion_tokens": 113,
+          "prompt_tokens": 134,
+          "total_tokens": 247,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          },
+          "latency_checkpoint": {
+            "engine_tbt_ms": 10,
+            "engine_ttft_ms": 46,
+            "engine_ttlt_ms": 1232,
+            "pre_inference_ms": 84,
+            "service_tbt_ms": 10,
+            "service_ttft_ms": 514,
+            "service_ttlt_ms": 1692,
+            "user_visible_ttft_ms": 430
+          }
+        },
+        "http_status": 200,
+        "returned_model": "gpt-5.2-2025-12-11",
+        "elapsed_ms": 3004.9
+      },
+      {
+        "sequence": 2,
+        "case": "ptu-conversation-call-002",
+        "deployment": "gpt-5.2",
+        "expected_model_version": "2025-12-11",
+        "started_at": "2026-09-12T03:16:54.853405+00:00",
+        "status": "completed",
+        "usage": {
+          "completion_tokens": 108,
+          "prompt_tokens": 136,
+          "total_tokens": 244,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          },
+          "latency_checkpoint": {
+            "engine_tbt_ms": 9,
+            "engine_ttft_ms": 63,
+            "engine_ttlt_ms": 1081,
+            "pre_inference_ms": 78,
+            "service_tbt_ms": 10,
+            "service_ttft_ms": 537,
+            "service_ttlt_ms": 1566,
+            "user_visible_ttft_ms": 459
+          }
+        },
+        "http_status": 200,
+        "returned_model": "gpt-5.2-2025-12-11",
+        "elapsed_ms": 2336.79
+      },
+      {
+        "sequence": 3,
+        "case": "ptu-conversation-call-003",
+        "deployment": "gpt-5.2",
+        "expected_model_version": "2025-12-11",
+        "started_at": "2026-09-12T03:17:02.196323+00:00",
+        "status": "completed",
+        "usage": {
+          "completion_tokens": 148,
+          "prompt_tokens": 141,
+          "total_tokens": 289,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          },
+          "latency_checkpoint": {
+            "engine_tbt_ms": 10,
+            "engine_ttft_ms": 58,
+            "engine_ttlt_ms": 1558,
+            "pre_inference_ms": 63,
+            "service_tbt_ms": 10,
+            "service_ttft_ms": 823,
+            "service_ttlt_ms": 2303,
+            "user_visible_ttft_ms": 760
+          }
+        },
+        "http_status": 200,
+        "returned_model": "gpt-5.2-2025-12-11",
+        "elapsed_ms": 3024.83
+      },
+      {
+        "sequence": 4,
+        "case": "counterfactual-woman-30",
+        "deployment": "gpt-5.2",
+        "expected_model_version": "2025-12-11",
+        "started_at": "2026-09-12T03:17:10.228188+00:00",
+        "status": "completed",
+        "usage": {
+          "completion_tokens": 133,
+          "prompt_tokens": 144,
+          "total_tokens": 277,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          },
+          "latency_checkpoint": {
+            "engine_tbt_ms": 9,
+            "engine_ttft_ms": 57,
+            "engine_ttlt_ms": 1305,
+            "pre_inference_ms": 124,
+            "service_tbt_ms": 9,
+            "service_ttft_ms": 592,
+            "service_ttlt_ms": 1829,
+            "user_visible_ttft_ms": 468
+          }
+        },
+        "http_status": 200,
+        "returned_model": "gpt-5.2-2025-12-11",
+        "elapsed_ms": 2814.82
+      },
+      {
+        "sequence": 5,
+        "case": "counterfactual-man-30",
+        "deployment": "gpt-5.2",
+        "expected_model_version": "2025-12-11",
+        "started_at": "2026-09-12T03:17:18.048799+00:00",
+        "status": "completed",
+        "usage": {
+          "completion_tokens": 120,
+          "prompt_tokens": 144,
+          "total_tokens": 264,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          },
+          "latency_checkpoint": {
+            "engine_tbt_ms": 10,
+            "engine_ttft_ms": 63,
+            "engine_ttlt_ms": 1223,
+            "pre_inference_ms": 81,
+            "service_tbt_ms": 9,
+            "service_ttft_ms": 544,
+            "service_ttlt_ms": 1670,
+            "user_visible_ttft_ms": 463
+          }
+        },
+        "http_status": 200,
+        "returned_model": "gpt-5.2-2025-12-11",
+        "elapsed_ms": 2472.48
+      },
+      {
+        "sequence": 6,
+        "case": "counterfactual-nonbinary-30",
+        "deployment": "gpt-5.2",
+        "expected_model_version": "2025-12-11",
+        "started_at": "2026-09-12T03:17:25.528108+00:00",
+        "status": "completed",
+        "usage": {
+          "completion_tokens": 117,
+          "prompt_tokens": 145,
+          "total_tokens": 262,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          },
+          "latency_checkpoint": {
+            "engine_tbt_ms": 10,
+            "engine_ttft_ms": 46,
+            "engine_ttlt_ms": 1158,
+            "pre_inference_ms": 82,
+            "service_tbt_ms": 9,
+            "service_ttft_ms": 285,
+            "service_ttlt_ms": 1392,
+            "user_visible_ttft_ms": 203
+          }
+        },
+        "http_status": 200,
+        "returned_model": "gpt-5.2-2025-12-11",
+        "elapsed_ms": 2254.86
+      },
+      {
+        "sequence": 7,
+        "case": "counterfactual-woman-65",
+        "deployment": "gpt-5.2",
+        "expected_model_version": "2025-12-11",
+        "started_at": "2026-09-12T03:17:32.789172+00:00",
+        "status": "completed",
+        "usage": {
+          "completion_tokens": 141,
+          "prompt_tokens": 144,
+          "total_tokens": 285,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          },
+          "latency_checkpoint": {
+            "engine_tbt_ms": 10,
+            "engine_ttft_ms": 50,
+            "engine_ttlt_ms": 1493,
+            "pre_inference_ms": 61,
+            "service_tbt_ms": 10,
+            "service_ttft_ms": 845,
+            "service_ttlt_ms": 2283,
+            "user_visible_ttft_ms": 784
+          }
+        },
+        "http_status": 200,
+        "returned_model": "gpt-5.2-2025-12-11",
+        "elapsed_ms": 3517.59
+      },
+      {
+        "sequence": 8,
+        "case": "native-model-planned-sql-dashboard",
+        "started_at": "2026-09-12T04:08:26.936019+00:00",
+        "status": "completed",
+        "deployment": "gpt-5.2",
+        "usage": {
+          "completion_tokens": 931,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": 0
+          },
+          "latency_checkpoint": {
+            "engine_tbt_ms": 8,
+            "engine_ttft_ms": 107,
+            "engine_ttlt_ms": 7610,
+            "pre_inference_ms": 81,
+            "service_tbt_ms": 8,
+            "service_ttft_ms": 342,
+            "service_ttlt_ms": 7840,
+            "user_visible_ttft_ms": 260
+          },
+          "prompt_tokens": 2636,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          },
+          "total_tokens": 3567
+        },
+        "http_status": 200,
+        "returned_model": "gpt-5.2-2025-12-11",
+        "elapsed_ms": 9199.5
+      },
+      {
+        "sequence": 9,
+        "case": "native-processing-insights",
+        "started_at": "2026-09-12T04:08:36.438669+00:00",
+        "status": "completed",
+        "deployment": "gpt-5.2",
+        "usage": {
+          "completion_tokens": 1889,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": 0
+          },
+          "latency_checkpoint": {
+            "engine_tbt_ms": 10,
+            "engine_ttft_ms": 58,
+            "engine_ttlt_ms": 19548,
+            "pre_inference_ms": 84,
+            "service_tbt_ms": 10,
+            "service_ttft_ms": 421,
+            "service_ttlt_ms": 19883,
+            "user_visible_ttft_ms": 337
+          },
+          "prompt_tokens": 923,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          },
+          "total_tokens": 2812
+        },
+        "http_status": 200,
+        "returned_model": "gpt-5.2-2025-12-11",
+        "elapsed_ms": 20736.54
+      }
+    ],
+    "actual_model_used": "gpt-5.2-2025-12-11",
+    "ptu_utilization": null,
+    "ptu_utilization_reason": "Nine functional GlobalStandard requests, no provisioned deployment or load/capacity test.",
+    "load_tests": false,
+    "application_insights_traces": "Not available; no deployed telemetry backend",
+    "azure_monitor_inference_metrics": "Not required for per-call usage: actual SDK responses captured; no aggregate metric or PTU utilization claim.",
+    "instrumented_local_http_requests": [
+      {
+        "sequence": 1,
+        "test": "root-health",
+        "status": 200,
+        "elapsed_ms": 5.596
+      },
+      {
+        "sequence": 2,
+        "test": "deep-health",
+        "status": 503,
+        "elapsed_ms": 353.594
+      },
+      {
+        "sequence": 3,
+        "test": "disable-auto-pipeline",
+        "status": 200,
+        "elapsed_ms": 9.091
+      },
+      {
+        "sequence": 4,
+        "test": "upload-denied-anonymous",
+        "status": 200,
+        "elapsed_ms": 36.684
+      },
+      {
+        "sequence": 5,
+        "test": "upload-three",
+        "status": 200,
+        "elapsed_ms": 14.418
+      },
+      {
+        "sequence": 6,
+        "test": "stats-three",
+        "status": 200,
+        "elapsed_ms": 5.779
+      },
+      {
+        "sequence": 7,
+        "test": "read-source",
+        "status": 200,
+        "elapsed_ms": 4.874
+      },
+      {
+        "sequence": 8,
+        "test": "cross-call-citations",
+        "status": 500,
+        "elapsed_ms": 96.528
+      },
+      {
+        "sequence": 9,
+        "test": "repeated-theme",
+        "status": 500,
+        "elapsed_ms": 13.204
+      },
+      {
+        "sequence": 10,
+        "test": "ambiguous-uncertainty",
+        "status": 500,
+        "elapsed_ms": 11.522
+      },
+      {
+        "sequence": 11,
+        "test": "insights-dashboard",
+        "status": 200,
+        "elapsed_ms": 91.295
+      },
+      {
+        "sequence": 12,
+        "test": "reject-unsupported",
+        "status": 400,
+        "elapsed_ms": 36.606
+      }
+    ],
+    "local_http_scope": "Instrumented component tests only; excludes readiness, later health verification and browser/static requests.",
+    "total_tokens_returned": 8247,
+    "remaining_model_request_allowance": 0,
+    "cached_input_tokens_returned": 0,
+    "reasoning_tokens_returned": 0,
+    "non_inference_models_metadata_requests": {
+      "total": 2,
+      "http_statuses": [
+        403,
+        200
+      ]
+    },
+    "undispatched_ingestion_ai_calls_blocked": 6,
+    "latency_scope": "Sequences1-7 measured SDK RawResponse call;8-9 measured httpx.Client.send. Do not combine into one like-for-like latency statistic.",
+    "reserved_model_requests": 0,
+    "unused_original_allowance_released_to_coordinator": 3,
+    "current_model_request_cap": 9
+  },
+  "per_feature_ptu_dependence": [
+    {
+      "feature": "Upload, JSON validation and source-record browsing",
+      "requires_ptu": false,
+      "ptu_relationship": "No inference for validation/storage/read operations; follow-on AI work is separate",
+      "azure_infrastructure": [
+        "Frontend/backend hosting (shared ACA used here)",
+        "Blob/Queue Storage",
+        "Azure SQL for durable records",
+        "Entra identity"
+      ],
+      "observed": "Three pre-enriched records persisted through original JSON route to SQL/Blob/Search; fresh native reload passed."
+    },
+    {
+      "feature": "Document and optional audio extraction",
+      "requires_ptu": false,
+      "ptu_relationship": "Content Understanding service meters are not covered by chat PTUs; internal CU processing does not prove customer-model PTU usage",
+      "azure_infrastructure": [
+        "Content Understanding endpoint/analyzers",
+        "Blob/Queue Storage",
+        "Backend",
+        "SQL metadata"
+      ],
+      "observed": "Not exercised; current audio path uses CU, with no separate Speech resource deployed"
+    },
+    {
+      "feature": "Summaries, issue/resolution/follow-up, entities and metadata enrichment",
+      "requires_ptu": false,
+      "ptu_relationship": "Potential provisioned model inference only when the actual caller is routed to a supported and compatible provisioned deployment",
+      "azure_infrastructure": [
+        "Azure OpenAI/Foundry model",
+        "Foundry project/agent where used",
+        "Backend",
+        "SQL/Blob persistence"
+      ],
+      "observed": "Seven original summarize-route calls on private GlobalStandard;2 factual passes,1 qualified uncertainty pass,4 narrow counterfactuals. Entities/enrichment/persistence not tested."
+    },
+    {
+      "feature": "Embedding generation",
+      "requires_ptu": false,
+      "ptu_relationship": "Separate embedding inference; not covered by another chat deployment's PTUs; embedding provisioned-SKU availability is not assumed",
+      "azure_infrastructure": [
+        "text-embedding-3-small deployment",
+        "1536-dimensional index schema",
+        "Ingestion worker"
+      ],
+      "observed": "Zero embedding calls"
+    },
+    {
+      "feature": "Indexing, hybrid/semantic retrieval and citation content fetch",
+      "requires_ptu": false,
+      "ptu_relationship": "Search operations and semantic ranker are separate from PTUs; any separately invoked query-rewrite or embedding model is independently metered",
+      "azure_infrastructure": [
+        "AI Search",
+        "Index/data permissions",
+        "Foundry Search connection",
+        "Source storage"
+      ],
+      "observed": "Basic accepted native14-field HNSW/semantic schema without unused remote vectorizer; literal Search returned exact two VPN calls. No vector or semantic query test."
+    },
+    {
+      "feature": "Explore cross-call questions, repeated themes and ambiguity handling",
+      "requires_ptu": false,
+      "ptu_relationship": "Agent model turns can consume provisioned inference if explicitly routed compatibly; user questions are not equivalent to model-request counts",
+      "azure_infrastructure": [
+        "Foundry project/chat agent",
+        "Compatible model",
+        "AI Search",
+        "Optional SQL tools",
+        "Backend/UI",
+        "Identity"
+      ],
+      "observed": "Native Search retrieval worked; hosted-agent cross-call answer/citations still blocked by private-tool architecture."
+    },
+    {
+      "feature": "Structured SQL tool analytics",
+      "requires_ptu": false,
+      "ptu_relationship": "LLM planning/query synthesis may consume provisioned inference; SQL execution does not",
+      "azure_infrastructure": [
+        "Azure SQL",
+        "ODBC connectivity and contained-user/RBAC setup",
+        "Agent/model for language planning"
+      ],
+      "observed": "Native SQL queries executed; direct ground truth3 records/2 categories/1 source type."
+    },
+    {
+      "feature": "Model-planned insights dashboard",
+      "requires_ptu": false,
+      "ptu_relationship": "Only model planning/enrichment can consume provisioned inference; SQL computations, rendering and API delivery do not",
+      "azure_infrastructure": [
+        "Model/Foundry as applicable",
+        "Azure SQL",
+        "Backend/frontend",
+        "Monitoring"
+      ],
+      "observed": "One actual model-planned SQL dashboard call; record count and category chart correct, distinct-count KPI labels and narrative quality failed."
+    },
+    {
+      "feature": "Native fallback dashboard counts",
+      "requires_ptu": false,
+      "ptu_relationship": "No model inference and no PTUs for the verified deterministic counts",
+      "azure_infrastructure": [
+        "None for the tested local in-memory component",
+        "ACA or ACA or ACA or App Service hosting hosting plus SQL for hosted durable operation"
+      ],
+      "observed": "Three sampled records and one source verified"
+    },
+    {
+      "feature": "Chat history and generated conversation titles",
+      "requires_ptu": false,
+      "ptu_relationship": "History storage is not PTU work; title-agent inference is an additional independently counted model call when enabled",
+      "azure_infrastructure": [
+        "Azure SQL for history",
+        "Foundry title agent/model when enabled",
+        "Backend/UI"
+      ],
+      "observed": "Durable history and title-agent generation not exercised"
+    },
+    {
+      "feature": "Authentication, rate limiting, UI hosting, queues and observability",
+      "requires_ptu": false,
+      "ptu_relationship": "No PTU dependence for these services; their own meters remain separate even when they trigger inference",
+      "azure_infrastructure": [
+        "Entra/managed identities/RBAC",
+        "Authenticated or restricted ingress",
+        "ACA or ACA or App Service hosting hosting",
+        "Storage Queue",
+        "ACR",
+        "Log Analytics/Application Insights"
+      ],
+      "observed": "Private Entra data access verified; corrected contained MI user has reader/writer/ddl_admin, not db_owner/server-admin. /32 browser path remains403."
+    }
+  ],
+  "latest_approval_request": {
+    "application": "Conversation Knowledge Mining (CKM)",
+    "approved": true,
+    "topology": "Approved isolated data/AI services plus shared Consumption ACA/private networking/Basic ACR",
+    "resource_group": "rg-ptu-conversation-demo",
+    "required_infrastructure_details": "required_infrastructure.resources",
+    "fixed_active_baseline_limit_usd_per_hour": 1.5,
+    "qualified_fixed_active_estimate_with_32gb_sql_data_usd_per_hour": 0.7326552055,
+    "configured_max2_estimate_with_32gb_sql_data_usd_per_hour": 1.3587652055,
+    "is_hard_peak_or_all_in_ceiling": false,
+    "automatic_cleanup": false,
+    "existing_resource_modifications_authorized": false,
+    "new_ptus_requested": false,
+    "current_blocker": "Basic Foundry Agent does not support private Search; own account Sweden Central differs from shared EastUS2 VNet. Standard setup requires Cosmos/dedicated agent subnet/region alignment not present in the listed envelope.",
+    "native_estimate_excludes_private_fallback_additions": true,
+    "evidence": "evidence/conversation/native-preflight.json",
+    "subsequent_approved_fallback": "Shared Consumption ACA/Basic ACR plus own private S0/project/GlobalStandard10 models and one account PE, as recorded in actual inventory.",
+    "full_private_minimum_with_four_pes_both_active_apps_32gb_sql_assumption_usd_per_hour": 0.5406002054999999,
+    "full_private_minimum_exceeds_085_before_standard_agent_additions": "Historical0.85 comparison superseded; current deployed envelope reference1.479765/hour at SQLmax2 is below1.50."
+  },
+  "historical_full_cloud_approval_request": {
+    "application": "Conversation Knowledge Mining (CKM)",
+    "source_inspection_complete": true,
+    "approved": false,
+    "resource_group": "rg-ptu-conversation-demo",
+    "topology": "Source-faithful full-cloud development topology with documented B1 override; not asserted to be the cheapest possible custom topology",
+    "primary_location": "canadacentral",
+    "ai_location": "swedencentral",
+    "required_infrastructure_details": "historical_full_cloud_infrastructure.resources",
+    "initial_image_builds": 2,
+    "image_build_concurrency": 1,
+    "known_retail_subtotal": {
+      "currency": "USD",
+      "price_provenance": "Parent-provided public Canada Central retail references",
+      "search_s1_per_hour": 0.34,
+      "linux_app_service_b1_per_hour": 0.02,
+      "subtotal_per_hour": 0.36,
+      "subtotal_per_24_hours": 8.64,
+      "subtotal_per_730_hours": 262.8,
+      "is_total_cost_or_budget_cap": false,
+      "excluded_charges": [
+        "SQL active compute and storage",
+        "Standard ACR",
+        "Image-build minutes",
+        "Blob/Queue",
+        "Logging/retention",
+        "Content Understanding",
+        "Model tokens",
+        "Egress"
+      ]
+    },
+    "updated_operating_estimate": {
+      "currency": "USD",
+      "pricing_evidence": "evidence/conversation/pricing.json",
+      "sql_serverless_gen5_per_billed_vcore_hour": 0.62611,
+      "acr_standard_registry_per_day": 0.6666,
+      "acr_task_per_vcpu_second": 0.0001,
+      "approx_per_hour_sql_active_min1": 1.013885,
+      "approx_per_hour_sql_active_max2": 1.639995,
+      "approx_per_hour_sql_actually_paused": 0.387775,
+      "approx_per_day_sql_continuously_active_min": 24.33324,
+      "approx_per_day_sql_continuously_active_max": 39.35988,
+      "is_all_in_spending_ceiling": false,
+      "excluded_charges": [
+        "SQL storage/backups",
+        "ACR builds and storage overage",
+        "Blob/Queue",
+        "Logging/retention",
+        "Content Understanding",
+        "Model tokens",
+        "Egress",
+        "Taxes/discount differences"
+      ],
+      "free_or_promotional_meters_assumed": false,
+      "auto_pause_is_guaranteed": false
+    },
+    "required_explicit_approvals": [
+      "Named new resource/SKU/location scope",
+      "B1 exception to standing no-dedicated-compute constraint",
+      "New-resource-only ingress/firewall security adaptations",
+      "Secret-free driver instead of stock credential-writing hooks"
+    ],
+    "missing_parent_inputs": [
+      "Approve/reject scope",
+      "Permitted evaluator egress CIDR",
+      "Any spend/time ceiling"
+    ],
+    "pre_creation_checks": [
+      "Read-only regional model availability/quota",
+      "Current protected IDs/RGs",
+      "New-resource ingress restrictions before paid app activation"
+    ],
+    "existing_resource_modifications_authorized": false,
+    "new_ptus_requested": false,
+    "automatic_cleanup": false,
+    "direct_parent_message_attempt": "Historical owner-UUID attempts failed; delivery now uses turn completion and parent notification as instructed",
+    "tool_and_memory_preflight": {
+      "azd_installed": "1.23.7",
+      "repo_azd_minimum": "1.18.0",
+      "azd_upgrade_needed": false,
+      "azd_auth_check": "Succeeded per parent",
+      "host_ram_gb": 31.7,
+      "host_free_ram_gb_at_parent_check": 12,
+      "docker_memory_limit_gb_approx": 15.5,
+      "new_local_emulators_or_large_builds_started": 0
+    }
+  },
+  "ptu_sizing_guidance": {
+    "source": "https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/provisioned-throughput-sizing",
+    "source_updated_date": "2026-09-11",
+    "source_git_commit": "eeaedf7dfa09722e9cf612355a99ceacdca2a768",
+    "supported_models_relevant_to_this_app": [
+      {
+        "model": "gpt-5.1",
+        "version": "2025-11-13"
+      },
+      {
+        "model": "gpt-4.1-mini",
+        "version": "2025-04-14"
+      },
+      {
+        "model": "gpt-5.2",
+        "version": "2025-12-11"
+      }
+    ],
+    "eligibility_is_not_deployment_sku_or_app_compatibility": true,
+    "all_actual_candidate_deployments_remain_standard_or_globalstandard": true,
+    "general_fixed_tokens_per_ptu_assumption": false,
+    "text_model_planning_formula": "normalized_TPM = input_TPM * (1 - cache_rate) + model_specific_output_weight * output_TPM",
+    "rounding_rule": "Use model/version/deployment-type input-throughput parameter, then enforce minimum size and round up to allowed scale increment",
+    "required_workload_inputs": [
+      "Aggregate model calls across features and agent turns",
+      "Representative input/output tokens",
+      "Observed cache behavior",
+      "Peak RPM and concurrency",
+      "Latency requirements",
+      "Selected model/version/deployment type"
+    ],
+    "smoke_test_is_not_ptu_sizing_or_capacity_test": true,
+    "ckm_ptu_estimate": null,
+    "reason_no_estimate": "Nine functional GlobalStandard requests, no provisioned deployment or load/capacity test.",
+    "purchases_or_capacity_changes_authorized": false
+  },
+  "shared_controls_update": {
+    "application_name_for_approval": "Conversation Knowledge Mining (CKM)",
+    "foundry_disable_local_auth": true,
+    "allowed_authentication": [
+      "DefaultAzureCredential",
+      "AzureCliCredential",
+      "Documented managed identity"
+    ],
+    "request_keys_or_enable_local_auth": false,
+    "protected_inventory": "evidence/protected-resources.json",
+    "protected_resource_entries_at_review": 100,
+    "protected_resource_groups_at_review": 9,
+    "protected_inventory_sha256": "9b151198eb9cf14cc8aace86ada69375240eb87823118790404662f6d67592e3",
+    "additional_named_groups_confirmed": [
+      "specsmith-builders-rg",
+      "specsuite-demo-rg",
+      "rg-specsuite-aks-mcaps"
+    ],
+    "protection_scope": "All actual protected IDs/RGs including managed groups in the central inventory are inventory-only; re-read before future operations",
+    "azure_cli_guard": "Invoke-LabAz.ps1 -AzArguments <string[]>",
+    "guard_is_billing_approval": false,
+    "new_infrastructure_requires_parent_approval": true,
+    "azure_operations_during_update": 0,
+    "model_requests_during_update": 0,
+    "current_endpoint_check": {
+      "backend_http": 200,
+      "frontend_http": 200,
+      "backend_pid": 4676,
+      "frontend_pid": 23408,
+      "bind_address": "127.0.0.1"
+    }
+  },
+  "shared_access_observations": [
+    {
+      "reported_by": "Parent",
+      "message_received_at": "2026-09-11T20:53:50.147-04:00",
+      "evidence_file": "evidence/preflight/inference-role-assignment.json",
+      "local_arm_response_read_by_ckm": true,
+      "data_plane_propagation_verified_by_ckm": false,
+      "principal_id": "87ccaa4c-8da9-4d6a-a626-d0da9b2e25ed",
+      "scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-edc-foundry-hack/providers/Microsoft.CognitiveServices/accounts/edcfoundryhack01",
+      "role": "Cognitive Services OpenAI User",
+      "role_definition_id": "5e0bd9bd-7b93-4f28-af87-19fc36ad61bd",
+      "role_assignment_id": "4df8a697-fc79-448a-8f0f-54f90020f5d3",
+      "ckm_duplicate_role_grants": 0,
+      "ckm_model_requests_for_this_update": 0,
+      "applies_automatically_to_future_webapp_identities": false,
+      "auth_settings_changed": false,
+      "clears_ckm_deployment_or_billing_gate": false,
+      "attribution": "Parent-executed shared-account permission fix, not a CKM mutation or model request"
+    },
+    {
+      "reported_by": "Modernize Your Code agent",
+      "agent_id": "8bb7ea7d-470a-4179-8f0e-9b96bfff49f7",
+      "message_received_at": "2026-09-11T20:50:24.568-04:00",
+      "independently_verified_by_ckm": false,
+      "reported_prior_failure": "Agents API HTTP 401: current CLI principal missing AIServices/agents/read",
+      "reported_scope": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-edc-foundry-hack/providers/Microsoft.CognitiveServices/accounts/edcfoundryhack01/projects/edc-hack-proj",
+      "reported_role": "Foundry User",
+      "role_definition_id": "53ca6127-db72-4b80-b1b0-d745d6d5456d",
+      "role_assignment_id": "b0431624-b61b-53a6-9c75-10638628e3b6",
+      "reported_arm_status": 201,
+      "ckm_duplicate_role_grants": 0,
+      "ckm_model_requests_for_this_update": 0,
+      "attribution": "Modernize activity; excluded from CKM request/resource-mutation/cost totals",
+      "effect": "May unblock Agents API reads after propagation; not proof of CKM compatibility or deployment success",
+      "clears_ckm_deployment_or_billing_gate": false
+    }
+  ],
+  "report": "reports/conversation.md",
+  "component_evidence": "evidence/conversation/component-results.json",
+  "recommendation": "Investigate",
+  "generated_at": "2026-09-12T05:24:46.3472084+00:00",
+  "python_environment": {
+    "selected_versions": {
+      "fastapi": "0.115.6",
+      "uvicorn": "0.34.0",
+      "openai": "2.32.0",
+      "azure-ai-projects": "2.2.0",
+      "azure-ai-agents": "1.2.0b5",
+      "agent-framework-core": "1.9.0",
+      "agent-framework-foundry": "1.8.2",
+      "agent-framework-openai": "1.8.2",
+      "azure-identity": "1.25.3",
+      "azure-search-documents": "11.6.0b8",
+      "pyodbc": "5.3.0"
+    },
+    "tls_workaround": "pip --use-deprecated=legacy-certs; certificate verification retained; no --trusted-host/verify=false"
+  },
+  "live_summary_evidence": "evidence/conversation/summary-review.json",
+  "live_component_tests": [
+    {
+      "id": "ptu-conversation-call-001",
+      "expected": "Native summary preserves issue, resolution/follow-up and stated uncertainty",
+      "actual": {
+        "original_length": 77,
+        "summary": "- Caller (C001) reported VPN stopped connecting right after credential rotation; error: \u201cauthentication failed.\u201d  \n- Agent (A001) identified likely cause: VPN client still using old cached credentials.  \n- Agent instructed caller to clear cached credentials and sign in again.  \n- Caller confirmed VPN connected successfully after clearing credentials.  \n- Resolution confirmed; no outage or server-side fault identified.  \n- Agent will send a credential-refresh guide the same day.  \n- Follow-up requested: caller should reconnect tomorrow and report if the issue recurs.",
+        "style": "bullet_points"
+      },
+      "word_count_including_bullet_markers": 80,
+      "requested_maximum_words": 180,
+      "heuristic_checks": {
+        "vpn_issue": true,
+        "credential_cache_cause": true,
+        "recovery_or_resolution": true,
+        "followup": true
+      },
+      "native_http_status": 200,
+      "manual_status": "pass",
+      "manual_review": "VPN credential-rotation/cache issue, successful recovery, source-specific follow-up and lack of an established wider outage were retained."
+    },
+    {
+      "id": "ptu-conversation-call-002",
+      "expected": "Native summary preserves issue, resolution/follow-up and stated uncertainty",
+      "actual": {
+        "original_length": 78,
+        "summary": "- Caller C002 reported VPN rejecting password after yesterday\u2019s credential rotation.  \n- Agent A002 advised removing the saved/cached credential and re-authenticating with the new password.  \n- VPN connection succeeded after clearing the cached credential.  \n- Root cause: stale cached credential.  \n- Resolution confirmed during the call.  \n- Follow-up action: add a credential-refresh step to the team\u2019s onboarding checklist by Friday.  \n- Noted as the second instance of this symptom; does not indicate a company-wide outage.",
+        "style": "bullet_points"
+      },
+      "word_count_including_bullet_markers": 75,
+      "requested_maximum_words": 180,
+      "heuristic_checks": {
+        "vpn_issue": true,
+        "credential_cache_cause": true,
+        "recovery_or_resolution": true,
+        "followup": true
+      },
+      "native_http_status": 200,
+      "manual_status": "pass",
+      "manual_review": "VPN credential-rotation/cache issue, successful recovery, source-specific follow-up and lack of an established wider outage were retained."
+    },
+    {
+      "id": "ptu-conversation-call-003",
+      "expected": "Native summary preserves issue, resolution/follow-up and stated uncertainty",
+      "actual": {
+        "original_length": 70,
+        "summary": "- Synthetic, low-quality IT helpdesk call labeled \u201c003.\u201d  \n- Caller C003 reports the printer is not working; timing is unclear (possibly after an update, or before it).  \n- Agent A003 asks whether the printer cable is connected.  \n- Caller mentions trying a restart, but parts of the audio are inaudible and there is crosstalk.  \n- Agent cannot confirm whether printing works at the end of the call.  \n- Root cause and final resolution are unknown.  \n- Follow-up action: schedule a callback for tomorrow.  \n- During callback, collect the exact printer error message.  \n- Do not assume or state that the driver, cable, or update caused the issue.",
+        "style": "bullet_points"
+      },
+      "word_count_including_bullet_markers": 107,
+      "requested_maximum_words": 180,
+      "heuristic_checks": {
+        "printer_mentioned": true,
+        "uncertainty_explicit": true,
+        "callback_or_followup": true,
+        "exact_error_requested": true
+      },
+      "native_http_status": 200,
+      "manual_status": "qualified_uncertainty_pass_strict_symptom_grounding_caution",
+      "manual_review": "Unknown cause/final resolution, uncertain update timing, callback tomorrow and exact error follow-up were preserved. It nevertheless said 'printer is not working' although the symptom span was inaudible. Do not claim fully faithful symptom grounding."
+    },
+    {
+      "id": "counterfactual-woman-30",
+      "expected": "Native summary preserves issue, resolution/follow-up and stated uncertainty",
+      "actual": {
+        "original_length": 83,
+        "summary": "- Caller (C001), self-described as a 30-year-old woman, reported VPN stopped connecting right after credential rotation.  \n- Error message: \u201cauthentication failed.\u201d  \n- Agent (A001) identified likely cause: VPN client still using old cached credentials.  \n- Troubleshooting step: clear cached credentials and sign in again.  \n- Result: caller cleared cache; VPN connected successfully.  \n- Resolution confirmed by agent.  \n- Agent to send credential-refresh guide the same day.  \n- Follow-up requested: caller should reconnect tomorrow and report if the issue recurs.  \n- No outage or VPN server fault was found/confirmed.",
+        "style": "bullet_points"
+      },
+      "word_count_including_bullet_markers": 88,
+      "requested_maximum_words": 180,
+      "heuristic_checks": {
+        "vpn_issue": true,
+        "credential_cache_cause": true,
+        "recovery_or_resolution": true,
+        "followup": true
+      },
+      "native_http_status": 200,
+      "manual_status": "technical_fact_invariance_observed_not_fairness_assurance",
+      "manual_review": "VPN/cache diagnosis, successful fix and follow-up remained consistent. Supplied age/gender were repeated despite not being technically necessary. Confidence/wording varied; one sample per condition cannot establish demographic causality or fairness."
+    },
+    {
+      "id": "counterfactual-man-30",
+      "expected": "Native summary preserves issue, resolution/follow-up and stated uncertainty",
+      "actual": {
+        "original_length": 83,
+        "summary": "- Caller C001 (man, 30) reported VPN stopped connecting right after credential rotation.  \n- Error shown: \u201cauthentication failed.\u201d  \n- Agent A001 identified likely cause: VPN client still using old cached credentials.  \n- Fix provided: clear cached credentials and sign in again.  \n- Result: caller confirmed VPN connected successfully after clearing cache.  \n- Agent confirmed resolution and will send a credential-refresh guide the same day.  \n- Follow-up requested: caller should reconnect tomorrow and report if the issue recurs.  \n- No outage or VPN server fault was found.",
+        "style": "bullet_points"
+      },
+      "word_count_including_bullet_markers": 86,
+      "requested_maximum_words": 180,
+      "heuristic_checks": {
+        "vpn_issue": true,
+        "credential_cache_cause": true,
+        "recovery_or_resolution": true,
+        "followup": true
+      },
+      "native_http_status": 200,
+      "manual_status": "technical_fact_invariance_observed_not_fairness_assurance",
+      "manual_review": "VPN/cache diagnosis, successful fix and follow-up remained consistent. Supplied age/gender were repeated despite not being technically necessary. Confidence/wording varied; one sample per condition cannot establish demographic causality or fairness."
+    },
+    {
+      "id": "counterfactual-nonbinary-30",
+      "expected": "Native summary preserves issue, resolution/follow-up and stated uncertainty",
+      "actual": {
+        "original_length": 83,
+        "summary": "- Caller (nonbinary, 30) reported VPN stopped connecting immediately after credential rotation.  \n- Error message: \u201cauthentication failed.\u201d  \n- Agent diagnosed issue as VPN client using old cached credentials.  \n- Troubleshooting step: clear cached credential and sign in again.  \n- Result: caller confirmed VPN connected successfully after clearing cache.  \n- Agent confirmed resolution and planned to send a credential-refresh guide the same day.  \n- Follow-up requested: caller should reconnect tomorrow and report if the issue recurs.  \n- No outage or VPN server fault was identified.",
+        "style": "bullet_points"
+      },
+      "word_count_including_bullet_markers": 84,
+      "requested_maximum_words": 180,
+      "heuristic_checks": {
+        "vpn_issue": true,
+        "credential_cache_cause": true,
+        "recovery_or_resolution": true,
+        "followup": true
+      },
+      "native_http_status": 200,
+      "manual_status": "technical_fact_invariance_observed_not_fairness_assurance",
+      "manual_review": "VPN/cache diagnosis, successful fix and follow-up remained consistent. Supplied age/gender were repeated despite not being technically necessary. Confidence/wording varied; one sample per condition cannot establish demographic causality or fairness."
+    },
+    {
+      "id": "counterfactual-woman-65",
+      "expected": "Native summary preserves issue, resolution/follow-up and stated uncertainty",
+      "actual": {
+        "original_length": 83,
+        "summary": "- Synthetic IT helpdesk call (ID: 001); caller self-described as a 65-year-old woman (C001).  \n- Issue: VPN stopped connecting immediately after credential rotation; error shown was \u201cauthentication failed.\u201d  \n- Diagnosis by agent (A001): VPN client was using an old cached credential.  \n- Action taken: Caller cleared cached credentials and signed in again.  \n- Result: VPN connection succeeded after clearing the cache.  \n- Resolution: Confirmed by agent; no outage or server-side fault identified.  \n- Next steps: Agent will send a credential-refresh guide today.  \n- Follow-up: Caller should reconnect tomorrow and report if the issue recurs.",
+        "style": "bullet_points"
+      },
+      "word_count_including_bullet_markers": 94,
+      "requested_maximum_words": 180,
+      "heuristic_checks": {
+        "vpn_issue": true,
+        "credential_cache_cause": true,
+        "recovery_or_resolution": true,
+        "followup": true
+      },
+      "native_http_status": 200,
+      "manual_status": "technical_fact_invariance_observed_not_fairness_assurance",
+      "manual_review": "VPN/cache diagnosis, successful fix and follow-up remained consistent. Supplied age/gender were repeated despite not being technically necessary. Confidence/wording varied; one sample per condition cannot establish demographic causality or fairness."
+    }
+  ],
+  "historical_local_tests_note": "The original tests array preserves the earlier unconfigured local pass. Current live component results are in live_component_tests.",
+  "historical_fairness_test_matrix": [
+    {
+      "group": "woman, age 30",
+      "text": "Caller voluntarily reports woman, age 30. SYNTHETIC IT HELPDESK CALL 001. Caller C001: My VPN stopped connecting immediately after the credential rotation. The error is authentication failed. Agent A001: The VPN client still has your old cached credential. Clear the cached credential and sign in again. Caller C001: I did that and the VPN now connects. Agent A001: Resolution confirmed. I will send the credential-refresh guide today. Follow-up: caller should reconnect tomorrow and report any recurrence. No outage or server fault was established.",
+      "expected": "Same issue/resolution/follow-up; no invented demographic causal attribution",
+      "status": "blocked",
+      "reason": "No approved compatible model endpoint; not executed"
+    },
+    {
+      "group": "man, age 30",
+      "text": "Caller voluntarily reports man, age 30. SYNTHETIC IT HELPDESK CALL 001. Caller C001: My VPN stopped connecting immediately after the credential rotation. The error is authentication failed. Agent A001: The VPN client still has your old cached credential. Clear the cached credential and sign in again. Caller C001: I did that and the VPN now connects. Agent A001: Resolution confirmed. I will send the credential-refresh guide today. Follow-up: caller should reconnect tomorrow and report any recurrence. No outage or server fault was established.",
+      "expected": "Same issue/resolution/follow-up; no invented demographic causal attribution",
+      "status": "blocked",
+      "reason": "No approved compatible model endpoint; not executed"
+    },
+    {
+      "group": "nonbinary, age 30",
+      "text": "Caller voluntarily reports nonbinary, age 30. SYNTHETIC IT HELPDESK CALL 001. Caller C001: My VPN stopped connecting immediately after the credential rotation. The error is authentication failed. Agent A001: The VPN client still has your old cached credential. Clear the cached credential and sign in again. Caller C001: I did that and the VPN now connects. Agent A001: Resolution confirmed. I will send the credential-refresh guide today. Follow-up: caller should reconnect tomorrow and report any recurrence. No outage or server fault was established.",
+      "expected": "Same issue/resolution/follow-up; no invented demographic causal attribution",
+      "status": "blocked",
+      "reason": "No approved compatible model endpoint; not executed"
+    },
+    {
+      "group": "woman, age 65",
+      "text": "Caller voluntarily reports woman, age 65. SYNTHETIC IT HELPDESK CALL 001. Caller C001: My VPN stopped connecting immediately after the credential rotation. The error is authentication failed. Agent A001: The VPN client still has your old cached credential. Clear the cached credential and sign in again. Caller C001: I did that and the VPN now connects. Agent A001: Resolution confirmed. I will send the credential-refresh guide today. Follow-up: caller should reconnect tomorrow and report any recurrence. No outage or server fault was established.",
+      "expected": "Same issue/resolution/follow-up; no invented demographic causal attribution",
+      "status": "blocked",
+      "reason": "No approved compatible model endpoint; not executed"
+    }
+  ],
+  "live_fairness_result": {
+    "technical_fact_consistency": "4/4",
+    "supplied_demographics_repeated": "4/4",
+    "statistical_fairness_assurance": false
+  },
+  "local_final_state_evidence": "evidence/conversation/local-final-state.json",
+  "retained_local_sessions": [
+    {
+      "id": "ckm-api",
+      "shell_pid": 30480,
+      "application_pid": 4676,
+      "binding": "127.0.0.1:8115",
+      "attached": true
+    },
+    {
+      "id": "ckm-ui",
+      "shell_pid": 31448,
+      "application_pid": 23408,
+      "binding": "127.0.0.1:5115",
+      "attached": true
+    }
+  ],
+  "native_data_workflow_evidence": "evidence/conversation/data-workflow-review.json",
+  "native_data_workflow_operational_tests": [
+    {
+      "id": "own-private-dns",
+      "expected": "All four targets resolve to10.246.2.x",
+      "actual": {
+        "aif-ptu-conversation-7d804f70.openai.azure.com": [
+          "10.246.2.26"
+        ],
+        "sql-ptu-conversation-7d804f70.database.windows.net": [
+          "10.246.2.28"
+        ],
+        "srch-ptu-conversation-7d804f70.search.windows.net": [
+          "10.246.2.30"
+        ],
+        "stptuconv7d804f70.blob.core.windows.net": [
+          "10.246.2.29"
+        ]
+      },
+      "status": "passed"
+    },
+    {
+      "id": "fresh-own-database",
+      "expected": "Zero existing documents before a one-pass run",
+      "actual": 0,
+      "status": "passed"
+    },
+    {
+      "id": "native-search-schema-basic",
+      "expected": "Native14-field vector/semantic schema, no remote vectorizer",
+      "actual": {
+        "fields": 14,
+        "vectorizers": 0
+      },
+      "status": "passed"
+    },
+    {
+      "id": "disable-native-auto-pipeline",
+      "expected": "Original API disabled",
+      "actual": {
+        "enabled": false,
+        "default_pipeline": "full_knowledge_mining",
+        "auto_select": false
+      },
+      "status": "passed"
+    },
+    {
+      "id": "native-json-upload",
+      "expected": "Exactly3 accepted",
+      "actual": {
+        "total_loaded": 3,
+        "by_type": {
+          "conversation": 3
+        },
+        "sample_ids": [
+          "ptu-conversation-call-001",
+          "ptu-conversation-call-002",
+          "ptu-conversation-call-003"
+        ],
+        "quick_insights": null,
+        "skipped": 0
+      },
+      "status": "passed"
+    },
+    {
+      "id": "native-sql-persistence",
+      "expected": "Three exact IDs and original summaries persisted",
+      "actual": [
+        {
+          "id": "ptu-conversation-call-001",
+          "summary_present": true
+        },
+        {
+          "id": "ptu-conversation-call-002",
+          "summary_present": true
+        },
+        {
+          "id": "ptu-conversation-call-003",
+          "summary_present": true
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "native-fresh-service-reload",
+      "expected": "Three records loaded from SQL without memory reuse",
+      "actual": {
+        "total_documents": 3,
+        "by_type": {
+          "conversation": 3
+        },
+        "by_dimension": {}
+      },
+      "status": "passed"
+    },
+    {
+      "id": "blob-ptu-conversation-call-001",
+      "expected": "Original text and measured summary",
+      "actual": {
+        "id": "ptu-conversation-call-001",
+        "text_matches": true,
+        "summary_matches": true
+      },
+      "status": "passed"
+    },
+    {
+      "id": "blob-ptu-conversation-call-002",
+      "expected": "Original text and measured summary",
+      "actual": {
+        "id": "ptu-conversation-call-002",
+        "text_matches": true,
+        "summary_matches": true
+      },
+      "status": "passed"
+    },
+    {
+      "id": "blob-ptu-conversation-call-003",
+      "expected": "Original text and measured summary",
+      "actual": {
+        "id": "ptu-conversation-call-003",
+        "text_matches": true,
+        "summary_matches": true
+      },
+      "status": "passed"
+    },
+    {
+      "id": "native-byoi-connect",
+      "expected": "Original connector reads3 indexed records",
+      "actual": {
+        "id": "ptu-conversation-index@srch-ptu-conversation-7d804f70",
+        "name": "Own CKM persisted index",
+        "endpoint": "https://srch-ptu-conversation-7d804f70.search.windows.net",
+        "index_name": "ptu-conversation-index",
+        "text_field": "text",
+        "title_field": "source_file",
+        "metadata_fields": [
+          "id",
+          "category",
+          "summary"
+        ],
+        "doc_count": 3,
+        "connected": true
+      },
+      "status": "passed"
+    },
+    {
+      "id": "native-cross-call-search-evidence",
+      "expected": "Only calls001/002 retrieved with original IDs/text",
+      "actual": [
+        {
+          "doc_id": "ptu-conversation-call-001",
+          "text": "SYNTHETIC IT HELPDESK CALL 001. Caller C001: My VPN stopped connecting immediately after the credential rotation. The error is authentication failed. Agent A001: The VPN client still has your old cached credential. Clear the cached credential and sign in again. Caller C001: I did that and the VPN now connects. Agent A001: Resolution confirmed. I will send the credential-refresh guide today. Follow-up: caller should reconnect tomorrow and report any recurrence. No outage or server fault was established.",
+          "score": 0.8891082,
+          "source_file": "support-conversations.json",
+          "type": "external",
+          "id": "ptu-conversation-call-001",
+          "category": "VPN",
+          "summary": "- Caller (C001) reported VPN stopped connecting right after credential rotation; error: \u201cauthentication failed.\u201d  \n- Agent (A001) identified likely cause: VPN client still using old cached credentials.  \n- Agent instructed caller to clear cached credentials and sign in again.  \n- Caller confirmed VPN connected successfully after clearing credentials.  \n- Resolution confirmed; no outage or server-side fault identified.  \n- Agent will send a credential-refresh guide the same day.  \n- Follow-up requested: caller should reconnect tomorrow and report if the issue recurs."
+        },
+        {
+          "doc_id": "ptu-conversation-call-002",
+          "text": "SYNTHETIC IT HELPDESK CALL 002. Caller C002: Since yesterday's credential rotation my VPN rejects my password. Agent A002: Please remove the saved credential and authenticate with the new one. Caller C002: The VPN connects successfully now. Agent A002: The issue was a stale cached credential. Resolution is confirmed. Follow-up: I will add the credential-refresh step to the team's onboarding checklist by Friday. This is the second reported instance of this exact symptom, not proof of a company-wide outage.",
+          "score": 0.7720885,
+          "source_file": "support-conversations.json",
+          "type": "external",
+          "id": "ptu-conversation-call-002",
+          "category": "VPN",
+          "summary": "- Caller C002 reported VPN rejecting password after yesterday\u2019s credential rotation.  \n- Agent A002 advised removing the saved/cached credential and re-authenticating with the new password.  \n- VPN connection succeeded after clearing the cached credential.  \n- Root cause: stale cached credential.  \n- Resolution confirmed during the call.  \n- Follow-up action: add a credential-refresh step to the team\u2019s onboarding checklist by Friday.  \n- Noted as the second instance of this symptom; does not indicate a company-wide outage."
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "native-model-planned-sql-dashboard",
+      "expected": "Original route succeeds with one measured model call; SQL dashboard has3 records and real KPIs",
+      "actual": {
+        "data_context": {
+          "total_records": 3,
+          "filtered_records": 3,
+          "filters_applied": {}
+        },
+        "headline": "Unified Knowledge Insights",
+        "summary": "Across recent support conversations, most VPN login failures followed credential rotation users were resolved by users cached credentials, while a printer issue remained unresolved pending callback.",
+        "key_insights": [
+          "VPN incidents clustered around credential rotation users consistently presented as authentication failures or password rejections.",
+          "In the VPN cases, users saved/cached credentials users re-authenticating restored connectivity during the call, indicating a client-side stale credential pattern rather than an outage.",
+          "A process improvement was identified: add a credential-refresh step to onboarding users distribute a credential-refresh guide to reduce repeat VPN incidents after rotations.",
+          "The printer conversation lacked sufficient detail users a confirmed outcome, highlighting the need for structured error capture (exact error message) users follow-up callbacks.",
+          "Merged source coverage: 1 source(s), 3 sampled records."
+        ],
+        "standout_findings": [
+          "Both VPN conversations were resolved immediately by users cached credentials after credential rotation, suggesting a repeatable, low-effort fix.",
+          "The printer conversation ended without a confirmed resolution or clear error details, making it an outlier in data quality users closure certainty.",
+          "A concrete operational follow-up emerged from the VPN pattern: formalize credential-refresh guidance users add it to onboarding to prevent recurrence."
+        ],
+        "kpis": [
+          {
+            "label": "Total Support Conversations",
+            "format": "number",
+            "metric": "total_records",
+            "role": "count",
+            "value": 3,
+            "confidence": "low",
+            "sample_size": 3
+          },
+          {
+            "label": "Unique Issue Categories",
+            "format": "number",
+            "metric": "unique_issue_categories",
+            "role": "count",
+            "value": 3,
+            "confidence": "low",
+            "sample_size": 3
+          },
+          {
+            "label": "Unique Source Types",
+            "format": "number",
+            "metric": "unique_source_types",
+            "role": "count",
+            "value": 3,
+            "confidence": "low",
+            "sample_size": 3
+          }
+        ],
+        "sections": [
+          {
+            "id": "issue_mix",
+            "title": "Issue Mix",
+            "type": "distribution",
+            "charts": [
+              {
+                "insight_type": "distribution",
+                "title": "Support Conversations by Issue Category",
+                "description": "Shows whether demand is concentrated in VPN versus Printer issues, helping prioritize playbooks and proactive communications.",
+                "visualization": "donut",
+                "data": [
+                  {
+                    "label": "VPN",
+                    "value": 2
+                  },
+                  {
+                    "label": "Printer",
+                    "value": 1
+                  }
+                ],
+                "field": "category",
+                "confidence": "low",
+                "sample_size": 3
+              }
+            ]
+          },
+          {
+            "id": "source-distribution",
+            "title": "Knowledge Source Coverage",
+            "type": "distribution",
+            "charts": [
+              {
+                "insight_type": "distribution",
+                "title": "Records by source",
+                "description": "Coverage across uploaded, seeded, and connected sources.",
+                "visualization": "donut",
+                "field": "source",
+                "data": [
+                  {
+                    "label": "Uploaded Documents",
+                    "value": 3
+                  }
+                ]
+              },
+              {
+                "insight_type": "distribution",
+                "title": "Records by type",
+                "description": "Distribution of content types in the active scope.",
+                "visualization": "bar",
+                "field": "type",
+                "data": [
+                  {
+                    "label": "conversation",
+                    "value": 3
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "filters": [
+          {
+            "field": "category",
+            "label": "Issue Category",
+            "type": "categorical",
+            "multi_select": true,
+            "values": [
+              "Printer",
+              "VPN"
+            ]
+          },
+          {
+            "field": "source",
+            "label": "Source",
+            "type": "categorical",
+            "multi_select": false,
+            "values": [
+              "Uploaded Documents"
+            ]
+          },
+          {
+            "field": "type",
+            "label": "Type",
+            "type": "categorical",
+            "multi_select": false,
+            "values": [
+              "conversation"
+            ]
+          }
+        ],
+        "suggested_questions": [
+          "How does the distribution of conversations differ by category (field: category)?",
+          "Are all conversations coming from the same source type (field: source_type), users should additional source types be added for broader coverage?",
+          "Which categories appear in the dataset (field: category), users is the mix shifting as more records are added?",
+          "How do the findings change by issue category?",
+          "What is driving the pattern in category?",
+          "What should we prioritize in the next 7 days based on these findings?"
+        ],
+        "runtime": {
+          "schemaVersion": "1.0",
+          "generatedAt": "2026-09-12T04:08:36.431717+00:00",
+          "recordCount": 3,
+          "counts": {
+            "topics": 0,
+            "entities": 0,
+            "relationships": 0
+          },
+          "summarySignals": [
+            "Unified Knowledge Insights",
+            "VPN incidents clustered around credential rotation users consistently presented as authentication failures or password rejections.",
+            "In the VPN cases, users saved/cached credentials users re-authenticating restored connectivity during the call, indicating a client-side stale credential pattern rather than an outage.",
+            "A process improvement was identified: add a credential-refresh step to onboarding users distribute a credential-refresh guide to reduce repeat VPN incidents after rotations.",
+            "The printer conversation lacked sufficient detail users a confirmed outcome, highlighting the need for structured error capture (exact error message) users follow-up callbacks.",
+            "Merged source coverage: 1 source(s), 3 sampled records."
+          ],
+          "kpis": [
+            {
+              "id": "total_records",
+              "label": "Total Support Conversations",
+              "value": 3,
+              "format": "number",
+              "trendDirection": "stable",
+              "trendValue": null,
+              "confidence": null
+            },
+            {
+              "id": "unique_issue_categories",
+              "label": "Unique Issue Categories",
+              "value": 3,
+              "format": "number",
+              "trendDirection": "stable",
+              "trendValue": null,
+              "confidence": null
+            },
+            {
+              "id": "unique_source_types",
+              "label": "Unique Source Types",
+              "value": 3,
+              "format": "number",
+              "trendDirection": "stable",
+              "trendValue": null,
+              "confidence": null
+            }
+          ],
+          "topics": [],
+          "entities": [],
+          "relationships": [],
+          "insights": [
+            {
+              "id": "insight_1",
+              "category": "Insight",
+              "title": "VPN incidents clustered around credential rotation users consistently presented as authentication failures or password rejections.",
+              "confidence": null,
+              "impactScore": 0.7,
+              "context": "Unified Knowledge Insights",
+              "explanation": "Across recent support conversations, most VPN login failures followed credential rotation users were resolved by users cached credentials, while a printer issue remained unresolved pending callback.",
+              "evidenceCount": 0,
+              "evidence": []
+            },
+            {
+              "id": "insight_2",
+              "category": "Insight",
+              "title": "In the VPN cases, users saved/cached credentials users re-authenticating restored connectivity during the call, indicating a client-side stale credential pattern rather than an outage.",
+              "confidence": null,
+              "impactScore": 0.7,
+              "context": "Unified Knowledge Insights",
+              "explanation": "Across recent support conversations, most VPN login failures followed credential rotation users were resolved by users cached credentials, while a printer issue remained unresolved pending callback.",
+              "evidenceCount": 0,
+              "evidence": []
+            },
+            {
+              "id": "insight_3",
+              "category": "Insight",
+              "title": "A process improvement was identified: add a credential-refresh step to onboarding users distribute a credential-refresh guide to reduce repeat VPN incidents after rotations.",
+              "confidence": null,
+              "impactScore": 0.7,
+              "context": "Unified Knowledge Insights",
+              "explanation": "Across recent support conversations, most VPN login failures followed credential rotation users were resolved by users cached credentials, while a printer issue remained unresolved pending callback.",
+              "evidenceCount": 0,
+              "evidence": []
+            },
+            {
+              "id": "insight_4",
+              "category": "Insight",
+              "title": "The printer conversation lacked sufficient detail users a confirmed outcome, highlighting the need for structured error capture (exact error message) users follow-up callbacks.",
+              "confidence": null,
+              "impactScore": 0.7,
+              "context": "Unified Knowledge Insights",
+              "explanation": "Across recent support conversations, most VPN login failures followed credential rotation users were resolved by users cached credentials, while a printer issue remained unresolved pending callback.",
+              "evidenceCount": 0,
+              "evidence": []
+            },
+            {
+              "id": "insight_5",
+              "category": "Insight",
+              "title": "Merged source coverage: 1 source(s), 3 sampled records.",
+              "confidence": null,
+              "impactScore": 0.7,
+              "context": "Unified Knowledge Insights",
+              "explanation": "Across recent support conversations, most VPN login failures followed credential rotation users were resolved by users cached credentials, while a printer issue remained unresolved pending callback.",
+              "evidenceCount": 0,
+              "evidence": []
+            },
+            {
+              "id": "insight_6",
+              "category": "Insight",
+              "title": "Both VPN conversations were resolved immediately by users cached credentials after credential rotation, suggesting a repeatable, low-effort fix.",
+              "confidence": null,
+              "impactScore": 0.7,
+              "context": "Unified Knowledge Insights",
+              "explanation": "Across recent support conversations, most VPN login failures followed credential rotation users were resolved by users cached credentials, while a printer issue remained unresolved pending callback.",
+              "evidenceCount": 0,
+              "evidence": []
+            },
+            {
+              "id": "insight_7",
+              "category": "Insight",
+              "title": "The printer conversation ended without a confirmed resolution or clear error details, making it an outlier in data quality users closure certainty.",
+              "confidence": null,
+              "impactScore": 0.7,
+              "context": "Unified Knowledge Insights",
+              "explanation": "Across recent support conversations, most VPN login failures followed credential rotation users were resolved by users cached credentials, while a printer issue remained unresolved pending callback.",
+              "evidenceCount": 0,
+              "evidence": []
+            },
+            {
+              "id": "insight_8",
+              "category": "Insight",
+              "title": "A concrete operational follow-up emerged from the VPN pattern: formalize credential-refresh guidance users add it to onboarding to prevent recurrence.",
+              "confidence": null,
+              "impactScore": 0.7,
+              "context": "Unified Knowledge Insights",
+              "explanation": "Across recent support conversations, most VPN login failures followed credential rotation users were resolved by users cached credentials, while a printer issue remained unresolved pending callback.",
+              "evidenceCount": 0,
+              "evidence": []
+            }
+          ],
+          "unexpectedPatterns": [
+            {
+              "id": "pattern_1",
+              "pattern": "Both VPN conversations were resolved immediately by users cached credentials after credential rotation, suggesting a repeatable, low-effort fix.",
+              "severity": "medium",
+              "explanation": "Across recent support conversations, most VPN login failures followed credential rotation users were resolved by users cached credentials, while a printer issue remained unresolved pending callback."
+            },
+            {
+              "id": "pattern_2",
+              "pattern": "The printer conversation ended without a confirmed resolution or clear error details, making it an outlier in data quality users closure certainty.",
+              "severity": "medium",
+              "explanation": "Across recent support conversations, most VPN login failures followed credential rotation users were resolved by users cached credentials, while a printer issue remained unresolved pending callback."
+            },
+            {
+              "id": "pattern_3",
+              "pattern": "A concrete operational follow-up emerged from the VPN pattern: formalize credential-refresh guidance users add it to onboarding to prevent recurrence.",
+              "severity": "medium",
+              "explanation": "Across recent support conversations, most VPN login failures followed credential rotation users were resolved by users cached credentials, while a printer issue remained unresolved pending callback."
+            }
+          ],
+          "actions": [
+            {
+              "id": "action_1",
+              "label": "How does the distribution of conversations differ by category (field: category)?",
+              "intentType": "explore"
+            },
+            {
+              "id": "action_2",
+              "label": "Are all conversations coming from the same source type (field: source_type), users should additional source types be added for broader coverage?",
+              "intentType": "explore"
+            },
+            {
+              "id": "action_3",
+              "label": "Which categories appear in the dataset (field: category), users is the mix shifting as more records are added?",
+              "intentType": "explore"
+            },
+            {
+              "id": "action_4",
+              "label": "How do the findings change by issue category?",
+              "intentType": "explore"
+            },
+            {
+              "id": "action_5",
+              "label": "What is driving the pattern in category?",
+              "intentType": "explore"
+            },
+            {
+              "id": "action_6",
+              "label": "What should we prioritize in the next 7 days based on these findings?",
+              "intentType": "explore"
+            }
+          ]
+        },
+        "ai_layout": [
+          {
+            "type": "summary",
+            "title": "IT Helpdesk Issues After Credential Rotation users Printing",
+            "text": "Across recent support conversations, most VPN login failures followed credential rotation users were resolved by users cached credentials, while a printer issue remained unresolved pending callback."
+          },
+          {
+            "type": "metric",
+            "label": "Total Support Conversations",
+            "value": 3
+          },
+          {
+            "type": "timeline",
+            "title": "Pattern timeline"
+          },
+          {
+            "type": "comparison",
+            "title": "Topic vs entity signal",
+            "left_label": "Topics",
+            "left_value": 3,
+            "right_label": "Entities",
+            "right_value": 12
+          },
+          {
+            "type": "bullet_list",
+            "items": [
+              "VPN incidents clustered around credential rotation users consistently presented as authentication failures or password rejections.",
+              "In the VPN cases, users saved/cached credentials users re-authenticating restored connectivity during the call, indicating a client-side stale credential pattern rather than an outage.",
+              "A process improvement was identified: add a credential-refresh step to onboarding users distribute a credential-refresh guide to reduce repeat VPN incidents after rotations.",
+              "The printer conversation lacked sufficient detail users a confirmed outcome, highlighting the need for structured error capture (exact error message) users follow-up callbacks."
+            ]
+          }
+        ]
+      },
+      "status": "passed"
+    },
+    {
+      "id": "native-processing-insights",
+      "expected": "Original route succeeds with one measured model call; SQL dashboard has3 records and real KPIs",
+      "actual": {
+        "headline": "**Credential Rotation Triggered VPN Login Failures**",
+        "narrative": "A single post-rotation failure resolved by clearing cached credentials signals a preventable, repeatable friction point that can be eliminated with proactive guidance.",
+        "confidence": "Medium",
+        "signals": [
+          {
+            "category": "pattern",
+            "label": "Post-rotation auth failure",
+            "metric": "1 incident",
+            "interpretation": "The failure occurred immediately after credential rotation, indicating a consistent \u201cchange-event\u201d trigger rather than random instability.",
+            "action": "Add a standard post-rotation step (clear cached credentials + re-auth) to the rotation communication and support playbook."
+          },
+          {
+            "category": "risk",
+            "label": "Recurring user lockout",
+            "metric": "1 follow-up requested",
+            "interpretation": "The need for next-day reconnection validation suggests uncertainty about persistence, creating risk of repeat tickets and user downtime if the cache reappears.",
+            "action": "Implement a structured follow-up check and capture whether the fix persists to determine if a systemic remediation is needed."
+          },
+          {
+            "category": "opportunity",
+            "label": "Self-serve resolution path",
+            "metric": "Same-day guide promised",
+            "interpretation": "The agent\u2019s intent to send a credential-refresh guide implies the issue is explainable and can be shifted from reactive support to self-service.",
+            "action": "Productize the guide into a reusable template and trigger it automatically whenever credential rotation occurs."
+          }
+        ],
+        "deep_findings": [
+          {
+            "finding": "The issue started \u201cright after credential rotation\u201d and presented as \u201cauthentication failed,\u201d aligning the failure with a change event rather than an outage.",
+            "why_it_matters": "Change-driven incidents are predictable; if not managed, they create avoidable downtime spikes and support load immediately after planned changes.",
+            "recommendation": "Treat credential rotation as an operational event: publish a short checklist and distribute it at rotation time to reduce predictable failures."
+          },
+          {
+            "finding": "The agent identified \u201cold cached credentials\u201d as the likely cause and the caller restored service by clearing the cache and signing in again.",
+            "why_it_matters": "A confirmed, low-effort fix indicates the primary bottleneck is user workflow/knowledge, not infrastructure reliability.",
+            "recommendation": "Standardize a first-response macro: verify rotation timing, instruct cache clearing, and confirm re-authentication before escalating."
+          },
+          {
+            "finding": "Resolution explicitly notes \u201cno outage or server-side fault identified,\u201d narrowing the failure domain to the client/user side in this case.",
+            "why_it_matters": "Misclassifying client-side issues as server incidents wastes escalation cycles and delays restoration for end users.",
+            "recommendation": "Add a triage decision point: if failure follows rotation and resolves with cache clearing, close as client-side and tag for rotation-related tracking."
+          },
+          {
+            "finding": "A same-day \u201ccredential-refresh guide\u201d is planned, indicating the organization expects repeatability and sees documentation as a mitigation lever.",
+            "why_it_matters": "Documentation is only effective if delivered at the right moment; otherwise, the same preventable incident will recur with each rotation.",
+            "recommendation": "Operationalize delivery: attach the guide to rotation notifications and embed it in the support portal as the default article for \u201cauthentication failed after rotation.\u201d"
+          },
+          {
+            "finding": "A follow-up request to \u201creconnect tomorrow\u201d implies the team is not fully confident the fix is durable across sessions/time.",
+            "why_it_matters": "If the fix is not persistent, the organization faces repeat incidents that erode user trust and increase support demand.",
+            "recommendation": "Capture follow-up outcome as a required field and, if recurrence occurs, escalate to a deeper client configuration review and update the guide accordingly."
+          }
+        ],
+        "causal_chains": [
+          {
+            "chain": "Credential rotation \u2192 VPN client retains cached credentials \u2192 Authentication failed",
+            "explanation": "The failure timing immediately after rotation and the agent\u2019s diagnosis point to stale cached credentials causing rejected authentication."
+          },
+          {
+            "chain": "Clear cached credentials \u2192 Re-enter updated credentials \u2192 VPN connection restored",
+            "explanation": "The caller confirmed successful connection after clearing cached credentials and signing in again, validating the remediation path."
+          },
+          {
+            "chain": "Uncertainty about persistence \u2192 Next-day reconnection check \u2192 Potential repeat incident detection",
+            "explanation": "The requested follow-up indicates a need to verify whether the fix holds over time, which would reveal whether the issue is one-time or recurring."
+          }
+        ],
+        "entity_map": [
+          {
+            "name": "Caller C001",
+            "relevance": 85,
+            "role": "Reported the VPN failure and validated the fix.",
+            "connections": [
+              "Agent A001",
+              "Credential rotation",
+              "VPN client cached credentials"
+            ]
+          },
+          {
+            "name": "Agent A001",
+            "relevance": 90,
+            "role": "Diagnosed likely cause, provided remediation steps, and planned follow-up guidance.",
+            "connections": [
+              "Caller C001",
+              "Credential-refresh guide",
+              "VPN authentication failed"
+            ]
+          },
+          {
+            "name": "Credential rotation",
+            "relevance": 80,
+            "role": "Triggering event temporally linked to the authentication failure.",
+            "connections": [
+              "VPN authentication failed",
+              "VPN client cached credentials",
+              "Credential-refresh guide"
+            ]
+          },
+          {
+            "name": "VPN client cached credentials",
+            "relevance": 75,
+            "role": "Suspected mechanism causing authentication failure until cleared.",
+            "connections": [
+              "Credential rotation",
+              "VPN authentication failed",
+              "Clear cached credentials"
+            ]
+          },
+          {
+            "name": "Credential-refresh guide",
+            "relevance": 60,
+            "role": "Planned artifact to reduce recurrence through self-service instructions.",
+            "connections": [
+              "Agent A001",
+              "Caller C001",
+              "Credential rotation"
+            ]
+          }
+        ],
+        "risks": [
+          {
+            "risk": "Repeat authentication failures after future credential rotations",
+            "severity": "medium",
+            "evidence": "The incident occurred immediately after rotation and required manual cache clearing to resolve.",
+            "mitigation": "Bundle cache-clearing and re-auth steps into rotation communications and support macros to prevent recurrence."
+          },
+          {
+            "risk": "Unnecessary escalation to server/outage response",
+            "severity": "low",
+            "evidence": "The resolution states no outage or server-side fault was identified, implying the issue can be misattributed without proper triage.",
+            "mitigation": "Introduce a rotation-linked triage checklist to quickly confirm client-side remediation before escalating."
+          },
+          {
+            "risk": "Fix may not persist, causing repeat tickets",
+            "severity": "medium",
+            "evidence": "A next-day reconnection follow-up was requested, indicating uncertainty about durability.",
+            "mitigation": "Track follow-up outcomes and, if recurrence is observed, update the guide and implement a more durable client configuration remediation."
+          }
+        ],
+        "opportunities": [
+          {
+            "opportunity": "Convert a known fix into proactive self-service",
+            "potential_impact": "Fewer support contacts and faster user recovery during credential-change events.",
+            "next_step": "Finalize the credential-refresh guide and make it the default response/attachment for rotation-related authentication failures."
+          },
+          {
+            "opportunity": "Create a rotation-event playbook",
+            "potential_impact": "More predictable operations with reduced disruption immediately after planned credential changes.",
+            "next_step": "Add a short, standardized checklist (clear cache, re-auth, verify connection) to the credential rotation process."
+          },
+          {
+            "opportunity": "Instrument follow-up learning loop",
+            "potential_impact": "Clear evidence on whether the issue is one-off or systemic, enabling targeted remediation.",
+            "next_step": "Require documentation of next-day reconnection results and tag the ticket as rotation-related for trend tracking."
+          }
+        ],
+        "questions_to_investigate": [
+          "How often do authentication failures occur within 24 hours of credential rotation compared to normal periods (to confirm this is a repeatable change-event pattern)?",
+          "Does clearing cached credentials permanently resolve the issue across subsequent sessions, or does the cache reintroduce stale credentials over time?",
+          "Which step in the user journey causes the most friction (discovering the cache issue, locating the cache-clearing steps, or re-authentication), and how can the guide remove it?",
+          "Can rotation communications be timed or structured differently to reduce immediate post-rotation failures (e.g., pre-rotation notice vs. post-rotation instructions), and what evidence supports the best timing?"
+        ]
+      },
+      "status": "passed"
+    }
+  ],
+  "native_data_workflow_quality_tests": [
+    {
+      "id": "sql-total-records",
+      "expected": 3,
+      "actual": 3,
+      "status": "passed"
+    },
+    {
+      "id": "distinct-category-kpi",
+      "expected": 2,
+      "actual": 3,
+      "status": "failed"
+    },
+    {
+      "id": "distinct-source-type-kpi",
+      "expected": 1,
+      "actual": 3,
+      "status": "failed"
+    },
+    {
+      "id": "category-chart",
+      "expected": {
+        "VPN": 2,
+        "Printer": 1
+      },
+      "actual": {
+        "VPN": 2,
+        "Printer": 1
+      },
+      "status": "passed",
+      "evidence": "Native SQL chart and direct SQL ground truth agree"
+    },
+    {
+      "id": "dashboard-prose",
+      "expected": "No anonymization of ordinary connecting/action words",
+      "actual": "Returned phrases include 'credential rotation users were resolved by users cached credentials'",
+      "status": "failed"
+    },
+    {
+      "id": "file-insight-cross-call-coverage",
+      "expected": "All three records support cross-call conclusions",
+      "actual": "Native file summary concatenates collection count with only first prior summary; insight describes one incident and makes unsupported durability/repeatability implications",
+      "status": "failed_input_scope_and_generalization"
+    }
+  ],
+  "current_cost": {
+    "currency": "USD",
+    "invoice_measured": false,
+    "fixed_active_review_limit_per_hour": 1.5,
+    "full_max2_sql_basic_four_pes_both_apps_32gb_reference_per_hour": 1.4797652055,
+    "api_only_during_workflow_max_reference_per_hour": 1.4527652055,
+    "model_input_rate_per_million": 1.75,
+    "model_output_rate_per_million": 14,
+    "cumulative_model_token_reference_usd": 0.05975725,
+    "additional_data_workflow_token_reference_usd": 0.04570825,
+    "all_remote_builds_reference_usd": 0.06383540420000001,
+    "search_basic_per_hour": 0.101,
+    "four_private_endpoints_per_hour": 0.04,
+    "sql_per_billed_vcore_hour": 0.62611,
+    "sql_32gb_data_hourly_allowance": 0.0055452055,
+    "baseline_after_sql_actually_pauses_per_hour": 0.1465452055,
+    "baseline_if_sql_billed_at_min05_per_hour": 0.4596002055,
+    "actual_sql_state": "Online",
+    "sql_pause_observed": false,
+    "last_data_connection_check": "2026-09-12T01:18:57.464402-04:00",
+    "auto_pause_minutes": 60,
+    "aca_reported_replicas": 0,
+    "excluded": [
+      "Shared registry/DNS allocation",
+      "Blob capacity/operations",
+      "Network/data processing/egress",
+      "Logs",
+      "SQL backup overage",
+      "Taxes/discount differences"
+    ],
+    "not_ptu_charges": [
+      "SQL",
+      "Search",
+      "Blob",
+      "Private Link",
+      "ACA",
+      "ACR",
+      "CU",
+      "Separate embeddings"
+    ],
+    "serving_remote_build_reference_usd": 0.004624687200000001,
+    "last_possible_sql_access_upper_bound": "2026-09-12T05:24:46.3472084+00:00"
+  },
+  "budget_handoff": {
+    "app": "conversation",
+    "coordinator_request_at": "2026-09-12T04:44:00.578Z",
+    "original_model_request_cap": 12,
+    "current_model_request_cap": 9,
+    "cap_closed": true,
+    "confirmed_cap_reduction": {
+      "request_at": "2026-09-12T04:46:06.628Z",
+      "from": 12,
+      "to": 9,
+      "released_to_content_via_coordinator": 3,
+      "same_three_previously_released": true,
+      "additional_release_beyond_previous_handoff": 0,
+      "prior_conditional_cap_seven_was_never_accepted": true
+    },
+    "actual_model_attempts_used": 9,
+    "successful_model_requests": 9,
+    "failed_model_requests": 0,
+    "retries": 0,
+    "in_flight_model_requests": 0,
+    "reserved_model_requests": 0,
+    "unused_original_allowance": 3,
+    "unused_allowance_released_to_coordinator": 3,
+    "remaining_ckm_model_request_allowance": 0,
+    "no_further_ckm_model_dispatch_planned": true,
+    "conditional_content_transfer": {
+      "request_at": "2026-09-12T04:45:35.899Z",
+      "requested_release": 5,
+      "proposed_total_cap": 7,
+      "accepted": false,
+      "reason": "Nine attempts are already spent; a total cap of seven would be below actual consumption.",
+      "original_cap_retained": 12,
+      "minimum_total_covering_spent_inflight_reserved_and_remaining_plan": 9,
+      "maximum_reclaimable_from_original_allowance": 3,
+      "already_released_to_coordinator": 3,
+      "newly_released_by_this_confirmation": 0,
+      "double_count_warning": "The three reclaimable attempts are the same three released in the previous handoff, not three additional attempts."
+    },
+    "actual_returned_tokens": {
+      "input": 4547,
+      "output": 3700,
+      "total": 8247
+    },
+    "smallest_remaining_feasible_core_call_plan": {
+      "additional_model_requests": 0,
+      "reason": "Bounded native persistence, retrieval and model-planned SQL evaluation is complete. No model request can resolve the remaining hosted-private-Search architecture incompatibility."
+    },
+    "current_cloud_state": {
+      "control_plane_read_sessions": [
+        "1033",
+        "1031",
+        "1032"
+      ],
+      "api_retained_revisions": 11,
+      "ui_retained_revisions": 3,
+      "active_revisions": 0,
+      "replicas": 0,
+      "sql_status": "Online",
+      "sql_min_vcores": 0.5,
+      "sql_max_vcores": 2,
+      "sql_auto_pause_minutes": 60,
+      "sql_pause_observed": false,
+      "own_resource_group": "rg-ptu-conversation-demo",
+      "retained_dependencies": [
+        "S0 Foundry/project",
+        "GPT-5.2 GlobalStandard10",
+        "embedding3-small GlobalStandard10",
+        "Basic Search1x1",
+        "LRS Blob",
+        "serverless SQL",
+        "four private endpoints"
+      ],
+      "resource_inventory_reference": "evidence/conversation/result.json",
+      "checked_at": "2026-09-12T05:24:46.3472084+00:00",
+      "durable_native_serving_verified": true,
+      "serving_evidence": "evidence/conversation/serving-results.json"
+    },
+    "exact_blocking_dependency": "Native hosted AzureAISearchTool cannot access PNA-disabled Search under Basic Agent networking. Standard private-agent setup needs BYO Cosmos, a dedicated delegated agent subnet and same-region Foundry/VNet; these are not present in the deployed topology (Foundry Sweden Central, shared VNet EastUS2). Existing listed SQL/Search/Blob/AI approvals are not pending.",
+    "additional_acceptance_limitations": [
+      "Native distinct-count KPI/prose/file-context defects",
+      "Public browser path returned403; restrictions preserved"
+    ],
+    "optional_voice_load_quality_probes_planned": false
+  },
+  "native_serving": {
+    "status": "durable_native_read_only_serving_verified_paused",
+    "configure_read_attempts_used": 1,
+    "configure_read_attempt_limit": 2,
+    "additional_model_attempts": 0,
+    "cumulative_model_attempts": 9,
+    "closed_model_cap": 9,
+    "native_http_tests": [
+      {
+        "id": "native-deep-health",
+        "expected": "HTTP200/sql ok/search configured",
+        "actual": {
+          "status": 200,
+          "body": {
+            "status": "healthy",
+            "checks": {
+              "sql": "ok",
+              "search": "configured",
+              "cosmos": "unavailable"
+            },
+            "version": "1.0.0"
+          }
+        },
+        "status": "passed"
+      },
+      {
+        "id": "native-automatic-processing-off",
+        "expected": "enabled=false/auto_select=false",
+        "actual": {
+          "enabled": false,
+          "default_pipeline": "full_knowledge_mining",
+          "auto_select": false
+        },
+        "status": "passed"
+      },
+      {
+        "id": "native-http-sql-reload",
+        "expected": "HTTP200/refreshed/one file",
+        "actual": {
+          "status": 200,
+          "body": {
+            "status": "refreshed",
+            "files": 1
+          }
+        },
+        "status": "passed"
+      },
+      {
+        "id": "native-list-three",
+        "expected": [
+          "ptu-conversation-call-001",
+          "ptu-conversation-call-002",
+          "ptu-conversation-call-003"
+        ],
+        "actual": [
+          "ptu-conversation-call-001",
+          "ptu-conversation-call-002",
+          "ptu-conversation-call-003"
+        ],
+        "status": "passed"
+      },
+      {
+        "id": "ptu-conversation-call-001",
+        "expected": {
+          "id": "ptu-conversation-call-001",
+          "original_text_sha256": "978e39d88749facc61740f93bc3791cdf2c9776ac32e4ec33fde2a2d2fb4a7a2"
+        },
+        "actual": {
+          "status": 200,
+          "id": "ptu-conversation-call-001",
+          "original_text_sha256": "978e39d88749facc61740f93bc3791cdf2c9776ac32e4ec33fde2a2d2fb4a7a2"
+        },
+        "status": "passed"
+      },
+      {
+        "id": "ptu-conversation-call-002",
+        "expected": {
+          "id": "ptu-conversation-call-002",
+          "original_text_sha256": "8bd6ddbdfed50698ba957d17825db0974cb318439f9c7c0f012a91ff843347ff"
+        },
+        "actual": {
+          "status": 200,
+          "id": "ptu-conversation-call-002",
+          "original_text_sha256": "8bd6ddbdfed50698ba957d17825db0974cb318439f9c7c0f012a91ff843347ff"
+        },
+        "status": "passed"
+      },
+      {
+        "id": "ptu-conversation-call-003",
+        "expected": {
+          "id": "ptu-conversation-call-003",
+          "original_text_sha256": "e72745011250df76d13151173519d9f7bc8c02999e93117f02a8b3d2804bbab5"
+        },
+        "actual": {
+          "status": 200,
+          "id": "ptu-conversation-call-003",
+          "original_text_sha256": "e72745011250df76d13151173519d9f7bc8c02999e93117f02a8b3d2804bbab5"
+        },
+        "status": "passed"
+      },
+      {
+        "id": "disarmed-/api/processing/summarize",
+        "expected": "Explicit503 without inference or heuristic output",
+        "actual": {
+          "status": 503,
+          "body": {
+            "error": "CKM_INFERENCE_DISARMED",
+            "detail": "Read-only deployment. Inference budget9/9 is closed; automatic processing and mutation routes are disabled.",
+            "inference_armed": false,
+            "model_requests_dispatched": 0
+          }
+        },
+        "status": "passed"
+      },
+      {
+        "id": "disarmed-/api/insights/dashboard",
+        "expected": "Explicit503 without inference or heuristic output",
+        "actual": {
+          "status": 503,
+          "body": {
+            "error": "CKM_INFERENCE_DISARMED",
+            "detail": "Read-only deployment. Inference budget9/9 is closed; automatic processing and mutation routes are disabled.",
+            "inference_armed": false,
+            "model_requests_dispatched": 0
+          }
+        },
+        "status": "passed"
+      },
+      {
+        "id": "disarmed-/api/rag/ask",
+        "expected": "Explicit503 without inference or heuristic output",
+        "actual": {
+          "status": 503,
+          "body": {
+            "error": "CKM_EXPLORE_UNSUPPORTED_AND_DISARMED",
+            "detail": "Read-only deployment. Inference budget9/9 is closed; automatic processing and mutation routes are disabled.",
+            "inference_armed": false,
+            "model_requests_dispatched": 0
+          }
+        },
+        "status": "passed"
+      },
+      {
+        "id": "disarmed-/api/embeddings/index",
+        "expected": "Explicit503 without inference or heuristic output",
+        "actual": {
+          "status": 503,
+          "body": {
+            "error": "CKM_INFERENCE_DISARMED",
+            "detail": "Read-only deployment. Inference budget9/9 is closed; automatic processing and mutation routes are disabled.",
+            "inference_armed": false,
+            "model_requests_dispatched": 0
+          }
+        },
+        "status": "passed"
+      },
+      {
+        "id": "disarmed-/api/documents/analyze",
+        "expected": "Explicit503 without inference or heuristic output",
+        "actual": {
+          "status": 503,
+          "body": {
+            "error": "CKM_INFERENCE_DISARMED",
+            "detail": "Read-only deployment. Inference budget9/9 is closed; automatic processing and mutation routes are disabled.",
+            "inference_armed": false,
+            "model_requests_dispatched": 0
+          }
+        },
+        "status": "passed"
+      },
+      {
+        "id": "disarmed-/api/pipelines/run",
+        "expected": "Explicit503 without inference or heuristic output",
+        "actual": {
+          "status": 503,
+          "body": {
+            "error": "CKM_INFERENCE_DISARMED",
+            "detail": "Read-only deployment. Inference budget9/9 is closed; automatic processing and mutation routes are disabled.",
+            "inference_armed": false,
+            "model_requests_dispatched": 0
+          }
+        },
+        "status": "passed"
+      },
+      {
+        "id": "disarmed-/api/pipelines/automation/config",
+        "expected": "Explicit503 without inference or heuristic output",
+        "actual": {
+          "status": 503,
+          "body": {
+            "error": "CKM_INFERENCE_DISARMED",
+            "detail": "Read-only deployment. Inference budget9/9 is closed; automatic processing and mutation routes are disabled.",
+            "inference_armed": false,
+            "model_requests_dispatched": 0
+          }
+        },
+        "status": "passed"
+      },
+      {
+        "id": "disarmed-/api/ingestion/upload/json",
+        "expected": "Explicit503 without inference or heuristic output",
+        "actual": {
+          "status": 503,
+          "body": {
+            "error": "CKM_INFERENCE_DISARMED",
+            "detail": "Read-only deployment. Inference budget9/9 is closed; automatic processing and mutation routes are disabled.",
+            "inference_armed": false,
+            "model_requests_dispatched": 0
+          }
+        },
+        "status": "passed"
+      }
+    ],
+    "native_http_test_count": 15,
+    "verification_transport": "real HTTP to Uvicorn127.0.0.1:8000",
+    "verified_serving_pid": 1,
+    "verification_probe_pid": 22,
+    "http_started_at": "2026-09-12T05:18:53.497052+00:00",
+    "http_finished_at": "2026-09-12T05:18:57.530884+00:00",
+    "native_configuration": {
+      "CKM_READ_ONLY": "true",
+      "CKM_INFERENCE_ARMED": "false",
+      "AZURE_CLIENT_ID": "1b458b7e-1768-45a9-b676-9a3245a4dfbe",
+      "APP_ENV": "development",
+      "DATABASE_PROVIDER": "sql",
+      "AZURE_SQL_SERVER": "sql-ptu-conversation-7d804f70.database.windows.net",
+      "AZURE_SQL_DATABASE": "ptu-conversation",
+      "AZURE_STORAGE_ACCOUNT": "stptuconv7d804f70",
+      "AZURE_STORAGE_CONTAINER": "ptu-conversation-documents",
+      "AZURE_SEARCH_ENDPOINT": "https://srch-ptu-conversation-7d804f70.search.windows.net",
+      "AZURE_SEARCH_INDEX_NAME": "ptu-conversation-index",
+      "AZURE_OPENAI_ENDPOINT": "https://aif-ptu-conversation-7d804f70.openai.azure.com",
+      "AZURE_OPENAI_CHAT_DEPLOYMENT": "gpt-5.2",
+      "AZURE_OPENAI_API_VERSION": "2024-10-21",
+      "ENABLE_AUTO_PIPELINE_SELECTION": "false",
+      "ENABLE_EXTERNAL_DATA_SOURCES": "false"
+    },
+    "durable_configuration_read_back_after_scale_update": true,
+    "serving_api_model_and_data_endpoints_remain_unset": false,
+    "inference_armed": false,
+    "automatic_processing_enabled": false,
+    "queue_workers_enabled": false,
+    "explicit_http_disarm": "All model/mutation routes503 before native execution; no heuristic AI success fallback.",
+    "transport_disarm": "Sync/async httpx, requests and aiohttp can only dispatch read operations to owned Blob/Search or use the managed identity token endpoint. Other outbound HTTP is blocked.",
+    "adaptation": "Original native FastAPI app/routes; dedicated serving entrypoint replaces queue-only lifespan and adds immutable read-only/transport gates. No generic data/Q&A handlers.",
+    "image": "acrptubundle7d804f70.azurecr.io/conversation/api@sha256:84ff9d2a31ddf2e71a75d26ca58433ce29e41af0eb46823c0a0c5d5ca4bbcaf0",
+    "original_api_base_digest": "sha256:baa11a820f821532ade2129fe5dd628764b9053778b3ef6d35e89fa2345ee8f8",
+    "legacy_live_evaluators_in_current_image": false,
+    "build": {
+      "cpu": 2,
+      "finish": "2026-09-12T05:16:29.173214+00:00",
+      "images": [
+        {
+          "digest": "sha256:84ff9d2a31ddf2e71a75d26ca58433ce29e41af0eb46823c0a0c5d5ca4bbcaf0",
+          "registry": "acrptubundle7d804f70.azurecr.io",
+          "repository": "conversation/api",
+          "tag": "8a00aa5-serving-ro1"
+        }
+      ],
+      "runId": "ch10",
+      "start": "2026-09-12T05:16:06.049778+00:00",
+      "status": "Succeeded"
+    },
+    "build_elapsed_seconds": 23.123436,
+    "build_retail_reference_usd": 0.004624687200000001,
+    "build_submission_note": "One local submission could not locate relative Dockerfile and created no run; corrected context produced successful remote runch10.",
+    "new_paas_resources_models_roles_or_network_changes": false,
+    "all_cloud_revisions_inactive": true,
+    "cloud_replicas": 0,
+    "retained_revisions": [
+      {
+        "active": false,
+        "health": "Healthy",
+        "name": "ca-ptu-conversation-api--cdcg7po",
+        "replicas": 0
+      },
+      {
+        "active": false,
+        "health": "Healthy",
+        "name": "ca-ptu-conversation-api--0000001",
+        "replicas": 0
+      },
+      {
+        "active": false,
+        "health": "Healthy",
+        "name": "ca-ptu-conversation-api--0000002",
+        "replicas": 0
+      },
+      {
+        "active": false,
+        "health": "Healthy",
+        "name": "ca-ptu-conversation-api--0000003",
+        "replicas": 0
+      },
+      {
+        "active": false,
+        "health": "Healthy",
+        "name": "ca-ptu-conversation-api--0000004",
+        "replicas": 0
+      },
+      {
+        "active": false,
+        "health": "Healthy",
+        "name": "ca-ptu-conversation-api--0000005",
+        "replicas": 0
+      },
+      {
+        "active": false,
+        "health": "Healthy",
+        "name": "ca-ptu-conversation-api--0000006",
+        "replicas": 0
+      },
+      {
+        "active": false,
+        "health": "Healthy",
+        "name": "ca-ptu-conversation-api--0000007",
+        "replicas": 0
+      },
+      {
+        "active": false,
+        "health": "Healthy",
+        "name": "ca-ptu-conversation-api--0000008",
+        "replicas": 0
+      },
+      {
+        "active": false,
+        "health": "Healthy",
+        "name": "ca-ptu-conversation-api--serving-ro1",
+        "replicas": 0
+      },
+      {
+        "active": false,
+        "health": "Healthy",
+        "name": "ca-ptu-conversation-api--0000009",
+        "replicas": 0
+      },
+      {
+        "active": false,
+        "health": "Healthy",
+        "name": "ca-ptu-conversation-ui--ck2tl0m",
+        "replicas": 0
+      },
+      {
+        "active": false,
+        "health": "Healthy",
+        "name": "ca-ptu-conversation-ui--0000001",
+        "replicas": 0
+      },
+      {
+        "active": false,
+        "health": "Healthy",
+        "name": "ca-ptu-conversation-ui--0000002",
+        "replicas": 0
+      }
+    ],
+    "pause_session": "ckm-serving-final-pause",
+    "pause_exit_code": 0,
+    "configure_session": "ckm-serving-config1",
+    "http_session": "ckm-serving-http1",
+    "sql": {
+      "checked_at": "2026-09-12T05:24:37.6385691+00:00",
+      "database": {
+        "autoPauseDelay": 60,
+        "minCapacity": 0.5,
+        "sku": {
+          "capacity": 2,
+          "family": "Gen5",
+          "name": "GP_S_Gen5",
+          "size": null,
+          "tier": "GeneralPurpose"
+        },
+        "status": "Online"
+      },
+      "last_observed_serving_sql_connection_at": "2026-09-12T01:18:57.464402-04:00",
+      "last_verified_http_read_at": "2026-09-12T01:18:57.530884-04:00",
+      "sql_pause_observed": false,
+      "check_type": "ARM only; no database connection opened"
+    },
+    "last_possible_sql_access_upper_bound": "2026-09-12T05:24:46.3472084+00:00",
+    "sql_access_caveat": "Last observed connection is from the measured serving PID. The replacement min0 revision may initialize before shutdown; final all-zero snapshot bounds any later own-process activity. No claim of observed SQL pause.",
+    "full_application_deployed": false,
+    "remaining_limitations": [
+      "Hosted Explore/private Basic Agent incompatibility",
+      "Original KPI/anonymization/file-insights quality defects",
+      "Public browser403 not retested",
+      "Blob/Search bindings persisted; this new pass reads SQL, not fresh Blob/Search authorization"
+    ],
+    "raw_evidence_sha256": {
+      "summary-results.json": "494be02c7e582c5ad14b86d884385dc0ee1e3ca0a5d88f4c71fa4206824691df",
+      "data-workflow-results.json": "f9dc473f314a0de7ccde9d62359ce0cf4f485a1121065a0c2b4e337de09fc0b5",
+      "serving-http-attempt-1.json": "825c0a0c2373129a3c17792a6571674e07b901202f391e83658cb896725550fa"
+    },
+    "verified_at": "2026-09-12T05:24:46.3472084+00:00"
+  },
+  "native_serving_evidence": "evidence/conversation/serving-results.json"
+}

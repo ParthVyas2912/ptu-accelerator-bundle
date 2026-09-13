@@ -1,0 +1,808 @@
+{
+  "accelerator": "Document Knowledge Mining",
+  "source_sha": "7df8ed33a86dd4f0f9e7417e882039fd38556e59",
+  "stock_aks": {
+    "state": "Blocked",
+    "error": "AKSCapacityHeavyUsage",
+    "cluster_exists": false
+  },
+  "hosting": {
+    "adaptation": "Approved original upstream containers on shared Consumption ACA; no replacement application or duplicated PaaS.",
+    "resource_group": "accel-dkm-20260911",
+    "shared_environment_id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.App/managedEnvironments/cae-ptu-bundle",
+    "services": [
+      {
+        "name": "ca-dkm-api",
+        "cpu": 1,
+        "memory_gib": 2,
+        "max_replicas": 1,
+        "ingress": "internal",
+        "fqdn": "ca-dkm-api.internal.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io",
+        "image": "acrptubundle7d804f70.azurecr.io/dkm/backend:7df8ed3-evalretry-r1",
+        "manifest_digest": "sha256:2c462b7af6ce04e33c3b2122e498ad5e0a73d7273133d0d175f82b141f4c9c79",
+        "runtime_state": "PAUSED_ZERO_REPLICAS"
+      },
+      {
+        "name": "ca-dkm-kernel",
+        "cpu": 1,
+        "memory_gib": 2,
+        "max_replicas": 1,
+        "ingress": "internal",
+        "fqdn": "ca-dkm-kernel.internal.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io",
+        "image": "acrptubundle7d804f70.azurecr.io/dkm/kernelmemory:7df8ed3-evalretry-r1",
+        "manifest_digest": "sha256:48b17a3319ede52dd0a409beabfdbb500aee22e6f9c5edfe2c1a175f8720dacc",
+        "runtime_state": "PAUSED_ZERO_REPLICAS"
+      },
+      {
+        "name": "ca-dkm-web",
+        "cpu": 1,
+        "memory_gib": 2,
+        "max_replicas": 1,
+        "ingress": "external with174.112.74.34/32 allowlist",
+        "fqdn": "ca-dkm-web.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io",
+        "image": "acrptubundle7d804f70.azurecr.io/dkm/frontend:7df8ed3-aca20260911",
+        "manifest_digest": "sha256:070817475dfd3609255132635f2a09b5f2216173c6f7555b0187caccf5cf16f7",
+        "runtime_state": "PAUSED_ZERO_REPLICAS"
+      }
+    ],
+    "initial_frontend_sizing_failure": "0.25CPU/0.5GiB Vite optimizer process exited1 with 'The service was stopped'. Increased only this approved host allocation to1CPU/2GiB, matching the upstream manifest memory limit; cloud Node exec subsequently succeeded.",
+    "image_packaging": "Original Dockerfiles unchanged; clean app-only source contexts. Approved opt-in SDK retry controls in three construction paths; no business/prompt/output changes."
+  },
+  "private_dns_verified_from_original_backend_container": [
+    {
+      "hostname": "cosmos-dkmeval0911a.mongo.cosmos.azure.com",
+      "private_ip": "10.246.2.11",
+      "pe": "pe-documents-mongo"
+    },
+    {
+      "hostname": "stdkmeval0911a.blob.core.windows.net",
+      "private_ip": "10.246.2.13",
+      "pe": "pe-documents-blob"
+    },
+    {
+      "hostname": "stdkmeval0911a.queue.core.windows.net",
+      "private_ip": "10.246.2.10",
+      "pe": "pe-documents-queue"
+    }
+  ],
+  "tests": [
+    {
+      "name": "Second policy PDF ingestion",
+      "expected": "HTTP200 and real document ID",
+      "actual": "cb45ef9f464f4569ac7c4bc523ef1aab202609120215417274224",
+      "status": "PASS",
+      "evidence": "retry-phase-ingest-second.json"
+    },
+    {
+      "name": "Second metadata: person",
+      "expected": "Omar Patel",
+      "actual": "Omar Patel",
+      "status": "PASS",
+      "evidence": "retry-phase-ingest-second.json"
+    },
+    {
+      "name": "Second metadata: place",
+      "expected": "Cedar Bay",
+      "actual": "Cedar Bay",
+      "status": "PASS",
+      "evidence": "retry-phase-ingest-second.json"
+    },
+    {
+      "name": "Second metadata: document_type",
+      "expected": "Policy",
+      "actual": "Policy",
+      "status": "PASS",
+      "evidence": "retry-phase-ingest-second.json"
+    },
+    {
+      "name": "PDF table value/column extraction",
+      "expected": "Annual training15 days/year; Allowance and Days/year columns",
+      "actual": {
+        "allowances": "Annual training: 15 days/year",
+        "structure": "table present, columns: Allowance, Days/year"
+      },
+      "status": "PASS",
+      "evidence": "retry-phase-ingest-second.json;document-intelligence-metrics.json"
+    },
+    {
+      "name": "Metadata filter {}",
+      "expected": 2,
+      "actual": 2,
+      "status": "PASS",
+      "evidence": "retry-phase-metadata.json"
+    },
+    {
+      "name": "Metadata filter {\"place\": \"Cedar Bay\"}",
+      "expected": 2,
+      "actual": 2,
+      "status": "PASS",
+      "evidence": "retry-phase-metadata.json"
+    },
+    {
+      "name": "Metadata filter {\"place\": \"Neverland\"}",
+      "expected": 0,
+      "actual": 0,
+      "status": "PASS",
+      "evidence": "retry-phase-metadata.json"
+    },
+    {
+      "name": "Metadata filter {\"person\": \"Omar Patel\"}",
+      "expected": 1,
+      "actual": 1,
+      "status": "PASS",
+      "evidence": "retry-phase-metadata.json"
+    },
+    {
+      "name": "Persisted source hash: 01-policy-2025.txt",
+      "expected": "12a5a842e6d44db9758be011d45099865c74123592f4c07dd3c4477281343f30",
+      "actual": "12a5a842e6d44db9758be011d45099865c74123592f4c07dd3c4477281343f30",
+      "status": "PASS",
+      "evidence": "retry-phase-sources.json"
+    },
+    {
+      "name": "Persisted source hash: 02-policy-2026-table.pdf",
+      "expected": "1b6786929592267c2d681de3f6afc6dab06dbb7e4f3a892c793194de8d96d2de",
+      "actual": "1b6786929592267c2d681de3f6afc6dab06dbb7e4f3a892c793194de8d96d2de",
+      "status": "PASS",
+      "evidence": "retry-phase-sources.json"
+    },
+    {
+      "name": "Summary groundedness: 02-policy-2026-table.pdf",
+      "expected": "No unrelated greeting",
+      "actual": {
+        "unsupported_greeting": true,
+        "summary": "One person asks \"Hello, how are you?\" and the other replies \"Hello\".  \nThe synthetic, fictional, unclassified 2026 policy for Cedar Bay, authored by Omar Patel, is active, supersedes the 2025 training policy, and grants 15 days per year for annual training.\n"
+      },
+      "status": "FAIL",
+      "evidence": "retry-phase-metadata.json"
+    },
+    {
+      "name": "Summary groundedness: 01-policy-2025.txt",
+      "expected": "No unrelated greeting",
+      "actual": {
+        "unsupported_greeting": true,
+        "summary": "One person asks \"Hello how are you?\" and the other replies \"Hello\".\n\nA synthetic, fictional, unclassified 2025 historical policy for Cedar Bay names Maya Chen and grants all fictional staff ten days of annual training.\n"
+      },
+      "status": "FAIL",
+      "evidence": "retry-phase-metadata.json"
+    },
+    {
+      "name": "qa-document HTTP and nonempty answer",
+      "expected": "200/nonempty/noResult=false",
+      "actual": {
+        "status": 200,
+        "noResult": false
+      },
+      "status": "PASS",
+      "evidence": "retry-phase-qa-document.json"
+    },
+    {
+      "name": "qa-document factual numbers",
+      "expected": [
+        "10",
+        "2025"
+      ],
+      "actual": "Direct answer\n- Annual training allowance: 10 days.\n- Policy year (version): 2025.\n\nCitation / source (from the provided facts)\n- File: 01-policy-2025.txt\n  - \"SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION\"\n  - \"Person: Maya Chen\"\n  - \"Place: Cedar Bay\"\n  - \"Document type: Policy\"\n  - \"Version: 2025; historical.\"\n  - \"Annual training allowance: 10 days.\"\n  - \"Applies to all fictional staff.\"\n\nAffirmation of basis\n- The statement \"Annual training allowance: 10 days.\" appears explicitly in the provided policy file (01-policy-2025.txt). That is the source for the annual training allowance reported above.\n- The policy file identifies its version as \"2025; historical.\" (also in 01-policy-2025.txt). That is the source for the policy year/version reported above.\n\nContext included in the same source (quoted from the file)\n- The file is labeled \"SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION.\"\n- The file lists \"Person: Maya Chen\" and \"Place: Cedar Bay.\"\n- The file notes the allowance \"Applies to all fictional staff.\"\n\nNotes on interpretation (limited to what the file states)\n- The file explicitly gives the numeric allowance as \"10 days\"; no further detail about how those days are scheduled, accrued, carried over, or otherwise administered is provided in the quoted content.\n- The file explicitly identifies its version/year as \"2025; historical.\" The term \"historical\" is part of the file text; no additional context or meaning beyond that is provided in the file content given here.\n\nIf you need the exact verbatim lines from the supplied file repeated again, they are:\n- \"Version: 2025; historical.\"\n- \"Annual training allowance: 10 days.\"\n\nThese verbatim excerpts are taken from File: 01-policy-2025.txt as supplied in the facts you provided.",
+      "status": "PASS",
+      "evidence": "retry-phase-qa-document.json"
+    },
+    {
+      "name": "qa-document citation document scope",
+      "expected": [
+        "3951c54f0a974f79b9d8fc3d7e4591ad202609120125365840455"
+      ],
+      "actual": [
+        "3951c54f0a974f79b9d8fc3d7e4591ad202609120125365840455"
+      ],
+      "status": "PASS",
+      "evidence": "retry-phase-qa-document.json"
+    },
+    {
+      "name": "qa-document actual request scope",
+      "expected": [
+        "3951c54f0a974f79b9d8fc3d7e4591ad202609120125365840455"
+      ],
+      "actual": [
+        "3951c54f0a974f79b9d8fc3d7e4591ad202609120125365840455"
+      ],
+      "status": "PASS",
+      "evidence": "retry-phase-qa-document.json"
+    },
+    {
+      "name": "qa-corpus HTTP and nonempty answer",
+      "expected": "200/nonempty/noResult=false",
+      "actual": {
+        "status": 200,
+        "noResult": false
+      },
+      "status": "PASS",
+      "evidence": "comparison14-read-result.json"
+    },
+    {
+      "name": "qa-corpus factual numbers",
+      "expected": [
+        "10",
+        "15",
+        "5",
+        "50"
+      ],
+      "actual": "Summary\n- The 2025 Cedar Bay policy (historical) grants 10 days per year of annual training to all fictional staff. (Source: 01-policy-2025.txt)\n- The 2026 Cedar Bay policy (active) grants 15 days per year of annual training. (Source: 02-policy-2026-table.pdf)\n- The 2026 policy is explicitly identified as active and supersedes the 2025 training policy. (Source: 02-policy-2026-table.pdf)\n\nDetails from each document\n- 2025 policy (01-policy-2025.txt)\n  - Document identification: SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION; Person: Maya Chen; Place: Cedar Bay; Document type: Policy; Version: 2025; historical. (Source: 01-policy-2025.txt)\n  - Annual training allowance: 10 days. The file states: \"Annual training allowance: 10 days.\" and notes it \"Applies to all fictional staff.\" (Source: 01-policy-2025.txt)\n\n- 2026 policy (02-policy-2026-table.pdf)\n  - Document identification: SYNTHETIC / FICTIONAL / UNCLASSIFIED; Person: Omar Patel; Place: Cedar Bay; Document type: Policy; Version: 2026; active. It is described as superseding the 2025 training policy. (Source: 02-policy-2026-table.pdf)\n  - Annual training allowance: 15 days per year. The table in the document shows \"Annual training \u2014 15 Days/year.\" (Source: 02-policy-2026-table.pdf)\n\nNumeric comparison: increase in days and percent\n- Raw increase in days:\n  - 2026 days \u2212 2025 days = 15 \u2212 10 = 5 additional days per year. (Sources: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n\n- Percent increase calculation:\n  - Percent increase = (Increase \u00f7 Original amount) \u00d7 100%\n  - Using 2025 as the original amount: (5 \u00f7 10) \u00d7 100% = 0.5 \u00d7 100% = 50%\n  - Therefore, the 2026 policy represents a 50% increase in annual training days relative to the 2025 policy. (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n\nSupersession and status\n- The 2026 policy is explicitly marked active and is described as superseding the 2025 training policy. The 2025 policy is described as historical (Version: 2025; historical). Thus:\n  - Which policy supersedes which: The 2026 Cedar Bay policy supersedes the 2025 Cedar Bay policy. (Source confirming supersession and active/historical status: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n\nContextual notes drawn from the documents\n- Both documents are labeled synthetic, fictional, and unclassified. The 2025 historical policy names Maya Chen; the 2026 active policy names Omar Patel. The 2025 document specifies its 10-day annual training allowance applies to all fictional staff; the 2026 table lists the allowance as 15 days/year. (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n\nConcise answer (directly addressing the requested comparison)\n- Annual training days: 2025 = 10 days/year (01-policy-2025.txt); 2026 = 15 days/year (02-policy-2026-table.pdf).\n- Increase in days: +5 days/year (15 \u2212 10 = 5). (Sources: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n- Percent increase: 50% increase ((5 \u00f7 10) \u00d7 100% = 50%). (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n- Supersession: The 2026 policy (active) supersedes the 2025 policy (historical). (Source: 02-policy-2026-table.pdf; corroborating 01-policy-2025.txt)\n\nSources cited\n- 01-policy-2025.txt \u2014 SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION. Person: Maya Chen; Place: Cedar Bay; Document type: Policy; Version: 2025; historical. Annual training allowance: 10 days. Applies to all fictional staff. (Source: 01-policy-2025.txt)\n- 02-policy-2026-table.pdf \u2014 SYNTHETIC / FICTIONAL / UNCLASSIFIED. Person: Omar Patel; Place: Cedar Bay; Document type: Policy; Version: 2026; active; supersedes the 2025 training policy. Table: Annual training \u2014 15 days/year. (Source: 02-policy-2026-table.pdf)",
+      "status": "PASS",
+      "evidence": "comparison14-read-result.json"
+    },
+    {
+      "name": "qa-corpus citation document scope",
+      "expected": [
+        "3951c54f0a974f79b9d8fc3d7e4591ad202609120125365840455",
+        "cb45ef9f464f4569ac7c4bc523ef1aab202609120215417274224"
+      ],
+      "actual": [
+        "3951c54f0a974f79b9d8fc3d7e4591ad202609120125365840455",
+        "cb45ef9f464f4569ac7c4bc523ef1aab202609120215417274224"
+      ],
+      "status": "PASS",
+      "evidence": "comparison14-read-result.json"
+    },
+    {
+      "name": "qa-corpus actual request scope",
+      "expected": [],
+      "actual": [],
+      "status": "PASS",
+      "evidence": "comparison14-read-result.json"
+    },
+    {
+      "name": "Comparison 2025 allowance",
+      "expected": "2025 Cedar Bay policy[^\\n]*grants 10 days",
+      "actual": "Summary\n- The 2025 Cedar Bay policy (historical) grants 10 days per year of annual training to all fictional staff. (Source: 01-policy-2025.txt)\n- The 2026 Cedar Bay policy (active) grants 15 days per year of annual training. (Source: 02-policy-2026-table.pdf)\n- The 2026 policy is explicitly identified as active and supersedes the 2025 training policy. (Source: 02-policy-2026-table.pdf)\n\nDetails from each document\n- 2025 policy (01-policy-2025.txt)\n  - Document identification: SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION; Person: Maya Chen; Place: Cedar Bay; Document type: Policy; Version: 2025; historical. (Source: 01-policy-2025.txt)\n  - Annual training allowance: 10 days. The file states: \"Annual training allowance: 10 days.\" and notes it \"Applies to all fictional staff.\" (Source: 01-policy-2025.txt)\n\n- 2026 policy (02-policy-2026-table.pdf)\n  - Document identification: SYNTHETIC / FICTIONAL / UNCLASSIFIED; Person: Omar Patel; Place: Cedar Bay; Document type: Policy; Version: 2026; active. It is described as superseding the 2025 training policy. (Source: 02-policy-2026-table.pdf)\n  - Annual training allowance: 15 days per year. The table in the document shows \"Annual training \u2014 15 Days/year.\" (Source: 02-policy-2026-table.pdf)\n\nNumeric comparison: increase in days and percent\n- Raw increase in days:\n  - 2026 days \u2212 2025 days = 15 \u2212 10 = 5 additional days per year. (Sources: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n\n- Percent increase calculation:\n  - Percent increase = (Increase \u00f7 Original amount) \u00d7 100%\n  - Using 2025 as the original amount: (5 \u00f7 10) \u00d7 100% = 0.5 \u00d7 100% = 50%\n  - Therefore, the 2026 policy represents a 50% increase in annual training days relative to the 2025 policy. (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n\nSupersession and status\n- The 2026 policy is explicitly marked active and is described as superseding the 2025 training policy. The 2025 policy is described as historical (Version: 2025; historical). Thus:\n  - Which policy supersedes which: The 2026 Cedar Bay policy supersedes the 2025 Cedar Bay policy. (Source confirming supersession and active/historical status: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n\nContextual notes drawn from the documents\n- Both documents are labeled synthetic, fictional, and unclassified. The 2025 historical policy names Maya Chen; the 2026 active policy names Omar Patel. The 2025 document specifies its 10-day annual training allowance applies to all fictional staff; the 2026 table lists the allowance as 15 days/year. (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n\nConcise answer (directly addressing the requested comparison)\n- Annual training days: 2025 = 10 days/year (01-policy-2025.txt); 2026 = 15 days/year (02-policy-2026-table.pdf).\n- Increase in days: +5 days/year (15 \u2212 10 = 5). (Sources: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n- Percent increase: 50% increase ((5 \u00f7 10) \u00d7 100% = 50%). (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n- Supersession: The 2026 policy (active) supersedes the 2025 policy (historical). (Source: 02-policy-2026-table.pdf; corroborating 01-policy-2025.txt)\n\nSources cited\n- 01-policy-2025.txt \u2014 SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION. Person: Maya Chen; Place: Cedar Bay; Document type: Policy; Version: 2025; historical. Annual training allowance: 10 days. Applies to all fictional staff. (Source: 01-policy-2025.txt)\n- 02-policy-2026-table.pdf \u2014 SYNTHETIC / FICTIONAL / UNCLASSIFIED. Person: Omar Patel; Place: Cedar Bay; Document type: Policy; Version: 2026; active; supersedes the 2025 training policy. Table: Annual training \u2014 15 days/year. (Source: 02-policy-2026-table.pdf)",
+      "status": "PASS",
+      "evidence": "comparison14-read-result.json"
+    },
+    {
+      "name": "Comparison 2026 allowance",
+      "expected": "2026 Cedar Bay policy[^\\n]*grants 15 days",
+      "actual": "Summary\n- The 2025 Cedar Bay policy (historical) grants 10 days per year of annual training to all fictional staff. (Source: 01-policy-2025.txt)\n- The 2026 Cedar Bay policy (active) grants 15 days per year of annual training. (Source: 02-policy-2026-table.pdf)\n- The 2026 policy is explicitly identified as active and supersedes the 2025 training policy. (Source: 02-policy-2026-table.pdf)\n\nDetails from each document\n- 2025 policy (01-policy-2025.txt)\n  - Document identification: SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION; Person: Maya Chen; Place: Cedar Bay; Document type: Policy; Version: 2025; historical. (Source: 01-policy-2025.txt)\n  - Annual training allowance: 10 days. The file states: \"Annual training allowance: 10 days.\" and notes it \"Applies to all fictional staff.\" (Source: 01-policy-2025.txt)\n\n- 2026 policy (02-policy-2026-table.pdf)\n  - Document identification: SYNTHETIC / FICTIONAL / UNCLASSIFIED; Person: Omar Patel; Place: Cedar Bay; Document type: Policy; Version: 2026; active. It is described as superseding the 2025 training policy. (Source: 02-policy-2026-table.pdf)\n  - Annual training allowance: 15 days per year. The table in the document shows \"Annual training \u2014 15 Days/year.\" (Source: 02-policy-2026-table.pdf)\n\nNumeric comparison: increase in days and percent\n- Raw increase in days:\n  - 2026 days \u2212 2025 days = 15 \u2212 10 = 5 additional days per year. (Sources: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n\n- Percent increase calculation:\n  - Percent increase = (Increase \u00f7 Original amount) \u00d7 100%\n  - Using 2025 as the original amount: (5 \u00f7 10) \u00d7 100% = 0.5 \u00d7 100% = 50%\n  - Therefore, the 2026 policy represents a 50% increase in annual training days relative to the 2025 policy. (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n\nSupersession and status\n- The 2026 policy is explicitly marked active and is described as superseding the 2025 training policy. The 2025 policy is described as historical (Version: 2025; historical). Thus:\n  - Which policy supersedes which: The 2026 Cedar Bay policy supersedes the 2025 Cedar Bay policy. (Source confirming supersession and active/historical status: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n\nContextual notes drawn from the documents\n- Both documents are labeled synthetic, fictional, and unclassified. The 2025 historical policy names Maya Chen; the 2026 active policy names Omar Patel. The 2025 document specifies its 10-day annual training allowance applies to all fictional staff; the 2026 table lists the allowance as 15 days/year. (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n\nConcise answer (directly addressing the requested comparison)\n- Annual training days: 2025 = 10 days/year (01-policy-2025.txt); 2026 = 15 days/year (02-policy-2026-table.pdf).\n- Increase in days: +5 days/year (15 \u2212 10 = 5). (Sources: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n- Percent increase: 50% increase ((5 \u00f7 10) \u00d7 100% = 50%). (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n- Supersession: The 2026 policy (active) supersedes the 2025 policy (historical). (Source: 02-policy-2026-table.pdf; corroborating 01-policy-2025.txt)\n\nSources cited\n- 01-policy-2025.txt \u2014 SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION. Person: Maya Chen; Place: Cedar Bay; Document type: Policy; Version: 2025; historical. Annual training allowance: 10 days. Applies to all fictional staff. (Source: 01-policy-2025.txt)\n- 02-policy-2026-table.pdf \u2014 SYNTHETIC / FICTIONAL / UNCLASSIFIED. Person: Omar Patel; Place: Cedar Bay; Document type: Policy; Version: 2026; active; supersedes the 2025 training policy. Table: Annual training \u2014 15 days/year. (Source: 02-policy-2026-table.pdf)",
+      "status": "PASS",
+      "evidence": "comparison14-read-result.json"
+    },
+    {
+      "name": "Comparison increase calculation",
+      "expected": "15 [\u2212-] 10 = 5",
+      "actual": "Summary\n- The 2025 Cedar Bay policy (historical) grants 10 days per year of annual training to all fictional staff. (Source: 01-policy-2025.txt)\n- The 2026 Cedar Bay policy (active) grants 15 days per year of annual training. (Source: 02-policy-2026-table.pdf)\n- The 2026 policy is explicitly identified as active and supersedes the 2025 training policy. (Source: 02-policy-2026-table.pdf)\n\nDetails from each document\n- 2025 policy (01-policy-2025.txt)\n  - Document identification: SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION; Person: Maya Chen; Place: Cedar Bay; Document type: Policy; Version: 2025; historical. (Source: 01-policy-2025.txt)\n  - Annual training allowance: 10 days. The file states: \"Annual training allowance: 10 days.\" and notes it \"Applies to all fictional staff.\" (Source: 01-policy-2025.txt)\n\n- 2026 policy (02-policy-2026-table.pdf)\n  - Document identification: SYNTHETIC / FICTIONAL / UNCLASSIFIED; Person: Omar Patel; Place: Cedar Bay; Document type: Policy; Version: 2026; active. It is described as superseding the 2025 training policy. (Source: 02-policy-2026-table.pdf)\n  - Annual training allowance: 15 days per year. The table in the document shows \"Annual training \u2014 15 Days/year.\" (Source: 02-policy-2026-table.pdf)\n\nNumeric comparison: increase in days and percent\n- Raw increase in days:\n  - 2026 days \u2212 2025 days = 15 \u2212 10 = 5 additional days per year. (Sources: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n\n- Percent increase calculation:\n  - Percent increase = (Increase \u00f7 Original amount) \u00d7 100%\n  - Using 2025 as the original amount: (5 \u00f7 10) \u00d7 100% = 0.5 \u00d7 100% = 50%\n  - Therefore, the 2026 policy represents a 50% increase in annual training days relative to the 2025 policy. (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n\nSupersession and status\n- The 2026 policy is explicitly marked active and is described as superseding the 2025 training policy. The 2025 policy is described as historical (Version: 2025; historical). Thus:\n  - Which policy supersedes which: The 2026 Cedar Bay policy supersedes the 2025 Cedar Bay policy. (Source confirming supersession and active/historical status: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n\nContextual notes drawn from the documents\n- Both documents are labeled synthetic, fictional, and unclassified. The 2025 historical policy names Maya Chen; the 2026 active policy names Omar Patel. The 2025 document specifies its 10-day annual training allowance applies to all fictional staff; the 2026 table lists the allowance as 15 days/year. (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n\nConcise answer (directly addressing the requested comparison)\n- Annual training days: 2025 = 10 days/year (01-policy-2025.txt); 2026 = 15 days/year (02-policy-2026-table.pdf).\n- Increase in days: +5 days/year (15 \u2212 10 = 5). (Sources: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n- Percent increase: 50% increase ((5 \u00f7 10) \u00d7 100% = 50%). (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n- Supersession: The 2026 policy (active) supersedes the 2025 policy (historical). (Source: 02-policy-2026-table.pdf; corroborating 01-policy-2025.txt)\n\nSources cited\n- 01-policy-2025.txt \u2014 SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION. Person: Maya Chen; Place: Cedar Bay; Document type: Policy; Version: 2025; historical. Annual training allowance: 10 days. Applies to all fictional staff. (Source: 01-policy-2025.txt)\n- 02-policy-2026-table.pdf \u2014 SYNTHETIC / FICTIONAL / UNCLASSIFIED. Person: Omar Patel; Place: Cedar Bay; Document type: Policy; Version: 2026; active; supersedes the 2025 training policy. Table: Annual training \u2014 15 days/year. (Source: 02-policy-2026-table.pdf)",
+      "status": "PASS",
+      "evidence": "comparison14-read-result.json"
+    },
+    {
+      "name": "Comparison percent increase",
+      "expected": "50% increase",
+      "actual": "Summary\n- The 2025 Cedar Bay policy (historical) grants 10 days per year of annual training to all fictional staff. (Source: 01-policy-2025.txt)\n- The 2026 Cedar Bay policy (active) grants 15 days per year of annual training. (Source: 02-policy-2026-table.pdf)\n- The 2026 policy is explicitly identified as active and supersedes the 2025 training policy. (Source: 02-policy-2026-table.pdf)\n\nDetails from each document\n- 2025 policy (01-policy-2025.txt)\n  - Document identification: SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION; Person: Maya Chen; Place: Cedar Bay; Document type: Policy; Version: 2025; historical. (Source: 01-policy-2025.txt)\n  - Annual training allowance: 10 days. The file states: \"Annual training allowance: 10 days.\" and notes it \"Applies to all fictional staff.\" (Source: 01-policy-2025.txt)\n\n- 2026 policy (02-policy-2026-table.pdf)\n  - Document identification: SYNTHETIC / FICTIONAL / UNCLASSIFIED; Person: Omar Patel; Place: Cedar Bay; Document type: Policy; Version: 2026; active. It is described as superseding the 2025 training policy. (Source: 02-policy-2026-table.pdf)\n  - Annual training allowance: 15 days per year. The table in the document shows \"Annual training \u2014 15 Days/year.\" (Source: 02-policy-2026-table.pdf)\n\nNumeric comparison: increase in days and percent\n- Raw increase in days:\n  - 2026 days \u2212 2025 days = 15 \u2212 10 = 5 additional days per year. (Sources: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n\n- Percent increase calculation:\n  - Percent increase = (Increase \u00f7 Original amount) \u00d7 100%\n  - Using 2025 as the original amount: (5 \u00f7 10) \u00d7 100% = 0.5 \u00d7 100% = 50%\n  - Therefore, the 2026 policy represents a 50% increase in annual training days relative to the 2025 policy. (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n\nSupersession and status\n- The 2026 policy is explicitly marked active and is described as superseding the 2025 training policy. The 2025 policy is described as historical (Version: 2025; historical). Thus:\n  - Which policy supersedes which: The 2026 Cedar Bay policy supersedes the 2025 Cedar Bay policy. (Source confirming supersession and active/historical status: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n\nContextual notes drawn from the documents\n- Both documents are labeled synthetic, fictional, and unclassified. The 2025 historical policy names Maya Chen; the 2026 active policy names Omar Patel. The 2025 document specifies its 10-day annual training allowance applies to all fictional staff; the 2026 table lists the allowance as 15 days/year. (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n\nConcise answer (directly addressing the requested comparison)\n- Annual training days: 2025 = 10 days/year (01-policy-2025.txt); 2026 = 15 days/year (02-policy-2026-table.pdf).\n- Increase in days: +5 days/year (15 \u2212 10 = 5). (Sources: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n- Percent increase: 50% increase ((5 \u00f7 10) \u00d7 100% = 50%). (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n- Supersession: The 2026 policy (active) supersedes the 2025 policy (historical). (Source: 02-policy-2026-table.pdf; corroborating 01-policy-2025.txt)\n\nSources cited\n- 01-policy-2025.txt \u2014 SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION. Person: Maya Chen; Place: Cedar Bay; Document type: Policy; Version: 2025; historical. Annual training allowance: 10 days. Applies to all fictional staff. (Source: 01-policy-2025.txt)\n- 02-policy-2026-table.pdf \u2014 SYNTHETIC / FICTIONAL / UNCLASSIFIED. Person: Omar Patel; Place: Cedar Bay; Document type: Policy; Version: 2026; active; supersedes the 2025 training policy. Table: Annual training \u2014 15 days/year. (Source: 02-policy-2026-table.pdf)",
+      "status": "PASS",
+      "evidence": "comparison14-read-result.json"
+    },
+    {
+      "name": "Comparison supersession",
+      "expected": "2026 Cedar Bay policy supersedes the 2025 Cedar Bay policy",
+      "actual": "Summary\n- The 2025 Cedar Bay policy (historical) grants 10 days per year of annual training to all fictional staff. (Source: 01-policy-2025.txt)\n- The 2026 Cedar Bay policy (active) grants 15 days per year of annual training. (Source: 02-policy-2026-table.pdf)\n- The 2026 policy is explicitly identified as active and supersedes the 2025 training policy. (Source: 02-policy-2026-table.pdf)\n\nDetails from each document\n- 2025 policy (01-policy-2025.txt)\n  - Document identification: SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION; Person: Maya Chen; Place: Cedar Bay; Document type: Policy; Version: 2025; historical. (Source: 01-policy-2025.txt)\n  - Annual training allowance: 10 days. The file states: \"Annual training allowance: 10 days.\" and notes it \"Applies to all fictional staff.\" (Source: 01-policy-2025.txt)\n\n- 2026 policy (02-policy-2026-table.pdf)\n  - Document identification: SYNTHETIC / FICTIONAL / UNCLASSIFIED; Person: Omar Patel; Place: Cedar Bay; Document type: Policy; Version: 2026; active. It is described as superseding the 2025 training policy. (Source: 02-policy-2026-table.pdf)\n  - Annual training allowance: 15 days per year. The table in the document shows \"Annual training \u2014 15 Days/year.\" (Source: 02-policy-2026-table.pdf)\n\nNumeric comparison: increase in days and percent\n- Raw increase in days:\n  - 2026 days \u2212 2025 days = 15 \u2212 10 = 5 additional days per year. (Sources: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n\n- Percent increase calculation:\n  - Percent increase = (Increase \u00f7 Original amount) \u00d7 100%\n  - Using 2025 as the original amount: (5 \u00f7 10) \u00d7 100% = 0.5 \u00d7 100% = 50%\n  - Therefore, the 2026 policy represents a 50% increase in annual training days relative to the 2025 policy. (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n\nSupersession and status\n- The 2026 policy is explicitly marked active and is described as superseding the 2025 training policy. The 2025 policy is described as historical (Version: 2025; historical). Thus:\n  - Which policy supersedes which: The 2026 Cedar Bay policy supersedes the 2025 Cedar Bay policy. (Source confirming supersession and active/historical status: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n\nContextual notes drawn from the documents\n- Both documents are labeled synthetic, fictional, and unclassified. The 2025 historical policy names Maya Chen; the 2026 active policy names Omar Patel. The 2025 document specifies its 10-day annual training allowance applies to all fictional staff; the 2026 table lists the allowance as 15 days/year. (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n\nConcise answer (directly addressing the requested comparison)\n- Annual training days: 2025 = 10 days/year (01-policy-2025.txt); 2026 = 15 days/year (02-policy-2026-table.pdf).\n- Increase in days: +5 days/year (15 \u2212 10 = 5). (Sources: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n- Percent increase: 50% increase ((5 \u00f7 10) \u00d7 100% = 50%). (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n- Supersession: The 2026 policy (active) supersedes the 2025 policy (historical). (Source: 02-policy-2026-table.pdf; corroborating 01-policy-2025.txt)\n\nSources cited\n- 01-policy-2025.txt \u2014 SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION. Person: Maya Chen; Place: Cedar Bay; Document type: Policy; Version: 2025; historical. Annual training allowance: 10 days. Applies to all fictional staff. (Source: 01-policy-2025.txt)\n- 02-policy-2026-table.pdf \u2014 SYNTHETIC / FICTIONAL / UNCLASSIFIED. Person: Omar Patel; Place: Cedar Bay; Document type: Policy; Version: 2026; active; supersedes the 2025 training policy. Table: Annual training \u2014 15 days/year. (Source: 02-policy-2026-table.pdf)",
+      "status": "PASS",
+      "evidence": "comparison14-read-result.json"
+    },
+    {
+      "name": "Persisted PDF table extraction",
+      "expected": "Allowance/15 present in retrieved table text",
+      "actual": "One person asks \"Hello, how are you?\" and the other replies \"Hello\".  \nThe synthetic, fictional, unclassified 2026 policy for Cedar Bay, authored by Omar Patel, is active, supersedes the 2025 training policy, and grants 15 days per year for annual training.\nSYNTHETIC / FICTIONAL / UNCLASSIFIED\nPerson: Omar Patel; Place: Cedar Bay\nDocument type: Policy; Version: 2026; active\nSupersedes the 2025 training policy.\n\n\n<table>\n<tr>\n<th>Allowance</th>\n<th>Days/year</th>\n</tr>\n<tr>\n<td>Annual training</td>\n<td>15</td>\n</tr>\n</table>",
+      "status": "PASS",
+      "evidence": "comparison14-read-result.json"
+    },
+    {
+      "name": "Matched counterfactual group parity",
+      "status": "NOT_RUN",
+      "expected": {
+        "groups": [
+          "fictional-woman",
+          "fictional-man",
+          "fictional-nonbinary"
+        ],
+        "identical_policy_allowance": 15,
+        "change_only": "explicit fictional author gender",
+        "gap_threshold": 0.05
+      },
+      "actual": "Harness implemented; no live demographic observations authorized in this bounded evaluation. No fairness claim."
+    },
+    {
+      "name": "Full browser UI",
+      "status": "BLOCKED",
+      "expected": "Usable original UI at approved CIDR",
+      "actual": "Observed403 RBAC; restriction unchanged; no browser E2E claim"
+    },
+    {
+      "name": "Upstream frontend unit suite",
+      "status": "FAIL",
+      "expected": "Four cases execute",
+      "actual": "Missing @testing-library/dom; zero cases executed"
+    },
+    {
+      "name": "Full /chat orchestration and suggestions",
+      "status": "NOT_RUN",
+      "expected": "UI chat synthesis/suggestions path",
+      "actual": "Actual /Documents/Ask tested instead; /chat not called"
+    },
+    {
+      "name": "Ten-document, chart and handwriting coverage",
+      "status": "NOT_RUN",
+      "expected": "Ten mixed documents including chart/handwriting",
+      "actual": "Only2/10 logical cases ingested; one TXT and one table PDF rendition"
+    },
+    {
+      "name": "Pause/resume source persistence",
+      "status": "PASS",
+      "expected": "Two documents and exact files survive restart",
+      "actual": "Health200, metadata count2, both downloaded hashes match; final all revisions inactive/zero replicas"
+    }
+  ],
+  "ingestion": {
+    "file": "01-policy-2025.txt",
+    "sha256": "12a5a842e6d44db9758be011d45099865c74123592f4c07dd3c4477281343f30",
+    "bytes": 207,
+    "document_id": "3951c54f0a974f79b9d8fc3d7e4591ad202609120125365840455",
+    "imported_time_utc": "2026-09-12T01:26:03.3859148Z",
+    "http_status": 200,
+    "client_elapsed_ms": 27825,
+    "server_processing_seconds": 25.7567145,
+    "summary": "One person asks \"Hello how are you?\" and the other replies \"Hello\".\n\nA synthetic, fictional, unclassified 2025 historical policy for Cedar Bay names Maya Chen and grants all fictional staff ten days of annual training.\n"
+  },
+  "model_telemetry": {
+    "source": "Dedicated-account Azure Monitor ModelRequests, cross-checked against AzureOpenAIRequests status series; aliases not summed",
+    "total_observed_requests": 14,
+    "cap": 14,
+    "remaining_attempts": 0,
+    "by_deployment": [
+      {
+        "model": "gpt-5-mini",
+        "requests": 7.0,
+        "input_tokens": 2061.0,
+        "output_tokens": 7424.0,
+        "total_tokens": 9485.0,
+        "http_status": 200
+      },
+      {
+        "model": "text-embedding-3-large",
+        "requests": 7.0,
+        "input_tokens": 351.0,
+        "output_tokens": 0,
+        "total_tokens": 351.0,
+        "http_status": 200
+      }
+    ],
+    "input_tokens": 2412.0,
+    "output_tokens": 7424.0,
+    "total_tokens": 9836.0,
+    "operation_average_latency_ms": {
+      "chatcompletions_create": 8313.142857142857,
+      "Embeddings_Create": 134.42857142857142
+    },
+    "latency_caveat": "Request-count-weighted provider minute averages; not per-request traces or p95.",
+    "wire_count_caveat": "4+4+2+2 original attempts retained, plus2 approved comparison repeat. All14 account statuses200; SDK retries0.",
+    "metric_delay_caveat": "Early snapshots omitted new calls; only settled reconciled counts used.",
+    "ptu_test": false,
+    "deployment_sku": "GlobalStandard",
+    "provisioned_capacity_created": false
+  },
+  "retry_budget_finding": "Final approved allocation14 exhausted. Recovery-first found no old response; one2-attempt repeat succeeded with full JSON persisted to owned Blob before console.",
+  "cost_usd_hour": {
+    "original_seven_paas_baseline": 0.183,
+    "implicit_DPS_Documents_collection_400_ru": 0.032,
+    "current_paas_fixed_estimate": 0.215,
+    "three_private_endpoints_estimate": 0.03,
+    "three_active_1cpu_2gib_replicas_retail": 0.324,
+    "active_total_before_shared_allocations_and_usage": 0.569,
+    "all_revisions_paused_residual_before_shared_allocations_and_usage": 0.245,
+    "caveat": "Retail estimates, not invoice; shared ACR/environment/DNS allocation, storage, tokens, extraction, requests, network and taxes excluded. Subscription free grants not assumed.",
+    "aca_retail_source": "https://prices.azure.com/api/retail/prices?$filter=armRegionName%20eq%20%27eastus2%27%20and%20serviceName%20eq%20%27Azure%20Container%20Apps%27"
+  },
+  "current_runtime_action": "PAUSED_VERIFIED: all retained revisions inactive/zero replicas; comparison guard disarmed; no resources deleted.",
+  "restart_verification": {
+    "procedure": "Set-DocumentsRuntime.ps1 Pause -> Resume -> actual health/source checks -> Pause",
+    "resume_executed": true,
+    "post_restart_kernel_health": "HTTP200",
+    "post_restart_backend_data": "HTTP200,totalRecords2",
+    "source_hashes_match": true,
+    "persistence_verified": true,
+    "final_state": "All revisions active=false,replicas=0",
+    "evidence": [
+      "restart-verified-health.json",
+      "restart-verified-sources.json",
+      "final-runtime-state.json"
+    ]
+  },
+  "full_application_e2e_passed": false,
+  "core_ingestion_verified": true,
+  "historical_first_phase_tests": [
+    {
+      "name": "Kernel Memory actual /health",
+      "expected": "HTTP200",
+      "actual": "HTTP200, Service is running.",
+      "status": "PASS"
+    },
+    {
+      "name": "Original backend /Documents/GetDocuments before import",
+      "expected": "HTTP200, empty Mongo-backed result",
+      "actual": "HTTP200, totalRecords0",
+      "status": "PASS"
+    },
+    {
+      "name": "Original backend ingestion pipeline",
+      "expected": "Real policy upload completes extraction, tags, summary, embeddings, Search persistence and Mongo metadata registration",
+      "actual": "HTTP200; original pipeline returned documentId after readiness; real model requests recorded",
+      "status": "PASS"
+    },
+    {
+      "name": "Metadata extraction",
+      "expected": "Maya Chen; Cedar Bay; Policy;10 annual training days",
+      "actual": "All present in generated keyword metadata",
+      "status": "PASS"
+    },
+    {
+      "name": "Unfiltered document listing",
+      "expected": "One imported file",
+      "actual": "HTTP200,total1,01-policy-2025.txt",
+      "status": "PASS"
+    },
+    {
+      "name": "Positive place filter",
+      "expected": "Cedar Bay returns one document",
+      "actual": "HTTP200,total1",
+      "status": "PASS"
+    },
+    {
+      "name": "Negative place filter",
+      "expected": "Neverland returns zero documents",
+      "actual": "HTTP200,total0",
+      "status": "PASS"
+    },
+    {
+      "name": "Summary groundedness",
+      "expected": "Only facts supported by the uploaded policy",
+      "actual": "Summary includes correct policy facts but prepends an unrelated Hello/how-are-you exchange absent from the document",
+      "status": "FAIL"
+    },
+    {
+      "name": "Public browser/full UI path",
+      "expected": "Approved client CIDR renders the actual frontend",
+      "actual": "Python HTTPS and isolated Edge both return403 RBAC: access denied despite actual matching client IPv4, matching ARM allowlist, and environment PNAEnabled. No broadening/bypass attempted.",
+      "status": "BLOCKED"
+    },
+    {
+      "name": "Upstream frontend unit suite",
+      "expected": "Four Header cases execute",
+      "actual": "Suite fails before executing cases: missing @testing-library/dom.0 tests executed.",
+      "status": "FAIL"
+    },
+    {
+      "name": "Document/corpus QA, two-document compare, visual/table/handwriting cases and matched fairness fixtures",
+      "expected": "Full requested functional coverage",
+      "actual": "Not executed; remaining retry-inclusive model budget needs safe control, and public UI ingress remains blocked",
+      "status": "NOT_RUN"
+    }
+  ],
+  "historical_first_phase_telemetry": {
+    "source": "Azure Monitor on isolated oai-dkmeval0911a; ModelRequests confirmed by AzureOpenAIRequests status dimensions. Do not sum these alias counters.",
+    "total_observed_requests": 4,
+    "cap": 12,
+    "remaining_attempts": 8,
+    "by_deployment": [
+      {
+        "model": "gpt-5-mini",
+        "requests": 2,
+        "http_status": 200,
+        "input_tokens": 392,
+        "output_tokens": 1513,
+        "total_tokens": 1905
+      },
+      {
+        "model": "text-embedding-3-large",
+        "requests": 2,
+        "http_status": 200,
+        "input_tokens": 100,
+        "total_tokens": 100
+      }
+    ],
+    "total_tokens": 2005,
+    "operation_average_latency_ms": {
+      "chatcompletions_create": 5975.0,
+      "Embeddings_Create": 159.5
+    },
+    "latency_caveat": "Provider operation averages, not individual request timings; API ingestion timing is separate.",
+    "metric_delay_caveat": "Initial post-test counters were zero during ingestion delay; later populated counters are the actual evidence.",
+    "ptu_test": false,
+    "deployment_sku": "GlobalStandard",
+    "provisioned_capacity_created": false
+  },
+  "historical_first_phase_restart": {
+    "procedure": "scripts/Set-DocumentsRuntime.ps1 -Action Pause, then Resume, then Pause",
+    "resume_executed": true,
+    "post_restart_kernel_health": "HTTP200 Service is running at2026-09-12T01:37:45Z",
+    "post_restart_backend_data": "HTTP200,totalRecords1 through actual frontend container",
+    "persistence_verified": true,
+    "final_state": "All retained revisions active=false,replicas=0"
+  },
+  "ingestions": [
+    {
+      "file": "01-policy-2025.txt",
+      "sha256": "12a5a842e6d44db9758be011d45099865c74123592f4c07dd3c4477281343f30",
+      "bytes": 207,
+      "document_id": "3951c54f0a974f79b9d8fc3d7e4591ad202609120125365840455",
+      "imported_time_utc": "2026-09-12T01:26:03.3859148Z",
+      "http_status": 200,
+      "client_elapsed_ms": 27825,
+      "server_processing_seconds": 25.7567145,
+      "summary": "One person asks \"Hello how are you?\" and the other replies \"Hello\".\n\nA synthetic, fictional, unclassified 2025 historical policy for Cedar Bay names Maya Chen and grants all fictional staff ten days of annual training.\n"
+    },
+    {
+      "file": "02-policy-2026-table.pdf",
+      "document_id": "cb45ef9f464f4569ac7c4bc523ef1aab202609120215417274224",
+      "imported_time_utc": "2026-09-12T02:16:08.4574296Z",
+      "sha256": "1b6786929592267c2d681de3f6afc6dab06dbb7e4f3a892c793194de8d96d2de",
+      "bytes": 950,
+      "http_status": 200,
+      "client_elapsed_ms": 27154,
+      "server_processing_seconds": 25.695103,
+      "summary": "One person asks \"Hello, how are you?\" and the other replies \"Hello\".  \nThe synthetic, fictional, unclassified 2026 policy for Cedar Bay, authored by Omar Patel, is active, supersedes the 2025 training policy, and grants 15 days per year for annual training.\n",
+      "logical_case": 2,
+      "original_txt_rendition_uploaded": false
+    }
+  ],
+  "document_intelligence_telemetry": {
+    "TotalCalls": 3.0,
+    "SuccessfulCalls": 3.0,
+    "TotalErrors": 0,
+    "ProcessedPages": 1.0,
+    "scope": "Separate extraction billing:3 successful DI HTTP calls including polling,1 processed page; not OpenAI requests or PTU traffic.",
+    "final_metrics_evidence": "comparison14-di-metrics.json"
+  },
+  "scope_qa": {
+    "document": {
+      "status": "PASS",
+      "endpoint": "/Documents/Ask",
+      "elapsed_ms": 10423,
+      "facts": "2025;10 annual training days",
+      "citation_document_ids": [
+        "3951c54f0a974f79b9d8fc3d7e4591ad202609120125365840455"
+      ]
+    },
+    "corpus_comparison": {
+      "status": "PASS",
+      "endpoint": "/Documents/Ask",
+      "http_status": 200,
+      "elapsed_ms": 15103,
+      "request": {
+        "question": "Compare the 2025 and 2026 Cedar Bay policies: annual training days in each, the increase in days and percent, and which policy supersedes which. Cite both source documents.",
+        "documents": []
+      },
+      "expected": {
+        "2025_training_days": 10,
+        "2026_training_days": 15,
+        "increase_days": 5,
+        "increase_percent": 50,
+        "supersession": "2026 supersedes2025"
+      },
+      "actual_answer": "Summary\n- The 2025 Cedar Bay policy (historical) grants 10 days per year of annual training to all fictional staff. (Source: 01-policy-2025.txt)\n- The 2026 Cedar Bay policy (active) grants 15 days per year of annual training. (Source: 02-policy-2026-table.pdf)\n- The 2026 policy is explicitly identified as active and supersedes the 2025 training policy. (Source: 02-policy-2026-table.pdf)\n\nDetails from each document\n- 2025 policy (01-policy-2025.txt)\n  - Document identification: SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION; Person: Maya Chen; Place: Cedar Bay; Document type: Policy; Version: 2025; historical. (Source: 01-policy-2025.txt)\n  - Annual training allowance: 10 days. The file states: \"Annual training allowance: 10 days.\" and notes it \"Applies to all fictional staff.\" (Source: 01-policy-2025.txt)\n\n- 2026 policy (02-policy-2026-table.pdf)\n  - Document identification: SYNTHETIC / FICTIONAL / UNCLASSIFIED; Person: Omar Patel; Place: Cedar Bay; Document type: Policy; Version: 2026; active. It is described as superseding the 2025 training policy. (Source: 02-policy-2026-table.pdf)\n  - Annual training allowance: 15 days per year. The table in the document shows \"Annual training \u2014 15 Days/year.\" (Source: 02-policy-2026-table.pdf)\n\nNumeric comparison: increase in days and percent\n- Raw increase in days:\n  - 2026 days \u2212 2025 days = 15 \u2212 10 = 5 additional days per year. (Sources: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n\n- Percent increase calculation:\n  - Percent increase = (Increase \u00f7 Original amount) \u00d7 100%\n  - Using 2025 as the original amount: (5 \u00f7 10) \u00d7 100% = 0.5 \u00d7 100% = 50%\n  - Therefore, the 2026 policy represents a 50% increase in annual training days relative to the 2025 policy. (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n\nSupersession and status\n- The 2026 policy is explicitly marked active and is described as superseding the 2025 training policy. The 2025 policy is described as historical (Version: 2025; historical). Thus:\n  - Which policy supersedes which: The 2026 Cedar Bay policy supersedes the 2025 Cedar Bay policy. (Source confirming supersession and active/historical status: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n\nContextual notes drawn from the documents\n- Both documents are labeled synthetic, fictional, and unclassified. The 2025 historical policy names Maya Chen; the 2026 active policy names Omar Patel. The 2025 document specifies its 10-day annual training allowance applies to all fictional staff; the 2026 table lists the allowance as 15 days/year. (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n\nConcise answer (directly addressing the requested comparison)\n- Annual training days: 2025 = 10 days/year (01-policy-2025.txt); 2026 = 15 days/year (02-policy-2026-table.pdf).\n- Increase in days: +5 days/year (15 \u2212 10 = 5). (Sources: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n- Percent increase: 50% increase ((5 \u00f7 10) \u00d7 100% = 50%). (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n- Supersession: The 2026 policy (active) supersedes the 2025 policy (historical). (Source: 02-policy-2026-table.pdf; corroborating 01-policy-2025.txt)\n\nSources cited\n- 01-policy-2025.txt \u2014 SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION. Person: Maya Chen; Place: Cedar Bay; Document type: Policy; Version: 2025; historical. Annual training allowance: 10 days. Applies to all fictional staff. (Source: 01-policy-2025.txt)\n- 02-policy-2026-table.pdf \u2014 SYNTHETIC / FICTIONAL / UNCLASSIFIED. Person: Omar Patel; Place: Cedar Bay; Document type: Policy; Version: 2026; active; supersedes the 2025 training policy. Table: Annual training \u2014 15 days/year. (Source: 02-policy-2026-table.pdf)",
+      "citation_document_ids": [
+        "cb45ef9f464f4569ac7c4bc523ef1aab202609120215417274224",
+        "3951c54f0a974f79b9d8fc3d7e4591ad202609120125365840455"
+      ],
+      "citation_source_names": [
+        "02-policy-2026-table.pdf",
+        "01-policy-2025.txt"
+      ],
+      "source_hashes_verified": true,
+      "response_storage": {
+        "url": "https://stdkmeval0911a.blob.core.windows.net/smemory/_dkm-evaluation/comparison14-result.json",
+        "sha256": "99a60b96a6867bf9f96ff9297daf2d7497158b79f3cfa57f11a9357619327704",
+        "bytes": 9493,
+        "persisted": true
+      },
+      "full_response_evidence": "comparison14-read-result.json",
+      "new_inference": {
+        "requests": 2.0,
+        "input_tokens": 513.0,
+        "output_tokens": 1552.0,
+        "total_tokens": 2065.0
+      },
+      "initial_lost_attempt_preserved": "retry-phase-qa-corpus-uncaptured.json"
+    }
+  },
+  "finalized_utc": "2026-09-12T03:10:57.423865+00:00",
+  "historical_twelve_attempt_telemetry": {
+    "source": "Dedicated-account Azure Monitor ModelRequests, cross-checked against AzureOpenAIRequests status series; aliases not summed",
+    "total_observed_requests": 12,
+    "cap": 12,
+    "remaining_attempts": 0,
+    "by_deployment": [
+      {
+        "model": "text-embedding-3-large",
+        "requests": 6.0,
+        "input_tokens": 311.0,
+        "output_tokens": 0,
+        "total_tokens": 311.0,
+        "http_status": 200
+      },
+      {
+        "model": "gpt-5-mini",
+        "requests": 6.0,
+        "input_tokens": 1588.0,
+        "output_tokens": 5872.0,
+        "total_tokens": 7460.0,
+        "http_status": 200
+      }
+    ],
+    "input_tokens": 1899.0,
+    "output_tokens": 5872.0,
+    "total_tokens": 7771.0,
+    "operation_average_latency_ms": {
+      "chatcompletions_create": 7615.333333333333,
+      "Embeddings_Create": 142.16666666666666
+    },
+    "latency_caveat": "Request-count-weighted provider minute averages; not per-request traces or p95.",
+    "wire_count_caveat": "Observed fan-out4+4+2+2, all account statuses200. New SDK retries0; no load test.",
+    "metric_delay_caveat": "Early snapshots omitted new calls; only settled reconciled counts used.",
+    "ptu_test": false,
+    "deployment_sku": "GlobalStandard",
+    "provisioned_capacity_created": false
+  },
+  "historical_uncaptured_comparison": {
+    "case": "qa-corpus",
+    "attempted": true,
+    "request": {
+      "question": "Compare the 2025 and 2026 Cedar Bay policies: annual training days in each, the increase in days and percent, and which policy supersedes which. Cite both source documents.",
+      "documents": []
+    },
+    "response_captured": false,
+    "application_http_status": null,
+    "console_error": {
+      "type": "UnicodeEncodeError",
+      "encoding": "cp1252",
+      "character": "U+2212",
+      "position": 884,
+      "path": "Azure CLI containerapp _ssh_utils.py read_ssh / _decode_and_output_to_terminal"
+    },
+    "repeat_performed": false,
+    "expected_but_not_verified": "2025=10 days;2026=15 days;increase5 days/50%;2026 supersedes2025;citations to both.",
+    "assessment": "Attempted, output capture blocked. Cannot grade actual answer or its citations. Do not substitute expected facts for the missing app response.",
+    "transport_fix": "Future test harness persists JSON inside the frontend container before emitting lossless ASCII JSON Unicode escapes; this cannot recover the already-lost response."
+  },
+  "comparison_supplement_persistence": {
+    "case": "comparison14-persistence",
+    "utc": "2026-09-12T03:03:22.231Z",
+    "kernel_status": 200,
+    "backend_status": 200,
+    "total_documents": 2,
+    "documents": [
+      {
+        "documentId": "cb45ef9f464f4569ac7c4bc523ef1aab202609120215417274224",
+        "fileName": "02-policy-2026-table.pdf",
+        "keywords": {
+          "classification": "synthetic, fictional, unclassified",
+          "person": "Omar Patel",
+          "place": "Cedar Bay",
+          "document_type": "Policy",
+          "version": "2026",
+          "status": "active",
+          "supersedes": "2025 training policy",
+          "allowances": "Annual training: 15 days/year",
+          "topics": "training",
+          "structure": "table present, columns: Allowance, Days/year"
+        },
+        "importedTime": "2026-09-12T02:16:08.457Z",
+        "processingTime": "00:00:25.6951030",
+        "mimeType": "application/pdf",
+        "summary": "One person asks \"Hello, how are you?\" and the other replies \"Hello\".  \nThe synthetic, fictional, unclassified 2026 policy for Cedar Bay, authored by Omar Patel, is active, supersedes the 2025 training policy, and grants 15 days per year for annual training.\n",
+        "id": "91e0e62f-b25e-41e2-b197-ecfcd5c17b63",
+        "__partitionkey": "2776"
+      },
+      {
+        "documentId": "3951c54f0a974f79b9d8fc3d7e4591ad202609120125365840455",
+        "fileName": "01-policy-2025.txt",
+        "keywords": {
+          "classification": "synthetic, fictional, unclassified",
+          "person": "Maya Chen",
+          "place": "Cedar Bay",
+          "document_type": "Policy",
+          "purpose": "evaluation",
+          "version": "2025, historical",
+          "training_allowance": "10 days, annual training allowance",
+          "applicability": "applies to all fictional staff, fictional staff"
+        },
+        "importedTime": "2026-09-12T01:26:03.385Z",
+        "processingTime": "00:00:25.7567145",
+        "mimeType": "text/plain",
+        "summary": "One person asks \"Hello how are you?\" and the other replies \"Hello\".\n\nA synthetic, fictional, unclassified 2025 historical policy for Cedar Bay names Maya Chen and grants all fictional staff ten days of annual training.\n",
+        "id": "5bca8547-dd7f-44b8-b57d-bf365092404c",
+        "__partitionkey": "8248"
+      }
+    ],
+    "files": [
+      {
+        "id": "3951c54f0a974f79b9d8fc3d7e4591ad202609120125365840455",
+        "name": "01-policy-2025.txt",
+        "status": 200,
+        "bytes": 207,
+        "sha256": "12a5a842e6d44db9758be011d45099865c74123592f4c07dd3c4477281343f30"
+      },
+      {
+        "id": "cb45ef9f464f4569ac7c4bc523ef1aab202609120215417274224",
+        "name": "02-policy-2026-table.pdf",
+        "status": 200,
+        "bytes": 950,
+        "sha256": "1b6786929592267c2d681de3f6afc6dab06dbb7e4f3a892c793194de8d96d2de"
+      }
+    ],
+    "inference_calls": 0
+  },
+  "comparison_supplement_runtime_state": {
+    "captured_utc": "2026-09-12T03:07:22.7584925Z",
+    "apps": [
+      {
+        "name": "ca-dkm-api",
+        "revisions": [
+          {
+            "active": false,
+            "health": "Healthy",
+            "name": "ca-dkm-api--re51g88",
+            "replicas": 0
+          },
+          {
+            "active": false,
+            "health": "Healthy",
+            "name": "ca-dkm-api--0000001",
+            "replicas": 0
+          },
+          {
+            "active": false,
+            "health": "Healthy",
+            "name": "ca-dkm-api--0000002",
+            "replicas": 0
+          }
+        ]
+      },
+      {
+        "name": "ca-dkm-kernel",
+        "revisions": [
+          {
+            "active": false,
+            "health": "Healthy",
+            "name": "ca-dkm-kernel--mnddx2g",
+            "replicas": 0
+          },
+          {
+            "active": false,
+            "health": "Healthy",
+            "name": "ca-dkm-kernel--0000001",
+            "replicas": 0
+          }
+        ]
+      },
+      {
+        "name": "ca-dkm-web",
+        "revisions": [
+          {
+            "active": false,
+            "health": "Healthy",
+            "name": "ca-dkm-web--qvokiy4",
+            "replicas": 0
+          },
+          {
+            "active": false,
+            "health": "Healthy",
+            "name": "ca-dkm-web--0000001",
+            "replicas": 0
+          },
+          {
+            "active": false,
+            "health": "Healthy",
+            "name": "ca-dkm-web--0000002",
+            "replicas": 0
+          }
+        ]
+      }
+    ]
+  }
+}

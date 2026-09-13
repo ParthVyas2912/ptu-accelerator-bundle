@@ -1,0 +1,157 @@
+{
+  "recordedUtc": "2026-09-12T05:15:02.443548+00:00",
+  "status": "not_started_clean_native_run_exceeds_remaining_approved_attempts",
+  "approvedTotal": 17,
+  "contractSha256": "defbdc8a0f6cfd42be77170f745068dcb6c178aa9e246df9dc07ac4ef2e01b67",
+  "portfolioMaximum": 100,
+  "portfolioAllocated": 100,
+  "portfolioReserve": 0,
+  "latestCapturedModelReservations": 11,
+  "latestCapturedModelResponses": 10,
+  "unresolvedReservationId": 33,
+  "unresolvedReservationRefunded": false,
+  "originalTenResponseRecordsUnchanged": true,
+  "ledgerSnapshotUtc": "2026-09-12T04:38:01.873947+00:00",
+  "remainingApprovedAttempts": 6,
+  "nativeCleanRunModelPlan": {
+    "documentMappings": 4,
+    "responsibleAi": 1,
+    "summary": 1,
+    "gaps": 1
+  },
+  "nativeCleanRunCalls": 7,
+  "nativeWholeClaimCheckpointReuseSupported": false,
+  "nativeReuseEvidence": "evidence/content/zero-model-recovery-abort.json",
+  "minimumTotalForObservedCleanPlan": 18,
+  "shortfall": 1,
+  "zeroRecoveryState": "Previously aborted, not in progress; unchanged ledger gate still rejects the additional reservation.",
+  "cleanClaimCreated": false,
+  "cleanClaimSubmitted": false,
+  "newModelOrCuCallsThisTurn": 0,
+  "newInfrastructureOrDeploymentThisTurn": false,
+  "fullClaimE2ePassed": false,
+  "allFourDocumentOutcomesFreshlyVerified": false,
+  "decision": "Do not refund unknown reservation33 or spend six attempts on a known seven-call plan. Keep deployment interlocked and all revisions inactive; cap18 is not authorized.",
+  "shutdown": {
+    "checkedUtc": "2026-09-12T05:13:35.2328746Z",
+    "source": "All retained revisions, not only latest",
+    "services": [
+      {
+        "service": "api",
+        "replicas": 0,
+        "revisions": [
+          {
+            "name": "ca-ptu-content-api--0000006",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          },
+          {
+            "name": "ca-ptu-content-api--0000007",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          },
+          {
+            "name": "ca-ptu-content-api--0000008",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          },
+          {
+            "name": "ca-ptu-content-api--0000009",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          }
+        ]
+      },
+      {
+        "service": "processor",
+        "replicas": 0,
+        "revisions": [
+          {
+            "name": "ca-ptu-content-processor--0000006",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          },
+          {
+            "name": "ca-ptu-content-processor--0000007",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          },
+          {
+            "name": "ca-ptu-content-processor--0000008",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          },
+          {
+            "name": "ca-ptu-content-processor--0000009",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          }
+        ]
+      },
+      {
+        "service": "workflow",
+        "replicas": 0,
+        "revisions": [
+          {
+            "name": "ca-ptu-content-workflow--0000002",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          },
+          {
+            "name": "ca-ptu-content-workflow--0000003",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          },
+          {
+            "name": "ca-ptu-content-workflow--0000004",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          }
+        ]
+      },
+      {
+        "service": "web",
+        "replicas": 0,
+        "revisions": [
+          {
+            "name": "ca-ptu-content-web--0000002",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          },
+          {
+            "name": "ca-ptu-content-web--0000003",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          },
+          {
+            "name": "ca-ptu-content-web--0000004",
+            "active": false,
+            "replicas": 0,
+            "runningState": "Stopped"
+          }
+        ]
+      }
+    ]
+  },
+  "inferenceSafety": {
+    "processorCurrentImage": "eval-processor:659eaa1-zero-r1",
+    "processorImageHardDisarmed": true,
+    "allOwnedRevisionsInactive": true,
+    "deploymentInterlockRetained": true,
+    "deployedImageAdmissionCap": 12,
+    "deployedCapNote": "Approval17 is recorded, but no image was rebuilt/activated; the older lower runtime cap was not presented as an applied cap17."
+  }
+}

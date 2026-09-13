@@ -1,0 +1,29 @@
+{
+  "isHistoricalSnapshot": true,
+  "supersededBy": "second-pass-inspection.json",
+  "app": "MACAE",
+  "observedUtcDate": "2026-09-12",
+  "externalModelRequests": 0,
+  "budgetObserverTests": {
+    "command": "python scripts/test_macae_cloud_budget.py",
+    "passed": 7,
+    "failed": 0,
+    "coverage": [
+      "Cosmos CAS concurrency and bounded conflict retries",
+      "Ledger initialization never resets and restart preserves spent allowance",
+      "Fail-closed absent/corrupt ledger",
+      "Twelve-request hard cap including refused subsequent send",
+      "Remote KB reasoning blocked",
+      "Pretty nonstream JSON usage capture",
+      "Fragmented three-byte SSE parsing",
+      "Bounded JSON capture with explicit observer error"
+    ]
+  },
+  "operationalChecks": [
+    "PowerShell parse PASS for changed Get-MacaeCloudState, Set-MacaeCloudMode, Invoke-MacaeCloudTest and Test-MacaeRelease scripts",
+    "Mocked403 refused rollback before any network/ARM request; PASS",
+    "Final structured result asserts twelve records, twelve HTTP200 responses, seven known usage records, two visible one-document indexes, min0/max1, inferencefalse and final pinned backend digest"
+  ],
+  "correctedObserverLiveRetest": "NOT RUN: allowance exhausted",
+  "productionRollbackOrRecoveryTest": "NOT RUN"
+}

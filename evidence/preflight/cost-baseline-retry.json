@@ -1,0 +1,497 @@
+{
+  "eTag": null,
+  "id": "subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/providers/Microsoft.CostManagement/query/bb1ddec5-0216-42ce-9605-1639cb70119c",
+  "location": null,
+  "name": "bb1ddec5-0216-42ce-9605-1639cb70119c",
+  "properties": {
+    "columns": [
+      {
+        "name": "PreTaxCost",
+        "type": "Number"
+      },
+      {
+        "name": "UsageDate",
+        "type": "Number"
+      },
+      {
+        "name": "ResourceGroupName",
+        "type": "String"
+      },
+      {
+        "name": "ServiceName",
+        "type": "String"
+      },
+      {
+        "name": "Currency",
+        "type": "String"
+      }
+    ],
+    "nextLink": null,
+    "rows": [
+      [
+        0.1104,
+        20260911,
+        "",
+        "Microsoft Defender for Cloud",
+        "USD"
+      ],
+      [
+        0.425,
+        20260911,
+        "mc_rg-specsuite-aks-mcaps_aks-specsuite-mcaps_canadacentral",
+        "Load Balancer",
+        "USD"
+      ],
+      [
+        0.165,
+        20260911,
+        "mc_rg-specsuite-aks-mcaps_aks-specsuite-mcaps_canadacentral",
+        "Virtual Network",
+        "USD"
+      ],
+      [
+        3.082e-05,
+        20260911,
+        "mcapsgovernance",
+        "Bandwidth",
+        "USD"
+      ],
+      [
+        0.0832865903,
+        20260911,
+        "mcapsgovernance",
+        "Log Analytics",
+        "USD"
+      ],
+      [
+        0.3264,
+        20260911,
+        "mcapsgovernance",
+        "Microsoft Defender for Cloud",
+        "USD"
+      ],
+      [
+        0.0227181336,
+        20260911,
+        "mcapsgovernance",
+        "Storage",
+        "USD"
+      ],
+      [
+        0.425208876156248,
+        20260911,
+        "me_cae-demo_rg-demo_canadacentral",
+        "Load Balancer",
+        "USD"
+      ],
+      [
+        0.08,
+        20260911,
+        "me_cae-demo_rg-demo_canadacentral",
+        "Virtual Network",
+        "USD"
+      ],
+      [
+        0.4033543329034,
+        20260911,
+        "me_cae-geofm-cbzmyrtv7w6ja_rg-pexalex_westus3",
+        "Load Balancer",
+        "USD"
+      ],
+      [
+        0.08,
+        20260911,
+        "me_cae-geofm-cbzmyrtv7w6ja_rg-pexalex_westus3",
+        "Virtual Network",
+        "USD"
+      ],
+      [
+        0.1110675552,
+        20260911,
+        "rg-aiscleaner-batch-cc",
+        "Container Registry",
+        "USD"
+      ],
+      [
+        0.6528,
+        20260911,
+        "rg-aiscleaner-batch-cc",
+        "Microsoft Defender for Cloud",
+        "USD"
+      ],
+      [
+        1.5858,
+        20260911,
+        "rg-demo",
+        "Azure Container Apps",
+        "USD"
+      ],
+      [
+        0.00228494623655914,
+        20260911,
+        "rg-demo",
+        "Azure DNS",
+        "USD"
+      ],
+      [
+        0.1110675552,
+        20260911,
+        "rg-demo",
+        "Container Registry",
+        "USD"
+      ],
+      [
+        0.3824,
+        20260911,
+        "rg-demo",
+        "Microsoft Defender for Cloud",
+        "USD"
+      ],
+      [
+        0.000135196,
+        20260911,
+        "rg-demo",
+        "Storage",
+        "USD"
+      ],
+      [
+        0.17,
+        20260911,
+        "rg-demo",
+        "Virtual Network",
+        "USD"
+      ],
+      [
+        1.616,
+        20260911,
+        "rg-edc-foundry-hack",
+        "Azure Cognitive Search",
+        "USD"
+      ],
+      [
+        0.0,
+        20260911,
+        "rg-gh300quiz",
+        "Azure App Service",
+        "USD"
+      ],
+      [
+        0.32,
+        20260911,
+        "rg-gh300quiz",
+        "Microsoft Defender for Cloud",
+        "USD"
+      ],
+      [
+        2.723553,
+        20260911,
+        "rg-n8n-aca-repro",
+        "Azure Container Apps",
+        "USD"
+      ],
+      [
+        0.1110675552,
+        20260911,
+        "rg-n8n-aca-repro",
+        "Container Registry",
+        "USD"
+      ],
+      [
+        6.9e-05,
+        20260911,
+        "rg-n8n-aca-repro",
+        "Key Vault",
+        "USD"
+      ],
+      [
+        0.13082124,
+        20260911,
+        "rg-n8n-aca-repro",
+        "Log Analytics",
+        "USD"
+      ],
+      [
+        0.06178,
+        20260911,
+        "rg-n8n-aca-repro",
+        "Microsoft Defender for Cloud",
+        "USD"
+      ],
+      [
+        0.48,
+        20260911,
+        "rg-n8n-aca-repro",
+        "Redis Cache",
+        "USD"
+      ],
+      [
+        0.000228970808287462,
+        20260911,
+        "rg-occ-cosmos-test",
+        "Azure Cosmos DB",
+        "USD"
+      ],
+      [
+        0.00228494623655914,
+        20260911,
+        "rg-occ-cosmos-test",
+        "Azure DNS",
+        "USD"
+      ],
+      [
+        1.58035714285715e-06,
+        20260911,
+        "rg-occ-cosmos-test",
+        "Microsoft Defender for Cloud",
+        "USD"
+      ],
+      [
+        0.034136064,
+        20260911,
+        "rg-occ-cosmos-test",
+        "Storage",
+        "USD"
+      ],
+      [
+        0.255,
+        20260911,
+        "rg-occ-cosmos-test",
+        "Virtual Network",
+        "USD"
+      ],
+      [
+        0.0,
+        20260911,
+        "rg-pexalex",
+        "Azure App Service",
+        "USD"
+      ],
+      [
+        1.898235,
+        20260911,
+        "rg-pexalex",
+        "Azure Container Apps",
+        "USD"
+      ],
+      [
+        0.00457069247311828,
+        20260911,
+        "rg-pexalex",
+        "Azure DNS",
+        "USD"
+      ],
+      [
+        1.1110755552,
+        20260911,
+        "rg-pexalex",
+        "Container Registry",
+        "USD"
+      ],
+      [
+        2.4e-06,
+        20260911,
+        "rg-pexalex",
+        "Event Grid",
+        "USD"
+      ],
+      [
+        0.2011092446,
+        20260911,
+        "rg-pexalex",
+        "Log Analytics",
+        "USD"
+      ],
+      [
+        0.77818,
+        20260911,
+        "rg-pexalex",
+        "Microsoft Defender for Cloud",
+        "USD"
+      ],
+      [
+        0.0008133,
+        20260911,
+        "rg-pexalex",
+        "Storage",
+        "USD"
+      ],
+      [
+        0.33,
+        20260911,
+        "rg-pexalex",
+        "Virtual Network",
+        "USD"
+      ],
+      [
+        0.501117,
+        20260911,
+        "rg-planetaryexplorer",
+        "Azure Container Apps",
+        "USD"
+      ],
+      [
+        1.1110755552,
+        20260911,
+        "rg-planetaryexplorer",
+        "Container Registry",
+        "USD"
+      ],
+      [
+        2.4e-06,
+        20260911,
+        "rg-planetaryexplorer",
+        "Event Grid",
+        "USD"
+      ],
+      [
+        0.04267328736,
+        20260911,
+        "rg-planetaryexplorer",
+        "Log Analytics",
+        "USD"
+      ],
+      [
+        0.38818,
+        20260911,
+        "rg-planetaryexplorer",
+        "Microsoft Defender for Cloud",
+        "USD"
+      ],
+      [
+        3.24e-05,
+        20260911,
+        "rg-planetaryexplorer",
+        "Storage",
+        "USD"
+      ],
+      [
+        0.0,
+        20260911,
+        "rg-quizzly",
+        "Azure App Service",
+        "USD"
+      ],
+      [
+        0.334,
+        20260911,
+        "rg-quizzly",
+        "Microsoft Defender for Cloud",
+        "USD"
+      ],
+      [
+        0.0008319933,
+        20260911,
+        "rg-specsuite-ai-can",
+        "Azure Monitor",
+        "USD"
+      ],
+      [
+        41.298772465,
+        20260911,
+        "rg-specsuite-ai-can",
+        "Foundry Models",
+        "USD"
+      ],
+      [
+        9.1402904,
+        20260911,
+        "rg-specsuite-ai-can",
+        "Microsoft Defender for Cloud",
+        "USD"
+      ],
+      [
+        0.000228777796857887,
+        20260911,
+        "rg-tnt-cosmos",
+        "Azure Cosmos DB",
+        "USD"
+      ],
+      [
+        4.94642857142857e-07,
+        20260911,
+        "rg-tnt-cosmos",
+        "Microsoft Defender for Cloud",
+        "USD"
+      ],
+      [
+        0.843934,
+        20260911,
+        "specsmith-builders-rg",
+        "Azure Container Apps",
+        "USD"
+      ],
+      [
+        0.1110675552,
+        20260911,
+        "specsmith-builders-rg",
+        "Container Registry",
+        "USD"
+      ],
+      [
+        5.315484e-05,
+        20260911,
+        "specsmith-builders-rg",
+        "Log Analytics",
+        "USD"
+      ],
+      [
+        0.112,
+        20260911,
+        "specsmith-builders-rg",
+        "Microsoft Defender for Cloud",
+        "USD"
+      ],
+      [
+        0.3402,
+        20260911,
+        "specsuite-demo-rg",
+        "Azure Container Apps",
+        "USD"
+      ],
+      [
+        0.00228494623655914,
+        20260911,
+        "specsuite-demo-rg",
+        "Azure DNS",
+        "USD"
+      ],
+      [
+        0.361833333333333,
+        20260911,
+        "specsuite-demo-rg",
+        "Azure Database for PostgreSQL",
+        "USD"
+      ],
+      [
+        0.1110675552,
+        20260911,
+        "specsuite-demo-rg",
+        "Container Registry",
+        "USD"
+      ],
+      [
+        0.43458064516129,
+        20260911,
+        "specsuite-demo-rg",
+        "Microsoft Defender for Cloud",
+        "USD"
+      ],
+      [
+        0.03755856,
+        20260911,
+        "specsuite-demo-rg",
+        "Storage",
+        "USD"
+      ],
+      [
+        0.255,
+        20260911,
+        "specsuite-demo-rg",
+        "Virtual Network",
+        "USD"
+      ]
+    ]
+  },
+  "sku": null,
+  "type": "Microsoft.CostManagement/query"
+}

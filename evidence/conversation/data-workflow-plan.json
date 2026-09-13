@@ -1,0 +1,93 @@
+{
+  "approval": "User clarification 2026-09-11T23:37:43-04:00; current contract conversation limit1.50/hour",
+  "subscription": "1feb53b2-854a-4ea7-b5a6-709b7d804f70",
+  "tenant": "a600acd0-3028-4689-8402-3b471d7d924d",
+  "own_rg": "rg-ptu-conversation-demo",
+  "data_region": "canadacentral",
+  "compute_region": "eastus2",
+  "ai_region": "swedencentral",
+  "synthetic_only_non_canada_processing": true,
+  "sql_catalog_preflight": {
+    "sku": "GP_S_Gen5_2",
+    "status": "Available",
+    "minimum_capacity": 0.5,
+    "minimum_capacity_catalog_status": "Default",
+    "maximum_vcores": 2,
+    "auto_pause_minutes": 60,
+    "data_size_limit_gb": 32,
+    "backup": "Local"
+  },
+  "search": "Basic1x1; native fields/HNSW/semantic schema supported; actual index creation still to verify",
+  "storage": "Standard_LRS Hot, Entra-only, Blob",
+  "pna": "Disabled on all three targets; never temporarily enabled",
+  "private_endpoints": "Three remaining own endpoints through parent helper, bringing total to4",
+  "authentication": "Own UAMI, own Storage/Search data roles; temporary own SQL-server Entra administrator for schema bootstrap, then contained DB roles and lab-user server administrator where supported",
+  "fixed_reference": {
+    "sql_at_max2": 1.25222,
+    "search_basic": 0.101,
+    "sql_32gb_hourly_reference": 0.0055452055,
+    "four_private_endpoints": 0.04,
+    "both_aca_replicas_active": 0.081,
+    "subtotal_usd_per_hour": 1.4797652055,
+    "review_limit_usd_per_hour": 1.5,
+    "api_only_during_evaluation_subtotal": 1.4527652055,
+    "shared_registry_dns_allocation_not_in_subtotal": true,
+    "model_build_storage_operations_logs_egress_separately_metered": true,
+    "remote_build_scheduled_before_sql_creation": true
+  },
+  "planned_native_workflow": [
+    "Original schema setup, no destructive setup hooks",
+    "Original pre-enriched JSON upload using three actual previously captured summaries; automatic AI pipelines disabled during ingestion",
+    "Verify native SQL/Blob/Search persistence, not HTTP200 alone",
+    "Verify native reload and literal Search results for both VPN calls",
+    "Run original model-planned SQL dashboard and optional original processing insights under global remaining5-request transport budget"
+  ],
+  "scope_limitations": [
+    "No generic replacement Q&A or hosted Explore success claim",
+    "Hosted private Search under Basic Agent remains unsupported",
+    "No Cosmos/dedicated agent subnet or additional model deployments are implied",
+    "Query-time vectorizer not invoked; no hidden Search-managed embedding calls allowed",
+    "SQL auto-pause is conditional; stop compute/connections after bounded tests and record database state"
+  ],
+  "model_requests_already_used": 7,
+  "remaining_hard_budget": 3,
+  "sdk_retries": 0,
+  "status": "native_persistence_and_model_sql_workflow_executed_with_semantic_quality_failures",
+  "actual_model_requests_cumulative": 9,
+  "actual_additional_model_requests": 2,
+  "result": "evidence/conversation/data-workflow-review.json",
+  "sql_identity_correction": {
+    "initial_error": "Used principal/object ID rather than client/application ID for a TYPE=E service-principal contained user; fresh post-handoff SQL initialization failed.",
+    "corrected_user": "id-ptu-conversation-runtime",
+    "client_id_used_for_sql_sid": "1b458b7e-1768-45a9-b676-9a3245a4dfbe",
+    "azure_rbac_still_uses_principal_id": "b0c36c36-5b9f-4efa-9f01-0e19fb97aa25",
+    "roles": [
+      "db_datareader",
+      "db_datawriter",
+      "db_ddladmin"
+    ],
+    "db_owner": false,
+    "app_is_server_admin": false,
+    "incorrect_user_roles_removed": true,
+    "users_or_data_deleted": false,
+    "final_verified": {
+      "scope": "CKM own SQL contained identity",
+      "mode": "verify",
+      "model_requests": 0,
+      "checked_at": "2026-09-12T04:25:38.735333+00:00",
+      "current_user": "id-ptu-conversation-runtime",
+      "db_owner": 0,
+      "reader": 1,
+      "writer": 1,
+      "ddl_admin": 1,
+      "ground_truth": {
+        "records": 3,
+        "categories": 2,
+        "source_types": 1
+      },
+      "native_sql_initialized_and_reloaded": true,
+      "status": "succeeded"
+    },
+    "source": "https://learn.microsoft.com/en-us/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-current#k-create-a-contained-database-user-from-a-microsoft-entra-principal-without-validation"
+  }
+}

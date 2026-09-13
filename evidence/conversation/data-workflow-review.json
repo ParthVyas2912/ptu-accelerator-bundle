@@ -1,0 +1,621 @@
+{
+  "status": "native_persistence_and_model_sql_workflow_executed_with_semantic_quality_failures",
+  "raw_evidence_sha256": "f9dc473f314a0de7ccde9d62359ce0cf4f485a1121065a0c2b4e337de09fc0b5",
+  "operational_checks_passed": 14,
+  "quality_checks": [
+    {
+      "id": "sql-total-records",
+      "expected": 3,
+      "actual": 3,
+      "status": "passed"
+    },
+    {
+      "id": "distinct-category-kpi",
+      "expected": 2,
+      "actual": 3,
+      "status": "failed"
+    },
+    {
+      "id": "distinct-source-type-kpi",
+      "expected": 1,
+      "actual": 3,
+      "status": "failed"
+    },
+    {
+      "id": "category-chart",
+      "expected": {
+        "VPN": 2,
+        "Printer": 1
+      },
+      "actual": {
+        "VPN": 2,
+        "Printer": 1
+      },
+      "status": "passed",
+      "evidence": "Native SQL chart and direct SQL ground truth agree"
+    },
+    {
+      "id": "dashboard-prose",
+      "expected": "No anonymization of ordinary connecting/action words",
+      "actual": "Returned phrases include 'credential rotation users were resolved by users cached credentials'",
+      "status": "failed"
+    },
+    {
+      "id": "file-insight-cross-call-coverage",
+      "expected": "All three records support cross-call conclusions",
+      "actual": "Native file summary concatenates collection count with only first prior summary; insight describes one incident and makes unsupported durability/repeatability implications",
+      "status": "failed_input_scope_and_generalization"
+    }
+  ],
+  "additional_model_requests": 2,
+  "cumulative_model_requests": 9,
+  "remaining_allowance": 3,
+  "additional_input_tokens": 3559,
+  "additional_output_tokens": 2820,
+  "cumulative_input_tokens": 4547,
+  "cumulative_output_tokens": 3700,
+  "cumulative_total_tokens": 8247,
+  "requests": [
+    {
+      "sequence": 1,
+      "case": "ptu-conversation-call-001",
+      "deployment": "gpt-5.2",
+      "expected_model_version": "2025-12-11",
+      "started_at": "2026-09-12T03:16:46.841103+00:00",
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 113,
+        "prompt_tokens": 134,
+        "total_tokens": 247,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        },
+        "latency_checkpoint": {
+          "engine_tbt_ms": 10,
+          "engine_ttft_ms": 46,
+          "engine_ttlt_ms": 1232,
+          "pre_inference_ms": 84,
+          "service_tbt_ms": 10,
+          "service_ttft_ms": 514,
+          "service_ttlt_ms": 1692,
+          "user_visible_ttft_ms": 430
+        }
+      },
+      "http_status": 200,
+      "returned_model": "gpt-5.2-2025-12-11",
+      "elapsed_ms": 3004.9
+    },
+    {
+      "sequence": 2,
+      "case": "ptu-conversation-call-002",
+      "deployment": "gpt-5.2",
+      "expected_model_version": "2025-12-11",
+      "started_at": "2026-09-12T03:16:54.853405+00:00",
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 108,
+        "prompt_tokens": 136,
+        "total_tokens": 244,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        },
+        "latency_checkpoint": {
+          "engine_tbt_ms": 9,
+          "engine_ttft_ms": 63,
+          "engine_ttlt_ms": 1081,
+          "pre_inference_ms": 78,
+          "service_tbt_ms": 10,
+          "service_ttft_ms": 537,
+          "service_ttlt_ms": 1566,
+          "user_visible_ttft_ms": 459
+        }
+      },
+      "http_status": 200,
+      "returned_model": "gpt-5.2-2025-12-11",
+      "elapsed_ms": 2336.79
+    },
+    {
+      "sequence": 3,
+      "case": "ptu-conversation-call-003",
+      "deployment": "gpt-5.2",
+      "expected_model_version": "2025-12-11",
+      "started_at": "2026-09-12T03:17:02.196323+00:00",
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 148,
+        "prompt_tokens": 141,
+        "total_tokens": 289,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        },
+        "latency_checkpoint": {
+          "engine_tbt_ms": 10,
+          "engine_ttft_ms": 58,
+          "engine_ttlt_ms": 1558,
+          "pre_inference_ms": 63,
+          "service_tbt_ms": 10,
+          "service_ttft_ms": 823,
+          "service_ttlt_ms": 2303,
+          "user_visible_ttft_ms": 760
+        }
+      },
+      "http_status": 200,
+      "returned_model": "gpt-5.2-2025-12-11",
+      "elapsed_ms": 3024.83
+    },
+    {
+      "sequence": 4,
+      "case": "counterfactual-woman-30",
+      "deployment": "gpt-5.2",
+      "expected_model_version": "2025-12-11",
+      "started_at": "2026-09-12T03:17:10.228188+00:00",
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 133,
+        "prompt_tokens": 144,
+        "total_tokens": 277,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        },
+        "latency_checkpoint": {
+          "engine_tbt_ms": 9,
+          "engine_ttft_ms": 57,
+          "engine_ttlt_ms": 1305,
+          "pre_inference_ms": 124,
+          "service_tbt_ms": 9,
+          "service_ttft_ms": 592,
+          "service_ttlt_ms": 1829,
+          "user_visible_ttft_ms": 468
+        }
+      },
+      "http_status": 200,
+      "returned_model": "gpt-5.2-2025-12-11",
+      "elapsed_ms": 2814.82
+    },
+    {
+      "sequence": 5,
+      "case": "counterfactual-man-30",
+      "deployment": "gpt-5.2",
+      "expected_model_version": "2025-12-11",
+      "started_at": "2026-09-12T03:17:18.048799+00:00",
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 120,
+        "prompt_tokens": 144,
+        "total_tokens": 264,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        },
+        "latency_checkpoint": {
+          "engine_tbt_ms": 10,
+          "engine_ttft_ms": 63,
+          "engine_ttlt_ms": 1223,
+          "pre_inference_ms": 81,
+          "service_tbt_ms": 9,
+          "service_ttft_ms": 544,
+          "service_ttlt_ms": 1670,
+          "user_visible_ttft_ms": 463
+        }
+      },
+      "http_status": 200,
+      "returned_model": "gpt-5.2-2025-12-11",
+      "elapsed_ms": 2472.48
+    },
+    {
+      "sequence": 6,
+      "case": "counterfactual-nonbinary-30",
+      "deployment": "gpt-5.2",
+      "expected_model_version": "2025-12-11",
+      "started_at": "2026-09-12T03:17:25.528108+00:00",
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 117,
+        "prompt_tokens": 145,
+        "total_tokens": 262,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        },
+        "latency_checkpoint": {
+          "engine_tbt_ms": 10,
+          "engine_ttft_ms": 46,
+          "engine_ttlt_ms": 1158,
+          "pre_inference_ms": 82,
+          "service_tbt_ms": 9,
+          "service_ttft_ms": 285,
+          "service_ttlt_ms": 1392,
+          "user_visible_ttft_ms": 203
+        }
+      },
+      "http_status": 200,
+      "returned_model": "gpt-5.2-2025-12-11",
+      "elapsed_ms": 2254.86
+    },
+    {
+      "sequence": 7,
+      "case": "counterfactual-woman-65",
+      "deployment": "gpt-5.2",
+      "expected_model_version": "2025-12-11",
+      "started_at": "2026-09-12T03:17:32.789172+00:00",
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 141,
+        "prompt_tokens": 144,
+        "total_tokens": 285,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        },
+        "latency_checkpoint": {
+          "engine_tbt_ms": 10,
+          "engine_ttft_ms": 50,
+          "engine_ttlt_ms": 1493,
+          "pre_inference_ms": 61,
+          "service_tbt_ms": 10,
+          "service_ttft_ms": 845,
+          "service_ttlt_ms": 2283,
+          "user_visible_ttft_ms": 784
+        }
+      },
+      "http_status": 200,
+      "returned_model": "gpt-5.2-2025-12-11",
+      "elapsed_ms": 3517.59
+    },
+    {
+      "sequence": 8,
+      "case": "native-model-planned-sql-dashboard",
+      "started_at": "2026-09-12T04:08:26.936019+00:00",
+      "status": "completed",
+      "deployment": "gpt-5.2",
+      "usage": {
+        "completion_tokens": 931,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "latency_checkpoint": {
+          "engine_tbt_ms": 8,
+          "engine_ttft_ms": 107,
+          "engine_ttlt_ms": 7610,
+          "pre_inference_ms": 81,
+          "service_tbt_ms": 8,
+          "service_ttft_ms": 342,
+          "service_ttlt_ms": 7840,
+          "user_visible_ttft_ms": 260
+        },
+        "prompt_tokens": 2636,
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        },
+        "total_tokens": 3567
+      },
+      "http_status": 200,
+      "returned_model": "gpt-5.2-2025-12-11",
+      "elapsed_ms": 9199.5
+    },
+    {
+      "sequence": 9,
+      "case": "native-processing-insights",
+      "started_at": "2026-09-12T04:08:36.438669+00:00",
+      "status": "completed",
+      "deployment": "gpt-5.2",
+      "usage": {
+        "completion_tokens": 1889,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "latency_checkpoint": {
+          "engine_tbt_ms": 10,
+          "engine_ttft_ms": 58,
+          "engine_ttlt_ms": 19548,
+          "pre_inference_ms": 84,
+          "service_tbt_ms": 10,
+          "service_ttft_ms": 421,
+          "service_ttlt_ms": 19883,
+          "user_visible_ttft_ms": 337
+        },
+        "prompt_tokens": 923,
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        },
+        "total_tokens": 2812
+      },
+      "http_status": 200,
+      "returned_model": "gpt-5.2-2025-12-11",
+      "elapsed_ms": 20736.54
+    }
+  ],
+  "latency_scope": "Sequences1-7 measured SDK RawResponse call;8-9 measured httpx.Client.send. Do not combine into one like-for-like latency statistic.",
+  "blocked_before_dispatch_during_persistence": 6,
+  "blocked_calls_are_not_dispatched_inference": true,
+  "ground_truth": {
+    "records": 3,
+    "categories": 2,
+    "source_types": 1
+  },
+  "source_findings": {
+    "kpi": "src/api/modules/insights/service.py:597 onward: query_type=count executes COUNT(*), not distinct count; labels are not checked against metric semantics.",
+    "anonymization": "src/api/modules/insights/service.py:350-425: broad token extraction and replacement with users can damage ordinary prose.",
+    "file_context": "src/api/modules/ingestion/service.py:372 onward: pre-enriched multi-document file summary retains collection count plus first summary; processing insights consumes file summaries, not all transcripts."
+  },
+  "sql_identity_correction": {
+    "initial_error": "Used principal/object ID rather than client/application ID for a TYPE=E service-principal contained user; fresh post-handoff SQL initialization failed.",
+    "corrected_user": "id-ptu-conversation-runtime",
+    "client_id_used_for_sql_sid": "1b458b7e-1768-45a9-b676-9a3245a4dfbe",
+    "azure_rbac_still_uses_principal_id": "b0c36c36-5b9f-4efa-9f01-0e19fb97aa25",
+    "roles": [
+      "db_datareader",
+      "db_datawriter",
+      "db_ddladmin"
+    ],
+    "db_owner": false,
+    "app_is_server_admin": false,
+    "incorrect_user_roles_removed": true,
+    "users_or_data_deleted": false,
+    "final_verified": {
+      "scope": "CKM own SQL contained identity",
+      "mode": "verify",
+      "model_requests": 0,
+      "checked_at": "2026-09-12T04:25:38.735333+00:00",
+      "current_user": "id-ptu-conversation-runtime",
+      "db_owner": 0,
+      "reader": 1,
+      "writer": 1,
+      "ddl_admin": 1,
+      "ground_truth": {
+        "records": 3,
+        "categories": 2,
+        "source_types": 1
+      },
+      "native_sql_initialized_and_reloaded": true,
+      "status": "succeeded"
+    },
+    "source": "https://learn.microsoft.com/en-us/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-current#k-create-a-contained-database-user-from-a-microsoft-entra-principal-without-validation"
+  },
+  "cost": {
+    "currency": "USD",
+    "invoice_measured": false,
+    "fixed_active_review_limit_per_hour": 1.5,
+    "full_max2_sql_basic_four_pes_both_apps_32gb_reference_per_hour": 1.4797652055,
+    "api_only_during_workflow_max_reference_per_hour": 1.4527652055,
+    "model_input_rate_per_million": 1.75,
+    "model_output_rate_per_million": 14,
+    "cumulative_model_token_reference_usd": 0.05975725,
+    "additional_data_workflow_token_reference_usd": 0.04570825,
+    "all_remote_builds_reference_usd": 0.05921071700000001,
+    "search_basic_per_hour": 0.101,
+    "four_private_endpoints_per_hour": 0.04,
+    "sql_per_billed_vcore_hour": 0.62611,
+    "sql_32gb_data_hourly_allowance": 0.0055452055,
+    "baseline_after_sql_actually_pauses_per_hour": 0.1465452055,
+    "baseline_if_sql_billed_at_min05_per_hour": 0.4596002055,
+    "actual_sql_state": "Online",
+    "sql_pause_observed": false,
+    "last_data_connection_check": "2026-09-12T04:25:38.735333+00:00",
+    "auto_pause_minutes": 60,
+    "aca_reported_replicas": 0,
+    "excluded": [
+      "Shared registry/DNS allocation",
+      "Blob capacity/operations",
+      "Network/data processing/egress",
+      "Logs",
+      "SQL backup overage",
+      "Taxes/discount differences"
+    ],
+    "not_ptu_charges": [
+      "SQL",
+      "Search",
+      "Blob",
+      "Private Link",
+      "ACA",
+      "ACR",
+      "CU",
+      "Separate embeddings"
+    ]
+  },
+  "builds": [
+    {
+      "cpu": 2,
+      "finish": "2026-09-11T23:04:53.408381-04:00",
+      "images": [
+        {
+          "digest": "sha256:d0bb87b6b567a7e369d424f1f05c759acb3d7a897f50e8fd7c6db577709139ed",
+          "registry": "acrptubundle7d804f70.azurecr.io",
+          "repository": "conversation/api",
+          "tag": "8a00aa5-summaryeval1"
+        }
+      ],
+      "runId": "chu",
+      "start": "2026-09-11T23:03:17.102698-04:00",
+      "status": "Succeeded",
+      "elapsed_seconds": 96.305683,
+      "retail_reference_usd": 0.019261136600000003
+    },
+    {
+      "cpu": 2,
+      "finish": "2026-09-11T23:49:13.048277-04:00",
+      "images": [
+        {
+          "digest": "sha256:cf139128a3c4016dd1a4bad1179ffe8495c6ff6c95104a3e6f986f6c328563a8",
+          "registry": "acrptubundle7d804f70.azurecr.io",
+          "repository": "conversation/api",
+          "tag": "8a00aa5-dataeval1"
+        }
+      ],
+      "runId": "chv",
+      "start": "2026-09-11T23:47:41.743119-04:00",
+      "status": "Succeeded",
+      "elapsed_seconds": 91.305158,
+      "retail_reference_usd": 0.0182610316
+    },
+    {
+      "cpu": 2,
+      "finish": "2026-09-11T23:53:56.284137-04:00",
+      "images": [
+        {
+          "digest": "sha256:165cafca5e81e73097f0268b226fc2c2d5f9bb291fae0f216e40dc5dddb57a85",
+          "registry": "acrptubundle7d804f70.azurecr.io",
+          "repository": "conversation/api",
+          "tag": "8a00aa5-dataeval2"
+        }
+      ],
+      "runId": "chw",
+      "start": "2026-09-11T23:52:35.839367-04:00",
+      "status": "Succeeded",
+      "elapsed_seconds": 80.44477,
+      "retail_reference_usd": 0.016088954000000003
+    },
+    {
+      "cpu": 2,
+      "finish": "2026-09-12T04:21:18.815386+00:00",
+      "images": [
+        {
+          "digest": "sha256:fa78799cb2142dfdeae5ed38c9e48d87f9cb7de15df25be6c68a6fa716fafea3",
+          "registry": "acrptubundle7d804f70.azurecr.io",
+          "repository": "conversation/api",
+          "tag": "8a00aa5-sqltools"
+        }
+      ],
+      "runId": "chx",
+      "start": "2026-09-12T04:20:50.817412+00:00",
+      "status": "Succeeded",
+      "elapsed_seconds": 27.997974,
+      "retail_reference_usd": 0.0055995948000000005
+    }
+  ],
+  "full_application_deployed": false,
+  "serving_api_model_and_data_endpoints_remain_unset": true,
+  "evaluation_shape": "Original native routes via in-container TestClient using real private Azure dependencies, not public browser end-to-end deployment",
+  "last_verified_at": "2026-09-12T04:30:52.4655472+00:00",
+  "final_revisions": [
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-api--cdcg7po",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-api--0000001",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-api--0000002",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-api--0000003",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-api--0000004",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-api--0000005",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-api--0000006",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-api--0000007",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-api--0000008",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-ui--ck2tl0m",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-ui--0000001",
+      "replicas": 0
+    },
+    {
+      "active": false,
+      "health": "Healthy",
+      "name": "ca-ptu-conversation-ui--0000002",
+      "replicas": 0
+    }
+  ],
+  "final_pause_session": "ckm-final-identity-pause",
+  "final_pause_exit_code": 0,
+  "prior_failed_handoff_pause_session": "ckm-data-final-pause (exit1 from auth probe; compute pause succeeded)"
+}

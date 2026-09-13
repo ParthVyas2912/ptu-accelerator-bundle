@@ -1,0 +1,29 @@
+[
+  {
+    "file": "unsupported.txt",
+    "expected": 415,
+    "actualStatus": 415,
+    "acceptedForDownstreamProcessing": false,
+    "latencyMs": 251.526,
+    "networkRequests": 0,
+    "scope": "direct production validator function; NOT HTTP endpoint or end-to-end processing"
+  },
+  {
+    "file": "bad-magic.pdf",
+    "expected": 415,
+    "actualStatus": 415,
+    "acceptedForDownstreamProcessing": false,
+    "latencyMs": 38.812,
+    "networkRequests": 0,
+    "scope": "direct production validator function; NOT HTTP endpoint or end-to-end processing"
+  },
+  {
+    "file": "truncated.pdf",
+    "expected": "requires downstream parse",
+    "actualStatus": null,
+    "acceptedForDownstreamProcessing": true,
+    "latencyMs": 123.425,
+    "networkRequests": 0,
+    "scope": "direct production validator function; NOT HTTP endpoint or end-to-end processing"
+  }
+]

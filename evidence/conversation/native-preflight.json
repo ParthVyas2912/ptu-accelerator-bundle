@@ -1,0 +1,107 @@
+{
+  "application": "Conversation Knowledge Mining",
+  "as_of": "2026-09-11T21:22:54-04:00",
+  "state": "native_cloud_envelope_approved_driver_elevation_pending",
+  "subscription_id": "1feb53b2-854a-4ea7-b5a6-709b7d804f70",
+  "tenant_id": "a600acd0-3028-4689-8402-3b471d7d924d",
+  "resource_group": "rg-ptu-conversation-demo",
+  "resource_group_exists": false,
+  "azure_resources_created": [],
+  "shared_or_protected_resource_mutations": [],
+  "preflight": [
+    {
+      "id": "model-catalog",
+      "expected": "Approved model versions and GlobalStandard SKU in a repository-supported region",
+      "actual": "Sweden Central catalog lists gpt-5.2/2025-12-11 with Agents V2, Responses and chat support, and text-embedding-3-small/1. Both list GlobalStandard.",
+      "status": "passed",
+      "source": "Guarded az cognitiveservices model list --location swedencentral"
+    },
+    {
+      "id": "model-quota",
+      "expected": "At least10 capacity units remaining for each approved deployment",
+      "actual": [
+        {"usage_name": "OpenAI.GlobalStandard.gpt-5.2", "current": 0, "limit": 1000, "requested": 10},
+        {"usage_name": "OpenAI.GlobalStandard.text-embedding-3-small", "current": 40, "limit": 1000, "requested": 10}
+      ],
+      "status": "passed",
+      "source": "Guarded az cognitiveservices usage list --location swedencentral",
+      "quota_increase_requested": false,
+      "capacity_units_are_ptus": false
+    },
+    {
+      "id": "sql-regional-sku",
+      "expected": "GP_S_Gen5_2 Serverless, min1/max2 and auto-pause60 available",
+      "actual": {
+        "region": "canadacentral",
+        "sku": "GP_S_Gen5",
+        "service_objective": "GP_S_Gen5_2",
+        "status": "Available",
+        "compute_model": "Serverless",
+        "capacity": 2,
+        "minimum1_supported": true,
+        "auto_pause_minimum": 15,
+        "auto_pause_default": 60,
+        "lrs_backup_supported": true
+      },
+      "status": "passed",
+      "source": "Guarded az sql db list-editions --available --service-objective GP_S_Gen5_2 --location canadacentral",
+      "initial_cli_syntax_retry": "Removed --show-details without its required argument; first command did not invoke a deployment."
+    },
+    {
+      "id": "basic-search-compatibility",
+      "expected": "Support native HNSW,1536-dimensional vectorizer and semantic configuration without S1",
+      "actual": "Official vector overview says all regions/tiers; semantic billing supports Basic; Canada Central regional table supports semantic ranker. Native module supports Basic, though root forces S1.",
+      "status": "passed_documented_not_live_index_tested",
+      "replicas": 1,
+      "partitions": 1,
+      "retail_usd_per_hour": 0.101,
+      "sources": [
+        "https://learn.microsoft.com/en-us/azure/search/vector-search-overview",
+        "https://learn.microsoft.com/en-us/azure/search/semantic-how-to-enable-disable",
+        "https://learn.microsoft.com/en-us/azure/search/search-region-support"
+      ]
+    },
+    {
+      "id": "native-sql-driver",
+      "expected": "ODBC Driver18 registered, usable by existing Python3.12 pyodbc environment",
+      "actual": "ODBC18 absent; only legacy SQL Server and Office drivers found. Current shell not elevated.",
+      "status": "blocked",
+      "source": "Original src/api/storage/sql_service.py and pyodbc.drivers()",
+      "passwordless_auth_supported_by_original_code": true,
+      "attempts": [
+        {"approach": "Official Winget package, user scope", "status": "failed", "result": "No applicable installer found", "exit_code": -1978335216},
+        {"approach": "Official Winget package, machine scope,18.6.2.1", "status": "failed", "result": "MSI1618 another installation already in progress", "package_hash_verified": true},
+        {"approach": "One delayed machine-scope retry", "status": "pending_normal_windows_elevation", "result": "Starting package install; contemporaneous consent.exe and empty installer log", "session_id": "ckm-odbc-retry", "winget_pid": 33272, "consent_pid": 15740}
+      ],
+      "uac_bypassed": false,
+      "other_installers_terminated": false,
+      "tls_or_driver_downgrade": false,
+      "next_action": "Approve pending ODBC18 Windows elevation, or have an administrator install the official driver; verify pyodbc.drivers() before provisioning."
+    }
+  ],
+  "local_verification": {
+    "api": {"url": "http://127.0.0.1:8115", "probe": "/openapi.json", "http_status": 200, "pid": 4676, "session_id": "ckm-api", "bind": "127.0.0.1"},
+    "ui": {"url": "http://127.0.0.1:5115", "http_status": 200, "pid": 23408, "session_id": "ckm-ui", "bind": "127.0.0.1"},
+    "mode": "original_offline_component_app",
+    "full_azure_workflows_verified": false
+  },
+  "traffic": {
+    "actual_model_requests": 0,
+    "request_cap_including_retries": 12,
+    "returned_token_usage": [],
+    "actual_content_understanding_calls": 0,
+    "load_tests": false,
+    "ptu_tests": false
+  },
+  "remaining_before_live": [
+    "Resolve ODBC18 elevation prerequisite and validate registered driver.",
+    "Provision only approved isolated services with Entra authentication and narrow SQL access; no stock hooks.",
+    "Install actual usage/request instrumentation and a conservative hard budget covering hosted tools and vectorization.",
+    "Disable native enrichment agent/conversation automatic deletion for the no-auto-cleanup evaluation.",
+    "Run and measure authentic ingestion, summaries, cross-call citations/themes/uncertainty and SQL-planned dashboard; do not count earlier fallback dashboard as model success."
+  ],
+  "residency": "Only synthetic data permitted. New AI service/project would be Sweden Central; GlobalStandard processing may be global and is not Canada-confined.",
+  "pricing_evidence": "evidence/conversation/pricing.json#native_operating_estimate",
+  "catalog_is_not_an_allocation_guarantee": true,
+  "automatic_azure_cleanup": false
+}

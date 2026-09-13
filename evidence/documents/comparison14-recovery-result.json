@@ -1,0 +1,35 @@
+{
+  "inference_calls": 0,
+  "status": "NO_RECOVERABLE_COMPARISON_FOUND",
+  "mongo_DPS_collections": [
+    "Documents"
+  ],
+  "mongo_default_collections": [],
+  "source_findings": [
+    {
+      "file": "App/backend-api/Microsoft.GS.DPS.Host/API/KernelMemory/KernelMemory.cs",
+      "lines": "523-539",
+      "finding": "Original /Documents/Ask returns MemoryWebClient answer directly, without history/response persistence."
+    },
+    {
+      "file": "App/kernel-memory/service/Core/Search/SearchClient.cs",
+      "lines": "332-361",
+      "finding": "Generated text assigned to MemoryAnswer and returned; no response write in this path."
+    },
+    {
+      "file": "App/kernel-memory/service/Abstractions/Models/MemoryAnswer.cs",
+      "lines": "17-57",
+      "finding": "Response contract contains question/text/citations, no stored provider response ID."
+    }
+  ],
+  "known_stored_response_id": null,
+  "reconstruction_performed": false,
+  "blob_inventory_evidence": "comparison14-inventory.json",
+  "containers_checked": [
+    "smemory"
+  ],
+  "blob_count": 18,
+  "small_text_json_contents_checked": 13,
+  "matching_response_found": false,
+  "conclusion": "Owned Blob contains only two document pipelines; eligible text/JSON inspection found no prior question/answer. No Mongo history collection or stored provider response ID. No reconstruction performed."
+}

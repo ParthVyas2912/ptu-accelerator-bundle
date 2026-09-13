@@ -1,0 +1,35 @@
+{
+  "app": "Modernize Your Code",
+  "status": "closed",
+  "effective_at": "2026-09-11T22:42:56.518-04:00",
+  "approval_reference": "Parent budget custody update: reclaim Modernize's two unused evaluation attempts",
+  "original_total_limit": 12,
+  "total_limit": 10,
+  "used": 10,
+  "remaining": 0,
+  "reallocated_attempts": 2,
+  "recipient": "MACAE",
+  "portfolio_allocated_ceiling": 100,
+  "new_explicit_budget_required_for_start_or_evaluation": true,
+  "inference_disarmed": true,
+  "remote_ledger": {
+    "updated": false,
+    "last_observed_total_cap": 12,
+    "last_observed_used": 10,
+    "last_observed_processing_enabled": false,
+    "reason": "Private Blob is not reachable from the local evaluator; updating it through in-VNet exec would require reactivating paused compute, prohibited for this custody-only update.",
+    "historical_headroom_is_not_authorization": true
+  },
+  "local_guard_sources_updated": true,
+  "container_images_rebuilt_or_redeployed": false,
+  "compute_reactivated": false,
+  "last_verified_app_replicas": {
+    "api": 0,
+    "ui": 0,
+    "evidence": "cloud-paused-state.json",
+    "observed_at": "2026-09-11T21:31:33.0134656-04:00",
+    "new_cloud_probe_for_custody_update": false
+  },
+  "model_calls_for_update": 0,
+  "verified_outcomes_unchanged": true
+}

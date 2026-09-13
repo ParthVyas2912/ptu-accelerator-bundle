@@ -1,0 +1,18 @@
+### Step1 [completed]
+Collected key parameters from the incident: region=us-east, service_name=api.gateway.main, environment=prod, start_time=2024-01-20T06:30:00Z, end_time=2024-01-20T08:30:00Z, threshold=99.9%. These parameters will guide the parallel execution of Steps 2 through 10 for comprehensive analysis of the availability drop incident.
+
+### Step2 [completed]
+Service version regression analysis completed. The latest version 3.14.2 does not show a regression in failure rate or performance compared to the previous version 3.14.1. Failure rate delta is -0.10%, and assessment is NO_REGRESSION. No rollback is recommended based on this data.
+
+### Step3 [completed]
+Feature flag impact analysis completed. No feature flags were found with error rates exceeding 8% and request counts over 1000. No immediate action is required regarding feature flags.
+
+### Step4 [completed]
+Regional availability analysis for us-east shows critical health status in availability zones az-2 and az-3 of datacenter dc3 with availability around 94.7-94.8%, and warning status in az-2 of dc1 with availability around 95.6%. The availability trends are stable but below SLA thresholds, confirming regional degradation contributing to the incident. These zones require focused attention in remediation efforts.
+
+### Step5 [completed]
+Partition-based availability analysis identified 20 partitions with health issues. The most severe partitions exhibit high error rates (>10%), low success rates (<95%), and high average latencies (>500ms). These partitions affect a notable number of users and show poor health scores, indicating that partition-level failures are a significant factor in the overall system availability drop. This analysis supports focused investigation and remediation at the partition and shard level.
+
+### Step6 [completed]
+Zone-level availability analysis for us-east reveals that availability zones az-2 and az-3 are in a DEGRADED state with success rates below 95%, infrastructure error rates around 2.5%, and elevated latencies near 490ms. These zones have the lowest health scores and highest priority for remediation. Other zones are HEALTHY with success rates above 96%. Immediate focus on these degraded zones is recommended to improve overall system availability.
+

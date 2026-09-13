@@ -1,0 +1,18 @@
+{
+  "armed": false,
+  "cap": 14,
+  "baseline": 12,
+  "allowed_operation": "Only corpus/two-document comparison",
+  "maximum_provider_attempts": 2,
+  "recovery_checked": true,
+  "capture_verified": true,
+  "capture_proof": {
+    "url": "https://stdkmeval0911a.blob.core.windows.net/smemory/_dkm-evaluation/comparison14-capture-probe.json",
+    "sha256": "79e8fdb4b072f397fd8417e90b1ca594a55ec24e607053218d15bcd6a2ffe789",
+    "bytes": 162,
+    "persisted": true
+  },
+  "consumed_utc": "2026-09-12T03:00:48.7725850Z",
+  "finalized": true,
+  "disarmed_reason": "Single approved repeat completed; no further inference authorized"
+}

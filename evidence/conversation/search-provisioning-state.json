@@ -1,0 +1,12 @@
+{
+  "disableLocalAuth": true,
+  "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.Search/searchServices/srch-ptu-conversation-7d804f70",
+  "location": "Canada Central",
+  "partitions": 1,
+  "pna": "Disabled",
+  "provisioningState": "succeeded",
+  "replicas": 1,
+  "sku": "basic",
+  "status": "running",
+  "statusDetails": ""
+}

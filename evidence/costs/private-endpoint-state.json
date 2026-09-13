@@ -1,0 +1,131 @@
+{
+  "observedAtUtc": "2026-09-12T05:00:36.1341517Z",
+  "endpoints": [
+    {
+      "name": "pe-chatbot-cosmos",
+      "state": "Succeeded",
+      "connections": [
+        "Approved"
+      ]
+    },
+    {
+      "name": "pe-chatbot-search",
+      "state": "Succeeded",
+      "connections": [
+        "Approved"
+      ]
+    },
+    {
+      "name": "pe-content-ai",
+      "state": "Succeeded",
+      "connections": [
+        "Approved"
+      ]
+    },
+    {
+      "name": "pe-content-blob",
+      "state": "Succeeded",
+      "connections": [
+        "Approved"
+      ]
+    },
+    {
+      "name": "pe-content-mongo",
+      "state": "Succeeded",
+      "connections": [
+        "Approved"
+      ]
+    },
+    {
+      "name": "pe-content-queue",
+      "state": "Succeeded",
+      "connections": [
+        "Approved"
+      ]
+    },
+    {
+      "name": "pe-conversation-ai",
+      "state": "Succeeded",
+      "connections": [
+        "Approved"
+      ]
+    },
+    {
+      "name": "pe-conversation-blob",
+      "state": "Succeeded",
+      "connections": [
+        "Approved"
+      ]
+    },
+    {
+      "name": "pe-conversation-search",
+      "state": "Succeeded",
+      "connections": [
+        "Approved"
+      ]
+    },
+    {
+      "name": "pe-conversation-sql",
+      "state": "Succeeded",
+      "connections": [
+        "Approved"
+      ]
+    },
+    {
+      "name": "pe-documents-blob",
+      "state": "Succeeded",
+      "connections": [
+        "Approved"
+      ]
+    },
+    {
+      "name": "pe-documents-mongo",
+      "state": "Succeeded",
+      "connections": [
+        "Approved"
+      ]
+    },
+    {
+      "name": "pe-documents-queue",
+      "state": "Succeeded",
+      "connections": [
+        "Approved"
+      ]
+    },
+    {
+      "name": "pe-macae-blob",
+      "state": "Succeeded",
+      "connections": [
+        "Approved"
+      ]
+    },
+    {
+      "name": "pe-macae-cosmos",
+      "state": "Succeeded",
+      "connections": [
+        "Approved"
+      ]
+    },
+    {
+      "name": "pe-macae-search",
+      "state": "Succeeded",
+      "connections": [
+        "Approved"
+      ]
+    },
+    {
+      "name": "pe-modernize-blob",
+      "state": "Succeeded",
+      "connections": [
+        "Approved"
+      ]
+    },
+    {
+      "name": "pe-modernize-cosmos",
+      "state": "Succeeded",
+      "connections": [
+        "Approved"
+      ]
+    }
+  ]
+}

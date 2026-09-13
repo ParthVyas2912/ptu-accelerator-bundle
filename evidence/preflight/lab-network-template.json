@@ -1,0 +1,231 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.44.1.10279",
+      "templateHash": "13153403732955659100"
+    }
+  },
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "eastus2"
+    },
+    "registryName": {
+      "type": "string",
+      "defaultValue": "acrptubundle7d804f70"
+    },
+    "privateEndpoints": {
+      "type": "array",
+      "defaultValue": []
+    }
+  },
+  "variables": {
+    "tags": {
+      "workload": "accelerator-eval",
+      "owner": "parth",
+      "environment": "mcaps-nonprod",
+      "accelerator": "shared-connectivity",
+      "protected": "false"
+    },
+    "zoneNames": [
+      "privatelink.documents.azure.com",
+      "privatelink.mongo.cosmos.azure.com",
+      "privatelink.blob.core.windows.net",
+      "privatelink.queue.core.windows.net",
+      "privatelink.azconfig.io",
+      "privatelink.search.windows.net"
+    ]
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Network/virtualNetworks",
+      "apiVersion": "2024-05-01",
+      "name": "vnet-ptu-bundle",
+      "location": "[parameters('location')]",
+      "tags": "[variables('tags')]",
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "10.246.0.0/16"
+          ]
+        },
+        "subnets": [
+          {
+            "name": "snet-aca",
+            "properties": {
+              "addressPrefix": "10.246.0.0/23",
+              "delegations": [
+                {
+                  "name": "container-apps",
+                  "properties": {
+                    "serviceName": "Microsoft.App/environments"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "snet-private-endpoints",
+            "properties": {
+              "addressPrefix": "10.246.2.0/24",
+              "privateEndpointNetworkPolicies": "Disabled"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "Microsoft.App/managedEnvironments",
+      "apiVersion": "2024-03-01",
+      "name": "cae-ptu-bundle",
+      "location": "[parameters('location')]",
+      "tags": "[variables('tags')]",
+      "properties": {
+        "appLogsConfiguration": {
+          "destination": "none"
+        },
+        "vnetConfiguration": {
+          "infrastructureSubnetId": "[resourceId('Microsoft.Network/virtualNetworks/subnets', 'vnet-ptu-bundle', 'snet-aca')]",
+          "internal": false
+        },
+        "workloadProfiles": [
+          {
+            "name": "Consumption",
+            "workloadProfileType": "Consumption"
+          }
+        ],
+        "zoneRedundant": false
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', 'vnet-ptu-bundle')]"
+      ]
+    },
+    {
+      "type": "Microsoft.ContainerRegistry/registries",
+      "apiVersion": "2023-07-01",
+      "name": "[parameters('registryName')]",
+      "location": "[parameters('location')]",
+      "tags": "[variables('tags')]",
+      "sku": {
+        "name": "Basic"
+      },
+      "properties": {
+        "adminUserEnabled": false,
+        "anonymousPullEnabled": false
+      }
+    },
+    {
+      "copy": {
+        "name": "zones",
+        "count": "[length(variables('zoneNames'))]"
+      },
+      "type": "Microsoft.Network/privateDnsZones",
+      "apiVersion": "2024-06-01",
+      "name": "[variables('zoneNames')[copyIndex()]]",
+      "location": "global",
+      "tags": "[variables('tags')]"
+    },
+    {
+      "copy": {
+        "name": "links",
+        "count": "[length(variables('zoneNames'))]"
+      },
+      "type": "Microsoft.Network/privateDnsZones/virtualNetworkLinks",
+      "apiVersion": "2024-06-01",
+      "name": "[format('{0}/{1}', variables('zoneNames')[copyIndex()], 'ptu-bundle-vnet')]",
+      "location": "global",
+      "properties": {
+        "registrationEnabled": false,
+        "virtualNetwork": {
+          "id": "[resourceId('Microsoft.Network/virtualNetworks', 'vnet-ptu-bundle')]"
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', 'vnet-ptu-bundle')]",
+        "[resourceId('Microsoft.Network/privateDnsZones', variables('zoneNames')[copyIndex()])]"
+      ]
+    },
+    {
+      "copy": {
+        "name": "endpoints",
+        "count": "[length(parameters('privateEndpoints'))]"
+      },
+      "type": "Microsoft.Network/privateEndpoints",
+      "apiVersion": "2024-05-01",
+      "name": "[parameters('privateEndpoints')[copyIndex()].name]",
+      "location": "[parameters('location')]",
+      "tags": "[variables('tags')]",
+      "properties": {
+        "subnet": {
+          "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', 'vnet-ptu-bundle', 'snet-private-endpoints')]"
+        },
+        "privateLinkServiceConnections": [
+          {
+            "name": "[parameters('privateEndpoints')[copyIndex()].name]",
+            "properties": {
+              "privateLinkServiceId": "[parameters('privateEndpoints')[copyIndex()].resourceId]",
+              "groupIds": [
+                "[parameters('privateEndpoints')[copyIndex()].groupId]"
+              ]
+            }
+          }
+        ]
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', 'vnet-ptu-bundle')]"
+      ]
+    },
+    {
+      "copy": {
+        "name": "zoneGroups",
+        "count": "[length(parameters('privateEndpoints'))]"
+      },
+      "type": "Microsoft.Network/privateEndpoints/privateDnsZoneGroups",
+      "apiVersion": "2024-05-01",
+      "name": "[format('{0}/{1}', parameters('privateEndpoints')[copyIndex()].name, 'default')]",
+      "properties": {
+        "privateDnsZoneConfigs": [
+          {
+            "name": "service",
+            "properties": {
+              "privateDnsZoneId": "[resourceId('Microsoft.Network/privateDnsZones', parameters('privateEndpoints')[copyIndex()].zoneName)]"
+            }
+          }
+        ]
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/privateEndpoints', parameters('privateEndpoints')[copyIndex()].name)]",
+        "zones"
+      ]
+    }
+  ],
+  "outputs": {
+    "environmentId": {
+      "type": "string",
+      "value": "[resourceId('Microsoft.App/managedEnvironments', 'cae-ptu-bundle')]"
+    },
+    "environmentName": {
+      "type": "string",
+      "value": "cae-ptu-bundle"
+    },
+    "registryLoginServer": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.ContainerRegistry/registries', parameters('registryName')), '2023-07-01').loginServer]"
+    },
+    "registryId": {
+      "type": "string",
+      "value": "[resourceId('Microsoft.ContainerRegistry/registries', parameters('registryName'))]"
+    },
+    "vnetId": {
+      "type": "string",
+      "value": "[resourceId('Microsoft.Network/virtualNetworks', 'vnet-ptu-bundle')]"
+    },
+    "privateEndpointSubnetId": {
+      "type": "string",
+      "value": "[resourceId('Microsoft.Network/virtualNetworks/subnets', 'vnet-ptu-bundle', 'snet-private-endpoints')]"
+    }
+  }
+}

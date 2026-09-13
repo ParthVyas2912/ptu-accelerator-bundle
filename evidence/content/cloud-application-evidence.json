@@ -1,0 +1,1457 @@
+{
+  "capturedUtc": "2026-09-12T01:48:28.411290+00:00",
+  "mode": "adapted private Container Apps deployment, authenticated exec",
+  "observations": {
+    "source": "Actual authenticated Azure Container Apps exec stdout, execution sessions614,621,626,632,635,641,642,649",
+    "mode": "Real private application, not mocks and not completed inference pipeline",
+    "apiHealth": {
+      "httpStatus": 200,
+      "body": {
+        "message": "I'm alive!"
+      }
+    },
+    "webInternalHttp": {
+      "httpStatus": 200,
+      "server": "nginx/1.28.3",
+      "contentType": "text/html",
+      "contentLength": 713
+    },
+    "privateDns": {
+      "stptuvcontent260911.blob.core.windows.net": [
+        "10.246.2.16"
+      ],
+      "stptuvcontent260911.queue.core.windows.net": [
+        "10.246.2.17"
+      ],
+      "cosmos-ptuv-content-260911.mongo.cosmos.azure.com": [
+        "10.246.2.14"
+      ],
+      "aif-ptuv-content-260911.cognitiveservices.azure.com": [
+        "20.62.58.5"
+      ],
+      "aif-ptuv-content-260911.openai.azure.com": [
+        "20.62.58.5"
+      ]
+    },
+    "apiManagedIdentityChecks": {
+      "blobList": "passed",
+      "queueList": "passed",
+      "appConfig40Keys": "passed",
+      "mongoPing": {
+        "ok": 1.0
+      }
+    },
+    "processorManagedIdentityChecks": {
+      "blobList": "passed",
+      "queueList": "passed",
+      "appConfig40Keys": "passed",
+      "mongoPing": {
+        "ok": 1.0
+      }
+    },
+    "schemaRegistration": {
+      "schemaCount": 4,
+      "schemaSetId": "0669038a-dcc4-46c7-b53c-1209263c070b",
+      "httpCalls": 12,
+      "allHttpStatuses": 200
+    },
+    "completeClaim": {
+      "claimId": "77f4a16d-96fe-4739-b90a-9ac0b2597bb4",
+      "createHttpStatus": 200,
+      "uploads": [
+        {
+          "file": "claim-form.pdf",
+          "status": 200
+        },
+        {
+          "file": "damage-diagram.png",
+          "status": 200
+        },
+        {
+          "file": "police-report.pdf",
+          "status": 200
+        },
+        {
+          "file": "repair-estimate.pdf",
+          "status": 200
+        }
+      ],
+      "submitted": false,
+      "inferenceCompleted": false
+    },
+    "corruptClaim": {
+      "claimId": "4ca130f8-2f91-4d3b-8276-e14297e3ef91",
+      "createHttpStatus": 200,
+      "uploads": [
+        {
+          "file": "bad-magic.pdf",
+          "status": 415
+        },
+        {
+          "file": "truncated.pdf",
+          "status": 200,
+          "note": "Header gate accepts; no CU/downstream failure tested"
+        },
+        {
+          "file": "unsupported.txt",
+          "status": 415
+        }
+      ],
+      "submitted": false
+    },
+    "workflowStartup": "Application initialized, queue service started with1 worker; no claims submitted",
+    "processorStartup": "All four real pipeline queues initialized successfully with messageCount0",
+    "modelCalls": 0,
+    "cuAnalyses": 0,
+    "returnedModelTokens": null,
+    "latencyEvidenceLocation": "Own Blob ptu-content-configuration/evaluation/functional-results.json; exact API elapsedMs persisted by driver",
+    "localFullExport": {
+      "status": "succeeded",
+      "capturedUtc": "2026-09-12T01:48:28.411290+00:00",
+      "source": "authenticated exec of baked cloud_export.py; own Blob",
+      "file": "cloud-application-evidence.json"
+    },
+    "publicBrowserVerified": false,
+    "stockAzureDeployment": false,
+    "historicalExportAttempt": {
+      "status": "deferred_after_control_plane_exec_throttle",
+      "httpStatus": 429,
+      "error": "WebSocket Handshake status429 Too Many Requests",
+      "retryAfterSeconds": 600,
+      "observedAtUtc": "2026-09-12T01:27:10Z",
+      "immediateRetryAttempted": false
+    }
+  },
+  "probe": {
+    "source": "cloud-real-api-observed.json; previously executed successfully"
+  },
+  "application": {
+    "content-call-budget.json": null,
+    "functional-results.json": {
+      "syntheticOnly": true,
+      "api": "http://127.0.0.1:80",
+      "apiCalls": [
+        {
+          "timestamp": "2026-09-12T01:21:52.932264+00:00",
+          "method": "GET",
+          "path": "/schemavault/",
+          "status": 200,
+          "elapsedMs": 1347.442,
+          "result": []
+        },
+        {
+          "timestamp": "2026-09-12T01:21:53.870231+00:00",
+          "method": "POST",
+          "path": "/schemavault/",
+          "status": 200,
+          "elapsedMs": 700.55,
+          "result": {
+            "Id": "e40f3710-6659-4b6d-a1c4-f457ac94a07a",
+            "ClassName": "AutoInsuranceClaimForm",
+            "Description": "Auto Insurance Claim Form",
+            "FileName": "autoclaim.json",
+            "ContentType": "application/json",
+            "Format": "json",
+            "Created_On": "2026-09-12T01:21:53Z",
+            "Updated_On": null
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:21:54.681126+00:00",
+          "method": "POST",
+          "path": "/schemavault/",
+          "status": 200,
+          "elapsedMs": 210.875,
+          "result": {
+            "Id": "e26a0118-23cd-46d8-afb8-483e6e3ed2be",
+            "ClassName": "DamagedVehicleImageAssessment",
+            "Description": "Damaged Vehicle Image Assessment",
+            "FileName": "damagedcarimage.json",
+            "ContentType": "application/json",
+            "Format": "json",
+            "Created_On": "2026-09-12T01:21:54Z",
+            "Updated_On": null
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:21:55.100428+00:00",
+          "method": "POST",
+          "path": "/schemavault/",
+          "status": 200,
+          "elapsedMs": 196.441,
+          "result": {
+            "Id": "c56d2d29-82f5-4dc8-9659-c41e47254ce9",
+            "ClassName": "PoliceReportDocument",
+            "Description": "Police Report Document",
+            "FileName": "policereport.json",
+            "ContentType": "application/json",
+            "Format": "json",
+            "Created_On": "2026-09-12T01:21:55Z",
+            "Updated_On": null
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:21:55.596725+00:00",
+          "method": "POST",
+          "path": "/schemavault/",
+          "status": 200,
+          "elapsedMs": 178.53,
+          "result": {
+            "Id": "d5531c34-0d85-40d2-bd9e-c2d361ee2d44",
+            "ClassName": "RepairEstimateDocument",
+            "Description": "Repair Estimate Document",
+            "FileName": "repairestimate.json",
+            "ContentType": "application/json",
+            "Format": "json",
+            "Created_On": "2026-09-12T01:21:55Z",
+            "Updated_On": null
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:21:57.411273+00:00",
+          "method": "GET",
+          "path": "/schemasetvault/",
+          "status": 200,
+          "elapsedMs": 1593.644,
+          "result": []
+        },
+        {
+          "timestamp": "2026-09-12T01:21:57.538888+00:00",
+          "method": "POST",
+          "path": "/schemasetvault/",
+          "status": 200,
+          "elapsedMs": 25.96,
+          "result": {
+            "Id": "0669038a-dcc4-46c7-b53c-1209263c070b",
+            "Name": "Auto Claim",
+            "Description": "Claim schema set for auto claims processing",
+            "Created_On": "2026-09-12T01:21:57.515619Z",
+            "Updated_On": "2026-09-12T01:21:57.515622Z",
+            "Schemas": []
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:21:57.790423+00:00",
+          "method": "GET",
+          "path": "/schemasetvault/0669038a-dcc4-46c7-b53c-1209263c070b/schemas",
+          "status": 200,
+          "elapsedMs": 90.895,
+          "result": []
+        },
+        {
+          "timestamp": "2026-09-12T01:21:58.022563+00:00",
+          "method": "POST",
+          "path": "/schemasetvault/0669038a-dcc4-46c7-b53c-1209263c070b/schemas",
+          "status": 200,
+          "elapsedMs": 102.3,
+          "result": {
+            "Id": "0669038a-dcc4-46c7-b53c-1209263c070b",
+            "Name": "Auto Claim",
+            "Description": "Claim schema set for auto claims processing",
+            "Created_On": "2026-09-12T01:21:57.515619Z",
+            "Updated_On": "2026-09-12T01:21:57.995989Z",
+            "Schemas": [
+              {
+                "Id": "f3fb04fa-f4bf-4fa4-9118-9171a9ed37cf",
+                "SchemaId": "e40f3710-6659-4b6d-a1c4-f457ac94a07a",
+                "Description": "Auto Insurance Claim Form"
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:21:58.103478+00:00",
+          "method": "POST",
+          "path": "/schemasetvault/0669038a-dcc4-46c7-b53c-1209263c070b/schemas",
+          "status": 200,
+          "elapsedMs": 22.778,
+          "result": {
+            "Id": "0669038a-dcc4-46c7-b53c-1209263c070b",
+            "Name": "Auto Claim",
+            "Description": "Claim schema set for auto claims processing",
+            "Created_On": "2026-09-12T01:21:57.515619Z",
+            "Updated_On": "2026-09-12T01:21:58.093577Z",
+            "Schemas": [
+              {
+                "Id": "f3fb04fa-f4bf-4fa4-9118-9171a9ed37cf",
+                "SchemaId": "e40f3710-6659-4b6d-a1c4-f457ac94a07a",
+                "Description": "Auto Insurance Claim Form"
+              },
+              {
+                "Id": "f4039a8c-f208-4da7-82f2-5960f37d1a83",
+                "SchemaId": "e26a0118-23cd-46d8-afb8-483e6e3ed2be",
+                "Description": "Damaged Vehicle Image Assessment"
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:21:58.246637+00:00",
+          "method": "POST",
+          "path": "/schemasetvault/0669038a-dcc4-46c7-b53c-1209263c070b/schemas",
+          "status": 200,
+          "elapsedMs": 37.968,
+          "result": {
+            "Id": "0669038a-dcc4-46c7-b53c-1209263c070b",
+            "Name": "Auto Claim",
+            "Description": "Claim schema set for auto claims processing",
+            "Created_On": "2026-09-12T01:21:57.515619Z",
+            "Updated_On": "2026-09-12T01:21:58.235204Z",
+            "Schemas": [
+              {
+                "Id": "f3fb04fa-f4bf-4fa4-9118-9171a9ed37cf",
+                "SchemaId": "e40f3710-6659-4b6d-a1c4-f457ac94a07a",
+                "Description": "Auto Insurance Claim Form"
+              },
+              {
+                "Id": "f4039a8c-f208-4da7-82f2-5960f37d1a83",
+                "SchemaId": "e26a0118-23cd-46d8-afb8-483e6e3ed2be",
+                "Description": "Damaged Vehicle Image Assessment"
+              },
+              {
+                "Id": "9ce0a46c-b4ed-455a-9bd7-0ce2566ee670",
+                "SchemaId": "c56d2d29-82f5-4dc8-9659-c41e47254ce9",
+                "Description": "Police Report Document"
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:21:58.332974+00:00",
+          "method": "POST",
+          "path": "/schemasetvault/0669038a-dcc4-46c7-b53c-1209263c070b/schemas",
+          "status": 200,
+          "elapsedMs": 25.425,
+          "result": {
+            "Id": "0669038a-dcc4-46c7-b53c-1209263c070b",
+            "Name": "Auto Claim",
+            "Description": "Claim schema set for auto claims processing",
+            "Created_On": "2026-09-12T01:21:57.515619Z",
+            "Updated_On": "2026-09-12T01:21:58.319512Z",
+            "Schemas": [
+              {
+                "Id": "f3fb04fa-f4bf-4fa4-9118-9171a9ed37cf",
+                "SchemaId": "e40f3710-6659-4b6d-a1c4-f457ac94a07a",
+                "Description": "Auto Insurance Claim Form"
+              },
+              {
+                "Id": "f4039a8c-f208-4da7-82f2-5960f37d1a83",
+                "SchemaId": "e26a0118-23cd-46d8-afb8-483e6e3ed2be",
+                "Description": "Damaged Vehicle Image Assessment"
+              },
+              {
+                "Id": "9ce0a46c-b4ed-455a-9bd7-0ce2566ee670",
+                "SchemaId": "c56d2d29-82f5-4dc8-9659-c41e47254ce9",
+                "Description": "Police Report Document"
+              },
+              {
+                "Id": "10cdbcc7-eebf-4540-91af-7e0cc841f7a4",
+                "SchemaId": "d5531c34-0d85-40d2-bd9e-c2d361ee2d44",
+                "Description": "Repair Estimate Document"
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:22:41.840282+00:00",
+          "method": "PUT",
+          "path": "/claimprocessor/claims",
+          "status": 200,
+          "elapsedMs": 266.237,
+          "result": {
+            "claim_id": "77f4a16d-96fe-4739-b90a-9ac0b2597bb4",
+            "schema_collection_id": "0669038a-dcc4-46c7-b53c-1209263c070b",
+            "created_time": "2026-09-12T01:22:41.829681Z",
+            "last_modified_time": "2026-09-12T01:22:41.829687Z",
+            "items": []
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:22:42.162433+00:00",
+          "method": "POST",
+          "path": "/claimprocessor/claims/77f4a16d-96fe-4739-b90a-9ac0b2597bb4/files",
+          "status": 200,
+          "elapsedMs": 47.712,
+          "result": {
+            "batch_id": "77f4a16d-96fe-4739-b90a-9ac0b2597bb4",
+            "file_name": "claim-form.pdf",
+            "size": 1142,
+            "mime_type": "application/pdf"
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:22:42.770219+00:00",
+          "method": "POST",
+          "path": "/claimprocessor/claims/77f4a16d-96fe-4739-b90a-9ac0b2597bb4/files",
+          "status": 200,
+          "elapsedMs": 397.503,
+          "result": {
+            "batch_id": "77f4a16d-96fe-4739-b90a-9ac0b2597bb4",
+            "file_name": "damage-diagram.png",
+            "size": 6636,
+            "mime_type": "image/png"
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:22:43.002568+00:00",
+          "method": "POST",
+          "path": "/claimprocessor/claims/77f4a16d-96fe-4739-b90a-9ac0b2597bb4/files",
+          "status": 200,
+          "elapsedMs": 113.872,
+          "result": {
+            "batch_id": "77f4a16d-96fe-4739-b90a-9ac0b2597bb4",
+            "file_name": "police-report.pdf",
+            "size": 962,
+            "mime_type": "application/pdf"
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:22:43.388919+00:00",
+          "method": "POST",
+          "path": "/claimprocessor/claims/77f4a16d-96fe-4739-b90a-9ac0b2597bb4/files",
+          "status": 200,
+          "elapsedMs": 117.662,
+          "result": {
+            "batch_id": "77f4a16d-96fe-4739-b90a-9ac0b2597bb4",
+            "file_name": "repair-estimate.pdf",
+            "size": 1184,
+            "mime_type": "application/pdf"
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:23:25.896523+00:00",
+          "method": "PUT",
+          "path": "/claimprocessor/claims",
+          "status": 200,
+          "elapsedMs": 19.181,
+          "result": {
+            "claim_id": "4ca130f8-2f91-4d3b-8276-e14297e3ef91",
+            "schema_collection_id": "0669038a-dcc4-46c7-b53c-1209263c070b",
+            "created_time": "2026-09-12T01:23:25.879851Z",
+            "last_modified_time": "2026-09-12T01:23:25.879856Z",
+            "items": []
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:23:26.219758+00:00",
+          "method": "POST",
+          "path": "/claimprocessor/claims/4ca130f8-2f91-4d3b-8276-e14297e3ef91/files",
+          "status": 415,
+          "elapsedMs": 3.415,
+          "result": {
+            "message": "Unsupported or mismatched file type. Only PDF, JPEG, JPG, and PNG are supported.",
+            "file_name": "bad-magic.pdf"
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:23:26.421770+00:00",
+          "method": "POST",
+          "path": "/claimprocessor/claims/4ca130f8-2f91-4d3b-8276-e14297e3ef91/files",
+          "status": 200,
+          "elapsedMs": 53.15,
+          "result": {
+            "batch_id": "4ca130f8-2f91-4d3b-8276-e14297e3ef91",
+            "file_name": "truncated.pdf",
+            "size": 20,
+            "mime_type": "application/pdf"
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:23:26.517258+00:00",
+          "method": "POST",
+          "path": "/claimprocessor/claims/4ca130f8-2f91-4d3b-8276-e14297e3ef91/files",
+          "status": 415,
+          "elapsedMs": 4.141,
+          "result": {
+            "message": "Unsupported or mismatched file type. Only PDF, JPEG, JPG, and PNG are supported.",
+            "file_name": "unsupported.txt"
+          }
+        }
+      ],
+      "schemas": {
+        "autoclaim.json": "e40f3710-6659-4b6d-a1c4-f457ac94a07a",
+        "damagedcarimage.json": "e26a0118-23cd-46d8-afb8-483e6e3ed2be",
+        "policereport.json": "c56d2d29-82f5-4dc8-9659-c41e47254ce9",
+        "repairestimate.json": "d5531c34-0d85-40d2-bd9e-c2d361ee2d44"
+      },
+      "cases": {
+        "complete": {
+          "claimId": "77f4a16d-96fe-4739-b90a-9ac0b2597bb4",
+          "submitted": false
+        },
+        "corrupt": {
+          "claimId": "4ca130f8-2f91-4d3b-8276-e14297e3ef91",
+          "submitted": false
+        }
+      },
+      "schemaSetId": "0669038a-dcc4-46c7-b53c-1209263c070b"
+    }
+  },
+  "apps": [
+    {
+      "containers": [
+        {
+          "env": [
+            {
+              "name": "APP_ENV",
+              "value": "prod"
+            },
+            {
+              "name": "APP_CONFIG_ENDPOINT",
+              "value": "https://appcs-ptuv-content-260911.azconfig.io"
+            },
+            {
+              "name": "APP_CONFIGURATION_URL",
+              "value": "https://appcs-ptuv-content-260911.azconfig.io"
+            },
+            {
+              "name": "APP_LOGGING_LEVEL",
+              "value": "WARNING"
+            },
+            {
+              "name": "OTEL_SDK_DISABLED",
+              "value": "true"
+            },
+            {
+              "name": "CONCURRENT_WORKERS",
+              "value": "1"
+            },
+            {
+              "name": "MAX_RECEIVE_ATTEMPTS",
+              "value": "1"
+            },
+            {
+              "name": "VISIBILITY_TIMEOUT_MINUTES",
+              "value": "15"
+            },
+            {
+              "name": "MESSAGE_TIMEOUT_MINUTES",
+              "value": "20"
+            },
+            {
+              "name": "RETRY_VISIBILITY_DELAY_SECONDS",
+              "value": "30"
+            },
+            {
+              "name": "AZURE_CLIENT_ID",
+              "value": "7df1b86c-d3b0-483e-aa4e-c9d8b204f1e8"
+            },
+            {
+              "name": "CONTENT_SERVICE",
+              "value": "api"
+            }
+          ],
+          "image": "acrptubundle7d804f70.azurecr.io/content/eval-api:659eaa1-r3",
+          "imageType": "ContainerImage",
+          "name": "api",
+          "probes": [
+            {
+              "httpGet": {
+                "path": "/health",
+                "port": 80
+              },
+              "periodSeconds": 10,
+              "timeoutSeconds": 5,
+              "type": "Readiness"
+            },
+            {
+              "failureThreshold": 30,
+              "httpGet": {
+                "path": "/startup",
+                "port": 80
+              },
+              "initialDelaySeconds": 10,
+              "periodSeconds": 10,
+              "timeoutSeconds": 5,
+              "type": "Startup"
+            }
+          ],
+          "resources": {
+            "cpu": 0.25,
+            "ephemeralStorage": "1Gi",
+            "memory": "0.5Gi"
+          }
+        }
+      ],
+      "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-content-demo/providers/Microsoft.App/containerapps/ca-ptu-content-api",
+      "ingress": {
+        "additionalPortMappings": null,
+        "allowInsecure": true,
+        "clientCertificateMode": null,
+        "corsPolicy": null,
+        "customDomains": null,
+        "exposedPort": 0,
+        "external": false,
+        "fqdn": "ca-ptu-content-api.internal.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io",
+        "ipSecurityRestrictions": null,
+        "stickySessions": null,
+        "targetPort": 80,
+        "targetPortHttpScheme": null,
+        "traffic": [
+          {
+            "latestRevision": true,
+            "weight": 100
+          }
+        ],
+        "transport": "Http"
+      },
+      "latestRevision": "ca-ptu-content-api--0000004",
+      "name": "ca-ptu-content-api",
+      "readyRevision": "ca-ptu-content-api--0000004",
+      "runningStatus": "Running",
+      "scale": {
+        "cooldownPeriod": 30,
+        "maxReplicas": 1,
+        "minReplicas": 0,
+        "pollingInterval": 30,
+        "rules": [
+          {
+            "http": {
+              "metadata": {
+                "concurrentRequests": "1"
+              }
+            },
+            "name": "http"
+          }
+        ]
+      }
+    },
+    {
+      "containers": [
+        {
+          "env": [
+            {
+              "name": "APP_ENV",
+              "value": "prod"
+            },
+            {
+              "name": "APP_CONFIG_ENDPOINT",
+              "value": "https://appcs-ptuv-content-260911.azconfig.io"
+            },
+            {
+              "name": "APP_CONFIGURATION_URL",
+              "value": "https://appcs-ptuv-content-260911.azconfig.io"
+            },
+            {
+              "name": "APP_LOGGING_LEVEL",
+              "value": "WARNING"
+            },
+            {
+              "name": "OTEL_SDK_DISABLED",
+              "value": "true"
+            },
+            {
+              "name": "CONCURRENT_WORKERS",
+              "value": "1"
+            },
+            {
+              "name": "MAX_RECEIVE_ATTEMPTS",
+              "value": "1"
+            },
+            {
+              "name": "VISIBILITY_TIMEOUT_MINUTES",
+              "value": "15"
+            },
+            {
+              "name": "MESSAGE_TIMEOUT_MINUTES",
+              "value": "20"
+            },
+            {
+              "name": "RETRY_VISIBILITY_DELAY_SECONDS",
+              "value": "30"
+            },
+            {
+              "name": "AZURE_CLIENT_ID",
+              "value": "835c3d55-d53a-489d-964c-48fd4f158870"
+            },
+            {
+              "name": "CONTENT_SERVICE",
+              "value": "workflow"
+            }
+          ],
+          "image": "acrptubundle7d804f70.azurecr.io/content/eval-workflow:659eaa1-r2",
+          "imageType": "ContainerImage",
+          "name": "workflow",
+          "probes": [],
+          "resources": {
+            "cpu": 0.5,
+            "ephemeralStorage": "2Gi",
+            "memory": "1Gi"
+          }
+        }
+      ],
+      "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-content-demo/providers/Microsoft.App/containerapps/ca-ptu-content-workflow",
+      "ingress": null,
+      "latestRevision": "ca-ptu-content-workflow--0000001",
+      "name": "ca-ptu-content-workflow",
+      "readyRevision": "ca-ptu-content-workflow--0000001",
+      "runningStatus": "Running",
+      "scale": {
+        "cooldownPeriod": 30,
+        "maxReplicas": 1,
+        "minReplicas": 0,
+        "pollingInterval": 30,
+        "rules": null
+      }
+    },
+    {
+      "containers": [
+        {
+          "env": [
+            {
+              "name": "APP_ENV",
+              "value": "prod"
+            },
+            {
+              "name": "APP_CONFIG_ENDPOINT",
+              "value": "https://appcs-ptuv-content-260911.azconfig.io"
+            },
+            {
+              "name": "APP_CONFIGURATION_URL",
+              "value": "https://appcs-ptuv-content-260911.azconfig.io"
+            },
+            {
+              "name": "APP_LOGGING_LEVEL",
+              "value": "WARNING"
+            },
+            {
+              "name": "OTEL_SDK_DISABLED",
+              "value": "true"
+            },
+            {
+              "name": "CONCURRENT_WORKERS",
+              "value": "1"
+            },
+            {
+              "name": "MAX_RECEIVE_ATTEMPTS",
+              "value": "1"
+            },
+            {
+              "name": "VISIBILITY_TIMEOUT_MINUTES",
+              "value": "15"
+            },
+            {
+              "name": "MESSAGE_TIMEOUT_MINUTES",
+              "value": "20"
+            },
+            {
+              "name": "RETRY_VISIBILITY_DELAY_SECONDS",
+              "value": "30"
+            },
+            {
+              "name": "AZURE_CLIENT_ID",
+              "value": "5101963f-1e38-45d2-9f7c-efa9e9f6d122"
+            },
+            {
+              "name": "CONTENT_SERVICE",
+              "value": "processor"
+            }
+          ],
+          "image": "acrptubundle7d804f70.azurecr.io/content/eval-processor:659eaa1-r2",
+          "imageType": "ContainerImage",
+          "name": "processor",
+          "probes": [],
+          "resources": {
+            "cpu": 1.0,
+            "ephemeralStorage": "4Gi",
+            "memory": "2Gi"
+          }
+        }
+      ],
+      "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-content-demo/providers/Microsoft.App/containerapps/ca-ptu-content-processor",
+      "ingress": null,
+      "latestRevision": "ca-ptu-content-processor--0000001",
+      "name": "ca-ptu-content-processor",
+      "readyRevision": "ca-ptu-content-processor--0000001",
+      "runningStatus": "Running",
+      "scale": {
+        "cooldownPeriod": 30,
+        "maxReplicas": 1,
+        "minReplicas": 0,
+        "pollingInterval": 30,
+        "rules": null
+      }
+    },
+    {
+      "containers": [
+        {
+          "env": [
+            {
+              "name": "APP_ENV",
+              "value": "prod"
+            },
+            {
+              "name": "APP_CONFIG_ENDPOINT",
+              "value": "https://appcs-ptuv-content-260911.azconfig.io"
+            },
+            {
+              "name": "APP_CONFIGURATION_URL",
+              "value": "https://appcs-ptuv-content-260911.azconfig.io"
+            },
+            {
+              "name": "APP_LOGGING_LEVEL",
+              "value": "WARNING"
+            },
+            {
+              "name": "OTEL_SDK_DISABLED",
+              "value": "true"
+            },
+            {
+              "name": "CONCURRENT_WORKERS",
+              "value": "1"
+            },
+            {
+              "name": "MAX_RECEIVE_ATTEMPTS",
+              "value": "1"
+            },
+            {
+              "name": "VISIBILITY_TIMEOUT_MINUTES",
+              "value": "15"
+            },
+            {
+              "name": "MESSAGE_TIMEOUT_MINUTES",
+              "value": "20"
+            },
+            {
+              "name": "RETRY_VISIBILITY_DELAY_SECONDS",
+              "value": "30"
+            },
+            {
+              "name": "AZURE_CLIENT_ID",
+              "value": "6d199236-8792-4d88-8952-6ea8211a2f7b"
+            },
+            {
+              "name": "CONTENT_SERVICE",
+              "value": "web"
+            },
+            {
+              "name": "APP_API_BASE_URL",
+              "value": "http://ca-ptu-content-api"
+            },
+            {
+              "name": "APP_AUTH_ENABLED",
+              "value": "false"
+            },
+            {
+              "name": "APP_CONSOLE_LOG_ENABLED",
+              "value": "false"
+            }
+          ],
+          "image": "acrptubundle7d804f70.azurecr.io/content/official-web:659eaa1",
+          "imageType": "ContainerImage",
+          "name": "web",
+          "probes": [],
+          "resources": {
+            "cpu": 0.25,
+            "ephemeralStorage": "1Gi",
+            "memory": "0.5Gi"
+          }
+        }
+      ],
+      "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-content-demo/providers/Microsoft.App/containerapps/ca-ptu-content-web",
+      "ingress": {
+        "additionalPortMappings": null,
+        "allowInsecure": true,
+        "clientCertificateMode": null,
+        "corsPolicy": null,
+        "customDomains": null,
+        "exposedPort": 0,
+        "external": false,
+        "fqdn": "ca-ptu-content-web.internal.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io",
+        "ipSecurityRestrictions": null,
+        "stickySessions": null,
+        "targetPort": 3000,
+        "targetPortHttpScheme": null,
+        "traffic": [
+          {
+            "latestRevision": true,
+            "weight": 100
+          }
+        ],
+        "transport": "Http"
+      },
+      "latestRevision": "ca-ptu-content-web--0000001",
+      "name": "ca-ptu-content-web",
+      "readyRevision": "ca-ptu-content-web--0000001",
+      "runningStatus": "Running",
+      "scale": {
+        "cooldownPeriod": 30,
+        "maxReplicas": 1,
+        "minReplicas": 0,
+        "pollingInterval": 30,
+        "rules": [
+          {
+            "http": {
+              "metadata": {
+                "concurrentRequests": "1"
+              }
+            },
+            "name": "http"
+          }
+        ]
+      }
+    }
+  ],
+  "builds": [
+    {
+      "finish": "2026-09-12T01:00:04.851996+00:00",
+      "images": [
+        {
+          "digest": "sha256:0f638fcb7e12cde55c41ea231b8d73d51c98dd18cf5f5a5b7b2e9f38e3a6e920",
+          "registry": "acrptubundle7d804f70.azurecr.io",
+          "repository": "content/official-api",
+          "tag": "659eaa1"
+        }
+      ],
+      "runId": "ch1",
+      "start": "2026-09-12T00:59:03.558401+00:00",
+      "status": "Succeeded"
+    },
+    {
+      "finish": "2026-09-12T01:09:15.988818+00:00",
+      "images": [
+        {
+          "digest": "sha256:86548a936aa8a0dd9f3b766f70696d1ee8882d0be6f0ea4e9b452b84bb05c5d2",
+          "registry": "acrptubundle7d804f70.azurecr.io",
+          "repository": "content/official-processor",
+          "tag": "659eaa1"
+        }
+      ],
+      "runId": "ch2",
+      "start": "2026-09-12T01:05:21.146028+00:00",
+      "status": "Succeeded"
+    },
+    {
+      "finish": "2026-09-12T01:12:54.625034+00:00",
+      "images": [
+        {
+          "digest": "sha256:2fa1b6cdc34229a06746c47eec1653cbbcc2e48647180bae5249dd93d6408238",
+          "registry": "acrptubundle7d804f70.azurecr.io",
+          "repository": "content/official-workflow",
+          "tag": "659eaa1"
+        }
+      ],
+      "runId": "ch3",
+      "start": "2026-09-12T01:09:55.686551+00:00",
+      "status": "Succeeded"
+    },
+    {
+      "finish": "2026-09-12T01:13:17.667752+00:00",
+      "images": [
+        {
+          "digest": "sha256:ba339ec24168d0d05e3071d1b6ee101681379fb90ea635edb22db05979dcc4d5",
+          "registry": "acrptubundle7d804f70.azurecr.io",
+          "repository": "content/eval-api",
+          "tag": "659eaa1-r1"
+        }
+      ],
+      "runId": "ch4",
+      "start": "2026-09-12T01:12:52.015950+00:00",
+      "status": "Succeeded"
+    },
+    {
+      "finish": "2026-09-12T01:16:59.456833+00:00",
+      "images": [
+        {
+          "digest": "sha256:dfba6efd9fbbaa284d514b8abef752569f5bea24f265707b10c0f3e7da3762eb",
+          "registry": "acrptubundle7d804f70.azurecr.io",
+          "repository": "content/official-web",
+          "tag": "659eaa1"
+        }
+      ],
+      "runId": "ch5",
+      "start": "2026-09-12T01:13:20.126636+00:00",
+      "status": "Succeeded"
+    },
+    {
+      "finish": "2026-09-12T01:15:02.341199+00:00",
+      "images": [
+        {
+          "digest": "sha256:057c6175be773cfa5e2272673c1d797e77a5dac82d281059950985eb0ae5858e",
+          "registry": "acrptubundle7d804f70.azurecr.io",
+          "repository": "content/eval-processor",
+          "tag": "659eaa1-r1"
+        }
+      ],
+      "runId": "ch6",
+      "start": "2026-09-12T01:13:43.006800+00:00",
+      "status": "Succeeded"
+    },
+    {
+      "finish": "2026-09-12T01:16:19.707456+00:00",
+      "images": [
+        {
+          "digest": "sha256:061c8fcbec248edf8a01343f2099a1b9b97c1b8f036237713b74787de31a61fa",
+          "registry": "acrptubundle7d804f70.azurecr.io",
+          "repository": "content/eval-workflow",
+          "tag": "659eaa1-r1"
+        }
+      ],
+      "runId": "ch7",
+      "start": "2026-09-12T01:15:34.515712+00:00",
+      "status": "Succeeded"
+    },
+    {
+      "finish": "2026-09-12T01:17:17.013514+00:00",
+      "images": [
+        {
+          "digest": "sha256:5ccff2fc0df5bd31323bc5bd6d76195ee1bb0adfd40dae16bfd50b09f7e08224",
+          "registry": "acrptubundle7d804f70.azurecr.io",
+          "repository": "content/eval-api",
+          "tag": "659eaa1-r2"
+        }
+      ],
+      "runId": "ch8",
+      "start": "2026-09-12T01:16:51.141942+00:00",
+      "status": "Succeeded"
+    },
+    {
+      "finish": "2026-09-12T01:19:56.407026+00:00",
+      "images": [
+        {
+          "digest": "sha256:205246a928aca318399a6849e99827a5b8723bc2abc7442724eed3b6239ee4ae",
+          "registry": "acrptubundle7d804f70.azurecr.io",
+          "repository": "content/eval-processor",
+          "tag": "659eaa1-r2"
+        }
+      ],
+      "runId": "ch9",
+      "start": "2026-09-12T01:18:43.431557+00:00",
+      "status": "Succeeded"
+    },
+    {
+      "finish": "2026-09-12T01:21:23.130333+00:00",
+      "images": [
+        {
+          "digest": "sha256:1f57f269a79d3f1dec916673bb8e229e04577e5e43d3f857837a5b7c16ae0e66",
+          "registry": "acrptubundle7d804f70.azurecr.io",
+          "repository": "content/eval-workflow",
+          "tag": "659eaa1-r2"
+        }
+      ],
+      "runId": "cha",
+      "start": "2026-09-12T01:20:31.238983+00:00",
+      "status": "Succeeded"
+    },
+    {
+      "finish": "2026-09-12T01:45:50.550494+00:00",
+      "images": [
+        {
+          "digest": "sha256:bcf6c4910140b9c8750262144cd6f2a1bcd179904155cfdf6ecfd031e10424d9",
+          "registry": "acrptubundle7d804f70.azurecr.io",
+          "repository": "content/eval-api",
+          "tag": "659eaa1-r3"
+        }
+      ],
+      "runId": "chb",
+      "start": "2026-09-12T01:45:33.931343+00:00",
+      "status": "Succeeded"
+    }
+  ],
+  "appsAtExport": [
+    {
+      "containers": [
+        {
+          "env": [
+            {
+              "name": "APP_ENV",
+              "value": "prod"
+            },
+            {
+              "name": "APP_CONFIG_ENDPOINT",
+              "value": "https://appcs-ptuv-content-260911.azconfig.io"
+            },
+            {
+              "name": "APP_CONFIGURATION_URL",
+              "value": "https://appcs-ptuv-content-260911.azconfig.io"
+            },
+            {
+              "name": "APP_LOGGING_LEVEL",
+              "value": "WARNING"
+            },
+            {
+              "name": "OTEL_SDK_DISABLED",
+              "value": "true"
+            },
+            {
+              "name": "CONCURRENT_WORKERS",
+              "value": "1"
+            },
+            {
+              "name": "MAX_RECEIVE_ATTEMPTS",
+              "value": "1"
+            },
+            {
+              "name": "VISIBILITY_TIMEOUT_MINUTES",
+              "value": "15"
+            },
+            {
+              "name": "MESSAGE_TIMEOUT_MINUTES",
+              "value": "20"
+            },
+            {
+              "name": "RETRY_VISIBILITY_DELAY_SECONDS",
+              "value": "30"
+            },
+            {
+              "name": "AZURE_CLIENT_ID",
+              "value": "7df1b86c-d3b0-483e-aa4e-c9d8b204f1e8"
+            },
+            {
+              "name": "CONTENT_SERVICE",
+              "value": "api"
+            }
+          ],
+          "image": "acrptubundle7d804f70.azurecr.io/content/eval-api:659eaa1-r3",
+          "imageType": "ContainerImage",
+          "name": "api",
+          "probes": [
+            {
+              "httpGet": {
+                "path": "/health",
+                "port": 80
+              },
+              "periodSeconds": 10,
+              "timeoutSeconds": 5,
+              "type": "Readiness"
+            },
+            {
+              "failureThreshold": 30,
+              "httpGet": {
+                "path": "/startup",
+                "port": 80
+              },
+              "initialDelaySeconds": 10,
+              "periodSeconds": 10,
+              "timeoutSeconds": 5,
+              "type": "Startup"
+            }
+          ],
+          "resources": {
+            "cpu": 0.25,
+            "ephemeralStorage": "1Gi",
+            "memory": "0.5Gi"
+          }
+        }
+      ],
+      "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-content-demo/providers/Microsoft.App/containerapps/ca-ptu-content-api",
+      "ingress": {
+        "additionalPortMappings": null,
+        "allowInsecure": true,
+        "clientCertificateMode": null,
+        "corsPolicy": null,
+        "customDomains": null,
+        "exposedPort": 0,
+        "external": false,
+        "fqdn": "ca-ptu-content-api.internal.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io",
+        "ipSecurityRestrictions": null,
+        "stickySessions": null,
+        "targetPort": 80,
+        "targetPortHttpScheme": null,
+        "traffic": [
+          {
+            "latestRevision": true,
+            "weight": 100
+          }
+        ],
+        "transport": "Http"
+      },
+      "latestRevision": "ca-ptu-content-api--0000003",
+      "name": "ca-ptu-content-api",
+      "readyRevision": "ca-ptu-content-api--0000003",
+      "runningStatus": "Running",
+      "scale": {
+        "cooldownPeriod": 1800,
+        "maxReplicas": 1,
+        "minReplicas": 1,
+        "pollingInterval": 30,
+        "rules": [
+          {
+            "http": {
+              "metadata": {
+                "concurrentRequests": "1"
+              }
+            },
+            "name": "http"
+          }
+        ]
+      }
+    },
+    {
+      "containers": [
+        {
+          "env": [
+            {
+              "name": "APP_ENV",
+              "value": "prod"
+            },
+            {
+              "name": "APP_CONFIG_ENDPOINT",
+              "value": "https://appcs-ptuv-content-260911.azconfig.io"
+            },
+            {
+              "name": "APP_CONFIGURATION_URL",
+              "value": "https://appcs-ptuv-content-260911.azconfig.io"
+            },
+            {
+              "name": "APP_LOGGING_LEVEL",
+              "value": "WARNING"
+            },
+            {
+              "name": "OTEL_SDK_DISABLED",
+              "value": "true"
+            },
+            {
+              "name": "CONCURRENT_WORKERS",
+              "value": "1"
+            },
+            {
+              "name": "MAX_RECEIVE_ATTEMPTS",
+              "value": "1"
+            },
+            {
+              "name": "VISIBILITY_TIMEOUT_MINUTES",
+              "value": "15"
+            },
+            {
+              "name": "MESSAGE_TIMEOUT_MINUTES",
+              "value": "20"
+            },
+            {
+              "name": "RETRY_VISIBILITY_DELAY_SECONDS",
+              "value": "30"
+            },
+            {
+              "name": "AZURE_CLIENT_ID",
+              "value": "835c3d55-d53a-489d-964c-48fd4f158870"
+            },
+            {
+              "name": "CONTENT_SERVICE",
+              "value": "workflow"
+            }
+          ],
+          "image": "acrptubundle7d804f70.azurecr.io/content/eval-workflow:659eaa1-r2",
+          "imageType": "ContainerImage",
+          "name": "workflow",
+          "probes": [],
+          "resources": {
+            "cpu": 0.5,
+            "ephemeralStorage": "2Gi",
+            "memory": "1Gi"
+          }
+        }
+      ],
+      "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-content-demo/providers/Microsoft.App/containerapps/ca-ptu-content-workflow",
+      "ingress": null,
+      "latestRevision": "ca-ptu-content-workflow--0000001",
+      "name": "ca-ptu-content-workflow",
+      "readyRevision": "ca-ptu-content-workflow--0000001",
+      "runningStatus": "Running",
+      "scale": {
+        "cooldownPeriod": 30,
+        "maxReplicas": 1,
+        "minReplicas": 0,
+        "pollingInterval": 30,
+        "rules": null
+      }
+    },
+    {
+      "containers": [
+        {
+          "env": [
+            {
+              "name": "APP_ENV",
+              "value": "prod"
+            },
+            {
+              "name": "APP_CONFIG_ENDPOINT",
+              "value": "https://appcs-ptuv-content-260911.azconfig.io"
+            },
+            {
+              "name": "APP_CONFIGURATION_URL",
+              "value": "https://appcs-ptuv-content-260911.azconfig.io"
+            },
+            {
+              "name": "APP_LOGGING_LEVEL",
+              "value": "WARNING"
+            },
+            {
+              "name": "OTEL_SDK_DISABLED",
+              "value": "true"
+            },
+            {
+              "name": "CONCURRENT_WORKERS",
+              "value": "1"
+            },
+            {
+              "name": "MAX_RECEIVE_ATTEMPTS",
+              "value": "1"
+            },
+            {
+              "name": "VISIBILITY_TIMEOUT_MINUTES",
+              "value": "15"
+            },
+            {
+              "name": "MESSAGE_TIMEOUT_MINUTES",
+              "value": "20"
+            },
+            {
+              "name": "RETRY_VISIBILITY_DELAY_SECONDS",
+              "value": "30"
+            },
+            {
+              "name": "AZURE_CLIENT_ID",
+              "value": "5101963f-1e38-45d2-9f7c-efa9e9f6d122"
+            },
+            {
+              "name": "CONTENT_SERVICE",
+              "value": "processor"
+            }
+          ],
+          "image": "acrptubundle7d804f70.azurecr.io/content/eval-processor:659eaa1-r2",
+          "imageType": "ContainerImage",
+          "name": "processor",
+          "probes": [],
+          "resources": {
+            "cpu": 1.0,
+            "ephemeralStorage": "4Gi",
+            "memory": "2Gi"
+          }
+        }
+      ],
+      "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-content-demo/providers/Microsoft.App/containerapps/ca-ptu-content-processor",
+      "ingress": null,
+      "latestRevision": "ca-ptu-content-processor--0000001",
+      "name": "ca-ptu-content-processor",
+      "readyRevision": "ca-ptu-content-processor--0000001",
+      "runningStatus": "Running",
+      "scale": {
+        "cooldownPeriod": 30,
+        "maxReplicas": 1,
+        "minReplicas": 0,
+        "pollingInterval": 30,
+        "rules": null
+      }
+    },
+    {
+      "containers": [
+        {
+          "env": [
+            {
+              "name": "APP_ENV",
+              "value": "prod"
+            },
+            {
+              "name": "APP_CONFIG_ENDPOINT",
+              "value": "https://appcs-ptuv-content-260911.azconfig.io"
+            },
+            {
+              "name": "APP_CONFIGURATION_URL",
+              "value": "https://appcs-ptuv-content-260911.azconfig.io"
+            },
+            {
+              "name": "APP_LOGGING_LEVEL",
+              "value": "WARNING"
+            },
+            {
+              "name": "OTEL_SDK_DISABLED",
+              "value": "true"
+            },
+            {
+              "name": "CONCURRENT_WORKERS",
+              "value": "1"
+            },
+            {
+              "name": "MAX_RECEIVE_ATTEMPTS",
+              "value": "1"
+            },
+            {
+              "name": "VISIBILITY_TIMEOUT_MINUTES",
+              "value": "15"
+            },
+            {
+              "name": "MESSAGE_TIMEOUT_MINUTES",
+              "value": "20"
+            },
+            {
+              "name": "RETRY_VISIBILITY_DELAY_SECONDS",
+              "value": "30"
+            },
+            {
+              "name": "AZURE_CLIENT_ID",
+              "value": "6d199236-8792-4d88-8952-6ea8211a2f7b"
+            },
+            {
+              "name": "CONTENT_SERVICE",
+              "value": "web"
+            },
+            {
+              "name": "APP_API_BASE_URL",
+              "value": "http://ca-ptu-content-api"
+            },
+            {
+              "name": "APP_AUTH_ENABLED",
+              "value": "false"
+            },
+            {
+              "name": "APP_CONSOLE_LOG_ENABLED",
+              "value": "false"
+            }
+          ],
+          "image": "acrptubundle7d804f70.azurecr.io/content/official-web:659eaa1",
+          "imageType": "ContainerImage",
+          "name": "web",
+          "probes": [],
+          "resources": {
+            "cpu": 0.25,
+            "ephemeralStorage": "1Gi",
+            "memory": "0.5Gi"
+          }
+        }
+      ],
+      "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-content-demo/providers/Microsoft.App/containerapps/ca-ptu-content-web",
+      "ingress": {
+        "additionalPortMappings": null,
+        "allowInsecure": true,
+        "clientCertificateMode": null,
+        "corsPolicy": null,
+        "customDomains": null,
+        "exposedPort": 0,
+        "external": false,
+        "fqdn": "ca-ptu-content-web.internal.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io",
+        "ipSecurityRestrictions": null,
+        "stickySessions": null,
+        "targetPort": 3000,
+        "targetPortHttpScheme": null,
+        "traffic": [
+          {
+            "latestRevision": true,
+            "weight": 100
+          }
+        ],
+        "transport": "Http"
+      },
+      "latestRevision": "ca-ptu-content-web--0000001",
+      "name": "ca-ptu-content-web",
+      "readyRevision": "ca-ptu-content-web--0000001",
+      "runningStatus": "Running",
+      "scale": {
+        "cooldownPeriod": 30,
+        "maxReplicas": 1,
+        "minReplicas": 0,
+        "pollingInterval": 30,
+        "rules": [
+          {
+            "http": {
+              "metadata": {
+                "concurrentRequests": "1"
+              }
+            },
+            "name": "http"
+          }
+        ]
+      }
+    }
+  ],
+  "appsCapturedAfterPauseUtc": "2026-09-12T01:55:19.390462+00:00"
+}

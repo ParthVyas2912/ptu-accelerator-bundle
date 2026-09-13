@@ -1,0 +1,12 @@
+{
+  "sessionId": "ptu-macae-cloud-9ebc0c87",
+  "nativeHttpStatus": 400,
+  "nativeMessage": "Request contains content that doesn't meet our safety guidelines, try again.",
+  "elapsedMs": 12399.11,
+  "liveModelAttempts": 0,
+  "durableLedgerUsed": 0,
+  "observedEnvValue": {"MACAE_LIVE_REQUESTS_ENABLED": "True"},
+  "cause": "ARM string(bool) produced uppercase True. Evaluation gate requires lowercase true and denied before original HTTPX send/reservation. Native RAI catches operational errors and returns its fail-closed safety message.",
+  "correction": "Prepared Bicep now uses an explicit ternary yielding lowercase true/false. Native safety logic and the 12-call budget were not disabled or replaced.",
+  "scope": "Deployment/evaluation configuration error, not a model content-safety verdict"
+}

@@ -1,0 +1,51 @@
+{
+  "accelerator": "Document Knowledge Mining",
+  "date": "2026-09-11",
+  "deployment": "dkm-dev-equivalent-worker",
+  "resource_group": "accel-dkm-20260911",
+  "state": "Failed",
+  "error": {
+    "code": "AKSCapacityHeavyUsage",
+    "outer_code": "BadRequest",
+    "message": "AKS is experiencing heavy usage in region centralus. We are working on adding new capacity. In the meantime, please consider creating new AKS clusters in a different region.",
+    "target": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/accel-dkm-20260911/providers/Microsoft.ContainerService/managedClusters/aks-dkmeval0911a"
+  },
+  "aks_postcheck": {
+    "result": "ResourceNotFound",
+    "managed_node_resource_group_found": false,
+    "workers_created": 0,
+    "cluster_stop_applicable": false,
+    "reason": "Cluster creation was rejected before an AKS resource or managed node RG existed. No cluster can truthfully be described as paused."
+  },
+  "retained_resources": [
+    {"name": "srch-dkmeval0911a", "type": "Microsoft.Search/searchServices", "location": "centralus", "template_sku": "Basic", "replicas": 1, "partitions": 1},
+    {"name": "cosmos-dkmeval0911a", "type": "Microsoft.DocumentDB/databaseAccounts", "location": "centralus", "api": "MongoDB7.0", "actual_databases": ["default"], "actual_default_database_throughput": 400, "autoscale": null},
+    {"name": "id-dkmeval0911a", "type": "Microsoft.ManagedIdentity/userAssignedIdentities", "location": "centralus"},
+    {"name": "stdkmeval0911a", "type": "Microsoft.Storage/storageAccounts", "location": "centralus", "template_sku": "Standard_GRS"},
+    {"name": "di-dkmeval0911a", "type": "Microsoft.CognitiveServices/accounts", "location": "centralus", "kind": "FormRecognizer", "template_sku": "S0"},
+    {"name": "oai-dkmeval0911a", "type": "Microsoft.CognitiveServices/accounts", "location": "eastus", "kind": "OpenAI", "template_sku": "S0"},
+    {"name": "appcs-dkmeval0911a", "type": "Microsoft.AppConfiguration/configurationStores", "location": "centralus", "template_sku": "Standard"}
+  ],
+  "actual_model_deployments": [
+    {"name": "gpt-5-mini", "version": "2025-08-07", "sku": "GlobalStandard", "capacity": 10, "state": "Succeeded"},
+    {"name": "text-embedding-3-large", "version": "1", "sku": "GlobalStandard", "capacity": 50, "state": "Succeeded"}
+  ],
+  "acr_created": false,
+  "protected_resources_modified_or_reused": false,
+  "resources_deleted": false,
+  "additional_region_observations": [
+    {"region": "eastus2", "sku": "Standard_D4s_v6", "location_restricted": false, "restricted_zones": ["2"]},
+    {"region": "eastus2", "sku": "Standard_D4as_v6", "location_restricted": false, "restricted_zones": ["2"]},
+    {"region": "eastus2", "sku": "Standard_D4ads_v6", "location_restricted": false, "restricted_zones": ["2"]},
+    {"region": "uksouth", "sku": "Standard_D4s_v6", "location_restricted": true},
+    {"region": "uksouth", "sku": "Standard_D4as_v6", "location_restricted": true},
+    {"region": "uksouth", "sku": "Standard_D4ads_v6", "location_restricted": true}
+  ],
+  "additional_region_caveat": "East US2 has candidates; its actual AKS regional capacity is not established. Do not claim all regions are blocked.",
+  "retained_fixed_cost_estimate_usd_hour": 0.183,
+  "retained_fixed_cost_breakdown": {"search_basic": 0.101, "app_configuration_standard": 0.050, "cosmos_400_ru": 0.032},
+  "retained_cost_exclusions": ["storage capacity and operations", "model tokens", "extraction pages", "networking", "taxes"],
+  "live_model_calls": 0,
+  "e2e_passed": false,
+  "next_path": "Official docs/LocalDevelopmentSetup.md can now use the genuine newly deployed DKM Azure services. Investigate native services with existing Azure CLI identity before duplicating PaaS resources in another region."
+}

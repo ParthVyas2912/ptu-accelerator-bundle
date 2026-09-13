@@ -1,0 +1,1 @@
+{"scope": "CKM own SQL contained identity", "mode": "verify", "model_requests": 0, "checked_at": "2026-09-12T04:25:38.735333+00:00", "current_user": "id-ptu-conversation-runtime", "db_owner": 0, "reader": 1, "writer": 1, "ddl_admin": 1, "ground_truth": {"records": 3, "categories": 2, "source_types": 1}, "native_sql_initialized_and_reloaded": true, "status": "succeeded"}

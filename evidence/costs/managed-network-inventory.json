@@ -1,0 +1,35 @@
+{
+  "observedAtUtc": "2026-09-12T03:18:21.8311542Z",
+  "managedResourceGroup": "ME_cae-ptu-bundle_rg-ptu-bundle-platform_eastus2",
+  "workloadProfiles": [
+    {
+      "enableFips": false,
+      "name": "Consumption",
+      "workloadProfileType": "Consumption"
+    }
+  ],
+  "environmentPrivateEndpointCount": 0,
+  "environmentPublicNetworkAccess": "Enabled",
+  "loadBalancers": [
+    {
+      "name": "capp-svc-lb",
+      "sku": "Standard",
+      "loadBalancingRules": 2,
+      "outboundRules": 0,
+      "provisioningState": "Succeeded"
+    }
+  ],
+  "visiblePublicIps": [
+    {
+      "name": "capp-svc-lb-ip",
+      "sku": {
+        "name": "Standard",
+        "tier": "Regional"
+      },
+      "publicIPAllocationMethod": "Static",
+      "publicIPAddressVersion": "IPv4",
+      "provisioningState": "Succeeded"
+    }
+  ],
+  "billingNote": "Workload-profile external VNet environment. Microsoft documents one ingress and one egress Standard static IP plus one Standard LB; provider-managed egress may not appear as a separate resource here. No direct changes to managed resources."
+}

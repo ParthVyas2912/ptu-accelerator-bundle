@@ -1,0 +1,38 @@
+{
+  "lookup_count": 5,
+  "agent_type": "PromptAgentDefinition",
+  "not_a_foundry_hosted_custom_container_agent": true,
+  "creation_api": "AIProjectClient.agents.create_version(PromptAgentDefinition)",
+  "inference_api": "Project OpenAI Responses API with agent_reference",
+  "tools": "Native azure_ai_search catalog/policy tools; orchestrator uses specialist function tools",
+  "lookups": [
+    {
+      "source": "Installed agent_framework_azure_ai SDK source search",
+      "evidence": "_project_provider.py:250-256 creates PromptAgentDefinition via agents.create_version; get_agent rejects non-Prompt definitions. _client.py:549-552 supplies agent_reference for Responses."
+    },
+    {
+      "source": "https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/virtual-networks",
+      "evidence": "Creation-time-only network injection limitation explicitly says Hosted agents. It is not automatically a Prompt-agent immutability rule."
+    },
+    {
+      "source": "https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/agents-networking-deep-dive",
+      "evidence": "Prompt path is Foundry endpoint -> Tools Service -> single-tenant data proxy -> private endpoints, without a Micro VM. Subnet configuration is account-level; proxy/IP allocation is project-level."
+    },
+    {
+      "source": "Repository infra/scripts/post-provision/agent_scripts/01_create_agents.py",
+      "evidence": "Actual native ecommerce creation uses AzureAIProjectAgentProvider.create_agent for catalog, policy and orchestrator; no HostedAgentDefinition or custom Foundry agent image."
+    },
+    {
+      "source": "https://raw.githubusercontent.com/microsoft-foundry/foundry-samples/main/infrastructure/infrastructure-setup-bicep/15-private-network-standard-agent-setup/README.md",
+      "evidence": "Documents BYO existing-account and skipModelDeployment options and capability-host conditions, but warns its tools-behind-VNet scenario needs template19. This read does not establish a minimal nondestructive private-tool transition for the actual existing account/project."
+    }
+  ],
+  "current_setup": "Prompt-agent private-egress setup unconfigured/unproven; observed account networkInjections=null",
+  "existing_account_or_new_project_transition": "unverified",
+  "creation_time_only_limit_applied_to_prompt_agents": false,
+  "deletion_or_recreation_claimed_necessary": false,
+  "exact_minimal_resource_role_proposal_validated": false,
+  "refusal_root_cause_proven": false,
+  "account_project_network_writes": 0,
+  "new_models_or_private_endpoints": 0
+}

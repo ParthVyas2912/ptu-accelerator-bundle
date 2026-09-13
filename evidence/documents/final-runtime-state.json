@@ -1,0 +1,68 @@
+{
+  "captured_utc": "2026-09-12T02:32:44.1812175Z",
+  "apps": [
+    {
+      "name": "ca-dkm-api",
+      "revisions": [
+        {
+          "active": false,
+          "health": "Healthy",
+          "name": "ca-dkm-api--re51g88",
+          "replicas": 0
+        },
+        {
+          "active": false,
+          "health": "Healthy",
+          "name": "ca-dkm-api--0000001",
+          "replicas": 0
+        },
+        {
+          "active": false,
+          "health": "Healthy",
+          "name": "ca-dkm-api--0000002",
+          "replicas": 0
+        }
+      ]
+    },
+    {
+      "name": "ca-dkm-kernel",
+      "revisions": [
+        {
+          "active": false,
+          "health": "Healthy",
+          "name": "ca-dkm-kernel--mnddx2g",
+          "replicas": 0
+        },
+        {
+          "active": false,
+          "health": "Healthy",
+          "name": "ca-dkm-kernel--0000001",
+          "replicas": 0
+        }
+      ]
+    },
+    {
+      "name": "ca-dkm-web",
+      "revisions": [
+        {
+          "active": false,
+          "health": "Healthy",
+          "name": "ca-dkm-web--qvokiy4",
+          "replicas": 0
+        },
+        {
+          "active": false,
+          "health": "Healthy",
+          "name": "ca-dkm-web--0000001",
+          "replicas": 0
+        },
+        {
+          "active": false,
+          "health": "Healthy",
+          "name": "ca-dkm-web--0000002",
+          "replicas": 0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+[
+  {
+    "pack": "content_gen",
+    "file": "content_gen.json",
+    "team_id": "content-gen-team",
+    "hex_uuid_conformant": false,
+    "input_keys": "CG_triage_agent|CG_planning_agent|CG_research_agent|CG_text_content_agent|CG_image_content_agent|CG_compliance_agent",
+    "agents": 6,
+    "status": "visible",
+    "deployment_name": "gpt-5.4-mini"
+  },
+  {
+    "pack": "contract_compliance",
+    "file": "contract_compliance_team.json",
+    "team_id": "team-compliance-1",
+    "hex_uuid_conformant": false,
+    "input_keys": "||",
+    "agents": 3,
+    "status": "visible",
+    "deployment_name": "gpt-5.4-mini"
+  },
+  {
+    "pack": "example_pack",
+    "file": "example_pack.json",
+    "team_id": "00000000-0000-0000-0000-0000000000ee",
+    "hex_uuid_conformant": true,
+    "input_keys": "triage_agent|research_agent",
+    "agents": 2,
+    "status": "visible",
+    "deployment_name": "gpt-5.4-mini"
+  },
+  {
+    "pack": "hr_onboarding",
+    "file": "hr.json",
+    "team_id": "team-1",
+    "hex_uuid_conformant": false,
+    "input_keys": "|",
+    "agents": 2,
+    "status": "visible",
+    "deployment_name": "gpt-5.4"
+  },
+  {
+    "pack": "marketing_press_release",
+    "file": "marketing.json",
+    "team_id": "team-2",
+    "hex_uuid_conformant": false,
+    "input_keys": "|",
+    "agents": 2,
+    "status": "visible",
+    "deployment_name": "gpt-5.4-mini"
+  },
+  {
+    "pack": "retail_customer",
+    "file": "retail.json",
+    "team_id": "team-3",
+    "hex_uuid_conformant": false,
+    "input_keys": "||",
+    "agents": 3,
+    "status": "visible",
+    "deployment_name": "gpt-5.4-mini"
+  },
+  {
+    "pack": "rfp_evaluation",
+    "file": "rfp_analysis_team.json",
+    "team_id": "team-clm-1",
+    "hex_uuid_conformant": false,
+    "input_keys": "||",
+    "agents": 3,
+    "status": "visible",
+    "deployment_name": "gpt-5.4-mini"
+  }
+]

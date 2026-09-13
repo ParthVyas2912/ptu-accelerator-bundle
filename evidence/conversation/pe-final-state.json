@@ -1,0 +1,90 @@
+{
+  "zone_groups": [
+    {
+      "name": "default",
+      "state": "Succeeded",
+      "zones": [
+        {
+          "name": "service-0",
+          "privateDnsZoneId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateDnsZones/privatelink.cognitiveservices.azure.com",
+          "recordSets": [
+            {
+              "fqdn": "aif-ptu-conversation-7d804f70.privatelink.cognitiveservices.azure.com",
+              "ipAddresses": [
+                "10.246.2.25"
+              ],
+              "provisioningState": "Succeeded",
+              "recordSetName": "aif-ptu-conversation-7d804f70",
+              "recordType": "A",
+              "ttl": 10
+            }
+          ]
+        },
+        {
+          "name": "service-1",
+          "privateDnsZoneId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateDnsZones/privatelink.openai.azure.com",
+          "recordSets": [
+            {
+              "fqdn": "aif-ptu-conversation-7d804f70.privatelink.openai.azure.com",
+              "ipAddresses": [
+                "10.246.2.26"
+              ],
+              "provisioningState": "Succeeded",
+              "recordSetName": "aif-ptu-conversation-7d804f70",
+              "recordType": "A",
+              "ttl": 10
+            }
+          ]
+        },
+        {
+          "name": "service-2",
+          "privateDnsZoneId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateDnsZones/privatelink.services.ai.azure.com",
+          "recordSets": [
+            {
+              "fqdn": "aif-ptu-conversation-7d804f70.privatelink.services.ai.azure.com",
+              "ipAddresses": [
+                "10.246.2.27"
+              ],
+              "provisioningState": "Succeeded",
+              "recordSetName": "aif-ptu-conversation-7d804f70",
+              "recordType": "A",
+              "ttl": 10
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "endpoint": {
+    "connections": [
+      {
+        "etag": "W/\"1e1ec1af-2e07-4871-9891-bbcded308662\"",
+        "groupIds": [
+          "account"
+        ],
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateEndpoints/pe-conversation-ai/privateLinkServiceConnections/pe-conversation-ai",
+        "name": "pe-conversation-ai",
+        "privateLinkServiceConnectionState": {
+          "actionsRequired": "None",
+          "description": "Approved",
+          "status": "Approved"
+        },
+        "privateLinkServiceId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-conversation-demo/providers/Microsoft.CognitiveServices/accounts/aif-ptu-conversation-7d804f70",
+        "provisioningState": "Succeeded",
+        "resourceGroup": "rg-ptu-bundle-platform",
+        "type": "Microsoft.Network/privateEndpoints/privateLinkServiceConnections"
+      }
+    ],
+    "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/privateEndpoints/pe-conversation-ai",
+    "location": "eastus2",
+    "nics": [
+      {
+        "id": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/networkInterfaces/pe-conversation-ai.nic.e80644cd-9604-414e-bd31-6f593e9c7c1a",
+        "resourceGroup": "rg-ptu-bundle-platform"
+      }
+    ],
+    "state": "Succeeded",
+    "subnet": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-bundle-platform/providers/Microsoft.Network/virtualNetworks/vnet-ptu-bundle/subnets/snet-private-endpoints"
+  },
+  "checked_at": "2026-09-12T03:30:48.2676154+00:00"
+}

@@ -1,0 +1,21 @@
+{
+  "case": "missing-police-native",
+  "nativeRule": "- id: REQ-PR-THIRD-PARTY-006\n    name: \"Police report required when third party involved\"\n    when: \"involves_third_party == true\"\n    require:\n      - type: police_report\n        min_count: 1\n    severity: high\n    rationale: \"Police report required when third party involvement is indicated.\"",
+  "nativeRuleFileSha256": "8cb1e7e21eed0ac7ab26b5229675ecf51b47e6db4e42b3cc64c57e07265b1c71",
+  "fixtureThirdPartyExplicit": true,
+  "policeFileAbsent": true,
+  "fixtures": {
+    "claim-form.pdf": "4c3a887124b3dc146ead5e43495a7d7b2640480a4944176fe2b8f2bf4c2ae08a",
+    "damage-diagram.png": "293229e558aea1343eaabfef6e471d42c8368e86fc30484b62db3f13a235496b",
+    "repair-estimate.pdf": "602bedd0a4e10000d32e9a813b1e10f1b4788241c9c12dda1ae28f481cc075e2"
+  },
+  "modelPlan": {
+    "mapping": 3,
+    "rai": 1,
+    "summary": 1,
+    "gaps": 1
+  },
+  "baselineReserved": 11,
+  "approvedTotal": 17,
+  "fourDocumentHappyPath": false
+}

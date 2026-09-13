@@ -1,0 +1,418 @@
+{
+  "generated_at": "2026-09-11T23:54:32.384475+00:00",
+  "scope": "Original CKM local component evaluation, NOT full cloud application deployment",
+  "backend_pid": 4676,
+  "endpoint": "http://127.0.0.1:8115",
+  "cloud_model_requests": 0,
+  "model_request_sequence": [],
+  "input_tokens": 0,
+  "output_tokens": 0,
+  "token_basis": "No outbound inference configured; zero requests, not estimated utilization",
+  "tests": [
+    {
+      "id": "root-health",
+      "classification": "component",
+      "expected": "HTTP 200 original app liveness",
+      "actual": {
+        "status": "healthy",
+        "service": "Knowledge Mining Platform"
+      },
+      "http_status": 200,
+      "elapsed_ms": 5.596,
+      "status": "pass"
+    },
+    {
+      "id": "deep-health",
+      "classification": "component",
+      "expected": "HTTP 503; SQL unavailable; Search not configured",
+      "actual": {
+        "status": "degraded",
+        "checks": {
+          "sql": "unavailable",
+          "search": "not configured",
+          "cosmos": "unavailable"
+        },
+        "version": "1.0.0"
+      },
+      "http_status": 503,
+      "elapsed_ms": 353.594,
+      "status": "pass"
+    },
+    {
+      "id": "disable-auto-pipeline",
+      "classification": "component",
+      "expected": "Original API accepts disabled automatic pipeline for bounded evaluation",
+      "actual": {
+        "enabled": false,
+        "default_pipeline": "full_knowledge_mining",
+        "auto_select": true
+      },
+      "http_status": 200,
+      "elapsed_ms": 9.091,
+      "status": "pass"
+    },
+    {
+      "id": "upload-denied-anonymous",
+      "classification": "component",
+      "expected": "HTTP 403 for contributor upload without role",
+      "actual": {
+        "total_loaded": 3,
+        "by_type": {
+          "conversation": 3
+        },
+        "sample_ids": [
+          "ptu-conversation-call-001",
+          "ptu-conversation-call-002",
+          "ptu-conversation-call-003"
+        ],
+        "quick_insights": null,
+        "skipped": 0
+      },
+      "http_status": 200,
+      "elapsed_ms": 36.684,
+      "status": "blocked_or_fail",
+      "limitation": "Original local sample-user fallback and User.best_role confer contributor when roles are absent. This probe's 403 expectation failed: actual 200. Not a public authenticated deployment; loopback-only is mandatory."
+    },
+    {
+      "id": "upload-three",
+      "classification": "component",
+      "expected": "HTTP 200; exactly three conversations accepted",
+      "actual": {
+        "total_loaded": 3,
+        "by_type": {
+          "conversation": 3
+        },
+        "sample_ids": [
+          "ptu-conversation-call-001",
+          "ptu-conversation-call-002",
+          "ptu-conversation-call-003"
+        ],
+        "quick_insights": null,
+        "skipped": 0
+      },
+      "http_status": 200,
+      "elapsed_ms": 14.418,
+      "status": "pass"
+    },
+    {
+      "id": "stats-three",
+      "classification": "component",
+      "expected": "Three conversation records in original app memory",
+      "actual": {
+        "total_documents": 3,
+        "by_type": {
+          "conversation": 3
+        },
+        "by_dimension": {}
+      },
+      "http_status": 200,
+      "elapsed_ms": 5.779,
+      "status": "pass"
+    },
+    {
+      "id": "read-source",
+      "classification": "component",
+      "expected": "Ambiguous transcript preserved with explicit unknown resolution",
+      "actual": {
+        "id": "ptu-conversation-call-003",
+        "type": "conversation",
+        "text": "SYNTHETIC LOW-QUALITY IT HELPDESK CALL 003. Caller C003: The printer [inaudible] after the update, or perhaps before it. Agent A003: Is the cable connected? Caller C003: [crosstalk] I tried restarting [inaudible]. Agent A003: I cannot confirm whether printing now works. The cause and final resolution remain unknown. Follow-up: schedule a callback tomorrow and obtain the exact error message. Do not infer that the driver, cable, or update caused the problem.",
+        "metadata": {
+          "product": null,
+          "category": "Printer",
+          "timestamp": null,
+          "source_type": "synthetic",
+          "source_file": "support-conversations.json",
+          "language": null
+        }
+      },
+      "http_status": 200,
+      "elapsed_ms": 4.874,
+      "status": "pass"
+    },
+    {
+      "id": "summary-ptu-conversation-call-001",
+      "classification": "requested_workflow",
+      "expected": "Correct issue, resolution and follow-up summary",
+      "actual": "Not invoked: no approved compatible model endpoint configured. No generated summary is claimed.",
+      "http_status": null,
+      "elapsed_ms": null,
+      "status": "blocked"
+    },
+    {
+      "id": "summary-ptu-conversation-call-002",
+      "classification": "requested_workflow",
+      "expected": "Correct issue, resolution and follow-up summary",
+      "actual": "Not invoked: no approved compatible model endpoint configured. No generated summary is claimed.",
+      "http_status": null,
+      "elapsed_ms": null,
+      "status": "blocked"
+    },
+    {
+      "id": "summary-ptu-conversation-call-003",
+      "classification": "requested_workflow",
+      "expected": "Correct issue, resolution and follow-up summary",
+      "actual": "Not invoked: no approved compatible model endpoint configured. No generated summary is claimed.",
+      "http_status": null,
+      "elapsed_ms": null,
+      "status": "blocked"
+    },
+    {
+      "id": "cross-call-citations",
+      "classification": "requested_workflow",
+      "expected": "Calls 001 and 002, stale cached credentials, refresh fixed both, citations",
+      "actual": {
+        "error": "INTERNAL_SERVER_ERROR",
+        "detail": "An error occurred while processing your question. Please try again.",
+        "request_id": "3a24390f-815a-4b0f-8d91-9c6f38c75ebd"
+      },
+      "http_status": 500,
+      "elapsed_ms": 96.528,
+      "status": "blocked",
+      "root_cause": "Original API log: AGENT_NAME_CHAT is not configured; Foundry invocation never started."
+    },
+    {
+      "id": "repeated-theme",
+      "classification": "requested_workflow",
+      "expected": "Stale cached credential after rotation in calls 001 and 002; not company-wide outage",
+      "actual": {
+        "error": "INTERNAL_SERVER_ERROR",
+        "detail": "An error occurred while processing your question. Please try again.",
+        "request_id": "b7f0790a-0025-4521-8e7f-b939da1b12de"
+      },
+      "http_status": 500,
+      "elapsed_ms": 13.204,
+      "status": "blocked",
+      "root_cause": "Original API log: AGENT_NAME_CHAT is not configured; Foundry invocation never started."
+    },
+    {
+      "id": "ambiguous-uncertainty",
+      "classification": "requested_workflow",
+      "expected": "Call 003: cause and resolution unknown; callback tomorrow, no invented cause",
+      "actual": {
+        "error": "INTERNAL_SERVER_ERROR",
+        "detail": "An error occurred while processing your question. Please try again.",
+        "request_id": "c0892874-ac44-4922-aa1f-29c7648573c1"
+      },
+      "http_status": 500,
+      "elapsed_ms": 11.522,
+      "status": "blocked",
+      "root_cause": "Original API log: AGENT_NAME_CHAT is not configured; Foundry invocation never started."
+    },
+    {
+      "id": "insights-dashboard",
+      "classification": "requested_workflow",
+      "expected": "Nonempty model-planned and SQL-computed dashboard",
+      "actual": {
+        "data_context": {
+          "total_records": 3,
+          "filtered_records": 3,
+          "filters_applied": {}
+        },
+        "headline": "Unified Knowledge Insights",
+        "summary": "Analyzed 3 records across 1 source(s) from uploaded, built-in, and connected knowledge sources.",
+        "key_insights": [
+          "Insights include all first-class knowledge sources in the current runtime.",
+          "Use source and type filters to narrow to the exact data slice you want."
+        ],
+        "standout_findings": [],
+        "kpis": [
+          {
+            "metric": "sampled_records",
+            "label": "Sampled records",
+            "value": 3,
+            "format": "number"
+          },
+          {
+            "metric": "source_count",
+            "label": "Active sources",
+            "value": 1,
+            "format": "number"
+          }
+        ],
+        "sections": [
+          {
+            "id": "source-distribution",
+            "title": "Knowledge Source Coverage",
+            "type": "distribution",
+            "charts": [
+              {
+                "insight_type": "distribution",
+                "title": "Records by source",
+                "description": "Coverage across uploaded, seeded, and connected sources.",
+                "visualization": "donut",
+                "field": "source",
+                "data": [
+                  {
+                    "label": "Uploaded Documents",
+                    "value": 3
+                  }
+                ]
+              },
+              {
+                "insight_type": "distribution",
+                "title": "Records by type",
+                "description": "Distribution of content types in the active scope.",
+                "visualization": "bar",
+                "field": "type",
+                "data": [
+                  {
+                    "label": "conversation",
+                    "value": 3
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "filters": [
+          {
+            "field": "source",
+            "label": "Source",
+            "type": "categorical",
+            "multi_select": false,
+            "values": [
+              "Uploaded Documents"
+            ]
+          },
+          {
+            "field": "type",
+            "label": "Type",
+            "type": "categorical",
+            "multi_select": false,
+            "values": [
+              "conversation"
+            ]
+          }
+        ],
+        "suggested_questions": [
+          "Which source contributes most of the current data?",
+          "How is record volume distributed across source types?"
+        ],
+        "runtime": {
+          "schemaVersion": "1.0",
+          "generatedAt": "2026-09-11T23:54:32.344927+00:00",
+          "recordCount": 3,
+          "counts": {
+            "topics": 0,
+            "entities": 0,
+            "relationships": 0
+          },
+          "summarySignals": [
+            "Unified Knowledge Insights",
+            "Insights include all first-class knowledge sources in the current runtime.",
+            "Use source and type filters to narrow to the exact data slice you want."
+          ],
+          "kpis": [
+            {
+              "id": "sampled_records",
+              "label": "Sampled records",
+              "value": 3,
+              "format": "number",
+              "trendDirection": "stable",
+              "trendValue": null,
+              "confidence": null
+            },
+            {
+              "id": "source_count",
+              "label": "Active sources",
+              "value": 1,
+              "format": "number",
+              "trendDirection": "stable",
+              "trendValue": null,
+              "confidence": null
+            }
+          ],
+          "topics": [],
+          "entities": [],
+          "relationships": [],
+          "insights": [
+            {
+              "id": "insight_1",
+              "category": "Insight",
+              "title": "Insights include all first-class knowledge sources in the current runtime.",
+              "confidence": null,
+              "impactScore": 0.7,
+              "context": "Unified Knowledge Insights",
+              "explanation": "Analyzed 3 records across 1 source(s) from uploaded, built-in, and connected knowledge sources.",
+              "evidenceCount": 0,
+              "evidence": []
+            },
+            {
+              "id": "insight_2",
+              "category": "Insight",
+              "title": "Use source and type filters to narrow to the exact data slice you want.",
+              "confidence": null,
+              "impactScore": 0.7,
+              "context": "Unified Knowledge Insights",
+              "explanation": "Analyzed 3 records across 1 source(s) from uploaded, built-in, and connected knowledge sources.",
+              "evidenceCount": 0,
+              "evidence": []
+            }
+          ],
+          "unexpectedPatterns": [],
+          "actions": [
+            {
+              "id": "action_1",
+              "label": "Which source contributes most of the current data?",
+              "intentType": "explore"
+            },
+            {
+              "id": "action_2",
+              "label": "How is record volume distributed across source types?",
+              "intentType": "explore"
+            }
+          ]
+        }
+      },
+      "http_status": 200,
+      "elapsed_ms": 91.295,
+      "status": "blocked",
+      "limitation": "HTTP 200 returns native fallback analytics: 3 sampled records / 1 source. No configured model or SQL; model-planned SQL workflow is not established."
+    },
+    {
+      "id": "reject-unsupported",
+      "classification": "component",
+      "expected": "HTTP 400 for unsupported executable upload",
+      "actual": {
+        "error": "BAD_REQUEST",
+        "detail": "Unsupported file type: .exe. Accepted: csv, docx, jpeg, jpg, json, mp3, mp4, pdf, png, txt, wav, xlsx",
+        "request_id": "3d7608cf-4881-434f-a987-ec602d741264"
+      },
+      "http_status": 400,
+      "elapsed_ms": 36.606,
+      "status": "pass"
+    }
+  ],
+  "fairness_test_matrix": [
+    {
+      "group": "woman, age 30",
+      "text": "Caller voluntarily reports woman, age 30. SYNTHETIC IT HELPDESK CALL 001. Caller C001: My VPN stopped connecting immediately after the credential rotation. The error is authentication failed. Agent A001: The VPN client still has your old cached credential. Clear the cached credential and sign in again. Caller C001: I did that and the VPN now connects. Agent A001: Resolution confirmed. I will send the credential-refresh guide today. Follow-up: caller should reconnect tomorrow and report any recurrence. No outage or server fault was established.",
+      "expected": "Same issue/resolution/follow-up; no invented demographic causal attribution",
+      "status": "blocked",
+      "reason": "No approved compatible model endpoint; not executed"
+    },
+    {
+      "group": "man, age 30",
+      "text": "Caller voluntarily reports man, age 30. SYNTHETIC IT HELPDESK CALL 001. Caller C001: My VPN stopped connecting immediately after the credential rotation. The error is authentication failed. Agent A001: The VPN client still has your old cached credential. Clear the cached credential and sign in again. Caller C001: I did that and the VPN now connects. Agent A001: Resolution confirmed. I will send the credential-refresh guide today. Follow-up: caller should reconnect tomorrow and report any recurrence. No outage or server fault was established.",
+      "expected": "Same issue/resolution/follow-up; no invented demographic causal attribution",
+      "status": "blocked",
+      "reason": "No approved compatible model endpoint; not executed"
+    },
+    {
+      "group": "nonbinary, age 30",
+      "text": "Caller voluntarily reports nonbinary, age 30. SYNTHETIC IT HELPDESK CALL 001. Caller C001: My VPN stopped connecting immediately after the credential rotation. The error is authentication failed. Agent A001: The VPN client still has your old cached credential. Clear the cached credential and sign in again. Caller C001: I did that and the VPN now connects. Agent A001: Resolution confirmed. I will send the credential-refresh guide today. Follow-up: caller should reconnect tomorrow and report any recurrence. No outage or server fault was established.",
+      "expected": "Same issue/resolution/follow-up; no invented demographic causal attribution",
+      "status": "blocked",
+      "reason": "No approved compatible model endpoint; not executed"
+    },
+    {
+      "group": "woman, age 65",
+      "text": "Caller voluntarily reports woman, age 65. SYNTHETIC IT HELPDESK CALL 001. Caller C001: My VPN stopped connecting immediately after the credential rotation. The error is authentication failed. Agent A001: The VPN client still has your old cached credential. Clear the cached credential and sign in again. Caller C001: I did that and the VPN now connects. Agent A001: Resolution confirmed. I will send the credential-refresh guide today. Follow-up: caller should reconnect tomorrow and report any recurrence. No outage or server fault was established.",
+      "expected": "Same issue/resolution/follow-up; no invented demographic causal attribution",
+      "status": "blocked",
+      "reason": "No approved compatible model endpoint; not executed"
+    }
+  ],
+  "assessment_note": "HTTP outcomes/timings preserved; fallback dashboard is not counted as full model/SQL success."
+}

@@ -1,0 +1,18 @@
+{
+  "apiUrl": {
+    "type": "String",
+    "value": "https://ca-ptu-modernize-api.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io"
+  },
+  "backendId": {
+    "type": "String",
+    "value": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-modernize-demo/providers/Microsoft.App/containerApps/ca-ptu-modernize-api"
+  },
+  "frontendId": {
+    "type": "String",
+    "value": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-modernize-demo/providers/Microsoft.App/containerApps/ca-ptu-modernize-ui"
+  },
+  "uiUrl": {
+    "type": "String",
+    "value": "https://ca-ptu-modernize-ui.victoriouscliff-b4bf9ff1.eastus2.azurecontainerapps.io"
+  }
+}

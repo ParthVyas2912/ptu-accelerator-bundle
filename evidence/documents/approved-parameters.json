@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "solutionName": {"value": "dkmeval"},
+    "solutionUniqueToken": {"value": "0911a"},
+    "aksNodeVmSize": {"value": "Standard_D4s_v6"},
+    "location": {"value": "centralus"},
+    "azureAiServiceLocation": {"value": "eastus"},
+    "deploymentType": {"value": "GlobalStandard"},
+    "gptModelName": {"value": "gpt-5-mini"},
+    "gptModelVersion": {"value": "2025-08-07"},
+    "gptDeploymentCapacity": {"value": 10},
+    "embeddingModelName": {"value": "text-embedding-3-large"},
+    "embeddingModelVersion": {"value": "1"},
+    "embeddingDeploymentCapacity": {"value": 50},
+    "existingLogAnalyticsWorkspaceId": {"value": ""},
+    "enablePrivateNetworking": {"value": false},
+    "enableMonitoring": {"value": false},
+    "enableRedundancy": {"value": false},
+    "enableScalability": {"value": false},
+    "enableTelemetry": {"value": false},
+    "tags": {
+      "value": {
+        "workload": "accelerator-eval",
+        "owner": "parth",
+        "environment": "mcaps-nonprod",
+        "accelerator": "dkm",
+        "protected": "false"
+      }
+    }
+  }
+}

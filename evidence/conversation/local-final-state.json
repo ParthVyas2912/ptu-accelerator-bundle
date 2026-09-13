@@ -1,0 +1,38 @@
+{
+  "listeners": [
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 8115,
+      "OwningProcess": 4676
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 5115,
+      "OwningProcess": 23408
+    }
+  ],
+  "responses": [
+    {
+      "status": 200,
+      "url": "http://127.0.0.1:8115/"
+    },
+    {
+      "status": 200,
+      "url": "http://127.0.0.1:5115/"
+    }
+  ],
+  "checked_at": "2026-09-12T04:30:40.9404493+00:00",
+  "repo_changes": [],
+  "processes": [
+    {
+      "Id": 4676,
+      "ProcessName": "python",
+      "WorkingSet64": 57511936
+    },
+    {
+      "Id": 23408,
+      "ProcessName": "python",
+      "WorkingSet64": 12541952
+    }
+  ]
+}

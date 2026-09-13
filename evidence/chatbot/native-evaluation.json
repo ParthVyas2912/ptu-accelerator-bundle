@@ -1,0 +1,156 @@
+{
+  "native_result": {
+    "check": "native_catalog_and_negative_sku",
+    "question": "Use product_agent only: recommend Snow Veil with its catalog price. Is CP-DOES-NOT-EXIST-999 in the catalog? Do not invent it.",
+    "status": 200,
+    "elapsed_ms": 18315.762,
+    "response": {
+      "id": "ptu-chatbot-catalog-eval-20260912",
+      "content": "I can not assist with your request.",
+      "sender": "assistant",
+      "timestamp": "2026-09-12T02:52:53.522681Z",
+      "recommendedProducts": []
+    }
+  },
+  "ledger": {
+    "ledger_id": "ptu-chatbot-eval-cb86d11",
+    "limit": 12,
+    "reserved_units": 10,
+    "requests": [
+      {
+        "id": "3190f028-273e-4c28-8a3a-9b210b102dd2",
+        "started": "2026-09-11T22:29:57.073562-04:00",
+        "kind": "embeddings",
+        "model": "text-embedding-3-small",
+        "agent": "",
+        "units": 1,
+        "status": 200,
+        "elapsed_ms": 616.987,
+        "input_tokens": 1608,
+        "output_tokens": null,
+        "cached_tokens": null,
+        "tool_names": [],
+        "error": null
+      },
+      {
+        "id": "610f562f-fcbe-472d-8701-40cad3147c87",
+        "started": "2026-09-11T22:30:23.920816-04:00",
+        "kind": "embeddings",
+        "model": "text-embedding-3-small",
+        "agent": "",
+        "units": 1,
+        "status": 200,
+        "elapsed_ms": 239.656,
+        "input_tokens": 442,
+        "output_tokens": null,
+        "cached_tokens": null,
+        "tool_names": [],
+        "error": null
+      },
+      {
+        "id": "aa0a01b5-dc04-48c2-aeda-6bb15c0b62b6",
+        "started": "2026-09-11T22:30:24.61804-04:00",
+        "kind": "embeddings",
+        "model": "text-embedding-3-small",
+        "agent": "",
+        "units": 1,
+        "status": 200,
+        "elapsed_ms": 271.871,
+        "input_tokens": 128,
+        "output_tokens": null,
+        "cached_tokens": null,
+        "tool_names": [],
+        "error": null
+      },
+      {
+        "id": "a094e7eb-d1cb-4a70-8475-efbb6d154767",
+        "started": "2026-09-11T22:30:25.028685-04:00",
+        "kind": "embeddings",
+        "model": "text-embedding-3-small",
+        "agent": "",
+        "units": 1,
+        "status": 200,
+        "elapsed_ms": 237.935,
+        "input_tokens": 169,
+        "output_tokens": null,
+        "cached_tokens": null,
+        "tool_names": [],
+        "error": null
+      },
+      {
+        "id": "53a2f8a7-6628-44b6-afe7-6e6bf2f61431",
+        "started": "2026-09-11T22:43:26.60016-04:00",
+        "kind": "responses",
+        "model": "gpt-5.4-mini",
+        "agent": "ptu-chatbot-chat-eval",
+        "units": 1,
+        "status": 400,
+        "elapsed_ms": 132.433,
+        "input_tokens": null,
+        "output_tokens": null,
+        "cached_tokens": null,
+        "tool_names": [],
+        "error": "invalid_payload"
+      },
+      {
+        "id": "34f84673-7a6e-4a6c-988a-fcbc204f2f51",
+        "started": "2026-09-11T22:52:37.471132-04:00",
+        "kind": "responses",
+        "model": "gpt-5.4-mini",
+        "agent": "ptu-chatbot-chat-eval",
+        "units": 1,
+        "status": 200,
+        "elapsed_ms": 1846.321,
+        "input_tokens": 530,
+        "output_tokens": 62,
+        "cached_tokens": 0,
+        "tool_names": [
+          {
+            "type": "function_call",
+            "name": "product_agent"
+          }
+        ],
+        "error": null
+      },
+      {
+        "id": "8ca0e458-9ff9-4729-9905-b30fa0ec73ec",
+        "started": "2026-09-11T22:52:39.800416-04:00",
+        "kind": "responses",
+        "model": "gpt-5.4-mini",
+        "agent": "ptu-chatbot-product-eval",
+        "units": 3,
+        "status": 200,
+        "elapsed_ms": 12068.313,
+        "input_tokens": null,
+        "output_tokens": null,
+        "cached_tokens": null,
+        "tool_names": [],
+        "error": null
+      },
+      {
+        "id": "38a3317e-7fac-4dd8-87c2-38ccf296f315",
+        "started": "2026-09-11T22:52:52.227302-04:00",
+        "kind": "responses",
+        "model": "gpt-5.4-mini",
+        "agent": "ptu-chatbot-chat-eval",
+        "units": 1,
+        "status": 200,
+        "elapsed_ms": 1031.293,
+        "input_tokens": 608,
+        "output_tokens": 12,
+        "cached_tokens": 0,
+        "tool_names": [],
+        "error": null
+      }
+    ]
+  },
+  "visible_attempts": 8,
+  "conservative_units": 10,
+  "returned_input_tokens": 3485.0,
+  "returned_output_tokens": 74.0,
+  "returned_cached_tokens": 0.0,
+  "complete_usage": false,
+  "verdict": "failed_functional_refusal_despite_http200",
+  "root_cause": "not_established",
+  "remaining_units": 2
+}

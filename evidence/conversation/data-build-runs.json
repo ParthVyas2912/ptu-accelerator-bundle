@@ -1,0 +1,32 @@
+[
+  {
+    "cpu": 2,
+    "finish": "2026-09-11T23:49:13.048277-04:00",
+    "images": [
+      {
+        "digest": "sha256:cf139128a3c4016dd1a4bad1179ffe8495c6ff6c95104a3e6f986f6c328563a8",
+        "registry": "acrptubundle7d804f70.azurecr.io",
+        "repository": "conversation/api",
+        "tag": "8a00aa5-dataeval1"
+      }
+    ],
+    "runId": "chv",
+    "start": "2026-09-11T23:47:41.743119-04:00",
+    "status": "Succeeded"
+  },
+  {
+    "cpu": 2,
+    "finish": "2026-09-11T23:53:56.284137-04:00",
+    "images": [
+      {
+        "digest": "sha256:165cafca5e81e73097f0268b226fc2c2d5f9bb291fae0f216e40dc5dddb57a85",
+        "registry": "acrptubundle7d804f70.azurecr.io",
+        "repository": "conversation/api",
+        "tag": "8a00aa5-dataeval2"
+      }
+    ],
+    "runId": "chw",
+    "start": "2026-09-11T23:52:35.839367-04:00",
+    "status": "Succeeded"
+  }
+]

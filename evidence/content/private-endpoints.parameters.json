@@ -1,0 +1,29 @@
+{
+  "parameters": {
+    "endpoints": {
+      "value": [
+        {
+          "app": "content",
+          "name": "pe-content-blob",
+          "resourceId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-content-demo/providers/Microsoft.Storage/storageAccounts/stptuvcontent260911",
+          "groupId": "blob",
+          "zoneName": "privatelink.blob.core.windows.net"
+        },
+        {
+          "app": "content",
+          "name": "pe-content-queue",
+          "resourceId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-content-demo/providers/Microsoft.Storage/storageAccounts/stptuvcontent260911",
+          "groupId": "queue",
+          "zoneName": "privatelink.queue.core.windows.net"
+        },
+        {
+          "app": "content",
+          "name": "pe-content-mongo",
+          "resourceId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-content-demo/providers/Microsoft.DocumentDB/databaseAccounts/cosmos-ptuv-content-260911",
+          "groupId": "MongoDB",
+          "zoneName": "privatelink.mongo.cosmos.azure.com"
+        }
+      ]
+    }
+  }
+}

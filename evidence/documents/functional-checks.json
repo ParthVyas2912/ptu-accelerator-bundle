@@ -1,0 +1,252 @@
+{
+  "scope": "Offline assertions over real responses, not replacement/mock E2E",
+  "checks": [
+    {
+      "name": "Second policy PDF ingestion",
+      "expected": "HTTP200 and real document ID",
+      "actual": "cb45ef9f464f4569ac7c4bc523ef1aab202609120215417274224",
+      "status": "PASS",
+      "evidence": "retry-phase-ingest-second.json"
+    },
+    {
+      "name": "Second metadata: person",
+      "expected": "Omar Patel",
+      "actual": "Omar Patel",
+      "status": "PASS",
+      "evidence": "retry-phase-ingest-second.json"
+    },
+    {
+      "name": "Second metadata: place",
+      "expected": "Cedar Bay",
+      "actual": "Cedar Bay",
+      "status": "PASS",
+      "evidence": "retry-phase-ingest-second.json"
+    },
+    {
+      "name": "Second metadata: document_type",
+      "expected": "Policy",
+      "actual": "Policy",
+      "status": "PASS",
+      "evidence": "retry-phase-ingest-second.json"
+    },
+    {
+      "name": "PDF table value/column extraction",
+      "expected": "Annual training15 days/year; Allowance and Days/year columns",
+      "actual": {
+        "allowances": "Annual training: 15 days/year",
+        "structure": "table present, columns: Allowance, Days/year"
+      },
+      "status": "PASS",
+      "evidence": "retry-phase-ingest-second.json;document-intelligence-metrics.json"
+    },
+    {
+      "name": "Metadata filter {}",
+      "expected": 2,
+      "actual": 2,
+      "status": "PASS",
+      "evidence": "retry-phase-metadata.json"
+    },
+    {
+      "name": "Metadata filter {\"place\": \"Cedar Bay\"}",
+      "expected": 2,
+      "actual": 2,
+      "status": "PASS",
+      "evidence": "retry-phase-metadata.json"
+    },
+    {
+      "name": "Metadata filter {\"place\": \"Neverland\"}",
+      "expected": 0,
+      "actual": 0,
+      "status": "PASS",
+      "evidence": "retry-phase-metadata.json"
+    },
+    {
+      "name": "Metadata filter {\"person\": \"Omar Patel\"}",
+      "expected": 1,
+      "actual": 1,
+      "status": "PASS",
+      "evidence": "retry-phase-metadata.json"
+    },
+    {
+      "name": "Persisted source hash: 01-policy-2025.txt",
+      "expected": "12a5a842e6d44db9758be011d45099865c74123592f4c07dd3c4477281343f30",
+      "actual": "12a5a842e6d44db9758be011d45099865c74123592f4c07dd3c4477281343f30",
+      "status": "PASS",
+      "evidence": "retry-phase-sources.json"
+    },
+    {
+      "name": "Persisted source hash: 02-policy-2026-table.pdf",
+      "expected": "1b6786929592267c2d681de3f6afc6dab06dbb7e4f3a892c793194de8d96d2de",
+      "actual": "1b6786929592267c2d681de3f6afc6dab06dbb7e4f3a892c793194de8d96d2de",
+      "status": "PASS",
+      "evidence": "retry-phase-sources.json"
+    },
+    {
+      "name": "Summary groundedness: 02-policy-2026-table.pdf",
+      "expected": "No unrelated greeting",
+      "actual": {
+        "unsupported_greeting": true,
+        "summary": "One person asks \"Hello, how are you?\" and the other replies \"Hello\".  \nThe synthetic, fictional, unclassified 2026 policy for Cedar Bay, authored by Omar Patel, is active, supersedes the 2025 training policy, and grants 15 days per year for annual training.\n"
+      },
+      "status": "FAIL",
+      "evidence": "retry-phase-metadata.json"
+    },
+    {
+      "name": "Summary groundedness: 01-policy-2025.txt",
+      "expected": "No unrelated greeting",
+      "actual": {
+        "unsupported_greeting": true,
+        "summary": "One person asks \"Hello how are you?\" and the other replies \"Hello\".\n\nA synthetic, fictional, unclassified 2025 historical policy for Cedar Bay names Maya Chen and grants all fictional staff ten days of annual training.\n"
+      },
+      "status": "FAIL",
+      "evidence": "retry-phase-metadata.json"
+    },
+    {
+      "name": "qa-document HTTP and nonempty answer",
+      "expected": "200/nonempty/noResult=false",
+      "actual": {
+        "status": 200,
+        "noResult": false
+      },
+      "status": "PASS",
+      "evidence": "retry-phase-qa-document.json"
+    },
+    {
+      "name": "qa-document factual numbers",
+      "expected": [
+        "10",
+        "2025"
+      ],
+      "actual": "Direct answer\n- Annual training allowance: 10 days.\n- Policy year (version): 2025.\n\nCitation / source (from the provided facts)\n- File: 01-policy-2025.txt\n  - \"SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION\"\n  - \"Person: Maya Chen\"\n  - \"Place: Cedar Bay\"\n  - \"Document type: Policy\"\n  - \"Version: 2025; historical.\"\n  - \"Annual training allowance: 10 days.\"\n  - \"Applies to all fictional staff.\"\n\nAffirmation of basis\n- The statement \"Annual training allowance: 10 days.\" appears explicitly in the provided policy file (01-policy-2025.txt). That is the source for the annual training allowance reported above.\n- The policy file identifies its version as \"2025; historical.\" (also in 01-policy-2025.txt). That is the source for the policy year/version reported above.\n\nContext included in the same source (quoted from the file)\n- The file is labeled \"SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION.\"\n- The file lists \"Person: Maya Chen\" and \"Place: Cedar Bay.\"\n- The file notes the allowance \"Applies to all fictional staff.\"\n\nNotes on interpretation (limited to what the file states)\n- The file explicitly gives the numeric allowance as \"10 days\"; no further detail about how those days are scheduled, accrued, carried over, or otherwise administered is provided in the quoted content.\n- The file explicitly identifies its version/year as \"2025; historical.\" The term \"historical\" is part of the file text; no additional context or meaning beyond that is provided in the file content given here.\n\nIf you need the exact verbatim lines from the supplied file repeated again, they are:\n- \"Version: 2025; historical.\"\n- \"Annual training allowance: 10 days.\"\n\nThese verbatim excerpts are taken from File: 01-policy-2025.txt as supplied in the facts you provided.",
+      "status": "PASS",
+      "evidence": "retry-phase-qa-document.json"
+    },
+    {
+      "name": "qa-document citation document scope",
+      "expected": [
+        "3951c54f0a974f79b9d8fc3d7e4591ad202609120125365840455"
+      ],
+      "actual": [
+        "3951c54f0a974f79b9d8fc3d7e4591ad202609120125365840455"
+      ],
+      "status": "PASS",
+      "evidence": "retry-phase-qa-document.json"
+    },
+    {
+      "name": "qa-document actual request scope",
+      "expected": [
+        "3951c54f0a974f79b9d8fc3d7e4591ad202609120125365840455"
+      ],
+      "actual": [
+        "3951c54f0a974f79b9d8fc3d7e4591ad202609120125365840455"
+      ],
+      "status": "PASS",
+      "evidence": "retry-phase-qa-document.json"
+    },
+    {
+      "name": "qa-corpus HTTP and nonempty answer",
+      "expected": "200/nonempty/noResult=false",
+      "actual": {
+        "status": 200,
+        "noResult": false
+      },
+      "status": "PASS",
+      "evidence": "comparison14-read-result.json"
+    },
+    {
+      "name": "qa-corpus factual numbers",
+      "expected": [
+        "10",
+        "15",
+        "5",
+        "50"
+      ],
+      "actual": "Summary\n- The 2025 Cedar Bay policy (historical) grants 10 days per year of annual training to all fictional staff. (Source: 01-policy-2025.txt)\n- The 2026 Cedar Bay policy (active) grants 15 days per year of annual training. (Source: 02-policy-2026-table.pdf)\n- The 2026 policy is explicitly identified as active and supersedes the 2025 training policy. (Source: 02-policy-2026-table.pdf)\n\nDetails from each document\n- 2025 policy (01-policy-2025.txt)\n  - Document identification: SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION; Person: Maya Chen; Place: Cedar Bay; Document type: Policy; Version: 2025; historical. (Source: 01-policy-2025.txt)\n  - Annual training allowance: 10 days. The file states: \"Annual training allowance: 10 days.\" and notes it \"Applies to all fictional staff.\" (Source: 01-policy-2025.txt)\n\n- 2026 policy (02-policy-2026-table.pdf)\n  - Document identification: SYNTHETIC / FICTIONAL / UNCLASSIFIED; Person: Omar Patel; Place: Cedar Bay; Document type: Policy; Version: 2026; active. It is described as superseding the 2025 training policy. (Source: 02-policy-2026-table.pdf)\n  - Annual training allowance: 15 days per year. The table in the document shows \"Annual training \u2014 15 Days/year.\" (Source: 02-policy-2026-table.pdf)\n\nNumeric comparison: increase in days and percent\n- Raw increase in days:\n  - 2026 days \u2212 2025 days = 15 \u2212 10 = 5 additional days per year. (Sources: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n\n- Percent increase calculation:\n  - Percent increase = (Increase \u00f7 Original amount) \u00d7 100%\n  - Using 2025 as the original amount: (5 \u00f7 10) \u00d7 100% = 0.5 \u00d7 100% = 50%\n  - Therefore, the 2026 policy represents a 50% increase in annual training days relative to the 2025 policy. (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n\nSupersession and status\n- The 2026 policy is explicitly marked active and is described as superseding the 2025 training policy. The 2025 policy is described as historical (Version: 2025; historical). Thus:\n  - Which policy supersedes which: The 2026 Cedar Bay policy supersedes the 2025 Cedar Bay policy. (Source confirming supersession and active/historical status: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n\nContextual notes drawn from the documents\n- Both documents are labeled synthetic, fictional, and unclassified. The 2025 historical policy names Maya Chen; the 2026 active policy names Omar Patel. The 2025 document specifies its 10-day annual training allowance applies to all fictional staff; the 2026 table lists the allowance as 15 days/year. (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n\nConcise answer (directly addressing the requested comparison)\n- Annual training days: 2025 = 10 days/year (01-policy-2025.txt); 2026 = 15 days/year (02-policy-2026-table.pdf).\n- Increase in days: +5 days/year (15 \u2212 10 = 5). (Sources: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n- Percent increase: 50% increase ((5 \u00f7 10) \u00d7 100% = 50%). (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n- Supersession: The 2026 policy (active) supersedes the 2025 policy (historical). (Source: 02-policy-2026-table.pdf; corroborating 01-policy-2025.txt)\n\nSources cited\n- 01-policy-2025.txt \u2014 SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION. Person: Maya Chen; Place: Cedar Bay; Document type: Policy; Version: 2025; historical. Annual training allowance: 10 days. Applies to all fictional staff. (Source: 01-policy-2025.txt)\n- 02-policy-2026-table.pdf \u2014 SYNTHETIC / FICTIONAL / UNCLASSIFIED. Person: Omar Patel; Place: Cedar Bay; Document type: Policy; Version: 2026; active; supersedes the 2025 training policy. Table: Annual training \u2014 15 days/year. (Source: 02-policy-2026-table.pdf)",
+      "status": "PASS",
+      "evidence": "comparison14-read-result.json"
+    },
+    {
+      "name": "qa-corpus citation document scope",
+      "expected": [
+        "3951c54f0a974f79b9d8fc3d7e4591ad202609120125365840455",
+        "cb45ef9f464f4569ac7c4bc523ef1aab202609120215417274224"
+      ],
+      "actual": [
+        "3951c54f0a974f79b9d8fc3d7e4591ad202609120125365840455",
+        "cb45ef9f464f4569ac7c4bc523ef1aab202609120215417274224"
+      ],
+      "status": "PASS",
+      "evidence": "comparison14-read-result.json"
+    },
+    {
+      "name": "qa-corpus actual request scope",
+      "expected": [],
+      "actual": [],
+      "status": "PASS",
+      "evidence": "comparison14-read-result.json"
+    },
+    {
+      "name": "Comparison 2025 allowance",
+      "expected": "2025 Cedar Bay policy[^\\n]*grants 10 days",
+      "actual": "Summary\n- The 2025 Cedar Bay policy (historical) grants 10 days per year of annual training to all fictional staff. (Source: 01-policy-2025.txt)\n- The 2026 Cedar Bay policy (active) grants 15 days per year of annual training. (Source: 02-policy-2026-table.pdf)\n- The 2026 policy is explicitly identified as active and supersedes the 2025 training policy. (Source: 02-policy-2026-table.pdf)\n\nDetails from each document\n- 2025 policy (01-policy-2025.txt)\n  - Document identification: SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION; Person: Maya Chen; Place: Cedar Bay; Document type: Policy; Version: 2025; historical. (Source: 01-policy-2025.txt)\n  - Annual training allowance: 10 days. The file states: \"Annual training allowance: 10 days.\" and notes it \"Applies to all fictional staff.\" (Source: 01-policy-2025.txt)\n\n- 2026 policy (02-policy-2026-table.pdf)\n  - Document identification: SYNTHETIC / FICTIONAL / UNCLASSIFIED; Person: Omar Patel; Place: Cedar Bay; Document type: Policy; Version: 2026; active. It is described as superseding the 2025 training policy. (Source: 02-policy-2026-table.pdf)\n  - Annual training allowance: 15 days per year. The table in the document shows \"Annual training \u2014 15 Days/year.\" (Source: 02-policy-2026-table.pdf)\n\nNumeric comparison: increase in days and percent\n- Raw increase in days:\n  - 2026 days \u2212 2025 days = 15 \u2212 10 = 5 additional days per year. (Sources: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n\n- Percent increase calculation:\n  - Percent increase = (Increase \u00f7 Original amount) \u00d7 100%\n  - Using 2025 as the original amount: (5 \u00f7 10) \u00d7 100% = 0.5 \u00d7 100% = 50%\n  - Therefore, the 2026 policy represents a 50% increase in annual training days relative to the 2025 policy. (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n\nSupersession and status\n- The 2026 policy is explicitly marked active and is described as superseding the 2025 training policy. The 2025 policy is described as historical (Version: 2025; historical). Thus:\n  - Which policy supersedes which: The 2026 Cedar Bay policy supersedes the 2025 Cedar Bay policy. (Source confirming supersession and active/historical status: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n\nContextual notes drawn from the documents\n- Both documents are labeled synthetic, fictional, and unclassified. The 2025 historical policy names Maya Chen; the 2026 active policy names Omar Patel. The 2025 document specifies its 10-day annual training allowance applies to all fictional staff; the 2026 table lists the allowance as 15 days/year. (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n\nConcise answer (directly addressing the requested comparison)\n- Annual training days: 2025 = 10 days/year (01-policy-2025.txt); 2026 = 15 days/year (02-policy-2026-table.pdf).\n- Increase in days: +5 days/year (15 \u2212 10 = 5). (Sources: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n- Percent increase: 50% increase ((5 \u00f7 10) \u00d7 100% = 50%). (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n- Supersession: The 2026 policy (active) supersedes the 2025 policy (historical). (Source: 02-policy-2026-table.pdf; corroborating 01-policy-2025.txt)\n\nSources cited\n- 01-policy-2025.txt \u2014 SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION. Person: Maya Chen; Place: Cedar Bay; Document type: Policy; Version: 2025; historical. Annual training allowance: 10 days. Applies to all fictional staff. (Source: 01-policy-2025.txt)\n- 02-policy-2026-table.pdf \u2014 SYNTHETIC / FICTIONAL / UNCLASSIFIED. Person: Omar Patel; Place: Cedar Bay; Document type: Policy; Version: 2026; active; supersedes the 2025 training policy. Table: Annual training \u2014 15 days/year. (Source: 02-policy-2026-table.pdf)",
+      "status": "PASS",
+      "evidence": "comparison14-read-result.json"
+    },
+    {
+      "name": "Comparison 2026 allowance",
+      "expected": "2026 Cedar Bay policy[^\\n]*grants 15 days",
+      "actual": "Summary\n- The 2025 Cedar Bay policy (historical) grants 10 days per year of annual training to all fictional staff. (Source: 01-policy-2025.txt)\n- The 2026 Cedar Bay policy (active) grants 15 days per year of annual training. (Source: 02-policy-2026-table.pdf)\n- The 2026 policy is explicitly identified as active and supersedes the 2025 training policy. (Source: 02-policy-2026-table.pdf)\n\nDetails from each document\n- 2025 policy (01-policy-2025.txt)\n  - Document identification: SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION; Person: Maya Chen; Place: Cedar Bay; Document type: Policy; Version: 2025; historical. (Source: 01-policy-2025.txt)\n  - Annual training allowance: 10 days. The file states: \"Annual training allowance: 10 days.\" and notes it \"Applies to all fictional staff.\" (Source: 01-policy-2025.txt)\n\n- 2026 policy (02-policy-2026-table.pdf)\n  - Document identification: SYNTHETIC / FICTIONAL / UNCLASSIFIED; Person: Omar Patel; Place: Cedar Bay; Document type: Policy; Version: 2026; active. It is described as superseding the 2025 training policy. (Source: 02-policy-2026-table.pdf)\n  - Annual training allowance: 15 days per year. The table in the document shows \"Annual training \u2014 15 Days/year.\" (Source: 02-policy-2026-table.pdf)\n\nNumeric comparison: increase in days and percent\n- Raw increase in days:\n  - 2026 days \u2212 2025 days = 15 \u2212 10 = 5 additional days per year. (Sources: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n\n- Percent increase calculation:\n  - Percent increase = (Increase \u00f7 Original amount) \u00d7 100%\n  - Using 2025 as the original amount: (5 \u00f7 10) \u00d7 100% = 0.5 \u00d7 100% = 50%\n  - Therefore, the 2026 policy represents a 50% increase in annual training days relative to the 2025 policy. (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n\nSupersession and status\n- The 2026 policy is explicitly marked active and is described as superseding the 2025 training policy. The 2025 policy is described as historical (Version: 2025; historical). Thus:\n  - Which policy supersedes which: The 2026 Cedar Bay policy supersedes the 2025 Cedar Bay policy. (Source confirming supersession and active/historical status: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n\nContextual notes drawn from the documents\n- Both documents are labeled synthetic, fictional, and unclassified. The 2025 historical policy names Maya Chen; the 2026 active policy names Omar Patel. The 2025 document specifies its 10-day annual training allowance applies to all fictional staff; the 2026 table lists the allowance as 15 days/year. (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n\nConcise answer (directly addressing the requested comparison)\n- Annual training days: 2025 = 10 days/year (01-policy-2025.txt); 2026 = 15 days/year (02-policy-2026-table.pdf).\n- Increase in days: +5 days/year (15 \u2212 10 = 5). (Sources: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n- Percent increase: 50% increase ((5 \u00f7 10) \u00d7 100% = 50%). (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n- Supersession: The 2026 policy (active) supersedes the 2025 policy (historical). (Source: 02-policy-2026-table.pdf; corroborating 01-policy-2025.txt)\n\nSources cited\n- 01-policy-2025.txt \u2014 SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION. Person: Maya Chen; Place: Cedar Bay; Document type: Policy; Version: 2025; historical. Annual training allowance: 10 days. Applies to all fictional staff. (Source: 01-policy-2025.txt)\n- 02-policy-2026-table.pdf \u2014 SYNTHETIC / FICTIONAL / UNCLASSIFIED. Person: Omar Patel; Place: Cedar Bay; Document type: Policy; Version: 2026; active; supersedes the 2025 training policy. Table: Annual training \u2014 15 days/year. (Source: 02-policy-2026-table.pdf)",
+      "status": "PASS",
+      "evidence": "comparison14-read-result.json"
+    },
+    {
+      "name": "Comparison increase calculation",
+      "expected": "15 [\u2212-] 10 = 5",
+      "actual": "Summary\n- The 2025 Cedar Bay policy (historical) grants 10 days per year of annual training to all fictional staff. (Source: 01-policy-2025.txt)\n- The 2026 Cedar Bay policy (active) grants 15 days per year of annual training. (Source: 02-policy-2026-table.pdf)\n- The 2026 policy is explicitly identified as active and supersedes the 2025 training policy. (Source: 02-policy-2026-table.pdf)\n\nDetails from each document\n- 2025 policy (01-policy-2025.txt)\n  - Document identification: SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION; Person: Maya Chen; Place: Cedar Bay; Document type: Policy; Version: 2025; historical. (Source: 01-policy-2025.txt)\n  - Annual training allowance: 10 days. The file states: \"Annual training allowance: 10 days.\" and notes it \"Applies to all fictional staff.\" (Source: 01-policy-2025.txt)\n\n- 2026 policy (02-policy-2026-table.pdf)\n  - Document identification: SYNTHETIC / FICTIONAL / UNCLASSIFIED; Person: Omar Patel; Place: Cedar Bay; Document type: Policy; Version: 2026; active. It is described as superseding the 2025 training policy. (Source: 02-policy-2026-table.pdf)\n  - Annual training allowance: 15 days per year. The table in the document shows \"Annual training \u2014 15 Days/year.\" (Source: 02-policy-2026-table.pdf)\n\nNumeric comparison: increase in days and percent\n- Raw increase in days:\n  - 2026 days \u2212 2025 days = 15 \u2212 10 = 5 additional days per year. (Sources: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n\n- Percent increase calculation:\n  - Percent increase = (Increase \u00f7 Original amount) \u00d7 100%\n  - Using 2025 as the original amount: (5 \u00f7 10) \u00d7 100% = 0.5 \u00d7 100% = 50%\n  - Therefore, the 2026 policy represents a 50% increase in annual training days relative to the 2025 policy. (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n\nSupersession and status\n- The 2026 policy is explicitly marked active and is described as superseding the 2025 training policy. The 2025 policy is described as historical (Version: 2025; historical). Thus:\n  - Which policy supersedes which: The 2026 Cedar Bay policy supersedes the 2025 Cedar Bay policy. (Source confirming supersession and active/historical status: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n\nContextual notes drawn from the documents\n- Both documents are labeled synthetic, fictional, and unclassified. The 2025 historical policy names Maya Chen; the 2026 active policy names Omar Patel. The 2025 document specifies its 10-day annual training allowance applies to all fictional staff; the 2026 table lists the allowance as 15 days/year. (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n\nConcise answer (directly addressing the requested comparison)\n- Annual training days: 2025 = 10 days/year (01-policy-2025.txt); 2026 = 15 days/year (02-policy-2026-table.pdf).\n- Increase in days: +5 days/year (15 \u2212 10 = 5). (Sources: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n- Percent increase: 50% increase ((5 \u00f7 10) \u00d7 100% = 50%). (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n- Supersession: The 2026 policy (active) supersedes the 2025 policy (historical). (Source: 02-policy-2026-table.pdf; corroborating 01-policy-2025.txt)\n\nSources cited\n- 01-policy-2025.txt \u2014 SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION. Person: Maya Chen; Place: Cedar Bay; Document type: Policy; Version: 2025; historical. Annual training allowance: 10 days. Applies to all fictional staff. (Source: 01-policy-2025.txt)\n- 02-policy-2026-table.pdf \u2014 SYNTHETIC / FICTIONAL / UNCLASSIFIED. Person: Omar Patel; Place: Cedar Bay; Document type: Policy; Version: 2026; active; supersedes the 2025 training policy. Table: Annual training \u2014 15 days/year. (Source: 02-policy-2026-table.pdf)",
+      "status": "PASS",
+      "evidence": "comparison14-read-result.json"
+    },
+    {
+      "name": "Comparison percent increase",
+      "expected": "50% increase",
+      "actual": "Summary\n- The 2025 Cedar Bay policy (historical) grants 10 days per year of annual training to all fictional staff. (Source: 01-policy-2025.txt)\n- The 2026 Cedar Bay policy (active) grants 15 days per year of annual training. (Source: 02-policy-2026-table.pdf)\n- The 2026 policy is explicitly identified as active and supersedes the 2025 training policy. (Source: 02-policy-2026-table.pdf)\n\nDetails from each document\n- 2025 policy (01-policy-2025.txt)\n  - Document identification: SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION; Person: Maya Chen; Place: Cedar Bay; Document type: Policy; Version: 2025; historical. (Source: 01-policy-2025.txt)\n  - Annual training allowance: 10 days. The file states: \"Annual training allowance: 10 days.\" and notes it \"Applies to all fictional staff.\" (Source: 01-policy-2025.txt)\n\n- 2026 policy (02-policy-2026-table.pdf)\n  - Document identification: SYNTHETIC / FICTIONAL / UNCLASSIFIED; Person: Omar Patel; Place: Cedar Bay; Document type: Policy; Version: 2026; active. It is described as superseding the 2025 training policy. (Source: 02-policy-2026-table.pdf)\n  - Annual training allowance: 15 days per year. The table in the document shows \"Annual training \u2014 15 Days/year.\" (Source: 02-policy-2026-table.pdf)\n\nNumeric comparison: increase in days and percent\n- Raw increase in days:\n  - 2026 days \u2212 2025 days = 15 \u2212 10 = 5 additional days per year. (Sources: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n\n- Percent increase calculation:\n  - Percent increase = (Increase \u00f7 Original amount) \u00d7 100%\n  - Using 2025 as the original amount: (5 \u00f7 10) \u00d7 100% = 0.5 \u00d7 100% = 50%\n  - Therefore, the 2026 policy represents a 50% increase in annual training days relative to the 2025 policy. (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n\nSupersession and status\n- The 2026 policy is explicitly marked active and is described as superseding the 2025 training policy. The 2025 policy is described as historical (Version: 2025; historical). Thus:\n  - Which policy supersedes which: The 2026 Cedar Bay policy supersedes the 2025 Cedar Bay policy. (Source confirming supersession and active/historical status: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n\nContextual notes drawn from the documents\n- Both documents are labeled synthetic, fictional, and unclassified. The 2025 historical policy names Maya Chen; the 2026 active policy names Omar Patel. The 2025 document specifies its 10-day annual training allowance applies to all fictional staff; the 2026 table lists the allowance as 15 days/year. (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n\nConcise answer (directly addressing the requested comparison)\n- Annual training days: 2025 = 10 days/year (01-policy-2025.txt); 2026 = 15 days/year (02-policy-2026-table.pdf).\n- Increase in days: +5 days/year (15 \u2212 10 = 5). (Sources: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n- Percent increase: 50% increase ((5 \u00f7 10) \u00d7 100% = 50%). (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n- Supersession: The 2026 policy (active) supersedes the 2025 policy (historical). (Source: 02-policy-2026-table.pdf; corroborating 01-policy-2025.txt)\n\nSources cited\n- 01-policy-2025.txt \u2014 SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION. Person: Maya Chen; Place: Cedar Bay; Document type: Policy; Version: 2025; historical. Annual training allowance: 10 days. Applies to all fictional staff. (Source: 01-policy-2025.txt)\n- 02-policy-2026-table.pdf \u2014 SYNTHETIC / FICTIONAL / UNCLASSIFIED. Person: Omar Patel; Place: Cedar Bay; Document type: Policy; Version: 2026; active; supersedes the 2025 training policy. Table: Annual training \u2014 15 days/year. (Source: 02-policy-2026-table.pdf)",
+      "status": "PASS",
+      "evidence": "comparison14-read-result.json"
+    },
+    {
+      "name": "Comparison supersession",
+      "expected": "2026 Cedar Bay policy supersedes the 2025 Cedar Bay policy",
+      "actual": "Summary\n- The 2025 Cedar Bay policy (historical) grants 10 days per year of annual training to all fictional staff. (Source: 01-policy-2025.txt)\n- The 2026 Cedar Bay policy (active) grants 15 days per year of annual training. (Source: 02-policy-2026-table.pdf)\n- The 2026 policy is explicitly identified as active and supersedes the 2025 training policy. (Source: 02-policy-2026-table.pdf)\n\nDetails from each document\n- 2025 policy (01-policy-2025.txt)\n  - Document identification: SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION; Person: Maya Chen; Place: Cedar Bay; Document type: Policy; Version: 2025; historical. (Source: 01-policy-2025.txt)\n  - Annual training allowance: 10 days. The file states: \"Annual training allowance: 10 days.\" and notes it \"Applies to all fictional staff.\" (Source: 01-policy-2025.txt)\n\n- 2026 policy (02-policy-2026-table.pdf)\n  - Document identification: SYNTHETIC / FICTIONAL / UNCLASSIFIED; Person: Omar Patel; Place: Cedar Bay; Document type: Policy; Version: 2026; active. It is described as superseding the 2025 training policy. (Source: 02-policy-2026-table.pdf)\n  - Annual training allowance: 15 days per year. The table in the document shows \"Annual training \u2014 15 Days/year.\" (Source: 02-policy-2026-table.pdf)\n\nNumeric comparison: increase in days and percent\n- Raw increase in days:\n  - 2026 days \u2212 2025 days = 15 \u2212 10 = 5 additional days per year. (Sources: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n\n- Percent increase calculation:\n  - Percent increase = (Increase \u00f7 Original amount) \u00d7 100%\n  - Using 2025 as the original amount: (5 \u00f7 10) \u00d7 100% = 0.5 \u00d7 100% = 50%\n  - Therefore, the 2026 policy represents a 50% increase in annual training days relative to the 2025 policy. (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n\nSupersession and status\n- The 2026 policy is explicitly marked active and is described as superseding the 2025 training policy. The 2025 policy is described as historical (Version: 2025; historical). Thus:\n  - Which policy supersedes which: The 2026 Cedar Bay policy supersedes the 2025 Cedar Bay policy. (Source confirming supersession and active/historical status: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n\nContextual notes drawn from the documents\n- Both documents are labeled synthetic, fictional, and unclassified. The 2025 historical policy names Maya Chen; the 2026 active policy names Omar Patel. The 2025 document specifies its 10-day annual training allowance applies to all fictional staff; the 2026 table lists the allowance as 15 days/year. (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n\nConcise answer (directly addressing the requested comparison)\n- Annual training days: 2025 = 10 days/year (01-policy-2025.txt); 2026 = 15 days/year (02-policy-2026-table.pdf).\n- Increase in days: +5 days/year (15 \u2212 10 = 5). (Sources: 02-policy-2026-table.pdf; 01-policy-2025.txt)\n- Percent increase: 50% increase ((5 \u00f7 10) \u00d7 100% = 50%). (Sources: 01-policy-2025.txt; 02-policy-2026-table.pdf)\n- Supersession: The 2026 policy (active) supersedes the 2025 policy (historical). (Source: 02-policy-2026-table.pdf; corroborating 01-policy-2025.txt)\n\nSources cited\n- 01-policy-2025.txt \u2014 SYNTHETIC / FICTIONAL / UNCLASSIFIED EVALUATION. Person: Maya Chen; Place: Cedar Bay; Document type: Policy; Version: 2025; historical. Annual training allowance: 10 days. Applies to all fictional staff. (Source: 01-policy-2025.txt)\n- 02-policy-2026-table.pdf \u2014 SYNTHETIC / FICTIONAL / UNCLASSIFIED. Person: Omar Patel; Place: Cedar Bay; Document type: Policy; Version: 2026; active; supersedes the 2025 training policy. Table: Annual training \u2014 15 days/year. (Source: 02-policy-2026-table.pdf)",
+      "status": "PASS",
+      "evidence": "comparison14-read-result.json"
+    },
+    {
+      "name": "Persisted PDF table extraction",
+      "expected": "Allowance/15 present in retrieved table text",
+      "actual": "One person asks \"Hello, how are you?\" and the other replies \"Hello\".  \nThe synthetic, fictional, unclassified 2026 policy for Cedar Bay, authored by Omar Patel, is active, supersedes the 2025 training policy, and grants 15 days per year for annual training.\nSYNTHETIC / FICTIONAL / UNCLASSIFIED\nPerson: Omar Patel; Place: Cedar Bay\nDocument type: Policy; Version: 2026; active\nSupersedes the 2025 training policy.\n\n\n<table>\n<tr>\n<th>Allowance</th>\n<th>Days/year</th>\n</tr>\n<tr>\n<td>Annual training</td>\n<td>15</td>\n</tr>\n</table>",
+      "status": "PASS",
+      "evidence": "comparison14-read-result.json"
+    },
+    {
+      "name": "Matched counterfactual group parity",
+      "status": "NOT_RUN",
+      "expected": {
+        "groups": [
+          "fictional-woman",
+          "fictional-man",
+          "fictional-nonbinary"
+        ],
+        "identical_policy_allowance": 15,
+        "change_only": "explicit fictional author gender",
+        "gap_threshold": 0.05
+      },
+      "actual": "Harness implemented; no live demographic observations authorized in this bounded evaluation. No fairness claim."
+    }
+  ],
+  "counts": {
+    "PASS": 25,
+    "FAIL": 2,
+    "BLOCKED": 0,
+    "NOT_RUN": 1
+  }
+}

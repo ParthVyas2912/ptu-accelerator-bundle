@@ -1,0 +1,38 @@
+[
+  {
+    "url": "http://127.0.0.1:5112/",
+    "status": 200,
+    "bytes": 546,
+    "sha256": "4fb6854ba5a19c6071e2aff942aef0b4afd723d9a2381c9df601e7cbd4821e65"
+  },
+  {
+    "url": "http://127.0.0.1:5112/admin",
+    "status": 200,
+    "bytes": 546,
+    "sha256": "4fb6854ba5a19c6071e2aff942aef0b4afd723d9a2381c9df601e7cbd4821e65"
+  },
+  {
+    "url": "http://127.0.0.1:5112/api/health",
+    "status": 200,
+    "bytes": 254,
+    "sha256": "b6125f5b19c31a6c2e293b0e66a0ce56627302febd70b0271b46edfffaf078c5"
+  },
+  {
+    "url": "http://127.0.0.1:8112/api/health",
+    "status": 200,
+    "bytes": 254,
+    "sha256": "b6125f5b19c31a6c2e293b0e66a0ce56627302febd70b0271b46edfffaf078c5"
+  },
+  {
+    "url": "http://127.0.0.1:8112/api/admin/documents",
+    "status": 200,
+    "bytes": 531,
+    "sha256": "1238b0da2b2be67ab4dea9be038715d309377f3bf7a7c4c141a26fcb2174ac50"
+  },
+  {
+    "url": "http://127.0.0.1:8112/api/files/ptu-cwyd-travel.txt",
+    "status": 200,
+    "bytes": 325,
+    "sha256": "ab9103c9cc0d9a9793094a9b7cb76726769e034ffee6cb94d8f67f764c4efad1"
+  }
+]

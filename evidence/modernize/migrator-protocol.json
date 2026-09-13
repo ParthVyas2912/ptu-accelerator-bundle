@@ -1,0 +1,202 @@
+{
+  "scope": "repository Migrator protocol reproduction only; not full app or SDK pipeline",
+  "prompt_sha256": "b9f2a933903e4cdb7af1120074481661cfbe508f65f818adfbbf9da23f7fbfa9",
+  "original_prompt": "src/backend/sql_agents/agents/migrator/prompt.txt",
+  "model": "gpt-5.1",
+  "sku": "GlobalStandard",
+  "model_version": "2025-11-13",
+  "endpoint": "https://edcfoundryhack01.services.ai.azure.com/api/projects/edc-hack-proj",
+  "api_version": "2025-05-01",
+  "calls": [
+    {
+      "number": 1,
+      "test_id": "malformed",
+      "thread_id": "thread_u6mBXyuGmoNoCSU07jO4ARm5",
+      "http_status": 200,
+      "run_id": "run_3q7q6WRbbOaJ7pepyDtkk7K8",
+      "status": "completed",
+      "usage": {
+        "prompt_tokens": 1240,
+        "completion_tokens": 124,
+        "total_tokens": 1364,
+        "prompt_token_details": {
+          "cached_tokens": 0
+        }
+      },
+      "last_error": null,
+      "cached_tokens": null,
+      "elapsed_seconds": 36.875
+    },
+    {
+      "number": 2,
+      "test_id": "repo-nvl",
+      "thread_id": "thread_teqCqc94iJA00IDztXokMeMN",
+      "http_status": 200,
+      "run_id": "run_HdF2YPQdGMXmaDnA4zaphNgf",
+      "status": "completed",
+      "usage": {
+        "prompt_tokens": 1284,
+        "completion_tokens": 399,
+        "total_tokens": 1683,
+        "prompt_token_details": {
+          "cached_tokens": 0
+        }
+      },
+      "last_error": null,
+      "cached_tokens": null,
+      "elapsed_seconds": 28.031
+    },
+    {
+      "number": 3,
+      "test_id": "vendor-procedure",
+      "thread_id": "thread_O2sBalptW9GAmRIj9WqR5HGV",
+      "http_status": 200,
+      "run_id": "run_YeJaOjjjA4iIN9g2LvoLZRZt",
+      "status": "completed",
+      "usage": {
+        "prompt_tokens": 1282,
+        "completion_tokens": 533,
+        "total_tokens": 1815,
+        "prompt_token_details": {
+          "cached_tokens": 0
+        }
+      },
+      "last_error": null,
+      "cached_tokens": null,
+      "elapsed_seconds": 27.031
+    },
+    {
+      "number": 4,
+      "test_id": "demographic-schema",
+      "thread_id": "thread_3D4HcGNvpLoeGYcPFkCVzPbf",
+      "http_status": 200,
+      "run_id": "run_I6k57TIaXPglUi7TFKKNVa21",
+      "status": "completed",
+      "usage": {
+        "prompt_tokens": 1248,
+        "completion_tokens": 278,
+        "total_tokens": 1526,
+        "prompt_token_details": {
+          "cached_tokens": 0
+        }
+      },
+      "last_error": null,
+      "cached_tokens": null,
+      "elapsed_seconds": 28.078
+    }
+  ],
+  "tests": [
+    {
+      "id": "malformed",
+      "source": "SELEC customer_id FROM WHERE;",
+      "expected": "Actionable input_error; no invented repair",
+      "response": {
+        "input_summary": "The provided input appears to attempt a SELECT statement but is syntactically invalid and not recognizable as valid Informix SQL.",
+        "candidates": [],
+        "summary": "Validated the input, determined it is not valid Informix SQL, and therefore did not generate T-SQL migration candidates.",
+        "input_error": "The input is not valid Informix SQL: 'SELEC customer_id FROM WHERE;' contains a misspelled SELECT keyword, lacks a table name after FROM, and has an invalid WHERE clause with no condition.",
+        "rai_error": null
+      },
+      "actual": "structured Migrator response returned",
+      "elapsed_seconds": 36.875
+    },
+    {
+      "id": "repo-nvl",
+      "source": "SELECT o.order_id,\n       o.customer_id,\n       (\n         SELECT NVL(SUM(ob.order_total), 0)\n         FROM orders_backup ob\n         WHERE ob.customer_id = o.customer_id\n       ) AS backup_order_total\nFROM orders o;\n",
+      "expected": "T-SQL candidates for correlated NVL query; target syntax and synthetic result comparison",
+      "response": {
+        "input_summary": "The query selects each order and customer from the orders table and, for each row, computes the total of order_total from orders_backup for the same customer, defaulting to 0 when the sum is NULL.",
+        "candidates": [
+          {
+            "plan": "Replace Informix NVL with T-SQL ISNULL, keep the correlated subquery structure, and use standard T-SQL SELECT syntax.",
+            "candidate_query": "SELECT o.order_id,\n       o.customer_id,\n       (\n         SELECT ISNULL(SUM(ob.order_total), 0)\n         FROM orders_backup AS ob\n         WHERE ob.customer_id = o.customer_id\n       ) AS backup_order_total\nFROM orders AS o;"
+          },
+          {
+            "plan": "Use COALESCE instead of ISNULL for null handling while preserving the correlated subquery and aliasing style.",
+            "candidate_query": "SELECT o.order_id,\n       o.customer_id,\n       (\n         SELECT COALESCE(SUM(ob.order_total), 0)\n         FROM orders_backup ob\n         WHERE ob.customer_id = o.customer_id\n       ) AS backup_order_total\nFROM orders o;"
+          },
+          {
+            "plan": "Rewrite the correlated subquery as a LEFT JOIN to a derived table that aggregates orders_backup by customer_id, using ISNULL to handle NULL sums.",
+            "candidate_query": "SELECT o.order_id,\n       o.customer_id,\n       ISNULL(b.backup_order_total, 0) AS backup_order_total\nFROM orders AS o\nLEFT JOIN (\n    SELECT customer_id,\n           SUM(order_total) AS backup_order_total\n    FROM orders_backup\n    GROUP BY customer_id\n) AS b\n    ON b.customer_id = o.customer_id;"
+          }
+        ],
+        "summary": "Migrated the Informix query using NVL to three semantically equivalent T-SQL variants with appropriate null handling and join/subquery structures.",
+        "input_error": null,
+        "rai_error": null
+      },
+      "actual": "structured Migrator response returned",
+      "elapsed_seconds": 28.031
+    },
+    {
+      "id": "vendor-procedure",
+      "source": "CREATE PROCEDURE ptu_stream() RETURNING INTEGER; DEFINE i INTEGER; FOREACH SELECT o.order_id INTO i FROM orders o JOIN customers c ON c.customer_id=o.customer_id RETURN i WITH RESUME; END FOREACH; END PROCEDURE;",
+      "expected": "Identify streaming procedure differences or unsupported constructs",
+      "response": {
+        "input_summary": "Stored procedure ptu_stream iterates over all orders joined to customers, and for each row returns the order_id as an integer, using a cursor-like FOREACH with WITH RESUME to stream multiple results.",
+        "candidates": [
+          {
+            "plan": "Translate the Informix procedure into a T-SQL stored procedure that returns a result set of order_id values using a simple SELECT with JOIN, since Informix FOREACH/RETURN WITH RESUME semantics correspond to returning multiple rows.",
+            "candidate_query": "CREATE PROCEDURE dbo.ptu_stream\nAS\nBEGIN\n    SET NOCOUNT ON;\n\n    SELECT o.order_id\n    FROM dbo.orders AS o\n    INNER JOIN dbo.customers AS c\n        ON c.customer_id = o.customer_id;\nEND;"
+          },
+          {
+            "plan": "Model the streaming behavior with a T-SQL table-valued function that returns a table of order_id values, preserving the idea of returning multiple integers rather than a single scalar.",
+            "candidate_query": "CREATE FUNCTION dbo.ptu_stream()\nRETURNS TABLE\nAS\nRETURN\n(\n    SELECT o.order_id AS order_id\n    FROM dbo.orders AS o\n    INNER JOIN dbo.customers AS c\n        ON c.customer_id = o.customer_id\n);"
+          },
+          {
+            "plan": "Implement a T-SQL stored procedure that uses a cursor to iterate over the joined result set and SELECT each order_id individually, more closely mirroring the Informix FOREACH and RETURN WITH RESUME row-by-row behavior.",
+            "candidate_query": "CREATE PROCEDURE dbo.ptu_stream\nAS\nBEGIN\n    SET NOCOUNT ON;\n\n    DECLARE @i INT;\n\n    DECLARE order_cursor CURSOR FAST_FORWARD FOR\n        SELECT o.order_id\n        FROM dbo.orders AS o\n        INNER JOIN dbo.customers AS c\n            ON c.customer_id = o.customer_id;\n\n    OPEN order_cursor;\n\n    FETCH NEXT FROM order_cursor INTO @i;\n    WHILE @@FETCH_STATUS = 0\n    BEGIN\n        SELECT @i AS order_id;\n        FETCH NEXT FROM order_cursor INTO @i;\n    END;\n\n    CLOSE order_cursor;\n    DEALLOCATE order_cursor;\nEND;"
+          }
+        ],
+        "summary": "Migrated the Informix streaming procedure to three semantically equivalent T-SQL variants: a simple procedure, a table-valued function, and a cursor-based procedure.",
+        "input_error": null,
+        "rai_error": null
+      },
+      "actual": "structured Migrator response returned",
+      "elapsed_seconds": 27.031
+    },
+    {
+      "id": "demographic-schema",
+      "source": "SELECT customer_id, gender, age_group FROM customers WHERE active = 1;",
+      "expected": "No unwarranted refusal of harmless demographic schema; preserve all fields and filter",
+      "response": {
+        "input_summary": "Selects customer_id, gender, and age_group from active customers (active = 1).",
+        "candidates": [
+          {
+            "plan": "Direct translation of the Informix SELECT into equivalent T-SQL, preserving columns and filter condition, and adding a statement terminator.",
+            "candidate_query": "SELECT customer_id, gender, age_group\nFROM customers\nWHERE active = 1;"
+          },
+          {
+            "plan": "Use explicit schema qualification (dbo) and standard T-SQL formatting while keeping the same semantics.",
+            "candidate_query": "SELECT c.customer_id,\n       c.gender,\n       c.age_group\nFROM dbo.customers AS c\nWHERE c.active = 1;"
+          },
+          {
+            "plan": "Wrap the query in a simple T-SQL SELECT with an alias, which can be useful for further composition, while keeping the base logic identical.",
+            "candidate_query": "SELECT t.customer_id,\n       t.gender,\n       t.age_group\nFROM (\n    SELECT customer_id,\n           gender,\n           age_group,\n           active\n    FROM dbo.customers\n) AS t\nWHERE t.active = 1;"
+          }
+        ],
+        "summary": "Migrated a simple Informix SELECT with a WHERE filter into three syntactically valid and semantically equivalent T-SQL variants.",
+        "input_error": null,
+        "rai_error": null
+      },
+      "actual": "structured Migrator response returned",
+      "elapsed_seconds": 28.078
+    }
+  ],
+  "created_agent_ids": [
+    "asst_sRbr9hYitxfDBEkQ4JB5hNcU"
+  ],
+  "created_thread_ids": [
+    "thread_u6mBXyuGmoNoCSU07jO4ARm5",
+    "thread_teqCqc94iJA00IDztXokMeMN",
+    "thread_O2sBalptW9GAmRIj9WqR5HGV",
+    "thread_3D4HcGNvpLoeGYcPFkCVzPbf"
+  ],
+  "deleted_objects": [],
+  "initial_cap_all_evaluation": 12,
+  "adaptations": [
+    "Native HTTP protocol reproduction because official dependency install is pending",
+    "Agent name prefixed for evaluation isolation",
+    "No automatic deletion"
+  ],
+  "agent_creation_http_status": 200
+}

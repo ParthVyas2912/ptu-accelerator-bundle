@@ -1,0 +1,464 @@
+{
+  "preflight": {
+    "utc": "2026-09-12T02:14:51.008301+00:00",
+    "service": "processor",
+    "clientId": "5101963f-1e38-45d2-9f7c-efa9e9f6d122",
+    "dns": {
+      "aif-ptuv-content-260911.cognitiveservices.azure.com": [
+        "10.246.2.21"
+      ],
+      "aif-ptuv-content-260911.openai.azure.com": [
+        "10.246.2.22"
+      ],
+      "aif-ptuv-content-260911.services.ai.azure.com": [
+        "10.246.2.23"
+      ]
+    },
+    "cuMetadata": {
+      "status": 200,
+      "apiVersion": "2025-11-01",
+      "analyzerId": "prebuilt-layout",
+      "elapsedMs": 540.234,
+      "returnedKeys": [
+        "analyzerId",
+        "baseAnalyzerId",
+        "config",
+        "createdAt",
+        "description",
+        "models",
+        "processingLocation",
+        "status",
+        "supportedModels",
+        "warnings"
+      ]
+    },
+    "passed": true
+  },
+  "evidence": {
+    "ai-preflight.json": {
+      "utc": "2026-09-12T02:14:51.008301+00:00",
+      "service": "processor",
+      "clientId": "5101963f-1e38-45d2-9f7c-efa9e9f6d122",
+      "dns": {
+        "aif-ptuv-content-260911.cognitiveservices.azure.com": [
+          "10.246.2.21"
+        ],
+        "aif-ptuv-content-260911.openai.azure.com": [
+          "10.246.2.22"
+        ],
+        "aif-ptuv-content-260911.services.ai.azure.com": [
+          "10.246.2.23"
+        ]
+      },
+      "cuMetadata": {
+        "status": 200,
+        "apiVersion": "2025-11-01",
+        "analyzerId": "prebuilt-layout",
+        "elapsedMs": 540.234,
+        "returnedKeys": [
+          "analyzerId",
+          "baseAnalyzerId",
+          "config",
+          "createdAt",
+          "description",
+          "models",
+          "processingLocation",
+          "status",
+          "supportedModels",
+          "warnings"
+        ]
+      },
+      "passed": true
+    },
+    "functional-results.json": {
+      "syntheticOnly": true,
+      "api": "http://127.0.0.1:80",
+      "apiCalls": [
+        {
+          "timestamp": "2026-09-12T01:21:52.932264+00:00",
+          "method": "GET",
+          "path": "/schemavault/",
+          "status": 200,
+          "elapsedMs": 1347.442,
+          "result": []
+        },
+        {
+          "timestamp": "2026-09-12T01:21:53.870231+00:00",
+          "method": "POST",
+          "path": "/schemavault/",
+          "status": 200,
+          "elapsedMs": 700.55,
+          "result": {
+            "Id": "e40f3710-6659-4b6d-a1c4-f457ac94a07a",
+            "ClassName": "AutoInsuranceClaimForm",
+            "Description": "Auto Insurance Claim Form",
+            "FileName": "autoclaim.json",
+            "ContentType": "application/json",
+            "Format": "json",
+            "Created_On": "2026-09-12T01:21:53Z",
+            "Updated_On": null
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:21:54.681126+00:00",
+          "method": "POST",
+          "path": "/schemavault/",
+          "status": 200,
+          "elapsedMs": 210.875,
+          "result": {
+            "Id": "e26a0118-23cd-46d8-afb8-483e6e3ed2be",
+            "ClassName": "DamagedVehicleImageAssessment",
+            "Description": "Damaged Vehicle Image Assessment",
+            "FileName": "damagedcarimage.json",
+            "ContentType": "application/json",
+            "Format": "json",
+            "Created_On": "2026-09-12T01:21:54Z",
+            "Updated_On": null
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:21:55.100428+00:00",
+          "method": "POST",
+          "path": "/schemavault/",
+          "status": 200,
+          "elapsedMs": 196.441,
+          "result": {
+            "Id": "c56d2d29-82f5-4dc8-9659-c41e47254ce9",
+            "ClassName": "PoliceReportDocument",
+            "Description": "Police Report Document",
+            "FileName": "policereport.json",
+            "ContentType": "application/json",
+            "Format": "json",
+            "Created_On": "2026-09-12T01:21:55Z",
+            "Updated_On": null
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:21:55.596725+00:00",
+          "method": "POST",
+          "path": "/schemavault/",
+          "status": 200,
+          "elapsedMs": 178.53,
+          "result": {
+            "Id": "d5531c34-0d85-40d2-bd9e-c2d361ee2d44",
+            "ClassName": "RepairEstimateDocument",
+            "Description": "Repair Estimate Document",
+            "FileName": "repairestimate.json",
+            "ContentType": "application/json",
+            "Format": "json",
+            "Created_On": "2026-09-12T01:21:55Z",
+            "Updated_On": null
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:21:57.411273+00:00",
+          "method": "GET",
+          "path": "/schemasetvault/",
+          "status": 200,
+          "elapsedMs": 1593.644,
+          "result": []
+        },
+        {
+          "timestamp": "2026-09-12T01:21:57.538888+00:00",
+          "method": "POST",
+          "path": "/schemasetvault/",
+          "status": 200,
+          "elapsedMs": 25.96,
+          "result": {
+            "Id": "0669038a-dcc4-46c7-b53c-1209263c070b",
+            "Name": "Auto Claim",
+            "Description": "Claim schema set for auto claims processing",
+            "Created_On": "2026-09-12T01:21:57.515619Z",
+            "Updated_On": "2026-09-12T01:21:57.515622Z",
+            "Schemas": []
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:21:57.790423+00:00",
+          "method": "GET",
+          "path": "/schemasetvault/0669038a-dcc4-46c7-b53c-1209263c070b/schemas",
+          "status": 200,
+          "elapsedMs": 90.895,
+          "result": []
+        },
+        {
+          "timestamp": "2026-09-12T01:21:58.022563+00:00",
+          "method": "POST",
+          "path": "/schemasetvault/0669038a-dcc4-46c7-b53c-1209263c070b/schemas",
+          "status": 200,
+          "elapsedMs": 102.3,
+          "result": {
+            "Id": "0669038a-dcc4-46c7-b53c-1209263c070b",
+            "Name": "Auto Claim",
+            "Description": "Claim schema set for auto claims processing",
+            "Created_On": "2026-09-12T01:21:57.515619Z",
+            "Updated_On": "2026-09-12T01:21:57.995989Z",
+            "Schemas": [
+              {
+                "Id": "f3fb04fa-f4bf-4fa4-9118-9171a9ed37cf",
+                "SchemaId": "e40f3710-6659-4b6d-a1c4-f457ac94a07a",
+                "Description": "Auto Insurance Claim Form"
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:21:58.103478+00:00",
+          "method": "POST",
+          "path": "/schemasetvault/0669038a-dcc4-46c7-b53c-1209263c070b/schemas",
+          "status": 200,
+          "elapsedMs": 22.778,
+          "result": {
+            "Id": "0669038a-dcc4-46c7-b53c-1209263c070b",
+            "Name": "Auto Claim",
+            "Description": "Claim schema set for auto claims processing",
+            "Created_On": "2026-09-12T01:21:57.515619Z",
+            "Updated_On": "2026-09-12T01:21:58.093577Z",
+            "Schemas": [
+              {
+                "Id": "f3fb04fa-f4bf-4fa4-9118-9171a9ed37cf",
+                "SchemaId": "e40f3710-6659-4b6d-a1c4-f457ac94a07a",
+                "Description": "Auto Insurance Claim Form"
+              },
+              {
+                "Id": "f4039a8c-f208-4da7-82f2-5960f37d1a83",
+                "SchemaId": "e26a0118-23cd-46d8-afb8-483e6e3ed2be",
+                "Description": "Damaged Vehicle Image Assessment"
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:21:58.246637+00:00",
+          "method": "POST",
+          "path": "/schemasetvault/0669038a-dcc4-46c7-b53c-1209263c070b/schemas",
+          "status": 200,
+          "elapsedMs": 37.968,
+          "result": {
+            "Id": "0669038a-dcc4-46c7-b53c-1209263c070b",
+            "Name": "Auto Claim",
+            "Description": "Claim schema set for auto claims processing",
+            "Created_On": "2026-09-12T01:21:57.515619Z",
+            "Updated_On": "2026-09-12T01:21:58.235204Z",
+            "Schemas": [
+              {
+                "Id": "f3fb04fa-f4bf-4fa4-9118-9171a9ed37cf",
+                "SchemaId": "e40f3710-6659-4b6d-a1c4-f457ac94a07a",
+                "Description": "Auto Insurance Claim Form"
+              },
+              {
+                "Id": "f4039a8c-f208-4da7-82f2-5960f37d1a83",
+                "SchemaId": "e26a0118-23cd-46d8-afb8-483e6e3ed2be",
+                "Description": "Damaged Vehicle Image Assessment"
+              },
+              {
+                "Id": "9ce0a46c-b4ed-455a-9bd7-0ce2566ee670",
+                "SchemaId": "c56d2d29-82f5-4dc8-9659-c41e47254ce9",
+                "Description": "Police Report Document"
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:21:58.332974+00:00",
+          "method": "POST",
+          "path": "/schemasetvault/0669038a-dcc4-46c7-b53c-1209263c070b/schemas",
+          "status": 200,
+          "elapsedMs": 25.425,
+          "result": {
+            "Id": "0669038a-dcc4-46c7-b53c-1209263c070b",
+            "Name": "Auto Claim",
+            "Description": "Claim schema set for auto claims processing",
+            "Created_On": "2026-09-12T01:21:57.515619Z",
+            "Updated_On": "2026-09-12T01:21:58.319512Z",
+            "Schemas": [
+              {
+                "Id": "f3fb04fa-f4bf-4fa4-9118-9171a9ed37cf",
+                "SchemaId": "e40f3710-6659-4b6d-a1c4-f457ac94a07a",
+                "Description": "Auto Insurance Claim Form"
+              },
+              {
+                "Id": "f4039a8c-f208-4da7-82f2-5960f37d1a83",
+                "SchemaId": "e26a0118-23cd-46d8-afb8-483e6e3ed2be",
+                "Description": "Damaged Vehicle Image Assessment"
+              },
+              {
+                "Id": "9ce0a46c-b4ed-455a-9bd7-0ce2566ee670",
+                "SchemaId": "c56d2d29-82f5-4dc8-9659-c41e47254ce9",
+                "Description": "Police Report Document"
+              },
+              {
+                "Id": "10cdbcc7-eebf-4540-91af-7e0cc841f7a4",
+                "SchemaId": "d5531c34-0d85-40d2-bd9e-c2d361ee2d44",
+                "Description": "Repair Estimate Document"
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:22:41.840282+00:00",
+          "method": "PUT",
+          "path": "/claimprocessor/claims",
+          "status": 200,
+          "elapsedMs": 266.237,
+          "result": {
+            "claim_id": "77f4a16d-96fe-4739-b90a-9ac0b2597bb4",
+            "schema_collection_id": "0669038a-dcc4-46c7-b53c-1209263c070b",
+            "created_time": "2026-09-12T01:22:41.829681Z",
+            "last_modified_time": "2026-09-12T01:22:41.829687Z",
+            "items": []
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:22:42.162433+00:00",
+          "method": "POST",
+          "path": "/claimprocessor/claims/77f4a16d-96fe-4739-b90a-9ac0b2597bb4/files",
+          "status": 200,
+          "elapsedMs": 47.712,
+          "result": {
+            "batch_id": "77f4a16d-96fe-4739-b90a-9ac0b2597bb4",
+            "file_name": "claim-form.pdf",
+            "size": 1142,
+            "mime_type": "application/pdf"
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:22:42.770219+00:00",
+          "method": "POST",
+          "path": "/claimprocessor/claims/77f4a16d-96fe-4739-b90a-9ac0b2597bb4/files",
+          "status": 200,
+          "elapsedMs": 397.503,
+          "result": {
+            "batch_id": "77f4a16d-96fe-4739-b90a-9ac0b2597bb4",
+            "file_name": "damage-diagram.png",
+            "size": 6636,
+            "mime_type": "image/png"
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:22:43.002568+00:00",
+          "method": "POST",
+          "path": "/claimprocessor/claims/77f4a16d-96fe-4739-b90a-9ac0b2597bb4/files",
+          "status": 200,
+          "elapsedMs": 113.872,
+          "result": {
+            "batch_id": "77f4a16d-96fe-4739-b90a-9ac0b2597bb4",
+            "file_name": "police-report.pdf",
+            "size": 962,
+            "mime_type": "application/pdf"
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:22:43.388919+00:00",
+          "method": "POST",
+          "path": "/claimprocessor/claims/77f4a16d-96fe-4739-b90a-9ac0b2597bb4/files",
+          "status": 200,
+          "elapsedMs": 117.662,
+          "result": {
+            "batch_id": "77f4a16d-96fe-4739-b90a-9ac0b2597bb4",
+            "file_name": "repair-estimate.pdf",
+            "size": 1184,
+            "mime_type": "application/pdf"
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:23:25.896523+00:00",
+          "method": "PUT",
+          "path": "/claimprocessor/claims",
+          "status": 200,
+          "elapsedMs": 19.181,
+          "result": {
+            "claim_id": "4ca130f8-2f91-4d3b-8276-e14297e3ef91",
+            "schema_collection_id": "0669038a-dcc4-46c7-b53c-1209263c070b",
+            "created_time": "2026-09-12T01:23:25.879851Z",
+            "last_modified_time": "2026-09-12T01:23:25.879856Z",
+            "items": []
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:23:26.219758+00:00",
+          "method": "POST",
+          "path": "/claimprocessor/claims/4ca130f8-2f91-4d3b-8276-e14297e3ef91/files",
+          "status": 415,
+          "elapsedMs": 3.415,
+          "result": {
+            "message": "Unsupported or mismatched file type. Only PDF, JPEG, JPG, and PNG are supported.",
+            "file_name": "bad-magic.pdf"
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:23:26.421770+00:00",
+          "method": "POST",
+          "path": "/claimprocessor/claims/4ca130f8-2f91-4d3b-8276-e14297e3ef91/files",
+          "status": 200,
+          "elapsedMs": 53.15,
+          "result": {
+            "batch_id": "4ca130f8-2f91-4d3b-8276-e14297e3ef91",
+            "file_name": "truncated.pdf",
+            "size": 20,
+            "mime_type": "application/pdf"
+          }
+        },
+        {
+          "timestamp": "2026-09-12T01:23:26.517258+00:00",
+          "method": "POST",
+          "path": "/claimprocessor/claims/4ca130f8-2f91-4d3b-8276-e14297e3ef91/files",
+          "status": 415,
+          "elapsedMs": 4.141,
+          "result": {
+            "message": "Unsupported or mismatched file type. Only PDF, JPEG, JPG, and PNG are supported.",
+            "file_name": "unsupported.txt"
+          }
+        }
+      ],
+      "schemas": {
+        "autoclaim.json": "e40f3710-6659-4b6d-a1c4-f457ac94a07a",
+        "damagedcarimage.json": "e26a0118-23cd-46d8-afb8-483e6e3ed2be",
+        "policereport.json": "c56d2d29-82f5-4dc8-9659-c41e47254ce9",
+        "repairestimate.json": "d5531c34-0d85-40d2-bd9e-c2d361ee2d44"
+      },
+      "cases": {
+        "complete": {
+          "claimId": "77f4a16d-96fe-4739-b90a-9ac0b2597bb4",
+          "submitted": false
+        },
+        "corrupt": {
+          "claimId": "4ca130f8-2f91-4d3b-8276-e14297e3ef91",
+          "submitted": false
+        }
+      },
+      "schemaSetId": "0669038a-dcc4-46c7-b53c-1209263c070b"
+    },
+    "content-call-budget.json": {
+      "version": 1,
+      "scope": "content-only",
+      "requests": [
+        {
+          "kind": "cu-metadata",
+          "service": "processor",
+          "pid": 18,
+          "started": "2026-09-12T02:14:51.288231+00:00",
+          "method": "GET",
+          "host": "aif-ptuv-content-260911.cognitiveservices.azure.com",
+          "path": "/contentunderstanding/analyzers/prebuilt-layout",
+          "model": null,
+          "id": 1,
+          "containerReplica": "ca-ptu-content-processor--0000002-769f6dc8d-mc72l",
+          "containerRevision": "ca-ptu-content-processor--0000002",
+          "status": 200,
+          "elapsed_ms": 340.043,
+          "usage": null,
+          "pages": null,
+          "operation": null,
+          "error": null
+        }
+      ]
+    },
+    "claim-run-complete.json": null,
+    "claim-run-corrupt.json": null,
+    "claim-run-missing-police.json": null,
+    "claim-run-vin-date-mismatch.json": null
+  },
+  "localCaptureUtc": "2026-09-12T02:14:53.370498+00:00",
+  "controlPlaneExitCode": 0
+}

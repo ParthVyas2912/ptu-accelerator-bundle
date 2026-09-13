@@ -1,0 +1,14 @@
+{
+  "approved_utc": "2026-09-12T02:42:56.545Z",
+  "app": "Document Knowledge Mining",
+  "previous_cap": 12,
+  "approved_total": 14,
+  "additional_provider_attempts": 2,
+  "only_operation": "Corpus/two-document comparison using existing two documents",
+  "recover_before_inference": true,
+  "persist_full_response_to_owned_blob_before_console": true,
+  "sdk_retries": 0,
+  "portfolio_allocation": 100,
+  "reallocated_from": "CWYD: revised allocation16,used16",
+  "no_new_infrastructure_or_models": true
+}

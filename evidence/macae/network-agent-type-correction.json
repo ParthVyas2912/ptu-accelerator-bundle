@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "app": "MACAE",
+  "reviewDateUtc": "2026-09-12",
+  "scope": "Read-only architecture classification and report correction, after the terminal advisory workflow",
+  "repoCommit": "8ac703a71f10b622bd3c82a9cc2b5dfe921c3025",
+  "conclusion": "Private service-side tool egress is unconfigured. An official existing-account standard-setup mechanism is documented, but compatibility and enablement for MACAE's exact existing-project Responses/KB MCP path are not verified. Mandatory account recreation is not established.",
+  "withdrawnClaim": "The Hosted-agent creation-time networking limitation proves that MACAE must recreate its Foundry account.",
+  "agentClassification": {
+    "orchestrationLocation": "Ordinary Azure Container Apps backend, using local Microsoft Agent Framework Agent and Magentic orchestration",
+    "foundryCustomContainerHostedAgentDeployment": false,
+    "portalDefinitionClass": "azure.ai.projects.models.PromptAgentDefinition",
+    "definitionKind": "prompt",
+    "definitionKindVerification": "Local SDK schema-only construction serialized kind=prompt; no client or network operation",
+    "inferenceClient": "agent_framework_foundry.FoundryChatClient through AIProjectClient.get_openai_client",
+    "invocationQualification": "The source builds a local Agent with its own client, instructions and tools; it does not use FoundryAgent. Portal PromptAgentDefinition registration is not proof of server-managed agent-reference invocation or of Data Proxy compatibility for these Responses calls.",
+    "observedResponsesPath": "/api/projects/ptu-macae-project/openai/v1/responses",
+    "responsesQueryApiVersionCaptured": false,
+    "sdkVersions": {
+      "agent-framework": "1.6.0",
+      "agent-framework-foundry": "1.6.0",
+      "azure-ai-projects": "2.1.0",
+      "openai": "2.34.0"
+    },
+    "versionEvidence": "Repository dependency pins and local installed distribution metadata agree",
+    "domainMcp": {
+      "class": "MCPStreamableHTTPTool",
+      "executionLocation": "Client-side in the ACA application",
+      "scope": "Native HR/IT demonstration tools"
+    },
+    "knowledgeBaseMcp": {
+      "class": "azure.ai.projects.models.MCPTool",
+      "executionLocation": "Server-side Responses tool service, not the ACA caller",
+      "endpointShape": "https://<search>/knowledgebases/<knowledge-base>/mcp?api-version=2025-11-01-preview",
+      "authenticationBinding": "project_connection_id",
+      "allowedTools": ["knowledge_base_retrieve"],
+      "requireApproval": "never",
+      "note": "This tool-level setting is distinct from the native workflow's explicit plan approval."
+    },
+    "sourceEvidence": [
+      "src\\backend\\agents\\agent_template.py: AgentTemplate.open, PromptAgentDefinition, FoundryChatClient, local Agent, client/server MCP distinction",
+      "src\\backend\\config\\mcp_config.py: KnowledgeBaseConfig URL and connection name",
+      "src\\backend\\pyproject.toml: exact dependency versions",
+      "src\\backend\\.venv\\Lib\\site-packages\\agent_framework_foundry\\_chat_client.py: project Responses client",
+      "cloud-model-ledger.json: actual Responses request path"
+    ]
+  },
+  "readOnlyAzureObservations": {
+    "observedOnUtc": "2026-09-12",
+    "timestampPrecision": "Date; individual GET timestamps were not captured",
+    "subscriptionId": "1feb53b2-854a-4ea7-b5a6-709b7d804f70",
+    "accountResourceId": "/subscriptions/1feb53b2-854a-4ea7-b5a6-709b7d804f70/resourceGroups/rg-ptu-macae-demo/providers/Microsoft.CognitiveServices/accounts/ptumacae7d804f70",
+    "projectName": "ptu-macae-project",
+    "armApiVersion": "2025-04-01-preview",
+    "account": {
+      "kind": "AIServices",
+      "networkInjections": null,
+      "publicNetworkAccess": "Enabled",
+      "disableLocalAuth": true
+    },
+    "accountCapabilityHosts": [],
+    "projectCapabilityHosts": [],
+    "operations": [
+      "GET account",
+      "GET account/capabilityHosts",
+      "GET account/projects/ptu-macae-project/capabilityHosts"
+    ],
+    "interpretation": "No explicit account injection or account/project capability host was returned. This establishes missing configuration, not account immutability or a successful retrofit."
+  },
+  "documentationApplicability": {
+    "hostedAgentCreationTimeRule": "The detailed virtual-networks how-to explicitly scopes its creation-time-only warning to Hosted agents.",
+    "macAeApplicability": "MACAE's local ACA hosting and server-executed MCP tools do not make it a Foundry custom-container Hosted Agent.",
+    "promptVsHosted": "The deep dive describes Prompt Agent -> Tools Service -> project Data Proxy, without the Hosted Agent Micro VM /invoke hop.",
+    "documentationQualification": "The networking-options overview has broader wording. Do not promote that wording to a universal MACAE recreation requirement or assume the specific Hosted-agent rule proves retrofit support.",
+    "existingAccountEvidence": "The official sample supports a BYO account with no capability host: its account capability-host module references the existing account and sets capabilityHostKind=Agents and customerSubnet.",
+    "existingProjectEvidence": "add-existing-project.bicep documents in-place project wiring with three AAD backing-service connections, project identity roles and a project capability host.",
+    "existingProjectPrerequisite": "Account-level network injection must already be in place. The existing-account identity module only references the account; it does not update networkInjections. add-existing-project alone is therefore not a proven fix for the observed account.",
+    "sampleQualification": "The sample README still describes a setup without tools behind VNet. Its reuse modules are configuration evidence, not proof that this particular Responses/managed Search MCP path works.",
+    "mcpGuide": "Documents private MCP with private networking and project-managed-identity connections. Custom MCP-on-ACA subnet guidance must not automatically be imposed on Search's managed knowledge-base endpoint.",
+    "foundryIqTutorialQualification": "The current tutorial uses 2026-08-01-preview, while MACAE's KB MCP URL uses 2025-11-01-preview. Search-to-Blob/Foundry outbound guidance is not the same direction as Foundry-to-Search. Its ingestion-time embedding trusted-service bypass is not authorized here."
+  },
+  "boundedProposal": {
+    "status": "CONDITIONAL DESIGN ONLY; NOT AUTHORIZED TO EXECUTE; NOT A COMPLETE COSTED DEPLOYMENT",
+    "reuse": [
+      "Own ptumacae7d804f70 account and ptu-macae-project",
+      "Existing gpt-5.4 and gpt-5.4-mini GlobalStandard deployments unchanged",
+      "Own ptu-macae-7d804f70-cosmos Serverless account, ptumacae7d804f70st Blob account and ptu-macae-7d804f70-srch Basic1x1 service",
+      "Existing MCAPS shared VNet, data private endpoints and DNS, subject to routing compatibility"
+    ],
+    "preflightGates": [
+      "Confirm existing-account capability-host/customerSubnet enablement for local-MAF project Responses MCP with project_connection_id, not merely a Hosted Agent or a different prompt invocation API.",
+      "Confirm whether the documented account capability-host route supplies the existing-project injection prerequisite for this currently uninjected account.",
+      "Confirm current KB API compatibility, EastUS2/CanadaCentral cross-region support and Search Basic1x1 semantic-free compatibility.",
+      "Confirm Serverless Cosmos compatibility, required service-managed databases/containers, connection schemas and narrowly scoped identity roles; do not assume the application's existing memory container satisfies Agent Service storage.",
+      "Identify project Data Proxy and service-managed infrastructure costs before a billable approval request.",
+      "Resolve service-side model accounting before any future grounded test; current 24-attempt budget has no remaining allowance."
+    ],
+    "candidateChangesIfSupportedAndSeparatelyApproved": [
+      "One dedicated agent subnet in the existing parent MCAPS VNet, delegated to Microsoft.App/environments; minimum /27 for evaluation, address allocation by parent. Do not reuse the ACA integration subnet.",
+      "One account capability host only while absent, using Microsoft.CognitiveServices/accounts/capabilityHosts@2025-04-01-preview with capabilityHostKind=Agents and customerSubnet=<approved subnet resource ID>.",
+      "Three AAD backing-service project connections for own Cosmos, Storage and Search; one project capability host bound to those exact names, plus only required project-managed-identity roles on approved own-resource scopes.",
+      "Up to two native KB MCP project connections matching actual RFP/contract knowledge-base configuration, only after API/auth compatibility is confirmed. Knowledge-base setup and grounded reasoning are not already verified.",
+      "Reuse existing data PEs/DNS. An inbound Foundry PE alone is not a tool-egress fix; any additional endpoint or ingress change needs its own demonstrated requirement and approval."
+    ],
+    "excluded": [
+      "No new account, project or model deployment is assumed necessary",
+      "No whole-template deployment or default model deployment",
+      "No PTUs, capacity/SKU increases or automatic Cosmos throughput changes",
+      "No PNA weakening, keys/local-auth enablement, trusted-service bypass or replacement client-side/proxy grounding",
+      "No JDCP hub, subnet or DNS resources",
+      "No runtime restart, model call, paid RFP probe or Azure mutation during this correction"
+    ],
+    "remainingUncertainty": "The official reuse mechanism is source-backed; its acceptance and end-to-end tool routing for this exact deployed SDK/API combination remain unverified. Only evidence that reuse is unsupported would justify evaluating separately approved replacement-account alternatives."
+  },
+  "sources": [
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/virtual-networks",
+      "documentCommit": "58b932b92b46e2248ac1662001730789ef7e5e06"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/agents-networking-deep-dive",
+      "documentCommit": "b3048cbbddfc5b32fb6f0148a2edc46123296e06"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/networking-options"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/tools/model-context-protocol"
+    },
+    {
+      "url": "https://github.com/microsoft-foundry/foundry-samples/blob/main/infrastructure/infrastructure-setup-bicep/15-private-network-standard-agent-setup/README.md",
+      "blobSha": "e6334e8d30575eb7b1fa27b579a9255b3603b002"
+    },
+    {
+      "url": "https://github.com/microsoft-foundry/foundry-samples/blob/main/infrastructure/infrastructure-setup-bicep/15-private-network-standard-agent-setup/add-existing-project.bicep",
+      "blobSha": "a0910738f12dbca08209bd6a271b107ccd6686b5"
+    },
+    {
+      "url": "https://github.com/microsoft-foundry/foundry-samples/blob/main/infrastructure/infrastructure-setup-bicep/15-private-network-standard-agent-setup/modules-network-secured/ai-account-identity.bicep",
+      "blobSha": "e3576f931a43ab95ab055f31f7450c45b96b9e7c"
+    },
+    {
+      "url": "https://github.com/microsoft-foundry/foundry-samples/blob/main/infrastructure/infrastructure-setup-bicep/15-private-network-standard-agent-setup/modules-network-secured/add-account-capability-host.bicep",
+      "blobSha": "99c794f8523407e33b25e8837c7f553bca38c69b"
+    }
+  ],
+  "rfpArchitecture": {
+    "status": "BLOCKED_PRIVATE_EGRESS_UNCONFIGURED_EXACT_PATH_UNVERIFIED",
+    "existingAccountNoNewInfraPathProven": false,
+    "documentedExistingAccountConfigurationMechanism": true,
+    "existingAccountExactMacaePathValidated": false,
+    "byoVnetInjectionCreationTimeRequired": null,
+    "creationTimeConstraintScope": "Hosted agents explicitly in the detailed how-to; blanket applicability to MACAE withdrawn",
+    "accountRecreationRequired": "NOT_ESTABLISHED",
+    "nextStep": "Read-only support, API, storage and cost preflight for the bounded existing-account capability-host/customerSubnet plus existing-project standard setup proposal; separate authorization required before any implementation.",
+    "inboundFoundryPeAloneSolvesHostedToolEgress": false,
+    "newNetworkOrAccountCreated": false,
+    "serviceSideCallAccountingStillRequired": true,
+    "correctionEvidence": "network-agent-type-correction.json"
+  },
+  "operationalInvariants": {
+    "modelCallsDuringCorrection": 0,
+    "azureMutationsDuringCorrection": 0,
+    "azureReadOnlyGetsDuringCorrection": 3,
+    "runtimeRestartsDuringCorrection": 0,
+    "usedModelAttempts": 24,
+    "approvedModelAttemptLimit": 24,
+    "inferenceEnabledAtLastRuntimeObservation": false,
+    "replicaCountAtLastRuntimeObservation": 0,
+    "lastRuntimeObservationUtc": "2026-09-12T03:06:27.6151566Z",
+    "stateEvidence": "cloud-final-state.json",
+    "terminalAdvisoryCompleted": false,
+    "note": "This review does not refresh the runtime observation, mutate the model ledger or turn blocked grounding into verified functionality."
+  }
+}

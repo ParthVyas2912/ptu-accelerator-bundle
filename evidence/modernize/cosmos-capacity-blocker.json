@@ -1,0 +1,35 @@
+{
+  "app": "Modernize Your Code",
+  "approved_region": "canadacentral",
+  "attempted_account": "cosmos-ptu-modernize-0911",
+  "resource_group": "rg-ptu-modernize-demo",
+  "capacity_mode": "Serverless",
+  "provisioning_state": "Failed",
+  "error_code": "ServiceUnavailable",
+  "message": "High demand in Canada Central; subscription region access request required.",
+  "operation_id": "2e266b5d-ffad-49d8-9dfc-f865f4f755ea",
+  "activity_id": "f453e05e-ae3c-11f1-9490-3818688a40ed",
+  "azure_time": "2026-09-12T00:01:49Z",
+  "regional_metadata": [
+    {"region": "Canada Central", "status": "Online", "subscription_regular_access_allowed": false},
+    {"region": "Canada East", "status": "Online", "subscription_regular_access_allowed": false},
+    {"region": "East US 2", "status": "Online", "subscription_regular_access_allowed": true}
+  ],
+  "alternatives": [
+    {
+      "region": "Canada East",
+      "result": "Investigated read-only; subscription access also false. Not attempted."
+    },
+    {
+      "region": "East US 2",
+      "proposed_account": "cosmos-ptu-modernize-eus20911",
+      "result": "Subscription regular-region access allowed; request parent approval before attempting same single-region Serverless configuration."
+    }
+  ],
+  "created_storage_account": "stptumodernize0911pv",
+  "storage_region": "canadacentral",
+  "storage_sku": "Standard_LRS",
+  "storage_keys_and_anonymous_access_disabled": true,
+  "deleted_resources": [],
+  "model_requests_total": 4
+}

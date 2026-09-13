@@ -1,0 +1,13 @@
+{
+  "clientAllowlist": "174.112.74.34/32",
+  "apiHealthFromEvaluator": {
+    "status": 403,
+    "body": "RBAC: access denied"
+  },
+  "uiFromEvaluator": {
+    "status": 403,
+    "body_preview": "RBAC: access denied"
+  },
+  "allowlistBroadened": false,
+  "evaluationPath": "Authenticated Azure exec to loopback original API"
+}

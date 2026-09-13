@@ -1,0 +1,32 @@
+name: Validate repository
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Check published files for credentials
+        run: |
+          set -o pipefail
+          git ls-files -z | python scripts/check_publication.py --paths-from-stdin --allowlist scripts/publication_allowlist.json
+      - name: Install website dependencies
+        working-directory: site
+        run: npm ci --ignore-scripts
+      - name: Test and build website
+        working-directory: site
+        run: npm test && npm run build

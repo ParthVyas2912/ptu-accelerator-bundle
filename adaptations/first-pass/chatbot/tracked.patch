@@ -1,0 +1,310 @@
+diff --git a/chat-app/backend/app/utils/azure_credential_utils.py b/chat-app/backend/app/utils/azure_credential_utils.py
+index 4c67ab49802d2bed2a0046f5899312390f905f7c..5254e3dffd748dd40f09cd14838c7ea107d21a92 100644
+--- a/chat-app/backend/app/utils/azure_credential_utils.py
++++ b/chat-app/backend/app/utils/azure_credential_utils.py
+@@ -9,11 +9,11 @@ async def get_azure_credential_async(client_id=None):
+     if os.getenv("APP_ENV", "prod").lower() == "dev":
+         return AioDefaultAzureCredential()  # CodeQL [SM05139] Okay use of DefaultAzureCredential as it is only used in development
+     else:
+-        return AioManagedIdentityCredential(client_id=client_id)
++        return AioManagedIdentityCredential(client_id=client_id or os.getenv("AZURE_CLIENT_ID"))
+ 
+ 
+ def get_azure_credential(client_id=None):
+     if os.getenv("APP_ENV", "prod").lower() == "dev":
+         return DefaultAzureCredential()  # CodeQL [SM05139] Okay use of DefaultAzureCredential as it is only used in development
+     else:
+-        return ManagedIdentityCredential(client_id=client_id)
++        return ManagedIdentityCredential(client_id=client_id or os.getenv("AZURE_CLIENT_ID"))
+diff --git a/chat-app/backend/app/utils/product_text_parser.py b/chat-app/backend/app/utils/product_text_parser.py
+index 0979b62c602e4b34f5ab74a9d7b98450e2e833f2..bcd6ca7d87f3f7d7370f98b156013baa8d8509bd 100644
+--- a/chat-app/backend/app/utils/product_text_parser.py
++++ b/chat-app/backend/app/utils/product_text_parser.py
+@@ -2,10 +2,10 @@ import re
+ from typing import Any
+ 
+ try:
+-    from .product_catalog import enrich_product
++    from .product_catalog import ecommerce_catalog_by_title, enrich_product
+     from ..scenario_config import current_scenario
+ except ImportError:
+-    from app.utils.product_catalog import enrich_product
++    from app.utils.product_catalog import ecommerce_catalog_by_title, enrich_product
+     from app.scenario_config import current_scenario
+ 
+ 
+@@ -166,4 +166,11 @@ def extract_recommended_products(text: str) -> list[dict[str, Any]]:
+         return []
+ 
+     products, _, _ = parse_products_from_text(text)
+-    return [enrich_product(product) for product in products if product.get("title")]
++    # Model output is not a catalog: never turn an unknown title into an
++    # invented in-stock SKU/card. Only the native ecommerce catalog is trusted.
++    catalog = ecommerce_catalog_by_title()
++    return [
++        enrich_product(product)
++        for product in products
++        if str(product.get("title") or "").strip().lower() in catalog
++    ]
+diff --git a/chat-app/frontend/startup.sh b/chat-app/frontend/startup.sh
+index c11546c6632d0b4c7aea3a4c57a89f626c142839..28376be243bb72eacedb770db51a2dac6666c194 100644
+--- a/chat-app/frontend/startup.sh
++++ b/chat-app/frontend/startup.sh
+@@ -1,5 +1,21 @@
+ #!/bin/sh
+ 
++# Preserve the native App Service default; use ACA service discovery on opt-in.
++DNS_RESOLVER="${NGINX_DNS_RESOLVER:-168.63.129.16}"
++if [ "${NGINX_USE_SYSTEM_RESOLVER:-0}" = "1" ]; then
++  DNS_RESOLVER=""
++  while read -r kind address remainder; do
++    if [ "$kind" = "nameserver" ]; then
++      DNS_RESOLVER="$address"
++      break
++    fi
++  done < /etc/resolv.conf
++  if [ -z "$DNS_RESOLVER" ]; then
++    echo "No container DNS resolver; refusing to proxy private APIs."
++    exit 1
++  fi
++fi
++
+ # WAF/private networking deployment: BACKEND_API_URL is set when the backend API
+ # is private. The SPA then calls its own origin (nginx reverse-proxies /api/ to
+ # the private backend over the VNet).
+@@ -37,7 +53,7 @@ if [ -n "${BACKEND_API_URL}" ]; then
+   cat > /etc/nginx/conf.d/api-proxy.conf << PROXYEOF
+ # Reverse proxy for backend API - WAF private networking deployment
+ location /api/ {
+-    resolver 168.63.129.16 valid=30s;
++    resolver ${DNS_RESOLVER} valid=30s;
+     set \$backend "${BACKEND_API_URL}";
+     proxy_pass \$backend;
+     proxy_set_header Host "${BACKEND_HOST}";
+diff --git a/infra/scripts/post-provision/agent_scripts/01_create_agents.py b/infra/scripts/post-provision/agent_scripts/01_create_agents.py
+index e368623f13d44cbcfb3141945128256f31127632..a4f6b088548b75a22207e3a5fa68baac0e58e9bb 100644
+--- a/infra/scripts/post-provision/agent_scripts/01_create_agents.py
++++ b/infra/scripts/post-provision/agent_scripts/01_create_agents.py
+@@ -1,12 +1,13 @@
+ import argparse
+ import asyncio
++import os
+ import sys
+ from pathlib import Path
+ 
+ from azure.ai.projects.aio import AIProjectClient
+ from azure.ai.projects.models import ConnectionType
+ from agent_framework.azure import AzureAIProjectAgentProvider
+-from azure.identity.aio import AzureCliCredential
++from azure.identity.aio import AzureCliCredential, ManagedIdentityCredential
+ from dotenv import load_dotenv
+ 
+ load_dotenv()
+@@ -51,8 +52,13 @@ async def get_ai_search_connection_id(project_client: AIProjectClient) -> str:
+ 
+ 
+ async def create_agents():
++    runtime_credential = (
++        ManagedIdentityCredential(client_id=os.getenv("AZURE_CLIENT_ID"))
++        if os.getenv("APP_ENV", "dev").lower() != "dev"
++        else AzureCliCredential()
++    )
+     async with (
+-        AzureCliCredential() as credential,
++        runtime_credential as credential,
+         AIProjectClient(endpoint=ai_project_endpoint, credential=credential) as project_client,
+         AzureAIProjectAgentProvider(
+             project_client=project_client,
+diff --git a/infra/scripts/post-provision/data_scripts/01_create_products_search_index.py b/infra/scripts/post-provision/data_scripts/01_create_products_search_index.py
+index 9d22fe4fe44100656d26192acc9af62ab315fd62..e1ed4145519f6cea60d9f89423f8e6fdcc83b926 100644
+--- a/infra/scripts/post-provision/data_scripts/01_create_products_search_index.py
++++ b/infra/scripts/post-provision/data_scripts/01_create_products_search_index.py
+@@ -52,7 +52,7 @@ credential = get_azure_credential()
+ # credential = get_azure_credential()
+ 
+ search_index_client = SearchIndexClient(search_endpoint, credential=credential)
+-search_index_client.delete_index(INDEX_NAME)
++# Evaluation: never delete Azure data objects; use the unique scenario index.
+ 
+ 
+ def create_search_index():
+@@ -144,7 +144,7 @@ def get_embeddings_batch(
+     """Get embeddings for multiple texts in batches"""
+     model_id = model_name
+     token_provider = get_bearer_token_provider(
+-        AzureCliCredential(), "https://cognitiveservices.azure.com/.default"
++        get_azure_credential(), "https://cognitiveservices.azure.com/.default"
+     )
+     client = AzureOpenAI(
+         api_version=openai_api_version,
+@@ -160,19 +160,7 @@ def get_embeddings_batch(
+             batch_embeddings = [data.embedding for data in response.data]
+             all_embeddings.extend(batch_embeddings)
+         except Exception as e:
+-            print(f"Batch embedding failed: {e}, retrying individual items...")
+-            # Fallback to individual processing for this batch
+-            for text in batch:
+-                try:
+-                    embedding = (
+-                        client.embeddings.create(input=text, model=model_id)
+-                        .data[0]
+-                        .embedding
+-                    )
+-                    all_embeddings.append(embedding)
+-                except Exception:
+-                    all_embeddings.append([])
+-            time.sleep(1)
++            raise RuntimeError("Batch embedding failed; individual-item retries are disabled for the bounded evaluation.") from e
+     return all_embeddings
+ 
+ 
+diff --git a/infra/scripts/post-provision/data_scripts/02_create_policies_search_index.py b/infra/scripts/post-provision/data_scripts/02_create_policies_search_index.py
+index 68dc8a9d430c370e219cd7ad71458d65894d5956..e4201cfaa9b53cb5a1c22b963f433d1d86284d76 100644
+--- a/infra/scripts/post-provision/data_scripts/02_create_policies_search_index.py
++++ b/infra/scripts/post-provision/data_scripts/02_create_policies_search_index.py
+@@ -59,7 +59,7 @@ credential = get_azure_credential()
+ # credential = get_azure_credential()
+ 
+ search_index_client = SearchIndexClient(search_endpoint, credential=credential)
+-search_index_client.delete_index(INDEX_NAME)
++# Evaluation: never delete Azure data objects; use the unique scenario index.
+ 
+ 
+ def create_search_index():
+@@ -156,7 +156,7 @@ def get_embeddings(text: str, openai_api_base, openai_api_version, model_name="t
+     #     "https://cognitiveservices.azure.com/.default"
+     # )
+     token_provider = get_bearer_token_provider(
+-        AzureCliCredential(), "https://cognitiveservices.azure.com/.default"
++        get_azure_credential(), "https://cognitiveservices.azure.com/.default"
+     )
+     client = AzureOpenAI(
+         api_version=openai_api_version,
+@@ -192,18 +192,10 @@ def chunk_data(text, tokens_per_chunk=1024):
+ 
+ def prepare_search_doc(content, document_id, path_name):
+     docs = []
+-    try:
+-        v_contentVector = get_embeddings(
+-            str(content), openai_api_base, openai_api_version, model_name=embedding_model
+-        )
+-    except Exception:
+-        time.sleep(30)
+-        try:
+-            v_contentVector = get_embeddings(
+-                str(content), openai_api_base, openai_api_version, model_name=embedding_model
+-            )
+-        except Exception:
+-            v_contentVector = []
++    # Fail closed: do not silently retry paid calls or upload empty vectors.
++    v_contentVector = get_embeddings(
++        str(content), openai_api_base, openai_api_version, model_name=embedding_model
++    )
+ 
+     docs.append(
+         {
+diff --git a/infra/scripts/post-provision/data_scripts/azure_credential_utils.py b/infra/scripts/post-provision/data_scripts/azure_credential_utils.py
+index 7471ce2382084d92ffe1058a746d8b94feff989e..fbbf45079238f78a50398916907a2f0e630ccc16 100644
+--- a/infra/scripts/post-provision/data_scripts/azure_credential_utils.py
++++ b/infra/scripts/post-provision/data_scripts/azure_credential_utils.py
+@@ -1,6 +1,7 @@
++import os
+ from azure.identity import AzureCliCredential, ManagedIdentityCredential
+ 
+-APP_ENV = "dev"  # Change to 'dev' for local development
++APP_ENV = os.getenv("APP_ENV", "dev").lower()
+ 
+ 
+ def get_azure_credential(client_id=None):
+@@ -22,4 +23,4 @@ def get_azure_credential(client_id=None):
+             AzureCliCredential(process_timeout=30)
+         )  # CodeQL [SM05139] Okay use of AzureCliCredential as it is only used in development
+     else:
+-        return ManagedIdentityCredential(client_id=client_id)
++        return ManagedIdentityCredential(client_id=client_id or os.getenv("AZURE_CLIENT_ID"))
+diff --git a/scenario-app/backend/app/utils/azure_credential_utils.py b/scenario-app/backend/app/utils/azure_credential_utils.py
+index 4c67ab49802d2bed2a0046f5899312390f905f7c..5254e3dffd748dd40f09cd14838c7ea107d21a92 100644
+--- a/scenario-app/backend/app/utils/azure_credential_utils.py
++++ b/scenario-app/backend/app/utils/azure_credential_utils.py
+@@ -9,11 +9,11 @@ async def get_azure_credential_async(client_id=None):
+     if os.getenv("APP_ENV", "prod").lower() == "dev":
+         return AioDefaultAzureCredential()  # CodeQL [SM05139] Okay use of DefaultAzureCredential as it is only used in development
+     else:
+-        return AioManagedIdentityCredential(client_id=client_id)
++        return AioManagedIdentityCredential(client_id=client_id or os.getenv("AZURE_CLIENT_ID"))
+ 
+ 
+ def get_azure_credential(client_id=None):
+     if os.getenv("APP_ENV", "prod").lower() == "dev":
+         return DefaultAzureCredential()  # CodeQL [SM05139] Okay use of DefaultAzureCredential as it is only used in development
+     else:
+-        return ManagedIdentityCredential(client_id=client_id)
++        return ManagedIdentityCredential(client_id=client_id or os.getenv("AZURE_CLIENT_ID"))
+diff --git a/scenario-app/frontend/startup.sh b/scenario-app/frontend/startup.sh
+index 8709d1671181eee40eab0a1ba40100c7376a7efe..a42d7b33203e62fe196043abc70c8f11553ff241 100644
+--- a/scenario-app/frontend/startup.sh
++++ b/scenario-app/frontend/startup.sh
+@@ -1,5 +1,22 @@
+ #!/bin/sh
+ 
++# Container Apps uses its own service-discovery resolver. Keep the original
++# App Service resolver by default; opt in only for the adapted ACA deployment.
++DNS_RESOLVER="${NGINX_DNS_RESOLVER:-168.63.129.16}"
++if [ "${NGINX_USE_SYSTEM_RESOLVER:-0}" = "1" ]; then
++  DNS_RESOLVER=""
++  while read -r kind address remainder; do
++    if [ "$kind" = "nameserver" ]; then
++      DNS_RESOLVER="$address"
++      break
++    fi
++  done < /etc/resolv.conf
++  if [ -z "$DNS_RESOLVER" ]; then
++    echo "No container DNS resolver; refusing to proxy private APIs."
++    exit 1
++  fi
++fi
++
+ # Escape a value for safe inclusion inside a single-quoted JS string literal
+ # (handles backslashes and single quotes, e.g. a title like "Bob's Shop").
+ js_escape() {
+@@ -76,7 +93,7 @@ if [ -n "${BACKEND_API_URL}" ]; then
+   cat > /etc/nginx/conf.d/api-proxy.conf << PROXYEOF
+ # Reverse proxy for backend API - WAF private networking deployment
+ location /api/ {
+-    resolver 168.63.129.16 valid=30s;
++    resolver ${DNS_RESOLVER} valid=30s;
+     set \$backend "${BACKEND_API_URL}";
+     proxy_pass \$backend;
+     proxy_set_header Host "${BACKEND_HOST}";
+@@ -99,7 +116,7 @@ location /api/ {
+ # prefix and forward to the private chat backend over the VNet so the browser
+ # never makes a cross-origin (CORS) call to the auth-protected chat frontend.
+ location /chat-api/ {
+-    resolver 168.63.129.16 valid=30s;
++    resolver ${DNS_RESOLVER} valid=30s;
+     set \$chat_backend "${CHAT_BACKEND_API_URL}";
+     rewrite ^/chat-api/(.*)\$ /\$1 break;
+     proxy_pass \$chat_backend;
+diff --git a/scenarios/ecommerce/manifest.json b/scenarios/ecommerce/manifest.json
+index 8c894a25c22f6d7c0cfcb3600d860e6d89f67f9d..bbcb1659f0b98f6c8d21bca49a4ddd24cb88b76f 100644
+--- a/scenarios/ecommerce/manifest.json
++++ b/scenarios/ecommerce/manifest.json
+@@ -2,13 +2,13 @@
+   "id": "ecommerce",
+   "displayName": "Contoso Paints",
+   "search": {
+-    "catalogIndex": "products_index",
+-    "policiesIndex": "policies_index"
++    "catalogIndex": "ptu-chatbot-products",
++    "policiesIndex": "ptu-chatbot-policies"
+   },
+   "agents": {
+-    "catalogAgentPrefix": "product-agent",
+-    "policyAgentPrefix": "policy-agent",
+-    "chatAgentPrefix": "chat-agent",
++    "catalogAgentPrefix": "ptu-chatbot-product",
++    "policyAgentPrefix": "ptu-chatbot-policy",
++    "chatAgentPrefix": "ptu-chatbot-chat",
+     "catalogToolName": "product_agent",
+     "policyToolName": "policy_agent"
+   },

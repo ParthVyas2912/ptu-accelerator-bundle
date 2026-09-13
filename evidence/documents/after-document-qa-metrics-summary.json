@@ -1,0 +1,35 @@
+{
+  "label": "after-document-qa",
+  "captured_utc": "2026-09-12T02:22:33.487442+00:00",
+  "timespan": "2026-09-12T01:24:00Z/2026-09-12T02:22:13Z",
+  "by_deployment": {
+    "text-embedding-3-large": {
+      "ModelRequests": 5.0,
+      "InputTokens": 271.0,
+      "TotalTokens": 271.0
+    },
+    "gpt-5-mini": {
+      "ModelRequests": 5.0,
+      "InputTokens": 1115.0,
+      "OutputTokens": 4158.0,
+      "TotalTokens": 5273.0
+    }
+  },
+  "requests": 10.0,
+  "statuses": [
+    {
+      "modeldeploymentname": "text-embedding-3-large",
+      "statuscode": "200",
+      "requests": 5.0
+    },
+    {
+      "modeldeploymentname": "gpt-5-mini",
+      "statuscode": "200",
+      "requests": 5.0
+    }
+  ],
+  "total_tokens": 5544.0,
+  "input_tokens": 1386.0,
+  "output_tokens": 4158.0,
+  "alias_check": true
+}

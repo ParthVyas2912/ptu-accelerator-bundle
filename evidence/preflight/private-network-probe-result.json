@@ -1,0 +1,22 @@
+{
+  "results": [
+    {
+      "host": "ptumacae7d804f70st.blob.core.windows.net",
+      "addresses": [
+        "10.246.2.6"
+      ],
+      "in_private_endpoint_subnet": true,
+      "anonymous_https_status": 400
+    },
+    {
+      "host": "ptu-macae-7d804f70-cosmos.documents.azure.com",
+      "addresses": [
+        "10.246.2.4"
+      ],
+      "in_private_endpoint_subnet": true,
+      "anonymous_https_status": 401
+    }
+  ],
+  "model_calls": 0,
+  "data_authorization_verified": false
+}
