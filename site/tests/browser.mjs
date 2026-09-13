@@ -96,6 +96,7 @@ const run = async (name, action) => {
   }
 };
 const visible = (page) => page.locator('.candidate:visible');
+const goView = (page, view) => page.locator(`[data-view-link="${view}"]`).click();
 const screenshot = async (page, name, fullPage = false) => {
   await page.screenshot({ path: fileURLToPath(new URL(name, results)), fullPage, animations: 'disabled' });
   report.screenshots.push(name);
@@ -187,10 +188,14 @@ try {
   await observeContext(context);
   page = await context.newPage();
 
-  await run('served CSP allows the self-contained page, renders 20 cards and honors explicit light over dark OS', async () => {
+  await run('served CSP allows the self-contained overview, retains 20 candidates and honors explicit light over dark OS', async () => {
     const response = await page.goto(`${url}/?scoutTheme=light`, { waitUntil: 'networkidle' });
     assert.equal(response.status(), 200, 'Site is unavailable or not deployed: expected HTTP 200.');
-    assert.equal(await visible(page).count(), 20, 'Expected the PTU portfolio. Publish site/dist/ before running the deployed smoke test.');
+    assert.equal(await page.locator('.candidate').count(), 20, 'Expected the PTU portfolio. Publish site/dist/ before running the deployed smoke test.');
+    assert.equal(await visible(page).count(), 0, 'The overview should not overwhelm readers with the full catalog.');
+    assert.equal(await page.locator('#top').isVisible(), true);
+    assert.equal(await page.locator('#bundles').isVisible(), true);
+    assert.equal(await page.locator('[data-view-link="overview"]').getAttribute('aria-current'), 'page');
     const html = await response.text();
     assertPublicContent(html, [url, `${url}/`]);
     assertServedPolicy(html, response.headers());
@@ -216,8 +221,44 @@ try {
     }
   });
 
-  await run('light theme passes automated WCAG 2.1 AA checks', async () => {
-    await audit(page);
+  await run('all four light-theme views pass automated WCAG 2.1 AA checks', async () => {
+    for (const view of ['overview', 'catalog', 'guide', 'roadmap']) {
+      await goView(page, view);
+      await audit(page);
+      await screenshot(page, `${view}-light.png`, true);
+    }
+  });
+
+  await run('navigation supports focused views, keyboard focus, history, deep links and safe invalid fragments', async () => {
+    const views = { overview: '#hero-title', catalog: '#catalog-title', guide: '#capacity-title', roadmap: '#roadmap-title' };
+    for (const [view, heading] of Object.entries(views)) {
+      await goView(page, view);
+      assert.equal(await page.locator('html').getAttribute('data-view'), view);
+      assert.deepEqual(await page.locator('[data-page]:visible').evaluateAll((nodes) =>
+        [...new Set(nodes.map((node) => node.dataset.page))]), [view]);
+      assert.equal(await page.locator(heading).evaluate((node) => node === document.activeElement), true);
+      assert.equal(await page.locator('[aria-current="page"]').count(), 1);
+    }
+    await page.goBack();
+    await page.waitForFunction(() => document.documentElement.dataset.view === 'guide');
+    await page.goForward();
+    await page.waitForFunction(() => document.documentElement.dataset.view === 'roadmap');
+    for (const [hash, view] of [
+      ['catalog', 'catalog'], ['candidate-title-11', 'catalog'], ['bundles', 'overview'],
+      ['how-it-works', 'guide'], ['questions', 'guide'], ['sources', 'guide'], ['roadmap', 'roadmap'],
+      ['unknown-section', 'overview'], ['%E0%A4%A', 'overview'],
+    ]) {
+      await page.goto(`${url}/?scoutTheme=light#${hash}`, { waitUntil: 'networkidle' });
+      assert.equal(await page.locator('html').getAttribute('data-view'), view, hash);
+    }
+    await page.keyboard.press('/');
+    assert.equal(await page.locator('html').getAttribute('data-view'), 'catalog');
+    assert.equal(await page.locator('#catalog-search').evaluate((node) => node === document.activeElement), true);
+    await page.keyboard.type('CWYD');
+    assert.equal(await visible(page).count(), 1);
+    await page.keyboard.press('Escape');
+    assert.equal(await visible(page).count(), 20);
+    assert.equal(await page.locator('#catalog-search').inputValue(), '');
   });
 
   await run('search works by aliases and detail text, stays literal and handles zero results', async () => {
@@ -234,7 +275,7 @@ try {
     assert.equal(await page.locator('#result-count').textContent(), 'Showing 0 of 20 candidates');
     assert.equal(await page.evaluate(() => window.searchInjected), undefined);
     assert.equal(await page.locator('img').count(), 0);
-    await page.locator('#reset-filters').click();
+    await page.locator('#clear-empty').click();
     assert.equal(await visible(page).count(), 20);
     assert.equal(await page.locator('#catalog-search').evaluate((node) => node === document.activeElement), true);
   });
@@ -242,7 +283,9 @@ try {
   await run('every bundle and readiness combination returns exactly the matching cards', async () => {
     for (const bundle of ['all', ...Object.keys(bundles)]) {
       for (const status of ['all', ...Object.keys(statuses)]) {
-        await page.locator('#bundle-filter').selectOption(bundle);
+        await page.locator(`[data-bundle-choice="${bundle}"]`).click();
+        assert.equal(await page.locator('#bundle-filter').inputValue(), bundle);
+        assert.equal(await page.locator(`[data-bundle-choice="${bundle}"]`).getAttribute('aria-pressed'), 'true');
         await page.locator('#status-filter').selectOption(status);
         const expected = candidates.filter((item) => (bundle === 'all' || item.bundle === bundle) && (status === 'all' || item.status === status)).map((item) => item.id);
         const actual = await visible(page).evaluateAll((nodes) => nodes.map((node) => Number(node.dataset.id)));
@@ -250,15 +293,41 @@ try {
       }
     }
     await page.locator('#reset-filters').click();
+    await goView(page, 'overview');
     await page.locator('[data-bundle-link="procurement"]').click();
     assert.equal(await page.locator('#bundle-filter').inputValue(), 'procurement');
     assert.equal(await visible(page).count(), 2);
+    assert.equal(await page.locator('#catalog-search').evaluate((node) => node === document.activeElement), true);
     await page.locator('#catalog-search').fill('contract');
     assert.equal(await visible(page).count(), 1);
     assert.equal(await visible(page).first().getAttribute('data-id'), '12');
     await page.locator('#reset-filters').click();
     await page.locator('#catalog').scrollIntoViewIfNeeded();
     await screenshot(page, 'catalog-light.png');
+  });
+
+  await run('card/list controls preserve results and filters across navigation without losing evidence access', async () => {
+    await page.locator('#view-switch [data-layout="list"]').click();
+    assert.equal(await page.locator('#catalog-grid').getAttribute('data-layout'), 'list');
+    assert.equal(await page.locator('#view-switch [data-layout="list"]').getAttribute('aria-pressed'), 'true');
+    assert.equal(await visible(page).count(), 20);
+    await page.locator('[data-bundle-choice="engineering"]').click();
+    await page.locator('#catalog-search').fill('Modernize');
+    assert.equal(await visible(page).count(), 1);
+    await goView(page, 'guide');
+    await goView(page, 'catalog');
+    assert.equal(await page.locator('#catalog-search').inputValue(), 'Modernize');
+    assert.equal(await page.locator('#bundle-filter').inputValue(), 'engineering');
+    assert.equal(await page.locator('#catalog-grid').getAttribute('data-layout'), 'list');
+    assert.equal(await visible(page).count(), 1);
+    await visible(page).locator('.detail-button').click();
+    assert.equal(await page.locator('#candidate-dialog').isVisible(), true);
+    await page.keyboard.press('Escape');
+    await page.locator('#reset-filters').click();
+    await audit(page);
+    await screenshot(page, 'catalog-list-light.png');
+    await page.locator('#view-switch [data-layout="grid"]').click();
+    assert.equal(await page.locator('#view-switch [data-layout="grid"]').getAttribute('aria-pressed'), 'true');
   });
 
   await run('all 20 dialogs display the correct content and restore focus after Escape', async () => {
@@ -291,6 +360,7 @@ try {
   });
 
   await run('capacity choices work by keyboard and expose the correct decision boundary', async () => {
+    await goView(page, 'guide');
     const existing = page.locator('input[value="existing"]');
     await existing.focus();
     await page.keyboard.press('ArrowRight');
@@ -301,6 +371,7 @@ try {
     await page.keyboard.press('ArrowLeft');
     assert.equal(await existing.isChecked(), true);
     assert.equal(await page.locator('#capacity-existing').isVisible(), true);
+    await screenshot(page, 'capacity-guide-light.png');
   });
 
   await run('native FAQ, readiness legend and skip link are keyboard accessible', async () => {
@@ -310,6 +381,7 @@ try {
     assert.equal(await faq.getAttribute('open'), '');
     await page.keyboard.press('Space');
     assert.equal(await faq.getAttribute('open'), null);
+    await goView(page, 'catalog');
     const legend = page.locator('.legend');
     await legend.locator('summary').focus();
     await page.keyboard.press('Enter');
@@ -321,6 +393,12 @@ try {
     assert.equal(await page.locator('.skip-link').evaluate((node) => node === document.activeElement), true);
     await page.keyboard.press('Enter');
     assert.equal(new URL(page.url()).hash, '#main');
+    assert.equal(await page.locator('#main').evaluate((node) => node === document.activeElement), true);
+    await goView(page, 'catalog');
+    await page.locator('.skip-link').focus();
+    await page.keyboard.press('Enter');
+    assert.equal(await page.locator('html').getAttribute('data-view'), 'catalog');
+    assert.equal(await page.locator('#main').evaluate((node) => node === document.activeElement), true);
   });
 
   await run('dark mode, theme toggle, invalid overrides and system preferences behave correctly', async () => {
@@ -334,6 +412,10 @@ try {
     assert.equal(await page.locator('html').getAttribute('data-theme'), 'light');
     await page.locator('#theme-toggle').click();
     assert.equal(await page.locator('html').getAttribute('data-theme'), 'dark');
+    for (const view of ['guide', 'roadmap', 'catalog']) {
+      await goView(page, view);
+      await audit(page);
+    }
     await page.locator('.candidate[data-id="11"] .detail-button').click();
     await audit(page);
     await screenshot(page, 'voice-detail-dark.png');
@@ -350,15 +432,25 @@ try {
   await run('320–1440px layouts have no overflow; mobile light and dark pass accessibility checks', async () => {
     for (const theme of ['light', 'dark']) {
       await page.goto(`${url}/?scoutTheme=${theme}`, { waitUntil: 'networkidle' });
-      for (const width of [320, 375, 768, 1024, 1440]) {
-        await page.setViewportSize({ width, height: 900 });
-        await assertNoOverflow(page);
+      for (const view of ['overview', 'catalog', 'guide', 'roadmap']) {
+        await goView(page, view);
+        for (const width of [320, 375, 768, 1024, 1440]) {
+          await page.setViewportSize({ width, height: 900 });
+          await assertNoOverflow(page);
+        }
+        await page.setViewportSize({ width: 375, height: 812 });
+        await audit(page);
+        await screenshot(page, `mobile-${view}-${theme}.png`);
       }
-      await page.setViewportSize({ width: 375, height: 812 });
+      await goView(page, 'overview');
       await page.evaluate(() => window.scrollTo(0, 0));
       await assertTheme(page, theme);
       await audit(page);
       await screenshot(page, `mobile-${theme}.png`);
+      await goView(page, 'catalog');
+      await page.locator('#view-switch [data-layout="list"]').click();
+      await assertNoOverflow(page);
+      await audit(page);
       await page.locator('.candidate[data-id="6"] .detail-button').click();
       await assertNoOverflow(page);
       const bounds = await page.locator('#candidate-dialog').boundingBox();
@@ -373,19 +465,27 @@ try {
     await page.setViewportSize({ width: 1440, height: 1000 });
     await page.locator('#catalog-search').fill('CWYD');
     assert.equal(await visible(page).count(), 1);
+    await goView(page, 'guide');
     await page.evaluate(() => window.dispatchEvent(new Event('beforeprint')));
     assert.equal(await page.locator('html').getAttribute('data-theme'), 'light');
     await page.emulateMedia({ media: 'print' });
     assert.equal(await visible(page).count(), 20);
     assert.equal(await page.locator('#capacity-existing').isVisible(), true);
     assert.equal(await page.locator('#capacity-new').isVisible(), true);
+    assert.equal(await page.locator('#top').isVisible(), true);
+    assert.equal(await page.locator('.roadmap-item:visible').count(), 5);
+    assert.equal(await page.locator('.candidate-summary:visible').count(), 20);
     assert.equal(await page.locator('#catalog-filters').isVisible(), false);
     await screenshot(page, 'print-summary.png', true);
     await page.emulateMedia({ media: 'screen' });
     await page.evaluate(() => window.dispatchEvent(new Event('afterprint')));
     assert.equal(await page.locator('html').getAttribute('data-theme'), 'dark');
+    assert.equal(await page.locator('html').getAttribute('data-view'), 'guide');
+    assert.equal(await visible(page).count(), 0);
+    await goView(page, 'catalog');
     assert.equal(await visible(page).count(), 1);
     await page.locator('#reset-filters').click();
+    await page.locator('#view-switch [data-layout="grid"]').click();
   });
 
   await run('with JavaScript disabled all 20 cards, both capacity paths and native details remain readable', async () => {
@@ -397,6 +497,11 @@ try {
     assert.equal(await fallback.locator('#catalog-filters').isVisible(), false);
     assert.equal(await fallback.locator('#capacity-existing').isVisible(), true);
     assert.equal(await fallback.locator('#capacity-new').isVisible(), true);
+    assert.equal(await fallback.locator('[data-page]:visible').count(), 9);
+    assert.equal(await fallback.locator('#bundle-chips').isVisible(), false);
+    assert.equal(await fallback.locator('#view-switch').isVisible(), false);
+    await fallback.locator('[data-view-link="roadmap"]').click();
+    assert.equal(await fallback.locator('#roadmap').isVisible(), true);
     const detail = fallback.locator('.candidate-fallback').first();
     await detail.locator('summary').click();
     assert.equal(await detail.locator('.detail-body').isVisible(), true);

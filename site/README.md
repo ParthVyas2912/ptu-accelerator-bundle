@@ -4,6 +4,27 @@ An independent, public-safe explanation of three outcome bundles, 20 curated
 candidates and five **planned** workflows. It is not an official product,
 customer reference, production certification or support commitment.
 
+## Stakeholder experience
+
+- **Overview:** a concise introduction, three outcome bundles and a practical path
+  from a useful workflow to an evidence-backed capacity decision.
+- **Solutions:** 20 compact candidate cards, outcome chips, readiness filters,
+  search and a card/list toggle. “View details” exposes evidence, limitations,
+  PTU fit and the next responsible step.
+- **PTU guide:** existing versus new capacity guidance, the human-review pattern,
+  common questions, public references and printing.
+- **Next steps:** five clearly labeled planned workflows, with controlled drafts
+  first and Voice Live BYOM kept as a separate integration test.
+
+Navigation uses shareable hash links and supports browser Back/Forward. Filters,
+layout and capacity selection persist while moving between views in the same
+page; nothing is saved to browser storage. Press **/** outside a form field to
+open and focus search; **Escape** clears the search text or closes an open dialog.
+Selected navigation and filters are exposed to assistive technology. Without
+JavaScript, the site remains one readable document with native anchors and
+evidence expanders. Print restores all summary sections regardless of the
+selected view, filters or layout.
+
 ## Build and preview
 
 Requires Node.js 22 or newer. The site and build have **zero runtime dependencies**.
@@ -70,12 +91,15 @@ Tests cover:
 - Exact inline script/style hashes, restrictive CSP and public-content privacy checks.
 - All bundle/readiness combinations, alias/detail search, literal malicious-looking
   input, zero results and reset.
+- Four-view navigation, deep links, Back/Forward, focus transfer, search shortcuts,
+  outcome chips, list/card layout and filter preservation between views.
 - All 20 modal detail views, keyboard opening, focus containment, Escape and focus return.
 - Radio-button capacity selection, native FAQ, readiness legend and skip navigation.
 - Explicit light/dark query overrides (including the required snippet’s light
   precedence correction), system preference and manual switching.
-- Automated axe WCAG 2.1 AA checks in light, dark, mobile and modal views.
-- Horizontal overflow checks at 320, 375, 768, 1024 and 1440 pixels.
+- Automated axe WCAG 2.1 AA checks across all four views in light, dark and mobile,
+  plus list layouts and modal details.
+- Horizontal overflow checks across all four views at 320, 375, 768, 1024 and 1440 pixels.
 - Print summary with all 20 candidates and both capacity options even when filtered.
 - Graceful no-JavaScript reading with native evidence expanders.
 
@@ -237,7 +261,7 @@ Public-content scans are defense in depth, not a replacement for editorial revie
 | `src/index.html` | Semantic structure and explanatory content |
 | `src/styles.css` | Exact Clawpilot base tokens, responsive layouts and print rules |
 | `src/theme.js` | Required first theme snippet plus explicit valid override correction |
-| `src/app.js` | Native search, filters, radio choices, theme controls and modal details |
+| `src/app.js` | Hash navigation, search, outcome chips, filters, layouts, radio choices, theme and modal details |
 | `scripts/build.mjs` | Deterministic HTML renderer and CSP generator |
 | `scripts/serve.mjs` | Fixed-route, loopback-only preview |
 | `tests/build.test.mjs` | Artifact, privacy, content and security-policy contracts |
