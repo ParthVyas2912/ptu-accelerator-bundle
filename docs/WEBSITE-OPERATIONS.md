@@ -35,6 +35,8 @@ Historical lab scripts are not a generic validation command. Site work does not 
 
 `AZURE_STATIC_WEB_APPS_API_TOKEN` is stored as a GitHub Actions secret, never in a file or Git history. It is limited to this static site and is used only by the production deploy job. Workflow permissions default to read-only, Actions are pinned to reviewed commits, pull requests do not receive deployment credentials, and checkout does not persist Git credentials.
 
+Private-repository branch protection requires a GitHub plan feature unavailable on this account at setup. The repository was not made public and no upgrade was purchased. The publish job does not depend on paid environment-protection features; code-owner/PR review is a documented maintainer practice rather than an enforced branch gate.
+
 Do not log the Azure CLI's deployment-token output. To rotate, use the owning Azure resource's token-management operation and immediately update the GitHub secret from process memory or secure stdin. Coordinate rotation with a deployment window. No tenant application registration or client secret is required by this hosting path.
 
 ## Rollback

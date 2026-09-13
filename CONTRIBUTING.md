@@ -4,6 +4,8 @@
 
 Use a branch and pull request. Describe the business outcome, evidence, tested scope, limitations and operating cost. Do not describe a planned feature as deployed or equate HTTP success with task success.
 
+**Current account limitation:** GitHub rejected private-repository branch protection without a plan upgrade. The repo remains private; no upgrade was purchased. Pull-request/code-owner review is the working convention, not a platform-enforced approval gate. CI still runs, and the production publish job executes its own tests before deployment.
+
 Keep these layers separate:
 
 1. **Private evidence and engineering:** evaluation records, environment-specific scripts, traces and reports.

@@ -1,0 +1,26 @@
+{
+  "name": "ptu-bundle-stakeholder-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Independent, self-contained PTU solution portfolio.",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test tests/build.test.mjs",
+    "test:browser": "node tests/browser.mjs",
+    "test:smoke": "node tests/browser.mjs",
+    "check": "npm run build && npm test && npm run test:browser",
+    "preview": "node scripts/serve.mjs"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.11.0",
+    "playwright": "1.61.0"
+  },
+  "overrides": {
+    "axe-core": "4.11.0",
+    "playwright-core": "1.61.0"
+  }
+}
