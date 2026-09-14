@@ -6,15 +6,41 @@ customer reference, production certification or support commitment.
 
 ## Stakeholder experience
 
-- **Overview:** a concise introduction, three outcome bundles and a practical path
-  from a useful workflow to an evidence-backed capacity decision.
-- **Solutions:** 20 compact candidate cards, outcome chips, readiness filters,
-  search and a card/list toggle. “View details” exposes evidence, limitations,
-  PTU fit and the next responsible step.
-- **PTU guide:** existing versus new capacity guidance, the human-review pattern,
-  common questions, public references and printing.
-- **Next steps:** five clearly labeled planned workflows, with controlled drafts
-  first and Voice Live BYOM kept as a separate integration test.
+- **Overview:** a spacious editorial introduction, a workflow → platform →
+  capacity diagram, and three outcome-led bundle panels. Each panel shows a
+  simple task-to-review pattern; native expanders reveal candidate starting
+  points, evidence labels and planned work without repeating a full catalog.
+- **Solutions:** an evidence-first library distinguishing readiness from PTU fit,
+  20 candidate cards, outcome chips, readiness filters, search and a card/list
+  toggle. “View details” exposes evidence, limitations, PTU fit and the next
+  responsible step.
+- **PTU guide:** distinct existing-capacity adoption/renewal and new-purchase
+  decisions, three prerequisite checks, a connected human-review reference
+  pattern, common questions, public references and printing.
+- **Next steps:** controlled drafts receive a larger first-priority panel;
+  the other four planned workflows remain clearly labeled with visible review
+  boundaries. A development-path strip is explicitly not a delivery schedule
+  or completion indicator. Voice Live BYOM stays a separate integration test.
+
+### Design principles
+
+The editorial layout uses bold Segoe UI typography, generous spacing, graphite
+and warm-ivory surfaces drawn from the exact Clawpilot light/dark base tokens.
+Semantic `--cp-action*` tokens select neutral foregrounds, buttons and panels;
+the base rose tokens remain defined but are not used by website components.
+Both light and dark views use this neutral treatment, including focus, selection,
+navigation, filters, diagrams and native controls. No external illustration,
+font, icon library, analytics or runtime dependency is required. The diagram is
+semantic HTML and CSS; it explains a reference pattern, **not** a deployed stack.
+PTUs, Standard and Batch are presented as legitimate choices, with compatible
+model/API/geography routing and separate service costs stated alongside them.
+
+Outcome panels replace the old three-column bundle cards; the roadmap separates
+the first priority from subsequent work. The library still supports both dense
+comparison via its list layout and browsing via cards. Progressive disclosure
+does not hide roadmap safety boundaries or imply production readiness.
+Neutral panels use opaque surfaces so their contrast does not depend on
+whichever background sits behind them.
 
 Navigation uses shareable hash links and supports browser Back/Forward. Filters,
 layout and capacity selection persist while moving between views in the same
@@ -23,7 +49,8 @@ open and focus search; **Escape** clears the search text or closes an open dialo
 Selected navigation and filters are exposed to assistive technology. Without
 JavaScript, the site remains one readable document with native anchors and
 evidence expanders. Print restores all summary sections regardless of the
-selected view, filters or layout.
+selected view, filters or layout. Printing temporarily opens all bundle
+starting-point expanders, then restores their individual open/closed states.
 
 ## Build and preview
 
@@ -93,6 +120,8 @@ Tests cover:
   input, zero results and reset.
 - Four-view navigation, deep links, Back/Forward, focus transfer, search shortcuts,
   outcome chips, list/card layout and filter preservation between views.
+- Reference-diagram structure and capacity alternatives; keyboard-operated bundle
+  expanders; mobile workflow-column alignment and preserved heading line breaks.
 - All 20 modal detail views, keyboard opening, focus containment, Escape and focus return.
 - Radio-button capacity selection, native FAQ, readiness legend and skip navigation.
 - Explicit light/dark query overrides (including the required snippet’s light
@@ -100,10 +129,23 @@ Tests cover:
 - Automated axe WCAG 2.1 AA checks across all four views in light, dark and mobile,
   plus list layouts and modal details.
 - Horizontal overflow checks across all four views at 320, 375, 768, 1024 and 1440 pixels.
-- Print summary with all 20 candidates and both capacity options even when filtered.
+- Print summary with all 20 candidates, both capacity options and all bundle
+  starting points even when filtered; restores disclosure and theme state afterward.
 - Graceful no-JavaScript reading with native evidence expanders.
 
 Screenshots are generated in ignored `test-results/` for human visual inspection.
+The local suite writes `test-results/smoke/local/`, including:
+
+- `desktop-light.png` / `desktop-dark.png` — editorial hero and diagram.
+- `overview-light-full.png` and `bundle-panels-light.png` — outcome panels.
+- `{catalog,guide,roadmap}-{light,dark}-full.png` — complete secondary views.
+- `mobile-{overview,catalog,guide,roadmap}-{light,dark}-full.png` — full 375px views.
+- `voice-detail-{light,dark}.png`, `mobile-detail-{light,dark}.png` and
+  `print-summary.png` — detail and print review.
+
+These are review artifacts, not pixel-baseline assertions. Review the current
+run’s JSON screenshot list, and visually inspect typography, diagram connectors,
+small-screen wrapping and expanded content when changing layout rules.
 Automated accessibility checks are not a claim of complete WCAG certification.
 Before wider use, manually test with a screen reader (for example NVDA or VoiceOver)
 and review in the browsers used by the intended audience.

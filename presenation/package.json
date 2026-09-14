@@ -1,0 +1,12 @@
+{
+  "name": "ptu-accelerator-internal-briefing",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Local-only generation of the internal Microsoft PTU accelerator briefing.",
+  "scripts": {
+    "build": "node build-deck.cjs"
+  },
+  "dependencies": {
+    "pptxgenjs": "4.0.1"
+  }
+}
