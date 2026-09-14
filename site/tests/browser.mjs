@@ -116,6 +116,11 @@ const assertTheme = async (page, theme) => {
       theme: document.documentElement.dataset.theme,
       backgroundToken: root.getPropertyValue('--cp-bg').trim(),
       accentToken: root.getPropertyValue('--cp-accent').trim(),
+      actionToken: root.getPropertyValue('--cp-action').trim(),
+      primaryBackground: getComputedStyle(document.querySelector('.button.primary')).backgroundColor,
+      primaryForeground: getComputedStyle(document.querySelector('.button.primary')).color,
+      heroEmphasis: getComputedStyle(document.querySelector('.hero h1 span')).color,
+      panelBackground: getComputedStyle(document.querySelector('.map-work')).backgroundColor,
       background: body.backgroundColor,
       font: body.fontFamily,
       cardRadius: getComputedStyle(document.querySelector('.candidate')).borderRadius,
@@ -125,6 +130,11 @@ const assertTheme = async (page, theme) => {
   assert.equal(actual.theme, theme);
   assert.equal(actual.backgroundToken, theme === 'light' ? '#f7f4ef' : '#3d3b3a');
   assert.equal(actual.accentToken, theme === 'light' ? '#b11f4b' : '#fd8ea1');
+  assert.equal(actual.actionToken, theme === 'light' ? '#242424' : '#dedede');
+  assert.equal(actual.primaryBackground, theme === 'light' ? 'rgb(36, 36, 36)' : 'rgb(222, 222, 222)');
+  assert.equal(actual.primaryForeground, theme === 'light' ? 'rgb(247, 244, 239)' : 'rgb(61, 59, 58)');
+  assert.equal(actual.heroEmphasis, actual.primaryBackground);
+  assert.equal(actual.panelBackground, theme === 'light' ? 'rgb(245, 245, 245)' : 'rgb(46, 46, 46)');
   assert.equal(actual.background, theme === 'light' ? 'rgb(247, 244, 239)' : 'rgb(61, 59, 58)');
   assert.match(actual.font, /^"Segoe UI", Aptos, Calibri,/);
   assert.equal(actual.cardRadius, '16px');
@@ -225,8 +235,36 @@ try {
     for (const view of ['overview', 'catalog', 'guide', 'roadmap']) {
       await goView(page, view);
       await audit(page);
-      await screenshot(page, `${view}-light.png`, true);
+      await screenshot(page, `${view}-light-full.png`, true);
     }
+  });
+
+  await run('portfolio diagram explains the layers and bundle starting points disclose by keyboard', async () => {
+    await goView(page, 'overview');
+    const map = page.locator('.portfolio-map');
+    assert.equal(await map.locator('.map-layer').count(), 3);
+    assert.deepEqual(await map.locator('.capacity-routes strong').allTextContents(), ['PTUs', 'Standard', 'Batch']);
+    assert.match(await map.textContent(), /model, API & geography compatibility/);
+    assert.match(await map.locator('.map-footnote').textContent(), /not a deployed stack.*separate costs/);
+    const disclosures = page.locator('.bundle-inventory');
+    assert.equal(await disclosures.count(), 3);
+    for (const detail of await disclosures.all()) {
+      assert.equal(await detail.getAttribute('open'), null);
+      await detail.locator('summary').focus();
+      await page.keyboard.press('Enter');
+      assert.equal(await detail.locator('div').isVisible(), true);
+      await assertNoOverflow(page);
+      await audit(page);
+      await page.keyboard.press('Space');
+      assert.equal(await detail.getAttribute('open'), null);
+    }
+    await page.locator('#bundles').scrollIntoViewIfNeeded();
+    await screenshot(page, 'bundle-panels-light.png');
+    await goView(page, 'catalog');
+    assert.match(await page.locator('.evidence-key').textContent(), /Readiness.*PTU fit.*not a sizing result/);
+    await goView(page, 'roadmap');
+    assert.match(await page.locator('.roadmap-item').first().textContent(), /Highest priority.*Not deployed/);
+    assert.equal(await page.locator('.roadmap-boundary:visible').count(), 5);
   });
 
   await run('navigation supports focused views, keyboard focus, history, deep links and safe invalid fragments', async () => {
@@ -415,6 +453,7 @@ try {
     for (const view of ['guide', 'roadmap', 'catalog']) {
       await goView(page, view);
       await audit(page);
+      await screenshot(page, `${view}-dark-full.png`, true);
     }
     await page.locator('.candidate[data-id="11"] .detail-button').click();
     await audit(page);
@@ -439,8 +478,18 @@ try {
           await assertNoOverflow(page);
         }
         await page.setViewportSize({ width: 375, height: 812 });
+        if (view === 'overview') {
+          assert.equal(await page.locator('.bundle-card h3 br').evaluateAll((nodes) =>
+            nodes.every((node) => getComputedStyle(node).display !== 'none')), true,
+          'Do not concatenate sentences by hiding editorial line breaks on mobile.');
+          const stepTops = await page.locator('.bundle-story').first().locator('.outcome-flow li')
+            .evaluateAll((nodes) => nodes.map((node) => node.getBoundingClientRect().top));
+          assert.ok(Math.max(...stepTops) - Math.min(...stepTops) < 1,
+            'Mobile workflow steps should have aligned columns, not orphaned wrapped arrows.');
+        }
         await audit(page);
         await screenshot(page, `mobile-${view}-${theme}.png`);
+        await screenshot(page, `mobile-${view}-${theme}-full.png`, true);
       }
       await goView(page, 'overview');
       await page.evaluate(() => window.scrollTo(0, 0));
@@ -465,6 +514,9 @@ try {
     await page.setViewportSize({ width: 1440, height: 1000 });
     await page.locator('#catalog-search').fill('CWYD');
     assert.equal(await visible(page).count(), 1);
+    // Mixed open/closed state must survive printing; all starting points print.
+    await page.locator('.bundle-inventory').first().evaluate((detail) => { detail.open = true; });
+    const disclosureState = await page.locator('.bundle-inventory').evaluateAll((nodes) => nodes.map((node) => node.open));
     await goView(page, 'guide');
     await page.evaluate(() => window.dispatchEvent(new Event('beforeprint')));
     assert.equal(await page.locator('html').getAttribute('data-theme'), 'light');
@@ -476,11 +528,14 @@ try {
     assert.equal(await page.locator('.roadmap-item:visible').count(), 5);
     assert.equal(await page.locator('.candidate-summary:visible').count(), 20);
     assert.equal(await page.locator('#catalog-filters').isVisible(), false);
+    assert.equal(await page.locator('.bundle-inventory[open]').count(), 3);
+    assert.equal(await page.locator('.bundle-inventory > div:visible').count(), 3);
     await screenshot(page, 'print-summary.png', true);
     await page.emulateMedia({ media: 'screen' });
     await page.evaluate(() => window.dispatchEvent(new Event('afterprint')));
     assert.equal(await page.locator('html').getAttribute('data-theme'), 'dark');
     assert.equal(await page.locator('html').getAttribute('data-view'), 'guide');
+    assert.deepEqual(await page.locator('.bundle-inventory').evaluateAll((nodes) => nodes.map((node) => node.open)), disclosureState);
     assert.equal(await visible(page).count(), 0);
     await goView(page, 'catalog');
     assert.equal(await visible(page).count(), 1);
@@ -500,6 +555,10 @@ try {
     assert.equal(await fallback.locator('[data-page]:visible').count(), 9);
     assert.equal(await fallback.locator('#bundle-chips').isVisible(), false);
     assert.equal(await fallback.locator('#view-switch').isVisible(), false);
+    const bundleDetail = fallback.locator('.bundle-inventory').first();
+    await bundleDetail.locator('summary').click();
+    assert.equal(await bundleDetail.locator('div').isVisible(), true);
+    assert.equal(await fallback.locator('.portfolio-map').isVisible(), true);
     await fallback.locator('[data-view-link="roadmap"]').click();
     assert.equal(await fallback.locator('#roadmap').isVisible(), true);
     const detail = fallback.locator('.candidate-fallback').first();

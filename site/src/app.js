@@ -224,13 +224,21 @@
 
   // Printing includes all candidates and both capacity options without changing filters.
   let prePrintTheme;
+  let prePrintDisclosures;
   window.addEventListener("beforeprint", () => {
     if (prePrintTheme === undefined) prePrintTheme = document.documentElement.dataset.theme;
+    if (prePrintDisclosures === undefined) {
+      prePrintDisclosures = [...document.querySelectorAll(".bundle-inventory")]
+        .map((detail) => ({ detail, open: detail.open }));
+      for (const { detail } of prePrintDisclosures) detail.open = true;
+    }
     document.documentElement.dataset.theme = "light";
   });
   window.addEventListener("afterprint", () => {
     if (prePrintTheme !== undefined) setTheme(prePrintTheme);
     prePrintTheme = undefined;
+    for (const { detail, open } of prePrintDisclosures || []) detail.open = open;
+    prePrintDisclosures = undefined;
   });
   const print = $("#print-summary");
   print.hidden = false;

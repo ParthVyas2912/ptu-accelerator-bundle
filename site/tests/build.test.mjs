@@ -169,6 +169,10 @@ test('theme uses the exact base variables, correct font, only token colors and e
   assert.match(css, /--cp-bg: #3d3b3a;/);
   assert.match(css, /--cp-accent: #b11f4b;/);
   assert.match(css, /--cp-accent: #fd8ea1;/);
+  assert.match(css, /--cp-action: var\(--cp-text\);/);
+  assert.match(css, /--cp-action-fg: var\(--cp-bg\);/);
+  assert.match(css, /--cp-action-soft: var\(--cp-surface-soft\);/);
+  assert.doesNotMatch(componentCSS, /var\(--cp-(?:accent(?:-[a-z]+)?|highlight)\)/);
   assert.match(theme, /param \|\| \(window\.matchMedia/);
   assert.match(theme, /param === "light" \|\| param === "dark"/);
   assert.match(css, /prefers-reduced-motion: reduce/);
@@ -181,6 +185,17 @@ test('escaping protects curated values and all internal anchor targets exist', (
   for (const [, target] of html.matchAll(/\bhref="#([^"]+)"/g)) assert.ok(ids.has(target), `Missing anchor: ${target}`);
   assert.match(html, /<html lang="en">/);
   assert.equal((html.match(/<h1\b/g) || []).length, 1);
+});
+
+test('editorial overview preserves reference-pattern and progressive-disclosure boundaries', () => {
+  assert.match(html, /<figure class="portfolio-map" aria-labelledby="portfolio-map-title">/);
+  assert.equal((html.match(/class="map-layer\b/g) || []).length, 3);
+  assert.equal((html.match(/<details class="bundle-inventory">/g) || []).length, 3);
+  assert.match(html, /Reference pattern, not a deployed stack/);
+  assert.match(html, /Platform and speech services have separate costs/);
+  assert.match(html, /Verify model, API &amp; geography compatibility/);
+  assert.match(html, /A development path, not a delivery schedule or completion status/);
+  assert.match(html, /A compatibility hypothesis—not a sizing result/);
 });
 
 test('four progressive views retain native anchors and do not hide content before JavaScript runs', () => {
