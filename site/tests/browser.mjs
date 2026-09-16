@@ -4,7 +4,9 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
 import { startServer } from '../scripts/serve.mjs';
-import { bundles, candidates, statuses } from '../src/content.mjs';
+import { bundles, candidates, catalogCandidates } from '../src/content.mjs';
+import { onboarding, problems } from '../src/onboarding.mjs';
+import { dossiers } from '../src/dossiers.mjs';
 import { resolveSmokeTarget, smokeHelp } from './smoke-options.mjs';
 import { assertPublicContent, assertServedPolicy, nonPublicPaths } from './public-contract.mjs';
 
@@ -98,7 +100,10 @@ const run = async (name, action) => {
 const visible = (page) => page.locator('.candidate:visible');
 const goView = (page, view) => page.locator(`[data-view-link="${view}"]`).click();
 const screenshot = async (page, name, fullPage = false) => {
+  const scroll = await page.evaluate(() => ({ x: window.scrollX, y: window.scrollY }));
+  if (fullPage) await page.evaluate(() => window.scrollTo(0, 0));
   await page.screenshot({ path: fileURLToPath(new URL(name, results)), fullPage, animations: 'disabled' });
+  if (fullPage) await page.evaluate(({ x, y }) => window.scrollTo(x, y), scroll);
   report.screenshots.push(name);
 };
 const assertNoOverflow = async (page) => {
@@ -196,12 +201,22 @@ try {
   context.setDefaultTimeout(15_000);
   context.setDefaultNavigationTimeout(30_000);
   await observeContext(context);
+  await context.addInitScript(() => {
+    window.__problemClickRegistrations = [];
+    const addEventListener = EventTarget.prototype.addEventListener;
+    EventTarget.prototype.addEventListener = function (type, listener, options) {
+      if (type === 'click' && this instanceof HTMLAnchorElement && this.hasAttribute('data-problem-link')) {
+        window.__problemClickRegistrations.push(this.dataset.problemLink);
+      }
+      return addEventListener.call(this, type, listener, options);
+    };
+  });
   page = await context.newPage();
 
   await run('served CSP allows the self-contained overview, retains 20 candidates and honors explicit light over dark OS', async () => {
     const response = await page.goto(`${url}/?scoutTheme=light`, { waitUntil: 'networkidle' });
     assert.equal(response.status(), 200, 'Site is unavailable or not deployed: expected HTTP 200.');
-    assert.equal(await page.locator('.candidate').count(), 20, 'Expected the PTU portfolio. Publish site/dist/ before running the deployed smoke test.');
+    assert.equal(await page.locator('.candidate').count(), 20, 'Expected AI Solutions Hub. Publish site/dist/ before running the deployed smoke test.');
     assert.equal(await visible(page).count(), 0, 'The overview should not overwhelm readers with the full catalog.');
     assert.equal(await page.locator('#top').isVisible(), true);
     assert.equal(await page.locator('#bundles').isVisible(), true);
@@ -243,8 +258,8 @@ try {
     await goView(page, 'overview');
     const map = page.locator('.portfolio-map');
     assert.equal(await map.locator('.map-layer').count(), 3);
-    assert.deepEqual(await map.locator('.capacity-routes strong').allTextContents(), ['PTUs', 'Standard', 'Batch']);
-    assert.match(await map.textContent(), /model, API & geography compatibility/);
+    assert.deepEqual(await map.locator('.capacity-routes strong').allTextContents(), ['Architecture', 'Source', 'Guidance']);
+    assert.match(await map.textContent(), /without deploying/);
     assert.match(await map.locator('.map-footnote').textContent(), /not a deployed stack.*separate costs/);
     const disclosures = page.locator('.bundle-inventory');
     assert.equal(await disclosures.count(), 3);
@@ -260,8 +275,13 @@ try {
     }
     await page.locator('#bundles').scrollIntoViewIfNeeded();
     await screenshot(page, 'bundle-panels-light.png');
+    assert.equal(await page.locator('[data-bundle-link]').first().getAttribute('data-bundle-link'), 'engineering');
+    assert.equal(await page.locator('[data-problem-link]').first().getAttribute('data-problem-link'), 'engineering');
     await goView(page, 'catalog');
-    assert.match(await page.locator('.evidence-key').textContent(), /Readiness.*PTU fit.*not a sizing result/);
+    assert.equal(await page.locator('.status-badge, #status-filter, .evidence-key').count(), 0);
+    assert.doesNotMatch(await page.locator('#catalog').textContent(), /Selected tests verified|Not launch-ready|Readiness/);
+    assert.deepEqual(await page.locator('[data-bundle-choice]').evaluateAll((nodes) => nodes.map((node) => node.dataset.bundleChoice)),
+      ['all', 'engineering', 'knowledge', 'procurement']);
     await goView(page, 'roadmap');
     assert.match(await page.locator('.roadmap-item').first().textContent(), /Highest priority.*Not deployed/);
     assert.equal(await page.locator('.roadmap-boundary:visible').count(), 5);
@@ -310,7 +330,7 @@ try {
     await search.fill('<img src=x onerror="window.searchInjected=true">');
     assert.equal(await visible(page).count(), 0);
     assert.equal(await page.locator('#empty-state').isVisible(), true);
-    assert.equal(await page.locator('#result-count').textContent(), 'Showing 0 of 20 candidates');
+    assert.equal(await page.locator('#result-count').textContent(), 'Showing 0 of 20 solutions');
     assert.equal(await page.evaluate(() => window.searchInjected), undefined);
     assert.equal(await page.locator('img').count(), 0);
     await page.locator('#clear-empty').click();
@@ -318,16 +338,17 @@ try {
     assert.equal(await page.locator('#catalog-search').evaluate((node) => node === document.activeElement), true);
   });
 
-  await run('every bundle and readiness combination returns exactly the matching cards', async () => {
+  await run('every area and problem combination returns matching solutions in engineering-first order', async () => {
     for (const bundle of ['all', ...Object.keys(bundles)]) {
-      for (const status of ['all', ...Object.keys(statuses)]) {
+      for (const problem of ['all', ...Object.keys(problems)]) {
         await page.locator(`[data-bundle-choice="${bundle}"]`).click();
         assert.equal(await page.locator('#bundle-filter').inputValue(), bundle);
         assert.equal(await page.locator(`[data-bundle-choice="${bundle}"]`).getAttribute('aria-pressed'), 'true');
-        await page.locator('#status-filter').selectOption(status);
-        const expected = candidates.filter((item) => (bundle === 'all' || item.bundle === bundle) && (status === 'all' || item.status === status)).map((item) => item.id);
+        await page.locator('#problem-filter').selectOption(problem);
+        const expected = catalogCandidates.filter((item) => (bundle === 'all' || item.bundle === bundle)
+          && (problem === 'all' || onboarding[item.id].problems.includes(problem))).map((item) => item.id);
         const actual = await visible(page).evaluateAll((nodes) => nodes.map((node) => Number(node.dataset.id)));
-        assert.deepEqual(actual, expected, `${bundle} / ${status}`);
+        assert.deepEqual(actual, expected, `${bundle} / ${problem}`);
       }
     }
     await page.locator('#reset-filters').click();
@@ -359,8 +380,9 @@ try {
     assert.equal(await page.locator('#catalog-grid').getAttribute('data-layout'), 'list');
     assert.equal(await visible(page).count(), 1);
     await visible(page).locator('.detail-button').click();
-    assert.equal(await page.locator('#candidate-dialog').isVisible(), true);
-    await page.keyboard.press('Escape');
+    assert.equal(await page.locator('#solution-9').isVisible(), true);
+    await page.locator('#solution-9 .solution-back').click();
+    assert.equal(await page.locator('#candidate-title-9').evaluate((node) => node === document.activeElement), true);
     await page.locator('#reset-filters').click();
     await audit(page);
     await screenshot(page, 'catalog-list-light.png');
@@ -368,33 +390,158 @@ try {
     assert.equal(await page.locator('#view-switch [data-layout="grid"]').getAttribute('aria-pressed'), 'true');
   });
 
-  await run('all 20 dialogs display the correct content and restore focus after Escape', async () => {
-    for (const candidate of candidates) {
+  for (const candidate of candidates) {
+    await run(`dossier ${candidate.id}: workflow, graph, sources, deployment, specialist guidance and all section links`, async () => {
       const trigger = page.locator(`.candidate[data-id="${candidate.id}"] .detail-button`);
       await trigger.click();
-      assert.equal(await page.locator('#candidate-dialog').isVisible(), true);
-      assert.equal(await page.locator('#dialog-title').textContent(), candidate.name);
-      assert.ok((await page.locator('#dialog-content').textContent()).includes(candidate.evidence));
-      assert.ok((await page.locator('#dialog-content').textContent()).includes(candidate.ptu));
-      assert.equal(await page.locator('#close-dialog').evaluate((node) => node === document.activeElement), true);
-      await page.keyboard.press('Escape');
-      assert.equal(await page.locator('#candidate-dialog').isVisible(), false);
-      assert.equal(await trigger.evaluate((node) => node === document.activeElement), true);
+      const solution = page.locator(`#solution-${candidate.id}`);
+      assert.equal(new URL(page.url()).hash, `#solution-${candidate.id}`);
+      assert.equal(await page.locator('.solution-page:visible').count(), 1);
+      assert.equal(await solution.locator('h2').textContent(), candidate.name);
+      assert.equal(await solution.locator('h2').evaluate((node) => node === document.activeElement), true);
+      const dossier = dossiers[candidate.id];
+      assert.ok((await solution.textContent()).includes(dossier.workshop));
+      assert.equal(await solution.locator('.app-preview').count(), 0);
+      assert.equal(await solution.locator('.workflow-steps li').count(), dossier.workflow.length);
+      assert.equal(await solution.locator('.component-graph .graph-node').count(), dossier.architecture.nodes.length);
+      assert.equal(await solution.locator('.component-graph .graph-edge').count(), dossier.architecture.edges.length);
+      const labelIssues = await solution.locator('.graph-node').evaluateAll((nodes) => nodes.flatMap((node) => {
+        const labels = [...node.querySelectorAll('text')].map((text) => ({
+          label: text.textContent, box: text.getBBox(),
+        }));
+        return labels.flatMap(({ label, box }, index) => {
+          const outside = box.x < 0 || box.y < 0 || box.x + box.width > 230 || box.y + box.height > 120;
+          const overlap = index > 0 && box.y < labels[index - 1].box.y + labels[index - 1].box.height;
+          return outside || overlap ? [label] : [];
+        });
+      }));
+      assert.deepEqual(labelIssues, [], 'Diagram labels must fit their component without overlapping');
+      assert.equal(await solution.locator('.ingestion-steps li').count(), dossier.ingestion.stages.length);
+      assert.equal(await solution.locator('.setup-steps li').count(), dossier.deployment.steps.length);
+      assert.equal(await solution.locator('.specialist-roles li').count(), dossier.specialists.length);
+      assert.equal(await solution.locator('.dossier-sources a').count(), dossier.sources.length);
+      assert.equal(await solution.locator('.solution-nav [aria-current="location"]').textContent(), 'Uses & workflow');
+      for (const anchor of await solution.locator('.solution-nav a').all()) {
+        const hash = await anchor.getAttribute('href');
+        await anchor.click();
+        assert.equal(new URL(page.url()).hash, hash);
+        assert.equal(await page.locator(hash).isVisible(), true);
+      }
+      await solution.locator('.connection-details summary').click();
+      assert.equal(await solution.locator('.connection-list li:visible').count(), dossier.architecture.edges.length);
+      await solution.locator('.connection-details summary').click();
+      await solution.locator('.deployment-notes summary').click();
+      assert.equal(await solution.locator('.deployment-notes').getAttribute('open'), null);
+      for (const link of await solution.locator('a[target="_blank"]').all()) {
+        assert.equal(await link.getAttribute('target'), '_blank');
+        assert.equal(await link.getAttribute('rel'), 'noopener noreferrer');
+        assert.match(await link.textContent(), /opens in a new tab/);
+      }
+      await solution.locator(`a[href="#solution-${candidate.id}-notes"]`).click();
+      assert.ok((await solution.locator('.deployment-notes').textContent()).includes(candidate.evidence));
+      assert.ok((await solution.locator('.deployment-notes').textContent()).includes(candidate.ptu));
+      assert.equal(await solution.locator('.deployment-notes').getAttribute('open'), '');
+      await audit(page);
+      await solution.locator('.solution-back').click();
+      assert.equal(await page.locator(`#candidate-title-${candidate.id}`).evaluate((node) => node === document.activeElement), true);
+    });
+  }
+
+  await run('problem discovery intersects existing filters and resets predictably', async () => {
+    assert.deepEqual(await page.evaluate(() => window.__problemClickRegistrations), Object.keys(problems));
+    for (const key of Object.keys(problems)) {
+      await goView(page, 'overview');
+      await page.locator(`[data-problem-link="${key}"]`).click();
+      assert.equal(await page.locator('#problem-filter').inputValue(), key);
+      assert.equal(await page.locator('html').getAttribute('data-view'), 'catalog');
+      const expected = catalogCandidates.filter((item) => onboarding[item.id].problems.includes(key)).map((item) => item.id);
+      assert.deepEqual(await visible(page).evaluateAll((nodes) => nodes.map((node) => Number(node.dataset.id))), expected);
     }
+    await page.locator('#reset-filters').click();
+    assert.equal(await page.locator('#problem-filter').inputValue(), 'all');
+    assert.equal(await visible(page).count(), 20);
   });
 
-  await run('keyboard opens dialogs; modal focus stays contained; close button restores the opener', async () => {
-    const trigger = page.locator('.candidate[data-id="11"] .detail-button');
+  await run('shortlist supports multiple solutions, removal, navigation and selected-plan printing', async () => {
+    for (const id of [1, 12]) {
+      await page.locator(`.candidate[data-id="${id}"] .detail-button`).click();
+      await page.locator(`[data-select="${id}"]`).click();
+      assert.equal(await page.locator(`[data-select="${id}"]`).getAttribute('aria-pressed'), 'true');
+      await page.locator(`#solution-${id} a[href="#shortlist"]`).click();
+      await page.waitForFunction(() => document.activeElement?.id === 'shortlist-title');
+      assert.equal(new URL(page.url()).hash, '#shortlist');
+      assert.equal(await page.locator('#shortlist').isVisible(), true);
+    }
+    assert.equal(await page.locator('.shortlist-item').count(), 2);
+    const ids = await page.locator('[id]').evaluateAll((nodes) => nodes.map((node) => node.id));
+    assert.equal(ids.length, new Set(ids).size, 'Shortlist clones must not duplicate anchor/label IDs.');
+    await page.locator('#catalog-search').fill('CWYD');
+    await goView(page, 'guide');
+    await goView(page, 'catalog');
+    assert.equal(await page.locator('.shortlist-item').count(), 2);
+    await page.locator('.selected-guide summary').first().click();
+    await audit(page);
+    await assertNoOverflow(page);
+    const viewport = page.viewportSize();
+    await page.setViewportSize({ width: 320, height: 850 });
+    await audit(page);
+    await assertNoOverflow(page);
+    await screenshot(page, 'shortlist-mobile-light.png', true);
+    await page.setViewportSize(viewport);
+    await page.evaluate(() => { window.print = () => window.dispatchEvent(new Event('beforeprint')); });
+    await page.locator('#print-plan').click();
+    await page.emulateMedia({ media: 'print' });
+    assert.equal(await page.locator('#shortlist').isVisible(), true);
+    assert.equal(await page.locator('.candidate:visible').count(), 0);
+    assert.equal(await page.locator('.selected-guide .technical-architecture:visible').count(), 2);
+    assert.equal(await page.locator('.selected-guide .deployment-notes[open]').count(), 2);
+    assert.equal(await page.locator('.solution-page:visible').count(), 0);
+    assert.equal(await page.locator('.plan-only li:visible').count(), 6);
+    await page.evaluate(() => window.dispatchEvent(new Event('afterprint')));
+    await page.emulateMedia({ media: 'screen' });
+    assert.equal(await page.locator('html').getAttribute('data-print-plan'), null);
+    assert.equal(await page.locator('.selected-guide').first().getAttribute('open'), '');
+    assert.equal(await page.locator('.selected-guide').last().getAttribute('open'), null);
+    await page.getByRole('button', { name: 'Remove Enterprise Knowledge from shortlist', exact: true }).click();
+    assert.equal(await page.locator('.shortlist-item').count(), 1);
+    await page.locator('#clear-shortlist').click();
+    assert.equal(await page.locator('.shortlist-item').count(), 0);
+    await page.locator('#reset-filters').click();
+    await page.locator('.candidate[data-id="1"] .detail-button').click();
+    await page.locator('[data-select="1"]').click();
+    await page.locator('#solution-1 a[href="#shortlist"]').click();
+    await page.reload({ waitUntil: 'networkidle' });
+    assert.equal(await page.locator('.shortlist-item').count(), 0);
+  });
+
+  await run('solution links support keyboard, section deep links, history and individual printing', async () => {
+    const trigger = page.locator('.candidate[data-id="9"] .detail-button');
     await trigger.focus();
     await page.keyboard.press('Enter');
-    for (const key of ['Tab', 'Tab', 'Shift+Tab']) {
-      await page.keyboard.press(key);
-      assert.equal(await page.evaluate(() => document.querySelector('#candidate-dialog').contains(document.activeElement)), true);
-    }
+    assert.equal(await page.locator('#solution-9-title').evaluate((node) => node === document.activeElement), true);
+    await screenshot(page, 'modernize-experience-light.png', true);
+    await page.locator('#solution-9 .solution-nav a[href="#solution-9-architecture"]').click();
+    assert.equal(await page.locator('#solution-9-architecture-title').evaluate((node) => node === document.activeElement), true);
+    await page.goBack();
+    await page.waitForFunction(() => location.hash === '#solution-9');
+    await page.goForward();
+    await page.waitForFunction(() => location.hash === '#solution-9-architecture');
+    await page.reload({ waitUntil: 'networkidle' });
+    assert.equal(await page.locator('#solution-9').isVisible(), true);
+    assert.equal(await page.locator('#solution-9 .solution-nav [aria-current="location"]').textContent(), 'Architecture');
     await audit(page);
-    await screenshot(page, 'voice-detail-light.png');
-    await page.locator('#close-dialog').click();
-    assert.equal(await trigger.evaluate((node) => node === document.activeElement), true);
+    await page.evaluate(() => window.dispatchEvent(new Event('beforeprint')));
+    await page.emulateMedia({ media: 'print' });
+    assert.equal(await page.locator('.solution-page:visible').count(), 1);
+    assert.equal(await page.locator('#solution-9').isVisible(), true);
+    assert.equal(await visible(page).count(), 0);
+    assert.equal(await page.locator('#solution-9 .deployment-notes[open]').count(), 1);
+    assert.equal(await page.locator('#solution-9 .connection-details[open]').count(), 1);
+    await page.emulateMedia({ media: 'screen' });
+    await page.evaluate(() => window.dispatchEvent(new Event('afterprint')));
+    assert.equal(await page.locator('#solution-9 .deployment-notes').getAttribute('open'), null);
+    assert.equal(await page.locator('#solution-9 .connection-details').getAttribute('open'), null);
+    await page.locator('#solution-9 .solution-back').click();
   });
 
   await run('capacity choices work by keyboard and expose the correct decision boundary', async () => {
@@ -412,20 +559,14 @@ try {
     await screenshot(page, 'capacity-guide-light.png');
   });
 
-  await run('native FAQ, readiness legend and skip link are keyboard accessible', async () => {
+  await run('native FAQ and skip link are keyboard accessible', async () => {
     const faq = page.locator('.faq-list details').first();
     await faq.locator('summary').focus();
     await page.keyboard.press('Enter');
     assert.equal(await faq.getAttribute('open'), '');
     await page.keyboard.press('Space');
     assert.equal(await faq.getAttribute('open'), null);
-    await goView(page, 'catalog');
-    const legend = page.locator('.legend');
-    await legend.locator('summary').focus();
-    await page.keyboard.press('Enter');
-    assert.equal(await legend.getAttribute('open'), '');
     await audit(page);
-    await legend.locator('summary').click();
     await page.goto(`${url}/?scoutTheme=light`, { waitUntil: 'networkidle' });
     await page.keyboard.press('Tab');
     assert.equal(await page.locator('.skip-link').evaluate((node) => node === document.activeElement), true);
@@ -458,7 +599,6 @@ try {
     await page.locator('.candidate[data-id="11"] .detail-button').click();
     await audit(page);
     await screenshot(page, 'voice-detail-dark.png');
-    await page.keyboard.press('Escape');
     await page.goto(`${url}/?scoutTheme=invalid`, { waitUntil: 'networkidle' });
     assert.equal(await page.locator('html').getAttribute('data-theme'), 'dark');
     await page.emulateMedia({ colorScheme: 'light' });
@@ -500,13 +640,37 @@ try {
       await page.locator('#view-switch [data-layout="list"]').click();
       await assertNoOverflow(page);
       await audit(page);
-      await page.locator('.candidate[data-id="6"] .detail-button').click();
-      await assertNoOverflow(page);
-      const bounds = await page.locator('#candidate-dialog').boundingBox();
-      assert.ok(bounds.x >= 0 && bounds.width <= 375);
-      await audit(page);
-      await screenshot(page, `mobile-detail-${theme}.png`);
-      await page.keyboard.press('Escape');
+      for (const id of [1, 3, 6, 9, 10, 16, 17, 20]) {
+        await page.locator(`.candidate[data-id="${id}"] .detail-button`).click();
+        for (const width of [320, 375, 768, 1024, 1440]) {
+          await page.setViewportSize({ width, height: 900 });
+          await assertNoOverflow(page);
+        }
+        await page.setViewportSize({ width: 375, height: 812 });
+        await audit(page);
+        const bounds = await page.locator(`#solution-${id}`).boundingBox();
+        assert.ok(bounds.x >= 0 && bounds.width <= 375);
+        await screenshot(page, `solution-${id}-mobile-${theme}.png`, true);
+        if ([3, 9, 10, 17].includes(id)) {
+          await page.setViewportSize({ width: 1440, height: 1000 });
+          const chrome = page.locator('.site-header, .solution-nav, .skip-link');
+          const hidden = await chrome.evaluateAll((nodes) => nodes.map((node) => node.hidden));
+          try {
+            await chrome.evaluateAll((nodes) => nodes.forEach((node) => { node.hidden = true; }));
+            await page.locator(`#solution-${id} .technical-architecture`).screenshot({
+              path: fileURLToPath(new URL(`architecture-${id}-${theme}.png`, results)),
+              animations: 'disabled',
+            });
+          } finally {
+            await chrome.evaluateAll((nodes, states) => nodes.forEach((node, index) => {
+              node.hidden = states[index];
+            }), hidden);
+          }
+          report.screenshots.push(`architecture-${id}-${theme}.png`);
+          await page.setViewportSize({ width: 375, height: 812 });
+        }
+        await page.locator(`#solution-${id} .solution-back`).click();
+      }
     }
   });
 
@@ -526,7 +690,8 @@ try {
     assert.equal(await page.locator('#capacity-new').isVisible(), true);
     assert.equal(await page.locator('#top').isVisible(), true);
     assert.equal(await page.locator('.roadmap-item:visible').count(), 5);
-    assert.equal(await page.locator('.candidate-summary:visible').count(), 20);
+    assert.equal(await page.locator('.candidate-value:visible').count(), 20);
+    assert.equal(await page.locator('.solution-page:visible').count(), 0);
     assert.equal(await page.locator('#catalog-filters').isVisible(), false);
     assert.equal(await page.locator('.bundle-inventory[open]').count(), 3);
     assert.equal(await page.locator('.bundle-inventory > div:visible').count(), 3);
@@ -543,7 +708,7 @@ try {
     await page.locator('#view-switch [data-layout="grid"]').click();
   });
 
-  await run('with JavaScript disabled all 20 cards, both capacity paths and native details remain readable', async () => {
+  await run('with JavaScript disabled all 20 cards and complete solution guides remain readable', async () => {
     const noJS = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 1280, height: 900 }, serviceWorkers: 'block' });
     await observeContext(noJS);
     const fallback = await noJS.newPage();
@@ -552,7 +717,7 @@ try {
     assert.equal(await fallback.locator('#catalog-filters').isVisible(), false);
     assert.equal(await fallback.locator('#capacity-existing').isVisible(), true);
     assert.equal(await fallback.locator('#capacity-new').isVisible(), true);
-    assert.equal(await fallback.locator('[data-page]:visible').count(), 9);
+    assert.equal(await fallback.locator('[data-page]:visible').count(), 29);
     assert.equal(await fallback.locator('#bundle-chips').isVisible(), false);
     assert.equal(await fallback.locator('#view-switch').isVisible(), false);
     const bundleDetail = fallback.locator('.bundle-inventory').first();
@@ -561,9 +726,12 @@ try {
     assert.equal(await fallback.locator('.portfolio-map').isVisible(), true);
     await fallback.locator('[data-view-link="roadmap"]').click();
     assert.equal(await fallback.locator('#roadmap').isVisible(), true);
-    const detail = fallback.locator('.candidate-fallback').first();
+    await fallback.locator('.candidate[data-id="1"] .detail-button').click();
+    assert.equal(new URL(fallback.url()).hash, '#solution-1');
+    assert.equal(await fallback.locator('#solution-1 .workflow-steps').isVisible(), true);
+    const detail = fallback.locator('#solution-1 .deployment-notes');
     await detail.locator('summary').click();
-    assert.equal(await detail.locator('.detail-body').isVisible(), true);
+    assert.equal(await detail.locator('div').isVisible(), true);
     await noJS.close();
   });
 

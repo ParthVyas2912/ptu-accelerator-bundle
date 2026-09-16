@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Independent, self-contained PTU solution portfolio.",
+  "description": "AI Solutions Hub: a self-contained problem-first catalog and tenant pilot guide.",
   "engines": {
     "node": ">=22"
   },
