@@ -19,12 +19,35 @@ The initial text review found no confirmed credentials, but eight records contai
 
 Only curated content authored under `site/` is eligible for publication. Its generated `site/dist` directory must contain only the website artifact and static hosting configuration/assets.
 
+The **AI Solutions Hub** rebrand does not widen this boundary. The DRDC Research
+Productivity Bundle under `docs/` is private proposal material, not a public
+catalog entry. Customer meeting summaries, personnel names, research priorities
+and exercise details must not be copied into the public build. A client-specific
+public edition requires a separate publication review and approval.
+
 Public content may include:
 
 - The proposed business outcomes, portfolio names and public Microsoft documentation.
 - Honest, generalized evidence status, without private trace identifiers or environment details.
 - Planned workflows clearly marked as planned.
+- Hand-curated public upstream repository and README links pinned to reviewed
+  revisions, clearly distinguished from private adaptations and deployment proof.
+- Generic reference architectures, audience/problem labels and tenant pilot
+  checklists that contain no customer configuration or deployment authorization.
+- Authored app mockups with fabricated examples, explicitly labeled illustrative,
+  not upstream screenshots or live applications. Component diagrams distinguish
+  proposed designs from verified package architecture.
+- Authored product dossiers based on inspected public documentation and pinned
+  source/configuration. Link the source basis, distinguish optional/proposed
+  components, and do not upgrade historical evaluation results after source review.
+  Suggested CSA/specialist engagement is subject to agreement, not an entitlement
+  to free implementation or guaranteed Microsoft delivery.
 - A link to the private repository labeled as contributor access.
+
+Customer-facing cards need not carry lab readiness badges. Removing presentation
+labels does not upgrade the evidence: retain substantive package limitations and
+evaluation context in the solution's deployment notes, and keep missing source
+packages and custom implementation requirements visible in getting-started guidance.
 
 Public content must not include:
 
@@ -36,6 +59,11 @@ Public content must not include:
 ## Verification
 
 The staged-file publication scanner checks for high-confidence credential patterns without printing matched values. It is a guardrail, not a certification that all possible confidential content has been detected. Human review and the separate public-content tests remain necessary.
+
+For unstaged work, run the scanner's `--paths` mode against the exact changed
+files as well; `--staged` alone does not scan working-tree changes. The website's
+public-content contract also rejects client-bundle markers and allows only
+explicitly curated external links. It does not fetch or ingest private documents.
 
 `scripts/publication_allowlist.json` contains one reviewed, credential-free deployment-description annotation at a fixed path/line/rule, bound to the complete file SHA-256 (both historical line-ending representations). This is not a wildcard exception for secret fields. Changed content must be reviewed again.
 

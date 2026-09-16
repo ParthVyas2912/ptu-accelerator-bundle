@@ -1,9 +1,9 @@
 // Curated, public-safe stakeholder summaries. No private report ingestion.
 export const evidenceDate = '2026-09-12';
 export const bundles = {
+  engineering: 'Engineering Modernization',
   knowledge: 'Knowledge & Staff Work',
   procurement: 'Procurement & Document Operations',
-  engineering: 'Engineering Modernization',
 };
 export const statuses = {
   verified: 'Selected tests verified',
@@ -171,12 +171,12 @@ export const candidates = [
     next: 'Choose and test the model route, permissions and billing boundary for one staff-service scenario.',
   },
   {
-    id: 16, name: 'Fabric User Data Functions', alias: 'Fabric UDF',
+    id: 16, name: 'Agentic Unified Data Foundation', alias: 'Fabric data agents and grounded application chat',
     bundle: 'engineering', status: 'conditional', fit: 'unproven',
-    value: 'Connect data-oriented business steps to custom processing logic.',
+    value: 'Connect an AI application to governed enterprise data through a Fabric Data Agent.',
     summary: 'Prerequisite-gated; no PTU proof.',
-    evidence: 'Required prerequisites prevented full validation. Custom model endpoints are possible, but no tested PTU integration is claimed.',
-    caveats: ['A data function is not inherently a model request.', 'Platform prerequisites, permissions and model-call behavior must be validated.'],
+    evidence: 'Historical inventory note, recorded under the different Fabric User Data Functions label: Required prerequisites prevented full validation. Custom model endpoints are possible, but no tested PTU integration is claimed. That record does not validate the pinned Agentic Unified Data Foundation accelerator described here.',
+    caveats: ['Fabric User Data Functions and the Agentic Unified Data Foundation accelerator are different offerings; historical evidence must not be transferred between them.', 'Platform prerequisites, permissions and model-call behavior must be validated.'],
     ptu: 'A custom endpoint could reach a compatible model deployment. Neither that route nor meaningful PTU demand was proven here.',
     next: 'Clear prerequisites and test the custom model-call path with a bounded data task.',
   },
@@ -221,6 +221,10 @@ export const candidates = [
     next: 'Identify the package and accountable support arrangement before any technical or business assessment.',
   },
 ];
+
+// Keep evidence IDs stable while giving engineering the first discovery position.
+export const catalogCandidates = Object.keys(bundles).flatMap((bundle) =>
+  candidates.filter((item) => item.bundle === bundle));
 
 export const roadmap = [
   {

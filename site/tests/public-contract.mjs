@@ -1,5 +1,7 @@
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
+import { platformGuides, sources } from '../src/onboarding.mjs';
+import { dossiers } from '../src/dossiers.mjs';
 
 export const repositoryURL = 'https://github.com/ParthVyas2912/ptu-accelerator-bundle';
 export const deployedURL = 'https://blue-beach-0fb8cd70f.5.azurestaticapps.net/';
@@ -20,6 +22,7 @@ export function assertPublicContent(output, additionalPublicURLs = []) {
     /deployment-contract|azure-resources-before|raw[ -]evidence|raw[ -]logs/i,
     /BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY|ghp_[a-z0-9]+|AccountKey=|SharedAccessSignature=/i,
     /\b(?:trusted by|used by customers|customer success story|officially endorsed)\b/i,
+    /\bDRDC\b|\bJDCP\b|Research Productivity Bundle|Maritime Information Warfare/i,
   ];
   // Report the rule, never the matching content.
   for (const pattern of forbidden) assert.equal(pattern.test(scrubbed), false, `Public privacy check failed: ${pattern}`);
@@ -28,6 +31,9 @@ export function assertPublicContent(output, additionalPublicURLs = []) {
     deployedURL,
     'https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/provisioned-throughput',
     'https://learn.microsoft.com/en-us/azure/ai-services/speech-service/how-to-bring-your-own-model',
+    ...Object.values(sources).flatMap(({ repository, guide }) => [repository, guide]),
+    ...Object.values(platformGuides),
+    ...Object.values(dossiers).flatMap((dossier) => dossier.sources.map(({ url }) => url)),
     ...additionalPublicURLs,
   ]);
   for (const [, href] of output.matchAll(/\bhref="([^"]+)"/g)) {
@@ -71,6 +77,10 @@ export const nonPublicPaths = [
   '/evidence/',
   '/logs/',
   '/infra/',
+  '/docs/DRDC-RESEARCH-BUNDLE.md',
+  '/src/onboarding.mjs',
+  '/src/experiences.mjs',
+  '/src/dossiers.mjs',
   '/deployment-contract.json',
   '/azure-resources-before.json',
   '/__smoke_missing_route__',

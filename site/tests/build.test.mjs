@@ -2,8 +2,10 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { mkdir, mkdtemp, readFile, readdir, rm, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
-import { assertSafeOutputDirectory, buildSite, escapeHTML, hash } from '../scripts/build.mjs';
-import { candidates, roadmap, statuses } from '../src/content.mjs';
+import { assertSafeOutputDirectory, buildSite, escapeHTML, hash, validateDossier } from '../scripts/build.mjs';
+import { candidates, catalogCandidates, roadmap } from '../src/content.mjs';
+import { onboarding, problems, sources, tenantSteps } from '../src/onboarding.mjs';
+import { dossiers } from '../src/dossiers.mjs';
 import { assertPublicContent, assertServedPolicy, deployedURL } from './public-contract.mjs';
 import { resolveSmokeTarget } from './smoke-options.mjs';
 
@@ -39,7 +41,7 @@ test('build is deterministic, self-contained and comfortably within the size bud
   const second = await buildSite();
   assert.equal(second.html, html);
   assert.deepEqual(second.config, config);
-  assert.ok(bytes < 175 * 1024, `HTML is ${bytes} bytes`);
+  assert.ok(bytes < 576 * 1024, `HTML with 20 source-backed dossiers and component graphs is ${bytes} bytes`);
   assert.deepEqual((await readdir(new URL('../dist/', import.meta.url))).sort(), ['index.html', 'staticwebapp.config.json']);
   assert.doesNotMatch(html, /@@[A-Z_]+@@/);
   assert.doesNotMatch(html, /<(?:script|img|iframe|audio|video)\b[^>]*\bsrc\s*=/i);
@@ -82,21 +84,24 @@ test('smoke URL/env selection supports deployment and rejects unsafe or ambiguou
 });
 
 test('all 20 candidates and five planned workflows are rendered, complete and uniquely identified', () => {
-  assert.equal((html.match(/class="candidate status-/g) || []).length, 20);
+  assert.equal((html.match(/class="candidate"/g) || []).length, 20);
   assert.equal((html.match(/class="roadmap-item"/g) || []).length, 5);
   assert.deepEqual(candidates.map((item) => item.id), Array.from({ length: 20 }, (_, index) => index + 1));
-  const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]);
+  const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]);
   assert.equal(ids.length, new Set(ids).size);
   for (const item of candidates) {
     assert.ok(html.includes(escapeHTML(item.name)));
-    assert.ok(html.includes(escapeHTML(item.summary)));
+    assert.ok(html.includes(escapeHTML(item.evidence)));
     assert.ok(html.includes(escapeHTML(item.ptu)));
     assert.ok(html.includes(escapeHTML(item.next)));
     assert.ok(item.caveats.length >= 2);
   }
   for (const item of roadmap) assert.ok(html.includes(escapeHTML(item.boundary)));
   assert.equal(roadmap[0].priority, 'Highest priority');
-  for (const label of Object.values(statuses)) assert.ok(html.includes(escapeHTML(label)));
+  assert.doesNotMatch(html, /class="status-badge"|id="status-filter"|Selected tests verified|Not launch-ready/);
+  assert.deepEqual([...html.matchAll(/class="candidate" data-id="(\d+)"/g)].map((match) => Number(match[1])),
+    catalogCandidates.map((item) => item.id));
+  assert.equal(catalogCandidates[0].bundle, 'engineering');
 });
 
 test('HTTP and meta CSP hash every actual inline script and style with no unsafe execution', () => {
@@ -128,6 +133,7 @@ test('generated public files contain no identifiable infrastructure, contacts, r
   for (const marker of ['rg-synthetic-fixture', 'accountId: synthetic', 'resourceGroupName: synthetic']) {
     assert.throws(() => assertPublicContent(`${html}\n${marker}`), /Public privacy check failed/);
   }
+  assert.throws(() => assertPublicContent(`${html}<a href="https://unreviewed.example/">Unreviewed</a>`), /unapproved link/);
 });
 
 test('delivered-content checks validate HTTP hashes without relying on local deployment files', () => {
@@ -151,9 +157,9 @@ test('required evidence boundaries survive rendering', () => {
   assert.match(candidates[10].ptu, /documented BYOM route can use compatible PTU/);
   assert.match(candidates[7].ptu, /Batch/);
   for (const phrase of [
-    'Guided demonstrations only', 'not a sixth new app', 'Standard', 'Batch',
+    'not a sixth new app', 'Standard', 'Batch',
     'No automatic redaction or release', 'No autonomous high-impact changes',
-    'not a business-drafting workflow', '2026-09-12', 'not an official product',
+    'marketing content', '2026-09-12', 'not an official product',
   ]) assert.ok(html.includes(phrase), `Missing business boundary: ${phrase}`);
 });
 
@@ -181,7 +187,7 @@ test('theme uses the exact base variables, correct font, only token colors and e
 
 test('escaping protects curated values and all internal anchor targets exist', () => {
   assert.equal(escapeHTML('<img src=x onerror="bad()"> & \''), '&lt;img src=x onerror=&quot;bad()&quot;&gt; &amp; &#39;');
-  const ids = new Set([...html.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]));
+  const ids = new Set([...html.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]));
   for (const [, target] of html.matchAll(/\bhref="#([^"]+)"/g)) assert.ok(ids.has(target), `Missing anchor: ${target}`);
   assert.match(html, /<html lang="en">/);
   assert.equal((html.match(/<h1\b/g) || []).length, 1);
@@ -195,15 +201,117 @@ test('editorial overview preserves reference-pattern and progressive-disclosure 
   assert.match(html, /Platform and speech services have separate costs/);
   assert.match(html, /Verify model, API &amp; geography compatibility/);
   assert.match(html, /A development path, not a delivery schedule or completion status/);
-  assert.match(html, /A compatibility hypothesis—not a sizing result/);
+  assert.match(html, /A reference design is not a deployment certification/);
 });
 
-test('four progressive views retain native anchors and do not hide content before JavaScript runs', () => {
+test('problem-first hub supplies a complete, honest getting-started path for every candidate', () => {
+  assert.match(html, /<title>AI Solutions Hub/);
+  assert.doesNotMatch(html, /PTU portfolio|PTU guide/);
+  assert.equal((html.match(/data-problem-link="/g) || []).length, Object.keys(problems).length);
+  assert.deepEqual(Object.keys(onboarding).map(Number), candidates.map((item) => item.id));
+  assert.equal((html.match(/class="technical-architecture"/g) || []).length, 20);
+  assert.equal((html.match(/class="component-graph"/g) || []).length, 20);
+  assert.doesNotMatch(html, /<dialog\b|app-preview|preview-sidebar|Concept preview|Illustrative grid/);
+  assert.deepEqual(Object.keys(dossiers).map(Number), candidates.map((item) => item.id));
+  for (const item of candidates) {
+    const guide = onboarding[item.id];
+    const dossier = dossiers[item.id];
+    for (const field of ['audience', 'headline', 'description', 'surface', 'workshop']) {
+      assert.ok(html.includes(escapeHTML(dossier[field])), `${item.id}: ${field}`);
+    }
+    for (const node of dossier.architecture.nodes) {
+      assert.ok(html.includes(escapeHTML(node.detail)));
+      assert.ok(html.includes(escapeHTML(node.service)));
+    }
+    for (const steps of [dossier.workflow, dossier.ingestion.stages, dossier.deployment.steps, dossier.specialists]) {
+      for (const [title, detail] of steps) {
+        assert.ok(html.includes(escapeHTML(title)));
+        assert.ok(html.includes(escapeHTML(detail)));
+      }
+    }
+    for (const source of dossier.sources) assert.ok(html.includes(escapeHTML(source.url)));
+    for (const problem of guide.problems) assert.ok(problems[problem]);
+  }
+  for (const source of Object.values(sources)) {
+    assert.match(source.revision, /^[a-f0-9]{40}$/);
+    assert.match(source.repository, /^https:\/\/github\.com\/(?:microsoft|Azure-Samples)\/[^/]+\/tree\/[a-f0-9]{40}$/);
+    assert.equal(source.guide, source.repository.replace('/tree/', '/blob/') + '/README.md');
+    // Some pinned inventory references are comparison sources, not the catalog product.
+  }
+  for (const step of tenantSteps) assert.ok(html.includes(escapeHTML(step)));
+  assert.match(html, /Repository not verified/);
+  assert.match(html, /not the tested private adaptation/);
+  assert.match(html, /class="button primary shortlist-toggle"/);
+  assert.match(html, /not a support entitlement or promise of free implementation/);
+  assert.match(html, /Selections stay in this page until reload/);
+  const sourceLinks = [...html.matchAll(/<a\b([^>]*\btarget="_blank"[^>]*)>([\s\S]*?)<\/a>/g)];
+  assert.equal(sourceLinks.length, Object.values(dossiers).reduce((count, item) =>
+    count + item.sources.length + (item.repository ? 1 : 0), 0));
+  for (const [, attributes, label] of sourceLinks) {
+    assert.match(attributes, /rel="noopener noreferrer"/);
+    assert.match(label, /opens in a new tab/);
+  }
+});
+
+test('dossiers reject invalid sources, broken graph relationships and incomplete product guidance', () => {
+  const invalid = (mutate, pattern) => {
+    const copy = structuredClone(dossiers[1]);
+    mutate(copy);
+    assert.throws(() => validateDossier(copy, 1), pattern);
+  };
+  invalid((copy) => { copy.architecture.edges[0][1] = 'missing'; }, /connection/);
+  invalid((copy) => { copy.architecture.nodes[1].id = copy.architecture.nodes[0].id; }, /component/);
+  invalid((copy) => { copy.architecture.nodes[0].column = 8; }, /grid/);
+  invalid((copy) => { copy.sources[0].url = 'https://github.com/microsoft/example/blob/main/README.md'; }, /unpinned/);
+  invalid((copy) => { copy.sources[0].url = 'https://unreviewed.example/'; }, /source URL/);
+  invalid((copy) => { copy.sources.push(copy.sources[0]); }, /source identity/);
+  invalid((copy) => { copy.specialists = []; }, /specialist/);
+  invalid((copy) => { copy.ingestion.stages = [['Missing detail']]; }, /ingestion/);
+  invalid((copy) => { copy.deployment.prerequisites = []; }, /deployment/);
+  const signatures = Object.values(dossiers).map((item) =>
+    JSON.stringify([item.workflow, item.architecture.nodes.map((node) => node.service)]));
+  assert.equal(new Set(signatures).size, 20, 'Product-specific workflows and components must not be reused as generic filler');
+  for (const id of [3, 12, 20]) {
+    assert.notEqual(dossiers[id].architecture.basis, 'documented');
+    assert.equal(dossiers[id].repository, undefined);
+  }
+});
+
+test('component diagrams route every connection outside unrelated component boxes', () => {
+  const graphs = [...html.matchAll(/<svg class="component-graph"[\s\S]*?<\/svg>/g)].map(([svg]) => svg);
+  assert.equal(graphs.length, 20);
+  for (const svg of graphs) {
+    const boxes = [...svg.matchAll(/class="graph-node[^"]*" transform="translate\((\d+) (\d+)\)"/g)]
+      .map(([, x, y]) => ({ left: Number(x), top: Number(y), right: Number(x) + 230, bottom: Number(y) + 120 }));
+    for (const [, path] of svg.matchAll(/<path d="([^"]+)"/g)) {
+      let point;
+      for (const [, command, values] of path.matchAll(/([MLHV])([\d.,-]+)/g)) {
+        const coordinates = values.split(',').map(Number);
+        const next = command === 'H' ? [coordinates[0], point[1]]
+          : command === 'V' ? [point[0], coordinates[0]] : coordinates;
+        if (point) {
+          assert.ok(point[0] === next[0] || point[1] === next[1], 'Connections must be orthogonal');
+          for (const box of boxes) {
+            const crosses = point[0] === next[0]
+              ? point[0] > box.left && point[0] < box.right
+                && Math.max(point[1], next[1]) > box.top && Math.min(point[1], next[1]) < box.bottom
+              : point[1] > box.top && point[1] < box.bottom
+                && Math.max(point[0], next[0]) > box.left && Math.min(point[0], next[0]) < box.right;
+            assert.equal(crosses, false, `Connection crosses a component: ${path}`);
+          }
+        }
+        point = next;
+      }
+    }
+  }
+});
+
+test('four main views and 20 solution pages retain native anchors without JavaScript', () => {
   assert.deepEqual([...html.matchAll(/data-view-link="([^"]+)"/g)].map((match) => match[1]),
     ['overview', 'catalog', 'guide', 'roadmap']);
   const sections = [...html.matchAll(/<(?:section|div)\b[^>]*\bdata-page="([^"]+)"[^>]*>/g)];
-  assert.equal(sections.length, 9);
-  assert.deepEqual([...new Set(sections.map((match) => match[1]))].sort(), ['catalog', 'guide', 'overview', 'roadmap']);
+  assert.equal(sections.length, 29);
+  assert.deepEqual([...new Set(sections.map((match) => match[1]))].sort(), ['catalog', 'guide', 'overview', 'roadmap', 'solution']);
   for (const [tag] of sections) assert.doesNotMatch(tag, /\bhidden\b/);
   assert.match(html, /id="bundle-chips"[^>]*role="group"[^>]*hidden/);
   assert.match(html, /id="view-switch"[^>]*role="group"[^>]*hidden/);
