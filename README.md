@@ -4,7 +4,7 @@ A problem-first catalog of Microsoft and Azure AI solution starting points: help
 
 ## [Open the stakeholder website](https://blue-beach-0fb8cd70f.5.azurestaticapps.net/)
 
-Share that link with nontechnical colleagues after the reviewed website update is published. The source now provides six problem entry points, twenty candidates, a multi-solution shortlist and getting-started guidance without exposing this repository's private reports or environment details. Local changes do not update the hosted website until deployment.
+Share that link with nontechnical colleagues. The published AI Solutions Hub provides six problem entry points, twenty product-specific solution guides, a multi-solution shortlist and getting-started guidance without exposing this repository's private reports or environment details. The release source and publication evidence are recorded in [website deployment metadata](docs/website-deployment.json). Future local changes do not update the hosted website until deployment.
 
 **Private engineering workspace.** The stakeholder website is a separate, deliberately sanitized publication. This is not an official Microsoft commercial SKU, a production certification, or a commitment to support the included accelerators.
 
@@ -67,7 +67,7 @@ Follow [site/README.md](site/README.md) for build and test commands. The product
 
 GitHub Actions validates changes and deploys the site on `main` changes to the site or deployment workflow. Historical scripts are **not** automatically executed in CI. Infrastructure provisioning is a separate manual operation; site publishing cannot create or start model-consuming applications.
 
-Six [starter issues](https://github.com/ParthVyas2912/ptu-accelerator-bundle/issues) define the next implementation priorities. Dependency-update pull requests remain subject to review; they are not automatically merged.
+Six [starter issues](https://github.com/ParthVyas2912/ptu-accelerator-bundle/issues) define the next implementation priorities. Historical functional gaps and approval-gated pilot work remain open; completing the website and private research proposal does not make all twenty accelerators production-ready or authorize further lab execution. Dependency-update pull requests remain subject to review; they are not automatically merged.
 
 ## Attribution and licensing
 
