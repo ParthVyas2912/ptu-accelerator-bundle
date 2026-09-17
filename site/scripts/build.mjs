@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto';
 import { lstat, mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { resolve } from 'node:path';
-import { bundles, candidates, catalogCandidates, evidenceDate, fits, roadmap, statuses } from '../src/content.mjs';
+import { bundles, candidates, catalogCandidates, evidenceDate, fits, glossary, plainKinds, roadmap, statuses } from '../src/content.mjs';
 import { onboarding, problems, tenantSteps } from '../src/onboarding.mjs';
 import { dossiers, researchDate } from '../src/dossiers.mjs';
 
@@ -94,6 +94,15 @@ export function validateDossier(dossier, id) {
   const fail = (detail) => { throw new Error(`Invalid dossier ${id}: ${detail}`); };
   if (!dossier || ['name', 'kind', 'alias', 'headline', 'description', 'audience', 'surface', 'workshop']
     .some((key) => !nonempty(dossier[key]))) fail('missing product description');
+  if (!nonempty(plainKinds[dossier.kind])) fail('no plain-language reading of the package kind');
+  // A first-time reader gets an explicit answer to what it is, what it does and what it is for.
+  const { plain } = dossier;
+  if (!plain || ['form', 'what'].some((key) => !nonempty(plain[key]))) fail('plain-language summary');
+  for (const key of ['does', 'benefits', 'chooseIf', 'insteadIf']) {
+    if (!stringsValid(plain[key])) fail(`plain-language ${key}`);
+  }
+  if (plain.what.length < 120) fail('plain-language summary is too thin to judge a fit against');
+  if (plain.does.length < 2 || plain.benefits.length < 2) fail('plain-language detail');
   for (const key of ['useCases', 'deliverables', 'boundaries', 'bring', 'acceptance']) {
     if (!stringsValid(dossier[key])) fail(key);
   }
@@ -195,15 +204,22 @@ const renderGraph = (architecture, id) => {
 };
 const renderSolution = (item) => {
   const dossier = dossiers[item.id];
-  const { architecture, ingestion, deployment } = dossier;
+  const { architecture, ingestion, deployment, plain } = dossier;
   const id = `solution-${item.id}`;
   return `<section class="solution-page section wrap" id="${id}" data-page="solution" data-id="${item.id}" aria-labelledby="${id}-title">
     <a class="text-link solution-back" href="#candidate-title-${item.id}"><span aria-hidden="true">←</span> Back to solutions</a>
     <header class="solution-heading"><div><p class="eyebrow">${escapeHTML(bundles[item.bundle])} / ${escapeHTML(dossier.kind)}</p><h2 id="${id}-title">${escapeHTML(item.name)}</h2><p class="solution-headline">${escapeHTML(dossier.headline)}</p><p>${escapeHTML(dossier.description)}</p></div>
     <div class="solution-actions"><button class="button primary shortlist-toggle" data-select="${item.id}" type="button" aria-pressed="false" hidden>Add to shortlist</button><a class="text-link" href="#shortlist">View my shortlist <span aria-hidden="true">→</span></a></div></header>
     <dl class="solution-facts"><div><dt>Who it helps</dt><dd>${escapeHTML(dossier.audience)}</dd></div><div><dt>What you get</dt><dd>${escapeHTML(dossier.deliverables.join(' / '))}</dd></div></dl>
-    <nav class="solution-nav" aria-label="${escapeHTML(item.name)} sections"><a href="#${id}-workflow">Uses &amp; workflow</a><a href="#${id}-architecture">Architecture</a><a href="#${id}-ingestion">Data &amp; ingestion</a><a href="#${id}-setup">Deployment</a><a href="#${id}-specialists">Work with specialists</a><a href="#${id}-sources">Sources</a><a href="#${id}-notes">Evaluation notes</a></nav>
+    <nav class="solution-nav" aria-label="${escapeHTML(item.name)} sections"><a href="#${id}-plain">In plain terms</a><a href="#${id}-workflow">Uses &amp; workflow</a><a href="#${id}-architecture">Architecture</a><a href="#${id}-ingestion">Data &amp; ingestion</a><a href="#${id}-setup">Deployment</a><a href="#${id}-specialists">Work with specialists</a><a href="#${id}-sources">Sources</a><a href="#${id}-notes">Evaluation notes</a></nav>
     <div class="solution-body">
+      <section class="solution-section" id="${id}-plain" aria-labelledby="${id}-plain-title">
+        <div class="solution-section-heading"><div><p class="eyebrow">00 / Never seen this before</p><h3 id="${id}-plain-title">In plain terms.</h3></div><p>${escapeHTML(plain.what)}</p></div>
+        <div class="product-surface"><h4>What you actually receive</h4><p>${escapeHTML(plain.form)}</p></div>
+        <div class="fit-layout"><div><h4>What it does</h4>${list(plain.does)}</div><div><h4>What you would gain</h4>${list(plain.benefits)}</div></div>
+        <div class="pilot-milestone"><strong>How much of that is proven?</strong><p>Those gains describe what this package is built to produce. They are not a claim about what was measured here. What this catalog actually established: ${escapeHTML(item.evidence)}</p><a class="text-link" href="#${id}-notes">Read the evaluation notes <span aria-hidden="true">→</span></a></div>
+        <div class="fit-layout"><div><h4>Choose this if</h4>${list(plain.chooseIf)}</div><div><h4>Consider something else if</h4>${list(plain.insteadIf)}</div></div>
+      </section>
       <section class="solution-section" id="${id}-workflow" aria-labelledby="${id}-workflow-title">
         <div class="solution-section-heading"><div><p class="eyebrow">01 / Use it for the right job</p><h3 id="${id}-workflow-title">Where it earns its place.</h3></div><p>${escapeHTML(dossier.alias)}</p></div>
         <div class="fit-layout"><div><h4>Best uses</h4>${list(dossier.useCases)}</div><div><h4>Know the boundary</h4>${list(dossier.boundaries)}</div></div>
@@ -243,7 +259,7 @@ const renderSolution = (item) => {
 };
 
 const renderCard = (item) => `<article class="candidate" data-id="${item.id}" data-bundle="${item.bundle}" data-problems="${onboarding[item.id].problems.join(' ')}" aria-labelledby="candidate-title-${item.id}">
-  <div class="candidate-top"><span class="candidate-area">${escapeHTML(bundles[item.bundle])}</span></div>
+  <div class="candidate-top"><span class="candidate-area">${escapeHTML(bundles[item.bundle])}</span><span class="candidate-area candidate-kind">${escapeHTML(plainKinds[dossiers[item.id].kind])}</span></div>
   <h3 id="candidate-title-${item.id}">${escapeHTML(item.name)}</h3>
   <p class="candidate-alias">${escapeHTML(dossiers[item.id].alias)}</p>
   <p class="candidate-value">${escapeHTML(dossiers[item.id].headline)}</p>
@@ -283,6 +299,7 @@ export async function buildSite() {
     PROBLEM_OPTIONS: options(problems),
     PROBLEM_LINKS: Object.entries(problems).map(([key, label]) => `<a class="problem-link" href="#catalog" data-problem-link="${key}">${escapeHTML(label)}<span aria-hidden="true">→</span></a>`).join('\n'),
     TENANT_STEPS: tenantSteps.map((step) => `<li>${escapeHTML(step)}</li>`).join(''),
+    GLOSSARY: glossary.map(([term, meaning]) => `<div><dt>${escapeHTML(term)}</dt><dd>${escapeHTML(meaning)}</dd></div>`).join(''),
     CARDS: catalogCandidates.map(renderCard).join('\n'),
     SOLUTIONS: catalogCandidates.map(renderSolution).join('\n'),
     ROADMAP: roadmap.map(renderRoadmap).join('\n'),

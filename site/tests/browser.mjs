@@ -358,6 +358,10 @@ try {
     assert.equal(await visible(page).count(), 2);
     assert.equal(await page.locator('#catalog-search').evaluate((node) => node === document.activeElement), true);
     await page.locator('#catalog-search').fill('contract');
+    // Plain-language text made both procurement entries genuinely match "contract";
+    // the disambiguation wording is what separates them.
+    assert.equal(await visible(page).count(), 2);
+    await page.locator('#catalog-search').fill('proposal');
     assert.equal(await visible(page).count(), 1);
     assert.equal(await visible(page).first().getAttribute('data-id'), '12');
     await page.locator('#reset-filters').click();
@@ -371,11 +375,11 @@ try {
     assert.equal(await page.locator('#view-switch [data-layout="list"]').getAttribute('aria-pressed'), 'true');
     assert.equal(await visible(page).count(), 22);
     await page.locator('[data-bundle-choice="engineering"]').click();
-    await page.locator('#catalog-search').fill('Modernize');
+    await page.locator('#catalog-search').fill('conversion');
     assert.equal(await visible(page).count(), 1);
     await goView(page, 'guide');
     await goView(page, 'catalog');
-    assert.equal(await page.locator('#catalog-search').inputValue(), 'Modernize');
+    assert.equal(await page.locator('#catalog-search').inputValue(), 'conversion');
     assert.equal(await page.locator('#bundle-filter').inputValue(), 'engineering');
     assert.equal(await page.locator('#catalog-grid').getAttribute('data-layout'), 'list');
     assert.equal(await visible(page).count(), 1);
@@ -401,6 +405,10 @@ try {
       assert.equal(await solution.locator('h2').evaluate((node) => node === document.activeElement), true);
       const dossier = dossiers[candidate.id];
       assert.ok((await solution.textContent()).includes(dossier.workshop));
+      const plainText = await solution.locator(`#solution-${candidate.id}-plain`).textContent();
+      assert.ok(plainText.includes(dossier.plain.what), 'plain summary');
+      assert.ok(plainText.includes(dossier.plain.form), 'what arrives');
+      assert.ok(plainText.includes(candidate.evidence), 'benefits are qualified by evidence in place');
       assert.equal(await solution.locator('.app-preview').count(), 0);
       assert.equal(await solution.locator('.workflow-steps li').count(), dossier.workflow.length);
       assert.equal(await solution.locator('.component-graph .graph-node').count(), dossier.architecture.nodes.length);
@@ -442,7 +450,7 @@ try {
         assert.equal(await link.getAttribute('rel'), 'noopener noreferrer');
         assert.match(await link.textContent(), /opens in a new tab/);
       }
-      await solution.locator(`a[href="#solution-${candidate.id}-notes"]`).click();
+      await solution.locator(`.solution-nav a[href="#solution-${candidate.id}-notes"]`).click();
       assert.ok((await solution.locator('.deployment-notes').textContent()).includes(candidate.evidence));
       assert.ok((await solution.locator('.deployment-notes').textContent()).includes(candidate.ptu));
       assert.equal(await solution.locator('.deployment-notes').getAttribute('open'), '');
@@ -730,7 +738,7 @@ try {
     assert.equal(await fallback.locator('#catalog-filters').isVisible(), false);
     assert.equal(await fallback.locator('#capacity-existing').isVisible(), true);
     assert.equal(await fallback.locator('#capacity-new').isVisible(), true);
-    assert.equal(await fallback.locator('[data-page]:visible').count(), 31);
+    assert.equal(await fallback.locator('[data-page]:visible').count(), 33);
     assert.equal(await fallback.locator('#bundle-chips').isVisible(), false);
     assert.equal(await fallback.locator('#view-switch').isVisible(), false);
     const bundleDetail = fallback.locator('.bundle-inventory').first();

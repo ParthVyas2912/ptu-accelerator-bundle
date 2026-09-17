@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { mkdir, mkdtemp, readFile, readdir, rm, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { assertSafeOutputDirectory, buildSite, escapeHTML, hash, validateDossier } from '../scripts/build.mjs';
-import { candidates, catalogCandidates, roadmap } from '../src/content.mjs';
+import { candidates, catalogCandidates, glossary, plainKinds, roadmap } from '../src/content.mjs';
 import { onboarding, problems, sources, tenantSteps } from '../src/onboarding.mjs';
 import { dossiers } from '../src/dossiers.mjs';
 import { assertPublicContent, assertServedPolicy, deployedURL } from './public-contract.mjs';
@@ -41,7 +41,7 @@ test('build is deterministic, self-contained and comfortably within the size bud
   const second = await buildSite();
   assert.equal(second.html, html);
   assert.deepEqual(second.config, config);
-  assert.ok(bytes < 576 * 1024, `HTML with 22 source-backed dossiers and component graphs is ${bytes} bytes`);
+  assert.ok(bytes < 640 * 1024, `HTML with 22 source-backed dossiers, plain-language summaries and component graphs is ${bytes} bytes`);
   assert.deepEqual((await readdir(new URL('../dist/', import.meta.url))).sort(), ['index.html', 'staticwebapp.config.json', 'web.config']);
   assert.doesNotMatch(html, /@@[A-Z_]+@@/);
   assert.doesNotMatch(html, /<(?:script|img|iframe|audio|video)\b[^>]*\bsrc\s*=/i);
@@ -216,6 +216,43 @@ test('editorial overview preserves reference-pattern and progressive-disclosure 
   assert.match(html, /A reference design is not a deployment certification/);
 });
 
+test('every solution answers what it is, what it does and what it is for, in plain language', () => {
+  const jargon = /\b(?:RAG|MACAE|CWYD|DKM|BYOK|BYOM|azd|Bicep|FastAPI|Blazor|KQL|OBO|STAC|AKS)\b/;
+  for (const item of candidates) {
+    const { plain, kind } = dossiers[item.id];
+    // The reader is told what would actually arrive before anything else.
+    assert.ok(html.includes(escapeHTML(plain.form)), `${item.id}: form`);
+    assert.ok(html.includes(escapeHTML(plain.what)), `${item.id}: what`);
+    for (const key of ['does', 'benefits', 'chooseIf', 'insteadIf']) {
+      for (const line of plain[key]) assert.ok(html.includes(escapeHTML(line)), `${item.id}: ${key}`);
+    }
+    // Plain language is the point: unexplained shorthand defeats it.
+    assert.doesNotMatch(plain.what, jargon, `${item.id}: unexplained shorthand in the plain summary`);
+    assert.doesNotMatch(plain.does.join(' '), jargon, `${item.id}: unexplained shorthand in what it does`);
+    // A benefit never stands alone; the evidence for that candidate sits beside it.
+    assert.ok(html.includes(escapeHTML(item.evidence)), `${item.id}: evidence`);
+    assert.ok(html.includes(escapeHTML(plainKinds[kind])), `${item.id}: plain kind`);
+  }
+  assert.equal((html.match(/How much of that is proven\?/g) || []).length, candidates.length);
+  assert.equal((html.match(/id="solution-\d+-plain"/g) || []).length, candidates.length);
+  assert.equal((html.match(/class="candidate-area candidate-kind"/g) || []).length, candidates.length);
+});
+
+test('a first-time reader is oriented and every unavoidable term is explained', () => {
+  assert.match(html, /id="orientation"/);
+  assert.match(html, /What they are not/);
+  assert.match(html, /id="glossary"/);
+  for (const [term, meaning] of glossary) {
+    assert.ok(html.includes(`<dt>${escapeHTML(term)}</dt>`), `glossary term: ${term}`);
+    assert.ok(html.includes(escapeHTML(meaning)), `glossary meaning: ${term}`);
+  }
+  assert.ok(glossary.length >= 12, 'too few terms to orient a newcomer');
+  // Defining a term with the same shorthand it is meant to unpack helps nobody.
+  for (const [term, meaning] of glossary) assert.doesNotMatch(meaning, /\bRAG\b|\bIaC\b|\bLLM\b/, term);
+  // Every package kind must have a plain reading, or a card would show a blank tag.
+  for (const dossier of Object.values(dossiers)) assert.ok(plainKinds[dossier.kind], dossier.kind);
+});
+
 test('problem-first hub supplies a complete, honest getting-started path for every candidate', () => {
   assert.match(html, /<title>AI Solutions Hub/);
   assert.doesNotMatch(html, /PTU portfolio|PTU guide/);
@@ -322,7 +359,7 @@ test('four main views and 22 solution pages retain native anchors without JavaSc
   assert.deepEqual([...html.matchAll(/data-view-link="([^"]+)"/g)].map((match) => match[1]),
     ['overview', 'catalog', 'guide', 'roadmap']);
   const sections = [...html.matchAll(/<(?:section|div)\b[^>]*\bdata-page="([^"]+)"[^>]*>/g)];
-  assert.equal(sections.length, 31);
+  assert.equal(sections.length, 33);
   assert.deepEqual([...new Set(sections.map((match) => match[1]))].sort(), ['catalog', 'guide', 'overview', 'roadmap', 'solution']);
   for (const [tag] of sections) assert.doesNotMatch(tag, /\bhidden\b/);
   assert.match(html, /id="bundle-chips"[^>]*role="group"[^>]*hidden/);

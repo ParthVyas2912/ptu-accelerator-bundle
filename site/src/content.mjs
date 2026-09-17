@@ -19,6 +19,43 @@ export const fits = {
   excluded: 'Not a launch basis',
 };
 
+// Plain readings of the package kinds, so a first-time reader knows what would arrive.
+export const plainKinds = {
+  'Application accelerator': 'Deployable app',
+  'Platform accelerator': 'Infrastructure only',
+  'Fabric solution accelerator': 'Fabric starting point',
+  'Reference accelerator': 'Engineering codebase',
+  'Reference application': 'Developer sample',
+  'Research framework': 'Research prototype',
+  'Guided enablement workshop': 'Training workshop',
+  'Developer kit / platform integration': 'Builder toolkit',
+  'Integration pattern': 'Configuration choice',
+  'Service integration': 'Service integration',
+  'Owner-led offering': 'Owner confirmation needed',
+  'Proposed workflow': 'Design only',
+  'Unresolved candidate': 'Not yet identified',
+};
+
+// Words this catalog cannot avoid, explained without using other jargon.
+export const glossary = [
+  ['Accelerator', 'A published starting point: working code, templates and instructions you deploy into your own environment and then adapt. It is not a product you buy, and nobody operates or supports it for you.'],
+  ['Model', 'The part that generates language. It produces fluent text whether or not it is right, which is why these solutions put documents, data and human review around it.'],
+  ['Agent', 'A model given a job, plus permission to use tools such as search or a database. Several agents can be coordinated, each handling one part of a task.'],
+  ['Grounding and citations', 'Making an answer come from your approved material and showing which passage it came from, so a reader can check it rather than trust it.'],
+  ['Retrieval', 'Looking up the passages relevant to a question and giving them to the model before it answers. It is how these solutions answer about your documents rather than from general knowledge.'],
+  ['Deploy', 'Install and run software inside your own Azure environment. Everything here is deployed by your team, under your controls; this website never deploys anything.'],
+  ['Tenant', 'Your organization\u2019s own space in Microsoft cloud services, with your identities, data and policies.'],
+  ['Pilot', 'A small, time-boxed, approved trial with a named owner and an agreed measure of success. It is the next step for everything in this catalog.'],
+  ['Synthetic data', 'Invented sample data shipped so a package can be explored before any real information is involved.'],
+  ['PTU (Provisioned Throughput Unit)', 'Reserved model-processing capacity, paid for whether or not it is used. It buys predictable throughput, never answer quality, and it is not required to use anything in this catalog.'],
+  ['Standard and Batch', 'The alternatives to reserved capacity: Standard charges per use, and Batch processes large non-urgent workloads more cheaply. Often the right starting choice.'],
+  ['Microsoft Fabric', 'Microsoft\u2019s analytics platform, where business data is stored and governed. Some solutions here read from it rather than from documents.'],
+  ['Azure AI Foundry', 'The Azure service where model deployments are created and managed. When a solution mentions a model deployment, this is usually where it lives.'],
+  ['Copilot Studio', 'A Microsoft product for building assistants for staff. One entry here is a toolkit for people building in it, not an Azure application.'],
+  ['MCP (Model Context Protocol)', 'The emerging standard way an AI application connects to outside tools and data. Because it is a doorway into real systems, it is also a security boundary.'],
+  ['Landing zone', 'A prepared, approved cloud environment, with networking, identity and monitoring already agreed, that applications are then hosted inside.'],
+];
+
 export const candidates = [
   {
     id: 1, name: 'Enterprise Knowledge', alias: 'Chat With Your Data · CWYD',
