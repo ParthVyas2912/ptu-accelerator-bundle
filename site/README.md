@@ -1,6 +1,6 @@
 # AI Solutions Hub stakeholder website
 
-An independent, public-safe, problem-first catalog of three outcome areas, 20 curated
+An independent, public-safe, problem-first catalog of three outcome areas, 22 curated
 candidates and five **planned** workflows. It is not an exhaustive Microsoft catalog, official marketplace, official product,
 customer reference, production certification or support commitment.
 
@@ -12,7 +12,7 @@ customer reference, production certification or support commitment.
   points and planned work without repeating a full catalog. Engineering is first
   in the area panels, problem entry points, filter options and catalog order;
   stable evidence IDs and source revisions are unchanged.
-- **Solutions:** 20 cards showing value and intended teams, problem/area filters,
+- **Solutions:** 22 cards showing value and intended teams, problem/area filters,
   search and a card/list toggle. No lab readiness badges, status filters or
   test-summary headlines appear on the cards.
 - **Solution dossiers:** “Explore & get started” opens a full-width, shareable page,
@@ -146,9 +146,9 @@ do not click outbound links, and flag unexpected external page requests.
 Tests cover:
 
 - Byte-identical repeat builds; output-file and 576 KiB HTML budget, including all
-  20 offline dossiers, source references and SVG graphs (replacing the 384 KiB
+  22 offline dossiers, source references and SVG graphs (replacing the 384 KiB
   mockup-guide budget). This is an artifact-size limit, not a spending allowance.
-- All 20 candidates, all five planned workflows and material evidence caveats.
+- All 22 candidates, all five planned workflows and material evidence caveats.
 - Exact inline script/style hashes, restrictive CSP and public-content privacy checks.
 - All area/problem combinations, alias/detail search, literal malicious-looking
   input, zero results and reset.
@@ -158,17 +158,17 @@ Tests cover:
   outcome chips, list/card layout and filter preservation between views.
 - Reference-diagram structure and capacity alternatives; keyboard-operated bundle
   expanders; mobile workflow-column alignment and preserved heading line breaks.
-- All 20 solution pages, each product's actual node/edge and workflow counts,
+- All 22 solution pages, each product's actual node/edge and workflow counts,
   ingestion/deployment steps, specialist roles, source links, evaluation notes,
   every section link, expandable connections, keyboard navigation and return focus.
 - Radio-button capacity selection, native FAQ and skip navigation.
 - Explicit light/dark query overrides (including the required snippet’s light
   precedence correction), system preference and manual switching.
 - Automated axe WCAG 2.1 AA checks across all four views in light, dark and mobile,
-  plus list layouts and all 20 solution pages; representative solution pages in
+  plus list layouts and all 22 solution pages; representative solution pages in
   light/dark mobile views.
 - Horizontal overflow checks across all four views at 320, 375, 768, 1024 and 1440 pixels.
-- Print summary with all 20 candidates, both capacity options and all bundle
+- Print summary with all 22 candidates, both capacity options and all bundle
   starting points even when filtered; restores disclosure and theme state afterward.
 - Selected-plan and individual-solution printing; unique IDs in cloned guides.
 - Graceful no-JavaScript reading with native solution links and deployment notes.
@@ -198,6 +198,12 @@ From `site/`, after the parent has published `dist/`:
 ```powershell
 npm run test:smoke -- --url https://blue-beach-0fb8cd70f.5.azurestaticapps.net/
 ```
+
+The site is published at two addresses. Prefer the Static Web Apps address above
+for the full deployed run: the branded App Service address,
+`https://ai-solutions-hub-ca.azurewebsites.net/`, runs on a Free (F1) shared-CPU
+plan where the heaviest viewport-and-accessibility check can exceed the fixed
+120-second per-check deadline. That is a host speed limit, not a content failure.
 
 Or supply the target using an environment variable:
 
@@ -245,8 +251,8 @@ missing executable.
   CSS/JavaScript, plus security headers and the public-content privacy rules.
 - Verifies rendered Clawpilot theme tokens, applied body colors, typography,
   card shape, explicit light/dark overrides and theme switching.
-- Exercises all 20 candidates, all area/problem combinations, search, empty
-  state, capacity radios, keyboard navigation and all 20 complete solution pages.
+- Exercises all 22 candidates, all area/problem combinations, search, empty
+  state, capacity radios, keyboard navigation and all 22 complete solution pages.
 - Checks 320–1440px reflow, light/dark/mobile/solution automated accessibility, printing
   and no-JavaScript reading.
 - Uses **HEAD only**, without following redirects or reading response bodies, for
@@ -340,7 +346,7 @@ Public-content scans are defense in depth, not a replacement for editorial revie
 | File | Purpose |
 | --- | --- |
 | `package.json`, `package-lock.json` | Node 22 scripts and reproducible development dependency lock |
-| `src/content.mjs` | Curated public-safe data; 20 candidates and five planned workflows |
+| `src/content.mjs` | Curated public-safe data; 22 candidates and five planned workflows |
 | `src/onboarding.mjs` | Six problems, candidate mappings, public source pins/platform references and shared tenant checklist |
 | `src/dossiers.mjs` | Twenty researched product dossiers, source-informed/proposed component graphs, workflows, deployment and specialist guidance |
 | `src/index.html` | Semantic structure and explanatory content |

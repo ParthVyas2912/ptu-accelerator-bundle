@@ -41,14 +41,23 @@ test('build is deterministic, self-contained and comfortably within the size bud
   const second = await buildSite();
   assert.equal(second.html, html);
   assert.deepEqual(second.config, config);
-  assert.ok(bytes < 576 * 1024, `HTML with 20 source-backed dossiers and component graphs is ${bytes} bytes`);
-  assert.deepEqual((await readdir(new URL('../dist/', import.meta.url))).sort(), ['index.html', 'staticwebapp.config.json']);
+  assert.ok(bytes < 576 * 1024, `HTML with 22 source-backed dossiers and component graphs is ${bytes} bytes`);
+  assert.deepEqual((await readdir(new URL('../dist/', import.meta.url))).sort(), ['index.html', 'staticwebapp.config.json', 'web.config']);
   assert.doesNotMatch(html, /@@[A-Z_]+@@/);
   assert.doesNotMatch(html, /<(?:script|img|iframe|audio|video)\b[^>]*\bsrc\s*=/i);
   assert.doesNotMatch(html, /<link\b/i);
   assert.doesNotMatch(html, /@import\b|url\s*\(/i);
   assert.equal(Object.hasOwn(config, 'navigationFallback'), false);
   assert.equal(Object.hasOwn(config, 'responseOverrides'), false);
+});
+
+test('the IIS configuration mirrors the static-host headers so both published links serve one policy', async () => {
+  const webConfig = await readFile(new URL('../dist/web.config', import.meta.url), 'utf8');
+  for (const [name, value] of Object.entries(config.globalHeaders)) {
+    const escaped = value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    assert.ok(webConfig.includes(`<add name="${name}" value="${escaped}" />`), `web.config is missing ${name}`);
+  }
+  assert.match(webConfig, /<add value="index\.html" \/>/);
 });
 
 test('output guard rejects unexpected files and directories without reading or copying them', async () => {
@@ -83,10 +92,10 @@ test('smoke URL/env selection supports deployment and rejects unsafe or ambiguou
   ]) assert.throws(() => resolveSmokeTarget(args));
 });
 
-test('all 20 candidates and five planned workflows are rendered, complete and uniquely identified', () => {
-  assert.equal((html.match(/class="candidate"/g) || []).length, 20);
+test('all 22 candidates and five planned workflows are rendered, complete and uniquely identified', () => {
+  assert.equal((html.match(/class="candidate"/g) || []).length, 22);
   assert.equal((html.match(/class="roadmap-item"/g) || []).length, 5);
-  assert.deepEqual(candidates.map((item) => item.id), Array.from({ length: 20 }, (_, index) => index + 1));
+  assert.deepEqual(candidates.map((item) => item.id), Array.from({ length: 22 }, (_, index) => index + 1));
   const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]);
   assert.equal(ids.length, new Set(ids).size);
   for (const item of candidates) {
@@ -152,9 +161,12 @@ test('required evidence boundaries survive rendering', () => {
     [13, /marketing content/], [14, /not a standalone/], [15, /Copilot Studio/],
     [16, /Custom model endpoints are possible/], [17, /telemetry does not imply/],
     [18, /do not ship/], [19, /one safety block/], [20, /Owner and package unknown/],
+    [21, /no deployment, call or model request was performed/i],
+    [22, /intentionally deploys insecure servers/],
   ];
   for (const [id, pattern] of checks) assert.match(JSON.stringify(candidates[id - 1]), pattern);
   assert.match(candidates[10].ptu, /documented BYOM route can use compatible PTU/);
+  assert.match(candidates[20].ptu, /not interchangeable with text capacity/);
   assert.match(candidates[7].ptu, /Batch/);
   for (const phrase of [
     'not a sixth new app', 'Standard', 'Batch',
@@ -209,8 +221,8 @@ test('problem-first hub supplies a complete, honest getting-started path for eve
   assert.doesNotMatch(html, /PTU portfolio|PTU guide/);
   assert.equal((html.match(/data-problem-link="/g) || []).length, Object.keys(problems).length);
   assert.deepEqual(Object.keys(onboarding).map(Number), candidates.map((item) => item.id));
-  assert.equal((html.match(/class="technical-architecture"/g) || []).length, 20);
-  assert.equal((html.match(/class="component-graph"/g) || []).length, 20);
+  assert.equal((html.match(/class="technical-architecture"/g) || []).length, 22);
+  assert.equal((html.match(/class="component-graph"/g) || []).length, 22);
   assert.doesNotMatch(html, /<dialog\b|app-preview|preview-sidebar|Concept preview|Illustrative grid/);
   assert.deepEqual(Object.keys(dossiers).map(Number), candidates.map((item) => item.id));
   for (const item of candidates) {
@@ -270,7 +282,7 @@ test('dossiers reject invalid sources, broken graph relationships and incomplete
   invalid((copy) => { copy.deployment.prerequisites = []; }, /deployment/);
   const signatures = Object.values(dossiers).map((item) =>
     JSON.stringify([item.workflow, item.architecture.nodes.map((node) => node.service)]));
-  assert.equal(new Set(signatures).size, 20, 'Product-specific workflows and components must not be reused as generic filler');
+  assert.equal(new Set(signatures).size, 22, 'Product-specific workflows and components must not be reused as generic filler');
   for (const id of [3, 12, 20]) {
     assert.notEqual(dossiers[id].architecture.basis, 'documented');
     assert.equal(dossiers[id].repository, undefined);
@@ -279,7 +291,7 @@ test('dossiers reject invalid sources, broken graph relationships and incomplete
 
 test('component diagrams route every connection outside unrelated component boxes', () => {
   const graphs = [...html.matchAll(/<svg class="component-graph"[\s\S]*?<\/svg>/g)].map(([svg]) => svg);
-  assert.equal(graphs.length, 20);
+  assert.equal(graphs.length, 22);
   for (const svg of graphs) {
     const boxes = [...svg.matchAll(/class="graph-node[^"]*" transform="translate\((\d+) (\d+)\)"/g)]
       .map(([, x, y]) => ({ left: Number(x), top: Number(y), right: Number(x) + 230, bottom: Number(y) + 120 }));
@@ -306,11 +318,11 @@ test('component diagrams route every connection outside unrelated component boxe
   }
 });
 
-test('four main views and 20 solution pages retain native anchors without JavaScript', () => {
+test('four main views and 22 solution pages retain native anchors without JavaScript', () => {
   assert.deepEqual([...html.matchAll(/data-view-link="([^"]+)"/g)].map((match) => match[1]),
     ['overview', 'catalog', 'guide', 'roadmap']);
   const sections = [...html.matchAll(/<(?:section|div)\b[^>]*\bdata-page="([^"]+)"[^>]*>/g)];
-  assert.equal(sections.length, 29);
+  assert.equal(sections.length, 31);
   assert.deepEqual([...new Set(sections.map((match) => match[1]))].sort(), ['catalog', 'guide', 'overview', 'roadmap', 'solution']);
   for (const [tag] of sections) assert.doesNotMatch(tag, /\bhidden\b/);
   assert.match(html, /id="bundle-chips"[^>]*role="group"[^>]*hidden/);

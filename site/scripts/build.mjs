@@ -26,7 +26,7 @@ export async function assertSafeOutputDirectory(directory) {
     throw error;
   }
   if (!info.isDirectory() || info.isSymbolicLink()) throw new Error('Output must be a real directory, not a link.');
-  const allowed = new Set(['index.html', 'staticwebapp.config.json']);
+  const allowed = new Set(['index.html', 'staticwebapp.config.json', 'web.config']);
   for (const entry of await readdir(directory, { withFileTypes: true })) {
     if (!allowed.has(entry.name) || !entry.isFile() || entry.isSymbolicLink()) {
       throw new Error('Unexpected output entry. Build stopped; review dist manually before publishing.');
@@ -34,9 +34,40 @@ export async function assertSafeOutputDirectory(directory) {
   }
 }
 
+export function renderWebConfig({ globalHeaders, mimeTypes }) {
+  const escape = (value) => value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  const headers = Object.entries(globalHeaders)
+    .map(([name, value]) => `        <add name="${escape(name)}" value="${escape(value)}" />`)
+    .join('\n');
+  const mimeMaps = Object.entries(mimeTypes)
+    .map(([extension, type]) => `        <remove fileExtension="${escape(extension)}" />\n        <mimeMap fileExtension="${escape(extension)}" mimeType="${escape(type)}" />`)
+    .join('\n');
+  return `<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <system.webServer>
+    <defaultDocument>
+      <files>
+        <clear />
+        <add value="index.html" />
+      </files>
+    </defaultDocument>
+    <staticContent>
+${mimeMaps}
+    </staticContent>
+    <httpProtocol>
+      <customHeaders>
+        <clear />
+${headers}
+      </customHeaders>
+    </httpProtocol>
+  </system.webServer>
+</configuration>
+`;
+}
+
 export function validateContent() {
   if (evidenceDate !== '2026-09-12') throw new Error('Review the fixed evidence date before updating it.');
-  if (candidates.length !== 20 || roadmap.length !== 5) throw new Error('Expected exactly 20 candidates and 5 planned workflows.');
+  if (candidates.length !== 22 || roadmap.length !== 5) throw new Error('Expected exactly 22 candidates and 5 planned workflows.');
   candidates.forEach((item, index) => {
     if (item.id !== index + 1) throw new Error('Candidate IDs must be ordered, unique and complete.');
     if (!bundles[item.bundle] || !statuses[item.status] || !fits[item.fit]) throw new Error(`Invalid classification for candidate ${item.id}`);
@@ -275,16 +306,18 @@ export async function buildSite() {
     },
     mimeTypes: { '.html': 'text/html' },
   };
+  const webConfig = renderWebConfig(config);
   await mkdir(dist, { recursive: true });
   await Promise.all([
     writeFile(new URL('index.html', dist), html, 'utf8'),
     writeFile(new URL('staticwebapp.config.json', dist), `${JSON.stringify(config, null, 2)}\n`, 'utf8'),
+    writeFile(new URL('web.config', dist), webConfig, 'utf8'),
   ]);
-  return { bytes: Buffer.byteLength(html), html, config };
+  return { bytes: Buffer.byteLength(html), html, config, webConfig };
 }
 
 if (process.argv[1] && pathToFileURL(resolve(process.argv[1])).href === import.meta.url) {
   const result = await buildSite();
-  console.log(`Built dist/index.html (${result.bytes.toLocaleString('en-US')} bytes) and dist/staticwebapp.config.json.`);
-  console.log('20 candidates · 5 planned workflows · 2 script hashes · 1 style hash · no runtime dependencies');
+  console.log(`Built dist/index.html (${result.bytes.toLocaleString('en-US')} bytes), dist/staticwebapp.config.json and dist/web.config.`);
+  console.log('22 candidates · 5 planned workflows · 2 script hashes · 1 style hash · no runtime dependencies');
 }
