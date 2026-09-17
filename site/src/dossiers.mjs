@@ -1,4 +1,5 @@
 import { platformGuides, sources } from './onboarding.mjs';
+import { plainLanguage } from './plain.mjs';
 
 export const researchDate = '2026-09-15';
 const reference = (id, label, url, supports) => ({ id, label, url, ...(supports ? { supports } : {}) });
@@ -19,7 +20,7 @@ const node = (id, title, service, detail, column, row, optional = false) => ({
 });
 const graph = (summary, nodes, edges, notes = [], basis = 'documented') => ({ summary, nodes, edges, notes, basis });
 
-export const dossiers = {
+const catalog = {
   14: pkg('platform', 'docs/deploymentguide.md', 'infra/main.bicep', 'azure.yaml', {
     extraSources: [
       reference('active-platform-parameters', 'Active platform configuration', sources.platform.guide.replace('README.md', 'infra/main.bicepparam'), 'General private networking and PostgreSQL networking are configured separately. Review active values rather than assuming a minimal or universally isolated deployment.'),
@@ -872,3 +873,6 @@ export const dossiers = {
     acceptance: ['Every attack demonstrated is shown to fail after its fix is applied.', 'No vulnerable exercise deployment survives the session.', 'The team leaves with written criteria applied to its own agent tool integrations.'],
   }),
 };
+
+export const dossiers = Object.fromEntries(Object.entries(catalog)
+  .map(([id, entry]) => [id, { ...entry, plain: plainLanguage[id] }]));
