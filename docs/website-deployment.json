@@ -151,6 +151,32 @@
       "scope": "Catalog content addition from reviewed public sources. Neither added package was deployed, neither is functionally tested, no capacity was reserved or purchased and no allowance or policy was changed."
     }
   },
+  "plainLanguageRelease": {
+    "description": "Editorial release. Every solution now opens with a plain-language section stating what it is, what actually arrives, what it does and what a team would gain, with that candidate's evidence prose beside the benefits. Adds an orientation section, a plain package-type tag on every card and a glossary. No catalog entry was added, removed or re-graded.",
+    "candidates": 22,
+    "claimBoundary": "Introduces no new capability or readiness claim. Stated benefits describe what each package is built to produce, not what was measured here, and are rendered next to the existing evidence sentence for that candidate. Status remains prose; the site still shows no graded status badges.",
+    "verification": {
+      "verifiedAtUtc": "2026-09-17T14:44:43Z",
+      "sourceCommit": "8ec40460fe1c20d74ac05ceae95cabd5addd104b",
+      "pullRequest": 16,
+      "builtArtifactBytes": 608225,
+      "artifactSha256": "caad3e2dd9810ab5eadf61981799a0187f9e1677cd6806391da2020986455965",
+      "addressesServingThisArtifact": [
+        "https://blue-beach-0fb8cd70f.5.azurestaticapps.net/",
+        "https://ai-solutions-hub-ca.azurewebsites.net/"
+      ],
+      "liveMatchesBuiltArtifact": true,
+      "bothAddressesByteIdentical": true,
+      "artifactChecksPassed": 19,
+      "localBrowserChecksPassed": 43,
+      "browserVersion": "Chromium 149.0.7827.55",
+      "publicationScannerExitCode": 0,
+      "liveBrowserSuiteStatus": "not-run",
+      "liveBrowserSuiteNote": "Only the local browser suite was run for this release. Live parity was established by byte-level content comparison against both addresses rather than by re-running the deployed suite.",
+      "publishRoute": "The GitHub workflow publishes the Static Web App only. The App Service mirror was published separately with the documented Kudu zip call using an Entra token; basic publishing credentials remain disabled. Both addresses were re-checked afterwards and are byte-identical.",
+      "scope": "Editorial and presentation change to the generated public website. No Azure resource, SKU, allowance, capacity reservation or network policy was changed, and nothing was purchased."
+    }
+  },
   "repositoryConfiguration": {
     "defaultWorkflowPermissions": "read",
     "starterIssues": 6,
