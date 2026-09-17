@@ -79,7 +79,7 @@
     "verification": {
       "verifiedAtUtc": "2026-09-17T01:31:21.683Z",
       "sourceCommit": null,
-      "sourceCommitNote": "Verified against the uncommitted working tree; no pull request or deployment workflow is associated with this address yet.",
+      "sourceCommitNote": "Verified against the then-uncommitted working tree, later committed as 8be2ade. This address is published manually rather than by a deployment workflow.",
       "httpStatus": 200,
       "liveArtifactBytes": 499002,
       "liveArtifactSha256": "76075a0e132bdf2013bad66a78c4ce3ba6e92b155c817e23cdc2bbeffeb663f3",
@@ -103,6 +103,52 @@
       "liveBrowserSuiteStatus": "timeout",
       "liveBrowserSuiteNote": "The deployed browser suite did not complete against this host. Two runs exceeded the fixed 120s per-check deadline at different checks, consistent with Free-tier shared-CPU variance rather than a content defect. This is recorded as a timeout, not a pass. The Static Web Apps address remains the verification target for the deployed suite; host-specific properties here (headers, redirect, private-path isolation, byte-level content parity) were verified directly.",
       "scope": "Addition of a second public address for the same public-safe artifact. Not accelerator deployment, customer validation or production certification. No capacity was reserved or purchased and no policy was relaxed."
+    }
+  },
+  "catalogAdditionsRelease": {
+    "description": "Catalog extension from 20 to 22 candidates. The earlier verification blocks above remain as dated records of the 20-candidate artifact (499,002 bytes) and were not rewritten; this block records the artifact both addresses currently serve.",
+    "candidates": 22,
+    "addedCandidates": [
+      {
+        "id": 21,
+        "name": "Real-time voice agents (ART)",
+        "upstream": "https://github.com/Azure-Samples/art-voice-agent-accelerator",
+        "pinnedRevision": "a2e1ce2edbf103661c56a861cccef73c30acacee",
+        "license": "MIT",
+        "status": "prerequisite-gated",
+        "deployed": false,
+        "functionallyTested": false
+      },
+      {
+        "id": 22,
+        "name": "MCP security workshop (Sherpa)",
+        "upstream": "https://github.com/Azure-Samples/sherpa",
+        "pinnedRevision": "12be921ec85bd915105d9c6b5335cffe8c680966",
+        "license": "MIT",
+        "status": "environment-restricted",
+        "deployed": false,
+        "functionallyTested": false
+      }
+    ],
+    "record": "reports/voice-and-mcp-security-additions.md",
+    "verification": {
+      "verifiedAtUtc": "2026-09-17T12:41:03Z",
+      "sourceCommit": "8be2ade",
+      "builtArtifactBytes": 543781,
+      "artifactSha256": "8d97284f661c237db8d6e71ea7556029c6069ef0c61bd58f70c3d53bb0ca5bc3",
+      "addressesServingThisArtifact": [
+        "https://blue-beach-0fb8cd70f.5.azurestaticapps.net/",
+        "https://ai-solutions-hub-ca.azurewebsites.net/"
+      ],
+      "liveMatchesBuiltArtifact": true,
+      "bothAddressesByteIdentical": true,
+      "artifactChecksPassed": 17,
+      "localBrowserChecksPassed": 43,
+      "browserVersion": "Chromium 149.0.7827.55",
+      "publicationScannerExitCode": 0,
+      "liveBrowserSuiteStatus": "not-run",
+      "liveBrowserSuiteNote": "Only the local browser suite was run for this release. Live parity was established by byte-level content comparison against both addresses rather than by re-running the deployed suite.",
+      "scope": "Catalog content addition from reviewed public sources. Neither added package was deployed, neither is functionally tested, no capacity was reserved or purchased and no allowance or policy was changed."
     }
   },
   "repositoryConfiguration": {
