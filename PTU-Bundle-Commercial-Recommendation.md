@@ -198,6 +198,20 @@ This is an extension of an existing candidate, not a sixth new application. Micr
 
 Test one telephony-free, approved audio journey against a compatible customer deployment first. Capture actual model routing, first-audio and end-to-end response latency, interruptions, errors, capacity use and service-specific charges. Establish full speech-plus-model economics and regional support before expanding to telephony. Do not silently assume the stock accelerator already configures the documented BYOM path.
 
+**Implementation reference added 16 September 2026 — ART (Azure Real-Time Agent Accelerator).** `Azure-Samples/art-voice-agent-accelerator`, MIT, pinned at `a2e1ce2e`. This is the concrete code path for the priority above: it supplies telephony, bidirectional media streaming and orchestration, and lets the audio path be switched by configuration between a separated speech pipeline and the managed voice-to-voice service. It is now catalog candidate 21.
+
+It was added by **source review only**. Nothing was deployed, no call was placed and no model request was made, so no latency or quality figure is claimed. The reviewed Terraform provisions materially more than one application — a managed Redis cluster, a document cluster, a container registry, two container-app environments with five apps, two web apps, key vault, configuration, monitoring and communication services — and its checked-in model capacity defaults are roughly five to fifteen times the capacities used elsewhere in this evaluation. Managed Redis alone is **USD 0.23 per hour** at the smallest supported size (public retail rate, Canada Central, checked 16 September 2026), and there is no free option for it. PSTN telephony additionally requires **purchasing a phone number**, which carries rental and per-minute charges.
+
+Consequently ART is recorded as **prerequisite-gated, not deployed**. A demonstration needs its own explicit budget approval and a reduced-capacity configuration; it does not fit inside the closed evaluation allowances. Treat it as the strongest available capacity-driver hypothesis to *test*, not as a proved one.
+
+### Engineering enablement addition: agent tool security
+
+**Sherpa — MCP security workshop.** `Azure-Samples/sherpa`, MIT, pinned at `12be921e`. Catalog candidate 22. This is deliberately **not** another application to sell: it is a staged, hands-on workshop for securing the Model Context Protocol servers through which agents reach tools and data, aligned to a published MCP risk list.
+
+It matters commercially because almost every other candidate in this portfolio ultimately depends on agents calling tools. A customer that adopts multi-agent or tool-calling workloads without that competence acquires risk faster than value. It is a credible, low-cost engagement opener that does not require a capacity conversation.
+
+Two boundaries must be stated plainly. First, it deploys intentionally vulnerable servers together with working exploits, so it must run only in a disposable, isolated environment with no production connectivity — it was **not** deployed here for that reason. Second, it consumes little or no model capacity, so it must never be presented as a PTU driver; its value is risk reduction and engineering credibility.
+
 ### Public implementation leads—not more products to sell
 
 - **Microsoft GraphRAG:** configurable Azure model deployments and runnable indexing/query paths make it a candidate for connected evidence and change-impact analysis. Use it only if it improves evaluated outcomes over simpler retrieval. Deferred graph extraction and indexing still need a Batch comparison. [P10]

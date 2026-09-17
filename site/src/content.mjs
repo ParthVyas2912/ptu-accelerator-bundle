@@ -220,6 +220,26 @@ export const candidates = [
     ptu: 'There is no verified implementation on which to base a PTU-fit claim.',
     next: 'Identify the package and accountable support arrangement before any technical or business assessment.',
   },
+  {
+    id: 21, name: 'Real-time voice agents', alias: 'ART · Azure Real-Time Agent Accelerator',
+    bundle: 'knowledge', status: 'conditional', fit: 'conditional',
+    value: 'Answer routine spoken enquiries over the phone or a browser, and hand off to a person.',
+    summary: 'Source inspected at a pinned revision; not deployed or tested here.',
+    evidence: 'This candidate was added by source review of the pinned public package. No deployment, call or model request was performed for it, so there is no functional result to report.',
+    caveats: ['Source inspection is not a functional test; latency, accuracy and interruption handling remain unmeasured.', 'A working demonstration requires telephony numbers, real-time speech services and container hosting that are outside the current closed allowances.'],
+    ptu: 'The most PTU-relevant candidate in the catalog: the package documents a path that can use a customer-supplied real-time model deployment. Provisioned capacity for real-time voice models, regions and APIs is not interchangeable with text capacity and must be confirmed for the exact model before any sizing claim.',
+    next: 'Obtain explicit approval and budget for telephony, real-time speech and container hosting, then measure one bounded call scenario end to end.',
+  },
+  {
+    id: 22, name: 'MCP security workshop', alias: 'Sherpa · guided agent-tool security lab',
+    bundle: 'engineering', status: 'conditional', fit: 'conditional',
+    value: 'Teach engineers how to secure the tool connections that AI agents depend on.',
+    summary: 'Enablement workshop reviewed at a pinned revision; deliberately ships vulnerable examples.',
+    evidence: 'This is a guided training workshop rather than a deployable business application. It was reviewed from public source; no camp was deployed or exploited here.',
+    caveats: ['It intentionally deploys insecure servers so learners can exploit them; it must never be run in a shared, production or internet-reachable environment.', 'Completing a workshop teaches practices; it does not certify any application or tenant as secure.'],
+    ptu: 'A training workshop consumes little or no model capacity and is not a basis for reserved capacity. Its value is reducing the risk of the agent and tool integrations that other candidates depend on.',
+    next: 'Run it as an isolated, time-boxed engineering enablement session in a disposable environment with no production connectivity.',
+  },
 ];
 
 // Keep evidence IDs stable while giving engineering the first discovery position.

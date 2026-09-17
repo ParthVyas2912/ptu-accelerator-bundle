@@ -2,9 +2,11 @@
 
 A problem-first catalog of Microsoft and Azure AI solution starting points: help teams discover relevant capabilities, shortlist candidates, and understand the architecture, source and prerequisites for an approved tenant pilot. Capacity planning follows the workload; it is not the selling proposition.
 
-## [Open the stakeholder website](https://blue-beach-0fb8cd70f.5.azurestaticapps.net/)
+## [Open the stakeholder website](https://ai-solutions-hub-ca.azurewebsites.net/)
 
-Share that link with nontechnical colleagues. The published AI Solutions Hub provides six problem entry points, twenty product-specific solution guides, a multi-solution shortlist and getting-started guidance without exposing this repository's private reports or environment details. The release source and publication evidence are recorded in [website deployment metadata](docs/website-deployment.json). Future local changes do not update the hosted website until deployment.
+Share that link with nontechnical colleagues. The published AI Solutions Hub provides six problem entry points, twenty-two product-specific solution guides, a multi-solution shortlist and getting-started guidance without exposing this repository's private reports or environment details. The release source and publication evidence are recorded in [website deployment metadata](docs/website-deployment.json). Future local changes do not update the hosted website until deployment.
+
+The same site is also served at its original address, https://blue-beach-0fb8cd70f.5.azurestaticapps.net/, which remains live. Azure generated that hostname randomly and it cannot be renamed; see [website operations](docs/WEBSITE-OPERATIONS.md) for why both addresses exist.
 
 **Private engineering workspace.** The stakeholder website is a separate, deliberately sanitized publication. This is not an official Microsoft commercial SKU, a production certification, or a commitment to support the included accelerators.
 
@@ -12,10 +14,10 @@ Share that link with nontechnical colleagues. The published AI Solutions Hub pro
 
 | Audience | Read |
 |---|---|
-| Stakeholders | [Open the website](https://blue-beach-0fb8cd70f.5.azurestaticapps.net/), or build the self-contained website under [site](site/). |
-| Account and solution teams | [Commercial recommendation](PTU-Bundle-Commercial-Recommendation.md): all twenty candidates, three proposed bundles and five priority additions. |
+| Stakeholders | [Open the website](https://ai-solutions-hub-ca.azurewebsites.net/), or build the self-contained website under [site](site/). |
+| Account and solution teams | [Commercial recommendation](PTU-Bundle-Commercial-Recommendation.md): all twenty original candidates, three proposed bundles, five priority additions and the two later catalog additions. |
 | DRDC account team | [Private DRDC Research Productivity Bundle](docs/DRDC-RESEARCH-BUNDLE.md): a proposed, research-focused composition and gated pilot plan; not public website content or a verified deployment. |
-| Engineers | [First-pass evaluation](reports/ptu-bundle-evaluation.md), [continuation evaluation](PTU-Bundle-Continuation-Report.md), and [upstream adaptations](adaptations/README.md). |
+| Engineers | [First-pass evaluation](reports/ptu-bundle-evaluation.md), [continuation evaluation](PTU-Bundle-Continuation-Report.md), [catalog additions 21–22](reports/voice-and-mcp-security-additions.md), and [upstream adaptations](adaptations/README.md). |
 | Contributors | [Contribution guide](CONTRIBUTING.md), [publication boundaries](docs/PUBLICATION.md), and [website operations](docs/WEBSITE-OPERATIONS.md). |
 
 ## Discover, choose, get started
@@ -67,7 +69,7 @@ Follow [site/README.md](site/README.md) for build and test commands. The product
 
 GitHub Actions validates changes and deploys the site on `main` changes to the site or deployment workflow. Historical scripts are **not** automatically executed in CI. Infrastructure provisioning is a separate manual operation; site publishing cannot create or start model-consuming applications.
 
-Six [starter issues](https://github.com/ParthVyas2912/ptu-accelerator-bundle/issues) define the next implementation priorities. Historical functional gaps and approval-gated pilot work remain open; completing the website and private research proposal does not make all twenty accelerators production-ready or authorize further lab execution. Dependency-update pull requests remain subject to review; they are not automatically merged.
+Six [starter issues](https://github.com/ParthVyas2912/ptu-accelerator-bundle/issues) define the next implementation priorities. Historical functional gaps and approval-gated pilot work remain open; completing the website and private research proposal does not make all twenty-two accelerators production-ready or authorize further lab execution. Dependency-update pull requests remain subject to review; they are not automatically merged.
 
 ## Attribution and licensing
 
