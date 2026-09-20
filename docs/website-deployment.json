@@ -177,6 +177,51 @@
       "scope": "Editorial and presentation change to the generated public website. No Azure resource, SKU, allowance, capacity reservation or network policy was changed, and nothing was purchased."
     }
   },
+  "outcomeProgramRelease": {
+    "description": "Three outcome-led pilot paths with printable measures and acceptance gates, a pinned 15-entry public catalog selection review, grouped guidance from 39 legacy pages, and prominent maintenance notices in affected solution guides.",
+    "candidates": 22,
+    "pilotPathways": 3,
+    "catalogSelectionReviewedOn": "2026-09-20",
+    "functionalEvidenceSnapshotUnchanged": "2026-09-12",
+    "claimBoundary": "Selection and source-maintenance guidance only. No accelerator was deployed, no inference was run, no historical outcome was upgraded and no new candidate was represented as validated. Existing architecture pins were retained separately from later review references.",
+    "verification": {
+      "sourceCommit": "d329625bd8828df2314f44ded665118f3f736e47",
+      "sourcePullRequest": "https://github.com/ParthVyas2912/ptu-accelerator-bundle/pull/18",
+      "deploymentWorkflow": "https://github.com/ParthVyas2912/ptu-accelerator-bundle/actions/runs/35540933874",
+      "validationWorkflow": "https://github.com/ParthVyas2912/ptu-accelerator-bundle/actions/runs/35540933877",
+      "deploymentWorkflowStatus": "success",
+      "validationWorkflowStatus": "success",
+      "builtArtifactBytes": 645768,
+      "artifactSha256": "f8226822fd9e6b17cbf4e55ea08b8f886694b0e00b2da74b016031dea2f4c862",
+      "addressesServingThisArtifact": [
+        "https://blue-beach-0fb8cd70f.5.azurestaticapps.net/",
+        "https://ai-solutions-hub-ca.azurewebsites.net/"
+      ],
+      "liveArtifactVerifiedAtUtc": "2026-09-20T22:14:19.103Z",
+      "liveMatchesBuiltArtifact": true,
+      "bothAddressesByteIdentical": true,
+      "expectedSecurityHeadersMatchedPerHost": 9,
+      "privatePathHeadChecksPassedPerHost": 21,
+      "privatePathIsolationPassed": true,
+      "artifactChecksPassed": 22,
+      "localBrowserChecksPassed": 45,
+      "localBrowserVerifiedAtUtc": "2026-09-20T22:09:26.821Z",
+      "localRuntime": "Existing Node.js 22.23.2, matching CI's major version",
+      "liveBrowserSuiteStatus": "passed",
+      "liveBrowserChecksPassed": 45,
+      "liveBrowserVerifiedAtUtc": "2026-09-20T22:19:57.683Z",
+      "liveBrowserTarget": "https://blue-beach-0fb8cd70f.5.azurestaticapps.net/",
+      "browserVersion": "Chromium 149.0.7827.55",
+      "externalBrowserRequests": 0,
+      "unexpectedBrowserRequests": 0,
+      "browserErrors": 0,
+      "cspViolations": 0,
+      "publicationScannerExitCode": 0,
+      "publishRoute": "Static Web Apps was published by the successful main workflow. The branded App Service received only index.html and web.config through the documented Entra-authenticated Kudu zip route. The F1 plan and HTTPS-only configuration were confirmed; no hosting settings were changed.",
+      "verificationScope": "Full local and deployed Static Web Apps browser suites, including pilot planning, optional-extension exclusion, primary-removal invalidation, printing, maintenance notes, keyboard navigation, light/dark mobile accessibility and no-JavaScript reading. Branded-host verification covers byte parity, expected HTTP policy and private-path isolation; its full browser suite was not separately rerun.",
+      "scope": "Public informational website only. No model capacity purchase, new infrastructure, network-policy relaxation, protected-application change or historical allowance increase."
+    }
+  },
   "repositoryConfiguration": {
     "defaultWorkflowPermissions": "read",
     "starterIssues": 6,
