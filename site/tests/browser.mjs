@@ -303,6 +303,7 @@ try {
     await page.waitForFunction(() => document.documentElement.dataset.view === 'roadmap');
     for (const [hash, view] of [
       ['catalog', 'catalog'], ['candidate-title-11', 'catalog'], ['bundles', 'overview'],
+      ['program', 'overview'], ['pathway-knowledge', 'overview'], ['selection-review', 'guide'],
       ['how-it-works', 'guide'], ['questions', 'guide'], ['sources', 'guide'], ['roadmap', 'roadmap'],
       ['unknown-section', 'overview'], ['%E0%A4%A', 'overview'],
     ]) {
@@ -313,7 +314,7 @@ try {
     assert.equal(await page.locator('html').getAttribute('data-view'), 'catalog');
     assert.equal(await page.locator('#catalog-search').evaluate((node) => node === document.activeElement), true);
     await page.keyboard.type('CWYD');
-    assert.equal(await visible(page).count(), 1);
+    assert.deepEqual(await visible(page).evaluateAll((nodes) => nodes.map((node) => node.dataset.id)), ['1', '4']);
     await page.keyboard.press('Escape');
     assert.equal(await visible(page).count(), 22);
     assert.equal(await page.locator('#catalog-search').inputValue(), '');
@@ -322,7 +323,8 @@ try {
   await run('search works by aliases and detail text, stays literal and handles zero results', async () => {
     const search = page.locator('#catalog-search');
     await search.fill('CWYD');
-    assert.equal(await visible(page).count(), 1);
+    // DKM's maintenance guidance now explicitly recommends CWYD for general knowledge work.
+    assert.deepEqual(await visible(page).evaluateAll((nodes) => nodes.map((node) => node.dataset.id)), ['1', '4']);
     assert.equal(await visible(page).first().getAttribute('data-id'), '1');
     await search.fill('  BYOM  ');
     assert.equal(await visible(page).count(), 1);
@@ -376,14 +378,16 @@ try {
     assert.equal(await visible(page).count(), 22);
     await page.locator('[data-bundle-choice="engineering"]').click();
     await page.locator('#catalog-search').fill('conversion');
-    assert.equal(await visible(page).count(), 1);
+    const conversionResults = await visible(page).evaluateAll((nodes) => nodes.map((node) => node.dataset.id));
+    assert.ok(conversionResults.includes('9'));
+    assert.ok(conversionResults.length < 22);
     await goView(page, 'guide');
     await goView(page, 'catalog');
     assert.equal(await page.locator('#catalog-search').inputValue(), 'conversion');
     assert.equal(await page.locator('#bundle-filter').inputValue(), 'engineering');
     assert.equal(await page.locator('#catalog-grid').getAttribute('data-layout'), 'list');
-    assert.equal(await visible(page).count(), 1);
-    await visible(page).locator('.detail-button').click();
+    assert.deepEqual(await visible(page).evaluateAll((nodes) => nodes.map((node) => node.dataset.id)), conversionResults);
+    await page.locator('.candidate[data-id="9"] .detail-button').click();
     assert.equal(await page.locator('#solution-9').isVisible(), true);
     await page.locator('#solution-9 .solution-back').click();
     assert.equal(await page.locator('#candidate-title-9').evaluate((node) => node === document.activeElement), true);
@@ -404,6 +408,10 @@ try {
       assert.equal(await solution.locator('h2').textContent(), candidate.name);
       assert.equal(await solution.locator('h2').evaluate((node) => node === document.activeElement), true);
       const dossier = dossiers[candidate.id];
+      if (dossier.sourceReview) {
+        assert.equal(await solution.locator('.source-review').isVisible(), true);
+        assert.ok((await solution.locator('.source-review').textContent()).includes(dossier.sourceReview.summary));
+      }
       assert.ok((await solution.textContent()).includes(dossier.workshop));
       const plainText = await solution.locator(`#solution-${candidate.id}-plain`).textContent();
       assert.ok(plainText.includes(dossier.plain.what), 'plain summary');
@@ -509,7 +517,7 @@ try {
     assert.equal(await page.locator('.selected-guide .technical-architecture:visible').count(), 2);
     assert.equal(await page.locator('.selected-guide .deployment-notes[open]').count(), 2);
     assert.equal(await page.locator('.solution-page:visible').count(), 0);
-    assert.equal(await page.locator('.plan-only li:visible').count(), 6);
+    assert.equal(await page.locator('.plan-only li:visible').count(), 10);
     await page.evaluate(() => window.dispatchEvent(new Event('afterprint')));
     await page.emulateMedia({ media: 'screen' });
     assert.equal(await page.locator('html').getAttribute('data-print-plan'), null);
@@ -525,6 +533,86 @@ try {
     await page.locator('#solution-1 a[href="#shortlist"]').click();
     await page.reload({ waitUntil: 'networkidle' });
     assert.equal(await page.locator('.shortlist-item').count(), 0);
+  });
+
+  await run('outcome pathways build a gated printable pilot without adding extensions or losing selections', async () => {
+    await goView(page, 'overview');
+    await page.locator('[data-plan-pathway="knowledge"]').click();
+    assert.equal(await page.locator('#shortlist-title').evaluate((node) => node === document.activeElement), true);
+    assert.equal(await page.locator('.shortlist-item').count(), 1);
+    assert.match(await page.locator('#pilot-brief').textContent(), /Knowledge & Staff Work.*pilot brief/s);
+    assert.match(await page.locator('#pilot-brief').textContent(), /baseline.*target.*named owners/s);
+    assert.equal(await page.locator('[data-select="4"]').getAttribute('aria-pressed'), 'false');
+    await goView(page, 'overview');
+    await page.locator('[data-plan-pathway="knowledge"]').click();
+    assert.equal(await page.locator('.shortlist-item').count(), 1, 'Repeated planning must not duplicate selections');
+    await goView(page, 'overview');
+    await page.locator('[data-plan-pathway="engineering"]').focus();
+    await page.keyboard.press('Enter');
+    assert.equal(await page.locator('.shortlist-item').count(), 2);
+    assert.match(await page.locator('#pilot-brief').textContent(), /no longer maintained/);
+    assert.match(await page.locator('#pilot-plan-status').textContent(), /Existing shortlist entries retained/);
+    await goView(page, 'overview');
+    await page.locator('[data-plan-pathway="procurement"]').click();
+    assert.equal(await page.locator('.shortlist-item').count(), 3);
+    assert.equal(await page.locator('[data-select="12"]').getAttribute('aria-pressed'), 'false');
+    assert.match(await page.locator('#pilot-brief').textContent(), /missed evidence/);
+    const ids = await page.locator('[id]').evaluateAll((nodes) => nodes.map((node) => node.id));
+    assert.equal(ids.length, new Set(ids).size);
+    await audit(page);
+    await page.evaluate(() => { window.print = () => window.dispatchEvent(new Event('beforeprint')); });
+    await page.locator('#print-plan').click();
+    await page.emulateMedia({ media: 'print' });
+    assert.equal(await page.locator('#pilot-brief').isVisible(), true);
+    assert.equal(await page.locator('#program').isVisible(), false);
+    assert.equal(await page.locator('.plan-only li:visible').count(), 10);
+    assert.equal(await page.locator('#plan-solution-9-review-title').isVisible(), true);
+    await screenshot(page, 'pilot-selected-print.png', true);
+    await page.emulateMedia({ media: 'screen' });
+    await page.evaluate(() => window.dispatchEvent(new Event('afterprint')));
+    await page.getByRole('button', { name: 'Remove Content Processing from shortlist', exact: true }).click();
+    assert.equal(await page.locator('#pilot-brief').isVisible(), false);
+    assert.equal(await page.locator('.shortlist-item').count(), 2);
+    assert.match(await page.locator('#pilot-plan-status').textContent(), /starting candidate was removed/);
+    await goView(page, 'overview');
+    await page.locator('[data-plan-pathway="knowledge"]').click();
+    await page.locator('.candidate[data-id="1"] .detail-button').click();
+    await page.locator('[data-select="1"]').click();
+    await page.locator('#solution-1 a[href="#shortlist"]').click();
+    assert.equal(await page.locator('#pilot-brief').isVisible(), false);
+    await page.locator('#clear-shortlist').click();
+    assert.equal(await page.locator('.shortlist-item').count(), 0);
+    await goView(page, 'overview');
+    await page.locator('[data-plan-pathway="knowledge"]').click();
+    await page.reload({ waitUntil: 'networkidle' });
+    assert.equal(await page.locator('#pilot-brief').isVisible(), false);
+    assert.equal(await page.locator('.shortlist-item').count(), 0);
+    assert.deepEqual(await page.evaluate(() => [localStorage.length, sessionStorage.length]), [0, 0]);
+  });
+
+  await run('catalog decisions are accessible, readable on mobile and restore disclosure state after printing', async () => {
+    await page.goto(`${url}/?scoutTheme=light#selection-review`, { waitUntil: 'networkidle' });
+    const review = page.locator('.catalog-review');
+    await review.locator('summary').focus();
+    await page.keyboard.press('Enter');
+    assert.equal(await review.locator('tbody tr').count(), 15);
+    const viewport = page.viewportSize();
+    for (const theme of ['light', 'dark']) {
+      if (await page.locator('html').getAttribute('data-theme') !== theme) await page.locator('#theme-toggle').click();
+      await page.setViewportSize({ width: 320, height: 850 });
+      await assertNoOverflow(page);
+      await audit(page);
+      await screenshot(page, `catalog-decisions-mobile-${theme}.png`);
+    }
+    await review.locator('summary').click();
+    await page.evaluate(() => window.dispatchEvent(new Event('beforeprint')));
+    assert.equal(await review.getAttribute('open'), '');
+    await page.evaluate(() => window.dispatchEvent(new Event('afterprint')));
+    assert.equal(await review.getAttribute('open'), null);
+    assert.equal(await page.locator('html').getAttribute('data-theme'), 'dark');
+    await page.locator('#theme-toggle').click();
+    await page.setViewportSize(viewport);
+    await goView(page, 'catalog');
   });
 
   await run('solution links support keyboard, section deep links, history and individual printing', async () => {
@@ -698,7 +786,7 @@ try {
   await run('print includes all candidates and both capacity paths without losing screen state', async () => {
     await page.setViewportSize({ width: 1440, height: 1000 });
     await page.locator('#catalog-search').fill('CWYD');
-    assert.equal(await visible(page).count(), 1);
+    assert.equal(await visible(page).count(), 2);
     // Mixed open/closed state must survive printing; all starting points print.
     await page.locator('.bundle-inventory').first().evaluate((detail) => { detail.open = true; });
     const disclosureState = await page.locator('.bundle-inventory').evaluateAll((nodes) => nodes.map((node) => node.open));
@@ -724,7 +812,7 @@ try {
     assert.deepEqual(await page.locator('.bundle-inventory').evaluateAll((nodes) => nodes.map((node) => node.open)), disclosureState);
     assert.equal(await visible(page).count(), 0);
     await goView(page, 'catalog');
-    assert.equal(await visible(page).count(), 1);
+    assert.equal(await visible(page).count(), 2);
     await page.locator('#reset-filters').click();
     await page.locator('#view-switch [data-layout="grid"]').click();
   });
@@ -738,7 +826,11 @@ try {
     assert.equal(await fallback.locator('#catalog-filters').isVisible(), false);
     assert.equal(await fallback.locator('#capacity-existing').isVisible(), true);
     assert.equal(await fallback.locator('#capacity-new').isVisible(), true);
-    assert.equal(await fallback.locator('[data-page]:visible').count(), 33);
+    assert.equal(await fallback.locator('[data-page]:visible').count(), 35);
+    assert.equal(await fallback.locator('.pathway-card:visible').count(), 3);
+    assert.equal(await fallback.locator('[data-plan-pathway]:visible').count(), 0);
+    await fallback.locator('.catalog-review summary').click();
+    assert.equal(await fallback.locator('.catalog-review tbody tr:visible').count(), 15);
     assert.equal(await fallback.locator('#bundle-chips').isVisible(), false);
     assert.equal(await fallback.locator('#view-switch').isVisible(), false);
     const bundleDetail = fallback.locator('.bundle-inventory').first();

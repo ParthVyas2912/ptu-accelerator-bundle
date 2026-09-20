@@ -4,6 +4,27 @@
 
 **Basis:** the original M365 Researcher response, both MCAPS evaluation reports, selected underlying evidence, and Microsoft/GitHub documentation. This is a commercial recommendation, not a new deployment, capacity test, customer reference validation, or production certification. Readiness below refers to the recorded lab results, not a fresh health check.
 
+## Addendum - 20 September 2026: maintenance gates and a focused pilot
+
+**This addendum supersedes earlier maintenance and default-inclusion assumptions, not the dated historical evidence below.** The September 12 brief and its recorded results remain intact. Later public-source review is not functional testing, deployment proof, a repair of failed synthesis or a change to the established package architecture revisions. The later pins cited here are separate review references.
+
+**Start with a focused CWYD-first knowledge pilot, not the full catalog as a deployment promise.** Use one approved collection, an accountable content/operating owner, citation and access checks, and explicit acceptance criteria. Selected earlier passes do not establish a production service. Add capabilities only for a demonstrated gap and avoid duplicate knowledge, retrieval and hosting stacks.
+
+| Candidate or reference | Current recommendation and gate |
+|---|---|
+| CWYD | First pilot candidate, subject to permissions, useful answers, actual approved model routing and operational acceptance. Reusing a Foundry project is not evidence of reusing PTUs. |
+| Content Processing | Remains **partial**: the recorded missing-document scenario passed with its warning, but the full happy path did not. Repair and evaluate complete and incomplete packs before expanding document operations. |
+| MACAE RFP / contract review | Use the actual upstream [RFP evaluation pack](https://github.com/microsoft/Multi-Agent-Custom-Automation-Engine-Solution-Accelerator/tree/e89689e475eecf23ef2b48ad9e556bde16776e8d/content_packs/rfp_evaluation) and [contract-compliance pack](https://github.com/microsoft/Multi-Agent-Custom-Automation-Engine-Solution-Accelerator/tree/e89689e475eecf23ef2b48ad9e556bde16776e8d/content_packs/contract_compliance) as implementation references. The local procurement workflow is still proposed/not implemented, and final-synthesis remediation plus end-to-end evaluation remain required. Pack availability is not a successful deployment or a fix. Review upstream usage/support terms; human reviewers retain procurement, award and legal decisions. |
+| Document Knowledge Mining | Its [later pinned README](https://github.com/microsoft/Document-Knowledge-Mining-Solution-Accelerator/blob/1d9b68967d540c972357dd08286e08fcaf8bcc39/README.md) says it is **no longer maintained**. Preserve its specialist multimodal discovery, filters and document-comparison potential, but only as an owner-maintained option for a gap left by CWYD, or replace it. Require a named maintenance owner or approved replacement before new deployment; do not start a duplicate knowledge stack by default. |
+| Modernize Your Code | Its [later pinned README](https://github.com/microsoft/Modernize-your-code-solution-accelerator/blob/f5d25c1f8bbe391b13c43ad5a8f7ea835aef1e7a/README.md) says it is **no longer maintained**. Treat it as owner-maintained SQL-dialect conversion, with Informix SQL to T-SQL in the shipped experience, not arbitrary programming-language or whole-application migration. Require a named maintenance owner or approved replacement before new deployment and independent target-engine execution checks. |
+| AI application deployment foundation | Its [later pinned README](https://github.com/microsoft/deploy-your-ai-application-in-production/blob/4fa38951a36484fb95a54f9e396f05b94a2b7f4c/README.md) says it is **no longer maintained**. It is an infrastructure reference, not turnkey production. Prefer an existing approved tenant foundation; new deployment requires a named maintenance owner or approved replacement and separate application acceptance. |
+
+The reviewed **no-longer-maintained** set also includes **Container Migration** and **Data Governance**. These are reviewed external references, not additional applications in this bundle, not new deployments and not an expansion of the offer.
+
+**Model-routing gate:** current source review found that existing-Foundry-project paths in CWYD, Content Processing and MACAE can still deploy `GlobalStandard` models. Review model-deployment resources and persisted agent model selections for the chosen application; verify the actual approved endpoint, model, API and geography rather than assuming project reuse means PTU reuse. Apply the same check if the proposed procurement workflow selects MACAE, without assuming every application uses the same implementation. Separately billed extraction, search, storage, hosting and other services remain outside any model-capacity claim.
+
+**Catalog scope:** reuse useful scenarios from the legacy catalog as patterns within selected workflows; do not turn that catalog into a promise of 39 deployable apps. **Microsoft IQ** is a conditional future supply-chain assessment, only if a sponsor, concrete problem, authoritative package, prerequisites, support and model-routing basis are established. It is not a default addition to the pilot or a presumed PTU workload.
+
 ## 1. My honest answer
 
 **The original business hypothesis is good. The twenty-item catalog is too broad to be the offer.**

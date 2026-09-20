@@ -176,6 +176,22 @@
 
   const selected = new Set();
   const toggles = [...document.querySelectorAll("[data-select]")];
+  let activePathway = null;
+  function renderPilotBrief() {
+    const brief = $("#pilot-brief");
+    brief.replaceChildren();
+    if (activePathway && !selected.has(activePathway.dataset.primary)) {
+      activePathway = null;
+      $("#pilot-plan-status").textContent = "Pilot brief cleared because its starting candidate was removed. Other selections are unchanged.";
+    }
+    brief.hidden = !activePathway;
+    if (!activePathway) return;
+    const title = document.createElement("h3");
+    title.textContent = `${activePathway.querySelector("h3").textContent}: pilot brief`;
+    const note = document.createElement("p");
+    note.textContent = "Planning only. Agree the baseline, target, named owners, time box and budget before deployment. Other shortlisted solutions are not automatically part of this pilot.";
+    brief.append(title, note, activePathway.querySelector(".pathway-brief").cloneNode(true));
+  }
   function cloneGuide(id) {
     const clone = $(`#solution-${id} .solution-body`).cloneNode(true);
     // Shortlist copies need their own anchor and accessible-label namespace.
@@ -195,7 +211,7 @@
     $("#shortlist-count").textContent = selected.size
       ? `${selected.size} solution${selected.size === 1 ? "" : "s"} selected for planning.`
       : "No solutions selected. Open a solution and add it to your shortlist.";
-    $(".shortlist-actions").hidden = selected.size === 0;
+    $("#shortlist .shortlist-actions").hidden = selected.size === 0;
     $("#shortlist-items").replaceChildren();
     for (const card of cards.filter((item) => selected.has(item.dataset.id))) {
       const article = document.createElement("article");
@@ -227,6 +243,17 @@
       toggle.textContent = added ? "Remove from shortlist" : "Add to shortlist";
       toggle.setAttribute("aria-pressed", String(added));
     }
+    renderPilotBrief();
+  }
+  for (const button of document.querySelectorAll("[data-plan-pathway]")) {
+    button.hidden = false;
+    button.addEventListener("click", () => {
+      activePathway = $(`#pathway-${button.dataset.planPathway}`);
+      selected.add(activePathway.dataset.primary);
+      renderShortlist();
+      $("#pilot-plan-status").textContent = `${activePathway.querySelector("h3").textContent} pilot brief selected. Existing shortlist entries retained; optional extensions were not added.`;
+      navigateTo("#shortlist");
+    });
   }
   for (const toggle of toggles) {
     toggle.hidden = false;
@@ -239,6 +266,8 @@
   }
   $("#clear-shortlist").addEventListener("click", () => {
     selected.clear();
+    activePathway = null;
+    $("#pilot-plan-status").textContent = "Shortlist and pilot brief cleared.";
     renderShortlist();
     $("#shortlist-title").setAttribute("tabindex", "-1");
     $("#shortlist-title").focus();
@@ -255,7 +284,7 @@
       document.documentElement.dataset.printPlan = "solution";
     }
     if (prePrintDisclosures === undefined) {
-      prePrintDisclosures = [...document.querySelectorAll(".bundle-inventory, .selected-guide, .deployment-notes, .connection-details")]
+      prePrintDisclosures = [...document.querySelectorAll(".bundle-inventory, .selected-guide, .deployment-notes, .connection-details, .catalog-review")]
         .map((detail) => ({ detail, open: detail.open }));
       for (const { detail } of prePrintDisclosures) detail.open = true;
     }

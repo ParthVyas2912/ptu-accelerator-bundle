@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { platformGuides, sources } from '../src/onboarding.mjs';
 import { dossiers } from '../src/dossiers.mjs';
+import { catalogReview, programSources } from '../src/program.mjs';
 
 export const repositoryURL = 'https://github.com/ParthVyas2912/ptu-accelerator-bundle';
 export const deployedURL = 'https://blue-beach-0fb8cd70f.5.azurestaticapps.net/';
@@ -34,6 +35,8 @@ export function assertPublicContent(output, additionalPublicURLs = []) {
     ...Object.values(sources).flatMap(({ repository, guide }) => [repository, guide]),
     ...Object.values(platformGuides),
     ...Object.values(dossiers).flatMap((dossier) => dossier.sources.map(({ url }) => url)),
+    ...catalogReview.map(({ url }) => url),
+    ...programSources.map(({ url }) => url),
     ...additionalPublicURLs,
   ]);
   for (const [, href] of output.matchAll(/\bhref="([^"]+)"/g)) {
@@ -81,6 +84,7 @@ export const nonPublicPaths = [
   '/src/onboarding.mjs',
   '/src/experiences.mjs',
   '/src/dossiers.mjs',
+  '/src/program.mjs',
   '/deployment-contract.json',
   '/azure-resources-before.json',
   '/__smoke_missing_route__',

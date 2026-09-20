@@ -70,8 +70,8 @@ export const onboarding = {
 export const tenantSteps = [
   'Agree one outcome, an accountable business owner, an engineering owner and measurable acceptance criteria.',
   'Confirm data permission, identity, service and region availability, model/API compatibility, quota, licenses and the full service budget.',
-  'Open the pinned source and its README. Review prerequisites, license, support policy and deployment templates; retain the reviewed revision.',
-  'Have the tenant platform team adapt configuration to its approved network and identity controls. Obtain approval before running deployment commands.',
+  'Open the pinned source and later maintenance notices. Review prerequisites, license, support ownership and deployment templates; retain the reviewed revision or explicitly approve its replacement.',
+  'Have the tenant platform team adapt configuration to approved network and identity controls. Inspect model-resource creation even when reusing a project; verify intended endpoint and persisted-agent routing. Obtain approval before deployment commands.',
   'Deploy only into an approved pilot environment using the chosen package instructions. Use synthetic or permitted data and bounded spending.',
   'Test the named outcome, access restrictions, failure handling and costs. Assign monitoring, support and rollback ownership before any wider rollout.',
 ];

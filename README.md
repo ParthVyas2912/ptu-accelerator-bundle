@@ -24,6 +24,21 @@ The same site is also served at its original address, https://blue-beach-0fb8cd7
 
 The public-facing working brand is **AI Solutions Hub**, not an official Microsoft marketplace or commercial SKU. The catalog is curated, not an exhaustive list of Microsoft products.
 
+**Start with one useful pilot, not the whole catalog.** Three focused paths pair a
+bounded workflow with ownership/maintenance gates, outcome and quality measures,
+and a printable pilot brief. CWYD is the first knowledge-pilot recommendation;
+Content Processing is the document-workflow priority; engineering requires an
+active backlog and an accountable maintenance owner. Optional extensions are not
+automatically added to a shortlist. The shared acceptance gates lead to an
+expand, repair or stop decision, with model capacity justified separately.
+
+The **20 September 2026 public-source selection review** covers 15 current catalog
+entries and 39 legacy pages without adding them as new validated products.
+DKM, Modernize and the deployment foundation now show prominent upstream
+maintenance notices. Their existing package pins and historical selected results
+are retained; later source review does not establish new functional success.
+The dated commercial addendum records the updated recommendation.
+
 Visitors choose a problem, compare outcomes and intended users, and open a full solution dossier with product-specific uses, actual workflows, component/connection diagrams, ingestion, deployment prerequisites and a scoped Microsoft specialist engagement. Public sources are pinned where a package is established; platform references and owner-led proposals are distinguished. Shareable section links replace modal dialogs. Visitors can shortlist multiple candidates and print a selected plan. Missing repositories, failed outcomes and custom-build requirements remain documented rather than becoming misleading deployment buttons.
 
 The three existing areas remain useful groupings:
