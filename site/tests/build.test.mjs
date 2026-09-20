@@ -2,10 +2,11 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { mkdir, mkdtemp, readFile, readdir, rm, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
-import { assertSafeOutputDirectory, buildSite, escapeHTML, hash, validateDossier } from '../scripts/build.mjs';
+import { assertSafeOutputDirectory, buildSite, escapeHTML, hash, validateDossier, validateProgram } from '../scripts/build.mjs';
 import { candidates, catalogCandidates, glossary, plainKinds, roadmap } from '../src/content.mjs';
 import { onboarding, problems, sources, tenantSteps } from '../src/onboarding.mjs';
 import { dossiers } from '../src/dossiers.mjs';
+import { catalogReview, legacyGuidance, pathways, pilotGates, programReviewDate, programSources } from '../src/program.mjs';
 import { assertPublicContent, assertServedPolicy, deployedURL } from './public-contract.mjs';
 import { resolveSmokeTarget } from './smoke-options.mjs';
 
@@ -295,7 +296,7 @@ test('problem-first hub supplies a complete, honest getting-started path for eve
   assert.match(html, /Selections stay in this page until reload/);
   const sourceLinks = [...html.matchAll(/<a\b([^>]*\btarget="_blank"[^>]*)>([\s\S]*?)<\/a>/g)];
   assert.equal(sourceLinks.length, Object.values(dossiers).reduce((count, item) =>
-    count + item.sources.length + (item.repository ? 1 : 0), 0));
+    count + item.sources.length + (item.repository ? 1 : 0), 0) + catalogReview.length + programSources.length);
   for (const [, attributes, label] of sourceLinks) {
     assert.match(attributes, /rel="noopener noreferrer"/);
     assert.match(label, /opens in a new tab/);
@@ -359,11 +360,79 @@ test('four main views and 22 solution pages retain native anchors without JavaSc
   assert.deepEqual([...html.matchAll(/data-view-link="([^"]+)"/g)].map((match) => match[1]),
     ['overview', 'catalog', 'guide', 'roadmap']);
   const sections = [...html.matchAll(/<(?:section|div)\b[^>]*\bdata-page="([^"]+)"[^>]*>/g)];
-  assert.equal(sections.length, 33);
+  assert.equal(sections.length, 35);
   assert.deepEqual([...new Set(sections.map((match) => match[1]))].sort(), ['catalog', 'guide', 'overview', 'roadmap', 'solution']);
   for (const [tag] of sections) assert.doesNotMatch(tag, /\bhidden\b/);
   assert.match(html, /id="bundle-chips"[^>]*role="group"[^>]*hidden/);
   assert.match(html, /id="view-switch"[^>]*role="group"[^>]*hidden/);
   assert.match(html, /data-layout="grid" aria-pressed="true"/);
   assert.match(html, /data-layout="list" aria-pressed="false"/);
+});
+
+test('focused pathways retain gates, measurable outcomes and distinct optional extensions', () => {
+  assert.deepEqual(pathways.map(({ id, primary }) => [id, primary]), [
+    ['engineering', 9], ['knowledge', 1], ['procurement', 6],
+  ]);
+  assert.equal((html.match(/class="pathway-card"/g) || []).length, 3);
+  for (const item of pathways) {
+    assert.match(html, new RegExp(`data-plan-pathway="${item.id}"[^>]*hidden`));
+    for (const field of ['scope', 'gate', 'boundary', 'extension']) assert.ok(html.includes(escapeHTML(item[field])));
+    for (const [label, measure] of item.measures) {
+      assert.ok(html.includes(`<dt>${escapeHTML(label)}</dt>`));
+      assert.ok(html.includes(escapeHTML(measure)));
+    }
+  }
+  for (const [, detail] of [...pilotGates, ...legacyGuidance]) assert.ok(html.includes(escapeHTML(detail)));
+  assert.match(html, /extensions are not automatically added/);
+  assert.match(html, /not completed milestones/);
+  assert.match(html, /Standard model deployments/);
+  assert.match(html, /Evidence|evidence/);
+  const badPrimary = structuredClone(pathways);
+  badPrimary[0].primary = 99;
+  assert.throws(() => validateProgram(badPrimary), /Invalid outcome/);
+  const duplicate = structuredClone(pathways);
+  duplicate[1].id = duplicate[0].id;
+  assert.throws(() => validateProgram(duplicate), /Invalid outcome/);
+  const duplicateExtension = structuredClone(pathways);
+  duplicateExtension[0].extensions.push(duplicateExtension[0].primary);
+  assert.throws(() => validateProgram(duplicateExtension), /Invalid outcome/);
+  const noMeasures = structuredClone(pathways);
+  noMeasures[0].measures = [];
+  assert.throws(() => validateProgram(noMeasures), /Invalid outcome/);
+});
+
+test('catalog assessment is pinned, complete and separate from historical functional evidence', () => {
+  assert.equal(programReviewDate, '2026-09-20');
+  assert.equal(catalogReview.length, 15);
+  assert.equal(catalogReview.filter(({ reason }) => reason.includes('no longer maintained')).length, 5);
+  for (const { name, url, reason } of catalogReview) {
+    assert.ok(html.includes(escapeHTML(name)));
+    assert.ok(html.includes(escapeHTML(url)));
+    assert.ok(html.includes(escapeHTML(reason)));
+  }
+  assert.match(html, /not 54 distinct/);
+  assert.match(html, /not newly validated additions/);
+  assert.match(html, /datetime="2026-09-12"/);
+  const unpinned = structuredClone(catalogReview);
+  unpinned[0].url = unpinned[0].url.replace(/[a-f0-9]{40}/, 'main');
+  assert.throws(() => validateProgram(pathways, unpinned), /pinned public source/);
+  assert.throws(() => validateProgram(pathways, catalogReview.slice(1)), /Incomplete catalog/);
+});
+
+test('maintenance notices are prominent and travel with printable solution bodies', () => {
+  for (const id of [4, 9, 14]) {
+    assert.equal(dossiers[id].sourceReview.reviewedOn, programReviewDate);
+    assert.match(dossiers[id].sourceReview.summary, /no longer maintained/i);
+    const section = html.split(`id="solution-${id}"`)[1].split('<details class="deployment-notes"')[0];
+    assert.match(section, /class="solution-body">\s*<aside class="source-review"/);
+    assert.ok(section.includes(escapeHTML(dossiers[id].sourceReview.summary)));
+    assert.ok(dossiers[id].sources.some(({ url }) => catalogReview.some((item) => item.url === url)));
+  }
+  const invalid = structuredClone(dossiers[4]);
+  invalid.sourceReview.summary = '';
+  assert.throws(() => validateDossier(invalid, 4), /source review/);
+  assert.equal(candidates[3].status, 'verified');
+  assert.equal(candidates[8].status, 'verified');
+  assert.equal(candidates[5].status, 'limited');
+  assert.equal(candidates[11].status, 'planned');
 });

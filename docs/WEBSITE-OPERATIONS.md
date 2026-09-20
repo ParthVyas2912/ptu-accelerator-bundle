@@ -110,7 +110,13 @@ Do not change the SKU or add APIs/custom infrastructure without reviewing the ne
 4. Run the staged publication check: `python scripts/check_publication.py --staged --allowlist scripts/publication_allowlist.json`.
 5. Open and review the pull request. Public-content review is required even though the repository is private.
 6. Merge into `main`. Changes to `site/` or the deployment workflow trigger the production deployment.
-7. Verify the workflow completed, the expected text is live, browser interactions work, and private artifact paths are not exposed.
+7. The workflow updates **Static Web Apps only**. Publish the same reviewed build's
+   `index.html` and `web.config` to the branded App Service address using the Entra
+   method above; do not include source, reports or `staticwebapp.config.json`.
+8. Verify the workflow completed, both addresses serve byte-identical HTML matching
+   the build, browser interactions work, and private artifact paths are not exposed.
+   Record the source commit, artifact hash and actual verification scope in
+   `docs/website-deployment.json`; preserve earlier dated release records.
 
 Historical lab scripts are not a generic validation command. Site work does not authorize inference or lab restarts.
 

@@ -5,6 +5,7 @@ import { resolve } from 'node:path';
 import { bundles, candidates, catalogCandidates, evidenceDate, fits, glossary, plainKinds, roadmap, statuses } from '../src/content.mjs';
 import { onboarding, problems, tenantSteps } from '../src/onboarding.mjs';
 import { dossiers, researchDate } from '../src/dossiers.mjs';
+import { catalogReview, legacyGuidance, pathways, pilotGates, programReviewDate, programSources } from '../src/program.mjs';
 
 export const siteRoot = fileURLToPath(new URL('../', import.meta.url));
 const src = new URL('../src/', import.meta.url);
@@ -84,16 +85,43 @@ export function validateContent() {
   roadmap.forEach((item) => {
     if (!bundles[item.bundle] || !item.title || !item.value || !item.boundary) throw new Error('Incomplete roadmap item.');
   });
+  validateProgram();
 }
 
 const nonempty = (value) => typeof value === 'string' && Boolean(value.trim());
 const stringsValid = (values) => Array.isArray(values) && values.length > 0 && values.every(nonempty);
 const pairsValid = (values) => Array.isArray(values) && values.length > 0
   && values.every((pair) => Array.isArray(pair) && pair.length === 2 && pair.every(nonempty));
+export function validateProgram(items = pathways, review = catalogReview) {
+  const ids = new Set();
+  if (items.length !== 3) throw new Error('Expected three outcome pathways.');
+  for (const item of items) {
+    if (!bundles[item.id] || ids.has(item.id)
+      || !['title', 'lead', 'outcome', 'scope', 'gate', 'boundary', 'extension'].every((key) => nonempty(item[key]))
+      || !pairsValid(item.measures) || item.measures.length !== 3
+      || !candidates.some((candidate) => candidate.id === item.primary)
+      || !Array.isArray(item.extensions) || !item.extensions.length
+      || new Set([item.primary, ...item.extensions]).size !== item.extensions.length + 1
+      || item.extensions.some((id) => !candidates.some((candidate) => candidate.id === id))) {
+      throw new Error('Invalid outcome pathway.');
+    }
+    ids.add(item.id);
+  }
+  if (review.length !== 15 || new Set(review.map((item) => item.name)).size !== 15
+    || !pairsValid(pilotGates) || !pairsValid(legacyGuidance)) throw new Error('Incomplete catalog selection review.');
+  for (const item of review) {
+    if (!['name', 'decision', 'reason'].every((key) => nonempty(item[key]))
+      || !/^https:\/\/github\.com\/(?:microsoft|Azure-Samples)\/[^/]+\/blob\/[a-f0-9]{40}\/README\.md$/.test(item.url)) {
+      throw new Error('Catalog selection needs a pinned public source.');
+    }
+  }
+}
 export function validateDossier(dossier, id) {
   const fail = (detail) => { throw new Error(`Invalid dossier ${id}: ${detail}`); };
   if (!dossier || ['name', 'kind', 'alias', 'headline', 'description', 'audience', 'surface', 'workshop']
     .some((key) => !nonempty(dossier[key]))) fail('missing product description');
+  if (dossier.sourceReview && (dossier.sourceReview.reviewedOn !== programReviewDate
+    || !nonempty(dossier.sourceReview.summary))) fail('source review');
   if (!nonempty(plainKinds[dossier.kind])) fail('no plain-language reading of the package kind');
   // A first-time reader gets an explicit answer to what it is, what it does and what it is for.
   const { plain } = dossier;
@@ -147,6 +175,20 @@ const options = (data) => Object.entries(data).map(([value, label]) => `<option 
 const list = (values) => `<ul>${values.map((value) => `<li>${escapeHTML(value)}</li>`).join('')}</ul>`;
 const external = (url, label, className = '') => `<a${className ? ` class="${className}"` : ''} href="${escapeHTML(url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(label)}<span class="sr-only"> (opens in a new tab)</span></a>`;
 const renderSteps = (steps) => steps.map(([title, detail]) => `<li><h4>${escapeHTML(title)}</h4><p>${escapeHTML(detail)}</p></li>`).join('');
+const renderPathways = () => pathways.map((item) => `<article class="pathway-card" id="pathway-${item.id}" data-primary="${item.primary}" aria-labelledby="pathway-${item.id}-title">
+  <p class="eyebrow">${escapeHTML(item.lead)}</p><h3 id="pathway-${item.id}-title">${escapeHTML(item.title)}</h3>
+  <p class="pathway-outcome">${escapeHTML(item.outcome)}</p>
+  <div class="pathway-brief"><h4>First pilot scope</h4><p>${escapeHTML(item.scope)}</p>
+    <h4>Resolve before deployment</h4><p>${escapeHTML(item.gate)}</p>
+    <h4>Measure against an agreed baseline</h4><dl class="pilot-measures">${item.measures.map(([label, detail]) => `<div><dt>${escapeHTML(label)}</dt><dd>${escapeHTML(detail)}</dd></div>`).join('')}</dl>
+    <p class="pathway-boundary"><strong>Decision boundary:</strong> ${escapeHTML(item.boundary)}</p>
+    <h4>Later, only if needed</h4><p>${escapeHTML(item.extension)}</p>
+  </div>
+  <a class="text-link" href="#solution-${item.primary}">Explore ${escapeHTML(candidates.find((candidate) => candidate.id === item.primary).name)} <span aria-hidden="true">→</span></a>
+  <button class="button primary" type="button" data-plan-pathway="${item.id}" aria-describedby="pathway-${item.id}-planning" hidden>Plan ${item.id} pilot</button>
+  <p class="pathway-planning" id="pathway-${item.id}-planning">Adds the starting candidate and a pilot brief to your shortlist. Existing selections stay; extensions are not automatically added.</p>
+  <details class="pathway-options"><summary>Inspect optional extension guides</summary><ul>${item.extensions.map((id) => `<li><a href="#solution-${id}">${escapeHTML(candidates.find((candidate) => candidate.id === id).name)}</a></li>`).join('')}</ul></details>
+</article>`).join('\n');
 const wrapLabel = (text, max = 25) => {
   const lines = [''];
   for (const word of text.split(' ')) {
@@ -213,6 +255,7 @@ const renderSolution = (item) => {
     <dl class="solution-facts"><div><dt>Who it helps</dt><dd>${escapeHTML(dossier.audience)}</dd></div><div><dt>What you get</dt><dd>${escapeHTML(dossier.deliverables.join(' / '))}</dd></div></dl>
     <nav class="solution-nav" aria-label="${escapeHTML(item.name)} sections"><a href="#${id}-plain">In plain terms</a><a href="#${id}-workflow">Uses &amp; workflow</a><a href="#${id}-architecture">Architecture</a><a href="#${id}-ingestion">Data &amp; ingestion</a><a href="#${id}-setup">Deployment</a><a href="#${id}-specialists">Work with specialists</a><a href="#${id}-sources">Sources</a><a href="#${id}-notes">Evaluation notes</a></nav>
     <div class="solution-body">
+      ${dossier.sourceReview ? `<aside class="source-review" aria-labelledby="${id}-review-title"><h3 id="${id}-review-title">Upstream maintenance review</h3><p>Reviewed <time datetime="${dossier.sourceReview.reviewedOn}">${dossier.sourceReview.reviewedOn}</time>. ${escapeHTML(dossier.sourceReview.summary)}</p><a class="text-link" href="#${id}-sources">Read the pinned source references <span aria-hidden="true">→</span></a></aside>` : ''}
       <section class="solution-section" id="${id}-plain" aria-labelledby="${id}-plain-title">
         <div class="solution-section-heading"><div><p class="eyebrow">00 / Never seen this before</p><h3 id="${id}-plain-title">In plain terms.</h3></div><p>${escapeHTML(plain.what)}</p></div>
         <div class="product-surface"><h4>What you actually receive</h4><p>${escapeHTML(plain.form)}</p></div>
@@ -300,6 +343,12 @@ export async function buildSite() {
     PROBLEM_LINKS: Object.entries(problems).map(([key, label]) => `<a class="problem-link" href="#catalog" data-problem-link="${key}">${escapeHTML(label)}<span aria-hidden="true">→</span></a>`).join('\n'),
     TENANT_STEPS: tenantSteps.map((step) => `<li>${escapeHTML(step)}</li>`).join(''),
     GLOSSARY: glossary.map(([term, meaning]) => `<div><dt>${escapeHTML(term)}</dt><dd>${escapeHTML(meaning)}</dd></div>`).join(''),
+    PATHWAYS: renderPathways(),
+    PILOT_GATES: renderSteps(pilotGates),
+    PROGRAM_REVIEW_DATE: programReviewDate,
+    CATALOG_REVIEW: catalogReview.map((item) => `<tr><th scope="row">${external(item.url, item.name)}</th><td>${escapeHTML(item.decision)}</td><td>${escapeHTML(item.reason)}</td></tr>`).join(''),
+    PROGRAM_SOURCES: programSources.map(({ url, label }) => external(url, label, 'text-link')).join(' '),
+    LEGACY_GUIDANCE: renderSteps(legacyGuidance),
     CARDS: catalogCandidates.map(renderCard).join('\n'),
     SOLUTIONS: catalogCandidates.map(renderSolution).join('\n'),
     ROADMAP: roadmap.map(renderRoadmap).join('\n'),

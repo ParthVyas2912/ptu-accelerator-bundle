@@ -23,7 +23,7 @@ export const plainLanguage = {
       'Readers need to see the source, not just a confident paragraph.',
     ],
     insteadIf: [
-      'You need to compare many documents or filter a large collection: see Document Knowledge Mining.',
+      'You have a specialist comparison or filtering gap after a CWYD-first pilot: assess Document Knowledge Mining only with a named maintenance owner or approved replacement, not a duplicate stack.',
       'You need the same fields pulled out of every file into a record: see Content Processing.',
     ],
   },
@@ -68,13 +68,13 @@ export const plainLanguage = {
       'You can reach the offering owner to confirm what the package actually is.',
     ],
     insteadIf: [
-      'You want to change or translate code rather than describe it: see Modernize.',
+      'You want Informix SQL-to-T-SQL conversion drafts rather than specifications: assess Modernize only with a maintenance owner or approved replacement; it is not arbitrary code migration.',
       'You need something deployable today: no confirmed package stands behind this entry.',
     ],
   },
   4: {
-    form: 'A web application you deploy for searching, filtering and comparing a document collection.',
-    what: 'A research workbench for a body of documents. It reads the text and the pictures in your files, pulls out topics, names and other details you can filter by, and lets you ask questions across everything, across a chosen subset, or of one document at a time.',
+    form: 'A specialist document-search and comparison application whose upstream is no longer maintained. A named maintenance owner or approved replacement is required before a new deployment.',
+    what: 'A research workbench for a body of documents. It reads the text and the pictures in your files, pulls out topics, names and other details you can filter by, and lets you ask questions across everything, across a chosen subset, or of one document at a time. Start with Enterprise Knowledge for general knowledge work; assess this specialist option only for a remaining gap, without building duplicate stacks.',
     does: [
       'Processes both text and images in uploaded documents into searchable material.',
       'Extracts topics, entities and metadata so a large collection can be narrowed.',
@@ -87,11 +87,12 @@ export const plainLanguage = {
       'Scans and image-heavy material become searchable instead of sitting in a folder.',
     ],
     chooseIf: [
-      'You have many documents and the hard part is finding and comparing the relevant ones.',
-      'Your material includes scans, diagrams or images that plain text search misses.',
+      'A CWYD-first pilot leaves a specific need for collection filtering, selected-document comparison or image-heavy evidence.',
+      'A named owner will maintain the selected implementation, or an approved replacement meets that specialist need.',
     ],
     insteadIf: [
-      'You mainly need one trusted answer from a maintained policy set: Enterprise Knowledge is lighter to run.',
+      'You mainly need answers from an owned policy collection: start with Enterprise Knowledge rather than a second knowledge stack.',
+      'Nobody can own maintenance: choose an approved maintained alternative instead of deploying this unsupported upstream.',
       'You need identical fields extracted from every document: see Content Processing.',
     ],
   },
@@ -136,7 +137,7 @@ export const plainLanguage = {
       'You need consistent fields from every document, not a conversation.',
     ],
     insteadIf: [
-      'You want to explore and compare documents rather than process them to a schema: see Document Knowledge Mining.',
+      'You want document answers rather than structured intake: start with Enterprise Knowledge; assess Document Knowledge Mining only for an unmet specialist gap and with maintenance ownership.',
       'You are assessing bids or contracts against a rubric: see RFP & contract review, which is a proposed workflow only.',
     ],
   },
@@ -182,12 +183,12 @@ export const plainLanguage = {
       'You need both the statistic and the examples underneath it.',
     ],
     insteadIf: [
-      'Your source material is documents rather than conversations: see Document Knowledge Mining.',
+      'Your source material is documents rather than conversations: start with Enterprise Knowledge; consider Document Knowledge Mining only for a specialist gap with a maintenance owner or approved replacement.',
       'You need this dependable now: the tested output had meaning-level defects that need repair first.',
     ],
   },
   9: {
-    form: 'A web application you deploy for converting code in batches.',
+    form: 'A SQL-dialect conversion application whose upstream is no longer maintained. A named maintenance owner or approved replacement is required before a new deployment.',
     what: 'A conversion assistant for one specific database migration: Informix SQL into T-SQL, the dialect SQL Server uses. You upload a batch of SQL; it translates, checks the result against a real T-SQL parser, reviews the meaning and lets you export the drafts for your engineers to test properly. It is not a general "migrate anything" tool.',
     does: [
       'Converts a batch of Informix SQL into T-SQL drafts.',
@@ -202,10 +203,11 @@ export const plainLanguage = {
     ],
     chooseIf: [
       'You are moving Informix SQL to SQL Server and want reviewable drafts at volume.',
-      'Your engineers will test the output against the target database themselves.',
+      'A named owner will maintain the implementation and your engineers will test the output against the target database themselves.',
     ],
     insteadIf: [
       'Your dialect is not Informix, or the job is SAS or whole-application migration: this package does not establish those.',
+      'You need ongoing upstream maintenance: select an approved maintained SQL-conversion alternative rather than assuming this package is supported.',
       'You want a system described rather than its code converted: see SpecSuite, subject to its open questions.',
     ],
   },
@@ -256,8 +258,8 @@ export const plainLanguage = {
     ],
   },
   12: {
-    form: 'A proposed workflow. No verified package or deployment route stands behind it yet.',
-    what: 'A design for helping reviewers work through bids, proposals or contracts: locating the relevant passages, checking them against criteria agreed in advance, and showing the reviewer the evidence behind each finding. Nothing here has been built or tested. It is a shape for a pilot, written so a discussion can start from something concrete.',
+    form: 'A proposed local workflow, not an implemented application. Upstream MACAE scenario packs provide implementation references, not a verified local deployment.',
+    what: 'A design for helping reviewers work through bids, proposals or contracts: locating the relevant passages, checking them against criteria agreed in advance, and showing the reviewer the evidence behind each finding. The multi-agent orchestration accelerator has upstream RFP evaluation and contract-compliance packs to study, but this local workflow remains unimplemented and not functionally demonstrated. Those packs do not fix the recorded final-synthesis failure. Human reviewers keep every procurement and legal decision.',
     does: [
       'Would extract passages from an authorized document pack.',
       'Would compare them against a rubric your team agrees beforehand.',
@@ -271,11 +273,11 @@ export const plainLanguage = {
     ],
     chooseIf: [
       'You want to scope a reviewer-assistance pilot and can define the rubric.',
-      'Your reviewers stay the decision-makers throughout.',
+      'Your reviewers stay the decision-makers, and an implementation owner can repair and evaluate the complete workflow before use.',
     ],
     insteadIf: [
-      'You need something deployable now: no verified package exists for this entry.',
-      'Your documents arrive as structured intake packs: see Content Processing.',
+      'You need a proven procurement application now: the upstream references do not establish one here.',
+      'Your documents arrive as structured intake packs: assess Content Processing, whose full happy path still needs work.',
     ],
   },
   13: {
@@ -302,8 +304,8 @@ export const plainLanguage = {
     ],
   },
   14: {
-    form: 'Infrastructure templates engineers run. There is no user interface and nobody logs in.',
-    what: 'The groundwork an AI application needs before it can be hosted properly: network, identity, monitoring, AI and search services, expressed as configuration your platform team can read and challenge. Its users are the engineers who will host something else on top of it. The name of the package does not make anything deployed from it production-certified.',
+    form: 'Infrastructure reference templates for engineers, not a business application. Upstream is no longer maintained; new deployment requires a named maintenance owner or approved replacement.',
+    what: 'A reference for the groundwork an AI application needs: network, identity, monitoring, AI and search services, expressed as configuration your platform team can read and challenge. Prefer the existing approved tenant foundation. This package is neither a turnkey production platform nor proof of production readiness, and a new deployment needs someone explicitly accountable for maintenance or an approved replacement.',
     does: [
       'Provisions a configurable Azure environment from reviewed templates.',
       'Sets up AI and search services for an application to use.',
@@ -316,12 +318,13 @@ export const plainLanguage = {
       'The configuration can be argued with before anything is created.',
     ],
     chooseIf: [
-      'You are preparing to host an AI application and need the environment agreed first.',
-      'Your platform team would rather review configuration than receive a finished environment.',
+      'Your platform team needs an infrastructure reference to compare with the approved tenant foundation.',
+      'Any new deployment has a named maintenance owner or approved replacement and separate application acceptance checks.',
     ],
     insteadIf: [
       'You are looking for something staff can use: this has no end-user experience at all.',
-      'Your tenant already has an approved landing-zone pattern.',
+      'Your tenant already has an approved landing-zone pattern: reuse it instead of duplicating services.',
+      'You need a supported turnkey production platform: choose an approved maintained foundation, not this reference alone.',
     ],
   },
   15: {

@@ -101,6 +101,38 @@ svg { display: block; }
 .skip-link:focus { transform: translateY(0); }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
 .print-only { display: none; }
+.program-intro { max-width: 58rem; margin-bottom: 2rem; color: var(--cp-readable-muted); }
+.pathway-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+.pathway-card { display: flex; flex-direction: column; padding: 1.5rem; border: 1px solid var(--cp-border); border-radius: 16px; background: var(--cp-surface); box-shadow: var(--cp-card-shadow); min-width: 0; }
+.pathway-card h3 { font-size: 1.625rem; margin-block: 0.75rem; }
+.pathway-outcome { font-weight: 600; }
+.pathway-brief h4 { font-size: 0.875rem; margin-block: 1.25rem 0.5rem; }
+.pathway-brief p, .pilot-measures, .pilot-brief > p { font-size: 0.875rem; color: var(--cp-readable-muted); }
+.pathway-boundary { padding-top: 1rem; margin-top: 1.25rem; border-top: 1px solid var(--cp-border); }
+.pathway-card > .text-link { margin-top: auto; padding-block: 1rem; }
+.pathway-card > .button { width: 100%; }
+.pathway-planning { font-size: 0.75rem; color: var(--cp-readable-muted); margin-top: 0.75rem; }
+.pathway-options { margin-top: 1rem; font-size: 0.875rem; }
+.pathway-options summary, .catalog-review summary { min-height: 44px; padding-block: 0.75rem; }
+.pilot-measures div + div { margin-top: 0.75rem; }
+.pilot-measures dt { font-weight: 650; color: var(--cp-text); }
+.pilot-measures dd { margin: 0.125rem 0 0; }
+.pilot-brief, .source-review { margin-block: 1.5rem; padding: 1.5rem; border-left: 3px solid var(--cp-action); background: var(--cp-surface-soft); }
+.pilot-brief > p, .source-review p { margin-top: 0.75rem; }
+.source-review p, .source-review a { font-size: 0.875rem; }
+.pilot-gates { margin-block: 2rem; }
+.pilot-gates > p { margin-block: 0.75rem 1rem; color: var(--cp-readable-muted); }
+.catalog-review { margin-block: 1.5rem; border-block: 1px solid var(--cp-border); }
+.review-table-scroll { overflow-x: auto; }
+.catalog-review table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+.catalog-review caption { text-align: left; padding-block: 1rem; color: var(--cp-readable-muted); }
+.catalog-review th, .catalog-review td { padding: 1rem; text-align: left; vertical-align: top; border-bottom: 1px solid var(--cp-border); min-width: 11rem; }
+.catalog-review td:last-child { min-width: 18rem; }
+.catalog-review thead { background: var(--cp-surface-soft); }
+.legacy-guidance { margin-top: 1rem; }
+@media (max-width: 1000px) {
+  .pathway-grid { grid-template-columns: 1fr; }
+}
 
 .site-header { position: sticky; top: 0; z-index: 5; background: var(--cp-bg-elevated); border-bottom: 1px solid var(--cp-border); }
 .header-inner { max-width: 1376px; padding: 1rem 3rem; margin: auto; display: flex; align-items: center; gap: 2rem; }
@@ -621,6 +653,11 @@ summary::marker { color: var(--cp-action); }
   nav a[aria-current="page"], [aria-pressed="true"] { outline: 2px solid; }
 }
 @media print {
+  .pathway-card > button, .pathway-planning, #pilot-plan-status { display: none !important; }
+  .pathway-grid { grid-template-columns: 1fr; }
+  .pathway-card, .source-review, .pilot-brief { box-shadow: none; break-inside: avoid; }
+  .review-table-scroll { overflow: visible; }
+  .catalog-review th, .catalog-review td { min-width: 0; }
   @page { margin: 14mm; }
   html { scroll-behavior: auto; font-size: 10pt; }
   body { display: block; background: var(--cp-surface); color: var(--cp-text); }

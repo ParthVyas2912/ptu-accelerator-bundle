@@ -6,6 +6,22 @@ customer reference, production certification or support commitment.
 
 ## Stakeholder experience
 
+- **Focused pilot paths:** three outcome-led starting plans, with engineering first
+  and CWYD identified as the recommended first knowledge pilot. Each names a bounded
+  task, maintenance/quality gate, outcome/quality/adoption measures and human decision
+  boundary. Planning adds only the primary candidate, preserves existing shortlist
+  entries and never silently adds proposed extensions. One active pilot brief follows
+  the selection into print; removing its primary candidate clears the brief.
+- **Selection review (20 September 2026):** separate from the unchanged functional
+  evidence snapshot. A native expander explains all 15 current-catalog decisions
+  with pinned public sources, alongside grouped lessons from 39 legacy pages.
+  This does not add 54 products or new validation claims. Microsoft IQ and Container
+  Migration remain assessment options, not new catalog dossiers.
+- **Maintenance gates:** DKM, Modernize and the deployment foundation carry prominent,
+  dated notices inside their solution bodies, including printable shortlist copies.
+  Later review references do not replace the original architecture/source pins.
+  Modernize is scoped to SQL-dialect conversion; new use of an unmaintained package
+  requires a maintenance owner or supported replacement.
 - **Overview:** a problem-first introduction, six problem entry points, a
   discover → choose → get-started diagram, and three outcome-led area panels. Each panel shows a
   simple task-to-review pattern; native expanders reveal candidate starting
@@ -41,6 +57,9 @@ customer reference, production certification or support commitment.
 - **Get started:** a six-step tenant pilot checklist, followed by optional
   existing-capacity adoption/renewal and new-purchase decisions, human-review
   reference pattern, common questions, public references and full-portfolio printing.
+  Four acceptance gates require baseline/targets, accountable owners, full-workflow
+  quality, traced inference and total-cost comparison, then an expand/repair/stop
+  decision. Reusing a Foundry project does not imply reusing its PTU deployments.
 - **Planned:** controlled drafts receive a larger first-priority panel;
   the other four planned workflows remain clearly labeled with visible review
   boundaries. A development-path strip is explicitly not a delivery schedule
@@ -145,7 +164,7 @@ do not click outbound links, and flag unexpected external page requests.
 
 Tests cover:
 
-- Byte-identical repeat builds; output-file and 576 KiB HTML budget, including all
+- Byte-identical repeat builds; output-file and 640 KiB HTML budget, including all
   22 offline dossiers, source references and SVG graphs (replacing the 384 KiB
   mockup-guide budget). This is an artifact-size limit, not a spending allowance.
 - All 22 candidates, all five planned workflows and material evidence caveats.
@@ -154,6 +173,10 @@ Tests cover:
   input, zero results and reset.
 - Engineering-first problem discovery and area intersections; multi-selection,
   removal, filter-independent shortlist state, reload reset and selected-plan print.
+- Three pilot paths, idempotent additions, optional-extension exclusion, preserved
+  selections, primary-removal invalidation and printable measures/acceptance gates.
+- All 15 pinned catalog decisions, prominent maintenance notices, expanded-table
+  mobile accessibility, native no-JavaScript reading and disclosure restoration.
 - Four-view navigation, deep links, Back/Forward, focus transfer, search shortcuts,
   outcome chips, list/card layout and filter preservation between views.
 - Reference-diagram structure and capacity alternatives; keyboard-operated bundle

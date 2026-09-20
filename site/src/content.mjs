@@ -95,7 +95,7 @@ export const candidates = [
     evidence: 'Selected question-answering and document-comparison scenarios were verified against a limited corpus.',
     caveats: ['The limited corpus does not establish quality across all document types or languages.', 'A reviewer must check citations, omissions and conflicts against the source material.'],
     ptu: 'Repeated interactive comparison could fit compatible PTUs. Actual demand and answer quality need separate measurement.',
-    next: 'Expand the approved corpus and test difficult comparisons, missing evidence and conflicting sources.',
+    next: 'Before a new deployment, name a maintenance owner or replacement: the later upstream review says no longer maintained. Retain distinctive comparison work only where it fills a gap; historical selected results are unchanged.',
   },
   {
     id: 5, name: 'Bring Your Own Key pilot', alias: 'BYOK · developer tooling',
@@ -140,12 +140,12 @@ export const candidates = [
   {
     id: 9, name: 'Modernize', alias: 'Engineering modernization assistance',
     bundle: 'engineering', status: 'verified', fit: 'candidate',
-    value: 'Help engineering teams work through a bounded modernization task.',
+    value: 'Help engineering teams review a bounded SQL-dialect conversion.',
     summary: 'Selected workflow verified; full equivalence not established.',
     evidence: 'A selected modernization workflow was verified. This does not demonstrate full behavioral equivalence between source and target systems.',
     caveats: ['Engineers must review generated changes and run regression tests.', 'Do not infer a complete migration, compatibility guarantee or automatic production approval.'],
     ptu: 'Repeated model-assisted engineering work could use compatible PTUs. Measure realistic usage rather than assuming continuous load.',
-    next: 'Demonstrate a small reviewed change with explicit tests, rollback and known limitations.',
+    next: 'Require a maintenance owner or supported replacement before deployment; upstream now says no longer maintained. Demonstrate a small SQL conversion with source/target execution tests, rollback and known limitations.',
   },
   {
     id: 10, name: 'Planetary Explorer', alias: 'Specialist geospatial exploration',
