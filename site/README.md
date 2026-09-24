@@ -1,12 +1,27 @@
 # AI Solutions Hub stakeholder website
 
-An independent, public-safe, problem-first catalog of three outcome areas, 22 curated
-candidates and five **planned** workflows. It is not an exhaustive Microsoft catalog, official marketplace, official product,
+An independent, public-safe toolkit for increasing useful adoption of customers'
+existing PTUs and demonstrating investment value: three outcome areas, 20 curated
+starting points and five **planned** workflows. Customers can assess one, several
+or all 20; deploying each requires its own readiness and model/API/geography checks.
+It is not an exhaustive Microsoft catalog, official marketplace, official product,
 customer reference, production certification or support commitment.
+
+The owner has made the project repository public. Repository links reflect public
+read access, not contribution permission, customer-environment access or access to
+separately controlled packages. Website publication remains limited to curated
+`site/dist/` output; do not include operational records or local briefing documents.
+
+The customer catalog excludes historical IDs 18 and 20: the unsuccessful
+incident-diagnosis research prototype and the unidentified inventory placeholder.
+Private historical evidence remains unchanged. Remaining IDs are not renumbered;
+headlines, navigation, metadata, FAQs and print counts are generated from the
+current catalog rather than maintained as separate totals.
 
 ## Stakeholder experience
 
-- **Focused pilot paths:** three outcome-led starting plans, with engineering first
+- **Focused pilot paths:** optional, collapsed planning guidance under **How we help**,
+  not a second wall of recommendations on the overview. Three outcome-led starting plans, with engineering first
   and CWYD identified as the recommended first knowledge pilot. Each names a bounded
   task, maintenance/quality gate, outcome/quality/adoption measures and human decision
   boundary. Planning adds only the primary candidate, preserves existing shortlist
@@ -22,17 +37,24 @@ customer reference, production certification or support commitment.
   Later review references do not replace the original architecture/source pins.
   Modernize is scoped to SQL-dialect conversion; new use of an unmaintained package
   requires a maintenance owner or supported replacement.
-- **Overview:** a problem-first introduction, six problem entry points, a
-  discover → choose → get-started diagram, and three outcome-led area panels. Each panel shows a
-  simple task-to-review pattern; native expanders reveal candidate starting
+- **Overview:** a PTU-adoption introduction, six illustrated problem entry points,
+  an adopt → measure → expand visual, and three side-by-side work-area cards
+  with prominent pilot names and smaller taglines that stack on smaller screens.
+  A compact value panel links adoption, PTU utilization/headroom and business results
+  to the shared acceptance guidance. No actual customer results or savings are claimed.
+  Native expanders reveal candidate starting
   points and planned work without repeating a full catalog. Engineering is first
   in the area panels, problem entry points, filter options and catalog order;
   stable evidence IDs and source revisions are unchanged.
-- **Solutions:** 22 cards showing value and intended teams, problem/area filters,
+- **Solutions:** all 20 cards explain “What it is”, “How it works”, “Use it for”
+  and an “Example scenario”: 70–150 words covering inputs, workflow, outputs and
+  a concrete use case. These are illustrative scenarios, not customer references
+  or proven outcomes. Two wider desktop columns give the explanation room to
+  breathe, stacking on mobile. Cards also show intended teams, problem/area filters,
   search and a card/list toggle. No lab readiness badges, status filters or
   test-summary headlines appear on the cards.
 - **Solution dossiers:** “Explore & get started” opens a full-width, shareable page,
-  not a dialog. Seven working section links lead to uses/workflow, component
+  not a dialog. Eight working section links lead to plain-language guidance, uses/workflow, component
   architecture, data/ingestion, deployment, specialist engagement, inspected public
   sources and expandable evaluation notes. The generic mock workspaces and
   noninteractive tab-like labels are removed.
@@ -42,52 +64,84 @@ customer reference, production certification or support commitment.
   template. Numbered component descriptions and an expandable connection list
   provide a readable text equivalent. Optional nodes have dashed borders.
   Source inspection is not deployment or functional certification. Owner-led
-  SpecSuite, Harbinger and proposed RFP review remain explicitly unverified or
+  SpecSuite and proposed RFP review remain explicitly unverified or
   proposed, rather than receiving fabricated product screenshots or install links.
   The Fabric UDF inventory label and the separate Unified Data Foundation
   accelerator must not be conflated. Evaluation caveats remain unchanged.
   Pinned source and platform links open in labeled new tabs, preserving the
   in-page shortlist. Suggested Microsoft CSA/specialist help is scoped through
   the account team, subject to agreement, not guaranteed or free delivery.
+  The same explanation and highlighted example open each dossier before technical
+  detail and travel into the printable shortlist.
+  Deployment sections expose public repository links or explicit access guidance.
+  SpecSuite's private code can be requested through an owner-approved access or
+  handoff arrangement; other unresolved entries are not assumed to be private
+  or deployable, and their architecture/evaluation qualifications remain intact.
+  SpecSuite reflects the supplied code-to-spec / knowledge-graph / spec-to-code
+  product description, including understanding inherited code and planning
+  improvements or modernization. Its diagram is conceptual, not verified runtime
+  architecture; universal language coverage and successful round-trip generation
+  are not claimed. Historical testing status and source-review dates are unchanged.
 - **Shortlist:** add or remove multiple candidates from their solution pages,
   follow the shortlist link with keyboard focus transferred,
   read selected guides together and print a selected plan with the tenant checklist.
   Selections are in memory only and survive view/filter changes, not reloads.
   This is planning, not installation, purchasing or approval.
-- **Get started:** a six-step tenant pilot checklist, followed by optional
-  existing-capacity adoption/renewal and new-purchase decisions, human-review
-  reference pattern, common questions, public references and full-portfolio printing.
-  Four acceptance gates require baseline/targets, accountable owners, full-workflow
-  quality, traced inference and total-cost comparison, then an expand/repair/stop
-  decision. Reusing a Foundry project does not imply reusing its PTU deployments.
-- **Planned:** controlled drafts receive a larger first-priority panel;
-  the other four planned workflows remain clearly labeled with visible review
-  boundaries. A development-path strip is explicitly not a delivery schedule
-  or completion indicator. Voice Live BYOM stays a separate integration test.
+- **How we help:** `#capacity` now leads with customer-led versus assisted delivery,
+  followed by the choose, prepare, deploy and adopt journey with responsibilities
+  and proposed deliverables. Measures cover repeat use, accepted work, quality,
+  time saved, compatible PTU utilization and full service cost, not artificial traffic.
+  `#implementation-brief` mirrors the current shortlist with per-solution next steps,
+  maintenance notices and private/unresolved code-access gates. It adds shared working-session
+  prompts without customer-data fields or a fictitious submission/booking workflow.
+  Its print/PDF action includes only this discussion brief, not full technical dossiers.
+  Empty selections show catalog guidance and no print-brief button.
+  Preparation and acceptance gates are combined in the initially closed `#preparation`
+  checklist. Research, starter pilots and glossary are secondary native disclosures;
+  new-capacity purchasing guidance is an FAQ. Existing deep links still work, including
+  `#how-it-works` (the human-review principle) and `#capacity-existing` (routing checks).
+  Routing opens all ancestor disclosures, including nested references.
+- **End-to-end engagement:** work with customers and their central AI teams to
+  choose solutions, arrange code access, deploy and evaluate in their environment,
+  hand over operations and onboard additional teams. Customers can deploy
+  independently or scope assistance. Delivery, funding, acceptance and ongoing
+  support are agreed, not an automatic entitlement.
+- **Use-case ideas:** the existing `#roadmap` link now opens five unbuilt workflow
+  concepts, not an internal priority list or a promised release schedule. Equal-weight
+  cards identify intended teams, useful outputs and human decision boundaries.
+  Native disclosures explain a bounded evaluation, measures and a related catalog
+  starting point, with the development gap explicitly stated. Links do not imply
+  that a related package implements the concept or uses customer PTUs.
+  A shared scoping prompt invites these or other needs through the customer's
+  existing program/account channel; it collects no data, books no meeting and does
+  not add concepts to the application shortlist. Voice Live integration status remains
+  in its solution guide and FAQ, not as a competing roadmap item. No dates,
+  funding, availability or implementation commitment is implied.
 
 ### Design principles
 
 The editorial layout uses bold Segoe UI typography, generous spacing, graphite
 and warm-ivory surfaces drawn from the exact Clawpilot light/dark base tokens.
-Semantic `--cp-action*` tokens select neutral foregrounds, buttons and panels;
-the base rose tokens remain defined but are not used by website components.
-Both light and dark views use this neutral treatment, including focus, selection,
-navigation, filters, diagrams and native controls. No external illustration,
-font, icon library, analytics or runtime dependency is required. The overview diagram is semantic HTML and CSS; dossier diagrams use inline SVG
+Shared `--cp-action*` tokens use the same Clawpilot rose accent for primary actions,
+links, navigation and focus across the overview, catalog, dossiers and guides.
+Neutral surfaces remain consistent in both themes; there is no separate
+homepage-only button palette. No external illustration,
+font, icon library, analytics or runtime dependency is required. The overview visual
+uses semantic HTML/CSS with decorative inline SVG icons; dossier diagrams use inline SVG
 with equivalent component and connection text. They explain source-informed or
 proposed designs, **not** a verified deployment.
 PTUs, Standard and Batch are presented as legitimate choices, with compatible
 model/API/geography routing and separate service costs stated alongside them.
 
-Outcome panels replace the old three-column bundle cards; the roadmap separates
-the first priority from subsequent work. The library still supports both dense
+Three compact work-area cards keep the overview scannable; use-case ideas have
+equal weight so customer priorities drive the discussion. The library still supports both dense
 comparison via its list layout and browsing via cards. Progressive disclosure
 does not hide roadmap safety boundaries or imply production readiness.
 Neutral panels use opaque surfaces so their contrast does not depend on
 whichever background sits behind them.
 
 Navigation uses shareable hash links and supports browser Back/Forward. Filters,
-layout and capacity selection persist while moving between views in the same
+layout and shortlisting persist while moving between views in the same
 page; nothing is saved to browser storage. Press **/** outside a form field to
 open and focus search; **Escape** clears the search text.
 Selected navigation and filters are exposed to assistive technology. Without
@@ -96,9 +150,11 @@ complete solution guides. Hashes such as `#solution-9` and
 `#solution-9-architecture` open a specific solution or section directly.
 The full-portfolio print restores all summary sections regardless of filters or
 layout. Browser printing from a solution page prints only that solution.
-**Print selected plan** instead
+**Print full technical guides** instead
 prints only the shortlist's complete guides and shared tenant checklist.
-Printing temporarily opens bundle, selected-guide and deployment-note expanders, then restores
+**Print / save implementation brief** prints only selected names, concise purposes,
+open implementation/access/maintenance points and working-session prompts.
+Printing temporarily opens bundle, optional-reference, use-case idea, selected-guide and deployment-note expanders, then restores
 their individual open/closed states.
 
 ## Build and preview
@@ -164,10 +220,12 @@ do not click outbound links, and flag unexpected external page requests.
 
 Tests cover:
 
-- Byte-identical repeat builds; output-file and 640 KiB HTML budget, including all
-  22 offline dossiers, source references and SVG graphs (replacing the 384 KiB
+- Byte-identical repeat builds; output-file and 672 KiB HTML budget, including all
+  20 offline dossiers, source references and SVG graphs (replacing the 384 KiB
   mockup-guide budget). This is an artifact-size limit, not a spending allowance.
-- All 22 candidates, all five planned workflows and material evidence caveats.
+- All 20 candidates, retired-entry exclusion, stable IDs, all five planned workflows and material evidence caveats.
+- Concrete explanations and illustrative examples for all 20 entries, public/private/unresolved code
+  access, shared theme controls and links through the assisted deployment journey.
 - Exact inline script/style hashes, restrictive CSP and public-content privacy checks.
 - All area/problem combinations, alias/detail search, literal malicious-looking
   input, zero results and reset.
@@ -175,28 +233,39 @@ Tests cover:
   removal, filter-independent shortlist state, reload reset and selected-plan print.
 - Three pilot paths, idempotent additions, optional-extension exclusion, preserved
   selections, primary-removal invalidation and printable measures/acceptance gates.
+- Implementation-brief empty, multi-selection, removal and reload states, maintenance
+  and access gates, print isolation, theme/disclosure restoration and secondary guidance.
+- Use-case idea content and related-guide links, absence of priority/availability
+  promises, keyboard disclosure, deep links, light/dark reflow and accessibility,
+  print restoration and no-JavaScript reading. Use `SITE_CHECK_FROM='use-case ideas:'`
+  for just these browser checks and the final request/error guard.
 - All 15 pinned catalog decisions, prominent maintenance notices, expanded-table
   mobile accessibility, native no-JavaScript reading and disclosure restoration.
 - Four-view navigation, deep links, Back/Forward, focus transfer, search shortcuts,
   outcome chips, list/card layout and filter preservation between views.
-- Reference-diagram structure and capacity alternatives; keyboard-operated bundle
+- Solution-diagram structure and capacity alternatives; keyboard-operated bundle
   expanders; mobile workflow-column alignment and preserved heading line breaks.
-- All 22 solution pages, each product's actual node/edge and workflow counts,
+- All 20 solution pages, each product's actual node/edge and workflow counts,
   ingestion/deployment steps, specialist roles, source links, evaluation notes,
   every section link, expandable connections, keyboard navigation and return focus.
-- Radio-button capacity selection, native FAQ and skip navigation.
+- Collapsed preparation and new-capacity FAQ, native disclosures and skip navigation.
 - Explicit light/dark query overrides (including the required snippet’s light
   precedence correction), system preference and manual switching.
 - Automated axe WCAG 2.1 AA checks across all four views in light, dark and mobile,
-  plus list layouts and all 22 solution pages; representative solution pages in
+  plus list layouts and all 20 solution pages; representative solution pages in
   light/dark mobile views.
 - Horizontal overflow checks across all four views at 320, 375, 768, 1024 and 1440 pixels.
-- Print summary with all 22 candidates, both capacity options and all bundle
+- Print summary with all 20 candidates, preparation guidance and all bundle
   starting points even when filtered; restores disclosure and theme state afterward.
 - Selected-plan and individual-solution printing; unique IDs in cloned guides.
 - Graceful no-JavaScript reading with native solution links and deployment notes.
 
 Screenshots are generated in ignored `test-results/` for human visual inspection.
+For a targeted local rerun, set `SITE_CHECK_FROM` to a check-name prefix; the
+runner executes that check and all following checks. Unmatched prefixes fail,
+and the report explicitly marks successful partial runs as `selected-checks-passed`.
+Clear the variable for full-suite validation. Disclosure/theme and individual
+mobile-solution checks each retain their own 120-second deadline.
 The local suite writes `test-results/smoke/local/`, including:
 
 - `desktop-light.png` / `desktop-dark.png` — editorial hero and diagram.
@@ -274,8 +343,8 @@ missing executable.
   CSS/JavaScript, plus security headers and the public-content privacy rules.
 - Verifies rendered Clawpilot theme tokens, applied body colors, typography,
   card shape, explicit light/dark overrides and theme switching.
-- Exercises all 22 candidates, all area/problem combinations, search, empty
-  state, capacity radios, keyboard navigation and all 22 complete solution pages.
+- Exercises all 20 candidates, all area/problem combinations, search, empty
+  state, implementation briefs, keyboard navigation and all 20 complete solution pages.
 - Checks 320–1440px reflow, light/dark/mobile/solution automated accessibility, printing
   and no-JavaScript reading.
 - Uses **HEAD only**, without following redirects or reading response bodies, for
@@ -369,7 +438,7 @@ Public-content scans are defense in depth, not a replacement for editorial revie
 | File | Purpose |
 | --- | --- |
 | `package.json`, `package-lock.json` | Node 22 scripts and reproducible development dependency lock |
-| `src/content.mjs` | Curated public-safe data; 22 candidates and five planned workflows |
+| `src/content.mjs` | Curated public-safe data; 20 candidates with stable historical IDs and five planned workflows |
 | `src/onboarding.mjs` | Six problems, candidate mappings, public source pins/platform references and shared tenant checklist |
 | `src/dossiers.mjs` | Twenty researched product dossiers, source-informed/proposed component graphs, workflows, deployment and specialist guidance |
 | `src/index.html` | Semantic structure and explanatory content |

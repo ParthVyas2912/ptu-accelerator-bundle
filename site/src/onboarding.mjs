@@ -27,7 +27,6 @@ export const sources = {
   employee: source('microsoft/Employee-Self-Service-Agent-Developer-Kit', '3236a513b7312b13602326fbdf7778797174d45f'),
   foundation: source('microsoft/agentic-applications-for-unified-data-foundation-solution-accelerator', '28c25024e43884b0a23c996d5cc8d3419f4e448c'),
   operations: source('microsoft/real-time-intelligence-operations-solution-accelerator', 'cfbdb91ee83ed31b5ccc5de7feca7a0b5b2e5f68'),
-  stepfly: source('microsoft/StepFly', 'a6229192a69dd2eebc58d9b8f754dbc396029c4e'),
   video: source('Azure-Samples/netaivideoanalyzer', '1d8ed2ece3ee4c05441f98a0e06965c0207f21e7'),
   voiceagent: source('Azure-Samples/art-voice-agent-accelerator', 'a2e1ce2edbf103661c56a861cccef73c30acacee'),
   mcpsecurity: source('Azure-Samples/sherpa', '12be921ec85bd915105d9c6b5335cffe8c680966'),
@@ -60,9 +59,7 @@ export const onboarding = {
   15: { problems: ['service', 'answers'] },
   16: { problems: ['data', 'answers'] },
   17: { problems: ['data'] },
-  18: { problems: ['engineering'] },
   19: { problems: ['data'] },
-  20: { problems: ['engineering'] },
   21: { problems: ['service'] },
   22: { problems: ['engineering'] },
 };

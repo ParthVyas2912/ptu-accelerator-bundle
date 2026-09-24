@@ -36,14 +36,15 @@
     }
     for (const link of document.querySelectorAll(".solution-nav a")) {
       const selected = link.hash === hash
-        || (activeSolution?.id === id && link.hash === `#${id}-workflow`);
+        || (activeSolution?.id === id && link.hash === `#${id}-plain`);
       if (selected) link.setAttribute("aria-current", "location");
       else link.removeAttribute("aria-current");
     }
-    const disclosure = target.closest("details");
-    if (disclosure) disclosure.open = true;
+    for (let disclosure = target.closest("details"); disclosure; disclosure = disclosure.parentElement.closest("details")) {
+      disclosure.open = true;
+    }
     document.documentElement.dataset.view = currentView;
-    const title = { overview: "Overview", catalog: "Solution library", guide: "Get started", roadmap: "Planned workflows" };
+    const title = { overview: "Overview", catalog: "Solution library", guide: "How we help", roadmap: "Use-case ideas" };
     document.title = `${activeSolution?.querySelector("h2").textContent || title[currentView]} · AI Solutions Hub`;
     if (scroll) target.scrollIntoView({ block: "start", behavior: "instant" });
     if (focus) {
@@ -145,17 +146,6 @@
       filterCards();
     }
   });
-  const capacityInputs = [...document.querySelectorAll('input[name="capacity"]')];
-  function updateCapacity(announce = true) {
-    const selected = capacityInputs.find((input) => input.checked).value;
-    $("#capacity-existing").hidden = selected !== "existing";
-    $("#capacity-new").hidden = selected !== "new";
-    if (announce) $("#capacity-announcement").textContent = selected === "existing"
-      ? "Existing capacity guidance shown: focus on useful adoption and renewal."
-      : "New capacity guidance shown: prove quality and actual demand before purchase.";
-  }
-  capacityInputs.forEach((input) => input.addEventListener("change", () => updateCapacity()));
-  updateCapacity(false);
   const themeButton = $("#theme-toggle");
   function setTheme(theme) {
     document.documentElement.dataset.theme = theme;
@@ -177,6 +167,41 @@
   const selected = new Set();
   const toggles = [...document.querySelectorAll("[data-select]")];
   let activePathway = null;
+  function renderImplementationBrief() {
+    $("#implementation-count").textContent = selected.size
+      ? `${selected.size} solution${selected.size === 1 ? "" : "s"} to discuss. Open points are not resolved by adding a solution.`
+      : "No solutions selected. Explore the catalog and add the solutions you want to discuss.";
+    $("#print-brief").hidden = selected.size === 0;
+    const items = $("#implementation-items");
+    items.replaceChildren();
+    for (const card of cards.filter((item) => selected.has(item.dataset.id))) {
+      const solution = $(`#solution-${card.dataset.id}`);
+      const item = document.createElement("li");
+      const title = document.createElement("h4");
+      const link = document.createElement("a");
+      link.href = `#${solution.id}`;
+      link.textContent = card.querySelector("h3").textContent;
+      title.append(link);
+      const purpose = document.createElement("p");
+      purpose.textContent = card.querySelector(".candidate-value dd").textContent;
+      const gate = document.createElement("p");
+      gate.textContent = `Resolve / confirm: ${solution.querySelector(".deployment-notes > div > p").textContent}`;
+      item.append(title, purpose, gate);
+      const maintenance = solution.querySelector(".source-review");
+      if (maintenance) {
+        const note = document.createElement("p");
+        note.textContent = `Maintenance: ${maintenance.querySelector("p").textContent}`;
+        item.append(note);
+      }
+      const access = solution.querySelector(".code-access > p");
+      if (access) {
+        const note = document.createElement("p");
+        note.textContent = `Code access: ${access.textContent}`;
+        item.append(note);
+      }
+      items.append(item);
+    }
+  }
   function renderPilotBrief() {
     const brief = $("#pilot-brief");
     brief.replaceChildren();
@@ -194,6 +219,7 @@
   }
   function cloneGuide(id) {
     const clone = $(`#solution-${id} .solution-body`).cloneNode(true);
+    clone.prepend($(`#solution-${id} > .solution-summary`).cloneNode(true));
     // Shortlist copies need their own anchor and accessible-label namespace.
     const ids = new Set([...clone.querySelectorAll("[id]")].map((node) => node.id));
     for (const node of clone.querySelectorAll("[id]")) node.id = `plan-${node.id}`;
@@ -244,6 +270,7 @@
       toggle.setAttribute("aria-pressed", String(added));
     }
     renderPilotBrief();
+    renderImplementationBrief();
   }
   for (const button of document.querySelectorAll("[data-plan-pathway]")) {
     button.hidden = false;
@@ -276,6 +303,11 @@
     document.documentElement.dataset.printPlan = "selected";
     window.print();
   });
+  $("#print-brief").addEventListener("click", () => {
+    document.documentElement.dataset.printPlan = "brief";
+    window.print();
+  });
+  renderImplementationBrief();
   let prePrintTheme;
   let prePrintDisclosures;
   window.addEventListener("beforeprint", () => {
@@ -284,7 +316,7 @@
       document.documentElement.dataset.printPlan = "solution";
     }
     if (prePrintDisclosures === undefined) {
-      prePrintDisclosures = [...document.querySelectorAll(".bundle-inventory, .selected-guide, .deployment-notes, .connection-details, .catalog-review")]
+      prePrintDisclosures = [...document.querySelectorAll(".bundle-inventory, .selected-guide, .deployment-notes, .connection-details, .catalog-review, .reference-disclosure, .idea-detail, #capacity-new")]
         .map((detail) => ({ detail, open: detail.open }));
       for (const { detail } of prePrintDisclosures) detail.open = true;
     }
