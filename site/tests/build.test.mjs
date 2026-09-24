@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { mkdir, mkdtemp, readFile, readdir, rm, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
-import { assertSafeOutputDirectory, buildSite, escapeHTML, hash, validateDossier, validateProgram } from '../scripts/build.mjs';
+import { assertSafeOutputDirectory, buildSite, escapeHTML, hash, validateDossier, validateProgram, validateRoadmap } from '../scripts/build.mjs';
 import { candidates, catalogCandidates, glossary, plainKinds, roadmap } from '../src/content.mjs';
 import { onboarding, problems, sources, tenantSteps } from '../src/onboarding.mjs';
 import { dossiers } from '../src/dossiers.mjs';
@@ -42,7 +42,7 @@ test('build is deterministic, self-contained and comfortably within the size bud
   const second = await buildSite();
   assert.equal(second.html, html);
   assert.deepEqual(second.config, config);
-  assert.ok(bytes < 640 * 1024, `HTML with 22 source-backed dossiers, plain-language summaries and component graphs is ${bytes} bytes`);
+  assert.ok(bytes < 672 * 1024, `HTML with 20 source-backed dossiers, plain-language summaries and component graphs is ${bytes} bytes`);
   assert.deepEqual((await readdir(new URL('../dist/', import.meta.url))).sort(), ['index.html', 'staticwebapp.config.json', 'web.config']);
   assert.doesNotMatch(html, /@@[A-Z_]+@@/);
   assert.doesNotMatch(html, /<(?:script|img|iframe|audio|video)\b[^>]*\bsrc\s*=/i);
@@ -93,10 +93,11 @@ test('smoke URL/env selection supports deployment and rejects unsafe or ambiguou
   ]) assert.throws(() => resolveSmokeTarget(args));
 });
 
-test('all 22 candidates and five planned workflows are rendered, complete and uniquely identified', () => {
-  assert.equal((html.match(/class="candidate"/g) || []).length, 22);
+test('all 20 candidates and five planned workflows are rendered with stable historical IDs', () => {
+  assert.equal((html.match(/class="candidate"/g) || []).length, 20);
   assert.equal((html.match(/class="roadmap-item"/g) || []).length, 5);
-  assert.deepEqual(candidates.map((item) => item.id), Array.from({ length: 22 }, (_, index) => index + 1));
+  assert.deepEqual(candidates.map((item) => item.id),
+    Array.from({ length: 22 }, (_, index) => index + 1).filter((id) => ![18, 20].includes(id)));
   const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]);
   assert.equal(ids.length, new Set(ids).size);
   for (const item of candidates) {
@@ -107,11 +108,24 @@ test('all 22 candidates and five planned workflows are rendered, complete and un
     assert.ok(item.caveats.length >= 2);
   }
   for (const item of roadmap) assert.ok(html.includes(escapeHTML(item.boundary)));
-  assert.equal(roadmap[0].priority, 'Highest priority');
+  assert.ok(roadmap.every((item) => !Object.hasOwn(item, 'priority')));
   assert.doesNotMatch(html, /class="status-badge"|id="status-filter"|Selected tests verified|Not launch-ready/);
   assert.deepEqual([...html.matchAll(/class="candidate" data-id="(\d+)"/g)].map((match) => Number(match[1])),
     catalogCandidates.map((item) => item.id));
   assert.equal(catalogCandidates[0].bundle, 'engineering');
+});
+
+test('retired candidates are absent from the artifact and all customer-facing counts agree', () => {
+  assert.doesNotMatch(html, /Harbinger|StepFly|(?:solution|candidate-title)-(?:18|20)(?:["-])/i);
+  assert.doesNotMatch(html, /\b22(?:-candidate|\s+(?:AI starting points|starting points|candidates|ready apps|solutions))|\ball 22\b/);
+  assert.match(html, /class="nav-count">20<\/span>/);
+  assert.match(html, /Showing 20 of 20 solutions/);
+  assert.match(html, /Explore 20 AI starting points/);
+  for (const id of [18, 20]) {
+    assert.equal(dossiers[id], undefined);
+    assert.equal(onboarding[id], undefined);
+  }
+  assert.equal(sources.stepfly, undefined);
 });
 
 test('HTTP and meta CSP hash every actual inline script and style with no unsafe execution', () => {
@@ -161,14 +175,14 @@ test('required evidence boundaries survive rendering', () => {
     [10, /existing inventory only/], [11, /not categorically excluded/], [12, /not implemented/],
     [13, /marketing content/], [14, /not a standalone/], [15, /Copilot Studio/],
     [16, /Custom model endpoints are possible/], [17, /telemetry does not imply/],
-    [18, /do not ship/], [19, /one safety block/], [20, /Owner and package unknown/],
+    [19, /one safety block/],
     [21, /no deployment, call or model request was performed/i],
     [22, /intentionally deploys insecure servers/],
   ];
-  for (const [id, pattern] of checks) assert.match(JSON.stringify(candidates[id - 1]), pattern);
-  assert.match(candidates[10].ptu, /documented BYOM route can use compatible PTU/);
-  assert.match(candidates[20].ptu, /not interchangeable with text capacity/);
-  assert.match(candidates[7].ptu, /Batch/);
+  for (const [id, pattern] of checks) assert.match(JSON.stringify(candidates.find((item) => item.id === id)), pattern);
+  assert.match(candidates.find((item) => item.id === 11).ptu, /documented BYOM route can use compatible PTU/);
+  assert.match(candidates.find((item) => item.id === 21).ptu, /not interchangeable with text capacity/);
+  assert.match(candidates.find((item) => item.id === 8).ptu, /Batch/);
   for (const phrase of [
     'not a sixth new app', 'Standard', 'Batch',
     'No automatic redaction or release', 'No autonomous high-impact changes',
@@ -188,10 +202,13 @@ test('theme uses the exact base variables, correct font, only token colors and e
   assert.match(css, /--cp-bg: #3d3b3a;/);
   assert.match(css, /--cp-accent: #b11f4b;/);
   assert.match(css, /--cp-accent: #fd8ea1;/);
-  assert.match(css, /--cp-action: var\(--cp-text\);/);
-  assert.match(css, /--cp-action-fg: var\(--cp-bg\);/);
+  assert.match(css, /--cp-action: var\(--cp-accent\);/);
+  assert.match(css, /--cp-action-hover: var\(--cp-accent-hover\);/);
+  assert.match(css, /--cp-action-fg: var\(--cp-accent-fg\);/);
   assert.match(css, /--cp-action-soft: var\(--cp-surface-soft\);/);
-  assert.doesNotMatch(componentCSS, /var\(--cp-(?:accent(?:-[a-z]+)?|highlight)\)/);
+  assert.match(css, /a:hover \{ color: var\(--cp-action\); text-decoration-thickness: 2px; \}/);
+  assert.match(css, /\.hero h1 span \{ color: var\(--cp-accent\); \}/);
+  assert.doesNotMatch(css, /\.hero-actions \.primary(?:\:hover)? \{/);
   assert.match(theme, /param \|\| \(window\.matchMedia/);
   assert.match(theme, /param === "light" \|\| param === "dark"/);
   assert.match(css, /prefers-reduced-motion: reduce/);
@@ -206,21 +223,61 @@ test('escaping protects curated values and all internal anchor targets exist', (
   assert.equal((html.match(/<h1\b/g) || []).length, 1);
 });
 
-test('editorial overview preserves reference-pattern and progressive-disclosure boundaries', () => {
+test('visual overview preserves planning boundaries without the long pilot and orientation sections', () => {
   assert.match(html, /<figure class="portfolio-map" aria-labelledby="portfolio-map-title">/);
-  assert.equal((html.match(/class="map-layer\b/g) || []).length, 3);
+  assert.match(html, /class="map-inputs"/);
+  assert.match(html, /class="map-destination"/);
+  assert.match(html, /class="map-steps"/);
   assert.equal((html.match(/<details class="bundle-inventory">/g) || []).length, 3);
-  assert.match(html, /Reference pattern, not a deployed stack/);
-  assert.match(html, /Platform and speech services have separate costs/);
+  assert.match(html, /A path to explore—not a deployed solution/);
+  assert.match(html, /Search, storage, hosting, document processing and speech can cost extra/);
   assert.match(html, /Verify model, API &amp; geography compatibility/);
   assert.match(html, /A development path, not a delivery schedule or completion status/);
   assert.match(html, /A reference design is not a deployment certification/);
+  assert.match(html, /class="section wrap pilot-section" data-page="guide"/);
+  assert.match(html, /<details class="reference-disclosure" id="program">/);
+  assert.doesNotMatch(html, /class="map-layer|What these 22 things|What they are not/);
+  const orientation = html.match(/<section[^>]+id="orientation"[\s\S]*?<\/section>/)?.[0];
+  const words = orientation.replace(/<[^>]*>/g, ' ').trim().split(/\s+/);
+  assert.ok(words.length <= 40, `Keep the orientation brief, not another essay: ${words.length} words`);
+  assert.equal((html.match(/class="problem-icon"/g) || []).length, Object.keys(problems).length);
+  assert.doesNotMatch(html, /d="undefined"/);
+});
+
+test('PTU adoption leads the toolkit without promising universal compatibility or deployment readiness', () => {
+  const hero = html.match(/<section[^>]+id="top"[\s\S]*?<\/section>/)?.[0];
+  assert.match(hero, /Your PTUs/);
+  assert.match(hero, /20 AI starting points/);
+  assert.match(hero, /PTUs you already own/);
+  assert.match(hero, /Choose one, several or plan across all 20/);
+  assert.match(hero, /each solution's readiness and PTU compatibility/);
+  assert.match(hero, /Compatible workloads only/);
+  assert.match(hero, /Other services cost extra/);
+  assert.match(html, /PTU utilization &amp; headroom/);
+  assert.match(html, /time saved, quality and total service cost against an agreed baseline/);
+  assert.match(html, /not a guaranteed saving/);
+  assert.match(html, /not deployable applications/);
+  for (const name of ['Engineering Modernization', 'Knowledge & Staff Work', 'Procurement & Document Operations']) {
+    assert.ok(html.includes(`<h3>${escapeHTML(name)}</h3>`));
+  }
+  assert.equal((html.match(/class="bundle-tagline"/g) || []).length, 3);
+  assert.match(html, /class="adoption-band"[\s\S]*?href="#pilot-gates"/);
 });
 
 test('every solution answers what it is, what it does and what it is for, in plain language', () => {
   const jargon = /\b(?:RAG|MACAE|CWYD|DKM|BYOK|BYOM|azd|Bicep|FastAPI|Blazor|KQL|OBO|STAC|AKS)\b/;
   for (const item of candidates) {
     const { plain, kind } = dossiers[item.id];
+    assert.deepEqual(Object.keys(plain.brief), ['what', 'does', 'value', 'example']);
+    const words = Object.values(plain.brief).join(' ').trim().split(/\s+/).length;
+    assert.ok(words >= 70 && words <= 150);
+    const card = html.match(new RegExp(`<article class="candidate" data-id="${item.id}"[\\s\\S]*?</article>`))?.[0];
+    const solution = html.match(new RegExp(`<section[^>]+id="solution-${item.id}"[\\s\\S]*?<div class="solution-body">`))?.[0];
+    for (const summary of [card, solution]) {
+      assert.ok(summary, `${item.id}: missing card or solution introduction`);
+      for (const label of ['What it is', 'How it works', 'Use it for', 'Example scenario']) assert.ok(summary.includes(`<dt>${label}</dt>`));
+      for (const value of Object.values(plain.brief)) assert.ok(summary.includes(escapeHTML(value)));
+    }
     // The reader is told what would actually arrive before anything else.
     assert.ok(html.includes(escapeHTML(plain.form)), `${item.id}: form`);
     assert.ok(html.includes(escapeHTML(plain.what)), `${item.id}: what`);
@@ -239,10 +296,72 @@ test('every solution answers what it is, what it does and what it is for, in pla
   assert.equal((html.match(/class="candidate-area candidate-kind"/g) || []).length, candidates.length);
 });
 
+test('customer engagement and code access distinguish assistance from approval or verification', () => {
+  assert.match(html, /id="engagement" data-page="guide"/);
+  for (const phrase of ['Discover &amp; choose', 'Prepare &amp; get access', 'Deploy &amp; make it work',
+    'Hand over &amp; expand', 'central AI teams', 'support responsibilities are agreed before work starts']) {
+    assert.ok(html.includes(phrase), phrase);
+  }
+  assert.match(html, /class="adoption-service"[^>]*>[\s\S]*?href="#engagement"/);
+  assert.ok((html.match(/href="#engagement"/g) || []).length >= candidates.length * 2 + 2);
+  assert.match(dossiers[3].privateSource, /private.*repository access or an approved code handoff.*owner approval/s);
+  assert.ok(html.includes(escapeHTML(dossiers[3].privateSource)));
+  assert.equal(dossiers[3].repository, undefined);
+  for (const id of [11, 12]) assert.equal(dossiers[id].privateSource, undefined);
+  assert.match(dossiers[12].plain.brief.what, /proposed/i);
+});
+
+test('How we help leads with delivery choices and a separate shortlist implementation brief', () => {
+  assert.match(html, /data-view-link="guide">How we help<\/a>/);
+  const introduction = html.match(/<section[^>]+id="capacity"[\s\S]*?<\/section>/)[0];
+  assert.match(introduction, /Choose your solutions/);
+  assert.match(introduction, /Deploy with your team/);
+  assert.match(introduction, /Plan the work with us/);
+  assert.doesNotMatch(introduction, /TENANT_STEPS|capacity-choice|tenant-checklist/);
+  assert.match(html, /id="print-brief" hidden/);
+  assert.match(html, /id="implementation-items"/);
+  assert.match(html, /No information is submitted/);
+  assert.match(html, /<details class="reference-disclosure" id="preparation">/);
+  assert.match(html, /<details class="reference-disclosure" id="selection-review">/);
+  assert.match(html, /<details id="capacity-new"><summary>/);
+  assert.doesNotMatch(html, /name="capacity"|id="capacity-announcement"/);
+});
+
+test('use-case ideas explain customer fit without implying a release commitment or deployable product', () => {
+  validateRoadmap();
+  const section = html.match(/<section[^>]+id="roadmap"[\s\S]*?<\/section>/)[0];
+  assert.match(html, /data-view-link="roadmap">Use-case ideas<\/a>/);
+  assert.match(section, /not promised releases/);
+  assert.match(section, /No delivery dates, funding or implementation commitments/);
+  assert.match(section, /Concepts are not added to the solution shortlist/);
+  assert.doesNotMatch(section, /Highest priority|Coming next|data-select|data-plan-pathway|voice-note/);
+  assert.equal((section.match(/Concept · Not built or deployed/g) || []).length, 5);
+  for (const item of roadmap) {
+    for (const key of ['audience', 'output', 'evaluation', 'gap', 'boundary']) {
+      assert.ok(section.includes(escapeHTML(item[key])), `${item.id}: missing ${key}`);
+    }
+    assert.ok(section.includes(`id="idea-${item.id}"`));
+    assert.ok(section.includes(`href="#solution-${item.related}"`));
+    const copy = structuredClone(roadmap);
+    delete copy[0].output;
+    assert.throws(() => validateRoadmap(copy), /use-case idea/);
+  }
+  for (const mutate of [
+    (items) => { items[0].related = 999; },
+    (items) => { items[1].id = items[0].id; },
+    (items) => { items[0].id = 'invalid id'; },
+  ]) {
+    const copy = structuredClone(roadmap);
+    mutate(copy);
+    assert.throws(() => validateRoadmap(copy), /use-case idea/);
+  }
+});
+
 test('a first-time reader is oriented and every unavoidable term is explained', () => {
   assert.match(html, /id="orientation"/);
-  assert.match(html, /What they are not/);
-  assert.match(html, /id="glossary"/);
+  assert.match(html, /Starting points, not finished products/);
+  assert.match(html, /Each guide explains what was tested, the limits/);
+  assert.match(html, /<details class="reference-disclosure" id="glossary">/);
   for (const [term, meaning] of glossary) {
     assert.ok(html.includes(`<dt>${escapeHTML(term)}</dt>`), `glossary term: ${term}`);
     assert.ok(html.includes(escapeHTML(meaning)), `glossary meaning: ${term}`);
@@ -259,8 +378,8 @@ test('problem-first hub supplies a complete, honest getting-started path for eve
   assert.doesNotMatch(html, /PTU portfolio|PTU guide/);
   assert.equal((html.match(/data-problem-link="/g) || []).length, Object.keys(problems).length);
   assert.deepEqual(Object.keys(onboarding).map(Number), candidates.map((item) => item.id));
-  assert.equal((html.match(/class="technical-architecture"/g) || []).length, 22);
-  assert.equal((html.match(/class="component-graph"/g) || []).length, 22);
+  assert.equal((html.match(/class="technical-architecture"/g) || []).length, 20);
+  assert.equal((html.match(/class="component-graph"/g) || []).length, 20);
   assert.doesNotMatch(html, /<dialog\b|app-preview|preview-sidebar|Concept preview|Illustrative grid/);
   assert.deepEqual(Object.keys(dossiers).map(Number), candidates.map((item) => item.id));
   for (const item of candidates) {
@@ -318,10 +437,15 @@ test('dossiers reject invalid sources, broken graph relationships and incomplete
   invalid((copy) => { copy.specialists = []; }, /specialist/);
   invalid((copy) => { copy.ingestion.stages = [['Missing detail']]; }, /ingestion/);
   invalid((copy) => { copy.deployment.prerequisites = []; }, /deployment/);
+  invalid((copy) => { delete copy.plain.brief; }, /customer explanation/);
+  invalid((copy) => { copy.plain.brief.value = ''; }, /customer explanation/);
+  invalid((copy) => { copy.plain.brief.value = 'Word '.repeat(151); }, /customer explanation/);
+  invalid((copy) => { copy.privateSource = ''; }, /private source access/);
+  invalid((copy) => { copy.privateSource = 'Private code cannot also be a public repository.'; }, /private source access/);
   const signatures = Object.values(dossiers).map((item) =>
     JSON.stringify([item.workflow, item.architecture.nodes.map((node) => node.service)]));
-  assert.equal(new Set(signatures).size, 22, 'Product-specific workflows and components must not be reused as generic filler');
-  for (const id of [3, 12, 20]) {
+  assert.equal(new Set(signatures).size, 20, 'Product-specific workflows and components must not be reused as generic filler');
+  for (const id of [3, 12]) {
     assert.notEqual(dossiers[id].architecture.basis, 'documented');
     assert.equal(dossiers[id].repository, undefined);
   }
@@ -329,7 +453,7 @@ test('dossiers reject invalid sources, broken graph relationships and incomplete
 
 test('component diagrams route every connection outside unrelated component boxes', () => {
   const graphs = [...html.matchAll(/<svg class="component-graph"[\s\S]*?<\/svg>/g)].map(([svg]) => svg);
-  assert.equal(graphs.length, 22);
+  assert.equal(graphs.length, 20);
   for (const svg of graphs) {
     const boxes = [...svg.matchAll(/class="graph-node[^"]*" transform="translate\((\d+) (\d+)\)"/g)]
       .map(([, x, y]) => ({ left: Number(x), top: Number(y), right: Number(x) + 230, bottom: Number(y) + 120 }));
@@ -356,11 +480,11 @@ test('component diagrams route every connection outside unrelated component boxe
   }
 });
 
-test('four main views and 22 solution pages retain native anchors without JavaScript', () => {
+test('four main views and 20 solution pages retain native anchors without JavaScript', () => {
   assert.deepEqual([...html.matchAll(/data-view-link="([^"]+)"/g)].map((match) => match[1]),
     ['overview', 'catalog', 'guide', 'roadmap']);
   const sections = [...html.matchAll(/<(?:section|div)\b[^>]*\bdata-page="([^"]+)"[^>]*>/g)];
-  assert.equal(sections.length, 35);
+  assert.equal(sections.length, 33);
   assert.deepEqual([...new Set(sections.map((match) => match[1]))].sort(), ['catalog', 'guide', 'overview', 'roadmap', 'solution']);
   for (const [tag] of sections) assert.doesNotMatch(tag, /\bhidden\b/);
   assert.match(html, /id="bundle-chips"[^>]*role="group"[^>]*hidden/);
@@ -431,8 +555,8 @@ test('maintenance notices are prominent and travel with printable solution bodie
   const invalid = structuredClone(dossiers[4]);
   invalid.sourceReview.summary = '';
   assert.throws(() => validateDossier(invalid, 4), /source review/);
-  assert.equal(candidates[3].status, 'verified');
-  assert.equal(candidates[8].status, 'verified');
-  assert.equal(candidates[5].status, 'limited');
-  assert.equal(candidates[11].status, 'planned');
+  assert.equal(candidates.find((item) => item.id === 4).status, 'verified');
+  assert.equal(candidates.find((item) => item.id === 9).status, 'verified');
+  assert.equal(candidates.find((item) => item.id === 6).status, 'limited');
+  assert.equal(candidates.find((item) => item.id === 12).status, 'planned');
 });

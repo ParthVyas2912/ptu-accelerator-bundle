@@ -42,8 +42,9 @@ export function assertPublicContent(output, additionalPublicURLs = []) {
   for (const [, href] of output.matchAll(/\bhref="([^"]+)"/g)) {
     assert.ok(href.startsWith('#') || allowed.has(href), 'Public page contains an unapproved link.');
   }
-  assert.match(output, /Contributor access required/);
-  assert.match(output, /Only contributors with explicitly granted access/);
+  assert.match(output, /The project repository is public/);
+  assert.match(output, /repository access does not grant customer-environment access/);
+  assert.doesNotMatch(output, /The repository is private|Private GitHub repository|Contributor access required/);
 }
 
 export function assertServedPolicy(html, headers) {

@@ -68,9 +68,12 @@ ${headers}
 
 export function validateContent() {
   if (evidenceDate !== '2026-09-12') throw new Error('Review the fixed evidence date before updating it.');
-  if (candidates.length !== 22 || roadmap.length !== 5) throw new Error('Expected exactly 22 candidates and 5 planned workflows.');
+  if (candidates.length !== 20 || roadmap.length !== 5) throw new Error('Expected exactly 20 candidates and 5 planned workflows.');
   candidates.forEach((item, index) => {
-    if (item.id !== index + 1) throw new Error('Candidate IDs must be ordered, unique and complete.');
+    // Retain historical IDs and gaps when entries leave the public catalog.
+    if (!Number.isSafeInteger(item.id) || item.id <= 0 || (index > 0 && item.id <= candidates[index - 1].id)) {
+      throw new Error('Candidate IDs must be positive, unique and ordered.');
+    }
     if (!bundles[item.bundle] || !statuses[item.status] || !fits[item.fit]) throw new Error(`Invalid classification for candidate ${item.id}`);
     for (const field of ['name', 'alias', 'value', 'summary', 'evidence', 'ptu', 'next']) {
       if (typeof item[field] !== 'string' || !item[field].trim()) throw new Error(`Missing ${field} for candidate ${item.id}`);
@@ -82,9 +85,7 @@ export function validateContent() {
     }
     validateDossier(dossiers[item.id], item.id);
   });
-  roadmap.forEach((item) => {
-    if (!bundles[item.bundle] || !item.title || !item.value || !item.boundary) throw new Error('Incomplete roadmap item.');
-  });
+  validateRoadmap();
   validateProgram();
 }
 
@@ -92,6 +93,18 @@ const nonempty = (value) => typeof value === 'string' && Boolean(value.trim());
 const stringsValid = (values) => Array.isArray(values) && values.length > 0 && values.every(nonempty);
 const pairsValid = (values) => Array.isArray(values) && values.length > 0
   && values.every((pair) => Array.isArray(pair) && pair.length === 2 && pair.every(nonempty));
+export function validateRoadmap(items = roadmap) {
+  const ids = new Set();
+  for (const item of items) {
+    if (!/^[a-z]+(?:-[a-z]+)*$/.test(item.id) || ids.has(item.id)
+      || !bundles[item.bundle]
+      || !['title', 'value', 'boundary', 'audience', 'output', 'evaluation', 'gap'].every((key) => nonempty(item[key]))
+      || !candidates.some((candidate) => candidate.id === item.related)) {
+      throw new Error('Incomplete or invalid use-case idea.');
+    }
+    ids.add(item.id);
+  }
+}
 export function validateProgram(items = pathways, review = catalogReview) {
   const ids = new Set();
   if (items.length !== 3) throw new Error('Expected three outcome pathways.');
@@ -120,12 +133,16 @@ export function validateDossier(dossier, id) {
   const fail = (detail) => { throw new Error(`Invalid dossier ${id}: ${detail}`); };
   if (!dossier || ['name', 'kind', 'alias', 'headline', 'description', 'audience', 'surface', 'workshop']
     .some((key) => !nonempty(dossier[key]))) fail('missing product description');
+  if (dossier.privateSource !== undefined && (!nonempty(dossier.privateSource) || dossier.repository)) fail('private source access');
   if (dossier.sourceReview && (dossier.sourceReview.reviewedOn !== programReviewDate
     || !nonempty(dossier.sourceReview.summary))) fail('source review');
   if (!nonempty(plainKinds[dossier.kind])) fail('no plain-language reading of the package kind');
   // A first-time reader gets an explicit answer to what it is, what it does and what it is for.
   const { plain } = dossier;
   if (!plain || ['form', 'what'].some((key) => !nonempty(plain[key]))) fail('plain-language summary');
+  if (!plain.brief || !['what', 'does', 'value', 'example'].every((key) => nonempty(plain.brief[key]))) fail('customer explanation');
+  const explanationWords = Object.values(plain.brief).join(' ').trim().split(/\s+/).length;
+  if (explanationWords < 70 || explanationWords > 150) fail('customer explanation must contain 70–150 words');
   for (const key of ['does', 'benefits', 'chooseIf', 'insteadIf']) {
     if (!stringsValid(plain[key])) fail(`plain-language ${key}`);
   }
@@ -175,6 +192,14 @@ const options = (data) => Object.entries(data).map(([value, label]) => `<option 
 const list = (values) => `<ul>${values.map((value) => `<li>${escapeHTML(value)}</li>`).join('')}</ul>`;
 const external = (url, label, className = '') => `<a${className ? ` class="${className}"` : ''} href="${escapeHTML(url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(label)}<span class="sr-only"> (opens in a new tab)</span></a>`;
 const renderSteps = (steps) => steps.map(([title, detail]) => `<li><h4>${escapeHTML(title)}</h4><p>${escapeHTML(detail)}</p></li>`).join('');
+const problemIcons = {
+  engineering: 'm8 6-6 6 6 6m8-12 6 6-6 6M14 3l-4 18',
+  answers: 'M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Zm-2 5 6 6M7 8h6m-6 4h4',
+  documents: 'M6 2h9l5 5v15H6V2Zm9 0v6h5M10 12h6m-6 4 2 2 4-4',
+  drafting: 'm15 4 5 5M4 20l5-1L21 7a2 2 0 0 0-5-5L4 14v6Zm8 1h9',
+  service: 'M4 13V10a8 8 0 0 1 16 0v3M4 11H2v7h4v-7H4Zm16 0h2v7h-4v-7h2Zm0 7v2l-5 2h-3',
+  data: 'M3 3v18h19M7 16v-5m5 5V6m5 10V9',
+};
 const renderPathways = () => pathways.map((item) => `<article class="pathway-card" id="pathway-${item.id}" data-primary="${item.primary}" aria-labelledby="pathway-${item.id}-title">
   <p class="eyebrow">${escapeHTML(item.lead)}</p><h3 id="pathway-${item.id}-title">${escapeHTML(item.title)}</h3>
   <p class="pathway-outcome">${escapeHTML(item.outcome)}</p>
@@ -244,16 +269,18 @@ const renderGraph = (architecture, id) => {
     <details class="connection-details"><summary>Read all ${architecture.edges.length} connections</summary><ol class="connection-list">${architecture.edges.map(([from, to, label]) => `<li><strong>${escapeHTML(architecture.nodes.find((node) => node.id === from).title)} <span aria-hidden="true">→</span><span class="sr-only"> to </span> ${escapeHTML(architecture.nodes.find((node) => node.id === to).title)}</strong><p>${escapeHTML(label)}</p></li>`).join('')}</ol></details>
     ${list(architecture.notes)}</figure>`;
 };
+const renderBrief = (brief, className) => `<dl class="${className}">${[['what', 'What it is'], ['does', 'How it works'], ['value', 'Use it for'], ['example', 'Example scenario']].map(([key, label]) => `<div${key === 'example' ? ' class="summary-example"' : ''}><dt>${label}</dt><dd>${escapeHTML(brief[key])}</dd></div>`).join('')}</dl>`;
 const renderSolution = (item) => {
   const dossier = dossiers[item.id];
   const { architecture, ingestion, deployment, plain } = dossier;
   const id = `solution-${item.id}`;
   return `<section class="solution-page section wrap" id="${id}" data-page="solution" data-id="${item.id}" aria-labelledby="${id}-title">
     <a class="text-link solution-back" href="#candidate-title-${item.id}"><span aria-hidden="true">←</span> Back to solutions</a>
-    <header class="solution-heading"><div><p class="eyebrow">${escapeHTML(bundles[item.bundle])} / ${escapeHTML(dossier.kind)}</p><h2 id="${id}-title">${escapeHTML(item.name)}</h2><p class="solution-headline">${escapeHTML(dossier.headline)}</p><p>${escapeHTML(dossier.description)}</p></div>
+    <header class="solution-heading"><div><p class="eyebrow">${escapeHTML(bundles[item.bundle])} / ${escapeHTML(dossier.kind)}</p><h2 id="${id}-title">${escapeHTML(item.name)}</h2><p class="solution-headline">${escapeHTML(dossier.headline)}</p></div>
     <div class="solution-actions"><button class="button primary shortlist-toggle" data-select="${item.id}" type="button" aria-pressed="false" hidden>Add to shortlist</button><a class="text-link" href="#shortlist">View my shortlist <span aria-hidden="true">→</span></a></div></header>
+    ${renderBrief(plain.brief, 'solution-summary')}
     <dl class="solution-facts"><div><dt>Who it helps</dt><dd>${escapeHTML(dossier.audience)}</dd></div><div><dt>What you get</dt><dd>${escapeHTML(dossier.deliverables.join(' / '))}</dd></div></dl>
-    <nav class="solution-nav" aria-label="${escapeHTML(item.name)} sections"><a href="#${id}-plain">In plain terms</a><a href="#${id}-workflow">Uses &amp; workflow</a><a href="#${id}-architecture">Architecture</a><a href="#${id}-ingestion">Data &amp; ingestion</a><a href="#${id}-setup">Deployment</a><a href="#${id}-specialists">Work with specialists</a><a href="#${id}-sources">Sources</a><a href="#${id}-notes">Evaluation notes</a></nav>
+    <nav class="solution-nav" aria-label="${escapeHTML(item.name)} sections"><a href="#${id}-plain">In plain terms</a><a href="#${id}-workflow">Uses &amp; workflow</a><a href="#${id}-architecture">Architecture</a><a href="#${id}-ingestion">Data &amp; ingestion</a><a href="#${id}-setup">Deployment &amp; code access</a><a href="#${id}-specialists">Deployment assistance</a><a href="#${id}-sources">Code &amp; sources</a><a href="#${id}-notes">Evaluation notes</a></nav>
     <div class="solution-body">
       ${dossier.sourceReview ? `<aside class="source-review" aria-labelledby="${id}-review-title"><h3 id="${id}-review-title">Upstream maintenance review</h3><p>Reviewed <time datetime="${dossier.sourceReview.reviewedOn}">${dossier.sourceReview.reviewedOn}</time>. ${escapeHTML(dossier.sourceReview.summary)}</p><a class="text-link" href="#${id}-sources">Read the pinned source references <span aria-hidden="true">→</span></a></aside>` : ''}
       <section class="solution-section" id="${id}-plain" aria-labelledby="${id}-plain-title">
@@ -264,7 +291,7 @@ const renderSolution = (item) => {
         <div class="fit-layout"><div><h4>Choose this if</h4>${list(plain.chooseIf)}</div><div><h4>Consider something else if</h4>${list(plain.insteadIf)}</div></div>
       </section>
       <section class="solution-section" id="${id}-workflow" aria-labelledby="${id}-workflow-title">
-        <div class="solution-section-heading"><div><p class="eyebrow">01 / Use it for the right job</p><h3 id="${id}-workflow-title">Where it earns its place.</h3></div><p>${escapeHTML(dossier.alias)}</p></div>
+        <div class="solution-section-heading"><div><p class="eyebrow">01 / Use it for the right job</p><h3 id="${id}-workflow-title">Where it earns its place.</h3></div><p>${escapeHTML(dossier.description)}</p></div>
         <div class="fit-layout"><div><h4>Best uses</h4>${list(dossier.useCases)}</div><div><h4>Know the boundary</h4>${list(dossier.boundaries)}</div></div>
         <div class="product-surface"><h4>${architecture.basis === 'documented' ? 'How people use it' : 'Experience and implementation to confirm'}</h4><p>${escapeHTML(dossier.surface)}</p></div>
         <ol class="workflow-steps">${renderSteps(dossier.workflow)}</ol>
@@ -279,16 +306,17 @@ const renderSolution = (item) => {
       </section>
       <section class="solution-section" id="${id}-setup" aria-labelledby="${id}-setup-title">
         <div class="solution-section-heading"><div><p class="eyebrow">04 / Make a start</p><h3 id="${id}-setup-title">Your path to a tenant pilot.</h3></div><p>${escapeHTML(deployment.method)}</p></div>
-        <div class="setup-layout"><div class="setup-source"><h4>Before you begin</h4>${list(deployment.prerequisites)}${dossier.repository ? external(dossier.repository, 'Open pinned source', 'button primary') : '<p><strong>Repository not verified for this catalog entry.</strong> Platform documentation or a proposed design is not an installable application.</p>'}<h4>Budget separately for</h4>${list(deployment.costs)}<p>No deployment commands run from this site.</p></div><ol class="setup-steps">${renderSteps(deployment.steps)}</ol></div>
+        <div class="setup-layout"><div class="setup-source"><div class="code-access"><h4>Code &amp; access</h4>${dossier.repository ? external(dossier.repository, 'Open public repository (pinned)', 'button primary') : dossier.privateSource ? `<p>${escapeHTML(dossier.privateSource)}</p>` : '<p><strong>Repository not verified for this catalog entry.</strong> Platform documentation or a proposed design is not an installable application.</p>'}<a class="text-link" href="#engagement">Arrange access or deployment help <span aria-hidden="true">→</span></a></div><h4>Before you begin</h4>${list(deployment.prerequisites)}<h4>Budget separately for</h4>${list(deployment.costs)}<p>No deployment commands run from this site.</p></div><ol class="setup-steps">${renderSteps(deployment.steps)}</ol></div>
       </section>
       <section class="solution-section" id="${id}-specialists" aria-labelledby="${id}-specialists-title">
-        <div class="solution-section-heading"><div><p class="eyebrow">05 / Shape the engagement</p><h3 id="${id}-specialists-title">Bring the right people to the first session.</h3></div><p>Ask your Microsoft account team to scope CSA or specialist assistance. The roles below are suggested, subject to an agreed engagement, not a support entitlement or promise of free implementation.</p></div>
+        <div class="solution-section-heading"><div><p class="eyebrow">05 / From selection to adoption</p><h3 id="${id}-specialists-title">Deploy with your team—or with our help.</h3></div><p>We can work with your AI and platform teams from code access and architecture through approved deployment, evaluation, handover and onboarding more teams. Agree scope, delivery roles, funding and support with the program/account team; this is not a support entitlement or promise of free implementation.</p></div>
+        <a class="text-link" href="#engagement">See the end-to-end engagement <span aria-hidden="true">→</span></a>
         <ul class="specialist-roles">${renderSteps(dossier.specialists)}</ul>
         <div class="fit-layout"><div><h4>Bring to the session</h4>${list(dossier.bring)}</div><div><h4>Agree how to judge success</h4>${list(dossier.acceptance)}</div></div>
-        <div class="pilot-milestone"><strong>First working session</strong><p>${escapeHTML(dossier.workshop)}</p><a class="text-link" href="#capacity">Shared tenant checklist <span aria-hidden="true">→</span></a></div>
+        <div class="pilot-milestone"><strong>First working session</strong><p>${escapeHTML(dossier.workshop)}</p><a class="text-link" href="#preparation">Shared preparation checklist <span aria-hidden="true">→</span></a></div>
       </section>
       <section class="solution-section" id="${id}-sources" aria-labelledby="${id}-sources-title">
-        <div class="solution-section-heading"><div><p class="eyebrow">06 / Inspect the basis</p><h3 id="${id}-sources-title">Read the source, not a sales promise.</h3></div><p>Public source review: ${researchDate}. Documentation and code inspection are not functional testing or deployment certification.</p></div>
+        <div class="solution-section-heading"><div><p class="eyebrow">06 / Inspect the basis</p><h3 id="${id}-sources-title">Code, guides and references.</h3></div><p>Public source review: ${researchDate}. Documentation and code inspection are not functional testing or deployment certification.</p></div>
         <ul class="dossier-sources">${dossier.sources.map((source) => `<li>${external(source.url, source.label)}${source.supports ? `<p>${escapeHTML(source.supports)}</p>` : ''}<p class="source-path">${escapeHTML(source.url)}</p></li>`).join('')}</ul>
         ${dossier.revision ? `<p class="source-note">Pinned revision <code>${escapeHTML(dossier.revision)}</code>. Public upstream starting point, not the tested private adaptation. Review its license and operating requirements.</p>` : '<p class="source-note">Platform references explain the integration or design option only; they do not verify a portfolio-specific package.</p>'}
       </section>
@@ -305,15 +333,22 @@ const renderCard = (item) => `<article class="candidate" data-id="${item.id}" da
   <div class="candidate-top"><span class="candidate-area">${escapeHTML(bundles[item.bundle])}</span><span class="candidate-area candidate-kind">${escapeHTML(plainKinds[dossiers[item.id].kind])}</span></div>
   <h3 id="candidate-title-${item.id}">${escapeHTML(item.name)}</h3>
   <p class="candidate-alias">${escapeHTML(dossiers[item.id].alias)}</p>
-  <p class="candidate-value">${escapeHTML(dossiers[item.id].headline)}</p>
+  ${renderBrief(dossiers[item.id].plain.brief, 'candidate-value solution-summary')}
   <div class="candidate-taxonomy"><p>${escapeHTML(dossiers[item.id].audience)}</p></div>
   <a class="detail-button" href="#solution-${item.id}" aria-label="Explore and get started: ${escapeHTML(item.name)}">Explore &amp; get started <span aria-hidden="true">→</span></a>
 </article>`;
 
-const renderRoadmap = (item, index) => `<li class="roadmap-item">
-  <span class="roadmap-index" aria-hidden="true">${String(index + 1).padStart(2, '0')}</span>
-  <div><h3>${escapeHTML(item.title)}</h3><span class="roadmap-tag">${escapeHTML(item.priority)} · Not deployed</span><p class="roadmap-bundle">${escapeHTML(bundles[item.bundle])}</p></div>
-  <div class="roadmap-explanation"><p>${escapeHTML(item.value)}</p><p class="roadmap-boundary"><strong>Boundary:</strong> ${escapeHTML(item.boundary)}</p></div>
+const renderRoadmap = (item) => `<li class="roadmap-item" id="idea-${item.id}" aria-labelledby="idea-${item.id}-title">
+  <div><span class="roadmap-tag">Concept · Not built or deployed</span><h3 id="idea-${item.id}-title">${escapeHTML(item.title)}</h3><p class="roadmap-bundle">${escapeHTML(item.audience)}</p></div>
+  <div class="roadmap-explanation"><p>${escapeHTML(item.value)}</p>
+    <dl class="idea-output"><dt>What your team would receive</dt><dd>${escapeHTML(item.output)}</dd></dl>
+    <p class="roadmap-boundary"><strong>Human decision:</strong> ${escapeHTML(item.boundary)}</p>
+    <details class="idea-detail"><summary>How to explore this idea</summary><div>
+      <h4>Start small and measure</h4><p>${escapeHTML(item.evaluation)}</p>
+      <h4>Related starting point to assess</h4><a href="#solution-${item.related}">${escapeHTML(candidates.find((candidate) => candidate.id === item.related).name)}</a><p>${escapeHTML(item.gap)}</p>
+      <a class="text-link" href="#idea-discussion">Prepare a use-case discussion <span aria-hidden="true">→</span></a>
+    </div></details>
+  </div>
 </li>`;
 
 export async function buildSite() {
@@ -338,9 +373,10 @@ export async function buildSite() {
     THEME: theme,
     CSS: css,
     APP: app,
+    CANDIDATE_COUNT: candidates.length,
     BUNDLE_OPTIONS: options(bundles),
     PROBLEM_OPTIONS: options(problems),
-    PROBLEM_LINKS: Object.entries(problems).map(([key, label]) => `<a class="problem-link" href="#catalog" data-problem-link="${key}">${escapeHTML(label)}<span aria-hidden="true">→</span></a>`).join('\n'),
+    PROBLEM_LINKS: Object.entries(problems).map(([key, label]) => `<a class="problem-link" href="#catalog" data-problem-link="${key}"><svg class="problem-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="${problemIcons[key]}"/></svg><span>${escapeHTML(label)}</span><span class="problem-arrow" aria-hidden="true">→</span></a>`).join('\n'),
     TENANT_STEPS: tenantSteps.map((step) => `<li>${escapeHTML(step)}</li>`).join(''),
     GLOSSARY: glossary.map(([term, meaning]) => `<div><dt>${escapeHTML(term)}</dt><dd>${escapeHTML(meaning)}</dd></div>`).join(''),
     PATHWAYS: renderPathways(),
@@ -385,5 +421,5 @@ export async function buildSite() {
 if (process.argv[1] && pathToFileURL(resolve(process.argv[1])).href === import.meta.url) {
   const result = await buildSite();
   console.log(`Built dist/index.html (${result.bytes.toLocaleString('en-US')} bytes), dist/staticwebapp.config.json and dist/web.config.`);
-  console.log('22 candidates · 5 planned workflows · 2 script hashes · 1 style hash · no runtime dependencies');
+  console.log(`${candidates.length} candidates · ${roadmap.length} planned workflows · 2 script hashes · 1 style hash · no runtime dependencies`);
 }
