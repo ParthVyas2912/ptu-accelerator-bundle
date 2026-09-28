@@ -3,12 +3,24 @@ import { createHash } from 'node:crypto';
 import { platformGuides, sources } from '../src/onboarding.mjs';
 import { dossiers } from '../src/dossiers.mjs';
 import { catalogReview, programSources } from '../src/program.mjs';
+import { brandAssets } from '../scripts/build.mjs';
 
 export const repositoryURL = 'https://github.com/ParthVyas2912/ptu-accelerator-bundle';
 export const deployedURL = 'https://blue-beach-0fb8cd70f.5.azurestaticapps.net/';
 
 export function assertPublicContent(output, additionalPublicURLs = []) {
-  const scrubbed = output.replaceAll(repositoryURL, '');
+  const approvedImages = new Set(Object.values(brandAssets).map((asset) => asset.sha256));
+  for (const [tag] of output.matchAll(/<img\b[^>]*>/gi)) {
+    const encoded = tag.match(/\bsrc="data:image\/png;base64,([A-Za-z0-9+/]+={0,2})"/)?.[1];
+    assert.ok(encoded, 'Public images must be embedded PNG assets.');
+    assert.ok(approvedImages.has(createHash('sha256').update(Buffer.from(encoded, 'base64')).digest('hex')),
+      'Public page contains an unreviewed image.');
+  }
+  // These are documented setting names, not environment values. All value,
+  // GUID, endpoint and credential checks still apply to the remaining content.
+  const scrubbed = output.replaceAll(repositoryURL, '')
+    .replace(/\b(?:AZURE_CLIENT_ID|AZURE_TENANT_ID|AZURE_SUBSCRIPTION_ID|AUTH_CLIENT_ID)\b/g, 'SETTING')
+    .replaceAll('-ResourceGroupName &quot;&lt;resource-group&gt;&quot;', 'PLACEHOLDER_ARGUMENT');
   const forbidden = [
     /\b[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\b/i,
     /\b[A-Z]:[\\/]|\\\\[a-z0-9_-]+\\/i,

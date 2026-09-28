@@ -14,6 +14,27 @@
       "rule": "LITERAL_SECRET",
       "file_sha256": "415ae6e3cca748780dfac6be5ef0dad74615b4d4e064b6d657c767ee924f8b50",
       "reason": "Same reviewed credential-free metadata; exact CRLF representation."
+    },
+    {
+      "path": "site/src/assets/microsoft-azure.png",
+      "line": 0,
+      "rule": "UNDECODABLE_TEXT",
+      "file_sha256": "2913455dd9a56ad3d3d65888ef786e5b92a77abb3a0cfe1307bcada69e21994d",
+      "reason": "Reviewed supplied Microsoft Azure logo PNG; IHDR/IDAT/IEND only, no text or EXIF metadata."
+    },
+    {
+      "path": "site/src/assets/microsoft-gray.png",
+      "line": 0,
+      "rule": "UNDECODABLE_TEXT",
+      "file_sha256": "1cba7917598d7e19de97e72628ed90857e7349103052806b6e36542e885b61a7",
+      "reason": "Reviewed supplied Microsoft logo PNG; IHDR/IDAT/IEND only, no text or EXIF metadata."
+    },
+    {
+      "path": "site/src/assets/microsoft-white.png",
+      "line": 0,
+      "rule": "UNDECODABLE_TEXT",
+      "file_sha256": "5bd34526899732e79f9fe3a3da5b80adbceb8fe3fea0afee9a11cbc99b40621c",
+      "reason": "Reviewed supplied Microsoft logo PNG; IHDR/IDAT/IEND only, no text or EXIF metadata."
     }
   ]
 }

@@ -20,6 +20,66 @@ current catalog rather than maintained as separate totals.
 
 ## Stakeholder experience
 
+The visual showroom leads with an organization-to-outcomes illustration, a compact
+solution gallery and a four-stage delivery journey. These are authored HTML/SVG
+graphics, not product screenshots, promised results or customer evidence.
+Separately, the user supplied Brand Central Microsoft and Microsoft Azure assets
+for this site. Microsoft attribution appears in the main header and footer; the Azure
+mark accompanies the deployment guidance. These placements do not imply ownership
+of every catalog entry or an official product endorsement.
+
+`src/assets/` contains web-sized PNG derivatives of the supplied
+`Microsoft-logo_cmyk_c-gray.pdf`, `Microsoft-logo_rgb_wht.pdf` and
+`MS-Azure_logo_stacked_c-gray_rgb.png`. PDF pages are rendered to sRGB with alpha;
+the Azure PNG is proportionally downsampled. Artwork, original clear space and
+proportions are retained; metadata is not carried forward. No recoloring, cropping
+or third-party asset lookup is used. The supplied white Microsoft artwork is used
+in dark mode; the gray Azure mark remains on a white plate in both themes.
+Original PDFs and the authenticated Brand Central site are not published.
+These trademarks remain Microsoft's property, not assets relicensed by this repository.
+The build embeds only three explicitly named, SHA-256-pinned PNGs; replacing an
+asset requires a new review and hash. Image use does not add any network requests.
+
+The header keeps navigation, theme switching and **My plan** within reach.
+The hero shows an organization → chosen AI toolkit → measurable outcomes journey,
+not a runtime architecture or three competing product categories. Four illustrated
+use-case links open their own guides; the full catalog remains one click away.
+All three stages remain visible without JavaScript. Hover/focus feedback is restrained,
+and reduced-motion preferences disable movement.
+Choosing one of six challenges reveals up to three matching solutions in catalog
+order, with the full match count and a link to the filtered library. This is
+documented-use-case matching, not an AI recommendation or readiness ranking.
+The library supports **Save to plan** for all 20 entries, without side-by-side
+comparison, rankings or competing-product controls. Customers build their own
+combination. Requirements and open gates remain in each guide and implementation
+brief. A floating workspace and header count preserve access while browsing.
+Selections are in memory only; reloading clears them.
+
+The existing semantic HTML, CSS and plain JavaScript stack is retained deliberately:
+the complete experience remains one self-contained artifact with no runtime
+dependencies, analytics, model calls or remote assets. Navigation and full guides
+remain readable without JavaScript; interactive discovery and planning require it.
+
+The customer journey answers two decisions: **understand the solution** (problem,
+users, useful outputs, workflow and architecture), then **run it in your environment**
+(code access, package-specific prerequisites, permitted inputs, separate service
+costs, setup and acceptance). Existing PTU owners and prospective buyers can use
+the same catalog; prospective buyers are directed to prove demand before purchase.
+Cards and guides distinguish Microsoft-owned public repositories from platform
+guidance, private owner-led code and proposed custom workflows. This is provenance,
+not a maintenance, compliance, production-readiness or PTU-compatibility label.
+
+Repeated fit/evidence detail and step-by-step runbooks use native disclosures.
+Business summaries, architecture, requirements and maintenance notices remain
+accessible without opening the commands. Direct links open the relevant disclosure;
+printing expands it and restores its prior state afterward. Source links stay pinned,
+but long duplicate URL strings no longer interrupt the source-reference list.
+**Plan this solution with us** retains existing shortlist selections and adds the
+current solution to the implementation brief with its actual data requirements,
+prerequisites and separate costs. It sends nothing, books nothing and grants no
+deployment approval. Handover explicitly covers user training, an adoption champion,
+operational support and a review date, not merely a provisioned environment.
+
 - **Focused pilot paths:** optional, collapsed planning guidance under **How we help**,
   not a second wall of recommendations on the overview. Three outcome-led starting plans, with engineering first
   and CWYD identified as the recommended first knowledge pilot. Each names a bounded
@@ -46,18 +106,19 @@ current catalog rather than maintained as separate totals.
   points and planned work without repeating a full catalog. Engineering is first
   in the area panels, problem entry points, filter options and catalog order;
   stable evidence IDs and source revisions are unchanged.
-- **Solutions:** all 20 cards explain “What it is”, “How it works”, “Use it for”
-  and an “Example scenario”: 70–150 words covering inputs, workflow, outputs and
-  a concrete use case. These are illustrative scenarios, not customer references
-  or proven outcomes. Two wider desktop columns give the explanation room to
-  breathe, stacking on mobile. Cards also show intended teams, problem/area filters,
+- **Solutions:** all 20 cards show an illustrative three-stage workflow, one outcome,
+  an audience and provenance. Each card stays under 95 words including visual labels;
+  the full 70–150-word explanation and example remain in the solution guide.
+  Three desktop columns become two on smaller screens and one on mobile.
+  Cards also show problem/area filters,
   search and a card/list toggle. No lab readiness badges, status filters or
   test-summary headlines appear on the cards.
 - **Solution dossiers:** “Explore & get started” opens a full-width, shareable page,
-  not a dialog. Eight working section links lead to plain-language guidance, uses/workflow, component
-  architecture, data/ingestion, deployment, specialist engagement, inspected public
-  sources and expandable evaluation notes. The generic mock workspaces and
-  noninteractive tab-like labels are removed.
+  not a dialog. A side-by-side explanation and workflow illustration lead into seven
+  working section links: overview, architecture, data, deployment, sources,
+  evaluation notes and help. A sticky reading sidebar becomes a wrapping section
+  navigator on smaller screens. Fit and specialist guidance retain their native direct links.
+  The illustrations describe intended flows, not fabricated application interfaces.
   Every dossier describes its own interface, suitable tasks, outputs, boundaries,
   prerequisites, service costs and first working session. Source-informed diagrams
   use package-specific nodes and directed relationships, not a fixed six-box RAG
@@ -74,6 +135,22 @@ current catalog rather than maintained as separate totals.
   The same explanation and highlighted example open each dossier before technical
   detail and travel into the printable shortlist.
   Deployment sections expose public repository links or explicit access guidance.
+  All 20 now include an ordered deployment/configuration walkthrough, prerequisites,
+  separate costs and acceptance checks. Eighteen link directly to a full pinned
+  deployment manual or official platform guide; SpecSuite and RFP review explicitly
+  require an owner-supplied runbook or custom implementation. Source checkout and
+  package-specific commands are printable text, never executed by the site.
+  Instructions reviewed 25 September 2026 do not change historical test status.
+  Walkthroughs previously expanded the HTML budget from 672 to 704 KiB; the visual
+  showroom adds 32 KiB for the 40 inline workflow illustrations, hero and styles.
+  Supplied logo derivatives add a 64 KiB allowance, for a final 800 KiB limit.
+  This is an artifact-size budget, not a spending allowance. Shared execution/recovery
+  guidance is rendered once.
+  Commands expand separately by keyboard and are expanded automatically for print;
+  the screen's disclosure state is restored afterward.
+  Manual image installation, data initialization and authentication remain distinct
+  steps where required. Follow the full manual for detailed platform screens and
+  environment-specific parameters; a successful provision is not application acceptance.
   SpecSuite's private code can be requested through an owner-approved access or
   handoff arrangement; other unresolved entries are not assumed to be private
   or deployable, and their architecture/evaluation qualifications remain intact.
@@ -82,7 +159,7 @@ current catalog rather than maintained as separate totals.
   improvements or modernization. Its diagram is conceptual, not verified runtime
   architecture; universal language coverage and successful round-trip generation
   are not claimed. Historical testing status and source-review dates are unchanged.
-- **Shortlist:** add or remove multiple candidates from their solution pages,
+- **Shortlist:** save or remove multiple candidates from catalog cards or solution pages,
   follow the shortlist link with keyboard focus transferred,
   read selected guides together and print a selected plan with the tenant checklist.
   Selections are in memory only and survive view/filter changes, not reloads.
@@ -127,7 +204,7 @@ links, navigation and focus across the overview, catalog, dossiers and guides.
 Neutral surfaces remain consistent in both themes; there is no separate
 homepage-only button palette. No external illustration,
 font, icon library, analytics or runtime dependency is required. The overview visual
-uses semantic HTML/CSS with decorative inline SVG icons; dossier diagrams use inline SVG
+uses semantic HTML/CSS and original inline SVG drawings; dossier diagrams use inline SVG
 with equivalent component and connection text. They explain source-informed or
 proposed designs, **not** a verified deployment.
 PTUs, Standard and Batch are presented as legitimate choices, with compatible
@@ -135,7 +212,7 @@ model/API/geography routing and separate service costs stated alongside them.
 
 Three compact work-area cards keep the overview scannable; use-case ideas have
 equal weight so customer priorities drive the discussion. The library still supports both dense
-comparison via its list layout and browsing via cards. Progressive disclosure
+scanning via its list layout and browsing via cards. Progressive disclosure
 does not hide roadmap safety boundaries or imply production readiness.
 Neutral panels use opaque surfaces so their contrast does not depend on
 whichever background sits behind them.
@@ -220,7 +297,7 @@ do not click outbound links, and flag unexpected external page requests.
 
 Tests cover:
 
-- Byte-identical repeat builds; output-file and 672 KiB HTML budget, including all
+- Byte-identical repeat builds; output-file and 800 KiB HTML budget, including all
   20 offline dossiers, source references and SVG graphs (replacing the 384 KiB
   mockup-guide budget). This is an artifact-size limit, not a spending allowance.
 - All 20 candidates, retired-entry exclusion, stable IDs, all five planned workflows and material evidence caveats.
@@ -421,12 +498,16 @@ the style block using SHA-256. It generates a matching HTTP CSP in
 `staticwebapp.config.json`, plus a meta CSP for local-file use. The HTTP-only
 `frame-ancestors 'none'` directive is intentionally absent from the meta policy.
 
-The policy denies connections, images, fonts, frames/objects, form submission,
+The policy denies connections, external images, fonts, frames/objects, form submission,
 inline event handlers and unapproved scripts/styles. No `unsafe-inline`, eval,
 dynamic HTML insertion or broad source wildcard is needed. Additional headers
 include no-referrer, nosniff, DENY framing, a restrictive Permissions Policy,
 HSTS and same-origin isolation boundaries. The file is revalidated rather than
 cached indefinitely.
+
+`img-src data:` permits the embedded logo PNGs. Build and public-content contracts
+restrict images to the three reviewed hashes; external URLs and unreviewed data
+images are rejected. This does not permit uploads or runtime image loading.
 
 Rebuild after any source change. Do not edit or minify the output after hashing.
 Deploy `index.html` and its generated configuration together. The hosting
@@ -441,6 +522,8 @@ Public-content scans are defense in depth, not a replacement for editorial revie
 | `src/content.mjs` | Curated public-safe data; 20 candidates with stable historical IDs and five planned workflows |
 | `src/onboarding.mjs` | Six problems, candidate mappings, public source pins/platform references and shared tenant checklist |
 | `src/dossiers.mjs` | Twenty researched product dossiers, source-informed/proposed component graphs, workflows, deployment and specialist guidance |
+| `src/visuals.mjs` | Original icon paths and reviewed, solution-specific illustrative workflow labels |
+| `src/assets/` | Three reviewed, web-sized Microsoft logo PNGs; embedded into the single HTML artifact |
 | `src/index.html` | Semantic structure and explanatory content |
 | `src/styles.css` | Exact Clawpilot base tokens, responsive layouts and print rules |
 | `src/theme.js` | Required first theme snippet plus explicit valid override correction |

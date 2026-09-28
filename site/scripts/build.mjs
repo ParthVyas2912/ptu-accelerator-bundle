@@ -5,6 +5,8 @@ import { resolve } from 'node:path';
 import { bundles, candidates, catalogCandidates, evidenceDate, fits, glossary, plainKinds, roadmap, statuses } from '../src/content.mjs';
 import { onboarding, problems, tenantSteps } from '../src/onboarding.mjs';
 import { dossiers, researchDate } from '../src/dossiers.mjs';
+import { deploymentReviewDate } from '../src/deployment.mjs';
+import { solutionVisuals, visualIcons } from '../src/visuals.mjs';
 import { catalogReview, legacyGuidance, pathways, pilotGates, programReviewDate, programSources } from '../src/program.mjs';
 
 export const siteRoot = fileURLToPath(new URL('../', import.meta.url));
@@ -15,6 +17,21 @@ export const escapeHTML = (value) => String(value).replace(/[&<>"']/g, (char) =>
 }[char]));
 export const hash = (text) => `'sha256-${createHash('sha256').update(text, 'utf8').digest('base64')}'`;
 const readSource = async (name) => (await readFile(new URL(name, src), 'utf8')).replace(/\r\n?/g, '\n');
+export const brandAssets = {
+  MICROSOFT_GRAY: { file: 'microsoft-gray.png', sha256: '1cba7917598d7e19de97e72628ed90857e7349103052806b6e36542e885b61a7' },
+  MICROSOFT_WHITE: { file: 'microsoft-white.png', sha256: '5bd34526899732e79f9fe3a3da5b80adbceb8fe3fea0afee9a11cbc99b40621c' },
+  MICROSOFT_AZURE: { file: 'microsoft-azure.png', sha256: '2913455dd9a56ad3d3d65888ef786e5b92a77abb3a0cfe1307bcada69e21994d' },
+};
+async function readBrandAssets() {
+  return Object.fromEntries(await Promise.all(Object.entries(brandAssets).map(async ([key, asset]) => {
+    const path = new URL(`assets/${asset.file}`, src);
+    const info = await lstat(path);
+    if (!info.isFile() || info.isSymbolicLink() || info.size > 32 * 1024) throw new Error(`Invalid brand asset: ${asset.file}`);
+    const bytes = await readFile(path);
+    if (createHash('sha256').update(bytes).digest('hex') !== asset.sha256) throw new Error(`Review changed brand asset: ${asset.file}`);
+    return [key, `data:image/png;base64,${bytes.toString('base64')}`];
+  })));
+}
 
 // Fail closed rather than copying, publishing or deleting unexpected material.
 // Only directory metadata is inspected; unexpected file contents are never read.
@@ -84,6 +101,11 @@ export function validateContent() {
       throw new Error(`Incomplete getting-started guidance for candidate ${item.id}`);
     }
     validateDossier(dossiers[item.id], item.id);
+    const visual = solutionVisuals[item.id];
+    if (!visual || !nonempty(visual.audience) || !pairsValid(visual.stages)
+      || visual.stages.length !== 3 || visual.stages.some(([icon]) => !visualIcons[icon])) {
+      throw new Error(`Missing workflow illustration for candidate ${item.id}`);
+    }
   });
   validateRoadmap();
   validateProgram();
@@ -157,6 +179,14 @@ export function validateDossier(dossier, id) {
     || !pairsValid(ingestion.stages)) fail('ingestion');
   if (!deployment || !nonempty(deployment.method) || !pairsValid(deployment.steps)
     || !stringsValid(deployment.prerequisites) || !stringsValid(deployment.costs)) fail('deployment');
+  const walkthrough = deployment.walkthrough;
+  if (!walkthrough || !nonempty(walkthrough.route) || !nonempty(walkthrough.verify)
+    || !Array.isArray(walkthrough.steps) || walkthrough.steps.length < 5
+    || !walkthrough.steps.every((step) => Array.isArray(step) && [2, 3].includes(step.length) && step.every(nonempty))
+    || (walkthrough.source === null ? ![3, 12].includes(Number(id))
+      : !dossier.sources.some((source) => source.id === walkthrough.source))) fail('deployment walkthrough');
+  if ([3, 12].includes(Number(id)) && (walkthrough.source !== null
+    || walkthrough.steps.some((step) => step.length === 3))) fail('unverified deployment commands');
   if (!architecture || !nonempty(architecture.summary)
     || !['documented', 'proposed', 'unresolved'].includes(architecture.basis)
     || !Array.isArray(architecture.notes) || !architecture.notes.every(nonempty)
@@ -192,6 +222,38 @@ const options = (data) => Object.entries(data).map(([value, label]) => `<option 
 const list = (values) => `<ul>${values.map((value) => `<li>${escapeHTML(value)}</li>`).join('')}</ul>`;
 const external = (url, label, className = '') => `<a${className ? ` class="${className}"` : ''} href="${escapeHTML(url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(label)}<span class="sr-only"> (opens in a new tab)</span></a>`;
 const renderSteps = (steps) => steps.map(([title, detail]) => `<li><h4>${escapeHTML(title)}</h4><p>${escapeHTML(detail)}</p></li>`).join('');
+const renderCommand = (command) => `<pre class="deployment-command"><code>${escapeHTML(command)}</code></pre>`;
+const icon = (name) => `<svg class="visual-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="${visualIcons[name]}"/></svg>`;
+const renderVisual = (item, compact = false) => {
+  const visual = solutionVisuals[item.id];
+  return `<figure class="solution-visual${compact ? ' visual-compact' : ''}" aria-label="${escapeHTML(item.name)}: illustrative workflow">
+    <figcaption><span>${compact ? 'The idea at a glance' : 'From input to useful work'}</span><span>Illustrative${dossiers[item.id].architecture.basis === 'proposed' ? ' / proposed' : ''}</span></figcaption>
+    <ol class="visual-flow">${visual.stages.map(([name, label], index) => `<li>${icon(name)}<span>${escapeHTML(label)}</span><small>${['Input', 'Process', 'Output to evaluate'][index]}</small></li>`).join('')}</ol>
+    ${compact ? '' : '<p class="visual-caption">Intended workflow, not a product screenshot or a verified result. See the guide for limitations.</p>'}
+  </figure>`;
+};
+const renderDeployment = (dossier, id) => {
+  const guide = dossier.deployment.walkthrough;
+  const source = dossier.sources.find((item) => item.id === guide.source);
+  const checkout = dossier.repository
+    ? `git clone ${dossier.repository.replace(/\/tree\/[a-f0-9]{40}$/, '.git')} accelerator\nSet-Location accelerator\ngit checkout --detach ${dossier.revision}\ngit rev-parse HEAD` : null;
+  return `<div class="deployment-route"><strong>${escapeHTML(guide.route)}</strong><p>Instructions reviewed ${deploymentReviewDate}; source-inspected, not deployment-tested. ${source ? external(source.url, 'Open full deployment manual', 'text-link') : 'A complete installation runbook is not yet available; follow the access or implementation path below.'}</p></div>
+    <p class="deployment-safety">Approval required; commands do not run here. <a href="#deployment-safety">Read the shared execution and recovery guidance.</a></p>
+    <details class="deployment-runbook" id="${id}-runbook"><summary>Open the step-by-step setup guide</summary>
+    ${checkout ? `<details class="deployment-checkout"><summary>Get the reviewed source revision (PowerShell)</summary>${renderCommand(checkout)}</details>` : ''}
+    <ol class="setup-steps">${guide.steps.map(([title, detail, command]) => `<li><h4>${escapeHTML(title)}</h4><p>${escapeHTML(detail)}</p>${command ? `<details class="command-disclosure"><summary>Show commands</summary>${renderCommand(command)}</details>` : ''}</li>`).join('')}</ol>
+    </details>
+    <div class="deployment-verify"><h4>Verify before sharing</h4><p>${escapeHTML(guide.verify)}</p></div>`;
+};
+export const sourceLabel = (dossier) => {
+  if (dossier.repository) {
+    if (!/^https:\/\/github\.com\/(?:microsoft|Azure-Samples)\//.test(dossier.repository)) throw new Error('Review new source ownership before labeling it.');
+    return 'Microsoft-owned public repository';
+  }
+  if (dossier.privateSource) return 'Private owner-led solution';
+  if (dossier.kind === 'Proposed workflow') return 'Proposed custom workflow';
+  return 'Microsoft / GitHub platform guidance';
+};
 const problemIcons = {
   engineering: 'm8 6-6 6 6 6m8-12 6 6-6 6M14 3l-4 18',
   answers: 'M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Zm-2 5 6 6M7 8h6m-6 4h4',
@@ -278,23 +340,26 @@ const renderSolution = (item) => {
     <a class="text-link solution-back" href="#candidate-title-${item.id}"><span aria-hidden="true">←</span> Back to solutions</a>
     <header class="solution-heading"><div><p class="eyebrow">${escapeHTML(bundles[item.bundle])} / ${escapeHTML(dossier.kind)}</p><h2 id="${id}-title">${escapeHTML(item.name)}</h2><p class="solution-headline">${escapeHTML(dossier.headline)}</p></div>
     <div class="solution-actions"><button class="button primary shortlist-toggle" data-select="${item.id}" type="button" aria-pressed="false" hidden>Add to shortlist</button><a class="text-link" href="#shortlist">View my shortlist <span aria-hidden="true">→</span></a></div></header>
-    ${renderBrief(plain.brief, 'solution-summary')}
-    <dl class="solution-facts"><div><dt>Who it helps</dt><dd>${escapeHTML(dossier.audience)}</dd></div><div><dt>What you get</dt><dd>${escapeHTML(dossier.deliverables.join(' / '))}</dd></div></dl>
-    <nav class="solution-nav" aria-label="${escapeHTML(item.name)} sections"><a href="#${id}-plain">In plain terms</a><a href="#${id}-workflow">Uses &amp; workflow</a><a href="#${id}-architecture">Architecture</a><a href="#${id}-ingestion">Data &amp; ingestion</a><a href="#${id}-setup">Deployment &amp; code access</a><a href="#${id}-specialists">Deployment assistance</a><a href="#${id}-sources">Code &amp; sources</a><a href="#${id}-notes">Evaluation notes</a></nav>
+    <div class="solution-lead">${renderBrief(plain.brief, 'solution-summary')}${renderVisual(item)}</div>
+    <dl class="solution-facts"><div><dt>Who it helps</dt><dd>${escapeHTML(dossier.audience)}</dd></div><div><dt>What you get</dt><dd>${escapeHTML(dossier.deliverables.join(' / '))}</dd></div><div><dt>Source &amp; ownership</dt><dd class="solution-provenance">${escapeHTML(sourceLabel(dossier))}. <a href="#${id}-sources">View source basis</a></dd></div></dl>
+    <div class="solution-decisions"><a href="#${id}-workflow"><strong>1 / Understand the solution</strong><span>Problem, people, workflow and architecture</span></a><a href="#${id}-setup"><strong>2 / Run it in your environment</strong><span>Prerequisites, costs, setup and assistance</span></a></div>
+    <div class="solution-reader"><nav class="solution-nav" aria-label="${escapeHTML(item.name)} sections"><span class="reader-label">Inside this guide</span><a href="#${id}-workflow">Overview</a><a href="#${id}-architecture">Architecture</a><a href="#${id}-ingestion">Data &amp; inputs</a><a href="#${id}-setup">Deploy &amp; operate</a><a href="#${id}-specialists">Get help</a><a href="#${id}-sources">Sources</a><a href="#${id}-notes">Evaluation notes</a></nav>
     <div class="solution-body">
       ${dossier.sourceReview ? `<aside class="source-review" aria-labelledby="${id}-review-title"><h3 id="${id}-review-title">Upstream maintenance review</h3><p>Reviewed <time datetime="${dossier.sourceReview.reviewedOn}">${dossier.sourceReview.reviewedOn}</time>. ${escapeHTML(dossier.sourceReview.summary)}</p><a class="text-link" href="#${id}-sources">Read the pinned source references <span aria-hidden="true">→</span></a></aside>` : ''}
-      <section class="solution-section" id="${id}-plain" aria-labelledby="${id}-plain-title">
-        <div class="solution-section-heading"><div><p class="eyebrow">00 / Never seen this before</p><h3 id="${id}-plain-title">In plain terms.</h3></div><p>${escapeHTML(plain.what)}</p></div>
+      <details class="solution-section fit-detail" id="${id}-plain" aria-labelledby="${id}-plain-title">
+        <summary><h3 id="${id}-plain-title">More on fit, scope and evidence</h3></summary><div>
+        <p>${escapeHTML(plain.what)}</p>
         <div class="product-surface"><h4>What you actually receive</h4><p>${escapeHTML(plain.form)}</p></div>
         <div class="fit-layout"><div><h4>What it does</h4>${list(plain.does)}</div><div><h4>What you would gain</h4>${list(plain.benefits)}</div></div>
-        <div class="pilot-milestone"><strong>How much of that is proven?</strong><p>Those gains describe what this package is built to produce. They are not a claim about what was measured here. What this catalog actually established: ${escapeHTML(item.evidence)}</p><a class="text-link" href="#${id}-notes">Read the evaluation notes <span aria-hidden="true">→</span></a></div>
+        <div class="pilot-milestone"><strong>How much of that is proven?</strong><p>Historical evaluation, not a guarantee for your deployment: ${escapeHTML(item.evidence)}</p><a class="text-link" href="#${id}-notes">Read the evaluation notes <span aria-hidden="true">→</span></a></div>
         <div class="fit-layout"><div><h4>Choose this if</h4>${list(plain.chooseIf)}</div><div><h4>Consider something else if</h4>${list(plain.insteadIf)}</div></div>
-      </section>
+      </div></details>
       <section class="solution-section" id="${id}-workflow" aria-labelledby="${id}-workflow-title">
         <div class="solution-section-heading"><div><p class="eyebrow">01 / Use it for the right job</p><h3 id="${id}-workflow-title">Where it earns its place.</h3></div><p>${escapeHTML(dossier.description)}</p></div>
         <div class="fit-layout"><div><h4>Best uses</h4>${list(dossier.useCases)}</div><div><h4>Know the boundary</h4>${list(dossier.boundaries)}</div></div>
         <div class="product-surface"><h4>${architecture.basis === 'documented' ? 'How people use it' : 'Experience and implementation to confirm'}</h4><p>${escapeHTML(dossier.surface)}</p></div>
         <ol class="workflow-steps">${renderSteps(dossier.workflow)}</ol>
+        <div class="shortlist-actions"><a href="#${id}-architecture">See the architecture</a><a href="#${id}-setup">Check deployment requirements</a></div>
       </section>
       <section class="solution-section" id="${id}-architecture" aria-labelledby="${id}-architecture-title">
         <div class="solution-section-heading"><div><p class="eyebrow">02 / Under the hood</p><h3 id="${id}-architecture-title">Components and how they connect.</h3></div><p>${escapeHTML(architecture.summary)}</p></div>
@@ -305,8 +370,9 @@ const renderSolution = (item) => {
         <ol class="ingestion-steps">${renderSteps(ingestion.stages)}</ol><p class="pilot-milestone">${escapeHTML(ingestion.check)}</p>
       </section>
       <section class="solution-section" id="${id}-setup" aria-labelledby="${id}-setup-title">
-        <div class="solution-section-heading"><div><p class="eyebrow">04 / Make a start</p><h3 id="${id}-setup-title">Your path to a tenant pilot.</h3></div><p>${escapeHTML(deployment.method)}</p></div>
-        <div class="setup-layout"><div class="setup-source"><div class="code-access"><h4>Code &amp; access</h4>${dossier.repository ? external(dossier.repository, 'Open public repository (pinned)', 'button primary') : dossier.privateSource ? `<p>${escapeHTML(dossier.privateSource)}</p>` : '<p><strong>Repository not verified for this catalog entry.</strong> Platform documentation or a proposed design is not an installable application.</p>'}<a class="text-link" href="#engagement">Arrange access or deployment help <span aria-hidden="true">→</span></a></div><h4>Before you begin</h4>${list(deployment.prerequisites)}<h4>Budget separately for</h4>${list(deployment.costs)}<p>No deployment commands run from this site.</p></div><ol class="setup-steps">${renderSteps(deployment.steps)}</ol></div>
+        <div class="solution-section-heading"><div><p class="eyebrow">04 / Run it in your environment</p><h3 id="${id}-setup-title">What you need to get running.</h3></div><p>${escapeHTML(deployment.method)}</p></div>
+        <div class="setup-layout"><div class="setup-source"><div class="code-access"><h4>Code &amp; access</h4>${dossier.repository ? external(dossier.repository, 'Open public repository (pinned)', 'button primary') : dossier.privateSource ? `<p>${escapeHTML(dossier.privateSource)}</p>` : '<p><strong>Repository not verified for this catalog entry.</strong> Use the platform or custom-implementation path below, not a standalone app installer.</p>'}<a class="text-link" href="#engagement">Arrange access or deployment help <span aria-hidden="true">→</span></a></div><h4>Your team needs</h4><div class="setup-prerequisites">${list(deployment.prerequisites)}</div><h4>Bring approved inputs</h4><p class="setup-input">${escapeHTML(ingestion.input)}</p><h4>Budget separately for</h4><div class="setup-costs">${list(deployment.costs)}</div><p>No deployment commands run from this site.</p></div><div class="deployment-walkthrough">${renderDeployment(dossier, id)}</div></div>
+        <div class="solution-handoff"><h4>Interested in this solution?</h4><p>Use the runbook with your engineers, or take this solution and its requirements into a scoped implementation discussion.</p><button class="button primary" data-discuss="${item.id}" type="button" hidden>Plan this solution with us</button><a class="text-link" href="#${id}-specialists">See the people and preparation needed</a></div>
       </section>
       <section class="solution-section" id="${id}-specialists" aria-labelledby="${id}-specialists-title">
         <div class="solution-section-heading"><div><p class="eyebrow">05 / From selection to adoption</p><h3 id="${id}-specialists-title">Deploy with your team—or with our help.</h3></div><p>We can work with your AI and platform teams from code access and architecture through approved deployment, evaluation, handover and onboarding more teams. Agree scope, delivery roles, funding and support with the program/account team; this is not a support entitlement or promise of free implementation.</p></div>
@@ -317,29 +383,31 @@ const renderSolution = (item) => {
       </section>
       <section class="solution-section" id="${id}-sources" aria-labelledby="${id}-sources-title">
         <div class="solution-section-heading"><div><p class="eyebrow">06 / Inspect the basis</p><h3 id="${id}-sources-title">Code, guides and references.</h3></div><p>Public source review: ${researchDate}. Documentation and code inspection are not functional testing or deployment certification.</p></div>
-        <ul class="dossier-sources">${dossier.sources.map((source) => `<li>${external(source.url, source.label)}${source.supports ? `<p>${escapeHTML(source.supports)}</p>` : ''}<p class="source-path">${escapeHTML(source.url)}</p></li>`).join('')}</ul>
+        <ul class="dossier-sources">${dossier.sources.map((source) => `<li>${external(source.url, source.label)}${source.supports ? `<p>${escapeHTML(source.supports)}</p>` : ''}</li>`).join('')}</ul>
         ${dossier.revision ? `<p class="source-note">Pinned revision <code>${escapeHTML(dossier.revision)}</code>. Public upstream starting point, not the tested private adaptation. Review its license and operating requirements.</p>` : '<p class="source-note">Platform references explain the integration or design option only; they do not verify a portfolio-specific package.</p>'}
       </section>
       <details class="deployment-notes" id="${id}-notes"><summary>Deployment notes &amp; implementation considerations</summary>
         <div><h3>Package and integration</h3><p>${escapeHTML(item.next)}</p><h3>Evaluation context</h3><p>${escapeHTML(item.evidence)}</p>
-        <ul>${item.caveats.map((text) => `<li>${escapeHTML(text)}</li>`).join('')}</ul><h3>Model capacity and cost</h3><p>${escapeHTML(item.ptu)}</p>
+        <ul>${item.caveats.map((text) => `<li>${escapeHTML(text)}</li>`).join('')}</ul><h3>Model capacity and cost</h3><p class="capacity-guidance">${escapeHTML(item.ptu)}</p>
         <p>A reference design is not a deployment certification. Confirm licensing, supported components, identity, network design and operations ownership for your tenant.</p></div>
       </details>
-    </div>
-  </section>`;
+    </div></div>
+  </section>`.replace(/\n +(?=<)/g, '');
 };
 
 const renderCard = (item) => `<article class="candidate" data-id="${item.id}" data-bundle="${item.bundle}" data-problems="${onboarding[item.id].problems.join(' ')}" aria-labelledby="candidate-title-${item.id}">
+  ${renderVisual(item, true)}
   <div class="candidate-top"><span class="candidate-area">${escapeHTML(bundles[item.bundle])}</span><span class="candidate-area candidate-kind">${escapeHTML(plainKinds[dossiers[item.id].kind])}</span></div>
   <h3 id="candidate-title-${item.id}">${escapeHTML(item.name)}</h3>
   <p class="candidate-alias">${escapeHTML(dossiers[item.id].alias)}</p>
-  ${renderBrief(dossiers[item.id].plain.brief, 'candidate-value solution-summary')}
-  <div class="candidate-taxonomy"><p>${escapeHTML(dossiers[item.id].audience)}</p></div>
+  <p class="candidate-value">${escapeHTML(item.value)}</p>
+  <div class="candidate-taxonomy"><p>${escapeHTML(solutionVisuals[item.id].audience)}</p><p class="candidate-source">${escapeHTML(sourceLabel(dossiers[item.id]))}</p></div>
   <a class="detail-button" href="#solution-${item.id}" aria-label="Explore and get started: ${escapeHTML(item.name)}">Explore &amp; get started <span aria-hidden="true">→</span></a>
+  <div class="card-tools" hidden><button type="button" class="quick-select" data-quick-select="${item.id}" aria-pressed="false" aria-label="Save ${escapeHTML(item.name)} to your plan">Save to plan <span aria-hidden="true">＋</span></button></div>
 </article>`;
 
 const renderRoadmap = (item) => `<li class="roadmap-item" id="idea-${item.id}" aria-labelledby="idea-${item.id}-title">
-  <div><span class="roadmap-tag">Concept · Not built or deployed</span><h3 id="idea-${item.id}-title">${escapeHTML(item.title)}</h3><p class="roadmap-bundle">${escapeHTML(item.audience)}</p></div>
+  <div>${icon(solutionVisuals[item.related].stages[0][0])}<span class="roadmap-tag">Concept · Not built or deployed</span><h3 id="idea-${item.id}-title">${escapeHTML(item.title)}</h3><p class="roadmap-bundle">${escapeHTML(item.audience)}</p></div>
   <div class="roadmap-explanation"><p>${escapeHTML(item.value)}</p>
     <dl class="idea-output"><dt>What your team would receive</dt><dd>${escapeHTML(item.output)}</dd></dl>
     <p class="roadmap-boundary"><strong>Human decision:</strong> ${escapeHTML(item.boundary)}</p>
@@ -354,14 +422,16 @@ const renderRoadmap = (item) => `<li class="roadmap-item" id="idea-${item.id}" a
 export async function buildSite() {
   await assertSafeOutputDirectory(dist);
   validateContent();
-  const [template, theme, css, app] = await Promise.all(['index.html', 'theme.js', 'styles.css', 'app.js'].map(readSource));
+  const [template, theme, css, app, logos] = await Promise.all([
+    ...['index.html', 'theme.js', 'styles.css', 'app.js'].map(readSource), readBrandAssets(),
+  ]);
   const sharedCSP = [
     "default-src 'none'",
     `script-src ${hash(theme)} ${hash(app)}`,
     "script-src-attr 'none'",
     `style-src ${hash(css)}`,
     "style-src-attr 'none'",
-    "img-src 'none'",
+    "img-src data:",
     "font-src 'none'",
     "connect-src 'none'",
     "object-src 'none'",
@@ -369,6 +439,7 @@ export async function buildSite() {
     "form-action 'none'",
   ].join('; ');
   const replacements = {
+    ...logos,
     META_CSP: escapeHTML(sharedCSP),
     THEME: theme,
     CSS: css,
@@ -376,7 +447,7 @@ export async function buildSite() {
     CANDIDATE_COUNT: candidates.length,
     BUNDLE_OPTIONS: options(bundles),
     PROBLEM_OPTIONS: options(problems),
-    PROBLEM_LINKS: Object.entries(problems).map(([key, label]) => `<a class="problem-link" href="#catalog" data-problem-link="${key}"><svg class="problem-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="${problemIcons[key]}"/></svg><span>${escapeHTML(label)}</span><span class="problem-arrow" aria-hidden="true">→</span></a>`).join('\n'),
+    PROBLEM_LINKS: Object.entries(problems).map(([key, label]) => `<a class="problem-link" href="#catalog" data-problem-link="${key}"><svg class="problem-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="${problemIcons[key]}"/></svg><span>${escapeHTML(label)}<small>${catalogCandidates.filter((item) => onboarding[item.id].problems.includes(key)).length} starting points to explore</small></span><span class="problem-arrow" aria-hidden="true">→</span></a>`).join('\n'),
     TENANT_STEPS: tenantSteps.map((step) => `<li>${escapeHTML(step)}</li>`).join(''),
     GLOSSARY: glossary.map(([term, meaning]) => `<div><dt>${escapeHTML(term)}</dt><dd>${escapeHTML(meaning)}</dd></div>`).join(''),
     PATHWAYS: renderPathways(),

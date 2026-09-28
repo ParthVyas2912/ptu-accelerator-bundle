@@ -7,6 +7,7 @@ import { startServer } from '../scripts/serve.mjs';
 import { bundles, candidates, catalogCandidates, roadmap } from '../src/content.mjs';
 import { onboarding, problems } from '../src/onboarding.mjs';
 import { dossiers } from '../src/dossiers.mjs';
+import { solutionVisuals } from '../src/visuals.mjs';
 import { resolveSmokeTarget, smokeHelp } from './smoke-options.mjs';
 import { assertPublicContent, assertServedPolicy, nonPublicPaths } from './public-contract.mjs';
 
@@ -106,7 +107,7 @@ const goView = (page, view) => page.locator(`[data-view-link="${view}"]`).click(
 const screenshot = async (page, name, fullPage = false) => {
   const scroll = await page.evaluate(() => ({ x: window.scrollX, y: window.scrollY }));
   if (fullPage) await page.evaluate(() => window.scrollTo(0, 0));
-  await page.screenshot({ path: fileURLToPath(new URL(name, results)), fullPage, animations: 'disabled' });
+  await page.screenshot({ path: fileURLToPath(new URL(name, results)), fullPage, animations: 'disabled', timeout: 60_000 });
   if (fullPage) await page.evaluate(({ x, y }) => window.scrollTo(x, y), scroll);
   report.screenshots.push(name);
 };
@@ -131,7 +132,7 @@ const assertTheme = async (page, theme) => {
       primaryBackgrounds: [...new Set([...document.querySelectorAll('.button.primary')]
         .map((button) => getComputedStyle(button).backgroundColor))],
       heroEmphasis: getComputedStyle(document.querySelector('.hero h1 span')).color,
-      panelBackground: getComputedStyle(document.querySelector('.map-destination')).backgroundColor,
+      panelBackground: getComputedStyle(document.querySelector('.showcase-tile')).backgroundColor,
       background: body.backgroundColor,
       font: body.fontFamily,
       cardRadius: getComputedStyle(document.querySelector('.candidate')).borderRadius,
@@ -211,10 +212,14 @@ try {
   await observeContext(context);
   await context.addInitScript(() => {
     window.__problemClickRegistrations = [];
+    window.__discussClickRegistrations = [];
     const addEventListener = EventTarget.prototype.addEventListener;
     EventTarget.prototype.addEventListener = function (type, listener, options) {
       if (type === 'click' && this instanceof HTMLAnchorElement && this.hasAttribute('data-problem-link')) {
         window.__problemClickRegistrations.push(this.dataset.problemLink);
+      }
+      if (type === 'click' && this instanceof HTMLButtonElement && this.hasAttribute('data-discuss')) {
+        window.__discussClickRegistrations.push(this.dataset.discuss);
       }
       return addEventListener.call(this, type, listener, options);
     };
@@ -264,25 +269,26 @@ try {
 
   await run('concise visual overview keeps discovery prominent and work areas disclose by keyboard', async () => {
     await goView(page, 'overview');
-    const map = page.locator('.portfolio-map');
-    assert.deepEqual(await map.locator('.map-inputs span').allTextContents(), ['Systems', 'Answers', 'Documents']);
-    assert.equal(await map.locator('.map-steps li').count(), 3);
-    assert.match(await map.locator('.map-footnote').textContent(), /not a deployed solution/);
-    assert.ok((await map.innerText()).trim().split(/\s+/).length <= 60);
+    const map = page.locator('.workflow-showcase');
+    assert.equal(await map.locator('.showcase-tile').count(), 3);
+    assert.match(await map.locator('figcaption').textContent(), /An adoption journey, not a system architecture/);
+    assert.match(await map.locator('.showcase-boundary').textContent(), /Results depend on fit and delivery/);
+    assert.ok((await page.locator('.hero-copy').innerText()).trim().split(/\s+/).length <= 75);
     assert.ok((await page.locator('#orientation').innerText()).trim().split(/\s+/).length <= 40);
     assert.ok((await page.locator('main').innerText()).trim().split(/\s+/).length <= 500,
       'Keep the default overview scannable; detailed planning belongs in the guide.');
     assert.equal(await page.locator('#program').isVisible(), false);
     assert.equal(await page.locator('#glossary').isVisible(), false);
     assert.equal(await page.locator('.problem-icon:visible').count(), 6);
-    assert.match(await page.locator('#hero-title').innerText(), /Your PTUs/);
-    assert.match(await page.locator('.hero-description').innerText(), /one, several or plan across all 20/);
-    assert.match(await map.locator('.map-destination').innerText(), /Your existing PTUs.*Compatible workloads only/s);
+    assert.match(await page.locator('#hero-title').innerText(), /Useful AI/);
+    assert.match(await page.locator('.hero-description').innerText(), /Choose your mix/);
+    assert.match(await map.locator('.showcase-boundary').innerText(), /Compatible workloads only/);
     assert.deepEqual(await page.locator('.bundle-card h3').allTextContents(),
       ['Engineering Modernization', 'Knowledge & Staff Work', 'Procurement & Document Operations']);
     await page.locator('.hero-actions .primary').click();
     assert.equal(new URL(page.url()).hash, '#bundles');
     assert.equal(await page.locator('#bundles-title').evaluate((node) => node === document.activeElement), true);
+    await goView(page, 'overview');
     await page.locator('.adoption-band .text-link').click();
     assert.equal(new URL(page.url()).hash, '#pilot-gates');
     assert.equal(await page.locator('html').getAttribute('data-view'), 'guide');
@@ -386,7 +392,9 @@ try {
   });
 
   await run('search works by aliases and detail text, stays literal and handles zero results', async () => {
+    await page.goto(`${url}/?scoutTheme=light#catalog`);
     const search = page.locator('#catalog-search');
+    const images = await page.locator('img').evaluateAll((nodes) => nodes.map((node) => node.getAttribute('src')));
     for (const retired of ['Harbinger', 'StepFly']) {
       await search.fill(retired);
       assert.equal(await visible(page).count(), 0);
@@ -404,7 +412,8 @@ try {
     assert.equal(await page.locator('#empty-state').isVisible(), true);
     assert.equal(await page.locator('#result-count').textContent(), 'Showing 0 of 20 solutions');
     assert.equal(await page.evaluate(() => window.searchInjected), undefined);
-    assert.equal(await page.locator('img').count(), 0);
+    assert.deepEqual(await page.locator('img').evaluateAll((nodes) => nodes.map((node) => node.getAttribute('src'))), images);
+    assert.equal(await page.locator('img[src="x"], [onerror]').count(), 0);
     await page.locator('#clear-empty').click();
     assert.equal(await visible(page).count(), 20);
     assert.equal(await page.locator('#catalog-search').evaluate((node) => node === document.activeElement), true);
@@ -470,6 +479,9 @@ try {
 
   for (const candidate of candidates) {
     await run(`dossier ${candidate.id}: workflow, graph, sources, deployment, specialist guidance and all section links`, async () => {
+      if (page.url() === 'about:blank') {
+        await page.goto(`${url}/?scoutTheme=light#catalog`, { waitUntil: 'networkidle' });
+      }
       const trigger = page.locator(`.candidate[data-id="${candidate.id}"] .detail-button`);
       await trigger.click();
       const solution = page.locator(`#solution-${candidate.id}`);
@@ -478,12 +490,14 @@ try {
       assert.equal(await solution.locator('h2').textContent(), candidate.name);
       assert.equal(await solution.locator('h2').evaluate((node) => node === document.activeElement), true);
       const dossier = dossiers[candidate.id];
-      assert.deepEqual(await solution.locator(':scope > .solution-summary dt').allTextContents(),
+      assert.deepEqual(await solution.locator('.solution-lead .solution-summary dt').allTextContents(),
         ['What it is', 'How it works', 'Use it for', 'Example scenario']);
-      assert.deepEqual(await solution.locator(':scope > .solution-summary dd').allTextContents(),
+      assert.deepEqual(await solution.locator('.solution-lead .solution-summary dd').allTextContents(),
         Object.values(dossier.plain.brief));
-      assert.deepEqual(await page.locator(`.candidate[data-id="${candidate.id}"] .candidate-value dd`).allTextContents(),
-        Object.values(dossier.plain.brief));
+      assert.equal(await page.locator(`.candidate[data-id="${candidate.id}"] .candidate-value`).textContent(), candidate.value);
+      assert.equal(await solution.locator('.solution-visual .visual-flow li').count(), 3);
+      assert.deepEqual(await solution.locator('.visual-flow li > span').allTextContents(),
+        solutionVisuals[candidate.id].stages.map(([, label]) => label));
       const codeAccess = solution.locator('.code-access');
       if (dossier.repository) {
         assert.equal(await codeAccess.locator('a[target="_blank"]').getAttribute('href'), dossier.repository);
@@ -518,17 +532,17 @@ try {
       }));
       assert.deepEqual(labelIssues, [], 'Diagram labels must fit their component without overlapping');
       assert.equal(await solution.locator('.ingestion-steps li').count(), dossier.ingestion.stages.length);
-      assert.equal(await solution.locator('.setup-steps li').count(), dossier.deployment.steps.length);
+      assert.equal(await solution.locator('.setup-steps li').count(), dossier.deployment.walkthrough.steps.length);
       assert.equal(await solution.locator('.specialist-roles li').count(), dossier.specialists.length);
       assert.equal(await solution.locator('.dossier-sources a').count(), dossier.sources.length);
-      assert.equal(await solution.locator('.solution-nav [aria-current="location"]').textContent(), 'In plain terms');
+      assert.equal(await solution.locator('.solution-nav [aria-current="location"]').textContent(), 'Overview');
       const navHashes = await solution.locator('.solution-nav a')
         .evaluateAll((nodes) => nodes.map((node) => node.getAttribute('href')));
       assert.equal(new Set(navHashes).size, navHashes.length, 'Section links must address distinct sections');
       for (const hash of navHashes) {
-        // Re-resolve each link and let the router settle: index-bound locators
-        // captured up front can race the re-render triggered by the previous link.
-        await solution.locator(`.solution-nav a[href="${hash}"]`).click();
+        const link = solution.locator(`.solution-nav a[href="${hash}"]`);
+        await link.focus();
+        await link.press('Enter');
         await page.waitForFunction((value) => window.location.hash === value, hash);
         assert.equal(new URL(page.url()).hash, hash);
         assert.equal(await page.locator(hash).isVisible(), true);
@@ -565,8 +579,12 @@ try {
       await goView(page, 'overview');
       await page.locator(`[data-problem-link="${key}"]`).click();
       assert.equal(await page.locator('#problem-filter').inputValue(), key);
-      assert.equal(await page.locator('html').getAttribute('data-view'), 'catalog');
+      assert.equal(await page.locator('html').getAttribute('data-view'), 'overview');
       const expected = catalogCandidates.filter((item) => onboarding[item.id].problems.includes(key)).map((item) => item.id);
+      assert.equal(await page.locator('#finder-matches article').count(), Math.min(3, expected.length));
+      assert.equal(await page.locator('#finder-title').evaluate((node) => node === document.activeElement), true);
+      await page.locator('#finder-results a[href="#catalog"]').click();
+      assert.equal(await page.locator('html').getAttribute('data-view'), 'catalog');
       assert.deepEqual(await visible(page).evaluateAll((nodes) => nodes.map((node) => Number(node.dataset.id))), expected);
     }
     await page.locator('#reset-filters').click();
@@ -575,6 +593,7 @@ try {
   });
 
   await run('shortlist supports multiple solutions, removal, navigation and selected-plan printing', async () => {
+    await page.goto(`${url}/?scoutTheme=light#catalog`, { waitUntil: 'networkidle' });
     for (const id of [1, 12]) {
       await page.locator(`.candidate[data-id="${id}"] .detail-button`).click();
       await page.locator(`[data-select="${id}"]`).click();
@@ -1022,7 +1041,7 @@ try {
     const bundleDetail = fallback.locator('.bundle-inventory').first();
     await bundleDetail.locator('summary').click();
     assert.equal(await bundleDetail.locator('div').isVisible(), true);
-    assert.equal(await fallback.locator('.portfolio-map').isVisible(), true);
+    assert.equal(await fallback.locator('.workflow-showcase').isVisible(), true);
     assert.equal(await fallback.locator('.glossary-list').isVisible(), false);
     await fallback.locator('#glossary > summary').click();
     assert.equal(await fallback.locator('.glossary-list').isVisible(), true);
@@ -1112,6 +1131,320 @@ try {
     await noJS.close();
   });
 
+  for (let offset = 0; offset < candidates.length; offset += 5) {
+    await run(`deployment guides: solutions ${offset + 1}-${offset + 5} mobile steps, sources and commands`, async () => {
+      await page.setViewportSize({ width: 375, height: 812 });
+      for (const item of candidates.slice(offset, offset + 5)) {
+        await page.goto(`${url}/?scoutTheme=dark#solution-${item.id}-setup`, { waitUntil: 'networkidle' });
+        const section = page.locator(`#solution-${item.id}-setup`);
+        const guide = dossiers[item.id].deployment.walkthrough;
+        assert.equal(await section.isVisible(), true);
+        assert.equal(await section.locator('.setup-steps li').count(), 5);
+        assert.ok((await section.locator('.deployment-verify').innerText()).includes(guide.verify));
+        const manual = section.getByRole('link', { name: 'Open full deployment manual' });
+        assert.equal(await manual.count(), guide.source ? 1 : 0);
+        if (guide.source) assert.equal(await manual.getAttribute('href'),
+          dossiers[item.id].sources.find((source) => source.id === guide.source).url);
+        await section.locator('.deployment-runbook').evaluate((node) => { node.open = true; });
+        for (const block of await section.locator('.command-disclosure').all()) {
+          assert.equal(await block.getAttribute('open'), null);
+          await block.evaluate((node) => { node.open = true; });
+        }
+        const checkout = section.locator('.deployment-checkout');
+        if (await checkout.count()) {
+          await checkout.evaluate((node) => { node.open = true; });
+          assert.ok((await checkout.innerText()).includes(dossiers[item.id].revision));
+        }
+        for (const [, , command] of guide.steps) {
+          if (command) assert.ok((await section.innerText()).includes(command));
+        }
+        await assertNoOverflow(page);
+      }
+    });
+  }
+  await run('deployment guides: accessibility, shared guidance, shortlist and print', async () => {
+    await page.setViewportSize({ width: 1440, height: 1000 });
+    await page.goto(`${url}/?scoutTheme=light#solution-1-setup`, { waitUntil: 'networkidle' });
+    await page.reload({ waitUntil: 'networkidle' });
+    await audit(page);
+    await page.locator('#solution-1 .deployment-safety a').click();
+    assert.equal(await page.locator('#preparation').getAttribute('open'), '');
+    assert.equal(await page.locator('#deployment-safety').isVisible(), true);
+    await page.goto(`${url}/#solution-1`);
+    await page.locator('#solution-1 .shortlist-toggle').click();
+    await page.goto(`${url}/#solution-3`);
+    await page.locator('#solution-3 .shortlist-toggle').click();
+    await page.goto(`${url}/#shortlist`);
+    assert.equal(await page.locator('.selected-guide .deployment-walkthrough').count(), 2);
+    assert.equal(await page.locator('.selected-guide .deployment-route a').count(), 1);
+    await page.evaluate(() => window.dispatchEvent(new Event('beforeprint')));
+    await page.emulateMedia({ media: 'print' });
+    assert.equal(await page.locator('.selected-guide .deployment-checkout[open]').count(), 1);
+    assert.equal(await page.locator('.selected-guide .deployment-verify:visible').count(), 2);
+    await page.emulateMedia({ media: 'screen' });
+    await page.evaluate(() => window.dispatchEvent(new Event('afterprint')));
+    const noJS = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 375, height: 812 }, serviceWorkers: 'block' });
+    await observeContext(noJS);
+    const fallback = await noJS.newPage();
+    await fallback.goto(`${url}/#solution-1-setup`, { waitUntil: 'networkidle' });
+    assert.equal(await fallback.locator('.deployment-walkthrough:visible').count(), 20);
+    await fallback.locator('#solution-1 .deployment-runbook > summary').click();
+    await fallback.locator('#solution-1 .deployment-checkout summary').click();
+    assert.ok((await fallback.locator('#solution-1 .deployment-checkout').innerText()).includes(dossiers[1].revision));
+    await assertNoOverflow(fallback);
+    await noJS.close();
+  });
+
+  await run('customer journey: business fit to architecture, deployment requirements and an accurate implementation brief', async () => {
+    await page.setViewportSize({ width: 1440, height: 1000 });
+    await page.goto(`${url}/?scoutTheme=light#top`, { waitUntil: 'networkidle' });
+    await page.reload({ waitUntil: 'networkidle' });
+    await page.locator('.hero-capacity a').click();
+    assert.equal(await page.locator('#capacity-new').getAttribute('open'), '');
+    await page.locator('[data-view-link="catalog"]').click();
+    await page.locator('.candidate[data-id="1"] .detail-button').click();
+    const solution = page.locator('#solution-1');
+    assert.equal(await solution.locator('.fit-detail').getAttribute('open'), null);
+    assert.match(await solution.locator('.solution-provenance').innerText(), /Microsoft-owned public repository/);
+    await solution.locator('.solution-decisions a').first().click();
+    await solution.locator('#solution-1-workflow a[href="#solution-1-architecture"]').click();
+    assert.equal(await solution.locator('.component-graph').isVisible(), true);
+    await screenshot(page, 'customer-architecture-light.png');
+    await solution.locator('.solution-decisions a').last().click();
+    assert.equal(await solution.locator('.setup-prerequisites').isVisible(), true);
+    assert.equal(await solution.locator('.setup-costs').isVisible(), true);
+    assert.equal(await solution.locator('.deployment-runbook').getAttribute('open'), null);
+    await screenshot(page, 'customer-requirements-light.png');
+    await solution.locator('.deployment-runbook > summary').focus();
+    await page.keyboard.press('Enter');
+    assert.equal(await solution.locator('.setup-steps li:visible').count(), 5);
+    await solution.locator('[data-discuss="1"]').click();
+    assert.equal(await page.locator('#implementation-title').evaluate((node) => node === document.activeElement), true);
+    const brief = page.locator('#implementation-items');
+    assert.equal(await brief.locator('li').count(), 1);
+    for (const value of [dossiers[1].ingestion.input, ...dossiers[1].deployment.prerequisites, ...dossiers[1].deployment.costs]) {
+      assert.ok((await brief.innerText()).includes(value));
+    }
+    for (const id of [3, 12]) {
+      await page.goto(`${url}/?scoutTheme=light#solution-${id}-setup`);
+      await page.locator(`#solution-${id} [data-discuss]`).click();
+    }
+    assert.equal(await page.locator('.shortlist-item').count(), 3);
+    assert.match(await brief.innerText(), /Private package - access required/);
+    assert.match(await brief.innerText(), /Custom implementation required/);
+    assert.equal(await page.locator('.selected-guide [data-discuss]').count(), 0);
+    await page.goto(`${url}/?scoutTheme=light#solution-1-setup`);
+    await solution.locator('[data-discuss="1"]').click();
+    assert.equal(await page.locator('.shortlist-item').count(), 3, 'Planning twice must retain, not toggle or duplicate');
+    assert.deepEqual(await page.evaluate(() => [...window.__discussClickRegistrations].sort()),
+      candidates.map((item) => String(item.id)).sort(), 'Each planning action is wired once, not on every shortlist update');
+    await audit(page);
+  });
+
+  await run('customer journey: mobile dark-theme overview, requirements and runbook deep links', async () => {
+    await page.setViewportSize({ width: 375, height: 812 });
+    await page.goto(`${url}/?scoutTheme=dark#solution-6`, { waitUntil: 'networkidle' });
+    await page.reload({ waitUntil: 'networkidle' });
+    await assertNoOverflow(page);
+    await audit(page);
+    await screenshot(page, 'customer-solution-mobile-dark.png');
+    await page.locator('#solution-6 .solution-decisions a').last().click();
+    await assertNoOverflow(page);
+    await screenshot(page, 'customer-requirements-mobile-dark.png');
+    await page.goto(`${url}/?scoutTheme=dark#solution-6-runbook`);
+    assert.equal(await page.locator('#solution-6 .deployment-runbook').getAttribute('open'), '');
+    assert.equal(await page.locator('#solution-6 .setup-steps li:visible').count(), 5);
+    await page.goto(`${url}/?scoutTheme=dark#solution-6-plain`);
+    assert.equal(await page.locator('#solution-6 .fit-detail').getAttribute('open'), '');
+    await assertNoOverflow(page);
+    await audit(page);
+  });
+
+  await run('visual showroom: responsive graphics and meaningful compact cards', async () => {
+    for (const width of [320, 768, 1440]) {
+      await page.setViewportSize({ width, height: 1000 });
+      await page.goto(`${url}/?scoutTheme=light#catalog`);
+      await assertNoOverflow(page);
+      const measurements = await page.locator('.candidate').evaluateAll((cards) => cards.map((card) => {
+        const visual = card.querySelector('.solution-visual');
+        const box = visual.getBoundingClientRect();
+        return {
+          id: card.dataset.id,
+          words: card.innerText.trim().split(/\s+/).length,
+          labelsFit: [...visual.querySelectorAll('.visual-flow li > span')].every((label) => {
+            const rect = label.getBoundingClientRect();
+            return rect.left >= box.left && rect.right <= box.right && label.scrollWidth <= label.clientWidth + 1;
+          }),
+        };
+      }));
+      assert.ok(measurements.every((item) => item.words <= 85), 'Visible cards must remain concise');
+      assert.deepEqual(measurements.filter((item) => !item.labelsFit), [], 'Illustration labels must fit');
+      await goView(page, 'overview');
+      for (const link of await page.locator('.toolkit-grid a').all()) {
+        const target = await link.getAttribute('href');
+        await link.click();
+        assert.equal(new URL(page.url()).hash, target);
+        assert.equal(await page.locator(`${target} h2`).evaluate((node) => node === document.activeElement), true);
+        await goView(page, 'overview');
+      }
+    }
+  });
+  await run('visual showroom: command and delivery disclosures support keyboard and complete printing', async () => {
+    await page.goto(`${url}/?scoutTheme=light#solution-1-runbook`);
+    const commands = page.locator('#solution-1 .command-disclosure');
+    const first = commands.first();
+    assert.equal(await first.getAttribute('open'), null);
+    await first.locator('summary').focus();
+    await page.keyboard.press('Enter');
+    assert.equal(await first.locator('code').isVisible(), true);
+    await page.keyboard.press('Enter');
+    assert.equal(await first.getAttribute('open'), null);
+    await page.evaluate(() => window.dispatchEvent(new Event('beforeprint')));
+    assert.equal(await commands.locator('code:visible').count(), await commands.count());
+    await page.evaluate(() => window.dispatchEvent(new Event('afterprint')));
+    assert.equal(await first.getAttribute('open'), null);
+    await page.goto(`${url}/?scoutTheme=dark#engagement`);
+    const delivery = page.locator('.delivery-journey details').first();
+    await delivery.locator('summary').focus();
+    await page.keyboard.press('Enter');
+    assert.equal(await delivery.locator('p').isVisible(), true);
+    await audit(page);
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    const motion = await page.locator('.toolkit-grid a').first().evaluate((node) => getComputedStyle(node).transitionDuration);
+    assert.equal(motion, '0s');
+    await page.emulateMedia({ reducedMotion: 'no-preference' });
+  });
+  await run('brand assets: approved inline logos load in both themes without distortion or network calls', async () => {
+    for (const theme of ['light', 'dark']) {
+      for (const width of [320, 1440]) {
+        await page.setViewportSize({ width, height: 1000 });
+        await page.goto(`${url}/?scoutTheme=${theme}#top`);
+        assert.equal(await page.locator(`.brand-${theme}:visible`).count(), 2);
+        assert.equal(await page.locator(`.brand-${theme === 'light' ? 'dark' : 'light'}:visible`).count(), 0);
+        const images = await page.locator('img').evaluateAll((nodes) => nodes.map((image) => ({
+          loaded: image.complete && image.naturalWidth > 0,
+          embedded: image.src.startsWith('data:image/png;base64,'),
+          alternative: Boolean(image.alt),
+        })));
+        assert.ok(images.every((image) => image.loaded && image.embedded && image.alternative));
+        await assertNoOverflow(page);
+        await audit(page);
+        await screenshot(page, `branded-overview-${width}-${theme}.png`);
+        await goView(page, 'guide');
+        const logo = page.locator('.platform-signature img');
+        const ratio = await logo.evaluate((image) => {
+          const box = image.getBoundingClientRect();
+          return Math.abs(box.width / box.height - image.naturalWidth / image.naturalHeight);
+        });
+        assert.ok(ratio < 0.01, 'Keep the official logo aspect ratio');
+        await assertNoOverflow(page);
+        await audit(page);
+        await screenshot(page, `branded-guide-${width}-${theme}.png`);
+      }
+    }
+  });
+  await run('product experience: organization-to-outcomes journey and branded navigation at every viewport', async () => {
+    for (const theme of ['light', 'dark']) {
+      for (const width of [320, 768, 1440]) {
+        await page.setViewportSize({ width, height: 1000 });
+        await page.goto(`${url}/?scoutTheme=${theme}#top`);
+        assert.equal(await page.locator(`.site-header .brand-${theme}`).isVisible(), true);
+        assert.equal(await page.locator('.header-plan').isVisible(), true);
+        assert.equal(await page.locator('.showcase-tile:visible').count(), 3);
+        assert.deepEqual(await page.locator('.adoption-map h3').allTextContents(),
+          ['Your organization', 'Your AI toolkit', 'Success you can measure']);
+        for (const link of await page.locator('.toolkit-grid a').all()) {
+          const target = await link.getAttribute('href');
+          await link.focus();
+          await page.keyboard.press('Enter');
+          assert.equal(new URL(page.url()).hash, target);
+          assert.equal(await page.locator(target).isVisible(), true);
+          await goView(page, 'overview');
+        }
+        const overlap = await page.locator('.site-header').evaluate((header) => {
+          const items = [...header.querySelectorAll('.header-microsoft, .brand, nav, .theme-button, .header-plan')]
+            .map((node) => node.getBoundingClientRect());
+          return items.some((a, i) => items.slice(i + 1).some((b) =>
+            Math.min(a.right, b.right) - Math.max(a.left, b.left) > 1
+            && Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top) > 1));
+        });
+        assert.equal(overlap, false, `Header overlaps at ${width}px`);
+        await assertNoOverflow(page);
+        await audit(page);
+        await page.evaluate(() => window.scrollTo(0, 0));
+        await screenshot(page, `product-home-${width}-${theme}.png`);
+      }
+    }
+  });
+  await run('product experience: guided discovery preserves honest matches and catalog filter context', async () => {
+    await page.goto(`${url}/?scoutTheme=light#top`);
+    for (const key of Object.keys(problems)) {
+      await page.locator(`[data-problem-link="${key}"]`).click();
+      const expected = catalogCandidates.filter((item) => onboarding[item.id].problems.includes(key));
+      assert.equal(new URL(page.url()).hash, '#finder-results');
+      assert.equal(await page.locator('#finder-title').textContent(), problems[key]);
+      assert.deepEqual(await page.locator('#finder-matches h4 a').allTextContents(), expected.slice(0, 3).map((item) => item.name));
+      assert.match(await page.locator('#finder-status').textContent(), new RegExp(`^${expected.length} relevant`));
+      await page.locator('#finder-results a[href="#catalog"]').click();
+      assert.equal(await page.locator('#filter-context').textContent(), problems[key]);
+      assert.equal(await visible(page).count(), expected.length);
+      await page.locator('#reset-filters').click();
+      assert.equal(await visible(page).count(), 20);
+      await goView(page, 'overview');
+      await page.locator('#finder-results a[href="#catalog"]').click();
+      assert.equal(await visible(page).count(), expected.length, 'Returning to finder must restore its filter');
+      await goView(page, 'overview');
+    }
+    await page.locator('#finder-title').scrollIntoViewIfNeeded();
+    await screenshot(page, 'product-finder.png');
+    await audit(page);
+    await page.goto(`${url}/?scoutTheme=light#finder-results`);
+    await page.reload();
+    assert.equal(await page.locator('#bundles').isVisible(), true);
+    assert.equal(await page.locator('#finder-results').isVisible(), false);
+    await page.locator('.problem-link').first().click();
+    assert.equal(await page.locator('#finder-title').evaluate((node) => node === document.activeElement), true);
+  });
+  await run('product experience: choose any combination without comparison, with accessible quick-save and planning', async () => {
+    await page.setViewportSize({ width: 1440, height: 1000 });
+    await page.goto(`${url}/?scoutTheme=light#catalog`);
+    await page.reload();
+    assert.equal(await page.locator('#planning-dock').isVisible(), false);
+    assert.equal(await page.locator('[data-compare], #comparison, #dock-compare').count(), 0);
+    assert.equal(await page.getByRole('button', { name: /^Compare / }).count(), 0);
+    assert.equal(await page.locator('[data-quick-select]').count(), 20);
+    await page.locator('[data-quick-select="3"]').click();
+    assert.equal(await page.locator('#header-plan-count').textContent(), '1');
+    assert.equal(await page.locator('[data-select="3"]').getAttribute('aria-pressed'), 'true');
+    for (const item of candidates.filter((item) => item.id !== 3)) {
+      await page.locator(`[data-quick-select="${item.id}"]`).click();
+    }
+    assert.equal(await page.locator('#header-plan-count').textContent(), '20');
+    assert.equal(await page.locator('#dock-plan-count').textContent(), '20');
+    assert.equal(await page.locator('#dock-summary').textContent(), '20 saved for your team');
+    await page.locator('#planning-dock a[href="#shortlist"]').click();
+    assert.equal(await page.locator('.shortlist-item').count(), 20);
+    await audit(page);
+    await screenshot(page, 'product-plan-desktop.png');
+    await page.setViewportSize({ width: 320, height: 900 });
+    await assertNoOverflow(page);
+    await audit(page);
+    await screenshot(page, 'product-plan-mobile.png');
+    assert.equal(await page.locator('#planning-dock').isVisible(), true);
+    await page.locator('.header-plan').click();
+    await page.locator('#clear-shortlist').click();
+    assert.equal(await page.locator('#planning-dock').isVisible(), false);
+    await goView(page, 'catalog');
+    assert.equal(await page.locator('[data-quick-select="3"]').getAttribute('aria-pressed'), 'false');
+    await page.locator('[data-quick-select="1"]').click();
+    await page.reload();
+    assert.equal(await page.locator('#header-plan-count').textContent(), '0');
+    assert.equal(await page.locator('#planning-dock').isVisible(), false);
+    await page.setViewportSize({ width: 1440, height: 1000 });
+    await page.goto(`${url}/?scoutTheme=light#solution-1`);
+    assert.equal(await page.locator('#solution-1 .solution-nav').evaluate((node) => getComputedStyle(node).position), 'sticky');
+    await screenshot(page, 'product-solution-desktop.png', true);
+  });
   await run('no JavaScript errors, CSP violations or external/unexpected resource requests occurred in any page', async () => {
     assert.deepEqual(report.errors, []);
     assert.deepEqual(report.cspViolations, []);
