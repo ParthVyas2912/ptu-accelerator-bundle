@@ -2,10 +2,11 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { mkdir, mkdtemp, readFile, readdir, rm, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
-import { assertSafeOutputDirectory, buildSite, escapeHTML, hash, validateDossier, validateProgram, validateRoadmap } from '../scripts/build.mjs';
+import { assertSafeOutputDirectory, brandAssets, buildSite, escapeHTML, hash, sourceLabel, validateDossier, validateProgram, validateRoadmap } from '../scripts/build.mjs';
 import { candidates, catalogCandidates, glossary, plainKinds, roadmap } from '../src/content.mjs';
 import { onboarding, problems, sources, tenantSteps } from '../src/onboarding.mjs';
 import { dossiers } from '../src/dossiers.mjs';
+import { solutionVisuals, visualIcons } from '../src/visuals.mjs';
 import { catalogReview, legacyGuidance, pathways, pilotGates, programReviewDate, programSources } from '../src/program.mjs';
 import { assertPublicContent, assertServedPolicy, deployedURL } from './public-contract.mjs';
 import { resolveSmokeTarget } from './smoke-options.mjs';
@@ -42,14 +43,30 @@ test('build is deterministic, self-contained and comfortably within the size bud
   const second = await buildSite();
   assert.equal(second.html, html);
   assert.deepEqual(second.config, config);
-  assert.ok(bytes < 672 * 1024, `HTML with 20 source-backed dossiers, plain-language summaries and component graphs is ${bytes} bytes`);
+  assert.ok(bytes < 800 * 1024, `HTML with 20 illustrated dossiers and embedded approved logos is ${bytes} bytes`);
   assert.deepEqual((await readdir(new URL('../dist/', import.meta.url))).sort(), ['index.html', 'staticwebapp.config.json', 'web.config']);
   assert.doesNotMatch(html, /@@[A-Z_]+@@/);
-  assert.doesNotMatch(html, /<(?:script|img|iframe|audio|video)\b[^>]*\bsrc\s*=/i);
+  assert.doesNotMatch(html, /<(?:script|iframe|audio|video)\b[^>]*\bsrc\s*=/i);
+  assert.equal((html.match(/<img\b/g) || []).length, 5);
+  assert.equal((html.match(/src="data:image\/png;base64,[A-Za-z0-9+/=]+"/g) || []).length, 5);
   assert.doesNotMatch(html, /<link\b/i);
   assert.doesNotMatch(html, /@import\b|url\s*\(/i);
   assert.equal(Object.hasOwn(config, 'navigationFallback'), false);
   assert.equal(Object.hasOwn(config, 'responseOverrides'), false);
+});
+
+test('only reviewed Microsoft logo derivatives are embedded with meaningful alternatives', async () => {
+  for (const asset of Object.values(brandAssets)) {
+    const png = await readFile(new URL(`../src/assets/${asset.file}`, import.meta.url));
+    assert.equal(png.subarray(0, 8).toString('hex'), '89504e470d0a1a0a');
+    assert.ok(png.length < 32 * 1024);
+    assert.ok(html.includes(`data:image/png;base64,${png.toString('base64')}`));
+  }
+  assert.ok(policy.includes('img-src data:'));
+  assert.equal((html.match(/alt="Microsoft"/g) || []).length, 4);
+  assert.equal((html.match(/alt="Microsoft Azure"/g) || []).length, 1);
+  assert.throws(() => assertPublicContent(`${html}<img src="data:image/png;base64,bm90LWFuLWFzc2V0" alt="Unreviewed">`), /unreviewed image/);
+  assert.throws(() => assertPublicContent(`${html}<img src="https://example.com/logo.png" alt="External">`), /embedded PNG/);
 });
 
 test('the IIS configuration mirrors the static-host headers so both published links serve one policy', async () => {
@@ -59,6 +76,25 @@ test('the IIS configuration mirrors the static-host headers so both published li
     assert.ok(webConfig.includes(`<add name="${name}" value="${escaped}" />`), `web.config is missing ${name}`);
   }
   assert.match(webConfig, /<add value="index\.html" \/>/);
+});
+
+test('guided discovery and the planning workspace preserve catalog identities and accessible controls', () => {
+  const header = html.match(/<header\b[\s\S]*?<\/header>/)[0];
+  assert.match(header, /class="header-microsoft brand-attribution"/);
+  assert.equal((header.match(/alt="Microsoft"/g) || []).length, 2);
+  assert.match(header, /id="header-plan-count"/);
+  assert.match(html, /class="adoption-map"/);
+  assert.match(html, /Your organization<\/h3>/);
+  assert.match(html, /Your AI toolkit<\/h3>/);
+  assert.match(html, /Success you can measure<\/h3>/);
+  assert.match(html, /id="finder-results"[^>]*hidden[^>]*aria-labelledby="finder-title"/);
+  assert.match(html, /Matched by documented use case, not ranked by readiness/);
+  for (const item of catalogCandidates) {
+    assert.equal((html.match(new RegExp(`data-quick-select="${item.id}"`, 'g')) || []).length, 1);
+  }
+  assert.doesNotMatch(html, /data-compare|id="comparison|dock-compare|renderComparison|data-spotlight/);
+  assert.match(html, /id="selection-status"[^>]*role="status"/);
+  assert.equal((html.match(/class="solution-reader"/g) || []).length, catalogCandidates.length);
 });
 
 test('output guard rejects unexpected files and directories without reading or copying them', async () => {
@@ -224,12 +260,11 @@ test('escaping protects curated values and all internal anchor targets exist', (
 });
 
 test('visual overview preserves planning boundaries without the long pilot and orientation sections', () => {
-  assert.match(html, /<figure class="portfolio-map" aria-labelledby="portfolio-map-title">/);
-  assert.match(html, /class="map-inputs"/);
-  assert.match(html, /class="map-destination"/);
-  assert.match(html, /class="map-steps"/);
+  assert.match(html, /<figure class="workflow-showcase" aria-labelledby="showcase-title">/);
+  assert.equal((html.match(/class="showcase-tile /g) || []).length, 3);
+  assert.match(html, /An adoption journey, not a system architecture/);
   assert.equal((html.match(/<details class="bundle-inventory">/g) || []).length, 3);
-  assert.match(html, /A path to explore—not a deployed solution/);
+  assert.match(html, /Results depend on fit and delivery/);
   assert.match(html, /Search, storage, hosting, document processing and speech can cost extra/);
   assert.match(html, /Verify model, API &amp; geography compatibility/);
   assert.match(html, /A development path, not a delivery schedule or completion status/);
@@ -248,9 +283,10 @@ test('PTU adoption leads the toolkit without promising universal compatibility o
   const hero = html.match(/<section[^>]+id="top"[\s\S]*?<\/section>/)?.[0];
   assert.match(hero, /Your PTUs/);
   assert.match(hero, /20 AI starting points/);
-  assert.match(hero, /PTUs you already own/);
-  assert.match(hero, /Choose one, several or plan across all 20/);
-  assert.match(hero, /each solution's readiness and PTU compatibility/);
+  assert.match(hero, /Considering PTUs/);
+  assert.match(hero, /Prove demand before investing/);
+  assert.match(hero, /Choose your mix/);
+  assert.match(html, /Each guide identifies its source, requirements and limits/);
   assert.match(hero, /Compatible workloads only/);
   assert.match(hero, /Other services cost extra/);
   assert.match(html, /PTU utilization &amp; headroom/);
@@ -273,11 +309,11 @@ test('every solution answers what it is, what it does and what it is for, in pla
     assert.ok(words >= 70 && words <= 150);
     const card = html.match(new RegExp(`<article class="candidate" data-id="${item.id}"[\\s\\S]*?</article>`))?.[0];
     const solution = html.match(new RegExp(`<section[^>]+id="solution-${item.id}"[\\s\\S]*?<div class="solution-body">`))?.[0];
-    for (const summary of [card, solution]) {
-      assert.ok(summary, `${item.id}: missing card or solution introduction`);
-      for (const label of ['What it is', 'How it works', 'Use it for', 'Example scenario']) assert.ok(summary.includes(`<dt>${label}</dt>`));
-      for (const value of Object.values(plain.brief)) assert.ok(summary.includes(escapeHTML(value)));
-    }
+    assert.ok(card && solution, `${item.id}: missing card or solution introduction`);
+    assert.ok(card.includes(escapeHTML(item.value)));
+    assert.ok(card.includes(escapeHTML(solutionVisuals[item.id].audience)));
+    for (const label of ['What it is', 'How it works', 'Use it for', 'Example scenario']) assert.ok(solution.includes(`<dt>${label}</dt>`));
+    for (const value of Object.values(plain.brief)) assert.ok(solution.includes(escapeHTML(value)));
     // The reader is told what would actually arrive before anything else.
     assert.ok(html.includes(escapeHTML(plain.form)), `${item.id}: form`);
     assert.ok(html.includes(escapeHTML(plain.what)), `${item.id}: what`);
@@ -294,6 +330,31 @@ test('every solution answers what it is, what it does and what it is for, in pla
   assert.equal((html.match(/How much of that is proven\?/g) || []).length, candidates.length);
   assert.equal((html.match(/id="solution-\d+-plain"/g) || []).length, candidates.length);
   assert.equal((html.match(/class="candidate-area candidate-kind"/g) || []).length, candidates.length);
+});
+
+test('visual gallery keeps cards concise and illustrates every solution without external assets', () => {
+  assert.deepEqual(Object.keys(solutionVisuals).map(Number), candidates.map((item) => item.id));
+  assert.equal((html.match(/class="solution-visual visual-compact"/g) || []).length, 20);
+  assert.equal((html.match(/class="solution-visual"/g) || []).length, 20);
+  for (const item of candidates) {
+    const visual = solutionVisuals[item.id];
+    assert.equal(visual.stages.length, 3);
+    for (const [icon, label] of visual.stages) {
+      assert.ok(visualIcons[icon]);
+      assert.ok(html.includes(escapeHTML(label)));
+    }
+    const card = html.match(new RegExp(`<article class="candidate" data-id="${item.id}"[\\s\\S]*?</article>`))[0];
+    const words = card.replace(/<[^>]*>/g, ' ').trim().split(/\s+/).length;
+    assert.ok(words <= 95, `Card ${item.id} is too long: ${words} words`);
+    const oldExplanation = Object.values(dossiers[item.id].plain.brief).join(' ').split(/\s+/).length;
+    const newExplanation = `${item.value} ${visual.audience}`.split(/\s+/).length;
+    assert.ok(newExplanation <= oldExplanation / 2, `Card ${item.id}: reduce explanation prose by at least half`);
+    assert.match(card, /Illustrative/);
+    assert.doesNotMatch(card, /Example scenario|<pre/);
+  }
+  assert.match(html, /class="command-disclosure"/);
+  assert.match(html, /class="workflow-steps delivery-journey"/);
+  assert.match(html, /Intended workflow, not a product screenshot or a verified result/);
 });
 
 test('customer engagement and code access distinguish assistance from approval or verification', () => {
@@ -359,8 +420,8 @@ test('use-case ideas explain customer fit without implying a release commitment 
 
 test('a first-time reader is oriented and every unavoidable term is explained', () => {
   assert.match(html, /id="orientation"/);
-  assert.match(html, /Starting points, not finished products/);
-  assert.match(html, /Each guide explains what was tested, the limits/);
+  assert.match(html, /Microsoft source. Your deployment plan/);
+  assert.match(html, /Microsoft-owned code is not a production or support guarantee/);
   assert.match(html, /<details class="reference-disclosure" id="glossary">/);
   for (const [term, meaning] of glossary) {
     assert.ok(html.includes(`<dt>${escapeHTML(term)}</dt>`), `glossary term: ${term}`);
@@ -392,7 +453,7 @@ test('problem-first hub supplies a complete, honest getting-started path for eve
       assert.ok(html.includes(escapeHTML(node.detail)));
       assert.ok(html.includes(escapeHTML(node.service)));
     }
-    for (const steps of [dossier.workflow, dossier.ingestion.stages, dossier.deployment.steps, dossier.specialists]) {
+    for (const steps of [dossier.workflow, dossier.ingestion.stages, dossier.deployment.walkthrough.steps, dossier.specialists]) {
       for (const [title, detail] of steps) {
         assert.ok(html.includes(escapeHTML(title)));
         assert.ok(html.includes(escapeHTML(detail)));
@@ -415,7 +476,7 @@ test('problem-first hub supplies a complete, honest getting-started path for eve
   assert.match(html, /Selections stay in this page until reload/);
   const sourceLinks = [...html.matchAll(/<a\b([^>]*\btarget="_blank"[^>]*)>([\s\S]*?)<\/a>/g)];
   assert.equal(sourceLinks.length, Object.values(dossiers).reduce((count, item) =>
-    count + item.sources.length + (item.repository ? 1 : 0), 0) + catalogReview.length + programSources.length);
+    count + item.sources.length + (item.repository ? 1 : 0) + (item.deployment.walkthrough.source ? 1 : 0), 0) + catalogReview.length + programSources.length);
   for (const [, attributes, label] of sourceLinks) {
     assert.match(attributes, /rel="noopener noreferrer"/);
     assert.match(label, /opens in a new tab/);
@@ -437,6 +498,9 @@ test('dossiers reject invalid sources, broken graph relationships and incomplete
   invalid((copy) => { copy.specialists = []; }, /specialist/);
   invalid((copy) => { copy.ingestion.stages = [['Missing detail']]; }, /ingestion/);
   invalid((copy) => { copy.deployment.prerequisites = []; }, /deployment/);
+  invalid((copy) => { delete copy.deployment.walkthrough; }, /deployment walkthrough/);
+  invalid((copy) => { copy.deployment.walkthrough.source = 'missing'; }, /deployment walkthrough/);
+  invalid((copy) => { copy.deployment.walkthrough.steps[0].push(''); }, /deployment walkthrough/);
   invalid((copy) => { delete copy.plain.brief; }, /customer explanation/);
   invalid((copy) => { copy.plain.brief.value = ''; }, /customer explanation/);
   invalid((copy) => { copy.plain.brief.value = 'Word '.repeat(151); }, /customer explanation/);
@@ -449,6 +513,59 @@ test('dossiers reject invalid sources, broken graph relationships and incomplete
     assert.notEqual(dossiers[id].architecture.basis, 'documented');
     assert.equal(dossiers[id].repository, undefined);
   }
+});
+
+test('all 20 deployment walkthroughs expose ordered instructions, source basis and acceptance without invented installs', () => {
+  assert.equal((html.match(/class="deployment-walkthrough"/g) || []).length, 20);
+  assert.equal((html.match(/Open full deployment manual/g) || []).length, 18);
+  for (const item of candidates) {
+    const dossier = dossiers[item.id];
+    const guide = dossier.deployment.walkthrough;
+    assert.equal(guide.steps.length, 5);
+    assert.ok(html.includes(escapeHTML(guide.route)));
+    assert.ok(html.includes(escapeHTML(guide.verify)));
+    for (const [, , command] of guide.steps) {
+      if (command) assert.ok(html.includes(`<code>${escapeHTML(command)}</code>`));
+    }
+    if ([3, 12].includes(item.id)) {
+      assert.equal(guide.source, null);
+      assert.ok(guide.steps.every((step) => step.length === 2));
+    } else assert.ok(dossier.sources.some((source) => source.id === guide.source));
+    if (dossier.repository) assert.ok(html.includes(`git checkout --detach ${dossier.revision}`));
+  }
+  assert.match(dossiers[1].deployment.walkthrough.steps[3][2], /acr_build_push_update[\s\S]+post_deployment_setup/);
+  assert.match(dossiers[13].deployment.walkthrough.steps[2][2], /build_and_deploy_images[\s\S]+process_sample_data/);
+  assert.match(dossiers[6].deployment.walkthrough.steps[2][1], /no post-provision hook/);
+  assert.match(dossiers[8].deployment.walkthrough.steps[1][1], /automatically builds images/);
+  assert.match(dossiers[12].deployment.walkthrough.steps[2][1], /different pins/);
+  for (const id of [4, 9, 14]) assert.match(dossiers[id].deployment.walkthrough.route, /maintenance gate/);
+  assert.match(html, /source-inspected, not deployment-tested/);
+  for (const marker of [
+    'AZURE_TENANT_ID 11111111-2222-3333-4444-555555555555',
+    'AZURE_CLIENT_ID ghp_notarealcredential',
+    'AUTH_CLIENT_ID accountId: synthetic',
+  ]) assert.throws(() => assertPublicContent(`${html}\n${marker}`), /Public privacy check failed/);
+});
+
+test('customer decisions expose provenance, prerequisites and a solution-specific handoff for all 20 entries', () => {
+  assert.equal(Object.values(dossiers).filter((dossier) => sourceLabel(dossier) === 'Microsoft-owned public repository').length, 16);
+  assert.equal(sourceLabel(dossiers[3]), 'Private owner-led solution');
+  assert.equal(sourceLabel(dossiers[12]), 'Proposed custom workflow');
+  for (const id of [5, 11]) assert.equal(sourceLabel(dossiers[id]), 'Microsoft / GitHub platform guidance');
+  assert.throws(() => sourceLabel({ repository: 'https://github.com/other/example/tree/revision' }), /source ownership/);
+  for (const item of candidates) {
+    assert.ok(html.includes(`data-discuss="${item.id}"`));
+    assert.ok(html.includes(`class="deployment-runbook" id="solution-${item.id}-runbook"`));
+    assert.ok(html.includes(`class="solution-section fit-detail" id="solution-${item.id}-plain"`));
+  }
+  assert.equal((html.match(/1 \/ Understand the solution/g) || []).length, 20);
+  assert.equal((html.match(/2 \/ Run it in your environment/g) || []).length, 20);
+  assert.equal((html.match(/class="setup-prerequisites"/g) || []).length, 20);
+  assert.equal((html.match(/class="setup-costs"/g) || []).length, 20);
+  assert.equal((html.match(/class="setup-input"/g) || []).length, 20);
+  assert.doesNotMatch(html, /class="source-path"/);
+  assert.match(html, /adoption champion and a review date/);
+  assert.match(html, /data classification and residency/);
 });
 
 test('component diagrams route every connection outside unrelated component boxes', () => {

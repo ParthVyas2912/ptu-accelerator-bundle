@@ -1,10 +1,10 @@
 # AI Solutions Hub
 
-A problem-first catalog of Microsoft and Azure AI solution starting points: help teams discover relevant capabilities, shortlist candidates, and understand the architecture, source and prerequisites for an approved tenant pilot. Capacity planning follows the workload; it is not the selling proposition.
+A flexible toolkit of 20 Microsoft and Azure AI starting points to increase useful adoption of customers' existing PTUs and demonstrate the value of that investment. Teams choose the combination that fits their work, verify each solution's readiness and model/API/geography routing, and measure business outcomes alongside PTU utilization and total service cost. This is not a blanket PTU-compatibility or deployment guarantee.
 
 ## [Open the stakeholder website](https://ai-solutions-hub-ca.azurewebsites.net/)
 
-Share that link with nontechnical colleagues. The published AI Solutions Hub provides six problem entry points, twenty-two product-specific solution guides, a multi-solution shortlist and getting-started guidance without exposing this repository's private reports or environment details. The release source and publication evidence are recorded in [website deployment metadata](docs/website-deployment.json). Future local changes do not update the hosted website until deployment.
+Share that link with nontechnical colleagues. The AI Solutions Hub source provides six problem entry points, twenty product-specific solution guides, a multi-solution shortlist and getting-started guidance without exposing this repository's private reports or environment details. The release source and publication evidence are recorded in [website deployment metadata](docs/website-deployment.json). Local changes, including the 20-entry catalog, do not update the hosted website until deployment.
 
 The same site is also served at its original address, https://blue-beach-0fb8cd70f.5.azurestaticapps.net/, which remains live. Azure generated that hostname randomly and it cannot be renamed; see [website operations](docs/WEBSITE-OPERATIONS.md) for why both addresses exist.
 
@@ -24,13 +24,67 @@ The same site is also served at its original address, https://blue-beach-0fb8cd7
 
 The public-facing working brand is **AI Solutions Hub**, not an official Microsoft marketplace or commercial SKU. The catalog is curated, not an exhaustive list of Microsoft products.
 
-**Start with one useful pilot, not the whole catalog.** Three focused paths pair a
+**Choose the mix that puts existing PTUs to useful work.** Customers can assess one,
+several or all 20 starting points; deployment remains subject to each solution's
+readiness, permissions and PTU compatibility. The portfolio is not an all-or-nothing
+bundle or 20 ready-to-install applications. Three starter pilot paths pair a
 bounded workflow with ownership/maintenance gates, outcome and quality measures,
 and a printable pilot brief. CWYD is the first knowledge-pilot recommendation;
 Content Processing is the document-workflow priority; engineering requires an
 active backlog and an accountable maintenance owner. Optional extensions are not
 automatically added to a shortlist. The shared acceptance gates lead to an
-expand, repair or stop decision, with model capacity justified separately.
+expand, repair or stop decision. Track repeat use, accepted work, PTU utilization
+and headroom, time saved, quality and total service cost against a baseline to
+support investment and renewal decisions. Increased utilization should come from
+useful work, not artificial traffic; shared services are not included in PTU capacity.
+
+**Choose, deploy, adopt, expand.** The program works with customers and central AI
+teams to select a portfolio, arrange approved code access, and either support
+customer-led deployment or scope end-to-end help through configuration, evaluation,
+handover and onboarding additional teams. Delivery, funding and operational support
+are agreed explicitly. SpecSuite is private: access or an approved code handoff can
+be coordinated with its owner; this does not upgrade its historical evaluation status.
+
+The website's **How we help** page explains customer-led and assisted delivery,
+responsibilities and proposed deliverables. A shortlist-based implementation brief
+collects open solution gates and working-session prompts for local printing or PDF
+sharing; full technical guides remain a separate print option. It submits no data,
+books no engagement and does not authorize deployment. Detailed preparation,
+optional pilots and selection research remain available as secondary guidance.
+
+**Use-case ideas** reframes the five planned workflows as unbuilt concepts for
+customer scoping discussions, not a promised release roadmap. Each describes
+intended users, a useful output, an evaluation approach and a related starting
+point with explicit implementation gaps. Customers can bring other needs; no
+priority, delivery date, funding or PTU compatibility is promised. Concepts remain
+separate from the solution shortlist.
+
+Catalog descriptions explain the input, workflow, useful output and an illustrative
+scenario for every entry, rather than relying on product-category one-liners.
+The local visual redesign adds Microsoft branding in the header, switchable
+workflow illustrations, challenge-led discovery and a three-solution comparison.
+Quick-save cards and a persistent in-page planning workspace keep the unlimited
+catalog shortlist separate from comparison; both reset on reload.
+It uses compact illustrated cards for discovery, with the
+full explanations and runbooks inside each guide. Original workflow graphics are
+labeled illustrative; supplied Microsoft logos provide restrained attribution,
+not blanket product ownership or endorsement. All artwork is embedded for offline use.
+SpecSuite's supplied product description covers code-to-spec, connected knowledge
+graphs and spec-to-code for understanding, improving and modernizing existing
+software. Cross-language intent is not verified support for every language or
+framework; the package and both directions of the workflow need a scoped evaluation.
+
+**Customer catalog curation (23 September 2026):** the public offering now contains
+20 starting points. Harbinger (historical ID 20) is removed because its owner,
+package and capabilities are unresolved. StepFly (historical ID 18) is removed
+because the research prototype did not reach the intended root-cause outcome;
+its own evaluation excludes it from launch. These are stronger exclusions than
+simply requiring integration work or providing platform/engineering enablement.
+Both remain in the private historical inventory and research backlog, not the
+customer shortlist. Existing reports, evidence and upstream adaptations are
+unchanged; remaining entries retain their IDs, source pins and readiness limits.
+Reconsideration requires confirmed provenance for Harbinger and reproducible
+diagnostic success for StepFly, followed by an approved assessment.
 
 The **20 September 2026 public-source selection review** covers 15 current catalog
 entries and 39 legacy pages without adding them as new validated products.
@@ -84,7 +138,7 @@ Follow [site/README.md](site/README.md) for build and test commands. The product
 
 GitHub Actions validates changes and deploys the site on `main` changes to the site or deployment workflow. Historical scripts are **not** automatically executed in CI. Infrastructure provisioning is a separate manual operation; site publishing cannot create or start model-consuming applications.
 
-Six [starter issues](https://github.com/ParthVyas2912/ptu-accelerator-bundle/issues) define the next implementation priorities. Historical functional gaps and approval-gated pilot work remain open; completing the website and private research proposal does not make all twenty-two accelerators production-ready or authorize further lab execution. Dependency-update pull requests remain subject to review; they are not automatically merged.
+Six [starter issues](https://github.com/ParthVyas2912/ptu-accelerator-bundle/issues) define the next implementation priorities. Historical functional gaps and approval-gated pilot work remain open; completing the website and private research proposal does not make the twenty catalog entries production-ready or authorize further lab execution. Dependency-update pull requests remain subject to review; they are not automatically merged.
 
 ## Attribution and licensing
 

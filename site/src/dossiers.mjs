@@ -1,5 +1,6 @@
 import { platformGuides, sources } from './onboarding.mjs';
 import { plainLanguage } from './plain.mjs';
+import { deploymentGuides } from './deployment.mjs';
 
 export const researchDate = '2026-09-15';
 const reference = (id, label, url, supports) => ({ id, label, url, ...(supports ? { supports } : {}) });
@@ -771,7 +772,7 @@ const catalog = {
     ], [['caller', 'channel', 'Place or receive a call'], ['channel', 'middleware', 'Stream audio in both directions'], ['middleware', 'speech', 'Transcribe speech and speak the reply'], ['middleware', 'model', 'Request the next response'], ['model', 'tools', 'Look up or act on permitted data'], ['model', 'state', 'Record the conversation turn']],
     ['The two audio paths are selected by configuration. The separated pipeline gives step-by-step control; the managed voice-to-voice path removes separate recognition and synthesis components.', 'The reviewed infrastructure definition provisions substantially more than a single application: a cache, a document cluster, a container registry, container and web hosting, configuration, secret storage, monitoring and communication services.', 'Checked-in model capacity defaults are far larger than an evaluation needs. Review and reduce them before any approved deployment.']),
     deployment: {
-      method: 'A developer-CLI workflow drives a Terraform definition and container builds, followed by separate telephony number acquisition and configuration.',
+      method: 'A developer-CLI workflow drives Terraform and container builds. Start with browser audio; telephony number acquisition and configuration are separate, optional steps for a phone pilot.',
       prerequisites: ['Approval and budget for always-on hosting, a cache, a document cluster and a container registry, none of which have a free option', 'Real-time speech or voice-model availability, quota and region support confirmed for the exact model and API', 'A separately purchased telephony number, plus consent and recording decisions, before any live call', 'A Bash-compatible shell with container, Python and Node tooling'],
       steps: [['Price the whole stack first', 'Cost the cache, document cluster, registry, hosting and monitoring as recurring charges, separately from model usage.'], ['Reduce the defaults', 'Lower the checked-in model capacities and hosting sizes to the smallest that supports one test scenario.'], ['Provision after approval', 'Run the documented workflow only in an authorized environment, then acquire and attach a telephony number.'], ['Test one scenario honestly', 'Measure interruptions, noise, silence and handoff, and record failures rather than only the successful path.']],
       costs: ['Real-time speech or voice-model usage, billed separately from text capacity', 'Telephony number rental and per-minute call charges', 'Cache, document cluster, container registry, container and web hosting', 'Configuration, secret storage and monitoring services'],
@@ -823,4 +824,13 @@ const catalog = {
 };
 
 export const dossiers = Object.fromEntries(Object.entries(catalog)
-  .map(([id, entry]) => [id, { ...entry, plain: plainLanguage[id] }]));
+  .map(([id, entry]) => [id, {
+    ...entry,
+    plain: plainLanguage[id],
+    deployment: { ...entry.deployment, walkthrough: deploymentGuides[id] },
+    sources: [
+      ...entry.sources,
+      ...(id === '13' ? [reference('deployment-azd', 'Complete azd and post-provision instructions', sources.generation.guide.replace('README.md', 'docs/AZD_DEPLOYMENT.md'))] : []),
+      ...(id === '15' ? [reference('maker-setup', 'Maker workspace setup and release workflow', entry.sources.find((source) => source.id === 'deployment').url.replace('setup/README.md', 'solutions/ess-maker-skills/README.md'))] : []),
+    ],
+  }]));

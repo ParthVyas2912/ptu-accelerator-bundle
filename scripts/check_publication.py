@@ -44,6 +44,8 @@ The digest covers the ENTIRE raw file/blob, so any edit invalidates suppression,
 including a changed multiline private key. Review allowlist changes as carefully
 as credentials; never allowlist a real credential. Compute hashes locally with
 hashlib or Get-FileHash. No automatic allowlist generation or value logging.
+A separately reviewed binary uses line 0 with rule UNREVIEWED_BINARY or
+UNDECODABLE_TEXT and the same whole-file digest; its bytes are not scanned.
 """
 
 import argparse
@@ -69,6 +71,7 @@ RULES = {
     "BASIC_AUTH", "SAS_SIGNATURE", "CONNECTION_CREDENTIAL",
     "URL_PASSWORD", "LITERAL_SECRET",
 }
+BINARY_RULES = {"UNREVIEWED_BINARY", "UNDECODABLE_TEXT"}
 PLACEHOLDERS = {
     "secret", "password", "password123", "password123!", "changeme",
     "change_me", "replace_me", "replace-me", "placeholder", "redacted",
@@ -476,9 +479,12 @@ def load_allowlist(path):
                     or any(part in {"", ".", ".."} for part in name.split("/"))
                     or any(char in name for char in "*?[]")):
                 raise ValueError()
-            if type(entry["line"]) is not int or entry["line"] < 1:
+            if type(entry["line"]) is not int:
                 raise ValueError()
-            if entry["rule"] not in RULES:
+            if entry["rule"] in BINARY_RULES:
+                if entry["line"] != 0:
+                    raise ValueError()
+            elif entry["rule"] not in RULES or entry["line"] < 1:
                 raise ValueError()
             if not re.fullmatch(r"[0-9a-f]{64}", entry["file_sha256"]):
                 raise ValueError()
@@ -525,8 +531,11 @@ def main(argv=None):
                                 emit(name, line, rule)
                                 found = True
                     except ScanError as error:
-                        emit(error.path, 0, error.rule)
-                        incomplete = True
+                        reviewed = (error.rule in BINARY_RULES and
+                                    (name, 0, error.rule, hashlib.sha256(data).hexdigest()) in allowlist)
+                        if not reviewed:
+                            emit(error.path, 0, error.rule)
+                            incomplete = True
             except ScanError as error:
                 emit(error.path, 0, error.rule)
                 incomplete = True

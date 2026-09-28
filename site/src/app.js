@@ -19,7 +19,8 @@
   function activateView(hash, { focus = false, scroll = false } = {}) {
     let id;
     try { id = decodeURIComponent(hash.replace(/^#/, "")); } catch { id = "top"; }
-    const target = document.getElementById(id || "top") || $("#top");
+    let target = document.getElementById(id || "top") || $("#top");
+    if (target.closest("#finder-results")?.hidden) target = $("#bundles");
     if (id !== "main") {
       activeSolution = target.closest(".solution-page");
       currentView = target.closest("[data-page]")?.dataset.page || "overview";
@@ -36,7 +37,7 @@
     }
     for (const link of document.querySelectorAll(".solution-nav a")) {
       const selected = link.hash === hash
-        || (activeSolution?.id === id && link.hash === `#${id}-plain`);
+        || (activeSolution?.id === id && link.hash === `#${id}-workflow`);
       if (selected) link.setAttribute("aria-current", "location");
       else link.removeAttribute("aria-current");
     }
@@ -99,6 +100,12 @@
     }
     $("#result-count").textContent = `Showing ${count} of ${cards.length} solutions`;
     $("#empty-state").hidden = count !== 0;
+    const context = [];
+    if (bundle.value !== "all") context.push(bundle.selectedOptions[0].textContent);
+    if (problem.value !== "all") context.push(problem.selectedOptions[0].textContent);
+    if (search.value.trim()) context.push(`Search: ${search.value.trim()}`);
+    $("#filter-context").textContent = context.join(" / ");
+    $("#filter-context").hidden = context.length === 0;
     for (const chip of chips.children) chip.setAttribute("aria-pressed", String(chip.dataset.bundleChoice === bundle.value));
   }
   form.hidden = false;
@@ -120,10 +127,48 @@
         form.reset();
         (attribute === "bundle" ? bundle : problem).value = link.dataset[`${attribute}Link`];
         filterCards();
+        if (attribute === "problem" && link.closest(".problem-grid")) {
+          event.preventDefault();
+          renderFinder(link.dataset.problemLink);
+          navigateTo("#finder-results");
+        }
       });
     });
   }
   filterCards();
+  let finderProblem = null;
+  function renderFinder(key) {
+    finderProblem = key;
+    const matches = cards.filter((card) => card.dataset.problems.split(" ").includes(key));
+    $("#finder-title").textContent = problem.selectedOptions[0].textContent;
+    $("#finder-status").textContent = `${matches.length} relevant starting points. Showing ${Math.min(3, matches.length)} in catalog order.`;
+    $("#finder-matches").replaceChildren();
+    for (const card of matches.slice(0, 3)) {
+      const item = document.createElement("article");
+      const heading = document.createElement("h4");
+      const link = document.createElement("a");
+      link.href = `#solution-${card.dataset.id}`;
+      link.textContent = card.querySelector("h3").textContent;
+      heading.append(link);
+      const purpose = document.createElement("p");
+      purpose.textContent = card.querySelector(".candidate-value").textContent;
+      const kind = document.createElement("span");
+      kind.className = "small-label";
+      kind.textContent = card.querySelector(".candidate-kind").textContent;
+      item.append(kind, heading, purpose);
+      $("#finder-matches").append(item);
+    }
+    for (const link of document.querySelectorAll(".problem-link")) {
+      if (link.dataset.problemLink === key) link.setAttribute("aria-current", "true");
+      else link.removeAttribute("aria-current");
+    }
+    $("#finder-results").hidden = false;
+  }
+  $("#finder-results a[href='#catalog']").addEventListener("click", () => {
+    form.reset();
+    problem.value = finderProblem;
+    filterCards();
+  });
   const layouts = [...document.querySelectorAll("#view-switch button")];
   $("#view-switch").hidden = false;
   for (const button of layouts) {
@@ -166,6 +211,37 @@
 
   const selected = new Set();
   const toggles = [...document.querySelectorAll("[data-select]")];
+  const quickToggles = [...document.querySelectorAll("[data-quick-select]")];
+  $(".header-plan").hidden = false;
+  for (const tools of document.querySelectorAll(".card-tools")) tools.hidden = false;
+  function updateWorkspace() {
+    $("#header-plan-count").textContent = String(selected.size);
+    $("#dock-plan-count").textContent = String(selected.size);
+    $("#dock-summary").textContent = `${selected.size} saved for your team`;
+    $("#planning-dock").hidden = selected.size === 0;
+    document.documentElement.classList.toggle("has-workspace", selected.size > 0);
+    for (const button of quickToggles) {
+      const saved = selected.has(button.dataset.quickSelect);
+      button.textContent = saved ? "Saved to plan ✓" : "Save to plan ＋";
+      button.setAttribute("aria-pressed", String(saved));
+      const name = cards.find((card) => card.dataset.id === button.dataset.quickSelect).querySelector("h3").textContent;
+      button.setAttribute("aria-label", `${saved ? "Remove" : "Save"} ${name} ${saved ? "from" : "to"} your plan`);
+    }
+  }
+  let selectionTimer;
+  function announceSelection(message) {
+    clearTimeout(selectionTimer);
+    $("#selection-status").textContent = message;
+    selectionTimer = setTimeout(() => { $("#selection-status").textContent = ""; }, 8000);
+  }
+  for (const button of quickToggles) button.addEventListener("click", () => {
+    const id = button.dataset.quickSelect;
+    if (selected.has(id)) selected.delete(id);
+    else selected.add(id);
+    renderShortlist();
+    const name = cards.find((card) => card.dataset.id === id).querySelector("h3").textContent;
+    announceSelection(`${name} ${selected.has(id) ? "saved to" : "removed from"} your plan.`);
+  });
   let activePathway = null;
   function renderImplementationBrief() {
     $("#implementation-count").textContent = selected.size
@@ -183,10 +259,25 @@
       link.textContent = card.querySelector("h3").textContent;
       title.append(link);
       const purpose = document.createElement("p");
-      purpose.textContent = card.querySelector(".candidate-value dd").textContent;
+      purpose.textContent = solution.querySelector(".solution-lead .solution-summary dd").textContent;
       const gate = document.createElement("p");
       gate.textContent = `Resolve / confirm: ${solution.querySelector(".deployment-notes > div > p").textContent}`;
       item.append(title, purpose, gate);
+      const requirements = document.createElement("dl");
+      requirements.className = "brief-requirements";
+      for (const [label, selector] of [
+        ["Deployment path", ".deployment-route > strong"],
+        ["Inputs to prepare", ".setup-input"],
+        ["Your team needs", ".setup-prerequisites li"],
+        ["Budget separately for", ".setup-costs li"],
+      ]) {
+        const term = document.createElement("dt");
+        term.textContent = label;
+        const value = document.createElement("dd");
+        value.textContent = [...solution.querySelectorAll(selector)].map((node) => node.textContent).join("; ");
+        requirements.append(term, value);
+      }
+      item.append(requirements);
       const maintenance = solution.querySelector(".source-review");
       if (maintenance) {
         const note = document.createElement("p");
@@ -219,7 +310,8 @@
   }
   function cloneGuide(id) {
     const clone = $(`#solution-${id} .solution-body`).cloneNode(true);
-    clone.prepend($(`#solution-${id} > .solution-summary`).cloneNode(true));
+    clone.querySelector(".solution-handoff").remove();
+    clone.prepend($(`#solution-${id} .solution-lead .solution-summary`).cloneNode(true));
     // Shortlist copies need their own anchor and accessible-label namespace.
     const ids = new Set([...clone.querySelectorAll("[id]")].map((node) => node.id));
     for (const node of clone.querySelectorAll("[id]")) node.id = `plan-${node.id}`;
@@ -271,6 +363,15 @@
     }
     renderPilotBrief();
     renderImplementationBrief();
+    updateWorkspace();
+  }
+  for (const button of document.querySelectorAll("[data-discuss]")) {
+    button.hidden = false;
+    button.addEventListener("click", () => {
+      selected.add(button.dataset.discuss);
+      renderShortlist();
+      navigateTo("#implementation-brief");
+    });
   }
   for (const button of document.querySelectorAll("[data-plan-pathway]")) {
     button.hidden = false;
@@ -308,6 +409,7 @@
     window.print();
   });
   renderImplementationBrief();
+  updateWorkspace();
   let prePrintTheme;
   let prePrintDisclosures;
   window.addEventListener("beforeprint", () => {
@@ -316,7 +418,7 @@
       document.documentElement.dataset.printPlan = "solution";
     }
     if (prePrintDisclosures === undefined) {
-      prePrintDisclosures = [...document.querySelectorAll(".bundle-inventory, .selected-guide, .deployment-notes, .connection-details, .catalog-review, .reference-disclosure, .idea-detail, #capacity-new")]
+      prePrintDisclosures = [...document.querySelectorAll(".bundle-inventory, .selected-guide, .deployment-notes, .deployment-runbook, .deployment-checkout, .command-disclosure, .delivery-journey details, .fit-detail, .connection-details, .catalog-review, .reference-disclosure, .idea-detail, #capacity-new")]
         .map((detail) => ({ detail, open: detail.open }));
       for (const { detail } of prePrintDisclosures) detail.open = true;
     }

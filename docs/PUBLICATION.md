@@ -67,6 +67,8 @@ explicitly curated external links. It does not fetch or ingest private documents
 
 `scripts/publication_allowlist.json` contains one reviewed, credential-free deployment-description annotation at a fixed path/line/rule, bound to the complete file SHA-256 (both historical line-ending representations). This is not a wildcard exception for secret fields. Changed content must be reviewed again.
 
+The scanner cannot inspect binaries, so it fails closed on them. The three supplied Microsoft logo PNGs under `site/src/assets/` were reviewed separately (image chunks only, no text or EXIF metadata) and are listed as line-0 binary entries bound to their exact SHA-256, which `site/scripts/build.mjs` also pins. Any other or modified binary still fails the scan.
+
 All private report artifacts retain their evidence limitations. Sanitization or omission must be documented rather than silently rewriting an original response to appear successful.
 
 Git line-ending normalization is disabled for `adaptations/`, `evidence/` and `test-data/` so that captured hashes and fixture bytes survive Windows/Linux checkouts. Ordinary application and documentation source retains conventional text normalization.

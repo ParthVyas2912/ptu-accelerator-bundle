@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Get more value from the PTUs you already own. Explore @@CANDIDATE_COUNT@@ AI starting points, choose the solutions your teams need, and plan measurable adoption with model, API and geography compatibility checks.">
+  <meta name="description" content="Explore @@CANDIDATE_COUNT@@ AI starting points: understand the application, see its architecture and plan deployment in your environment. Put existing PTUs to useful work or assess demand before investing.">
   <meta name="referrer" content="no-referrer">
   <meta http-equiv="Content-Security-Policy" content="@@META_CSP@@">
   <title>AI Solutions Hub — Put your PTUs to work</title>
@@ -14,9 +14,9 @@
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="header-inner">
+      <a class="header-microsoft brand-attribution" href="#top" aria-label="Microsoft — AI Solutions Hub home"><img class="brand-light" src="@@MICROSOFT_GRAY@@" width="400" height="180" alt="Microsoft"><img class="brand-dark" src="@@MICROSOFT_WHITE@@" width="400" height="180" alt="Microsoft"></a>
       <a class="brand" href="#top" aria-label="AI Solutions Hub home">
-        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
-        <span>AI <strong>Solutions Hub</strong><small>More value from your PTUs.</small></span>
+        <span>AI <strong>Solutions Hub</strong><small>Discover. Deploy. Adopt.</small></span>
       </a>
       <nav aria-label="Main navigation">
         <a href="#top" data-view-link="overview">Overview</a>
@@ -25,53 +25,67 @@
         <a href="#roadmap" data-view-link="roadmap">Use-case ideas</a>
       </nav>
       <button class="theme-button" id="theme-toggle" type="button" hidden>Dark theme</button>
+      <a class="header-plan" href="#shortlist" hidden>My plan <span id="header-plan-count">0</span></a>
     </div>
   </header>
 
   <main id="main">
     <section class="hero wrap" id="top" data-page="overview" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span> Adoption. Utilization. Business value.</p>
-        <h1 id="hero-title">Your PTUs.<br>Put them<br><span>to work.</span></h1>
-        <p class="hero-intro">A Swiss Army knife of @@CANDIDATE_COUNT@@ AI starting points to help you get more from the PTUs you already own.</p>
-        <p class="hero-description">Choose one, several or plan across all @@CANDIDATE_COUNT@@. Deploy what fits your work, subject to each solution's readiness and PTU compatibility.</p>
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span> Your PTUs. Your possibilities.</p>
+        <h1 id="hero-title">Useful AI.<br><span>Built around<br>your work.</span></h1>
+        <p class="hero-intro">A head start on the work that matters.</p>
+        <p class="hero-description">Explore @@CANDIDATE_COUNT@@ AI starting points for your teams. Choose your mix, see what it needs, and turn compatible model capacity into useful work.</p>
         <div class="hero-actions">
-          <a class="button primary" href="#bundles">Find my solutions <span aria-hidden="true">↓</span></a>
-          <a class="text-link" href="#catalog">Browse all @@CANDIDATE_COUNT@@ starting points <span aria-hidden="true">→</span></a>
+          <a class="button primary" href="#bundles">Find my starting point <span aria-hidden="true">→</span></a>
+          <a class="text-link" href="#catalog">Browse all solutions <span aria-hidden="true">↗</span></a>
         </div>
-        <p class="hero-meta"><span><strong>@@CANDIDATE_COUNT@@</strong> starting points</span><span><strong>3</strong> areas of work</span><span>Your choice of solutions</span></p>
+        <p class="hero-meta"><span><strong>@@CANDIDATE_COUNT@@</strong> starting points</span><span><strong>3</strong> areas of work</span></p>
+        <p class="hero-capacity">Considering PTUs? <a href="#capacity-new">Prove demand before investing.</a></p>
       </div>
-      <figure class="portfolio-map" aria-labelledby="portfolio-map-title">
-        <figcaption><span class="eyebrow">Your toolkit for PTU adoption</span><h2 id="portfolio-map-title">One toolkit.<br>Many ways to use it.</h2></figcaption>
-        <div class="map-journey">
-          <div class="map-inputs">
-            <div><svg viewBox="0 0 40 40" aria-hidden="true"><path d="m13 10-9 10 9 10m14-20 9 10-9 10M24 6l-8 28"/></svg><span>Systems</span></div>
-            <div><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M7 8h10l3 3 3-3h10v25H23l-3 3-3-3H7zM20 11v25M11 15h5m-5 6h5m8-6h5m-5 6h5"/></svg><span>Answers</span></div>
-            <div><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M10 4h15l7 7v25H10zM25 4v8h7M16 19h10m-10 6h5m2 5 3 3 7-8"/></svg><span>Documents</span></div>
-          </div>
-          <div class="map-destination">
-            <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="5" y="6" width="38" height="15" rx="4"/><rect x="5" y="27" width="38" height="15" rx="4"/><path d="M12 13h2m-2 21h2m8-21h13m-13 21h13"/></svg>
-            <div><strong>Your existing PTUs</strong><span>Compatible workloads only</span></div>
-          </div>
-        </div>
-        <ol class="map-steps"><li><span>01</span> Adopt</li><li><span>02</span> Measure</li><li><span>03</span> Expand</li></ol>
-        <a class="text-link" href="#capacity">Plan your PTU adoption <span aria-hidden="true">→</span></a>
-        <p class="map-footnote">A path to explore—not a deployed solution. Other services cost extra.</p>
+      <figure class="workflow-showcase" aria-labelledby="showcase-title">
+        <figcaption id="showcase-title"><span class="eyebrow">Your organization. More possibilities.</span><span>An adoption journey, not a system architecture</span></figcaption>
+        <ol class="adoption-map">
+          <li class="showcase-tile organization-stage">
+            <span class="journey-number" aria-hidden="true">01</span>
+            <svg class="journey-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M6 42V16h12V6h24v36M18 42V16M24 14h4m6 0h3m-13 8h4m6 0h3m-13 8h4m6 0h3M10 24h3m-3 8h3M26 42v-5h8v5"/></svg>
+            <div><h3>Your organization</h3><p>Your people, priorities and approved environment.</p></div>
+          </li>
+          <li class="showcase-tile solutions-stage">
+            <span class="journey-number" aria-hidden="true">02</span>
+            <div class="journey-heading"><h3>Your AI toolkit</h3><p>Choose one or build your own mix.</p></div>
+            <div class="toolkit-grid" aria-label="Example AI starting points">
+              <a href="#solution-1"><svg class="journey-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M5 5h22v17H16l-7 5v-5H5ZM10 11h12m-12 5h8"/></svg><span>Find answers</span><span aria-hidden="true">↗</span></a>
+              <a href="#solution-6"><svg class="journey-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M7 3h12l6 6v20H7ZM19 3v7h6M11 15h10m-10 5h6"/></svg><span>Process documents</span><span aria-hidden="true">↗</span></a>
+              <a href="#solution-5"><svg class="journey-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="m10 8-7 8 7 8m12-16 7 8-7 8M19 4l-6 24"/></svg><span>Help developers</span><span aria-hidden="true">↗</span></a>
+              <a href="#solution-13"><svg class="journey-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="m7 22 15-15 4 4-15 15-6 1ZM19 10l4 4M7 3v6M4 6h6m14 14v8m-4-4h8"/></svg><span>Create content</span><span aria-hidden="true">↗</span></a>
+            </div>
+            <a class="text-link toolkit-all" href="#catalog">Explore all @@CANDIDATE_COUNT@@ starting points <span aria-hidden="true">→</span></a>
+          </li>
+          <li class="showcase-tile outcomes-stage">
+            <span class="journey-number" aria-hidden="true">03</span>
+            <svg class="journey-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M6 40h36M10 33v-8m10 8V19m10 14V13m10 20V7M8 17l12-7 10-4M23 5l7 1-2 7"/></svg>
+            <div><h3>Success you can measure</h3><p>Adoption. Time saved. Quality. Useful capacity.</p><a class="text-link" href="#pilot-gates">Define your success measures <span aria-hidden="true">→</span></a></div>
+          </li>
+        </ol>
+        <p class="showcase-boundary">Results depend on fit and delivery. Compatible workloads only. Other services cost extra.</p>
       </figure>
     </section>
 
     <section class="wrap orientation" id="orientation" data-page="overview" aria-labelledby="orientation-title">
       <svg class="orientation-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5ZM3 12l9 5 9-5M3 16l9 5 9-5"/></svg>
-      <div><h2 id="orientation-title">Starting points, not finished products.</h2><p>Code, templates and designs your team adapts in Azure. Each guide explains what was tested, the limits and what your pilot needs.</p></div>
+      <div><h2 id="orientation-title">Microsoft source. Your deployment plan.</h2><p>Each guide identifies its source, requirements and limits. Microsoft-owned code is not a production or support guarantee.</p></div>
+      <a class="text-link" href="#questions">Know what you get →</a>
     </section>
 
     <section class="section wrap" id="bundles" data-page="overview" aria-labelledby="bundles-title">
       <div class="section-heading">
-        <div><p class="eyebrow">Start here / choose a problem</p><h2 id="bundles-title">What is slowing<br>your team down?</h2></div>
-        <p>Find useful work for your teams—and compatible demand for your PTUs.</p>
+        <div><p class="eyebrow">01 / Find your fit</p><h2 id="bundles-title">Start with a challenge.<br>Not a product name.</h2></div>
+        <p>Choose the work you want to improve. Discover starting points that fit your team.</p>
       </div>
       <div class="problem-grid" aria-label="Find solutions by problem">@@PROBLEM_LINKS@@</div>
-      <h3 class="grouping-title">Or explore by area of work</h3>
+      <div id="finder-results" class="finder-results" hidden aria-labelledby="finder-title"><div class="finder-heading"><div><p class="eyebrow">Your starting points</p><h3 id="finder-title">Solutions to explore</h3><p id="finder-status" role="status"></p></div><a class="text-link" href="#catalog">See all matching solutions →</a></div><div id="finder-matches" class="finder-matches"></div><p class="finder-boundary">Matched by documented use case, not ranked by readiness. Open the guide to check fit and deployment gates.</p></div>
+      <h3 class="grouping-title">Three areas. Your combination.</h3>
       <div class="bundle-grid">
         <article class="bundle-card">
           <div class="bundle-card-top"><svg class="bundle-icon" viewBox="0 0 40 40" aria-hidden="true"><path d="m13 10-9 10 9 10m14-20 9 10-9 10M24 6l-8 28"/></svg><span class="bundle-number">01</span></div>
@@ -110,12 +124,13 @@
     <section class="capacity-section" id="capacity" data-page="guide" aria-labelledby="capacity-title">
       <div class="wrap section">
         <div class="section-heading">
-          <div><p class="eyebrow">How we help</p><h2 id="capacity-title">Choose your solutions.<br>Get them working.<br>Grow adoption.</h2></div>
-          <p>Pick the applications that fit your teams. Deploy with your engineers or scope our help from code access to handover and wider adoption. Together, identify compatible work for the PTUs you already own and measure the value delivered.</p>
+          <div><p class="eyebrow">How we help</p><h2 id="capacity-title">Choose your solutions.<br>Make them useful.</h2></div>
+          <p>From first selection to wider adoption. Choose the delivery path that fits your team.</p>
         </div>
+        <aside class="platform-signature"><img src="@@MICROSOFT_AZURE@@" width="400" height="211" alt="Microsoft Azure"><p><strong>Your environment. Your controls.</strong><span>Use your approved platform and the services your solution needs. Verify model routing and separately billed services before deployment.</span></p></aside>
         <div class="delivery-options">
-          <article><p class="eyebrow">Customer-led</p><h3>Deploy with your team</h3><p>Your engineers use the solution guides, reviewed repositories and deployment prerequisites. Your team owns configuration, evaluation and operations; request scoped help where needed.</p></article>
-          <article><p class="eyebrow">Assisted implementation</p><h3>Plan the work with us</h3><p>Work with us to scope code access, environment preparation, deployment, data connections, evaluation and handover. Include user onboarding and expansion to other teams in the plan.</p></article>
+          <article><span class="delivery-symbol" aria-hidden="true">&lt;/&gt;</span><p class="eyebrow">Customer-led</p><h3>Deploy with your team</h3><p>Your engineers lead. Use the source, requirements and runbooks; request scoped help where needed.</p><a class="text-link" href="#catalog">Find your starting point →</a></article>
+          <article><span class="delivery-symbol" aria-hidden="true">↗</span><p class="eyebrow">Assisted implementation</p><h3>Plan the work with us</h3><p>Scope help from code access and configuration through evaluation, handover and user adoption.</p><a class="text-link" href="#engagement">See the delivery journey →</a></article>
         </div>
         <div class="shortlist-actions"><a class="button primary" href="#implementation-brief">Prepare my implementation brief</a><a class="text-link" href="#catalog">Explore solutions <span aria-hidden="true">→</span></a></div>
         <p class="section-footnote">Choose one, several or assess all @@CANDIDATE_COUNT@@ starting points. Delivery scope, funding, code permissions, acceptance criteria and support responsibilities are agreed before work starts. This website does not deploy applications or book a working session.</p>
@@ -127,11 +142,11 @@
         <div><p class="eyebrow">From selection to wider adoption</p><h2 id="engagement-title">A clear path to useful adoption.</h2></div>
         <p>Work with your business owners and central AI teams. These are proposed steps and deliverables, not completed milestones or guaranteed production readiness.</p>
       </div>
-      <ol class="workflow-steps">
-        <li><h3>Discover &amp; choose</h3><p>You bring business priorities and first users; together we match solutions to useful work.</p><p><strong>Output:</strong> an agreed shortlist, owners and success measures.</p></li>
-        <li><h3>Prepare &amp; get access</h3><p>Your platform team confirms permissions and constraints. We help clarify prerequisites and coordinate owner-approved access to private code such as SpecSuite.</p><p><strong>Output:</strong> an implementation scope with access, costs and responsibilities agreed.</p></li>
-        <li><h3>Deploy &amp; make it work</h3><p>The agreed delivery team configures the approved environment and evaluates complete workflows with representative tasks.</p><p><strong>Output:</strong> an acceptance review, with unresolved issues recorded before wider use.</p></li>
-        <li><h3>Hand over &amp; expand</h3><p>Your service owner takes operational responsibility. Together we plan onboarding, measure repeat use and assess the next teams.</p><p><strong>Output:</strong> a handover and adoption plan with an expand, repair or stop decision.</p></li>
+      <ol class="workflow-steps delivery-journey">
+        <li><h3>Choose</h3><p>A shortlist with owners and success measures.</p><details><summary>Discover &amp; choose</summary><p>You bring business priorities and first users; together we match solutions to useful work.</p></details></li>
+        <li><h3>Prepare</h3><p>An agreed scope, access path and budget.</p><details><summary>Prepare &amp; get access</summary><p>Your platform team confirms permissions and constraints. We clarify prerequisites, separate service costs and responsibilities, and coordinate owner-approved access to private code such as SpecSuite.</p></details></li>
+        <li><h3>Deploy</h3><p>A runbook, walkthrough and acceptance review.</p><details><summary>Deploy &amp; make it work</summary><p>The agreed delivery team configures the approved environment and evaluates complete workflows with representative tasks. Record unresolved issues; provisioning is not acceptance.</p></details></li>
+        <li><h3>Adopt</h3><p>A handover and plan to expand, repair or stop.</p><details><summary>Hand over &amp; expand</summary><p>Your service owner takes operational responsibility. Agree user training, support, an adoption champion and a review date before onboarding the next teams.</p></details></li>
       </ol>
       <div id="pilot-gates" class="pilot-gates">
         <h3>Measure the difference, not just the traffic.</h3>
@@ -159,6 +174,7 @@
         <summary><h3>Preparation and acceptance checklist</h3><span>For your delivery and platform teams</span></summary>
         <div class="reference-content">
           <p>Missing a verified repository, blocked outcome or supported deployment route? Resolve that gate first. A shortlist is not a ready-to-install bundle.</p>
+          <div id="deployment-safety"><h4>Before running deployment instructions</h4><p>Run one step at a time only after approval. Replace angle-bracket placeholders locally; keep credentials out of code and shared output. Use approved package feeds. Review scripts and dependencies before execution: a pinned checkout can still fetch mutable images or remote scripts. Do not bypass preflight, relax network policy, purchase capacity or delete resources to resolve an error.</p><p>Source checkout commands use PowerShell in a new empty directory. Confirm git rev-parse HEAD prints the stated revision. For GitHub Actions, prepare your approved fork at that revision; for the voice workflow use Bash directory syntax. Complete each package's tool and dependency setup before provisioning.</p><p>If a step fails, stop and use the linked manual's troubleshooting guidance. Record the failing stage without secrets. Agree upgrade, rollback, retention and shutdown ownership before handover; never delete shared resources as routine cleanup. Confirm model, API, geography and PTU routing independently of provisioning.</p></div>
           <ol>@@TENANT_STEPS@@</ol>
           <div id="capacity-existing"><h4>Check the actual PTU route</h4><p>Verify model, API &amp; geography compatibility. An existing Foundry project can still receive new Standard deployments from a template. Inspect model resources and persisted agent settings rather than assuming project reuse means PTU reuse. Search, storage, hosting, document processing and speech can cost extra.</p></div>
           <h4>Acceptance decisions</h4><ol class="workflow-steps">@@PILOT_GATES@@</ol>
@@ -180,9 +196,23 @@
 
     <section class="section wrap" id="catalog" data-page="catalog" aria-labelledby="catalog-title">
       <div class="section-heading">
-        <div><p class="eyebrow">Your AI toolkit / @@CANDIDATE_COUNT@@ starting points</p><h2 id="catalog-title">Your solutions.<br>Your combination.</h2></div>
-        <p>Understand what you provide, how each solution works and what you get back, with a concrete example—then explore architecture and deployment. <a href="#engagement">Deploy yourself or work with us end to end.</a></p>
+        <div><p class="eyebrow">02 / Explore &amp; choose</p><h2 id="catalog-title">Find the right<br>starting point.</h2></div>
+        <p>Explore the workflow. Understand what it needs. Save what fits your team. <a href="#engagement">Deploy yourself or work with us end to end.</a></p>
       </div>
+      <div class="catalog-toolbar"><p>Explore by the work you want to improve.</p><a class="text-link" href="#shortlist">View your shortlist <span aria-hidden="true">↓</span></a></div>
+      <div id="bundle-chips" class="bundle-chips" role="group" aria-label="Choose an area of work" hidden></div>
+      <form id="catalog-filters" class="catalog-filters" role="search" aria-label="Filter candidates" hidden>
+        <div class="search-field"><label for="catalog-search">Search solutions <kbd aria-hidden="true">/</kbd></label><input type="search" id="catalog-search" placeholder="Try “documents”, “code” or “voice”…" autocomplete="off" maxlength="200" aria-controls="catalog-grid"></div>
+        <div><label for="problem-filter">Problem to solve</label><select id="problem-filter" aria-controls="catalog-grid"><option value="all">All problems</option>@@PROBLEM_OPTIONS@@</select></div>
+        <div class="native-bundle-filter"><label for="bundle-filter">Area of work</label><select id="bundle-filter" aria-controls="catalog-grid"><option value="all">All areas</option>@@BUNDLE_OPTIONS@@</select></div>
+        <button class="button secondary reset-button" id="reset-filters" type="button">Clear filters</button>
+      </form>
+      <div class="catalog-meta"><p id="result-count" role="status" aria-live="polite" aria-atomic="true">Showing @@CANDIDATE_COUNT@@ of @@CANDIDATE_COUNT@@ solutions</p><div id="view-switch" class="view-switch" role="group" aria-label="Catalog layout" hidden><button type="button" data-layout="grid" aria-pressed="true" aria-controls="catalog-grid">Cards</button><button type="button" data-layout="list" aria-pressed="false" aria-controls="catalog-grid">List</button></div></div>
+      <p id="filter-context" class="filter-context" hidden></p>
+      <noscript><p class="notice">All solutions and their guides are available in this document. Enable JavaScript for search, filters and theme switching.</p></noscript>
+      <div id="empty-state" class="empty-state" hidden><h3>No matches just yet.</h3><p>Try a different keyword, or start again with all @@CANDIDATE_COUNT@@ candidates.</p><button type="button" class="button secondary" id="clear-empty">Clear all filters</button></div>
+      <div class="catalog-grid" id="catalog-grid">@@CARDS@@</div>
+      <p class="section-footnote">Examples illustrate intended use, not customer deployments or verified results. This is a curated set of starting points, not a ready-to-install product suite. Each guide explains its readiness, limits and deployment requirements.</p>
       <aside id="shortlist" class="shortlist-panel" aria-labelledby="shortlist-title">
         <h3 id="shortlist-title">Your solution shortlist</h3>
         <p id="shortlist-count" role="status" aria-live="polite">No solutions selected. Open a solution and add it to your shortlist.</p>
@@ -194,18 +224,6 @@
         <div class="shortlist-actions" hidden><a class="button primary" href="#implementation-brief">Prepare implementation brief</a><button id="print-plan" class="button secondary" type="button">Print full technical guides</button><button id="clear-shortlist" class="button secondary" type="button">Clear shortlist</button><a class="text-link" href="#preparation">Preparation checklist</a></div>
         <noscript><p>Follow each solution link to its complete guide below. Interactive shortlisting requires JavaScript.</p></noscript>
       </aside>
-      <div id="bundle-chips" class="bundle-chips" role="group" aria-label="Choose an area of work" hidden></div>
-      <form id="catalog-filters" class="catalog-filters" role="search" aria-label="Filter candidates" hidden>
-        <div class="search-field"><label for="catalog-search">Search solutions <kbd aria-hidden="true">/</kbd></label><input type="search" id="catalog-search" placeholder="Try “documents”, “code” or “voice”…" autocomplete="off" maxlength="200" aria-controls="catalog-grid"></div>
-        <div><label for="problem-filter">Problem to solve</label><select id="problem-filter" aria-controls="catalog-grid"><option value="all">All problems</option>@@PROBLEM_OPTIONS@@</select></div>
-        <div class="native-bundle-filter"><label for="bundle-filter">Area of work</label><select id="bundle-filter" aria-controls="catalog-grid"><option value="all">All areas</option>@@BUNDLE_OPTIONS@@</select></div>
-        <button class="button secondary reset-button" id="reset-filters" type="button">Clear filters</button>
-      </form>
-      <div class="catalog-meta"><p id="result-count" role="status" aria-live="polite" aria-atomic="true">Showing @@CANDIDATE_COUNT@@ of @@CANDIDATE_COUNT@@ solutions</p><div id="view-switch" class="view-switch" role="group" aria-label="Catalog layout" hidden><button type="button" data-layout="grid" aria-pressed="true" aria-controls="catalog-grid">Cards</button><button type="button" data-layout="list" aria-pressed="false" aria-controls="catalog-grid">List</button></div></div>
-      <noscript><p class="notice">All solutions and their guides are available in this document. Enable JavaScript for search, filters and theme switching.</p></noscript>
-      <div id="empty-state" class="empty-state" hidden><h3>No matches just yet.</h3><p>Try a different keyword, or start again with all @@CANDIDATE_COUNT@@ candidates.</p><button type="button" class="button secondary" id="clear-empty">Clear all filters</button></div>
-      <div class="catalog-grid" id="catalog-grid">@@CARDS@@</div>
-      <p class="section-footnote">Examples illustrate intended use, not customer deployments or verified results. This is a curated set of starting points, not a ready-to-install product suite. Each guide explains its readiness, limits and deployment requirements.</p>
     </section>
 
     @@SOLUTIONS@@
@@ -249,16 +267,17 @@
       <div class="wrap section faq-layout">
         <div><p class="eyebrow">Before you decide</p><h2 id="faq-title">Good questions.<br>Straight answers.</h2><p>Useful boundaries for a stakeholder conversation.</p><button class="button secondary print-button" id="print-summary" type="button" hidden>Print full portfolio summary <span aria-hidden="true">↗</span></button><p class="print-help">Includes the full @@CANDIDATE_COUNT@@-candidate summary, regardless of filters. For your selected solutions and discussion points, use the <a href="#implementation-brief">implementation brief</a>.</p></div>
         <div class="faq-list">
+          <details><summary>Are these Microsoft applications, ready to run in our environment?</summary><div><p>Most public code packages come from Microsoft-owned repositories. The catalog also includes Microsoft/GitHub platform integrations, private owner-led code and a proposed custom workflow; each guide identifies which it is. Public source is a head start, not a pre-approved installation. We work through your chosen application's prerequisites, deployment, data connections and acceptance with your team. No blanket production, compliance, maintenance or PTU guarantee is implied.</p></div></details>
           <details><summary>How does this help us get more from PTUs we already own?</summary><div><p>The program helps you find useful work for existing capacity: select relevant solutions, verify their model routes, deploy approved workloads and grow adoption. Compare PTU utilization and headroom, repeat users, accepted work, time saved, quality and total service cost with your baseline. That evidence supports an investment success story and informed renewal decisions; it is not a guaranteed saving or a reason to generate artificial traffic.</p></div></details>
           <details><summary>Can we choose several solutions—or the whole portfolio?</summary><div><p>Yes. Assess one, several or all @@CANDIDATE_COUNT@@ starting points and build the combination your teams need. Deployment remains solution-specific: some entries require adaptation, have unresolved gates or are not deployable applications. Every chosen workload needs readiness, permissions and model/API/geography checks before using your PTUs. Search, storage, hosting, document processing and speech are billed separately where used.</p></div></details>
-          <details><summary>Can we use this in production today?</summary><div><p>Not on the strength of these results alone. The portfolio supports guided demonstrations only. Each chosen workflow needs representative evaluation, permissions, data handling, safety review, monitoring and an agreed operational support arrangement before production use.</p></div></details>
+          <details><summary>Can we use this in production today?</summary><div><p>Not on the strength of this catalog alone. It provides source-backed deployment and adoption guidance, not production certification. Each chosen workflow needs representative evaluation, permissions, data handling, safety review, monitoring and an agreed operational support arrangement before production use. Some packages also need repair or a maintenance owner.</p></div></details>
           <details><summary>Does buying PTUs make answers more accurate?</summary><div><p>No. PTUs reserve model-processing capacity. Accuracy and usefulness depend on the model, source material, retrieval, task design and evaluation. Capacity cannot repair a failed grounded answer or a defective workflow.</p></div></details>
           <details><summary>Are all @@CANDIDATE_COUNT@@ candidates PTU-ready applications?</summary><div><p>No. The catalog includes engines, foundations, proposed workflows, specialist options and a training workshop. Some evaluated workflows still need repair. The three bundles are outcome groupings, not @@CANDIDATE_COUNT@@ ready apps. PTU fit is conditional on supported models, APIs, deployment types, geography and measured demand.</p></div></details>
           <details><summary>Why keep an unmaintained accelerator in the library?</summary><div><p>Its workflow or a previously demonstrated adaptation may still be useful. That is not a recommendation to deploy unsupported code unchanged. Maintenance notices are visible in the affected guides; new pilots need a named owner or replacement. Later source reviews do not change historical test results.</p><a class="text-link" href="#selection-review">Read the selection decisions</a></div></details>
           <details><summary>Is Voice Live excluded from using PTUs?</summary><div><p>No. Official Voice Live documentation describes a Bring Your Own Model path that can use PTU deployments. That integration is untested here; only managed text probes were verified. Speech processing has separate charges, and text probes do not validate the complete voice experience. This is a separate integration test, not a sixth new app.</p><a class="text-link" href="#solution-11">Explore the Voice Live guide</a></div></details>
           <details id="capacity-new"><summary>What if we need new capacity—or have very little demand?</summary><div><p>Prove acceptable quality and actual demand before a purchase. Measure representative volume, concurrency and response-time needs; compare Standard, Batch and compatible provisioned options. No fixed PTU quantity or savings promise follows from this portfolio. For existing PTUs, useful work and total cost should guide renewal—not artificial traffic or sunk spend.</p></div></details>
           <details><summary>Are the five use-case ideas available to deploy?</summary><div><p>No. They are concepts for scoping discussions, not implemented workflows or promised releases. Related catalog entries may provide starting points but do not deliver those complete workflows. Prioritization, feasibility, funding and delivery require agreement. Controlled drafting is not the marketing-oriented Content Generation package, which was only compiled. RFP and contract review also remains proposed, not an implemented capability.</p><a class="text-link" href="#roadmap">Explore the ideas and their limits</a></div></details>
-          <details><summary>What does public-sector applicability mean?</summary><div><p>The workflows address common needs in DND and other public-sector settings: document work, evidence, requirements and controlled decisions. This is an independent working portfolio—not an official product, endorsement, compliance certification or support commitment. Suitability and authorization must be assessed for the intended environment and information.</p></div></details>
+          <details><summary>What changes in a regulated or restricted environment?</summary><div><p>Your platform and information owners assess data classification and residency, model/API availability, identity, private connectivity, logging and retention before deployment. A banking, public-sector or energy use case does not establish regulatory approval. Use the approved landing environment and package-specific prerequisites; if the documented route conflicts with policy, scope an adaptation rather than relax the policy.</p></div></details>
           <details><summary>Who can access the GitHub repository?</summary><div><p>The project repository is public and can be read without contributor access. Permission to change the repository is separate. The website publishes only curated content; repository access does not grant customer-environment access, deployment approval or rights to separately controlled code such as SpecSuite.</p><a class="text-link" href="https://github.com/ParthVyas2912/ptu-accelerator-bundle">Open the project repository <span aria-hidden="true">↗</span></a></div></details>
         </div>
       </div>
@@ -279,8 +298,10 @@
       </div>
     </section>
   </main>
+  <aside id="planning-dock" class="planning-dock" aria-label="Your solution workspace" hidden><div class="dock-inner"><div><strong>Your toolkit</strong><span id="dock-summary">Build a plan for your team</span></div><a href="#shortlist" class="button primary">My plan <span id="dock-plan-count">0</span></a></div></aside>
+  <p id="selection-status" class="selection-status" role="status" aria-live="polite" aria-atomic="true"></p>
   <footer class="site-footer">
-    <div class="wrap footer-inner"><div><strong>AI Solutions Hub</strong><p>Independent curated catalog. Guided demonstrations; hardening required.</p><p>Evidence snapshot: <time datetime="2026-09-12">12 September 2026</time>. No official product or support commitment.</p></div><div><a class="text-link" href="https://github.com/ParthVyas2912/ptu-accelerator-bundle">Project GitHub repository <span aria-hidden="true">↗</span></a><p>Public source. Contribution permissions are separate.</p><a href="#top">Back to overview ↑</a></div></div>
+    <div class="wrap footer-inner"><div><span class="brand-attribution footer-brand"><img class="brand-light" src="@@MICROSOFT_GRAY@@" width="400" height="180" alt="Microsoft"><img class="brand-dark" src="@@MICROSOFT_WHITE@@" width="400" height="180" alt="Microsoft"></span><strong>AI Solutions Hub</strong><p>Independent deployment and adoption guide, not an official product. Readiness is solution-specific.</p><p>Evidence snapshot: <time datetime="2026-09-12">12 September 2026</time>. No official product or support commitment.</p></div><div><a class="text-link" href="https://github.com/ParthVyas2912/ptu-accelerator-bundle">Project GitHub repository <span aria-hidden="true">↗</span></a><p>Public source. Contribution permissions are separate.</p><a href="#top">Back to overview ↑</a></div></div>
   </footer>
   <script>@@APP@@</script>
 </body>
