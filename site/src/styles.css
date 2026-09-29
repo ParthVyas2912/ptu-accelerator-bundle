@@ -269,7 +269,6 @@ summary::marker { color: var(--cp-action); }
 .catalog-grid[data-layout="list"] { grid-template-columns: 1fr; }
 .catalog-grid[data-layout="list"] .candidate { display: grid; grid-template-columns: minmax(0, 1fr) 230px; grid-template-areas: "name status" "alias status" "value action" "taxonomy tools"; column-gap: 2rem; }
 .catalog-grid[data-layout="list"] .card-tools { grid-area: tools; }
-.catalog-grid[data-layout="list"] .solution-visual { display: none; }
 .catalog-grid[data-layout="list"] .candidate-top { grid-area: status; justify-content: flex-end; align-items: flex-start; margin: 0; }
 .catalog-grid[data-layout="list"] .candidate h3 { grid-area: name; }
 .catalog-grid[data-layout="list"] .candidate-alias { grid-area: alias; }
@@ -553,14 +552,7 @@ html[data-theme="dark"] .brand-attribution .brand-dark { display: block; }
 .visual-flow li > span { font-size: 0.8125rem; font-weight: 650; }
 .visual-flow small { font-size: 0.625rem; color: var(--cp-readable-muted); }
 .visual-caption { font-size: 0.75rem; color: var(--cp-readable-muted); padding-top: 1rem; border-top: 1px solid var(--cp-border); }
-.visual-compact { align-self: stretch; margin: -1.5rem -1.5rem 1.5rem; padding: 1.25rem; border: 0; border-bottom: 1px solid var(--cp-border); border-radius: 16px 16px 0 0; background: var(--cp-accent-soft); }
-.visual-compact figcaption { font-size: 0.625rem; }
-.visual-compact .visual-flow { margin: 1.25rem 0 0.5rem; gap: 1rem; }
-.visual-compact .visual-icon { width: 48px; height: 48px; padding: 12px; border-radius: 0.625rem; }
-.visual-compact .visual-flow li:not(:last-child)::after { right: -0.85rem; top: 0.625rem; }
-.visual-compact .visual-flow li > span { font-size: 0.6875rem; }
-.visual-compact .visual-flow small { display: none; }
-html[data-theme="dark"] .workflow-showcase, html[data-theme="dark"] .visual-compact { background: var(--cp-bg-elevated); }
+html[data-theme="dark"] .workflow-showcase { background: var(--cp-bg-elevated); }
 .solution-lead { display: grid; grid-template-columns: 1.1fr 1fr; gap: 3rem; margin-block: 2rem; align-items: start; }
 .solution-lead .solution-summary { grid-template-columns: 1fr; gap: 1rem; margin: 0; }
 .solution-lead .solution-summary dt { color: var(--cp-accent); }
@@ -774,7 +766,7 @@ html { scroll-padding-bottom: 10rem; }
   .solution-reader { display: block; }
   .workflow-showcase { display: none; }
   .hero { display: block; }
-  .catalog-toolbar, .visual-compact { display: none; }
+  .catalog-toolbar { display: none; }
   .solution-lead { display: block; }
   .solution-lead .solution-visual { margin-top: 1rem; break-inside: avoid; }
   .delivery-journey { grid-template-columns: 1fr 1fr; }

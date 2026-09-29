@@ -233,12 +233,12 @@ const external = (url, label, className = '') => `<a${className ? ` class="${cla
 const renderSteps = (steps) => steps.map(([title, detail]) => `<li><h4>${escapeHTML(title)}</h4><p>${escapeHTML(detail)}</p></li>`).join('');
 const renderCommand = (command) => `<pre class="deployment-command"><code>${escapeHTML(command)}</code></pre>`;
 const icon = (name) => `<svg class="visual-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="${visualIcons[name]}"/></svg>`;
-const renderVisual = (item, compact = false) => {
+const renderVisual = (item) => {
   const visual = solutionVisuals[item.id];
-  return `<figure class="solution-visual${compact ? ' visual-compact' : ''}" aria-label="${escapeHTML(item.name)}: illustrative workflow">
-    <figcaption><span>${compact ? 'The idea at a glance' : 'From input to useful work'}</span><span>Illustrative${dossiers[item.id].architecture.basis === 'proposed' ? ' / proposed' : ''}</span></figcaption>
+  return `<figure class="solution-visual" aria-label="${escapeHTML(item.name)}: illustrative workflow">
+    <figcaption><span>From input to useful work</span><span>Illustrative${dossiers[item.id].architecture.basis === 'proposed' ? ' / proposed' : ''}</span></figcaption>
     <ol class="visual-flow">${visual.stages.map(([name, label], index) => `<li>${icon(name)}<span>${escapeHTML(label)}</span><small>${['Input', 'Process', 'Output to evaluate'][index]}</small></li>`).join('')}</ol>
-    ${compact ? '' : '<p class="visual-caption">Intended workflow, not a product screenshot or a verified result. See the guide for limitations.</p>'}
+    <p class="visual-caption">Intended workflow, not a product screenshot or a verified result. See the guide for limitations.</p>
   </figure>`;
 };
 const renderDeployment = (dossier, id) => {
@@ -405,7 +405,6 @@ const renderSolution = (item) => {
 };
 
 const renderCard = (item) => `<article class="candidate" data-id="${item.id}" data-problems="${onboarding[item.id].problems.join(' ')}" aria-labelledby="candidate-title-${item.id}">
-  ${renderVisual(item, true)}
   <div class="candidate-top">${topPicks.includes(item.id) ? '<span class="candidate-area top-pick-badge">Top pick</span>' : ''}<span class="candidate-area candidate-kind">${escapeHTML(plainKinds[dossiers[item.id].kind])}</span></div>
   <h3 id="candidate-title-${item.id}">${escapeHTML(item.name)}</h3>
   <p class="candidate-alias">${escapeHTML(dossiers[item.id].alias)}</p>

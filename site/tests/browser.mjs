@@ -1244,25 +1244,20 @@ try {
     await audit(page);
   });
 
-  await run('visual showroom: responsive graphics and meaningful compact cards', async () => {
+  await run('visual showroom: responsive graphics and concise text-only cards', async () => {
     for (const width of [320, 768, 1440]) {
       await page.setViewportSize({ width, height: 1000 });
       await page.goto(`${url}/?scoutTheme=light#catalog`);
       await assertNoOverflow(page);
       const measurements = await page.locator('.candidate').evaluateAll((cards) => cards.map((card) => {
-        const visual = card.querySelector('.solution-visual');
-        const box = visual.getBoundingClientRect();
         return {
           id: card.dataset.id,
           words: card.innerText.trim().split(/\s+/).length,
-          labelsFit: [...visual.querySelectorAll('.visual-flow li > span')].every((label) => {
-            const rect = label.getBoundingClientRect();
-            return rect.left >= box.left && rect.right <= box.right && label.scrollWidth <= label.clientWidth + 1;
-          }),
+          visual: Boolean(card.querySelector('.solution-visual')),
         };
       }));
       assert.ok(measurements.every((item) => item.words <= 85), 'Visible cards must remain concise');
-      assert.deepEqual(measurements.filter((item) => !item.labelsFit), [], 'Illustration labels must fit');
+      assert.deepEqual(measurements.filter((item) => item.visual), [], 'Catalog cards carry no workflow thumbnails');
       await goView(page, 'overview');
       for (const link of await page.locator('.toolkit-grid a').all()) {
         const target = await link.getAttribute('href');

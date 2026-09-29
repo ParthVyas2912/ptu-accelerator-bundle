@@ -345,7 +345,7 @@ test('every solution answers what it is, what it does and what it is for, in pla
 
 test('visual gallery keeps cards concise and illustrates every solution without external assets', () => {
   assert.deepEqual(Object.keys(solutionVisuals).map(Number), candidates.map((item) => item.id));
-  assert.equal((html.match(/class="solution-visual visual-compact"/g) || []).length, 20);
+  assert.equal((html.match(/visual-compact|The idea at a glance/g) || []).length, 0, 'catalog cards carry no workflow thumbnails');
   assert.equal((html.match(/class="solution-visual"/g) || []).length, 20);
   for (const item of candidates) {
     const visual = solutionVisuals[item.id];
@@ -360,8 +360,7 @@ test('visual gallery keeps cards concise and illustrates every solution without 
     const oldExplanation = Object.values(dossiers[item.id].plain.brief).join(' ').split(/\s+/).length;
     const newExplanation = `${item.value} ${visual.audience}`.split(/\s+/).length;
     assert.ok(newExplanation <= oldExplanation / 2, `Card ${item.id}: reduce explanation prose by at least half`);
-    assert.match(card, /Illustrative/);
-    assert.doesNotMatch(card, /Example scenario|<pre/);
+    assert.doesNotMatch(card, /Illustrative|solution-visual|Example scenario|<pre/);
   }
   assert.match(html, /class="command-disclosure"/);
   assert.match(html, /class="workflow-steps delivery-journey"/);
