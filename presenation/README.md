@@ -1,4 +1,45 @@
-# Internal Microsoft briefing - 14 September 2026
+# Presentation materials
+
+## What to share with customers
+
+Everything you need for a customer conversation is in `customer/`:
+
+| File | Use it for |
+|------|------------|
+| `PTU-Accelerator-One-Pager.docx` / `.pdf` | A single-page introduction to attach to an email or leave behind. |
+| `PTU-Accelerator-Two-Pager.docx` / `.pdf` | The fuller overview: top picks, three starter pilots and all 20 solutions. |
+| `PTU-Accelerator-Customer-Deck.pptx` / `.pdf` | A 14-slide, Microsoft-branded deck with speaker notes for a 20-30 minute meeting. |
+
+All three present the PTU accelerator as one catalog of 20 Microsoft and Azure AI
+solutions in customer-priority order (no bundles) and link to the AI Solutions Hub at
+https://ai-solutions-hub-ca.azurewebsites.net/. Share the PDFs by default; the Office
+files are for tailoring. They are subject to normal account-team approval and contain
+only the same public-safe material as the website: business outcomes, generalized
+readiness language and public links. They are a curated catalog, not an official
+commercial SKU, and promise no delivery, funding or PTU compatibility.
+
+### Rebuild the customer materials
+
+All customer copy lives in `customer-content.cjs`. The build checks it against
+`..\site\src\content.mjs` and `onboarding.mjs` and fails if the catalog order, top picks,
+names or problem mappings drift from the website.
+
+```powershell
+Set-Location presenation
+npm ci --ignore-scripts               # pptxgenjs for the deck
+$env:NODE_PATH = (npm root -g)        # docx for the documents, e.g. npm install -g docx
+npm run build:customer
+npm run render:customer               # needs PowerShell 7 (pwsh); PDFs, length/overflow checks, customer-preview\ PNGs
+```
+
+`render-customer.ps1` uses installed desktop Word and PowerPoint through COM and fails
+unless the one-pager is one page, the two-pager is two pages and the deck is 10-20 slides
+with no text overflowing its box. Review `customer-preview\` visually before sharing.
+
+`archive/` (ignored) holds superseded collateral from before the single catalog; do not
+share it.
+
+# Internal Microsoft briefing - 14 September 2026 (not for customers)
 
 For the 2:00 PM internal discussion. These materials are **private**, not website
 inputs or customer-approved collateral. No new inference, deployment, capacity
@@ -23,27 +64,6 @@ established, distinguishes existing-PTU adoption from new-capacity qualification
 and ends with candidate-account nominations and named delivery roles. No customer
 savings, revenue forecast, fixed PTU quantity or production readiness is claimed.
 The 30-day sequence is a proposed qualification sprint, not a delivery commitment.
-
-## Customer two-pager
-
-`build-two-pager.cjs` generates `AI-Solutions-Hub-Two-Pager.docx`: a Microsoft-branded,
-two-page customer-facing overview of the PTU accelerator as one catalog of 20 solutions
-(no bundles): six top picks, three starter pilots and every solution in customer-priority
-order, ending with the public website link. It is the one artifact here drafted for sharing outside
-Microsoft, subject to normal account-team approval, so its content is limited to the
-same public-safe material as the website: business outcomes, generalized readiness
-language and public links only. No tenant, subscription, resource, evidence or customer
-detail. It is a curated catalog, not an official commercial SKU, and promises no
-delivery, funding or PTU compatibility.
-
-```powershell
-Set-Location presenation
-$env:NODE_PATH = (npm root -g)   # requires a local docx package, e.g. npm install -g docx
-node build-two-pager.cjs
-```
-
-Confirm it still renders as exactly two pages before sharing, and refresh the catalog
-list and top picks in the script if `customerOrder` in `..\site\src\content.mjs` changes.
 
 ## Rebuild locally
 

@@ -1,10 +1,12 @@
 {
-  "name": "ptu-accelerator-internal-briefing",
+  "name": "ptu-accelerator-presentations",
   "version": "1.0.0",
   "private": true,
-  "description": "Local-only generation of the internal Microsoft PTU accelerator briefing.",
+  "description": "Local-only generation of the customer one-pager, two-pager and deck, and the internal briefing.",
   "scripts": {
-    "build": "node build-deck.cjs"
+    "build": "node build-deck.cjs",
+    "build:customer": "node build-customer-docs.cjs && node build-customer-deck.cjs",
+    "render:customer": "pwsh -NoProfile -ExecutionPolicy Bypass -File render-customer.ps1"
   },
   "dependencies": {
     "pptxgenjs": "4.0.1"
