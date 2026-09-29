@@ -1,10 +1,5 @@
 // Curated, public-safe stakeholder summaries. No private report ingestion.
 export const evidenceDate = '2026-09-12';
-export const bundles = {
-  engineering: 'Engineering Modernization',
-  knowledge: 'Knowledge & Staff Work',
-  procurement: 'Procurement & Document Operations',
-};
 export const statuses = {
   verified: 'Selected tests verified',
   limited: 'Limited test coverage',
@@ -57,7 +52,7 @@ export const glossary = [
 export const candidates = [
   {
     id: 1, name: 'Enterprise Knowledge', alias: 'Chat With Your Data · CWYD',
-    bundle: 'knowledge', status: 'verified', fit: 'candidate',
+    status: 'verified', fit: 'candidate',
     value: 'Help staff find and explain information in an approved collection of documents.',
     summary: 'Selected tests verified in an adapted local version.',
     evidence: 'Selected knowledge-search and answer tests passed in an adapted local implementation. This is narrower than verification of an unchanged upstream package.',
@@ -67,7 +62,7 @@ export const candidates = [
   },
   {
     id: 2, name: 'Multi-agent orchestration', alias: 'Generic MACAE',
-    bundle: 'knowledge', status: 'notready', fit: 'unproven',
+    status: 'notready', fit: 'unproven',
     value: 'Coordinate several assistant steps for a larger staff-work task.',
     summary: 'Partial execution; final synthesis failed.',
     evidence: 'Some intermediate steps ran, but the final combined response failed. MACAE is an orchestration engine, not a finished business product.',
@@ -77,7 +72,7 @@ export const candidates = [
   },
   {
     id: 3, name: 'SpecSuite', alias: 'Code to spec · Spec to code · Knowledge graph',
-    bundle: 'engineering', status: 'conditional', fit: 'conditional',
+    status: 'conditional', fit: 'conditional',
     value: 'Turn existing code into specifications and connected system knowledge, then use reviewed specifications to guide improved code and modernization.',
     summary: 'Existing owner validation only; not retested.',
     evidence: 'This portfolio carries forward existing owner validation. SpecSuite was not retested in this evaluation.',
@@ -87,7 +82,7 @@ export const candidates = [
   },
   {
     id: 4, name: 'Document Knowledge Mining', alias: 'DKM',
-    bundle: 'knowledge', status: 'verified', fit: 'candidate',
+    status: 'verified', fit: 'candidate',
     value: 'Ask questions across documents and compare what they say.',
     summary: 'Selected question-answering and comparison tests passed.',
     evidence: 'Selected question-answering and document-comparison scenarios were verified against a limited corpus.',
@@ -97,7 +92,7 @@ export const candidates = [
   },
   {
     id: 5, name: 'Bring Your Own Key pilot', alias: 'BYOK · developer tooling',
-    bundle: 'engineering', status: 'conditional', fit: 'conditional',
+    status: 'conditional', fit: 'conditional',
     value: 'Explore connecting developer tools to an organization-managed model.',
     summary: 'Integration untested; local setup is not enterprise validation.',
     evidence: 'No completed integration test establishes an enterprise-ready BYOK path for this portfolio.',
@@ -107,7 +102,7 @@ export const candidates = [
   },
   {
     id: 6, name: 'Content Processing', alias: 'Document intake & completeness',
-    bundle: 'procurement', status: 'limited', fit: 'candidate',
+    status: 'limited', fit: 'candidate',
     value: 'Intake document packs and flag missing material before review.',
     summary: 'Limited missing-document workflow passed; coverage gaps remain.',
     evidence: 'A bounded missing-document workflow passed. A filter warning occurred, and the full happy path was not established.',
@@ -117,7 +112,7 @@ export const candidates = [
   },
   {
     id: 7, name: 'Customer chatbot', alias: 'Grounded service questions',
-    bundle: 'knowledge', status: 'notready', fit: 'excluded',
+    status: 'notready', fit: 'excluded',
     value: 'Answer routine service questions from approved guidance.',
     summary: 'The grounded-answer test failed.',
     evidence: 'The tested answer did not satisfy the grounded-answer requirement. A functioning chat interface is not proof of trustworthy answers.',
@@ -127,7 +122,7 @@ export const candidates = [
   },
   {
     id: 8, name: 'Conversation Mining', alias: 'Conversation insight analysis',
-    bundle: 'knowledge', status: 'notready', fit: 'conditional',
+    status: 'notready', fit: 'conditional',
     value: 'Find themes and recurring issues in approved conversation records.',
     summary: 'Semantic defects limit the usefulness of results.',
     evidence: 'The evaluated output had semantic defects: successful execution did not establish that the analysis meant the right thing.',
@@ -137,7 +132,7 @@ export const candidates = [
   },
   {
     id: 9, name: 'Modernize', alias: 'Engineering modernization assistance',
-    bundle: 'engineering', status: 'verified', fit: 'candidate',
+    status: 'verified', fit: 'candidate',
     value: 'Help engineering teams review a bounded SQL-dialect conversion.',
     summary: 'Selected workflow verified; full equivalence not established.',
     evidence: 'A selected modernization workflow was verified. This does not demonstrate full behavioral equivalence between source and target systems.',
@@ -147,7 +142,7 @@ export const candidates = [
   },
   {
     id: 10, name: 'Planetary Explorer', alias: 'Specialist geospatial exploration',
-    bundle: 'engineering', status: 'conditional', fit: 'unproven',
+    status: 'conditional', fit: 'unproven',
     value: 'Explore specialist geospatial questions where there is a defined need.',
     summary: 'Existing inventory only; no new validation.',
     evidence: 'This candidate is represented in the existing inventory only. No new functional or PTU verification is claimed.',
@@ -157,7 +152,7 @@ export const candidates = [
   },
   {
     id: 11, name: 'Voice Live', alias: 'Voice interaction · BYOM next test',
-    bundle: 'knowledge', status: 'limited', fit: 'conditional',
+    status: 'limited', fit: 'conditional',
     value: 'Explore spoken access to a bounded assistant workflow.',
     summary: 'Managed text probes verified; PTU BYOM integration untested.',
     evidence: 'Managed text probes were verified. Official documentation supports Bring Your Own Model (BYOM) with provisioned deployments, but that integration was not tested here.',
@@ -167,7 +162,7 @@ export const candidates = [
   },
   {
     id: 12, name: 'RFP & contract review', alias: 'Evidence-backed procurement review',
-    bundle: 'procurement', status: 'planned', fit: 'candidate',
+    status: 'planned', fit: 'candidate',
     value: 'Help reviewers compare requests for proposals and contracts against required evidence.',
     summary: 'Proposed priority; document-pack inspection only.',
     evidence: 'Packs were inspected, but an evidence-backed RFP or contract-review workflow was not implemented or verified.',
@@ -177,7 +172,7 @@ export const candidates = [
   },
   {
     id: 13, name: 'Content Generation', alias: 'Marketing-oriented repository',
-    bundle: 'knowledge', status: 'notready', fit: 'unproven',
+    status: 'notready', fit: 'unproven',
     value: 'Provide a starting point for marketing-oriented generation experiments.',
     summary: 'Compilation only; not a business-drafting workflow.',
     evidence: 'Compilation was established. The repository targets marketing content, not controlled briefing or correspondence drafting.',
@@ -187,7 +182,7 @@ export const candidates = [
   },
   {
     id: 14, name: 'Private platform baseline', alias: 'Shared technical foundation',
-    bundle: 'engineering', status: 'notready', fit: 'unproven',
+    status: 'notready', fit: 'unproven',
     value: 'Offer a technical starting point for future integrated workflows.',
     summary: 'Compilation only; not a standalone business outcome.',
     evidence: 'The platform baseline compiled. That is a build result, not an end-to-end outcome or a validated user experience.',
@@ -197,7 +192,7 @@ export const candidates = [
   },
   {
     id: 15, name: 'Employee Self-Service', alias: 'ESS',
-    bundle: 'knowledge', status: 'conditional', fit: 'conditional',
+    status: 'conditional', fit: 'conditional',
     value: 'Help staff navigate routine internal guidance and service requests.',
     summary: 'Untested; model route and billing determine the fit.',
     evidence: 'No tested ESS integration establishes a provisioned model path in this portfolio.',
@@ -207,7 +202,7 @@ export const candidates = [
   },
   {
     id: 16, name: 'Agentic Unified Data Foundation', alias: 'Fabric data agents and grounded application chat',
-    bundle: 'engineering', status: 'conditional', fit: 'unproven',
+    status: 'conditional', fit: 'unproven',
     value: 'Connect an AI application to governed enterprise data through a Fabric Data Agent.',
     summary: 'Prerequisite-gated; no PTU proof.',
     evidence: 'Historical inventory note, recorded under the different Fabric User Data Functions label: Required prerequisites prevented full validation. Custom model endpoints are possible, but no tested PTU integration is claimed. That record does not validate the pinned Agentic Unified Data Foundation accelerator described here.',
@@ -217,7 +212,7 @@ export const candidates = [
   },
   {
     id: 17, name: 'RealTime Operations', alias: 'Operational signals & assistance',
-    bundle: 'engineering', status: 'conditional', fit: 'unproven',
+    status: 'conditional', fit: 'unproven',
     value: 'Explore assistance around operational signals and emerging issues.',
     summary: 'Prerequisite-gated; telemetry is not model demand.',
     evidence: 'The candidate remained gated by prerequisites. No validated end-to-end model-assisted operations workflow was established.',
@@ -227,7 +222,7 @@ export const candidates = [
   },
   {
     id: 19, name: 'Video workflow', alias: 'Bounded video exploration',
-    bundle: 'knowledge', status: 'limited', fit: 'unproven',
+    status: 'limited', fit: 'unproven',
     value: 'Explore a narrowly scoped video task under review.',
     summary: 'Bounded tests only; one safety block.',
     evidence: 'Only bounded tests were completed, with one safety block. No video service-level agreement (SLA) is established by these results.',
@@ -237,7 +232,7 @@ export const candidates = [
   },
   {
     id: 21, name: 'Real-time voice agents', alias: 'ART · Azure Real-Time Agent Accelerator',
-    bundle: 'knowledge', status: 'conditional', fit: 'conditional',
+    status: 'conditional', fit: 'conditional',
     value: 'Answer routine spoken enquiries over the phone or a browser, and hand off to a person.',
     summary: 'Source inspected at a pinned revision; not deployed or tested here.',
     evidence: 'This candidate was added by source review of the pinned public package. No deployment, call or model request was performed for it, so there is no functional result to report.',
@@ -247,7 +242,7 @@ export const candidates = [
   },
   {
     id: 22, name: 'MCP security workshop', alias: 'Sherpa · guided agent-tool security lab',
-    bundle: 'engineering', status: 'conditional', fit: 'conditional',
+    status: 'conditional', fit: 'conditional',
     value: 'Teach engineers how to secure the tool connections that AI agents depend on.',
     summary: 'Enablement workshop reviewed at a pinned revision; deliberately ships vulnerable examples.',
     evidence: 'This is a guided training workshop rather than a deployable business application. It was reviewed from public source; no camp was deployed or exploited here.',
@@ -257,15 +252,16 @@ export const candidates = [
   },
 ];
 
-// Keep evidence IDs stable while giving engineering the first discovery position.
-export const catalogCandidates = Object.keys(bundles).flatMap((bundle) =>
-  candidates.filter((item) => item.bundle === bundle));
+// Customer-facing order: the solutions customers ask about most come first.
+// Evidence IDs stay stable; this order only controls discovery and top picks.
+export const customerOrder = [1, 6, 4, 12, 9, 3, 15, 21, 7, 11, 2, 8, 13, 16, 17, 19, 10, 5, 22, 14];
+export const topPicks = customerOrder.slice(0, 6);
+export const catalogCandidates = customerOrder.map((id) => candidates.find((item) => item.id === id));
 
 export const roadmap = [
   {
     id: 'drafting',
     title: 'Controlled briefing & correspondence drafts',
-    bundle: 'knowledge',
     value: 'Turn approved reference material into a structured first draft for a briefing or letter.',
     audience: 'Policy, executive-support and correspondence teams',
     output: 'A draft in your approved template, with source links and missing information flagged for the author.',
@@ -277,7 +273,6 @@ export const roadmap = [
   {
     id: 'change-impact',
     title: 'Engineering requirements change impact',
-    bundle: 'engineering',
     value: 'Show which requirements and engineering artifacts may be affected by a proposed change.',
     audience: 'Engineering leads, business analysts and change reviewers',
     output: 'A proposed impact list linking a change to affected requirements, specifications and tests, with evidence for review.',
@@ -289,7 +284,6 @@ export const roadmap = [
   {
     id: 'bilingual-review',
     title: 'English / French policy comparison',
-    bundle: 'knowledge',
     value: 'Help reviewers spot differences in meaning between English and French policy versions.',
     audience: 'Bilingual policy, translation and quality-review teams',
     output: 'A side-by-side review list of potentially different obligations, dates and definitions, linked to the original passages.',
@@ -301,7 +295,6 @@ export const roadmap = [
   {
     id: 'audit-evidence',
     title: 'Audit & evidence workbench',
-    bundle: 'procurement',
     value: 'Organize supporting documents, connect claims to evidence and highlight review gaps.',
     audience: 'Audit, assurance and procurement-review teams',
     output: 'An evidence matrix showing which claims have supporting documents, source locations and unresolved gaps.',
@@ -313,7 +306,6 @@ export const roadmap = [
   {
     id: 'service-desk',
     title: 'Bounded service-desk & runbook assistance',
-    bundle: 'engineering',
     value: 'Guide staff through approved troubleshooting steps with clear escalation points.',
     audience: 'Service-desk analysts and application-support teams',
     output: 'Suggested troubleshooting steps linked to approved runbooks, with escalation guidance and a handoff summary.',

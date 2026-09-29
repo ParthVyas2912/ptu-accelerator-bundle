@@ -153,23 +153,23 @@ function card(s, x, y, w, h, number, title, body, footer) {
   text(s, 'Confirm the gap beyond the customer\'s existing licensed products.', 2.59, 6.29, 9.63, 0.38, 16);
   notes(s, 'Customers need finished work, not another AI demo.', '1 minute',
     'The entry point is an unfinished business task. A policy analyst needs a trustworthy comparison and briefing. A procurement reviewer needs a defensible evidence package. An application owner needs a change that survives execution tests.\n\nAsk who owns the task, how often it happens, what the current process costs, what makes an output acceptable, and why existing Microsoft 365 Copilot, Copilot Studio, GitHub Copilot or conventional search does not already meet the requirement. These are target problems, not verified customer savings claims.\n\nA high-value task does not automatically have enough sustained traffic to justify PTUs.',
-    'Package those needs into three understandable outcomes, not twenty separate products.');
+    'Offer them as one catalog teams choose from, with three starter pilots, not bundles to buy into.');
 }
 
 // 03 - Portfolio architecture
 {
-  const s = base('The proposed offer', 'Three outcome bundles. One governed foundation.',
-    'A field-and-partner delivery offer assembled from selected building blocks.', sources.recommendation);
-  card(s, 0.62, 2.92, 3.85, 3.36, '1', 'Knowledge &\nStaff Work',
-    'Trusted answers, document comparison and controlled source-backed drafts.', 'ANCHORS: CWYD + DKM');
-  card(s, 4.74, 2.92, 3.85, 3.36, '2', 'Procurement &\nDocument Operations',
-    'Intake, missing-evidence checks and human-reviewed contract / RFP evidence.', 'BUILDING BLOCK: CONTENT PROCESSING');
-  card(s, 8.86, 2.92, 3.85, 3.36, '3', 'Engineering\nModernization',
-    'Code understanding, specifications and execution-verified modernization.', 'MODERNIZE + OWNER-APPROVED SPECSUITE');
+  const s = base('The proposed offer', 'One catalog of 20. Three starter pilots. One governed foundation.',
+    'Teams pick from 20 solutions ordered by customer demand; no bundles to buy into.', sources.recommendation);
+  card(s, 0.62, 2.92, 3.85, 3.36, '1', 'Trusted\nanswers',
+    'Answers with sources over approved documents, extended with cross-document comparison.', 'TOP PICKS: CWYD + DKM');
+  card(s, 4.74, 2.92, 3.85, 3.36, '2', 'Document\nintake',
+    'Intake, missing-evidence checks and human-reviewed contract / RFP evidence.', 'TOP PICKS: CONTENT PROCESSING + RFP');
+  card(s, 8.86, 2.92, 3.85, 3.36, '3', 'Code\nmodernization',
+    'Code understanding, specifications and execution-verified modernization.', 'TOP PICKS: MODERNIZE + SPECSUITE');
   text(s, 'SHARED FOUNDATION   Identity  /  approved data  /  model routing  /  evaluation  /  cost and capacity operations',
     0.65, 6.43, 12.0, 0.23, 11, { bold: true, color: C.rose });
-  notes(s, 'Three outcome bundles. One governed foundation.', '1 minute',
-    'Knowledge and Staff Work is the broad adoption anchor. Procurement and Document Operations turns document intelligence into reviewer-ready evidence. Engineering Modernization is a strong program-led motion when there is an engineering sponsor.\n\nCWYD means Chat With Your Data; DKM means Document Knowledge Mining. These are building blocks, not a promise that the entire bundle is already implemented. Controlled drafting and contract/RFP review need implementation and acceptance. SpecSuite remains conditional on its owner, licensing and delivery/support agreement; we did not retest it.\n\nThe common foundation should reuse the customer\'s approved platform where practical. We should not create twenty disconnected frontends or a large new landing zone for every small use case.',
+  notes(s, 'One catalog of 20. Three starter pilots. One governed foundation.', '1 minute',
+    'There are no bundles. Teams choose any mix of the 20 catalog solutions; the six top picks reflect what customers ask about first, not readiness. Trusted answers is the broad adoption starter. Document intake turns document intelligence into reviewer-ready evidence. Code modernization is a strong program-led motion when there is an engineering sponsor.\n\nCWYD means Chat With Your Data; DKM means Document Knowledge Mining. These are building blocks, not a promise that any pilot is already implemented. Controlled drafting and contract/RFP review need implementation and acceptance. SpecSuite remains conditional on its owner, licensing and delivery/support agreement; we did not retest it.\n\nThe common foundation should reuse the customer\'s approved platform where practical. We should not create twenty disconnected frontends or a large new landing zone for every small use case.',
     'The lab has given us a useful starting point, with a very specific evidence boundary.');
 }
 
@@ -194,7 +194,7 @@ function card(s, x, y, w, h, number, title, body, footer) {
   text(s, 'Pinned adaptations  /  bounded-test evidence  /  runbooks  /  curated public website', 3.1, 5.82, 9.12, 0.42, 17, { color: C.paper });
   notes(s, 'We turned a broad catalog into an evidence-led shortlist.', '1 minute',
     'The combined review assessed all twenty original candidates, but that is not twenty successful deployments. Seven accelerator repositories were assigned to first-pass implementation tracks. Existing SpecSuite and Planetary Explorer applications were protected and inventoried rather than retested.\n\nWe exercised selected native workflows, retained reusable adaptations and evaluation evidence, and separated customer-safe messaging into a static website. The strongest first-pass results were selected CWYD, DKM and Modernize workflows; Content had a limited missing-document success.\n\nNo provisioned throughput or reservations were purchased. Standard and GlobalStandard results tell us about selected functionality and model demand, not provisioned utilization, customer economics or production scale. Historical inference allowances are closed.',
-    'That gives us enough to focus delivery, not enough to promise a turnkey bundle.',
+    'That gives us enough to focus delivery, not enough to promise a turnkey solution.',
     'reports/ptu-bundle-evaluation.md sections 1-3; PTU-Bundle-Commercial-Recommendation.md section 4; adaptations/README.md and root README.md.');
 }
 
@@ -363,7 +363,7 @@ function card(s, x, y, w, h, number, title, body, footer) {
     if (i < 3) arrow(s, x + 2.76, 4.57, 0.25);
   });
   notes(s, 'A 30-day qualification sprint, with decision gates.', '1 minute',
-    'This is a proposed engagement sequence, not a guaranteed delivery date or a funded plan. In week one, qualify the problem and the existing-product gap with a sponsor. In week two, agree a representative evaluation set and demonstrate the end-to-end journey, including error and permission cases. In week three, measure actual model-specific demand and compare alternatives at the same service objective and quality. Week four produces a documented capacity recommendation, pilot scope and operating owner.\n\nEvery gate can produce a no-go, more engineering work, or a Standard/Batch recommendation. If data or landing-zone approvals are missing, the work remains prerequisite-gated; do not work around them. Any new lab inference or capacity test needs explicit authorization and a bounded cost allowance.\n\nStart with one broad daily workflow and one complementary workflow, not all three bundles at once.',
+    'This is a proposed engagement sequence, not a guaranteed delivery date or a funded plan. In week one, qualify the problem and the existing-product gap with a sponsor. In week two, agree a representative evaluation set and demonstrate the end-to-end journey, including error and permission cases. In week three, measure actual model-specific demand and compare alternatives at the same service objective and quality. Week four produces a documented capacity recommendation, pilot scope and operating owner.\n\nEvery gate can produce a no-go, more engineering work, or a Standard/Batch recommendation. If data or landing-zone approvals are missing, the work remains prerequisite-gated; do not work around them. Any new lab inference or capacity test needs explicit authorization and a bounded cost allowance.\n\nStart with one broad daily workflow and one complementary workflow, not the whole catalog at once.',
     'Make success visible in one shared scorecard.');
 }
 
@@ -392,7 +392,7 @@ function card(s, x, y, w, h, number, title, body, footer) {
 {
   const s = base('Decision requested today', 'Back the focused offer.\nGive the first two motions owners.', '', '', true);
   const asks = [
-    ['1', 'Align on the offer', 'Three outcome bundles; knowledge + controlled drafting first.'],
+    ['1', 'Align on the offer', 'One catalog of 20; knowledge + controlled drafting first.'],
     ['2', 'Nominate two accounts', 'One existing-PTU adoption motion; one new-demand qualification.'],
     ['3', 'Name accountable owners', 'Account lead, engineering / partner, operations and capacity lead.'],
   ];
@@ -406,7 +406,7 @@ function card(s, x, y, w, h, number, title, body, footer) {
   text(s, 'Next output: an account-specific pilot scope, acceptance gates and a responsible capacity decision.',
     0.91, 6.16, 11.5, 0.29, 16, { bold: true, color: C.dark });
   notes(s, 'Back the focused offer. Give the first two motions owners.', '1 minute',
-    'Close: My ask is not approval to buy capacity today. It is alignment on a focused three-bundle offer, two candidate account motions and the accountable people to execute them. Lead with knowledge and controlled drafting. Nominate one account with compatible existing PTUs and one account where a new production demand case can be measured.\n\nName an account lead, an engineering or delivery partner lead, an operating owner and a capacity/economics lead. Those are roles to assign, not people already committed. The next deliverable is an account-specific pilot scope with acceptance gates, a costed operating model and a defensible capacity recommendation.\n\nFinal line: We earn the capacity conversation by solving the customer\'s problem first.',
+    'Close: My ask is not approval to buy capacity today. It is alignment on a one-catalog offer with three starter pilots, two candidate account motions and the accountable people to execute them. Lead with knowledge and controlled drafting. Nominate one account with compatible existing PTUs and one account where a new production demand case can be measured.\n\nName an account lead, an engineering or delivery partner lead, an operating owner and a capacity/economics lead. Those are roles to assign, not people already committed. The next deliverable is an account-specific pilot scope with acceptance gates, a costed operating model and a defensible capacity recommendation.\n\nFinal line: We earn the capacity conversation by solving the customer\'s problem first.',
     'Open discussion; use the appendix for readiness, economics and source questions.');
 }
 
@@ -429,7 +429,7 @@ function card(s, x, y, w, h, number, title, body, footer) {
   });
   text(s, 'SpecSuite / Planetary: inventory only. Voice Live PTU BYOM: documented route, not tested here.', 0.66, 6.48, 12.0, 0.22, 12, { bold: true, color: C.rose });
   notes(s, 'What the strongest recorded tests actually establish.', 'Appendix / as needed',
-    'Use this page if asked whether the bundle is production-ready. The answer is no: selected scopes passed, and the limitations matter. CWYD ran in an adapted local runtime. DKM tested only two fixtures and had no full browser journey. Modernize\'s selected translation flow is not source-to-target execution equivalence. Content had a limited negative/missing-document success, not its complete happy path.\n\nThe other first-pass apps retained central workflow or semantic failures. Existing SpecSuite and Planetary were inventory-only. Voice Live has a documented customer-PTU BYOM route, but our four managed-model probes were text-mode component checks, not speech, telephony or PTU BYOM acceptance.\n\nDo not reuse the earlier categorical claim that Voice Live cannot use customer PTUs. The commercial recommendation qualifies and corrects that claim.',
+    'Use this page if asked whether the catalog is production-ready. The answer is no: selected scopes passed, and the limitations matter. CWYD ran in an adapted local runtime. DKM tested only two fixtures and had no full browser journey. Modernize\'s selected translation flow is not source-to-target execution equivalence. Content had a limited negative/missing-document success, not its complete happy path.\n\nThe other first-pass apps retained central workflow or semantic failures. Existing SpecSuite and Planetary were inventory-only. Voice Live has a documented customer-PTU BYOM route, but our four managed-model probes were text-mode component checks, not speech, telephony or PTU BYOM acceptance.\n\nDo not reuse the earlier categorical claim that Voice Live cannot use customer PTUs. The commercial recommendation qualifies and corrects that claim.',
     'If the question is PTU sizing or savings, use the economics gates instead of extrapolating these tests.',
     'reports/ptu-bundle-evaluation.md sections 1-3; PTU-Bundle-Commercial-Recommendation.md sections 2 and 4; Voice Live source listed in Appendix C.');
 }
@@ -494,7 +494,7 @@ const quickStart = `# PTU Accelerator - internal meeting talking points
 
 ## 60-second opening
 
-We are not offering twenty production-ready apps with a PTU purchase. We are building a focused way to help customers solve recurring knowledge, document and engineering problems on Azure. Our evaluation identified useful building blocks, tested selected workflows and made the remaining gaps explicit. The commercial path is to prove the outcome, get it adopted and attach the capacity its real demand supports. For customers with existing PTUs, that starts with value realization and renewal; for new buyers, it starts with functional proof and a fair Standard, Batch and provisioned comparison. Today I want alignment on the three-bundle offer, two candidate account motions and the delivery owners to take the next gated step.
+We are not offering twenty production-ready apps with a PTU purchase. We are building a focused way to help customers solve recurring knowledge, document and engineering problems on Azure. Our evaluation identified useful building blocks, tested selected workflows and made the remaining gaps explicit. The commercial path is to prove the outcome, get it adopted and attach the capacity its real demand supports. For customers with existing PTUs, that starts with value realization and renewal; for new buyers, it starts with functional proof and a fair Standard, Batch and provisioned comparison. Today I want alignment on the one-catalog offer, two candidate account motions and the delivery owners to take the next gated step.
 
 ## Meeting preparation
 
@@ -518,7 +518,7 @@ CSA: Cloud Solution Architect. BYOM / BYOK: bring your own model / key; actual r
 
 ## Likely questions and recommended answers
 
-**Is this an official Microsoft SKU or a supported turnkey bundle?**
+**Is this an official Microsoft SKU or a supported turnkey package?**
 No. It is a proposed field-and-partner delivery offer using selected accelerator components. Scope, licensing, ownership and post-go-live support must be explicitly agreed.
 
 **What can we actually show today?**
@@ -553,7 +553,7 @@ Data classification, processing geography, identity/network approvals, retention
 
 ## Close and record decisions
 
-1. Agree whether the three-bundle framing and knowledge/drafting priority are the right focused offer.
+1. Agree that one catalog of 20 solutions, with top picks and three starter pilots, and the knowledge/drafting priority are the right focused offer.
 2. Nominate one existing-PTU and one new-demand candidate account; these are nominations, not confirmed customers.
 3. Assign account, engineering/partner, operations and capacity/economics roles.
 4. Agree the next output: account-specific scope, prerequisites, acceptance thresholds and a costed capacity decision.

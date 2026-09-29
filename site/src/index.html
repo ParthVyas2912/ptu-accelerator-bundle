@@ -37,10 +37,10 @@
         <p class="hero-intro">A head start on the work that matters.</p>
         <p class="hero-description">Explore @@CANDIDATE_COUNT@@ AI starting points for your teams. Choose your mix, see what it needs, and turn compatible model capacity into useful work.</p>
         <div class="hero-actions">
-          <a class="button primary" href="#bundles">Find my starting point <span aria-hidden="true">→</span></a>
+          <a class="button primary" href="#start">Find my starting point <span aria-hidden="true">→</span></a>
           <a class="text-link" href="#catalog">Browse all solutions <span aria-hidden="true">↗</span></a>
         </div>
-        <p class="hero-meta"><span><strong>@@CANDIDATE_COUNT@@</strong> starting points</span><span><strong>3</strong> areas of work</span></p>
+        <p class="hero-meta"><span><strong>@@CANDIDATE_COUNT@@</strong> starting points</span><span><strong>@@PROBLEM_COUNT@@</strong> business problems</span></p>
         <p class="hero-capacity">Considering PTUs? <a href="#capacity-new">Prove demand before investing.</a></p>
       </div>
       <figure class="workflow-showcase" aria-labelledby="showcase-title">
@@ -78,41 +78,19 @@
       <a class="text-link" href="#questions">Know what you get →</a>
     </section>
 
-    <section class="section wrap" id="bundles" data-page="overview" aria-labelledby="bundles-title">
+    <section class="section wrap" id="start" data-page="overview" aria-labelledby="start-title">
       <div class="section-heading">
-        <div><p class="eyebrow">01 / Find your fit</p><h2 id="bundles-title">Start with a challenge.<br>Not a product name.</h2></div>
+        <div><p class="eyebrow">01 / Find your fit</p><h2 id="start-title">Start with a challenge.<br>Not a product name.</h2></div>
         <p>Choose the work you want to improve. Discover starting points that fit your team.</p>
       </div>
       <div class="problem-grid" aria-label="Find solutions by problem">@@PROBLEM_LINKS@@</div>
       <div id="finder-results" class="finder-results" hidden aria-labelledby="finder-title"><div class="finder-heading"><div><p class="eyebrow">Your starting points</p><h3 id="finder-title">Solutions to explore</h3><p id="finder-status" role="status"></p></div><a class="text-link" href="#catalog">See all matching solutions →</a></div><div id="finder-matches" class="finder-matches"></div><p class="finder-boundary">Matched by documented use case, not ranked by readiness. Open the guide to check fit and deployment gates.</p></div>
-      <h3 class="grouping-title">Three areas. Your combination.</h3>
-      <div class="bundle-grid">
-        <article class="bundle-card">
-          <div class="bundle-card-top"><svg class="bundle-icon" viewBox="0 0 40 40" aria-hidden="true"><path d="m13 10-9 10 9 10m14-20 9 10-9 10M24 6l-8 28"/></svg><span class="bundle-number">01</span></div>
-          <h3>Engineering Modernization</h3>
-          <p class="bundle-tagline">Build what comes next.</p>
-          <p class="bundle-description">Understand existing code, explore changes and give engineers a stronger starting point.</p>
-          <a class="text-link bundle-link" data-bundle-link="engineering" href="#catalog">Find engineering solutions <span aria-hidden="true">→</span></a>
-          <details class="bundle-inventory"><summary>Explore engineering use cases</summary><div><span class="small-label">Code &amp; systems</span><p>Modernize · Specification assistance · Developer tooling</p><span class="small-label">Data &amp; platform</span><p>Custom data processing · Application foundations · Signal analysis</p></div></details>
-        </article>
-        <article class="bundle-card">
-          <div class="bundle-card-top"><svg class="bundle-icon" viewBox="0 0 40 40" aria-hidden="true"><path d="M7 8h10l3 3 3-3h10v25H23l-3 3-3-3H7zM20 11v25M11 15h5m-5 6h5m-5 6h5m8-12h5m-5 6h5m-5 6h5"/></svg><span class="bundle-number">02</span></div>
-          <h3>Knowledge &amp; Staff Work</h3>
-          <p class="bundle-tagline">Find answers. See the sources.</p>
-          <p class="bundle-description">Find trusted information, compare documents and prepare source-backed work for human review.</p>
-          <a class="text-link bundle-link" data-bundle-link="knowledge" href="#catalog">Find knowledge solutions <span aria-hidden="true">→</span></a>
-          <details class="bundle-inventory"><summary>Explore knowledge use cases</summary><div><span class="small-label">Answers &amp; evidence</span><p>CWYD · Document Knowledge Mining</p><span class="small-label">Concept / not built</span><p>Controlled briefing &amp; correspondence drafts</p></div></details>
-        </article>
-        <article class="bundle-card">
-          <div class="bundle-card-top"><svg class="bundle-icon" viewBox="0 0 40 40" aria-hidden="true"><path d="M10 4h15l7 7v25H10zM25 4v8h7M16 19h10m-10 6h5M4 10v26h2m17-6 3 3 7-8"/></svg><span class="bundle-number">03</span></div>
-          <h3>Procurement &amp; Document Operations</h3>
-          <p class="bundle-tagline">Less chasing. Better review.</p>
-          <p class="bundle-description">Organize incoming documents and surface missing evidence so reviewers can focus on what matters.</p>
-          <a class="text-link bundle-link" data-bundle-link="procurement" href="#catalog">Find document solutions <span aria-hidden="true">→</span></a>
-          <details class="bundle-inventory"><summary>Explore document use cases</summary><div><span class="small-label">Intake &amp; completeness</span><p>Content intake · Missing-evidence checks</p><span class="small-label">Custom workflow concept</span><p>Evidence-backed RFP &amp; contract review</p></div></details>
-        </article>
+      <div class="top-picks-heading" id="top-picks">
+        <div><p class="eyebrow">@@CANDIDATE_COUNT@@ solutions / one catalog</p><h3 class="grouping-title">Top picks to start with.</h3></div>
+        <a class="text-link" href="#catalog">See all @@CANDIDATE_COUNT@@ solutions <span aria-hidden="true">→</span></a>
       </div>
-      <p class="section-footnote">These are outcome groupings, not packaged products. Inclusion does not imply launch readiness or verified PTU integration.</p>
+      <ol class="top-picks" aria-label="Top picks">@@TOP_PICKS@@</ol>
+      <p class="section-footnote">Top picks reflect what customers ask about first. Choose any mix of all @@CANDIDATE_COUNT@@; each guide states its own readiness and limits.</p>
       <aside class="adoption-band" aria-labelledby="adoption-title">
         <div class="adoption-heading"><h3 id="adoption-title">Make your PTU investment<br>a measurable success story.</h3><a class="text-link" href="#pilot-gates">Build the evidence <span aria-hidden="true">→</span></a></div>
         <p class="adoption-service">Choose with our team. Deploy independently or with our help, get it working in your environment, then bring more teams on board. <a href="#engagement">How we work with you →</a></p>
@@ -173,7 +151,7 @@
       <details class="reference-disclosure" id="preparation">
         <summary><h3>Preparation and acceptance checklist</h3><span>For your delivery and platform teams</span></summary>
         <div class="reference-content">
-          <p>Missing a verified repository, blocked outcome or supported deployment route? Resolve that gate first. A shortlist is not a ready-to-install bundle.</p>
+          <p>Missing a verified repository, blocked outcome or supported deployment route? Resolve that gate first. A shortlist is not a ready-to-install package.</p>
           <div id="deployment-safety"><h4>Before running deployment instructions</h4><p>Run one step at a time only after approval. Replace angle-bracket placeholders locally; keep credentials out of code and shared output. Use approved package feeds. Review scripts and dependencies before execution: a pinned checkout can still fetch mutable images or remote scripts. Do not bypass preflight, relax network policy, purchase capacity or delete resources to resolve an error.</p><p>Source checkout commands use PowerShell in a new empty directory. Confirm git rev-parse HEAD prints the stated revision. For GitHub Actions, prepare your approved fork at that revision; for the voice workflow use Bash directory syntax. Complete each package's tool and dependency setup before provisioning.</p><p>If a step fails, stop and use the linked manual's troubleshooting guidance. Record the failing stage without secrets. Agree upgrade, rollback, retention and shutdown ownership before handover; never delete shared resources as routine cleanup. Confirm model, API, geography and PTU routing independently of provisioning.</p></div>
           <ol>@@TENANT_STEPS@@</ol>
           <div id="capacity-existing"><h4>Check the actual PTU route</h4><p>Verify model, API &amp; geography compatibility. An existing Foundry project can still receive new Standard deployments from a template. Inspect model resources and persisted agent settings rather than assuming project reuse means PTU reuse. Search, storage, hosting, document processing and speech can cost extra.</p></div>
@@ -187,9 +165,9 @@
       <details class="reference-disclosure" id="program">
         <summary><h2 id="program-title">Need a starting point?</h2><span>Optional pilot examples, not a limit on your portfolio</span></summary>
         <div class="reference-content">
-          <p class="program-intro">Use these starter plans for the work you choose: Chat With Your Data for knowledge, Content Processing for documents, or owner-supported engineering modernization. Combine solutions as needed; these are planning recommendations, not ready-to-install bundles.</p>
+          <p class="program-intro">Three proven ways to begin: Chat With Your Data for trusted answers, Content Processing for document intake, or Modernize for an active code-modernization backlog. Add any other solutions you need; these are planning recommendations, not ready-to-install packages.</p>
           <div class="pathway-grid">@@PATHWAYS@@</div>
-          <div class="shortlist-actions"><a class="text-link" href="#selection-review">Why these starting points?</a><a class="text-link" href="#bundles">Explore all business problems</a></div>
+          <div class="shortlist-actions"><a class="text-link" href="#selection-review">Why these starting points?</a><a class="text-link" href="#start">Explore all business problems</a></div>
         </div>
       </details>
     </section>
@@ -200,11 +178,10 @@
         <p>Explore the workflow. Understand what it needs. Save what fits your team. <a href="#engagement">Deploy yourself or work with us end to end.</a></p>
       </div>
       <div class="catalog-toolbar"><p>Explore by the work you want to improve.</p><a class="text-link" href="#shortlist">View your shortlist <span aria-hidden="true">↓</span></a></div>
-      <div id="bundle-chips" class="bundle-chips" role="group" aria-label="Choose an area of work" hidden></div>
+      <div id="problem-chips" class="filter-chips" role="group" aria-label="Choose a problem to solve" hidden></div>
       <form id="catalog-filters" class="catalog-filters" role="search" aria-label="Filter candidates" hidden>
         <div class="search-field"><label for="catalog-search">Search solutions <kbd aria-hidden="true">/</kbd></label><input type="search" id="catalog-search" placeholder="Try “documents”, “code” or “voice”…" autocomplete="off" maxlength="200" aria-controls="catalog-grid"></div>
-        <div><label for="problem-filter">Problem to solve</label><select id="problem-filter" aria-controls="catalog-grid"><option value="all">All problems</option>@@PROBLEM_OPTIONS@@</select></div>
-        <div class="native-bundle-filter"><label for="bundle-filter">Area of work</label><select id="bundle-filter" aria-controls="catalog-grid"><option value="all">All areas</option>@@BUNDLE_OPTIONS@@</select></div>
+        <div class="native-problem-filter"><label for="problem-filter">Problem to solve</label><select id="problem-filter" aria-controls="catalog-grid"><option value="all">All problems</option>@@PROBLEM_OPTIONS@@</select></div>
         <button class="button secondary reset-button" id="reset-filters" type="button">Clear filters</button>
       </form>
       <div class="catalog-meta"><p id="result-count" role="status" aria-live="polite" aria-atomic="true">Showing @@CANDIDATE_COUNT@@ of @@CANDIDATE_COUNT@@ solutions</p><div id="view-switch" class="view-switch" role="group" aria-label="Catalog layout" hidden><button type="button" data-layout="grid" aria-pressed="true" aria-controls="catalog-grid">Cards</button><button type="button" data-layout="list" aria-pressed="false" aria-controls="catalog-grid">List</button></div></div>
@@ -272,7 +249,7 @@
           <details><summary>Can we choose several solutions—or the whole portfolio?</summary><div><p>Yes. Assess one, several or all @@CANDIDATE_COUNT@@ starting points and build the combination your teams need. Deployment remains solution-specific: some entries require adaptation, have unresolved gates or are not deployable applications. Every chosen workload needs readiness, permissions and model/API/geography checks before using your PTUs. Search, storage, hosting, document processing and speech are billed separately where used.</p></div></details>
           <details><summary>Can we use this in production today?</summary><div><p>Not on the strength of this catalog alone. It provides source-backed deployment and adoption guidance, not production certification. Each chosen workflow needs representative evaluation, permissions, data handling, safety review, monitoring and an agreed operational support arrangement before production use. Some packages also need repair or a maintenance owner.</p></div></details>
           <details><summary>Does buying PTUs make answers more accurate?</summary><div><p>No. PTUs reserve model-processing capacity. Accuracy and usefulness depend on the model, source material, retrieval, task design and evaluation. Capacity cannot repair a failed grounded answer or a defective workflow.</p></div></details>
-          <details><summary>Are all @@CANDIDATE_COUNT@@ candidates PTU-ready applications?</summary><div><p>No. The catalog includes engines, foundations, proposed workflows, specialist options and a training workshop. Some evaluated workflows still need repair. The three bundles are outcome groupings, not @@CANDIDATE_COUNT@@ ready apps. PTU fit is conditional on supported models, APIs, deployment types, geography and measured demand.</p></div></details>
+          <details><summary>Are all @@CANDIDATE_COUNT@@ candidates PTU-ready applications?</summary><div><p>No. The catalog includes engines, foundations, proposed workflows, specialist options and a training workshop. Some evaluated workflows still need repair. It is one catalog of @@CANDIDATE_COUNT@@ solutions to choose from, not @@CANDIDATE_COUNT@@ ready apps. PTU fit is conditional on supported models, APIs, deployment types, geography and measured demand.</p></div></details>
           <details><summary>Why keep an unmaintained accelerator in the library?</summary><div><p>Its workflow or a previously demonstrated adaptation may still be useful. That is not a recommendation to deploy unsupported code unchanged. Maintenance notices are visible in the affected guides; new pilots need a named owner or replacement. Later source reviews do not change historical test results.</p><a class="text-link" href="#selection-review">Read the selection decisions</a></div></details>
           <details><summary>Is Voice Live excluded from using PTUs?</summary><div><p>No. Official Voice Live documentation describes a Bring Your Own Model path that can use PTU deployments. That integration is untested here; only managed text probes were verified. Speech processing has separate charges, and text probes do not validate the complete voice experience. This is a separate integration test, not a sixth new app.</p><a class="text-link" href="#solution-11">Explore the Voice Live guide</a></div></details>
           <details id="capacity-new"><summary>What if we need new capacity—or have very little demand?</summary><div><p>Prove acceptable quality and actual demand before a purchase. Measure representative volume, concurrency and response-time needs; compare Standard, Batch and compatible provisioned options. No fixed PTU quantity or savings promise follows from this portfolio. For existing PTUs, useful work and total cost should guide renewal—not artificial traffic or sunk spend.</p></div></details>

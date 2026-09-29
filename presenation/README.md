@@ -24,11 +24,31 @@ and ends with candidate-account nominations and named delivery roles. No custome
 savings, revenue forecast, fixed PTU quantity or production readiness is claimed.
 The 30-day sequence is a proposed qualification sprint, not a delivery commitment.
 
+## Customer two-pager
+
+`build-two-pager.cjs` generates `AI-Solutions-Hub-Two-Pager.docx`: a Microsoft-branded,
+two-page customer-facing overview of the PTU accelerator as one catalog of 20 solutions
+(no bundles): six top picks, three starter pilots and every solution in customer-priority
+order, ending with the public website link. It is the one artifact here drafted for sharing outside
+Microsoft, subject to normal account-team approval, so its content is limited to the
+same public-safe material as the website: business outcomes, generalized readiness
+language and public links only. No tenant, subscription, resource, evidence or customer
+detail. It is a curated catalog, not an official commercial SKU, and promises no
+delivery, funding or PTU compatibility.
+
+```powershell
+Set-Location presenation
+$env:NODE_PATH = (npm root -g)   # requires a local docx package, e.g. npm install -g docx
+node build-two-pager.cjs
+```
+
+Confirm it still renders as exactly two pages before sharing, and refresh the catalog
+list and top picks in the script if `customerOrder` in `..\site\src\content.mjs` changes.
+
 ## Rebuild locally
 
 Requires Node.js and the pinned local generator. Rendering uses installed desktop
 PowerPoint through COM; it does not send documents to an online conversion service.
-
 ```powershell
 Set-Location presenation
 npm ci --ignore-scripts

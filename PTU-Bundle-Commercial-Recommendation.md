@@ -4,6 +4,10 @@
 
 **Basis:** the original M365 Researcher response, both MCAPS evaluation reports, selected underlying evidence, and Microsoft/GitHub documentation. This is a commercial recommendation, not a new deployment, capacity test, customer reference validation, or production certification. Readiness below refers to the recorded lab results, not a fresh health check.
 
+## Addendum - 30 September 2026: one catalog, no bundles
+
+**This supersedes the three-bundle packaging in §1, §5 and the closing recommendation; the dated evidence and per-solution assessments are unchanged.** The PTU accelerator is now positioned as a single catalog of 20 solutions that teams choose from freely, ordered by what customers most often ask about first. Engineering Modernization, Knowledge & Staff Work and Procurement & Document Operations are no longer offered, filtered or presented as bundles or areas. The three starter pilots remain (Trusted answers with CWYD, Document intake with Content Processing, Code modernization with Modernize) with the same gates. The six top picks are an editorial starting suggestion, not a readiness, popularity or PTU-compatibility claim.
+
 ## Addendum - 20 September 2026: maintenance gates and a focused pilot
 
 **This addendum supersedes earlier maintenance and default-inclusion assumptions, not the dated historical evidence below.** The September 12 brief and its recorded results remain intact. Later public-source review is not functional testing, deployment proof, a repair of failed synthesis or a change to the established package architecture revisions. The later pins cited here are separate review references.

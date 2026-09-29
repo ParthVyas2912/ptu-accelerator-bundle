@@ -2,8 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { mkdir, mkdtemp, readFile, readdir, rm, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
-import { assertSafeOutputDirectory, brandAssets, buildSite, escapeHTML, hash, sourceLabel, validateDossier, validateProgram, validateRoadmap } from '../scripts/build.mjs';
-import { candidates, catalogCandidates, glossary, plainKinds, roadmap } from '../src/content.mjs';
+import { assertSafeOutputDirectory, brandAssets, buildSite, escapeHTML, hash, sourceLabel, validateCustomerOrder, validateDossier, validateProgram, validateRoadmap } from '../scripts/build.mjs';
+import { candidates, catalogCandidates, customerOrder, glossary, plainKinds, roadmap, topPicks } from '../src/content.mjs';
 import { onboarding, problems, sources, tenantSteps } from '../src/onboarding.mjs';
 import { dossiers } from '../src/dossiers.mjs';
 import { solutionVisuals, visualIcons } from '../src/visuals.mjs';
@@ -148,7 +148,22 @@ test('all 20 candidates and five planned workflows are rendered with stable hist
   assert.doesNotMatch(html, /class="status-badge"|id="status-filter"|Selected tests verified|Not launch-ready/);
   assert.deepEqual([...html.matchAll(/class="candidate" data-id="(\d+)"/g)].map((match) => Number(match[1])),
     catalogCandidates.map((item) => item.id));
-  assert.equal(catalogCandidates[0].bundle, 'engineering');
+  assert.deepEqual(catalogCandidates.map((item) => item.id), customerOrder);
+  assert.equal(catalogCandidates[0].id, 1);
+  assert.ok(candidates.every((item) => !Object.hasOwn(item, 'bundle')));
+  assert.ok(roadmap.every((item) => !Object.hasOwn(item, 'bundle')));
+});
+
+test('one catalog of solutions ordered by customer priority, with no bundles or areas', () => {
+  const withoutRepositoryName = html.replaceAll('ptu-accelerator-bundle', '');
+  assert.doesNotMatch(withoutRepositoryName, /\bbundles?\b(?! of related documents)|Engineering Modernization|Knowledge &amp; Staff Work|Procurement &amp; Document Operations|areas? of work/i);
+  assert.deepEqual([...html.matchAll(/<li class="top-pick"><a href="#solution-(\d+)"/g)].map((match) => Number(match[1])), topPicks);
+  assert.equal((html.match(/class="candidate-area top-pick-badge"/g) || []).length, topPicks.length);
+  assert.match(html, /Top picks to start with/);
+  assert.doesNotThrow(() => validateCustomerOrder());
+  assert.throws(() => validateCustomerOrder(customerOrder.slice(1)), /every catalog solution exactly once/);
+  assert.throws(() => validateCustomerOrder([...customerOrder.slice(1), customerOrder[1]]), /every catalog solution exactly once/);
+  assert.throws(() => validateCustomerOrder(customerOrder, [...topPicks].reverse()), /first six/);
 });
 
 test('retired candidates are absent from the artifact and all customer-facing counts agree', () => {
@@ -263,7 +278,6 @@ test('visual overview preserves planning boundaries without the long pilot and o
   assert.match(html, /<figure class="workflow-showcase" aria-labelledby="showcase-title">/);
   assert.equal((html.match(/class="showcase-tile /g) || []).length, 3);
   assert.match(html, /An adoption journey, not a system architecture/);
-  assert.equal((html.match(/<details class="bundle-inventory">/g) || []).length, 3);
   assert.match(html, /Results depend on fit and delivery/);
   assert.match(html, /Search, storage, hosting, document processing and speech can cost extra/);
   assert.match(html, /Verify model, API &amp; geography compatibility/);
@@ -293,10 +307,7 @@ test('PTU adoption leads the toolkit without promising universal compatibility o
   assert.match(html, /time saved, quality and total service cost against an agreed baseline/);
   assert.match(html, /not a guaranteed saving/);
   assert.match(html, /not deployable applications/);
-  for (const name of ['Engineering Modernization', 'Knowledge & Staff Work', 'Procurement & Document Operations']) {
-    assert.ok(html.includes(`<h3>${escapeHTML(name)}</h3>`));
-  }
-  assert.equal((html.match(/class="bundle-tagline"/g) || []).length, 3);
+  assert.equal((html.match(/class="top-pick"/g) || []).length, 6);
   assert.match(html, /class="adoption-band"[\s\S]*?href="#pilot-gates"/);
 });
 
@@ -604,7 +615,7 @@ test('four main views and 20 solution pages retain native anchors without JavaSc
   assert.equal(sections.length, 33);
   assert.deepEqual([...new Set(sections.map((match) => match[1]))].sort(), ['catalog', 'guide', 'overview', 'roadmap', 'solution']);
   for (const [tag] of sections) assert.doesNotMatch(tag, /\bhidden\b/);
-  assert.match(html, /id="bundle-chips"[^>]*role="group"[^>]*hidden/);
+  assert.match(html, /id="problem-chips"[^>]*role="group"[^>]*hidden/);
   assert.match(html, /id="view-switch"[^>]*role="group"[^>]*hidden/);
   assert.match(html, /data-layout="grid" aria-pressed="true"/);
   assert.match(html, /data-layout="list" aria-pressed="false"/);
@@ -612,7 +623,7 @@ test('four main views and 20 solution pages retain native anchors without JavaSc
 
 test('focused pathways retain gates, measurable outcomes and distinct optional extensions', () => {
   assert.deepEqual(pathways.map(({ id, primary }) => [id, primary]), [
-    ['engineering', 9], ['knowledge', 1], ['procurement', 6],
+    ['answers', 1], ['documents', 6], ['modernize', 9],
   ]);
   assert.equal((html.match(/class="pathway-card"/g) || []).length, 3);
   for (const item of pathways) {

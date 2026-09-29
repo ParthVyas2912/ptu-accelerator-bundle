@@ -7,7 +7,7 @@
 
 ## 60-second opening
 
-We are not offering twenty production-ready apps with a PTU purchase. We are building a focused way to help customers solve recurring knowledge, document and engineering problems on Azure. Our evaluation identified useful building blocks, tested selected workflows and made the remaining gaps explicit. The commercial path is to prove the outcome, get it adopted and attach the capacity its real demand supports. For customers with existing PTUs, that starts with value realization and renewal; for new buyers, it starts with functional proof and a fair Standard, Batch and provisioned comparison. Today I want alignment on the three-bundle offer, two candidate account motions and the delivery owners to take the next gated step.
+We are not offering twenty production-ready apps with a PTU purchase. We are building a focused way to help customers solve recurring knowledge, document and engineering problems on Azure. Our evaluation identified useful building blocks, tested selected workflows and made the remaining gaps explicit. The commercial path is to prove the outcome, get it adopted and attach the capacity its real demand supports. For customers with existing PTUs, that starts with value realization and renewal; for new buyers, it starts with functional proof and a fair Standard, Batch and provisioned comparison. Today I want alignment on the one-catalog offer, two candidate account motions and the delivery owners to take the next gated step.
 
 ## Meeting preparation
 
@@ -44,15 +44,15 @@ Ask who owns the task, how often it happens, what the current process costs, wha
 
 A high-value task does not automatically have enough sustained traffic to justify PTUs.
 
-**Transition:** Package those needs into three understandable outcomes, not twenty separate products.
+**Transition:** Offer them as one catalog teams choose from, with three starter pilots, not bundles to buy into.
 
-### 3. Three outcome bundles. One governed foundation.
+### 3. One catalog of 20. Three starter pilots. One governed foundation.
 
 **Timing:** 1 minute
 
-Knowledge and Staff Work is the broad adoption anchor. Procurement and Document Operations turns document intelligence into reviewer-ready evidence. Engineering Modernization is a strong program-led motion when there is an engineering sponsor.
+There are no bundles. Teams choose any mix of the 20 catalog solutions; the six top picks reflect what customers ask about first, not readiness. Trusted answers is the broad adoption starter. Document intake turns document intelligence into reviewer-ready evidence. Code modernization is a strong program-led motion when there is an engineering sponsor.
 
-CWYD means Chat With Your Data; DKM means Document Knowledge Mining. These are building blocks, not a promise that the entire bundle is already implemented. Controlled drafting and contract/RFP review need implementation and acceptance. SpecSuite remains conditional on its owner, licensing and delivery/support agreement; we did not retest it.
+CWYD means Chat With Your Data; DKM means Document Knowledge Mining. These are building blocks, not a promise that any pilot is already implemented. Controlled drafting and contract/RFP review need implementation and acceptance. SpecSuite remains conditional on its owner, licensing and delivery/support agreement; we did not retest it.
 
 The common foundation should reuse the customer's approved platform where practical. We should not create twenty disconnected frontends or a large new landing zone for every small use case.
 
@@ -68,7 +68,7 @@ We exercised selected native workflows, retained reusable adaptations and evalua
 
 No provisioned throughput or reservations were purchased. Standard and GlobalStandard results tell us about selected functionality and model demand, not provisioned utilization, customer economics or production scale. Historical inference allowances are closed.
 
-**Transition:** That gives us enough to focus delivery, not enough to promise a turnkey bundle.
+**Transition:** That gives us enough to focus delivery, not enough to promise a turnkey solution.
 
 **Sources / qualifications:** reports/ptu-bundle-evaluation.md sections 1-3; PTU-Bundle-Commercial-Recommendation.md section 4; adaptations/README.md and root README.md.
 
@@ -156,7 +156,7 @@ This is a proposed engagement sequence, not a guaranteed delivery date or a fund
 
 Every gate can produce a no-go, more engineering work, or a Standard/Batch recommendation. If data or landing-zone approvals are missing, the work remains prerequisite-gated; do not work around them. Any new lab inference or capacity test needs explicit authorization and a bounded cost allowance.
 
-Start with one broad daily workflow and one complementary workflow, not all three bundles at once.
+Start with one broad daily workflow and one complementary workflow, not the whole catalog at once.
 
 **Transition:** Make success visible in one shared scorecard.
 
@@ -176,7 +176,7 @@ For commercial tracking, separate new Azure usage from already committed PTU spe
 
 **Timing:** 1 minute
 
-Close: My ask is not approval to buy capacity today. It is alignment on a focused three-bundle offer, two candidate account motions and the accountable people to execute them. Lead with knowledge and controlled drafting. Nominate one account with compatible existing PTUs and one account where a new production demand case can be measured.
+Close: My ask is not approval to buy capacity today. It is alignment on a one-catalog offer with three starter pilots, two candidate account motions and the accountable people to execute them. Lead with knowledge and controlled drafting. Nominate one account with compatible existing PTUs and one account where a new production demand case can be measured.
 
 Name an account lead, an engineering or delivery partner lead, an operating owner and a capacity/economics lead. Those are roles to assign, not people already committed. The next deliverable is an account-specific pilot scope with acceptance gates, a costed operating model and a defensible capacity recommendation.
 
@@ -188,7 +188,7 @@ Final line: We earn the capacity conversation by solving the customer's problem 
 
 **Timing:** Appendix / as needed
 
-Use this page if asked whether the bundle is production-ready. The answer is no: selected scopes passed, and the limitations matter. CWYD ran in an adapted local runtime. DKM tested only two fixtures and had no full browser journey. Modernize's selected translation flow is not source-to-target execution equivalence. Content had a limited negative/missing-document success, not its complete happy path.
+Use this page if asked whether the catalog is production-ready. The answer is no: selected scopes passed, and the limitations matter. CWYD ran in an adapted local runtime. DKM tested only two fixtures and had no full browser journey. Modernize's selected translation flow is not source-to-target execution equivalence. Content had a limited negative/missing-document success, not its complete happy path.
 
 The other first-pass apps retained central workflow or semantic failures. Existing SpecSuite and Planetary were inventory-only. Voice Live has a documented customer-PTU BYOM route, but our four managed-model probes were text-mode component checks, not speech, telephony or PTU BYOM acceptance.
 
@@ -242,7 +242,7 @@ CSA: Cloud Solution Architect. BYOM / BYOK: bring your own model / key; actual r
 
 ## Likely questions and recommended answers
 
-**Is this an official Microsoft SKU or a supported turnkey bundle?**
+**Is this an official Microsoft SKU or a supported turnkey package?**
 No. It is a proposed field-and-partner delivery offer using selected accelerator components. Scope, licensing, ownership and post-go-live support must be explicitly agreed.
 
 **What can we actually show today?**
@@ -277,7 +277,7 @@ Data classification, processing geography, identity/network approvals, retention
 
 ## Close and record decisions
 
-1. Agree whether the three-bundle framing and knowledge/drafting priority are the right focused offer.
+1. Agree that one catalog of 20 solutions, with top picks and three starter pilots, and the knowledge/drafting priority are the right focused offer.
 2. Nominate one existing-PTU and one new-demand candidate account; these are nominations, not confirmed customers.
 3. Assign account, engineering/partner, operations and capacity/economics roles.
 4. Agree the next output: account-specific scope, prerequisites, acceptance thresholds and a costed capacity decision.

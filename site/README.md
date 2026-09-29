@@ -1,8 +1,8 @@
 # AI Solutions Hub stakeholder website
 
 An independent, public-safe toolkit for increasing useful adoption of customers'
-existing PTUs and demonstrating investment value: three outcome areas, 20 curated
-starting points and five **planned** workflows. Customers can assess one, several
+existing PTUs and demonstrating investment value: one PTU accelerator catalog of 20 curated
+solutions (no bundles), ordered by customer priority with six top picks, and five **planned** workflows. Customers can assess one, several
 or all 20; deploying each requires its own readiness and model/API/geography checks.
 It is not an exhaustive Microsoft catalog, official marketplace, official product,
 customer reference, production certification or support commitment.
@@ -81,8 +81,8 @@ deployment approval. Handover explicitly covers user training, an adoption champ
 operational support and a review date, not merely a provisioned environment.
 
 - **Focused pilot paths:** optional, collapsed planning guidance under **How we help**,
-  not a second wall of recommendations on the overview. Three outcome-led starting plans, with engineering first
-  and CWYD identified as the recommended first knowledge pilot. Each names a bounded
+  not a second wall of recommendations on the overview. Three starter pilots (Trusted answers,
+  Document intake, Code modernization), with CWYD identified as the recommended first pilot. Each names a bounded
   task, maintenance/quality gate, outcome/quality/adoption measures and human decision
   boundary. Planning adds only the primary candidate, preserves existing shortlist
   entries and never silently adds proposed extensions. One active pilot brief follows
@@ -231,7 +231,7 @@ layout. Browser printing from a solution page prints only that solution.
 prints only the shortlist's complete guides and shared tenant checklist.
 **Print / save implementation brief** prints only selected names, concise purposes,
 open implementation/access/maintenance points and working-session prompts.
-Printing temporarily opens bundle, optional-reference, use-case idea, selected-guide and deployment-note expanders, then restores
+Printing temporarily opens optional-reference, use-case idea, selected-guide and deployment-note expanders, then restores
 their individual open/closed states.
 
 ## Build and preview
@@ -304,9 +304,9 @@ Tests cover:
 - Concrete explanations and illustrative examples for all 20 entries, public/private/unresolved code
   access, shared theme controls and links through the assisted deployment journey.
 - Exact inline script/style hashes, restrictive CSP and public-content privacy checks.
-- All area/problem combinations, alias/detail search, literal malicious-looking
+- Every problem chip in customer-priority order, alias/detail search, literal malicious-looking
   input, zero results and reset.
-- Engineering-first problem discovery and area intersections; multi-selection,
+- Top picks from one catalog (no bundles or areas), problem discovery; multi-selection,
   removal, filter-independent shortlist state, reload reset and selected-plan print.
 - Three pilot paths, idempotent additions, optional-extension exclusion, preserved
   selections, primary-removal invalidation and printable measures/acceptance gates.
@@ -319,9 +319,9 @@ Tests cover:
 - All 15 pinned catalog decisions, prominent maintenance notices, expanded-table
   mobile accessibility, native no-JavaScript reading and disclosure restoration.
 - Four-view navigation, deep links, Back/Forward, focus transfer, search shortcuts,
-  outcome chips, list/card layout and filter preservation between views.
-- Solution-diagram structure and capacity alternatives; keyboard-operated bundle
-  expanders; mobile workflow-column alignment and preserved heading line breaks.
+  problem chips, list/card layout and filter preservation between views.
+- Solution-diagram structure and capacity alternatives; keyboard-operated top-pick
+  links; mobile workflow-column alignment and preserved heading line breaks.
 - All 20 solution pages, each product's actual node/edge and workflow counts,
   ingestion/deployment steps, specialist roles, source links, evaluation notes,
   every section link, expandable connections, keyboard navigation and return focus.
@@ -332,8 +332,8 @@ Tests cover:
   plus list layouts and all 20 solution pages; representative solution pages in
   light/dark mobile views.
 - Horizontal overflow checks across all four views at 320, 375, 768, 1024 and 1440 pixels.
-- Print summary with all 20 candidates, preparation guidance and all bundle
-  starting points even when filtered; restores disclosure and theme state afterward.
+- Print summary with all 20 candidates, preparation guidance and all six
+  top picks even when filtered; restores disclosure and theme state afterward.
 - Selected-plan and individual-solution printing; unique IDs in cloned guides.
 - Graceful no-JavaScript reading with native solution links and deployment notes.
 
@@ -346,7 +346,7 @@ mobile-solution checks each retain their own 120-second deadline.
 The local suite writes `test-results/smoke/local/`, including:
 
 - `desktop-light.png` / `desktop-dark.png` — editorial hero and diagram.
-- `overview-light-full.png` and `bundle-panels-light.png` — outcome panels.
+- `overview-light-full.png` and `top-picks-light.png` — top picks.
 - `{catalog,guide,roadmap}-{light,dark}-full.png` — complete secondary views.
 - `mobile-{overview,catalog,guide,roadmap}-{light,dark}-full.png` — full 375px views.
 - `modernize-experience-light.png`, `voice-detail-dark.png`,

@@ -4,7 +4,7 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
 import { startServer } from '../scripts/serve.mjs';
-import { bundles, candidates, catalogCandidates, roadmap } from '../src/content.mjs';
+import { candidates, catalogCandidates, roadmap, topPicks } from '../src/content.mjs';
 import { onboarding, problems } from '../src/onboarding.mjs';
 import { dossiers } from '../src/dossiers.mjs';
 import { solutionVisuals } from '../src/visuals.mjs';
@@ -232,7 +232,7 @@ try {
     assert.equal(await page.locator('.candidate').count(), 20, 'Expected the 20-entry AI Solutions Hub. Publish site/dist/ before running the deployed smoke test.');
     assert.equal(await visible(page).count(), 0, 'The overview should not overwhelm readers with the full catalog.');
     assert.equal(await page.locator('#top').isVisible(), true);
-    assert.equal(await page.locator('#bundles').isVisible(), true);
+    assert.equal(await page.locator('#start').isVisible(), true);
     assert.equal(await page.locator('[data-view-link="overview"]').getAttribute('aria-current'), 'page');
     const html = await response.text();
     assertPublicContent(html, [url, `${url}/`]);
@@ -267,7 +267,7 @@ try {
     }
   });
 
-  await run('concise visual overview keeps discovery prominent and work areas disclose by keyboard', async () => {
+  await run('concise visual overview keeps discovery prominent and leads with top picks from one catalog', async () => {
     await goView(page, 'overview');
     const map = page.locator('.workflow-showcase');
     assert.equal(await map.locator('.showcase-tile').count(), 3);
@@ -283,11 +283,12 @@ try {
     assert.match(await page.locator('#hero-title').innerText(), /Useful AI/);
     assert.match(await page.locator('.hero-description').innerText(), /Choose your mix/);
     assert.match(await map.locator('.showcase-boundary').innerText(), /Compatible workloads only/);
-    assert.deepEqual(await page.locator('.bundle-card h3').allTextContents(),
-      ['Engineering Modernization', 'Knowledge & Staff Work', 'Procurement & Document Operations']);
+    assert.deepEqual(await page.locator('.top-pick strong').allTextContents(),
+      topPicks.map((id) => candidates.find((item) => item.id === id).name));
+    assert.equal(await page.locator('.bundle-card, .bundle-inventory, [data-bundle-link], #bundle-filter').count(), 0);
     await page.locator('.hero-actions .primary').click();
-    assert.equal(new URL(page.url()).hash, '#bundles');
-    assert.equal(await page.locator('#bundles-title').evaluate((node) => node === document.activeElement), true);
+    assert.equal(new URL(page.url()).hash, '#start');
+    assert.equal(await page.locator('#start-title').evaluate((node) => node === document.activeElement), true);
     await goView(page, 'overview');
     await page.locator('.adoption-band .text-link').click();
     assert.equal(new URL(page.url()).hash, '#pilot-gates');
@@ -304,27 +305,25 @@ try {
     await page.locator('#catalog .section-heading a[href="#engagement"]').click();
     assert.equal(new URL(page.url()).hash, '#engagement');
     await goView(page, 'overview');
-    const disclosures = page.locator('.bundle-inventory');
-    assert.equal(await disclosures.count(), 3);
-    for (const detail of await disclosures.all()) {
-      assert.equal(await detail.getAttribute('open'), null);
-      await detail.locator(':scope > summary').focus();
-      await page.keyboard.press('Enter');
-      assert.equal(await detail.locator('div').isVisible(), true);
-      await assertNoOverflow(page);
-      await audit(page);
-      await page.keyboard.press('Space');
-      assert.equal(await detail.getAttribute('open'), null);
-    }
-    await page.locator('#bundles').scrollIntoViewIfNeeded();
-    await screenshot(page, 'bundle-panels-light.png');
-    assert.equal(await page.locator('[data-bundle-link]').first().getAttribute('data-bundle-link'), 'engineering');
+    await page.locator('#top-picks').scrollIntoViewIfNeeded();
+    await screenshot(page, 'top-picks-light.png');
+    await page.locator(`.top-pick a[href="#solution-${topPicks[1]}"]`).focus();
+    await page.keyboard.press('Enter');
+    assert.equal(await page.locator('html').getAttribute('data-view'), 'solution');
+    assert.equal(await page.locator(`#solution-${topPicks[1]}`).isVisible(), true);
+    await goView(page, 'overview');
+    await page.locator('#top-picks a[href="#catalog"]').click();
+    assert.equal(await page.locator('html').getAttribute('data-view'), 'catalog');
+    await goView(page, 'overview');
     assert.equal(await page.locator('[data-problem-link]').first().getAttribute('data-problem-link'), 'engineering');
     await goView(page, 'catalog');
     assert.equal(await page.locator('.status-badge, #status-filter, .evidence-key').count(), 0);
     assert.doesNotMatch(await page.locator('#catalog').textContent(), /Selected tests verified|Not launch-ready|Readiness/);
-    assert.deepEqual(await page.locator('[data-bundle-choice]').evaluateAll((nodes) => nodes.map((node) => node.dataset.bundleChoice)),
-      ['all', 'engineering', 'knowledge', 'procurement']);
+    assert.deepEqual(await page.locator('[data-problem-choice]').evaluateAll((nodes) => nodes.map((node) => node.dataset.problemChoice)),
+      ['all', ...Object.keys(problems)]);
+    assert.deepEqual(await page.locator('.candidate').evaluateAll((nodes) => nodes.map((node) => Number(node.dataset.id))),
+      catalogCandidates.map((item) => item.id));
+    assert.equal(await page.locator('.candidate .top-pick-badge').count(), topPicks.length);
     await goView(page, 'roadmap');
     assert.match(await page.locator('.roadmap-item').first().textContent(), /Concept.*Not built or deployed/);
     assert.equal(await page.locator('.roadmap-boundary:visible').count(), 5);
@@ -368,15 +367,15 @@ try {
     await page.goForward();
     await page.waitForFunction(() => document.documentElement.dataset.view === 'roadmap');
     for (const [hash, view] of [
-      ['catalog', 'catalog'], ['candidate-title-11', 'catalog'], ['bundles', 'overview'],
-      ['program', 'guide'], ['pathway-knowledge', 'guide'], ['glossary', 'guide'], ['selection-review', 'guide'],
+      ['catalog', 'catalog'], ['candidate-title-11', 'catalog'], ['start', 'overview'], ['top-picks', 'overview'],
+      ['program', 'guide'], ['pathway-answers', 'guide'], ['glossary', 'guide'], ['selection-review', 'guide'],
       ['how-it-works', 'guide'], ['questions', 'guide'], ['sources', 'guide'], ['roadmap', 'roadmap'],
       ['solution-18', 'overview'], ['solution-20', 'overview'], ['solution-18-architecture', 'overview'],
       ['unknown-section', 'overview'], ['%E0%A4%A', 'overview'],
     ]) {
       await page.goto(`${url}/?scoutTheme=light#${hash}`, { waitUntil: 'networkidle' });
       assert.equal(await page.locator('html').getAttribute('data-view'), view, hash);
-      if (['program', 'pathway-knowledge', 'glossary'].includes(hash)) {
+      if (['program', 'pathway-answers', 'glossary'].includes(hash)) {
         assert.equal(await page.locator(`#${hash}`).isVisible(), true);
         assert.equal(await page.locator(`#${hash}`).evaluate((node) => node.closest('details').open), true);
       }
@@ -419,29 +418,18 @@ try {
     assert.equal(await page.locator('#catalog-search').evaluate((node) => node === document.activeElement), true);
   });
 
-  await run('every area and problem combination returns matching solutions in engineering-first order', async () => {
-    for (const bundle of ['all', ...Object.keys(bundles)]) {
-      for (const problem of ['all', ...Object.keys(problems)]) {
-        await page.locator(`[data-bundle-choice="${bundle}"]`).click();
-        assert.equal(await page.locator('#bundle-filter').inputValue(), bundle);
-        assert.equal(await page.locator(`[data-bundle-choice="${bundle}"]`).getAttribute('aria-pressed'), 'true');
-        await page.locator('#problem-filter').selectOption(problem);
-        const expected = catalogCandidates.filter((item) => (bundle === 'all' || item.bundle === bundle)
-          && (problem === 'all' || onboarding[item.id].problems.includes(problem))).map((item) => item.id);
-        const actual = await visible(page).evaluateAll((nodes) => nodes.map((node) => Number(node.dataset.id)));
-        assert.deepEqual(actual, expected, `${bundle} / ${problem}`);
-      }
+  await run('every problem chip returns matching solutions in customer-priority order', async () => {
+    for (const problem of ['all', ...Object.keys(problems)]) {
+      await page.locator(`[data-problem-choice="${problem}"]`).click();
+      assert.equal(await page.locator('#problem-filter').inputValue(), problem);
+      assert.equal(await page.locator(`[data-problem-choice="${problem}"]`).getAttribute('aria-pressed'), 'true');
+      const expected = catalogCandidates.filter((item) => problem === 'all'
+        || onboarding[item.id].problems.includes(problem)).map((item) => item.id);
+      const actual = await visible(page).evaluateAll((nodes) => nodes.map((node) => Number(node.dataset.id)));
+      assert.deepEqual(actual, expected, problem);
     }
     await page.locator('#reset-filters').click();
-    await goView(page, 'overview');
-    await page.locator('[data-bundle-link="procurement"]').click();
-    assert.equal(await page.locator('#bundle-filter').inputValue(), 'procurement');
-    assert.equal(await visible(page).count(), 2);
-    assert.equal(await page.locator('#catalog-search').evaluate((node) => node === document.activeElement), true);
-    await page.locator('#catalog-search').fill('contract');
-    // Plain-language text made both procurement entries genuinely match "contract";
-    // the disambiguation wording is what separates them.
-    assert.equal(await visible(page).count(), 2);
+    assert.equal(await page.locator('[data-problem-choice="all"]').getAttribute('aria-pressed'), 'true');
     await page.locator('#catalog-search').fill('proposal');
     assert.equal(await visible(page).count(), 1);
     assert.equal(await visible(page).first().getAttribute('data-id'), '12');
@@ -455,7 +443,7 @@ try {
     assert.equal(await page.locator('#catalog-grid').getAttribute('data-layout'), 'list');
     assert.equal(await page.locator('#view-switch [data-layout="list"]').getAttribute('aria-pressed'), 'true');
     assert.equal(await visible(page).count(), 20);
-    await page.locator('[data-bundle-choice="engineering"]').click();
+    await page.locator('[data-problem-choice="engineering"]').click();
     await page.locator('#catalog-search').fill('conversion');
     const conversionResults = await visible(page).evaluateAll((nodes) => nodes.map((node) => node.dataset.id));
     assert.ok(conversionResults.includes('9'));
@@ -463,7 +451,7 @@ try {
     await goView(page, 'guide');
     await goView(page, 'catalog');
     assert.equal(await page.locator('#catalog-search').inputValue(), 'conversion');
-    assert.equal(await page.locator('#bundle-filter').inputValue(), 'engineering');
+    assert.equal(await page.locator('#problem-filter').inputValue(), 'engineering');
     assert.equal(await page.locator('#catalog-grid').getAttribute('data-layout'), 'list');
     assert.deepEqual(await visible(page).evaluateAll((nodes) => nodes.map((node) => node.dataset.id)), conversionResults);
     await page.locator('.candidate[data-id="9"] .detail-button').click();
@@ -661,25 +649,25 @@ try {
     assert.equal(await page.locator('.shortlist-item').count(), 0);
   });
 
-  await run('outcome pathways build a gated printable pilot without adding extensions or losing selections', async () => {
+  await run('starter pilots build a gated printable pilot without adding extensions or losing selections', async () => {
     await page.goto(`${url}/?scoutTheme=light#program`, { waitUntil: 'networkidle' });
-    await page.locator('[data-plan-pathway="knowledge"]').click();
+    await page.locator('[data-plan-pathway="answers"]').click();
     assert.equal(await page.locator('#shortlist-title').evaluate((node) => node === document.activeElement), true);
     assert.equal(await page.locator('.shortlist-item').count(), 1);
-    assert.match(await page.locator('#pilot-brief').textContent(), /Knowledge & Staff Work.*pilot brief/s);
+    assert.match(await page.locator('#pilot-brief').textContent(), /Trusted answers.*pilot brief/s);
     assert.match(await page.locator('#pilot-brief').textContent(), /baseline.*target.*named owners/s);
     assert.equal(await page.locator('[data-select="4"]').getAttribute('aria-pressed'), 'false');
     await goView(page, 'guide');
-    await page.locator('[data-plan-pathway="knowledge"]').click();
+    await page.locator('[data-plan-pathway="answers"]').click();
     assert.equal(await page.locator('.shortlist-item').count(), 1, 'Repeated planning must not duplicate selections');
     await goView(page, 'guide');
-    await page.locator('[data-plan-pathway="engineering"]').focus();
+    await page.locator('[data-plan-pathway="modernize"]').focus();
     await page.keyboard.press('Enter');
     assert.equal(await page.locator('.shortlist-item').count(), 2);
     assert.match(await page.locator('#pilot-brief').textContent(), /no longer maintained/);
     assert.match(await page.locator('#pilot-plan-status').textContent(), /Existing shortlist entries retained/);
     await goView(page, 'guide');
-    await page.locator('[data-plan-pathway="procurement"]').click();
+    await page.locator('[data-plan-pathway="documents"]').click();
     assert.equal(await page.locator('.shortlist-item').count(), 3);
     assert.equal(await page.locator('[data-select="12"]').getAttribute('aria-pressed'), 'false');
     assert.match(await page.locator('#pilot-brief').textContent(), /missed evidence/);
@@ -701,7 +689,7 @@ try {
     assert.equal(await page.locator('.shortlist-item').count(), 2);
     assert.match(await page.locator('#pilot-plan-status').textContent(), /starting candidate was removed/);
     await goView(page, 'guide');
-    await page.locator('[data-plan-pathway="knowledge"]').click();
+    await page.locator('[data-plan-pathway="answers"]').click();
     await page.locator('.candidate[data-id="1"] .detail-button').click();
     await page.locator('[data-select="1"]').click();
     await page.locator('#solution-1 a[href="#shortlist"]').click();
@@ -709,7 +697,7 @@ try {
     await page.locator('#clear-shortlist').click();
     assert.equal(await page.locator('.shortlist-item').count(), 0);
     await goView(page, 'guide');
-    await page.locator('[data-plan-pathway="knowledge"]').click();
+    await page.locator('[data-plan-pathway="answers"]').click();
     await page.reload({ waitUntil: 'networkidle' });
     assert.equal(await page.locator('#pilot-brief').isVisible(), false);
     assert.equal(await page.locator('.shortlist-item').count(), 0);
@@ -911,21 +899,17 @@ try {
           await page.setViewportSize({ width, height: 900 });
           await assertNoOverflow(page);
           if (view === 'overview') {
-            const boxes = await page.locator('.bundle-card').evaluateAll((nodes) =>
+            const boxes = await page.locator('.top-pick').evaluateAll((nodes) =>
               nodes.map((node) => { const { x, y, width } = node.getBoundingClientRect(); return { x, y, width }; }));
-            assert.equal(boxes.length, 3);
-            if (width > 900) {
-              assert.ok(boxes.every((box) => Math.abs(box.y - boxes[0].y) < 1), 'Desktop work areas must sit side by side.');
-              assert.ok(boxes[1].x >= boxes[0].x + boxes[0].width && boxes[2].x >= boxes[1].x + boxes[1].width);
-            } else {
-              assert.ok(boxes[0].y < boxes[1].y && boxes[1].y < boxes[2].y, 'Narrow screens must stack the work areas.');
-            }
-            const hierarchy = await page.locator('.bundle-card').evaluateAll((nodes) => nodes.map((node) => ({
-              name: parseFloat(getComputedStyle(node.querySelector('h3')).fontSize),
-              tagline: parseFloat(getComputedStyle(node.querySelector('.bundle-tagline')).fontSize),
+            assert.equal(boxes.length, 6);
+            const columns = new Set(boxes.map((box) => Math.round(box.x))).size;
+            assert.equal(columns, width > 1100 ? 3 : width > 580 ? 2 : 1, `Top picks column count at ${width}px`);
+            const hierarchy = await page.locator('.top-pick').evaluateAll((nodes) => nodes.map((node) => ({
+              name: parseFloat(getComputedStyle(node.querySelector('strong')).fontSize),
+              value: parseFloat(getComputedStyle(node.querySelector('.top-pick-value')).fontSize),
             })));
-            assert.ok(hierarchy.every(({ name, tagline }) => name >= 24 && tagline <= 16 && name >= tagline * 1.5),
-              'Pilot names must be visibly larger than the supporting taglines at every screen size.');
+            assert.ok(hierarchy.every(({ name, value }) => name >= 20 && value <= 16 && name >= value * 1.4),
+              'Solution names must be visibly larger than their value statements at every screen size.');
           }
         }
         await page.setViewportSize({ width: 375, height: 812 });
@@ -987,8 +971,8 @@ try {
     await page.locator('#catalog-search').fill('CWYD');
     assert.equal(await visible(page).count(), 2);
     // Mixed open/closed state must survive printing; all starting points print.
-    await page.locator('.bundle-inventory').first().evaluate((detail) => { detail.open = true; });
-    const printDisclosures = page.locator('.bundle-inventory, .reference-disclosure');
+    await page.locator('.reference-disclosure').first().evaluate((detail) => { detail.open = true; });
+    const printDisclosures = page.locator('.reference-disclosure');
     const disclosureState = await printDisclosures.evaluateAll((nodes) => nodes.map((node) => node.open));
     await goView(page, 'guide');
     await page.evaluate(() => window.dispatchEvent(new Event('beforeprint')));
@@ -1001,8 +985,7 @@ try {
     assert.equal(await page.locator('.candidate-value:visible').count(), 20);
     assert.equal(await page.locator('.solution-page:visible').count(), 0);
     assert.equal(await page.locator('#catalog-filters').isVisible(), false);
-    assert.equal(await page.locator('.bundle-inventory[open]').count(), 3);
-    assert.equal(await page.locator('.bundle-inventory > div:visible').count(), 3);
+    assert.equal(await page.locator('.top-pick:visible').count(), 6);
     assert.equal(await page.locator('.reference-disclosure[open]').count(), 4);
     await screenshot(page, 'print-summary.png', true);
     await page.emulateMedia({ media: 'screen' });
@@ -1036,11 +1019,12 @@ try {
     await fallback.locator('#selection-review > summary').click();
     await fallback.locator('.catalog-review summary').click();
     assert.equal(await fallback.locator('.catalog-review tbody tr:visible').count(), 15);
-    assert.equal(await fallback.locator('#bundle-chips').isVisible(), false);
+    assert.equal(await fallback.locator('#problem-chips').isVisible(), false);
+    assert.equal(await fallback.locator('#problem-filter').isVisible(), false);
     assert.equal(await fallback.locator('#view-switch').isVisible(), false);
-    const bundleDetail = fallback.locator('.bundle-inventory').first();
-    await bundleDetail.locator('summary').click();
-    assert.equal(await bundleDetail.locator('div').isVisible(), true);
+    assert.equal(await fallback.locator('.top-pick').count(), 6);
+    await fallback.locator(`.top-pick a[href="#solution-${topPicks[0]}"]`).click();
+    assert.equal(new URL(fallback.url()).hash, `#solution-${topPicks[0]}`);
     assert.equal(await fallback.locator('.workflow-showcase').isVisible(), true);
     assert.equal(await fallback.locator('.glossary-list').isVisible(), false);
     await fallback.locator('#glossary > summary').click();
@@ -1400,7 +1384,7 @@ try {
     await audit(page);
     await page.goto(`${url}/?scoutTheme=light#finder-results`);
     await page.reload();
-    assert.equal(await page.locator('#bundles').isVisible(), true);
+    assert.equal(await page.locator('#start').isVisible(), true);
     assert.equal(await page.locator('#finder-results').isVisible(), false);
     await page.locator('.problem-link').first().click();
     assert.equal(await page.locator('#finder-title').evaluate((node) => node === document.activeElement), true);

@@ -3,21 +3,7 @@ export const programReviewDate = '2026-09-20';
 
 export const pathways = [
   {
-    id: 'engineering', title: 'Engineering Modernization', lead: 'Owner-supported adaptation',
-    outcome: 'Make a bounded SQL migration reviewable and testable.',
-    primary: 9, extensions: [3, 5],
-    scope: 'One SQL dialect, a small permitted source set and an executable source/target comparison. Broader engineering tooling is a separate scope.',
-    gate: 'The Modernize upstream is no longer maintained. Name a maintenance owner or choose a supported replacement before a new deployment.',
-    measures: [
-      ['Outcome', 'Reviewer time per accepted migration compared with the current process.'],
-      ['Quality', 'Source/target execution equivalence, preserved interfaces and regression results.'],
-      ['Adoption', 'Accepted changes and repeat use across a real modernization backlog.'],
-    ],
-    boundary: 'Engineers approve every change. No automatic production changes or claim of complete migration equivalence.',
-    extension: 'Specification assistance or supported developer-tool integration only after owner and endpoint validation.',
-  },
-  {
-    id: 'knowledge', title: 'Knowledge & Staff Work', lead: 'Recommended first pilot',
+    id: 'answers', title: 'Trusted answers', lead: 'Recommended first pilot',
     outcome: 'Help staff find authoritative answers they can check.',
     primary: 1, extensions: [4],
     scope: 'One approved document collection, one user group and representative questions, including missing answers and restricted documents.',
@@ -31,7 +17,7 @@ export const pathways = [
     extension: 'Add document comparison only for a demonstrated gap; DKM needs a maintenance owner. Avoid a second overlapping retrieval stack.',
   },
   {
-    id: 'procurement', title: 'Procurement & Document Operations', lead: 'Document-workflow priority',
+    id: 'documents', title: 'Document intake', lead: 'Document-workflow priority',
     outcome: 'Prepare complete evidence packs for a human reviewer.',
     primary: 6, extensions: [12],
     scope: 'One document-pack type with known complete, incomplete and malformed examples. Start with Content Processing, not autonomous procurement.',
@@ -43,6 +29,20 @@ export const pathways = [
     ],
     boundary: 'Authorized reviewers retain compliance, supplier-selection and award decisions. A generated finding is not a decision.',
     extension: 'Use MACAE RFP/contract packs as implementation references only after final synthesis and evidence traceability pass.',
+  },
+  {
+    id: 'modernize', title: 'Code modernization', lead: 'For an active modernization backlog',
+    outcome: 'Make a bounded SQL migration reviewable and testable.',
+    primary: 9, extensions: [3, 5],
+    scope: 'One SQL dialect, a small permitted source set and an executable source/target comparison. Broader engineering tooling is a separate scope.',
+    gate: 'The Modernize upstream is no longer maintained. Name a maintenance owner or choose a supported replacement before a new deployment.',
+    measures: [
+      ['Outcome', 'Reviewer time per accepted migration compared with the current process.'],
+      ['Quality', 'Source/target execution equivalence, preserved interfaces and regression results.'],
+      ['Adoption', 'Accepted changes and repeat use across a real modernization backlog.'],
+    ],
+    boundary: 'Engineers approve every change. No automatic production changes or claim of complete migration equivalence.',
+    extension: 'Specification assistance or supported developer-tool integration only after owner and endpoint validation.',
   },
 ];
 

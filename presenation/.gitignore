@@ -1,4 +1,6 @@
 *.pptx
 *.pdf
+*.docx
 preview/
+preview-2p*
 qa/

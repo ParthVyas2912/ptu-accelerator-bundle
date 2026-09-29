@@ -1,6 +1,6 @@
 # AI Solutions Hub
 
-A flexible toolkit of 20 Microsoft and Azure AI starting points to increase useful adoption of customers' existing PTUs and demonstrate the value of that investment. Teams choose the combination that fits their work, verify each solution's readiness and model/API/geography routing, and measure business outcomes alongside PTU utilization and total service cost. This is not a blanket PTU-compatibility or deployment guarantee.
+**PTU accelerator:** one catalog of 20 Microsoft and Azure AI solutions to increase useful adoption of customers' existing PTUs and demonstrate the value of that investment. There are no bundles or packages to buy into: teams choose whichever solutions fit their work, verify each solution's readiness and model/API/geography routing, and measure business outcomes alongside PTU utilization and total service cost. This is not a blanket PTU-compatibility or deployment guarantee.
 
 ## [Open the stakeholder website](https://ai-solutions-hub-ca.azurewebsites.net/)
 
@@ -15,7 +15,7 @@ The same site is also served at its original address, https://blue-beach-0fb8cd7
 | Audience | Read |
 |---|---|
 | Stakeholders | [Open the website](https://ai-solutions-hub-ca.azurewebsites.net/), or build the self-contained website under [site](site/). |
-| Account and solution teams | [Commercial recommendation](PTU-Bundle-Commercial-Recommendation.md): all twenty original candidates, three proposed bundles, five priority additions and the two later catalog additions. |
+| Account and solution teams | [Commercial recommendation](PTU-Bundle-Commercial-Recommendation.md): all twenty original candidates, five priority additions and the two later catalog additions. Its three-bundle packaging is superseded by the single 20-solution catalog (see its 2026-09-30 note). |
 | DRDC account team | [Private DRDC Research Productivity Bundle](docs/DRDC-RESEARCH-BUNDLE.md): a proposed, research-focused composition and gated pilot plan; not public website content or a verified deployment. |
 | Engineers | [First-pass evaluation](reports/ptu-bundle-evaluation.md), [continuation evaluation](PTU-Bundle-Continuation-Report.md), [catalog additions 21–22](reports/voice-and-mcp-security-additions.md), and [upstream adaptations](adaptations/README.md). |
 | Contributors | [Contribution guide](CONTRIBUTING.md), [publication boundaries](docs/PUBLICATION.md), and [website operations](docs/WEBSITE-OPERATIONS.md). |
@@ -26,8 +26,9 @@ The public-facing working brand is **AI Solutions Hub**, not an official Microso
 
 **Choose the mix that puts existing PTUs to useful work.** Customers can assess one,
 several or all 20 starting points; deployment remains subject to each solution's
-readiness, permissions and PTU compatibility. The portfolio is not an all-or-nothing
-bundle or 20 ready-to-install applications. Three starter pilot paths pair a
+readiness, permissions and PTU compatibility. The portfolio is one catalog, not an
+all-or-nothing package or 20 ready-to-install applications. Three starter pilots
+(Trusted answers, Document intake and Code modernization) each pair a
 bounded workflow with ownership/maintenance gates, outcome and quality measures,
 and a printable pilot brief. CWYD is the first knowledge-pilot recommendation;
 Content Processing is the document-workflow priority; engineering requires an
@@ -95,13 +96,17 @@ The dated commercial addendum records the updated recommendation.
 
 Visitors choose a problem, compare outcomes and intended users, and open a full solution dossier with product-specific uses, actual workflows, component/connection diagrams, ingestion, deployment prerequisites and a scoped Microsoft specialist engagement. Public sources are pinned where a package is established; platform references and owner-led proposals are distinguished. Shareable section links replace modal dialogs. Visitors can shortlist multiple candidates and print a selected plan. Missing repositories, failed outcomes and custom-build requirements remain documented rather than becoming misleading deployment buttons.
 
-The three existing areas remain useful groupings:
+**One catalog, ordered by customer priority (30 September 2026).** The earlier
+three-area grouping (engineering, knowledge and procurement) has been retired.
+The site now presents a single list of 20 solutions, ordered by what customers
+most often ask about first (`customerOrder` in `site/src/content.mjs`). The
+first six are highlighted as editorial top picks: Enterprise Knowledge (Chat With
+Your Data), Content Processing, Document Knowledge Mining, RFP & contract review,
+Modernize and SpecSuite. Top picks are a starting suggestion, not a
+readiness, popularity or PTU-compatibility claim. Visitors filter by business
+problem instead of area. 
 
-1. **Engineering Modernization** — code understanding, specifications and verified modernization.
-2. **Knowledge and Staff Work** — trusted answers, document comparison and controlled drafting.
-3. **Procurement and Document Operations** — document intake, evidence-backed review and missing-evidence checks.
-
-Engineering comes first in the overview, problem entry points, area filters and catalog. Customer-facing cards emphasize value rather than lab status badges or readiness filters. Substantive limitations and the unchanged evaluation context live in each solution's deployment notes. Some selected workflows passed bounded tests; others remain partial, inspected only, blocked, or proposed. Dossiers replace synthetic mockups with descriptions of the real interface and workflow. Source inspection is not a functional test; proposed components and unresolved packages remain explicit.
+Customer-facing cards emphasize value rather than lab status badges or readiness filters. Substantive limitations and the unchanged evaluation context live in each solution's deployment notes. Some selected workflows passed bounded tests; others remain partial, inspected only, blocked, or proposed. Dossiers replace synthetic mockups with descriptions of the real interface and workflow. Source inspection is not a functional test; proposed components and unresolved packages remain explicit.
 
 The DRDC composition is a separate private research proposal. It does not publish meeting-derived information, assert customer endorsement, or authorize deployment. The two supplied AI summaries repeat the same material and require customer validation rather than being treated as independent corroboration.
 

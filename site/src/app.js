@@ -3,7 +3,6 @@
   const $ = (selector) => document.querySelector(selector);
   const cards = [...document.querySelectorAll(".candidate")];
   const search = $("#catalog-search");
-  const bundle = $("#bundle-filter");
   const problem = $("#problem-filter");
   const form = $("#catalog-filters");
   const normalize = (value) => value.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
@@ -20,7 +19,7 @@
     let id;
     try { id = decodeURIComponent(hash.replace(/^#/, "")); } catch { id = "top"; }
     let target = document.getElementById(id || "top") || $("#top");
-    if (target.closest("#finder-results")?.hidden) target = $("#bundles");
+    if (target.closest("#finder-results")?.hidden) target = $("#start");
     if (id !== "main") {
       activeSolution = target.closest(".solution-page");
       currentView = target.closest("[data-page]")?.dataset.page || "overview";
@@ -64,7 +63,7 @@
     if (!link || event.defaultPrevented || event.button !== 0
       || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
     event.preventDefault();
-    const discovery = link.hasAttribute("data-bundle-link") || link.hasAttribute("data-problem-link");
+    const discovery = link.hasAttribute("data-problem-link");
     navigateTo(link.getAttribute("href"), !discovery);
     if (discovery) search.focus({ preventScroll: true });
   });
@@ -74,15 +73,15 @@
   document.documentElement.classList.add("has-navigation");
   activateView(location.hash);
 
-  const chips = $("#bundle-chips");
-  for (const option of bundle.options) {
+  const chips = $("#problem-chips");
+  for (const option of problem.options) {
     const chip = document.createElement("button");
     chip.type = "button";
-    chip.dataset.bundleChoice = option.value;
+    chip.dataset.problemChoice = option.value;
     chip.textContent = option.value === "all" ? "All solutions" : option.textContent;
     chip.setAttribute("aria-controls", "catalog-grid");
     chip.addEventListener("click", () => {
-      bundle.value = option.value;
+      problem.value = option.value;
       filterCards();
     });
     chips.append(chip);
@@ -93,7 +92,6 @@
     let count = 0;
     for (const entry of index) {
       const matches = words.every((word) => entry.text.includes(word))
-        && (bundle.value === "all" || entry.card.dataset.bundle === bundle.value)
         && (problem.value === "all" || entry.card.dataset.problems.split(" ").includes(problem.value));
       entry.card.hidden = !matches;
       if (matches) count += 1;
@@ -101,17 +99,15 @@
     $("#result-count").textContent = `Showing ${count} of ${cards.length} solutions`;
     $("#empty-state").hidden = count !== 0;
     const context = [];
-    if (bundle.value !== "all") context.push(bundle.selectedOptions[0].textContent);
     if (problem.value !== "all") context.push(problem.selectedOptions[0].textContent);
     if (search.value.trim()) context.push(`Search: ${search.value.trim()}`);
     $("#filter-context").textContent = context.join(" / ");
     $("#filter-context").hidden = context.length === 0;
-    for (const chip of chips.children) chip.setAttribute("aria-pressed", String(chip.dataset.bundleChoice === bundle.value));
+    for (const chip of chips.children) chip.setAttribute("aria-pressed", String(chip.dataset.problemChoice === problem.value));
   }
   form.hidden = false;
   form.addEventListener("submit", (event) => event.preventDefault());
   search.addEventListener("input", filterCards);
-  bundle.addEventListener("change", filterCards);
   problem.addEventListener("change", filterCards);
   function resetFilters() {
     form.reset();
@@ -120,14 +116,14 @@
   }
   $("#reset-filters").addEventListener("click", resetFilters);
   $("#clear-empty").addEventListener("click", resetFilters);
-  for (const attribute of ["bundle", "problem"]) {
-    document.querySelectorAll(`[data-${attribute}-link]`).forEach((link) => {
+  {
+    document.querySelectorAll("[data-problem-link]").forEach((link) => {
       link.addEventListener("click", (event) => {
         if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
         form.reset();
-        (attribute === "bundle" ? bundle : problem).value = link.dataset[`${attribute}Link`];
+        problem.value = link.dataset.problemLink;
         filterCards();
-        if (attribute === "problem" && link.closest(".problem-grid")) {
+        if (link.closest(".problem-grid")) {
           event.preventDefault();
           renderFinder(link.dataset.problemLink);
           navigateTo("#finder-results");
@@ -418,7 +414,7 @@
       document.documentElement.dataset.printPlan = "solution";
     }
     if (prePrintDisclosures === undefined) {
-      prePrintDisclosures = [...document.querySelectorAll(".bundle-inventory, .selected-guide, .deployment-notes, .deployment-runbook, .deployment-checkout, .command-disclosure, .delivery-journey details, .fit-detail, .connection-details, .catalog-review, .reference-disclosure, .idea-detail, #capacity-new")]
+      prePrintDisclosures = [...document.querySelectorAll(".selected-guide, .deployment-notes, .deployment-runbook, .deployment-checkout, .command-disclosure, .delivery-journey details, .fit-detail, .connection-details, .catalog-review, .reference-disclosure, .idea-detail, #capacity-new")]
         .map((detail) => ({ detail, open: detail.open }));
       for (const { detail } of prePrintDisclosures) detail.open = true;
     }

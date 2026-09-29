@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto';
 import { lstat, mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { resolve } from 'node:path';
-import { bundles, candidates, catalogCandidates, evidenceDate, fits, glossary, plainKinds, roadmap, statuses } from '../src/content.mjs';
+import { candidates, catalogCandidates, customerOrder, evidenceDate, fits, glossary, plainKinds, roadmap, statuses, topPicks } from '../src/content.mjs';
 import { onboarding, problems, tenantSteps } from '../src/onboarding.mjs';
 import { dossiers, researchDate } from '../src/dossiers.mjs';
 import { deploymentReviewDate } from '../src/deployment.mjs';
@@ -91,7 +91,7 @@ export function validateContent() {
     if (!Number.isSafeInteger(item.id) || item.id <= 0 || (index > 0 && item.id <= candidates[index - 1].id)) {
       throw new Error('Candidate IDs must be positive, unique and ordered.');
     }
-    if (!bundles[item.bundle] || !statuses[item.status] || !fits[item.fit]) throw new Error(`Invalid classification for candidate ${item.id}`);
+    if (!statuses[item.status] || !fits[item.fit]) throw new Error(`Invalid classification for candidate ${item.id}`);
     for (const field of ['name', 'alias', 'value', 'summary', 'evidence', 'ptu', 'next']) {
       if (typeof item[field] !== 'string' || !item[field].trim()) throw new Error(`Missing ${field} for candidate ${item.id}`);
     }
@@ -107,8 +107,18 @@ export function validateContent() {
       throw new Error(`Missing workflow illustration for candidate ${item.id}`);
     }
   });
+  validateCustomerOrder();
   validateRoadmap();
   validateProgram();
+}
+export function validateCustomerOrder(order = customerOrder, picks = topPicks) {
+  const ids = candidates.map((item) => item.id);
+  if (order.length !== ids.length || new Set(order).size !== order.length || !order.every((id) => ids.includes(id))) {
+    throw new Error('Customer order must list every catalog solution exactly once.');
+  }
+  if (picks.length !== 6 || picks.some((id, index) => order[index] !== id)) {
+    throw new Error('Top picks must be the first six solutions in customer order.');
+  }
 }
 
 const nonempty = (value) => typeof value === 'string' && Boolean(value.trim());
@@ -119,7 +129,6 @@ export function validateRoadmap(items = roadmap) {
   const ids = new Set();
   for (const item of items) {
     if (!/^[a-z]+(?:-[a-z]+)*$/.test(item.id) || ids.has(item.id)
-      || !bundles[item.bundle]
       || !['title', 'value', 'boundary', 'audience', 'output', 'evaluation', 'gap'].every((key) => nonempty(item[key]))
       || !candidates.some((candidate) => candidate.id === item.related)) {
       throw new Error('Incomplete or invalid use-case idea.');
@@ -129,9 +138,9 @@ export function validateRoadmap(items = roadmap) {
 }
 export function validateProgram(items = pathways, review = catalogReview) {
   const ids = new Set();
-  if (items.length !== 3) throw new Error('Expected three outcome pathways.');
+  if (items.length !== 3) throw new Error('Expected three starter pilots.');
   for (const item of items) {
-    if (!bundles[item.id] || ids.has(item.id)
+    if (!/^[a-z]+$/.test(item.id) || ids.has(item.id)
       || !['title', 'lead', 'outcome', 'scope', 'gate', 'boundary', 'extension'].every((key) => nonempty(item[key]))
       || !pairsValid(item.measures) || item.measures.length !== 3
       || !candidates.some((candidate) => candidate.id === item.primary)
@@ -272,7 +281,7 @@ const renderPathways = () => pathways.map((item) => `<article class="pathway-car
     <h4>Later, only if needed</h4><p>${escapeHTML(item.extension)}</p>
   </div>
   <a class="text-link" href="#solution-${item.primary}">Explore ${escapeHTML(candidates.find((candidate) => candidate.id === item.primary).name)} <span aria-hidden="true">→</span></a>
-  <button class="button primary" type="button" data-plan-pathway="${item.id}" aria-describedby="pathway-${item.id}-planning" hidden>Plan ${item.id} pilot</button>
+  <button class="button primary" type="button" data-plan-pathway="${item.id}" aria-describedby="pathway-${item.id}-planning" hidden>Plan this pilot<span class="sr-only">: ${escapeHTML(item.title)}</span></button>
   <p class="pathway-planning" id="pathway-${item.id}-planning">Adds the starting candidate and a pilot brief to your shortlist. Existing selections stay; extensions are not automatically added.</p>
   <details class="pathway-options"><summary>Inspect optional extension guides</summary><ul>${item.extensions.map((id) => `<li><a href="#solution-${id}">${escapeHTML(candidates.find((candidate) => candidate.id === id).name)}</a></li>`).join('')}</ul></details>
 </article>`).join('\n');
@@ -338,7 +347,7 @@ const renderSolution = (item) => {
   const id = `solution-${item.id}`;
   return `<section class="solution-page section wrap" id="${id}" data-page="solution" data-id="${item.id}" aria-labelledby="${id}-title">
     <a class="text-link solution-back" href="#candidate-title-${item.id}"><span aria-hidden="true">←</span> Back to solutions</a>
-    <header class="solution-heading"><div><p class="eyebrow">${escapeHTML(bundles[item.bundle])} / ${escapeHTML(dossier.kind)}</p><h2 id="${id}-title">${escapeHTML(item.name)}</h2><p class="solution-headline">${escapeHTML(dossier.headline)}</p></div>
+    <header class="solution-heading"><div><p class="eyebrow">${topPicks.includes(item.id) ? 'Top pick / ' : ''}${escapeHTML(dossier.kind)}</p><h2 id="${id}-title">${escapeHTML(item.name)}</h2><p class="solution-headline">${escapeHTML(dossier.headline)}</p></div>
     <div class="solution-actions"><button class="button primary shortlist-toggle" data-select="${item.id}" type="button" aria-pressed="false" hidden>Add to shortlist</button><a class="text-link" href="#shortlist">View my shortlist <span aria-hidden="true">→</span></a></div></header>
     <div class="solution-lead">${renderBrief(plain.brief, 'solution-summary')}${renderVisual(item)}</div>
     <dl class="solution-facts"><div><dt>Who it helps</dt><dd>${escapeHTML(dossier.audience)}</dd></div><div><dt>What you get</dt><dd>${escapeHTML(dossier.deliverables.join(' / '))}</dd></div><div><dt>Source &amp; ownership</dt><dd class="solution-provenance">${escapeHTML(sourceLabel(dossier))}. <a href="#${id}-sources">View source basis</a></dd></div></dl>
@@ -395,9 +404,9 @@ const renderSolution = (item) => {
   </section>`.replace(/\n +(?=<)/g, '');
 };
 
-const renderCard = (item) => `<article class="candidate" data-id="${item.id}" data-bundle="${item.bundle}" data-problems="${onboarding[item.id].problems.join(' ')}" aria-labelledby="candidate-title-${item.id}">
+const renderCard = (item) => `<article class="candidate" data-id="${item.id}" data-problems="${onboarding[item.id].problems.join(' ')}" aria-labelledby="candidate-title-${item.id}">
   ${renderVisual(item, true)}
-  <div class="candidate-top"><span class="candidate-area">${escapeHTML(bundles[item.bundle])}</span><span class="candidate-area candidate-kind">${escapeHTML(plainKinds[dossiers[item.id].kind])}</span></div>
+  <div class="candidate-top">${topPicks.includes(item.id) ? '<span class="candidate-area top-pick-badge">Top pick</span>' : ''}<span class="candidate-area candidate-kind">${escapeHTML(plainKinds[dossiers[item.id].kind])}</span></div>
   <h3 id="candidate-title-${item.id}">${escapeHTML(item.name)}</h3>
   <p class="candidate-alias">${escapeHTML(dossiers[item.id].alias)}</p>
   <p class="candidate-value">${escapeHTML(item.value)}</p>
@@ -406,8 +415,18 @@ const renderCard = (item) => `<article class="candidate" data-id="${item.id}" da
   <div class="card-tools" hidden><button type="button" class="quick-select" data-quick-select="${item.id}" aria-pressed="false" aria-label="Save ${escapeHTML(item.name)} to your plan">Save to plan <span aria-hidden="true">＋</span></button></div>
 </article>`;
 
+const renderTopPick = (id, index) => {
+  const item = candidates.find((candidate) => candidate.id === id);
+  return `<li class="top-pick"><a href="#solution-${id}" aria-labelledby="top-pick-${id}-title">
+    <span class="top-pick-rank" aria-hidden="true">${String(index + 1).padStart(2, '0')}</span>${icon(solutionVisuals[id].stages[1][0])}
+    <span class="top-pick-kind">${escapeHTML(plainKinds[dossiers[id].kind])}</span>
+    <strong id="top-pick-${id}-title">${escapeHTML(item.name)}</strong>
+    <span class="top-pick-value">${escapeHTML(item.value)}</span>
+  </a></li>`.replace(/\n +(?=<)/g, '');
+};
+
 const renderRoadmap = (item) => `<li class="roadmap-item" id="idea-${item.id}" aria-labelledby="idea-${item.id}-title">
-  <div>${icon(solutionVisuals[item.related].stages[0][0])}<span class="roadmap-tag">Concept · Not built or deployed</span><h3 id="idea-${item.id}-title">${escapeHTML(item.title)}</h3><p class="roadmap-bundle">${escapeHTML(item.audience)}</p></div>
+  <div>${icon(solutionVisuals[item.related].stages[0][0])}<span class="roadmap-tag">Concept · Not built or deployed</span><h3 id="idea-${item.id}-title">${escapeHTML(item.title)}</h3><p class="roadmap-audience">${escapeHTML(item.audience)}</p></div>
   <div class="roadmap-explanation"><p>${escapeHTML(item.value)}</p>
     <dl class="idea-output"><dt>What your team would receive</dt><dd>${escapeHTML(item.output)}</dd></dl>
     <p class="roadmap-boundary"><strong>Human decision:</strong> ${escapeHTML(item.boundary)}</p>
@@ -445,7 +464,8 @@ export async function buildSite() {
     CSS: css,
     APP: app,
     CANDIDATE_COUNT: candidates.length,
-    BUNDLE_OPTIONS: options(bundles),
+    PROBLEM_COUNT: Object.keys(problems).length,
+    TOP_PICKS: topPicks.map(renderTopPick).join('\n'),
     PROBLEM_OPTIONS: options(problems),
     PROBLEM_LINKS: Object.entries(problems).map(([key, label]) => `<a class="problem-link" href="#catalog" data-problem-link="${key}"><svg class="problem-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="${problemIcons[key]}"/></svg><span>${escapeHTML(label)}<small>${catalogCandidates.filter((item) => onboarding[item.id].problems.includes(key)).length} starting points to explore</small></span><span class="problem-arrow" aria-hidden="true">→</span></a>`).join('\n'),
     TENANT_STEPS: tenantSteps.map((step) => `<li>${escapeHTML(step)}</li>`).join(''),
