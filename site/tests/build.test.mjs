@@ -84,9 +84,8 @@ test('guided discovery and the planning workspace preserve catalog identities an
   assert.equal((header.match(/alt="Microsoft"/g) || []).length, 2);
   assert.match(header, /id="header-plan-count"/);
   assert.match(html, /class="adoption-map"/);
-  assert.match(html, /Your organization<\/h3>/);
-  assert.match(html, /Your AI toolkit<\/h3>/);
-  assert.match(html, /Success you can measure<\/h3>/);
+  assert.match(html, /Ask a real work question<\/h3>/);
+  assert.match(html, /data-plan-pathway="answers">Open the Trusted Answers pilot brief/);
   assert.match(html, /id="finder-results"[^>]*hidden[^>]*aria-labelledby="finder-title"/);
   assert.match(html, /Matched by documented use case, not ranked by readiness/);
   for (const item of catalogCandidates) {
@@ -277,8 +276,7 @@ test('escaping protects curated values and all internal anchor targets exist', (
 test('visual overview preserves planning boundaries without the long pilot and orientation sections', () => {
   assert.match(html, /<figure class="workflow-showcase" aria-labelledby="showcase-title">/);
   assert.equal((html.match(/class="showcase-tile /g) || []).length, 3);
-  assert.match(html, /An adoption journey, not a system architecture/);
-  assert.match(html, /Results depend on fit and delivery/);
+  assert.match(html, /Illustrative pilot/);
   assert.match(html, /Search, storage, hosting, document processing and speech can cost extra/);
   assert.match(html, /Verify model, API &amp; geography compatibility/);
   assert.match(html, /A development path, not a delivery schedule or completion status/);
@@ -296,13 +294,12 @@ test('visual overview preserves planning boundaries without the long pilot and o
 test('PTU adoption leads the toolkit without promising universal compatibility or deployment readiness', () => {
   const hero = html.match(/<section[^>]+id="top"[\s\S]*?<\/section>/)?.[0];
   assert.match(hero, /Your PTUs/);
-  assert.match(hero, /20 AI starting points/);
-  assert.match(hero, /Considering PTUs/);
-  assert.match(hero, /Prove demand before investing/);
-  assert.match(hero, /Choose your mix/);
+  assert.match(hero, /Browse all 20 solutions/);
+  assert.match(hero, /href="#capacity-existing">Put existing PTUs to work/);
+  assert.match(hero, /href="#capacity-new">Find out whether PTUs fit/);
   assert.match(html, /Each guide identifies its source, requirements and limits/);
-  assert.match(hero, /Compatible workloads only/);
-  assert.match(hero, /Other services cost extra/);
+  assert.match(hero, /Only compatible model calls use PTUs/);
+  assert.match(hero, /billed separately/);
   assert.match(html, /PTU utilization &amp; headroom/);
   assert.match(html, /time saved, quality and total service cost against an agreed baseline/);
   assert.match(html, /not a guaranteed saving/);

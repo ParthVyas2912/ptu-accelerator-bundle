@@ -20,7 +20,7 @@ current catalog rather than maintained as separate totals.
 
 ## Stakeholder experience
 
-The visual showroom leads with an organization-to-outcomes illustration, a compact
+The visual showroom leads with a worked Trusted Answers example, a compact
 solution gallery and a four-stage delivery journey. These are authored HTML/SVG
 graphics, not product screenshots, promised results or customer evidence.
 Separately, the user supplied Brand Central Microsoft and Microsoft Azure assets
@@ -41,9 +41,10 @@ The build embeds only three explicitly named, SHA-256-pinned PNGs; replacing an
 asset requires a new review and hash. Image use does not add any network requests.
 
 The header keeps navigation, theme switching and **My plan** within reach.
-The hero shows an organization → chosen AI toolkit → measurable outcomes journey,
-not a runtime architecture or three competing product categories. Four illustrated
-use-case links open their own guides; the full catalog remains one click away.
+The hero separates existing PTU use from assessing new demand. Its example follows
+a question through permission-aware retrieval to a measurable acceptance check.
+Open the prefilled pilot brief directly, or follow its static scope without JavaScript.
+The full catalog remains one click away.
 All three stages remain visible without JavaScript. Hover/focus feedback is restrained,
 and reduced-motion preferences disable movement.
 Choosing one of six challenges reveals up to three matching solutions in catalog

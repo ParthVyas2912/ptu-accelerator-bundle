@@ -271,8 +271,8 @@ try {
     await goView(page, 'overview');
     const map = page.locator('.workflow-showcase');
     assert.equal(await map.locator('.showcase-tile').count(), 3);
-    assert.match(await map.locator('figcaption').textContent(), /An adoption journey, not a system architecture/);
-    assert.match(await map.locator('.showcase-boundary').textContent(), /Results depend on fit and delivery/);
+    assert.match(await map.locator('figcaption').textContent(), /Illustrative pilot/);
+    assert.match(await map.locator('.showcase-boundary').textContent(), /billed separately/);
     assert.ok((await page.locator('.hero-copy').innerText()).trim().split(/\s+/).length <= 75);
     assert.ok((await page.locator('#orientation').innerText()).trim().split(/\s+/).length <= 40);
     assert.ok((await page.locator('main').innerText()).trim().split(/\s+/).length <= 500,
@@ -280,15 +280,19 @@ try {
     assert.equal(await page.locator('#program').isVisible(), false);
     assert.equal(await page.locator('#glossary').isVisible(), false);
     assert.equal(await page.locator('.problem-icon:visible').count(), 6);
-    assert.match(await page.locator('#hero-title').innerText(), /Useful AI/);
-    assert.match(await page.locator('.hero-description').innerText(), /Choose your mix/);
-    assert.match(await map.locator('.showcase-boundary').innerText(), /Compatible workloads only/);
+    assert.match(await page.locator('#hero-title').innerText(), /Choose one workflow/);
+    assert.match(await map.locator('.showcase-boundary').innerText(), /Only compatible model calls/);
     assert.deepEqual(await page.locator('.top-pick strong').allTextContents(),
       topPicks.map((id) => candidates.find((item) => item.id === id).name));
     assert.equal(await page.locator('.bundle-card, .bundle-inventory, [data-bundle-link], #bundle-filter').count(), 0);
     await page.locator('.hero-actions .primary').click();
-    assert.equal(new URL(page.url()).hash, '#start');
-    assert.equal(await page.locator('#start-title').evaluate((node) => node === document.activeElement), true);
+    assert.equal(new URL(page.url()).hash, '#capacity-existing');
+    assert.equal(await page.locator('#capacity-existing').isVisible(), true);
+    await goView(page, 'overview');
+    await map.locator('[data-plan-pathway="answers"]').click();
+    assert.equal(new URL(page.url()).hash, '#pilot-brief');
+    assert.match(await page.locator('#pilot-brief:visible').innerText(), /Trusted answers: pilot brief/);
+    await page.locator('#clear-shortlist').click();
     await goView(page, 'overview');
     await page.locator('.adoption-band .text-link').click();
     assert.equal(new URL(page.url()).hash, '#pilot-gates');
@@ -651,14 +655,14 @@ try {
 
   await run('starter pilots build a gated printable pilot without adding extensions or losing selections', async () => {
     await page.goto(`${url}/?scoutTheme=light#program`, { waitUntil: 'networkidle' });
-    await page.locator('[data-plan-pathway="answers"]').click();
+    await page.locator('button[data-plan-pathway="answers"]').click();
     assert.equal(await page.locator('#shortlist-title').evaluate((node) => node === document.activeElement), true);
     assert.equal(await page.locator('.shortlist-item').count(), 1);
     assert.match(await page.locator('#pilot-brief').textContent(), /Trusted answers.*pilot brief/s);
     assert.match(await page.locator('#pilot-brief').textContent(), /baseline.*target.*named owners/s);
     assert.equal(await page.locator('[data-select="4"]').getAttribute('aria-pressed'), 'false');
     await goView(page, 'guide');
-    await page.locator('[data-plan-pathway="answers"]').click();
+    await page.locator('button[data-plan-pathway="answers"]').click();
     assert.equal(await page.locator('.shortlist-item').count(), 1, 'Repeated planning must not duplicate selections');
     await goView(page, 'guide');
     await page.locator('[data-plan-pathway="modernize"]').focus();
@@ -689,7 +693,7 @@ try {
     assert.equal(await page.locator('.shortlist-item').count(), 2);
     assert.match(await page.locator('#pilot-plan-status').textContent(), /starting candidate was removed/);
     await goView(page, 'guide');
-    await page.locator('[data-plan-pathway="answers"]').click();
+    await page.locator('button[data-plan-pathway="answers"]').click();
     await page.locator('.candidate[data-id="1"] .detail-button').click();
     await page.locator('[data-select="1"]').click();
     await page.locator('#solution-1 a[href="#shortlist"]').click();
@@ -697,7 +701,7 @@ try {
     await page.locator('#clear-shortlist').click();
     assert.equal(await page.locator('.shortlist-item').count(), 0);
     await goView(page, 'guide');
-    await page.locator('[data-plan-pathway="answers"]').click();
+    await page.locator('button[data-plan-pathway="answers"]').click();
     await page.reload({ waitUntil: 'networkidle' });
     assert.equal(await page.locator('#pilot-brief').isVisible(), false);
     assert.equal(await page.locator('.shortlist-item').count(), 0);
@@ -1015,7 +1019,9 @@ try {
     assert.equal(await fallback.locator('.pathway-card:visible').count(), 0);
     await fallback.locator('#program > summary').click();
     assert.equal(await fallback.locator('.pathway-card:visible').count(), 3);
-    assert.equal(await fallback.locator('[data-plan-pathway]:visible').count(), 0);
+    assert.equal(await fallback.locator('button[data-plan-pathway]:visible').count(), 0);
+    await fallback.locator('.workflow-showcase [href="#pathway-answers"]').click();
+    assert.equal(await fallback.locator('#pathway-answers').isVisible(), true);
     await fallback.locator('#selection-review > summary').click();
     await fallback.locator('.catalog-review summary').click();
     assert.equal(await fallback.locator('.catalog-review tbody tr:visible').count(), 15);
@@ -1183,7 +1189,7 @@ try {
     await page.setViewportSize({ width: 1440, height: 1000 });
     await page.goto(`${url}/?scoutTheme=light#top`, { waitUntil: 'networkidle' });
     await page.reload({ waitUntil: 'networkidle' });
-    await page.locator('.hero-capacity a').click();
+    await page.locator('.hero-actions [href="#capacity-new"]').click();
     assert.equal(await page.locator('#capacity-new').getAttribute('open'), '');
     await page.locator('[data-view-link="catalog"]').click();
     await page.locator('.candidate[data-id="1"] .detail-button').click();
@@ -1259,7 +1265,7 @@ try {
       assert.ok(measurements.every((item) => item.words <= 85), 'Visible cards must remain concise');
       assert.deepEqual(measurements.filter((item) => item.visual), [], 'Catalog cards carry no workflow thumbnails');
       await goView(page, 'overview');
-      for (const link of await page.locator('.toolkit-grid a').all()) {
+      for (const link of await page.locator('.solutions-stage a').all()) {
         const target = await link.getAttribute('href');
         await link.click();
         assert.equal(new URL(page.url()).hash, target);
@@ -1289,7 +1295,7 @@ try {
     assert.equal(await delivery.locator('p').isVisible(), true);
     await audit(page);
     await page.emulateMedia({ reducedMotion: 'reduce' });
-    const motion = await page.locator('.toolkit-grid a').first().evaluate((node) => getComputedStyle(node).transitionDuration);
+    const motion = await page.locator('.solutions-stage a').evaluate((node) => getComputedStyle(node).transitionDuration);
     assert.equal(motion, '0s');
     await page.emulateMedia({ reducedMotion: 'no-preference' });
   });
@@ -1331,8 +1337,8 @@ try {
         assert.equal(await page.locator('.header-plan').isVisible(), true);
         assert.equal(await page.locator('.showcase-tile:visible').count(), 3);
         assert.deepEqual(await page.locator('.adoption-map h3').allTextContents(),
-          ['Your organization', 'Your AI toolkit', 'Success you can measure']);
-        for (const link of await page.locator('.toolkit-grid a').all()) {
+          ['Ask a real work question', 'Find a source they can open', 'Check the answer before expanding']);
+        for (const link of await page.locator('.solutions-stage a').all()) {
           const target = await link.getAttribute('href');
           await link.focus();
           await page.keyboard.press('Enter');

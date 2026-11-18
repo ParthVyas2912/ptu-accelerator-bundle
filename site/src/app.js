@@ -303,6 +303,15 @@
     const note = document.createElement("p");
     note.textContent = "Planning only. Agree the baseline, target, named owners, time box and budget before deployment. Other shortlisted solutions are not automatically part of this pilot.";
     brief.append(title, note, activePathway.querySelector(".pathway-brief").cloneNode(true));
+    const print = document.createElement("button");
+    print.type = "button";
+    print.className = "button secondary";
+    print.textContent = "Print / save pilot brief";
+    print.addEventListener("click", () => {
+      document.documentElement.dataset.printPlan = "pilot";
+      window.print();
+    });
+    brief.append(print);
   }
   function cloneGuide(id) {
     const clone = $(`#solution-${id} .solution-body`).cloneNode(true);
@@ -371,12 +380,13 @@
   }
   for (const button of document.querySelectorAll("[data-plan-pathway]")) {
     button.hidden = false;
-    button.addEventListener("click", () => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
       activePathway = $(`#pathway-${button.dataset.planPathway}`);
       selected.add(activePathway.dataset.primary);
       renderShortlist();
       $("#pilot-plan-status").textContent = `${activePathway.querySelector("h3").textContent} pilot brief selected. Existing shortlist entries retained; optional extensions were not added.`;
-      navigateTo("#shortlist");
+      navigateTo(button.matches("a") ? "#pilot-brief" : "#shortlist");
     });
   }
   for (const toggle of toggles) {

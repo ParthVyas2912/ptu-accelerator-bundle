@@ -826,12 +826,14 @@ html { scroll-padding-bottom: 10rem; }
   html[data-print-plan="solution"] .site-footer { display: none !important; }
   html[data-print-plan="solution"] .solution-page.active-solution { display: block !important; }
   .selected-guide a::after { content: " " attr(href); display: block; font-size: 0.7rem; overflow-wrap: anywhere; }
-  html[data-print-plan="selected"] [data-page],
-  html[data-print-plan="selected"] [data-page][hidden],
-  html[data-print-plan="selected"] .site-footer { display: none !important; }
-  html[data-print-plan="selected"] #catalog { display: block !important; }
-  html[data-print-plan="selected"] #catalog > :not(#shortlist) { display: none !important; }
-  html[data-print-plan="selected"] #shortlist { margin: 0; padding: 0; border: 0; }
+  html:is([data-print-plan="selected"], [data-print-plan="pilot"]) [data-page],
+  html:is([data-print-plan="selected"], [data-print-plan="pilot"]) [data-page][hidden],
+  html:is([data-print-plan="selected"], [data-print-plan="pilot"]) .site-footer { display: none !important; }
+  html:is([data-print-plan="selected"], [data-print-plan="pilot"]) #catalog { display: block !important; }
+  html:is([data-print-plan="selected"], [data-print-plan="pilot"]) #catalog > :not(#shortlist) { display: none !important; }
+  html:is([data-print-plan="selected"], [data-print-plan="pilot"]) #shortlist { margin: 0; padding: 0; border: 0; }
+  html[data-print-plan="pilot"] #shortlist > :not(#pilot-brief),
+  #pilot-brief button { display: none !important; }
   html[data-print-plan="selected"] .plan-only { display: block; }
   html[data-print-plan="brief"] [data-page],
   html[data-print-plan="brief"] [data-page][hidden],
