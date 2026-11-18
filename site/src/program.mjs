@@ -7,13 +7,13 @@ export const pathways = [
     outcome: 'Help staff find authoritative answers they can check.',
     primary: 1, extensions: [4],
     scope: 'One approved document collection, one user group and representative questions, including missing answers and restricted documents.',
-    gate: 'Start with Chat With Your Data. Accept citation quality, permission boundaries and safe no-answer behavior before broader use.',
+    gate: 'Bring a content owner, a platform engineer and the intended service owner. Scope Chat With Your Data with permission-aware retrieval and an approved model deployment. Reuse suitable search, storage and hosting. Selected lab checks passed; tenant routing, access controls and performance still need validation.',
     measures: [
-      ['Outcome', 'Time to a source-verified answer compared with the current search process.'],
+      ['Outcome', 'Time and total cost per accepted answer compared with the current search process. Distinguish existing PTU use from additional model capacity and separately billed services.'],
       ['Quality', 'Citation correctness, unsupported answers and permission-boundary failures.'],
       ['Adoption', 'Repeat users and successfully completed knowledge tasks, not raw query count.'],
     ],
-    boundary: 'People check consequential answers. Controlled briefing and correspondence drafting remains a planned extension.',
+    boundary: 'People check consequential answers. Expand only if agreed quality, access, cost and repeat-use targets pass and the service owner accepts handover; otherwise repair or stop. Share this brief with your account team. Controlled briefing and correspondence drafting remains a planned extension.',
     extension: 'Add document comparison only for a demonstrated gap; DKM needs a maintenance owner. Avoid a second overlapping retrieval stack.',
   },
   {
